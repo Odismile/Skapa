@@ -1,16 +1,15 @@
 import React, { useState, useEffect, FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 import useStyles from './styles';
+import { SIGNUP } from '../../../Routes';
+import TalentLogo from '../../../Assets/images/talent.png';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 
 interface LoginInterface {}
@@ -30,7 +29,8 @@ export const InitErrorFields: ErrorFieldsState = {
   username: false,
 };
 
-const Login: FC<LoginInterface> = (props) => {
+const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
+  const { history } = props;
   const { t } = useTranslation();
   const classes = useStyles();
   const [login, setLogin] = useState<LoginState>({ username: '', password: '' });
@@ -63,51 +63,62 @@ const Login: FC<LoginInterface> = (props) => {
     }
   };
 
+  const handleGoToCreateAccount = () => {
+    history.push(SIGNUP);
+  };
+
   return (
-    <Box className={classes.loginContainer}>
-      <form className={classes.loginForm}>
-        <TextField
-          name="username"
-          variant="outlined"
-          fullWidth
-          value={login.username}
-          className={classes.textField}
-          onChange={onChange}
-          error={errorfields.username}
-          margin="normal"
-        />
-        <TextField
-          name="password"
-          variant="outlined"
-          fullWidth
-          type="password"
-          className={classes.textField}
-          value={login.password}
-          onChange={onChange}
-          error={errorfields.password}
-          margin="normal"
-        />
-        {loginError && (
-          <Box textAlign="center" marginBottom="24px" className={classes.messageBox}>
-            <Typography>{loginError}</Typography>
-          </Box>
-        )}
-        <Button
-          variant="contained"
-          color="secondary"
-          fullWidth
-          className={classes.btn}
-          onClick={handleSubmit}
-          disabled={loadingLogin}
-        >
-          {t('login.login')}
-        </Button>
-        <Box className={classes.linkContainer}>
-          <Link className={classes.link}>Create an account</Link>
+    <Box className={classes.root}>
+      <Box className={classes.loginContainer}>
+        <Box className={classes.imgContainer}>
+          <img src={TalentLogo} className={classes.img} />
         </Box>
-      </form>
+        <form className={classes.loginForm}>
+          <TextField
+            name="username"
+            variant="outlined"
+            fullWidth
+            value={login.username}
+            className={classes.textField}
+            onChange={onChange}
+            error={errorfields.username}
+            margin="normal"
+          />
+          <TextField
+            name="password"
+            variant="outlined"
+            fullWidth
+            type="password"
+            className={classes.textField}
+            value={login.password}
+            onChange={onChange}
+            error={errorfields.password}
+            margin="normal"
+          />
+          {loginError && (
+            <Box textAlign="center" marginBottom="24px" className={classes.messageBox}>
+              <Typography>{loginError}</Typography>
+            </Box>
+          )}
+          <Button
+            variant="contained"
+            color="secondary"
+            fullWidth
+            className={classes.btn}
+            onClick={handleSubmit}
+            disabled={loadingLogin}
+          >
+            {t('login.login')}
+          </Button>
+          <Box className={classes.linkContainer}>
+            <Link className={classes.link} onClick={handleGoToCreateAccount}>
+              Create an account
+            </Link>
+          </Box>
+        </form>
+      </Box>
     </Box>
   );
 };
 
-export default Login;
+export default withRouter(Login);
