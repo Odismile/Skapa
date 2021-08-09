@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from '@material-ui/styles';
 import { BrowserRouter } from 'react-router-dom';
 
 import './i18n';
@@ -9,13 +10,16 @@ import Provider from './Providers';
 import GlobalSnackbar from './Components/GlobalSnackbar';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import theme from './Theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider>
+    <Provider >
       <GlobalSnackbar />
       <BrowserRouter>
+      <ThemeProvider theme={theme}>
         <App />
+      </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
