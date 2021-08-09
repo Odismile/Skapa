@@ -1,0 +1,96 @@
+stages:
+  - build
+  - deploy
+
+#--------------------------------RULES-------------------------------#
+#DEV
+.client_web_rules_dev: &client_web_rules_dev
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      changes:
+        - client/web/**/*
+        - .gitlab-ci.yml
+
+.strapi_rules_dev: &strapi_rules_dev
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+      changes:
+        - server/skapa/**/*
+
+.deploy_rules_dev: &deploy_rules_dev
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+
+#---------------------------------BUILD------------------------------#
+
+.build_image: &build_image
+  stage: build
+  image: docker:latest
+  services:
+    - docker:18.09-dind
+  retry:
+    max: 1
+    when:
+      - script_failure
+  before_script:
+    - 'docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY'
+    - 'echo $ARG '
+  script:
+    - docker build -t $IMAGE:$TAG $ARG $FOLDER
+    - docker push $IMAGE:$TAG
+
+#DEV
+build_web_dev:
+  <<: *build_image
+  <<: *client_web_rules_dev
+  stage: build
+  variables:
+    IMAGE: ${CI_REGISTRY_IMAGE}/develop/web
+    FOLDER: ./client/web/
+    ARG: '-f Dockerfile.dev'
+    TAG: develop
+
+build_strapi_dev:
+  <<: *build_image
+  <<: *strapi_rules_dev
+  variables:
+    IMAGE: ${CI_REGISTRY_IMAGE}/develop/strapi
+    TAG: develop
+    FOLDER: ./server/skapa
+    ARG: '-f Dockerfile.dev'
+
+#---------------------------------DEPLOY-------------------------------#
+
+.deploy_all: &deploy_all
+  stage: deploy
+  image: alpine:latest
+  services:
+    - docker:18.09-dind
+  variables:
+    USER: $USER_DEPLOYEMENT
+    HOST: $HOST_DEPLOYEMENT
+    PATH_COMPOSE: $PATH_COMPOSE
+  before_script:
+    - apk update
+    - apk add --update openssh-client bash
+    - eval $(ssh-agent -s)
+    - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")'
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - scp docker-compose.staging.yml ${USER}@${HOST}:${PATH_COMPOSE}/docker-compose.yml
+    - ssh ${USER}@${HOST} "cd ${PATH_COMPOSE} && docker-compose pull && docker-compose up -d"
+
+#DEV
+deploy_dev:
+  <<: *deploy_all
+  <<: *deploy_rules_dev
+  stage: deploy
+  environment: staging
+  variables:
+    USER: ${DEPLOYEMENT_USER}
+    HOST: ${DEPLOYEMENT_IP_STAGING}
+    PATH_COMPOSE: /root/Hairun-Project/skapa-dev
+
+
+
