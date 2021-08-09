@@ -7,6 +7,7 @@ import MomentUtils from '@date-io/moment';
 import 'moment/locale/fr';
 
 import Theme from '../Theme';
+import AuthProvider from './AuthProvider';
 import UserProvider from './UserProvider';
 import { createClient } from '../Services/ApolloClient';
 import { getAccessToken } from '../Services/LocalStorage';
@@ -21,7 +22,9 @@ const Provider: FC<ProviderProps> = (props) => {
     <MuiPickersUtilsProvider utils={MomentUtils} libInstance={moment} locale="fr">
       <ApolloProvider client={client}>
         <ThemeProvider theme={Theme}>
-          <UserProvider>{props.children}</UserProvider>
+          <AuthProvider>
+            <UserProvider>{props.children}</UserProvider>
+          </AuthProvider>
         </ThemeProvider>
       </ApolloProvider>
     </MuiPickersUtilsProvider>
