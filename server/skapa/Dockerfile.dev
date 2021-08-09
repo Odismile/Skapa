@@ -1,0 +1,5 @@
+FROM strapi/strapi:3.6.6
+
+COPY . /srv/app
+
+EXPOSE 1337
