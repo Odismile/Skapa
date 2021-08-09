@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "languages",
+  "info": {
+    "name": "Languages",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "BASIC",
+        "INTERMEDIATE",
+        "FLUENT"
+      ]
+    },
+    "language": {
+      "model": "items",
+      "via": "languages"
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "languages"
+    }
+  }
+}

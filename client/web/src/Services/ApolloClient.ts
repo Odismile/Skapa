@@ -14,7 +14,7 @@ export const createClient = (token: string) => {
   });
 
   const wsLink = new WebSocketLink({
-    uri: WS_URL || 'ws:localhost:4000/graphql',
+    uri: WS_URL || 'ws:localhost:1337/graphql',
     options: {
       reconnect: true,
       connectionParams: { authToken: token },

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
@@ -11,6 +11,7 @@ import useStyles from './styles';
 import { SIGNUP } from '../../../Routes';
 import TalentLogo from '../../../Assets/images/talent.png';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
+import { isAuthenticated } from '../../../Services';
 
 interface LoginInterface {}
 
@@ -59,9 +60,19 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
       setErrorFields((prev) => ({ ...prev, password: true }));
     }
     if (login.username && login.password) {
-      // doLogin
+      doLogin({ variables: { input: { identifier: login.username, password: login.password, provider: 'local' } } })
+        .then((res) => {
+          console.log('result');
+        })
+        .catch((err) => {
+          console.log('anaty catch');
+        });
     }
   };
+
+  if (isAuthenticated()) {
+    // return <Redirect {...{ to: '/' }} />;
+  }
 
   const handleGoToCreateAccount = () => {
     history.push(SIGNUP);
