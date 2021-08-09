@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from 'react';
+import { Redirect, Route, Switch, withRouter, RouteComponentProps } from 'react-router-dom';
 
-function App() {
+import { ROUTES, UNAUTHORIZED } from './Routes';
+import { RouteInterface } from './Interfaces/Route';
+import PrivateRoute from './Components/PrivateRoute';
+import NotFound from './Containers/Errors/NotFound';
+import Unauthorized from './Containers/Errors/Unauthorized';
+
+const App: FC<RouteComponentProps> = (props) => {
+  const { history } = props;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Switch>
+        <Route exact path={UNAUTHORIZED} component={Unauthorized} />
+        {ROUTES.map((route: RouteInterface) =>
+          route.private ? (
+            <PrivateRoute exact key={route.key} path={route.route} component={route.component} role={route.roles} />
+          ) : (
+            <Route exact key={route.key} path={route.route} component={route.component} />
+          ),
+        )}
+        <Route component={NotFound} />
+      </Switch>
+    </>
   );
-}
+};
 
-export default App;
+export default withRouter(App);
