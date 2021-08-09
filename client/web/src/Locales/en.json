@@ -1,6 +1,39 @@
 {
   "translation": {
     "appname": "Talent Team",
-    "applink": ""
+    "applink": "",
+    "login": {
+      "login": "Login",
+      "password": "Password",
+      "login_button": "Login",
+      "create_account": "Create an account"
+    },
+    "signup": {
+      "surname": "Surname",
+      "lastname": "Lastname",
+      "email": "Email",
+      "password": "Password",
+      "signup_button": "Create account",
+      "create_account_linkedin": "Create account from linkedin profile"
+    },
+    "onboarding": {
+      "skip_step": "Skip this step",
+      "skip_tutorial": "Skip tutorial",
+      "skip_profile": "Skip profile creation",
+      "profile_creation_title": "Now, let's create your profile !",
+      "profile_creation_position": "Your position",
+      "profile_creation_experience": "Job seniority (years)",
+      "profile_creation_organization": "Name of your organisation",
+      "profile_creation_photo": "Upload a picture of you",
+      "profile_creation_video": "Upload a video pitch",
+      "profile_creation_bio": "Bio",
+      "profile_creation_skills": "What are your skills",
+      "profile_creation_projects": "What kind of project would you like to see ?",
+      "validation": "Customizing your homepage...",
+      "next": "Next",
+      "stepOne": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic laborum consequatur incidunt dicta magni optio neque culpa veniam nesciunt.",
+      "stepTwo": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic laborum consequatur incidunt dicta magni optio neque culpa veniam nesciunt.",
+      "stepThree": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic laborum consequatur incidunt dicta magni optio neque culpa veniam nesciunt."
+    }
   }
 }
