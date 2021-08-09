@@ -26,6 +26,7 @@ const TextFieldComponent: FC<TextFiedlProps> = (props) => {
       InputLabelProps={{
         shrink: true,
       }}
+      placeholder={props.placeholder}
       value={props.value}
       error={props.error}
       helperText={props.helperText}
