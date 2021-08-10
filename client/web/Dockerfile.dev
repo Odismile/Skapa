@@ -4,6 +4,9 @@ COPY . /app
 
 WORKDIR /app
 
+ARG REACT_APP_API_URL
+ARG REACT_APP_WS_URL
+
 RUN yarn install || true
 RUN yarn run build
 
