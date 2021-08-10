@@ -48,7 +48,7 @@ build_web_dev:
   variables:
     IMAGE: ${CI_REGISTRY_IMAGE}/develop/web
     FOLDER: ./client/web/
-    ARG: '-f Dockerfile.dev'
+    ARG: '--build-arg REACT_APP_API_URL=$API_STAGING --build-arg REACT_APP_WS_URL=$WS_STAGING -f Dockerfile.dev'
     TAG: develop
 
 build_strapi_dev:
