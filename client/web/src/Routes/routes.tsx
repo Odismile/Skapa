@@ -4,12 +4,14 @@ import HomePage from '../Containers/HomePage';
 import Login from '../Containers/Authentication/Login';
 import Signup from '../Containers/Authentication/Signup';
 import Onboarding from '../Containers/Onboarding';
+import OnboardingStart from '../Containers/OnboardingStart';
 import OnboardingProfile from '../Containers/OnboardingProfile';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
 export const SIGNUP = '/signup';
 export const ONBOARDING = '/onboarding';
+export const ONBOARDING_START = '/onboarding-start';
 export const ONBOARDING_PROFILE = '/onboarding-profile';
 export const UNAUTHORIZED = '/unauthorized';
 
@@ -43,6 +45,13 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: Onboarding,
+  },
+  {
+    key: 'ONBOARDING_START',
+    route: ONBOARDING_START,
+    roles: [],
+    private: false,
+    component: OnboardingStart,
   },
   {
     key: 'ONBOARDING_PROFILE',
