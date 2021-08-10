@@ -13,10 +13,12 @@ export interface UsersPermissionsLoginInput {
   provider?: string | null;
 }
 
-export interface UsersPermissionsRegisterInput {
+export interface UsersPermissionsRegisterCustomInput {
   username: string;
   email: string;
   password: string;
+  surname?: string | null;
+  lastname?: string | null;
 }
 
 //==============================================================

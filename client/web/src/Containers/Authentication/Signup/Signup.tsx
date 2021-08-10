@@ -90,7 +90,24 @@ const Signup = () => {
     } else {
       initError();
       doRegister({
-        variables: { input: { email: signup.email, username: signup.surname, password: signup.password } },
+        variables: {
+          input: {
+            email: signup.email,
+            username: '',
+            password: signup.password,
+            lastname: signup.surname,
+            surname: signup.lastName,
+          },
+        },
+      }).then((result) => {
+        if (result.data?.registerCustom.jwt) {
+          setSignup({
+            email: '',
+            lastName: '',
+            surname: '',
+            password: '',
+          });
+        }
       });
     }
   };

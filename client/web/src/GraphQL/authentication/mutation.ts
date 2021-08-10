@@ -14,8 +14,20 @@ export const LOGIN = gql`
 `;
 
 export const REGISTER = gql`
-  mutation Register($input: UsersPermissionsRegisterInput!) {
-    register(input: $input) {
+  mutation Register($input: UsersPermissionsRegisterCustomInput!) {
+    registerCustom(input: $input) {
+      jwt
+      user {
+        ...UserPermissionMeInfo
+      }
+    }
+  }
+  ${USER_PERMISSION_ME_FRAGMENT}
+`;
+
+export const EMAIL_CONFIRMATION = gql`
+  mutation EmailConfirmation($confirmation: String!) {
+    registerCustom(confirmation: $confirmation) {
       jwt
       user {
         ...UserPermissionMeInfo
