@@ -46,17 +46,17 @@ build_web_dev:
   <<: *client_web_rules_dev
   stage: build
   variables:
-    IMAGE: ${CI_REGISTRY_IMAGE}/develop/web
+    IMAGE: ${CI_REGISTRY_IMAGE}/staging/web
     FOLDER: ./client/web/
     ARG: '--build-arg REACT_APP_API_URL=$API_STAGING --build-arg REACT_APP_WS_URL=$WS_STAGING -f Dockerfile.dev'
-    TAG: develop
+    TAG: staging
 
 build_strapi_dev:
   <<: *build_image
   <<: *strapi_rules_dev
   variables:
-    IMAGE: ${CI_REGISTRY_IMAGE}/develop/strapi
-    TAG: develop
+    IMAGE: ${CI_REGISTRY_IMAGE}/staging/strapi
+    TAG: staging
     FOLDER: ./server/skapa
     ARG: '-f Dockerfile.dev'
 
