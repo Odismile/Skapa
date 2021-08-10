@@ -11,6 +11,7 @@ interface TextFiedlProps {
   type: string;
   id: string;
   name?: string | undefined;
+  placeholder?: string,
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
 }
 
@@ -26,6 +27,7 @@ const TextFieldComponent: FC<TextFiedlProps> = (props) => {
       InputLabelProps={{
         shrink: true,
       }}
+      placeholder={props.placeholder}
       value={props.value}
       error={props.error}
       helperText={props.helperText}
