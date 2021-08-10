@@ -4,10 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { REGISTER } from '../../../GraphQL/authentication/mutation';
 import { Register, RegisterVariables } from '../../../GraphQL/authentication/types/Register';
 import { displaySnackbar, InitSnackbarData } from '../../../Utils';
+import { useSendEmail } from './useSendEmail';
 
 export const useRegister = () => {
   const { t } = useTranslation();
   const [registerError, setRegisterError] = useState<string>('');
+  const { doSendEmail } = useSendEmail();
 
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
@@ -32,10 +34,11 @@ export const useRegister = () => {
       }
       return;
     },
-    onCompleted: () => {
+    onCompleted: (data) => {
       snackbar.type = 'SUCCESS';
       snackbar.message = 'Registration successful!';
       displaySnackbar(client, snackbar);
+      //doSendEmail({ variables: { confirmation: data?.registerCustom?.user?.email } });
     },
   });
 
