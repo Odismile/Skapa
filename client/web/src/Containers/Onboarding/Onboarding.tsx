@@ -36,7 +36,7 @@ const Onboarding = () => {
 
 
   return (
-    <Box className={classNames(classes.root, classes.mainPage)}>
+    <Box className={classNames(classes.mainPage)}>
       <Box className="wrapPage">
         <Box component="header" className={classNames(classes.main_header)}>
           <figure className="logo">
@@ -84,6 +84,9 @@ const Onboarding = () => {
           </Box>
         </Box>
         <Box component="footer" className={classes.footerPage} >
+          <Typography className="link-footer">
+            <Link to="/">Skip tutorial</Link>
+          </Typography>
         </Box>
       </Box>
     </Box>
