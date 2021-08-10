@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { UsersPermissionsLoginInput } from "./../../../types/graphql-global-types";
+
 // ====================================================
 // GraphQL mutation operation: Login
 // ====================================================
@@ -35,6 +37,5 @@ export interface Login {
 }
 
 export interface LoginVariables {
-  username?: string | null;
-  password?: string | null;
+  input: UsersPermissionsLoginInput;
 }
