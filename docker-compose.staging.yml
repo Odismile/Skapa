@@ -41,6 +41,8 @@ services:
       - .env
     volumes:
       - ./data/postgres/:/var/lib/postgresql
+    ports:
+      - 5444:5432
     networks:
       - traefik
 
