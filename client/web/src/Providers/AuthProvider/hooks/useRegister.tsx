@@ -1,12 +1,16 @@
-import { useMutation } from '@apollo/client';
+import { useApolloClient, useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { REGISTER } from '../../../GraphQL/authentication/mutation';
 import { Register, RegisterVariables } from '../../../GraphQL/authentication/types/Register';
+import { displaySnackbar, InitSnackbarData } from '../../../Utils';
 
 export const useRegister = () => {
   const { t } = useTranslation();
   const [registerError, setRegisterError] = useState<string>('');
+
+  const snackbar = InitSnackbarData;
+  const client = useApolloClient();
 
   const [doRegister, { loading, data, error }] = useMutation<Register, RegisterVariables>(REGISTER, {
     onError: (error) => {
@@ -27,6 +31,11 @@ export const useRegister = () => {
         setRegisterError(t('statusMessages.SERVER_ERROR'));
       }
       return;
+    },
+    onCompleted: () => {
+      snackbar.type = 'SUCCESS';
+      snackbar.message = 'Registration successful!';
+      displaySnackbar(client, snackbar);
     },
   });
 

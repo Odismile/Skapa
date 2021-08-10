@@ -4,6 +4,9 @@ import { FC } from 'react';
 import useStyles from './style';
 
 interface TextFiedlProps {
+  value?: any;
+  error?: boolean;
+  helperText?: string;
   label: string;
   type: string;
   id: string;
@@ -23,6 +26,9 @@ const TextFieldComponent: FC<TextFiedlProps> = (props) => {
       InputLabelProps={{
         shrink: true,
       }}
+      value={props.value}
+      error={props.error}
+      helperText={props.helperText}
       className={classes.textfield}
     />
   );
