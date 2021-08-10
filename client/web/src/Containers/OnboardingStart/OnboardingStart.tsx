@@ -21,7 +21,7 @@ const OnboardingStart = () => {
         <Box className={classNames(classes.mainContainer)}>
           <Box className="createProfile_start">
             <Typography variant="h1">Now, let’s create <br />your profile !</Typography>
-            <Button variant="contained" href="/onboarding" className={classes.btn_createProfile} color="primary" >Create profile</Button>
+            <Button variant="contained" href="/onboarding-profile" className={classes.btn_createProfile} color="primary" >Create profile</Button>
           </Box>
         </Box>
         <Box component="footer" className={classes.footerPage} >

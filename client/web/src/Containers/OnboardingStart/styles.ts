@@ -15,7 +15,11 @@ export default makeStyles(
       maxHeight: '42.5rem',
       padding: '2.5rem 1.875rem 1.875rem',
       position: "absolute",
-      bottom: 0, top: 0, left: 0, right: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      top: '50%',
+      transform: 'translateY(-50%)',
       width: "100%",
       zIndex: 0,
       "& .wrapPage": {
@@ -24,9 +28,6 @@ export default makeStyles(
         justifyContent: "space-between",
         height: "100%",
         width: "100%",
-      },
-      "& *": {
-        boxSizing: 'border-box',
       },
     },
     main_header: {
