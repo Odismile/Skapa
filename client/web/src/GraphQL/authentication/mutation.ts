@@ -2,15 +2,15 @@ import gql from 'graphql-tag';
 import { USER_PERMISSION_ME_FRAGMENT } from '../user/fragment';
 
 export const LOGIN = gql`
-  mutation Login($input: UsersPermissionsLoginInput!) {
-    login(input: $input) {
+  mutation Login($username: String, $password: String) {
+    login(username: $username, password: $password) {
       jwt
       user {
-        username
-        email
+        ...UserPermissionMeInfo
       }
     }
   }
+  ${USER_PERMISSION_ME_FRAGMENT}
 `;
 
 export const REGISTER = gql`
