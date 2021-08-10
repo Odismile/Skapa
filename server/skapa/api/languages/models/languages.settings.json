@@ -24,9 +24,9 @@
       "via": "languages"
     },
     "users_permissions_user": {
+      "via": "languages",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "languages"
+      "model": "user"
     }
   }
 }
