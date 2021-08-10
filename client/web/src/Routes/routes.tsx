@@ -6,7 +6,7 @@ import Signup from '../Containers/Authentication/Signup';
 import Onboarding from '../Containers/Onboarding';
 import OnboardingStart from '../Containers/OnboardingStart';
 import OnboardingProfile from '../Containers/OnboardingProfile';
-import OnboardingProfileTwo from '../Containers/OnboardingProfileTwo/OnboardingProfileTwo';
+import Project from '../Containers/Projects';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -14,19 +14,13 @@ export const SIGNUP = '/signup';
 export const ONBOARDING = '/onboarding';
 export const ONBOARDING_START = '/onboarding-start';
 export const ONBOARDING_PROFILE = '/onboarding-profile';
-export const ONBOARDING_PROFILE2 = '/onboarding-profile2';
+export const PROJECT = '/project';
+
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
 
 export const ROUTES: RouteInterface[] = [
-  {
-    key: 'HOMEPAGE',
-    route: HOMEPAGE,
-    roles: [],
-    private: false,
-    component: WrappedHomePage,
-  },
   {
     key: 'HOMEPAGE',
     route: HOMEPAGE,
@@ -70,10 +64,10 @@ export const ROUTES: RouteInterface[] = [
     component: OnboardingProfile,
   },
   {
-    key: 'ONBOARDING_PROFILE2',
-    route: ONBOARDING_PROFILE2,
+    key: 'PROJECT',
+    route: PROJECT,
     roles: [],
     private: false,
-    component: OnboardingProfileTwo,
+    component: Project,
   },
 ];
