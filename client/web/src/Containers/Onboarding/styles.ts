@@ -35,18 +35,45 @@ export default makeStyles(
     },
     sliderTuto: {
      "& .tuto_slider" : {
-      "& .tuto_img" : {
-        margin: 0,
-        textAlign: "center",
+        display: "flex",
+        flexDirection : "column",
+        "& .swiper-pagination" : {
+          position: "relative",
+          order: "2",
+          marginTop: 30,
+          "& .swiper-pagination-bullet" : {
+            width: 15,
+            height: 15,
+            background: "#ECE8FF",
+            opacity: "1",
+            "&.swiper-pagination-bullet-active" : {
+              background: "#8870FF",
+            }
+          }
+        },
+        "& .tuto_img" : {
+          margin: 0,
+          textAlign: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        },
+        "& .tuto_text": {
+          textAlign: "center",
+          maxWidth: 240,
+          margin: "60px auto 0 auto",
+          fontSize: 22
+        },
+       },
       },
-      "& .tuto_text": {
-        textAlign: "center",
-        
-      },
-     },
-    },
     footerPage: {
-      
+      "& .skip": {
+        color: "#8870FF",
+        fontSize: 22,
+        textAlign: "right",
+        paddingRight: 50,
+        display: "block"
+      }
     },
   }),
   { name: "onboarding" }
