@@ -16,6 +16,7 @@ stages:
     - if: '$CI_COMMIT_BRANCH == "develop"'
       changes:
         - server/skapa/**/*
+        - .gitlab-ci.yml
 
 .deploy_rules_dev: &deploy_rules_dev
   rules:
@@ -34,9 +35,9 @@ stages:
       - script_failure
   before_script:
     - 'docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY'
-    - 'echo $ARG '
   script:
-    - docker build -t $IMAGE:$TAG $ARG $FOLDER
+    - cd $FOLDER
+    - docker build -t $IMAGE:$TAG $ARG .
     - docker push $IMAGE:$TAG
 
 #DEV
@@ -90,7 +91,7 @@ deploy_dev:
   variables:
     USER: ${DEPLOYEMENT_USER}
     HOST: ${DEPLOYEMENT_IP_STAGING}
-    PATH_COMPOSE: /root/Hairun-Project/skapa-dev
+    PATH_COMPOSE: /root/Hairun-Project/skapa-staging
 
 
 
