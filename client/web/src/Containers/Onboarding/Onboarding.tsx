@@ -84,7 +84,6 @@ const Onboarding = () => {
           </Box>
         </Box>
         <Box component="footer" className={classes.footerPage} >
-          <a href="#" className="skip">Skip tutorial</a>
         </Box>
       </Box>
     </Box>

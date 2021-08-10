@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "items",
+  "info": {
+    "name": "Items"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "LANGUAGE",
+        "SKILLS",
+        "PROJECT_TYPES"
+      ]
+    },
+    "languages": {
+      "via": "language",
+      "collection": "languages"
+    }
+  }
+}

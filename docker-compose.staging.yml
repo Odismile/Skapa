@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   strapi:
     image: registry.gitlab.com/digitallforyou/skapa/staging/strapi:staging
@@ -9,9 +9,9 @@ services:
       traefik.port: 1337
       traefik.frontend.entryPoints: https,http
       traefik.frontend.redirect.entryPoint: https
-    env_file: 
+    env_file:
       - .env
-    depends_on: 
+    depends_on:
       - postgres
     networks:
       - traefik
@@ -25,9 +25,9 @@ services:
       traefik.port: 80
       traefik.frontend.entryPoints: https,http
       traefik.frontend.redirect.entryPoint: https
-    env_file: 
+    env_file:
       - .env
-    depends_on: 
+    depends_on:
       - strapi
     networks:
       - traefik
@@ -41,6 +41,8 @@ services:
       - .env
     volumes:
       - ./data/postgres/:/var/lib/postgresql
+    ports:
+      - 5444:5432
     networks:
       - traefik
 
@@ -56,7 +58,7 @@ services:
       traefik.port: 80
       traefik.frontend.entryPoints: https,http
       traefik.frontend.redirect.entryPoint: https
-    depends_on: 
+    depends_on:
       - postgres
     networks:
       - traefik

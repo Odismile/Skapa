@@ -67,13 +67,7 @@ export default makeStyles(
        },
       },
     footerPage: {
-      "& .skip": {
-        color: "#8870FF",
-        fontSize: 22,
-        textAlign: "right",
-        paddingRight: 50,
-        display: "block"
-      }
+      
     },
   }),
   { name: "onboarding" }
