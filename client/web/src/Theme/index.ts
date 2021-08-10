@@ -1,9 +1,8 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider, useTheme } from '@material-ui/core';
 
 const theme = createMuiTheme ({
   typography: {
-    fontFamily: 'Poppins',
-    fontSize: 16,
+    fontFamily: 'Nunito',
     body1: {
       color: "#666",
       fontSize: '1rem',
@@ -16,16 +15,20 @@ const theme = createMuiTheme ({
       fontWeight: 400,
       marginBottom: '1rem',
     },
+    h1: {
+      fontSize: '1.75rem',
+    },
   },
   palette: {
     primary: {
-      main: '#9AC61E',
+      main: '#8277FF',
     },
     secondary: {
-      main: '#f5f5f5',
+      main: '#ece8ff',
     },
     text: {
-      secondary: '#666',
+      primary: '#000',
+      secondary: '#fff',
     },
     success: {
       main: '#9AC61E',
@@ -36,7 +39,50 @@ const theme = createMuiTheme ({
     warning: {
       main: '#F98436',
     },
-  }
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        fontFamily: 'Nunito',
+        fontSize: '1rem',
+        fontWeight: 600,
+        height: 50,
+        lineHeight: "100%",
+        minWidth: 100,
+        textTransform: "none",
+      },
+      label: {
+        justifyContent: 'center',
+      },
+      contained: {
+        backgroundColor: "#8870ff",
+        borderRadius: 0,
+        color: '#fff',
+        boxShadow: 'none',
+        transition: "all .3s ease-in-out",
+        '&:hover': {
+          backgroundColor: "#8870ff",
+          boxShadow: 'none',
+          color: '#fff',
+        },
+        '&:focus': {
+          boxShadow: 'none',
+        },
+      },
+    },
+    MuiLink: {
+      root: {
+        color: '#8870ff',
+        textDecoration: 'underline',
+        "&:hover" : {
+
+        },
+        "&:focus": {
+          outline: "none",
+        }
+      },
+    },
+  },
 });
 
 export default theme;
