@@ -65,10 +65,12 @@
     },
     "surname": {
       "type": "string",
-      "required": false
+      "required": false,
+      "configurable": false
     },
     "lastname": {
       "type": "string",
+      "configurable": false,
       "required": false
     }
   }
