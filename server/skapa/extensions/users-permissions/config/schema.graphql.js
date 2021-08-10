@@ -35,9 +35,18 @@ module.exports = {
       jwt: String
       user: UsersPermissionsCustomizeMe!
     }
+
+    input UsersPermissionsRegisterCustomInput {
+      username: String!
+      email: String!
+      password: String!
+      surname: String
+      lastname: String
+    }
   `,
   mutation: `
     loginCustom(input: UsersPermissionsLoginInput!): UsersPermissionsLoginCustomizePayload!
+    registerCustom(input: UsersPermissionsRegisterCustomInput!): UsersPermissionsLoginPayload!
   `,
   resolver: {
     Mutation: {
@@ -51,6 +60,26 @@ module.exports = {
           context.request.body = _.toPlainObject(options.input);
 
           await strapi.plugins["users-permissions"].controllers.auth.callback(
+            context
+          );
+          let output = context.body.toJSON
+            ? context.body.toJSON()
+            : context.body;
+
+          checkBadRequest(output);
+          return {
+            user: output.user || output,
+            jwt: output.jwt,
+          };
+        },
+      },
+      registerCustom: {
+        description: "Register a user",
+        resolverOf: "plugins::users-permissions.auth.register",
+        resolver: async (obj, options, { context }) => {
+          context.request.body = _.toPlainObject(options.input);
+
+          await strapi.plugins["users-permissions"].controllers.auth.register(
             context
           );
           let output = context.body.toJSON
