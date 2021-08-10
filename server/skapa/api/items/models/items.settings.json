@@ -24,6 +24,10 @@
     "languages": {
       "via": "language",
       "collection": "languages"
+    },
+    "skills": {
+      "via": "skill",
+      "collection": "skills"
     }
   }
 }

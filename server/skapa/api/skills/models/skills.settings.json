@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skills",
+  "info": {
+    "name": "Skills",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "skill": {
+      "collection": "items",
+      "via": "skills",
+      "dominant": true
+    },
+    "users_permissions_user": {
+      "via": "skills",
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}
