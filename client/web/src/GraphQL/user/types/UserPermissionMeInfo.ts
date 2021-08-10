@@ -4,10 +4,10 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: Login
+// GraphQL fragment: UserPermissionMeInfo
 // ====================================================
 
-export interface Login_login_user_role {
+export interface UserPermissionMeInfo_role {
   __typename: "UsersPermissionsMeRole";
   id: string;
   name: string;
@@ -15,26 +15,11 @@ export interface Login_login_user_role {
   type: string | null;
 }
 
-export interface Login_login_user {
+export interface UserPermissionMeInfo {
   __typename: "UsersPermissionsMe";
   username: string;
   email: string;
   confirmed: boolean | null;
   blocked: boolean | null;
-  role: Login_login_user_role | null;
-}
-
-export interface Login_login {
-  __typename: "UsersPermissionsLoginPayload";
-  jwt: string | null;
-  user: Login_login_user;
-}
-
-export interface Login {
-  login: Login_login;
-}
-
-export interface LoginVariables {
-  username?: string | null;
-  password?: string | null;
+  role: UserPermissionMeInfo_role | null;
 }

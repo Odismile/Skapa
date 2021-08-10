@@ -7,10 +7,10 @@
 // START Enums and Input Objects
 //==============================================================
 
-export interface UsersPermissionsLoginInput {
-  identifier: string;
+export interface UsersPermissionsRegisterInput {
+  username: string;
+  email: string;
   password: string;
-  provider?: string | null;
 }
 
 //==============================================================
