@@ -50,7 +50,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "graphql:type": "npm run graphql:download && npm run graphql:generate",
-    "graphql:download": "yarn run apollo schema:download --endpoint=http://localhost:1337/graphql graphql-schema.json",
+    "graphql:download": "yarn run apollo schema:download --endpoint=https://strapi-skapa-staging.hairun-technology.com/graphql graphql-schema.json",
     "graphql:generate": "yarn run apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --includes=src/**/*.ts --tagName=gql --addTypename --excludes=src/GraphQL/common/**/*.ts --globalTypesFile=src/types/graphql-global-types.ts types",
     "generate:code": "graphql-codegen --config codegen.yml"
   },

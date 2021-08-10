@@ -13,6 +13,12 @@ export interface UsersPermissionsLoginInput {
   provider?: string | null;
 }
 
+export interface UsersPermissionsRegisterInput {
+  username: string;
+  email: string;
+  password: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

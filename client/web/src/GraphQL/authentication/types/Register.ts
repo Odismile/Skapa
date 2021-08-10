@@ -3,13 +3,13 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { UsersPermissionsLoginInput } from "./../../../types/graphql-global-types";
+import { UsersPermissionsRegisterInput } from "./../../../types/graphql-global-types";
 
 // ====================================================
-// GraphQL mutation operation: Login
+// GraphQL mutation operation: Register
 // ====================================================
 
-export interface Login_login_user_role {
+export interface Register_register_user_role {
   __typename: "UsersPermissionsMeRole";
   id: string;
   name: string;
@@ -17,25 +17,25 @@ export interface Login_login_user_role {
   type: string | null;
 }
 
-export interface Login_login_user {
+export interface Register_register_user {
   __typename: "UsersPermissionsMe";
   username: string;
   email: string;
   confirmed: boolean | null;
   blocked: boolean | null;
-  role: Login_login_user_role | null;
+  role: Register_register_user_role | null;
 }
 
-export interface Login_login {
+export interface Register_register {
   __typename: "UsersPermissionsLoginPayload";
   jwt: string | null;
-  user: Login_login_user;
+  user: Register_register_user;
 }
 
-export interface Login {
-  login: Login_login;
+export interface Register {
+  register: Register_register;
 }
 
-export interface LoginVariables {
-  input: UsersPermissionsLoginInput;
+export interface RegisterVariables {
+  input: UsersPermissionsRegisterInput;
 }
