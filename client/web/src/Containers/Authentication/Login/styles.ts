@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   link: {
     cursor: 'pointer',
+    borderBottom: "1px solid #8277FF",
   },
   imgContainer: {
     marginBottom: 24,
