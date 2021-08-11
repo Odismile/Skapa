@@ -5,7 +5,7 @@ export default makeStyles(  theme => ({
     position: 'relative',
     '& .icon':{
       position: 'absolute',
-      bottom: 22,
+      bottom: 38,
       right: 13,
     }
   },
