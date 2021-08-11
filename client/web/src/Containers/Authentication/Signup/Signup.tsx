@@ -100,14 +100,14 @@ const Signup: FC<RouteComponentProps> = (props) => {
         variables: {
           input: {
             email: signup.email,
-            username: signup.surname,
+            username: signup.email,
             password: signup.password,
             lastname: signup.surname,
             surname: signup.lastName,
           },
         },
       }).then((result) => {
-        if (result.data?.registerCustom.jwt) {
+        if (result.data?.registerCustom?.user?.email) {
           setSignup({
             email: '',
             lastName: '',
