@@ -1,11 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles( (theme) => 
-  ({
-    header_block:{
+export default makeStyles (
+  theme => ({
+    header_block: {
       background: theme.palette.primary.main,
-    },
-  })
+    }
+  }),
+  { name: "Header" }
 );
-
-export default useStyles;
