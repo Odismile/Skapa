@@ -12,7 +12,7 @@ const OnboardingProfileTwo = () => {
 
   const history = useHistory();
   function handleClick() {
-    history.push('/onboarding-profile2');
+    history.push('/onboarding-profile3');
   }
 
   return (
