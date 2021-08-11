@@ -4,12 +4,12 @@ import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import TextFieldComponent from '../../../Components/TextField/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import useStyles from './styles';
 import { SIGNUP } from '../../../Routes';
-import TalentLogo from '../../../Assets/images/talent.png';
+import TalentLogo from '../../../Assets/images/logo.svg';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { isAuthenticated } from '../../../Services';
 
@@ -85,42 +85,44 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
           <img src={TalentLogo} className={classes.img} />
         </Box>
         <form className={classes.loginForm}>
-          <TextField
+          <TextFieldComponent
             name="username"
-            variant="outlined"
-            fullWidth
+            id="username"
+            label="Login"
+            type="text"
             value={login.username}
-            className={classes.textField}
+            // className={classes.textField}
             onChange={onChange}
             error={errorfields.username}
-            margin="normal"
           />
-          <TextField
+          <TextFieldComponent
             name="password"
-            variant="outlined"
-            fullWidth
+            id="passowrd"
+            label="Password"
+            // variant="outlined"
+            // fullWidth
             type="password"
-            className={classes.textField}
+            // className={classes.textField}
             value={login.password}
             onChange={onChange}
             error={errorfields.password}
-            margin="normal"
           />
           {loginError && (
             <Box textAlign="center" marginBottom="24px" className={classes.messageBox}>
               <Typography>{loginError}</Typography>
             </Box>
           )}
-          <Button
-            variant="contained"
-            color="secondary"
-            fullWidth
-            className={classes.btn}
-            onClick={handleSubmit}
-            disabled={loadingLogin}
-          >
-            {t('login.login')}
-          </Button>
+          <Box className={classes.btnFullWidth}>
+            <Button
+              variant="contained"
+              className={classes.button}
+              onClick={handleSubmit}
+              disabled={loadingLogin}
+            >
+              {t('login.login')}
+            </Button>
+          </Box>
+
           <Box className={classes.linkContainer}>
             <Link className={classes.link} onClick={handleGoToCreateAccount}>
               Create an account
