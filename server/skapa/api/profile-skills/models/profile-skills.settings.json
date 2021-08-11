@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profile_skills",
+  "info": {
+    "name": "ProfileSkills"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "skill_id": {
+      "model": "items",
+      "via": "profile_skills"
+    },
+    "profile_id": {
+      "model": "profiles",
+      "via": "profile_skills"
+    }
+  }
+}

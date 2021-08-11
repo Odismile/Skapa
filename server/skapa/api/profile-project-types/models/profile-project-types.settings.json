@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profile_project_types",
+  "info": {
+    "name": "ProfileProjectTypes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "project_type_id": {
+      "model": "items",
+      "via": "profile_project_types"
+    },
+    "users_id": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "profile_project_types"
+    }
+  }
+}

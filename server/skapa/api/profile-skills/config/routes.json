@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/profile-skills",
+      "handler": "profile-skills.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/profile-skills/count",
+      "handler": "profile-skills.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/profile-skills/:id",
+      "handler": "profile-skills.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/profile-skills",
+      "handler": "profile-skills.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/profile-skills/:id",
+      "handler": "profile-skills.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/profile-skills/:id",
+      "handler": "profile-skills.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
