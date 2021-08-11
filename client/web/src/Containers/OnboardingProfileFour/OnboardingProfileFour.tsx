@@ -1,8 +1,13 @@
 import useStyles from './style';
 import { useHistory } from 'react-router';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
-import { Box, Button, FormControl, FormLabel, InputBase } from '@material-ui/core';
-import TextFieldComponent from '../../Components/TextField/TextField';
+import { Box, Button, FormControl, FormLabel, InputBase, Typography } from '@material-ui/core';
+import bgTechnical from '../../Assets/images/technical.svg';
+import bgCreative from '../../Assets/images/creative.svg';
+import bgInnovation from '../../Assets/images/innovation.svg';
+import bgProspective from '../../Assets/images/prospective.svg';
+import bgDelivery from '../../Assets/images/delivery.svg';
+import bgChange from '../../Assets/images/change.svg';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -15,7 +20,58 @@ const OnboardingProfileFour = () => {
   return (
     <>
       <WrapOnBoarding>
-        On boarding four
+        <Typography>What kind of project would you like to see ?</Typography>
+        <Box className={classes.content}>
+          <Box className="choice">
+            <Box className="inputGroup">
+              <input id="option1" name="option1" type="checkbox" />
+              <label htmlFor="option1">
+                Change
+                <img src={bgChange} alt="bg" />
+              </label>
+            </Box>
+            <Box className="inputGroup">
+              <input id="option2" name="option2" type="checkbox" />
+              <label htmlFor="option2">
+                Creative
+                <img src={bgCreative} alt="bg" />
+              </label>
+            </Box>
+            <Box className="inputGroup">
+              <input id="option3" name="option3" type="checkbox" />
+              <label htmlFor="option3">
+                Innovation
+                <img src={bgInnovation} alt="bg" />
+              </label>
+            </Box>
+            <Box className="inputGroup">
+              <input id="option4" name="option4" type="checkbox" />
+              <label htmlFor="option4">
+                Prospective
+                <img src={bgProspective} alt="bg" />
+              </label>
+            </Box>
+            <Box className="inputGroup">
+              <input id="option5" name="option5" type="checkbox" />
+              <label htmlFor="option5">
+                Delivery
+                <img src={bgDelivery} alt="bg" />
+              </label>
+            </Box>
+            <Box className="inputGroup">
+              <input id="option6" name="option6" type="checkbox" />
+              <label htmlFor="option6">
+                Technical
+                <img src={bgTechnical} alt="bg" />
+              </label>
+            </Box>
+          </Box>
+        </Box>
+        <Box className={classes.btnNext}>
+          <Button variant="contained" onClick={handleClick}>
+            Next
+          </Button>
+        </Box>
       </WrapOnBoarding>
     </>
   );
