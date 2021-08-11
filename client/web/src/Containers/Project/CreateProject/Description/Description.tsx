@@ -6,6 +6,7 @@ import classNames from "classnames";
 import TextFieldComponent from '../../../../Components/TextField/TextField';
 import IconPhoto from '../../../../Components/Icons/Photo/Photo';
 import Calendar from '../../../../Components/Icons/Calendar/Calendar';
+import Info from '../../../../Components/Icons/Info/Info';
 import EditIcon from '@material-ui/icons/Edit';
 
 import useStyles from "./styles";
@@ -50,6 +51,7 @@ const Description = () => {
                 <TextFieldComponent label="Ville" id="VilleProject" placeholder="Ville " type="text" />
               </Box>
               <Box className="grid_field">
+                <Info />
                 <Box className="field_item">
                 <TextField
                   id="date"
