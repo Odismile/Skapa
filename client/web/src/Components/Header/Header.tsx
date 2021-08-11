@@ -13,6 +13,7 @@ import Photo from '../../Components/Icons/Photo/Photo';
 
 const PrimaryHeader = () => {
   const classes = useStyles();
+  
   return (
     <Box className={classes.header_block}>
       <Box className="header_content">
