@@ -20,7 +20,7 @@ const PrimaryHeader = () => {
         {/* burger menu mobile */}
         <Burger />
         <Award />
-        <HeartLine />
+        <HeartLine color="primary" />
         <Photo />
 
         {/* logo mobile */}
