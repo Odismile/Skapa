@@ -13,10 +13,12 @@ const useStyles = makeStyles(() =>
         fontStyle: 'italic',
       },
       '& div input':{
-        border: '1px solid #a1a1a1',
         color: '#000000',
         fontSize: 14,
         padding: 8,
+        border: 'solid 1px #dfdfdf',
+        boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
+        borderRadius: 20,
       },
       '& div:focus':{
         border: 'none',
