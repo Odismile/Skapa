@@ -12,6 +12,7 @@ interface TextFiedlProps {
   id: string;
   name?: string | undefined;
   placeholder?: string,
+  // variant:string,
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
 }
 
