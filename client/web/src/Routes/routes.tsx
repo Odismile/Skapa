@@ -107,4 +107,11 @@ export const ROUTES: RouteInterface[] = [
     private: false,
     component: OnboardingProfileFour,
   },
+  {
+    key: 'ONBOARDING_PROFILE2',
+    route: ONBOARDING_PROFILE2,
+    roles: [],
+    private: false,
+    component: OnboardingProfileTwo,
+  },
 ];
