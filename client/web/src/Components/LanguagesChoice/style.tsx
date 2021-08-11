@@ -5,24 +5,32 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    margin: '8px 0px',
     width: '100%',
+    '& .contenuRadio':{
+      display: 'flex',
+    },
     '& .label':{
       fontSize: 14,
       width: '20%',
       marginBottom: 0,
     },
-    '& .choice':{
-      display: 'flex',
-      width: '80%',
-      justifyContent: 'flex-end',
-      '&>div':{
-        padding: '4px 12px',
-        borderRadius: 20,
-        border: '1px solid #8870FF',
+    '& .inputGroup': {
+      backgroundColor: 'white',
+      borderRadius: 20,
+      border: '1px solid #8870FF',
+      margin: 5,
+      display: 'block',
+      overflow: 'hidden',
+      '& label':{
         color: '#8870FF',
-        margin: '0px 2px',
-        cursor: 'pointer',
+        padding: '8px 10px',
+        display: 'inline-block',
+      },
+      '& input':{
+        display: 'none',
+      },
+      '& input:checked ~ label': {
+        backgroundColor: "#ece8ff",
       }
     }
   }
