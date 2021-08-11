@@ -3,6 +3,9 @@ body {
   font-family: 'Nunito', arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(Assets/images/Background.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 code {
