@@ -40,7 +40,6 @@ export default makeStyles(theme => ({
       margin: 0,
       "& img": {
         maxWidth: "100%",
-        width: 105,
       },
     },
   },
