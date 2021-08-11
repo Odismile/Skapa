@@ -13,6 +13,7 @@ import CreateProject from '../Containers/Project/CreateProject';
 import OnboardingProfileThree from '../Containers/OnboardingProfileThree/OnboardingProfileThree';
 import OnboardingProfileFour from '../Containers/OnboardingProfileFour/OnboardingProfileFour';
 import OnboardingProfileSeven from '../Containers/OnboardingProfileSeven/OnboardingProfileSeven';
+import OnboardingSplashScreen from '../Containers/OnboardingSplashScreen/OnboardingSplashScreen';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -27,6 +28,7 @@ export const CREATE_PROJECT = '/project/create-project';
 export const ONBOARDING_PROFILE3 = '/onboarding-profile3';
 export const ONBOARDING_PROFILE4 = '/onboarding-profile4';
 export const ONBOARDING_PROFILE7 = '/onboarding-profile7';
+export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
@@ -122,5 +124,12 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: OnboardingProfileSeven,
+  },
+  {
+    key: 'ONBOARDING_SPLASHSCREEN',
+    route: ONBOARDING_SPLASHSCREEN,
+    roles: [],
+    private: false,
+    component: OnboardingSplashScreen,
   },
 ];
