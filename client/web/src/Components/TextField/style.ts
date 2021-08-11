@@ -9,7 +9,7 @@ const useStyles = makeStyles(() =>
         color: '#a1a1a1',
       },
       '& label':{
-        color: '#a1a1a1',
+        fontSize: 18.5,
         fontStyle: 'italic',
       },
       '& div input':{
@@ -26,10 +26,13 @@ const useStyles = makeStyles(() =>
       '& div':{
         marginTop: 24,
       },
-      '& div:before':{
-        border: 'none',
+      '& div:hover:before':{
+        borderBottom: 'none!important',
       },
       '& div:after':{
+        border: 'none',
+      },
+      '& div:before':{
         border: 'none',
       }
     },
