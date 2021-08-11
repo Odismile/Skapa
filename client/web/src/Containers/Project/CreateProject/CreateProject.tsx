@@ -7,6 +7,7 @@ import mainLogo from "../../Assets/images/logo.svg"
 import useStyles from "./styles";
 import PrimaryHeader from '../../../Components/Header';
 import TabLink from '../../../Components/TabLink';
+import Description from '../../Project/CreateProject/Description/Description';
 
 // install Swiper modules
 
@@ -19,11 +20,10 @@ const CreateProject = () => {
       <Box className="wrapPage">
         {/* header component */}
         <PrimaryHeader />
-        
 
         <Box className={classes.mainContainer}>
           <TabLink />
-          <p>Create Project Page here !</p>
+          <Description />
         </Box>
       </Box>
     </Box>
