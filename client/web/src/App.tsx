@@ -6,11 +6,18 @@ import Unauthorized from './Containers/Errors/Unauthorized';
 import { RouteInterface } from './Interfaces/Route';
 import { ROUTES, UNAUTHORIZED } from './Routes';
 
+import { ThemeProvider } from '@material-ui/styles';
+import { CssBaseline } from '@material-ui/core';
+import Theme from './Theme/index';
+
+
 const App: FC<RouteComponentProps> = (props) => {
   const { history } = props;
 
   return (
     <>
+	<ThemeProvider theme={Theme}>
+      <CssBaseline />
       <Switch>
         <Route exact path={UNAUTHORIZED} component={Unauthorized} />
         {ROUTES.map((route: RouteInterface) =>
@@ -22,6 +29,7 @@ const App: FC<RouteComponentProps> = (props) => {
         )}
         <Route component={NotFound} />
       </Switch>
+    </ThemeProvider>
     </>
   );
 };
