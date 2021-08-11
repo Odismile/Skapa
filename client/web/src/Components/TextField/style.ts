@@ -4,21 +4,23 @@ const useStyles = makeStyles(() =>
 ({
     textfield:{
       width: '100%',
-      margin: '8px 0px',
-      '& .Mui-focused':{
+      margin: '0px 0px 15px 0px',
+      "& .Mui-focused":{
         color: '#a1a1a1',
       },
       '& label':{
-        fontSize: 18.5,
+        fontSize: 14,
         fontStyle: 'italic',
+        fontWeight: "600",
+        
       },
       '& div input':{
         color: '#000000',
         fontSize: 14,
-        padding: 8,
+        padding: 16,
         border: 'solid 1px #dfdfdf',
         boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
-        borderRadius: 20,
+        borderRadius: 25,
       },
       '& div:focus':{
         border: 'none',

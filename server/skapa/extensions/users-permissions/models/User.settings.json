@@ -72,6 +72,10 @@
       "type": "string",
       "configurable": false,
       "required": false
+    },
+    "profile_project_types": {
+      "via": "users_id",
+      "collection": "profile-project-types"
     }
   }
 }

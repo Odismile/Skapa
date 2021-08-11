@@ -96,7 +96,7 @@ const Signup: FC<RouteComponentProps> = (props) => {
         variables: {
           input: {
             email: signup.email,
-            username: '',
+            username: signup.surname,
             password: signup.password,
             lastname: signup.surname,
             surname: signup.lastName,

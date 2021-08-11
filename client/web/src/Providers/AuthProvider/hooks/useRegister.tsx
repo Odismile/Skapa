@@ -14,7 +14,13 @@ export const useRegister = () => {
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
       console.log(`errorMessage`, errorMessage);
-      if (errorMessage) {
+      console.log(`errorMessage`, errorMessage);
+      if (errorMessage === 'Email is already taken.') {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`errorMessage.${errorMessage}`);
+        displaySnackbar(client, snackbar);
+      }
+      if (errorMessage === 'Username already taken') {
         snackbar.type = 'ERROR';
         snackbar.message = t(`errorMessage.${errorMessage}`);
         displaySnackbar(client, snackbar);
