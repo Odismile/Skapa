@@ -30,7 +30,12 @@ const Onboarding = () => {
     slidesPerRow: 1,
     slidesPerView: 1,
   };
-
+  const params = {
+    slidesPerView: 1,
+    pagination: {
+      clickable: true,
+    },
+  };
   return (
     <Box className={classNames(classes.mainPage)}>
       <Box className="wrapPage">
@@ -42,7 +47,7 @@ const Onboarding = () => {
         <Box className={classNames(classes.mainContainer)}>
           {/* Slider */}
           <Box className={classes.sliderTuto}>
-            <Swiper {...paramsSlider} pagination={true} className="tuto_slider">
+            <Swiper {...params} className="mySwiper">
               <SwiperSlide>
                 <figure className="tuto_img">
                   <img src={photoTuto_01} alt="photoTuto 02" />

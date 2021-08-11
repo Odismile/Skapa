@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Box, Button } from '@material-ui/core';
+import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import TextFieldComponent from '../../../Components/TextField/TextField';
 import useStyles from './styles';
 import { useRegister } from '../../../Providers/AuthProvider/hooks/useRegister';
 import { ISignup } from '../../../types/signup';
 import { isEmailValid, isPassValid } from '../../../Utils/validator';
 import { useTranslation } from 'react-i18next';
+import { ONBOARDING } from '../../../Routes';
 
-const Signup = () => {
+const Signup: FC<RouteComponentProps> = (props) => {
+  const { history } = props;
   const classes = useStyles();
   const { loading, doRegister } = useRegister();
   const { t } = useTranslation();
@@ -107,6 +110,7 @@ const Signup = () => {
             surname: '',
             password: '',
           });
+          history.push(ONBOARDING);
         }
       });
     }
