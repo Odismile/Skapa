@@ -42,7 +42,14 @@ const Onboarding = () => {
         <Box className={classNames(classes.mainContainer)}>
           {/* Slider */}
           <Box className={classes.sliderTuto}>
-            <Swiper {...paramsSlider} pagination={true} className="tuto_slider">
+            <Swiper
+              {...paramsSlider}
+              pagination={true}
+              className="tuto_slider"
+              onClick={() => {
+                console.log('click');
+              }}
+            >
               <SwiperSlide>
                 <figure className="tuto_img">
                   <img src={photoTuto_01} alt="photoTuto 02" />
