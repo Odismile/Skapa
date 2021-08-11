@@ -5,10 +5,12 @@ import useStyles from './styles';
 import { useRegister } from '../../../Providers/AuthProvider/hooks/useRegister';
 import { ISignup } from '../../../types/signup';
 import { isEmailValid, isPassValid } from '../../../Utils/validator';
+import { useTranslation } from 'react-i18next';
 
 const Signup = () => {
   const classes = useStyles();
   const { loading, doRegister } = useRegister();
+  const { t } = useTranslation();
 
   const [signup, setSignup] = useState<ISignup>({
     email: '',
@@ -54,19 +56,19 @@ const Signup = () => {
   const onPressRegister = () => {
     if (signup.surname.trim().length === 0) {
       setErrorSurname(true);
-      setTextErrorSurname('Invalid surname');
+      setTextErrorSurname(t(`errorMessage.invalid_surname`));
     } else if (signup.lastName.trim().length === 0) {
       setErrorSurname(false);
       setTextErrorSurname('');
       setErrorLastName(true);
-      setTextErrorLastName('Invalid lastname');
+      setTextErrorLastName(t(`errorMessage.invalid_lastName`));
     } else if (signup.email.trim().length === 0 || !isEmailValid(signup.email)) {
       setErrorSurname(false);
       setTextErrorSurname('');
       setErrorLastName(false);
       setTextErrorLastName('');
       setErrorEmail(true);
-      setTextErrorEmail('Invalid email');
+      setTextErrorEmail(t(`errorMessage.invalid_email`));
     } else if (signup.password.trim().length === 0) {
       setErrorSurname(false);
       setTextErrorSurname('');
@@ -75,7 +77,7 @@ const Signup = () => {
       setErrorEmail(false);
       setTextErrorEmail('');
       setErrorPassword(true);
-      setTextErrorPassword('Invalid password');
+      setTextErrorPassword(t(`errorMessage.invalid_password`));
     } else if (!isPassValid(signup.password)) {
       setErrorSurname(false);
       setTextErrorSurname('');
@@ -84,13 +86,28 @@ const Signup = () => {
       setErrorEmail(false);
       setTextErrorEmail('');
       setErrorPassword(true);
-      setTextErrorPassword(
-        'The password must be at least 8 characters long, one uppercase, one lowercase and one number.',
-      );
+      setTextErrorPassword(t(`errorMessage.invalid_password_text`));
     } else {
       initError();
       doRegister({
-        variables: { input: { email: signup.email, username: signup.surname, password: signup.password } },
+        variables: {
+          input: {
+            email: signup.email,
+            username: '',
+            password: signup.password,
+            lastname: signup.surname,
+            surname: signup.lastName,
+          },
+        },
+      }).then((result) => {
+        if (result.data?.registerCustom.jwt) {
+          setSignup({
+            email: '',
+            lastName: '',
+            surname: '',
+            password: '',
+          });
+        }
       });
     }
   };
@@ -103,7 +120,7 @@ const Signup = () => {
         </Box>
         <Box className="body">
           <TextFieldComponent
-            label="Surname"
+            label={t(`labelText.labelSurname`)}
             id="surname"
             name={'surname'}
             type="text"
@@ -113,7 +130,7 @@ const Signup = () => {
             helperText={textErrorSurname}
           />
           <TextFieldComponent
-            label="Lastname"
+            label={t(`labelText.labelLastname`)}
             id="lastname"
             name={'lastName'}
             type="text"
@@ -133,7 +150,7 @@ const Signup = () => {
             helperText={textErrorEmail}
           />
           <TextFieldComponent
-            label="Password"
+            label={t(`labelText.labelPassword`)}
             id="password"
             type="password"
             name={'password'}
@@ -142,12 +159,11 @@ const Signup = () => {
             error={errorPassword}
             helperText={textErrorPassword}
           />
-
           <Button variant="contained" className={classes.button} onClick={onPressRegister} disabled={loading}>
-            Create account
+            {t(`labelText.createAccount`)}
           </Button>
           <a className="link" href="#">
-            Create account from Linkedin profile
+            {t(`labelText.createAccountFromLinkdln`)}
           </a>
         </Box>
         <Box className="foot"></Box>

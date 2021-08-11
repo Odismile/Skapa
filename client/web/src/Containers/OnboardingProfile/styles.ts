@@ -1,33 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    padding: 30,
-    boxSizing: 'border-box',
-    alignItems: 'center',
-    maxWidth: 640,
-    minWidth: 320,
-    minHeight: '100vh',
-    margin: 'auto',
-    '& .body': {
-      width: '100%',
-      fontSize: 14,
-    },
-    '& .foot': {
-      justifyContent: 'flex-end',
-      display: 'flex',
-      width: '100%',
-      '& a':{
-        color: '#8870FF',
-        textDecoration: 'none',
-        paddingBottom: 3,
-        borderBottom: '1px solid #8870ff',
-      }
-    },
-  },
+export default makeStyles(theme => ({
   radio: {
     margin: '8px 0px',
     '& legend': {
@@ -42,6 +15,13 @@ const useStyles = makeStyles(() => ({
     },
     '& .Mui-checked':{
       color: '#8870FF',
+    },
+    '& div>label>span:last-child':{
+      marginBottom: 0,
+    },
+    '& .custom_radio>label>span>span>div>svg':{
+      fill: '#8870FF',
+
     }
   },
   languages:{
@@ -68,6 +48,6 @@ const useStyles = makeStyles(() => ({
       }
     }
   },
-}));
 
-export default useStyles;
+
+}));
