@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profiles",
+  "info": {
+    "name": "Profiles"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "position": {
+      "type": "string"
+    },
+    "bio": {
+      "type": "text"
+    },
+    "picture": {
+      "type": "string"
+    },
+    "video": {
+      "type": "string"
+    },
+    "job_seniority_id": {
+      "model": "items",
+      "via": "profiles"
+    },
+    "users_id": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "profile_skills": {
+      "via": "profile_id",
+      "collection": "profile-skills"
+    }
+  }
+}

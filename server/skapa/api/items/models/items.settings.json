@@ -24,6 +24,18 @@
     "languages": {
       "via": "language",
       "collection": "languages"
+    },
+    "profiles": {
+      "via": "job_seniority_id",
+      "collection": "profiles"
+    },
+    "profile_skills": {
+      "via": "skill_id",
+      "collection": "profile-skills"
+    },
+    "profile_project_types": {
+      "via": "project_type_id",
+      "collection": "profile-project-types"
     }
   }
 }
