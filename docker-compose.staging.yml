@@ -7,7 +7,7 @@ services:
       traefik.frontend.rule: Host:strapi-skapa-staging.hairun-technology.com
       traefik.enable: true
       traefik.port: 1337
-      traefik.frontend.entryPoints: https,http
+      traefik.frontend.entryPoints: https,http,ws,wss
       traefik.frontend.redirect.entryPoint: https
     env_file:
       - .env
