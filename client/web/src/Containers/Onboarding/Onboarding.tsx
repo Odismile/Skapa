@@ -21,20 +21,12 @@ const Onboarding = () => {
   const paramsSlider = {
     Navigation: false,
     pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
       clickable: true,
     },
     spaceBetween: 0,
     centeredSlides: true,
     slidesPerRow: 1,
     slidesPerView: 1,
-  };
-  const params = {
-    slidesPerView: 1,
-    pagination: {
-      clickable: true,
-    },
   };
   return (
     <Box className={classNames(classes.mainPage)}>
@@ -47,7 +39,7 @@ const Onboarding = () => {
         <Box className={classNames(classes.mainContainer)}>
           {/* Slider */}
           <Box className={classes.sliderTuto}>
-            <Swiper {...params} className="mySwiper">
+            <Swiper {...paramsSlider} className="tuto_slider">
               <SwiperSlide>
                 <figure className="tuto_img">
                   <img src={photoTuto_01} alt="photoTuto 02" />
