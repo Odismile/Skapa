@@ -8,11 +8,14 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import useStyles from './styles';
-import { SIGNUP } from '../../../Routes';
+import { HOMEPAGE, SIGNUP } from '../../../Routes';
 import TalentLogo from '../../../Assets/images/talent.png';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { isAuthenticated } from '../../../Services';
-import { isEmailValid } from '../../../Utils/validator';
+import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
+import { Snackbar } from '@material-ui/core';
+import { displaySnackbar, InitSnackbarData } from '../../../Utils';
+import { useApolloClient } from '@apollo/client';
 
 interface LoginInterface {}
 
@@ -33,6 +36,8 @@ export const InitErrorFields: ErrorFieldsState = {
 
 const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const { history } = props;
+  const snackbar = InitSnackbarData;
+  const client = useApolloClient();
   const { t } = useTranslation();
   const classes = useStyles();
   const [login, setLogin] = useState<LoginState>({ username: '', password: '' });
@@ -50,34 +55,52 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    // if(name==="username" && !value.match("/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+.)+[A-Za-z]+$/")) setLoginError(t("ch"));
-    // else setLoginError(t(""));
     setLogin((prev) => ({ ...prev, [name]: value }));
-    if (name === 'username' && isEmailValid(value)) {
-      setLoginError(t('ch'));
-    } else setLoginError(t(''));
+    if (name === 'username' && !value) {
+      setLoginError(t('errorMessage.empty_field_email'));
+      setErrorFields((prev) => ({ ...prev, username: true }));
+    } else if (name === 'username' && !isEmailValid(value)) {
+      setErrorFields((prev) => ({ ...prev, username: true }));
+      setLoginError(t('errorMessage.invalid_email'));
+    } else setLoginError('');
   };
 
   const handleSubmit = async () => {
-    if (!login.username && !login.password) {
-      setLoginError(t(''));
-      setErrorFields((prev) => ({ ...prev, username: false }));
-      setErrorFields((prev) => ({ ...prev, password: false }));
-    } else if (!login.username) {
-      setErrorFields((prev) => ({ ...prev, username: true }));
-      setLoginError(t('champ email vide'));
-    } else if (!login.password) {
+    let test = false;
+    if (!login.username) {
+      setLoginError(t('errorMessage.empty_field_email'));
+      setErrorFields((prev) => ({ ...prev, email: true }));
+    }
+    if (!login.password) {
+      setLoginError(t('errorMessage.empty_field_password'));
       setErrorFields((prev) => ({ ...prev, password: true }));
-      setLoginError(t('champ pass vide'));
+    }
+    if (!login.username && !login.password) {
+      setErrorFields((prev) => ({ ...prev, username: true, password: true }));
+      setLoginError(t('errorMessage.empty_fields'));
     }
     if (login.username && login.password) {
-      doLogin({ variables: { input: { identifier: login.username, password: login.password, provider: 'local' } } })
-        .then((res) => {
-          console.log('result');
-        })
-        .catch((err) => {
-          console.log('anaty catch');
-        });
+      if (isPassHasMinMaxLength(login.password)) {
+        doLogin({ variables: { input: { identifier: login.username, password: login.password, provider: 'local' } } })
+          .then((res) => {
+            if (res.data) test = true;
+          })
+          .catch((err) => {})
+          .finally(() => {
+            if (test) {
+              snackbar.type = 'SUCCESS';
+              snackbar.message = t('login.login_message');
+              displaySnackbar(client, snackbar);
+              history.push(HOMEPAGE);
+            } else {
+              setErrorFields((prev) => ({ ...prev, username: true, password: true }));
+              setLoginError(t('errorMessage.invalid_fields'));
+            }
+          });
+      } else {
+        setErrorFields((prev) => ({ ...prev, password: true }));
+        setLoginError(t('errorMessage.invalid_password_text'));
+      }
     }
   };
 
