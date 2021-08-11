@@ -10,6 +10,7 @@ const useStyles = makeStyles(() => ({
     '& .label':{
       fontSize: 14,
       width: '20%',
+      marginBottom: 0,
     },
     '& .choice':{
       display: 'flex',
