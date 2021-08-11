@@ -15,10 +15,22 @@ const useStyles = makeStyles((theme: Theme) => ({
       color: '#ED655F',
     },
   },
-  btn: {
-    paddingTop: 12,
-    paddingBottom: 12,
-    marginTop: 12,
+  btnFullWidth:{
+    display: 'flex',
+    justifyContent: 'center',
+    '& button':{
+      width: "100%",
+      backgroundColor: '#8870ff',
+      borderRadius: 25,
+      fontSize: 16,
+      color: 'white',
+      padding: '6px 24px',
+      textTransform: 'capitalize',
+      '&:hover':{
+        backgroundColor: '#8870ff',
+        color: 'white',
+      }
+    }
   },
   loginForm: {},
   root: {
@@ -33,15 +45,17 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: 'auto',
   },
   linkContainer: {
-    marginTop: 42,
+    marginTop: 20,
     textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 600,
   },
   link: {
     cursor: 'pointer',
     borderBottom: "1px solid #8277FF",
   },
   imgContainer: {
-    marginBottom: 24,
+    marginBottom: 40,
   },
   img: {
     width: '100%',

@@ -2,35 +2,36 @@ import { makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => 
 ({
-    root: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      flexDirection: 'column',
-      padding: '24px 48px',
-      boxSizing: 'border-box',
-      alignItems: 'center',
-      maxWidth: 640,
-      minWidth: 320,
-      minHeight: '100vh',
-      margin: 'auto',
-      '& a.link':{
-        display: 'block',
-        textAlign: 'center',
-        marginTop: 44,
-      }
-    },
-    button:{
-      marginTop: 10,
-      textTransform: 'inherit',
-      padding: 20,
-      width: '100%',
-      backgroundColor: 'black',
+  btnFullWidth:{
+    display: 'flex',
+    justifyContent: 'center',
+    '& button':{
+      width: "100%",
+      backgroundColor: '#8870ff',
+      borderRadius: 25,
+      fontSize: 16,
       color: 'white',
+      padding: '6px 24px',
+      textTransform: 'capitalize',
       '&:hover':{
-        backgroundColor: 'black',
+        backgroundColor: '#8870ff',
         color: 'white',
       }
     }
+  },
+  linkContainer: {
+    marginTop: 20,
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 600,
+  },
+  link: {
+    cursor: 'pointer',
+    borderBottom: "1px solid #8277FF",
+  },
+  button:{
+
+  }
   })
 );
 

@@ -1,8 +1,8 @@
-import useStyles from './style';
+import { Box, Button } from '@material-ui/core';
 import { useHistory } from 'react-router';
-import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
-import { Box, Button, FormControl, FormLabel, InputBase } from '@material-ui/core';
 import TextFieldComponent from '../../Components/TextField/TextField';
+import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
+import useStyles from './style';
 
 const OnboardingProfileThree = () => {
   const classes = useStyles();

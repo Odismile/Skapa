@@ -9,6 +9,7 @@
       "invalid_password": "Mot de passe invalide",
       "invalid_password_text":"Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre.",
       "Email is already taken.": "Votre email est déja utilisé",
+      "Username already taken":"Votre nom est déja utilisé",
       "undefined": "erreur réseau, veuillez vérifier votre connexion"
 
     },

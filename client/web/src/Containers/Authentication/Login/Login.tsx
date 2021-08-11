@@ -4,14 +4,18 @@ import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import TextFieldComponent from '../../../Components/TextField/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import useStyles from './styles';
-import { SIGNUP } from '../../../Routes';
-import TalentLogo from '../../../Assets/images/talent.png';
+import { HOMEPAGE, SIGNUP } from '../../../Routes';
+import TalentLogo from '../../../Assets/images/logo.svg';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { isAuthenticated } from '../../../Services';
+import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
+import { Snackbar } from '@material-ui/core';
+import { displaySnackbar, InitSnackbarData } from '../../../Utils';
+import { useApolloClient } from '@apollo/client';
 
 interface LoginInterface {}
 
@@ -32,6 +36,8 @@ export const InitErrorFields: ErrorFieldsState = {
 
 const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const { history } = props;
+  const snackbar = InitSnackbarData;
+  const client = useApolloClient();
   const { t } = useTranslation();
   const classes = useStyles();
   const [login, setLogin] = useState<LoginState>({ username: '', password: '' });
@@ -50,23 +56,51 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLogin((prev) => ({ ...prev, [name]: value }));
+    if (name === 'username' && !value) {
+      setLoginError(t('errorMessage.empty_field_email'));
+      setErrorFields((prev) => ({ ...prev, username: true }));
+    } else if (name === 'username' && !isEmailValid(value)) {
+      setErrorFields((prev) => ({ ...prev, username: true }));
+      setLoginError(t('errorMessage.invalid_email'));
+    } else setLoginError('');
   };
 
   const handleSubmit = async () => {
+    let test = false;
     if (!login.username) {
+      setLoginError(t('errorMessage.empty_field_email'));
       setErrorFields((prev) => ({ ...prev, email: true }));
     }
     if (!login.password) {
+      setLoginError(t('errorMessage.empty_field_password'));
       setErrorFields((prev) => ({ ...prev, password: true }));
     }
+    if (!login.username && !login.password) {
+      setErrorFields((prev) => ({ ...prev, username: true, password: true }));
+      setLoginError(t('errorMessage.empty_fields'));
+    }
     if (login.username && login.password) {
-      doLogin({ variables: { input: { identifier: login.username, password: login.password, provider: 'local' } } })
-        .then((res) => {
-          console.log('result');
-        })
-        .catch((err) => {
-          console.log('anaty catch');
-        });
+      if (isPassHasMinMaxLength(login.password)) {
+        doLogin({ variables: { input: { identifier: login.username, password: login.password, provider: 'local' } } })
+          .then((res) => {
+            if (res.data) test = true;
+          })
+          .catch((err) => {})
+          .finally(() => {
+            if (test) {
+              snackbar.type = 'SUCCESS';
+              snackbar.message = t('login.login_message');
+              displaySnackbar(client, snackbar);
+              history.push(HOMEPAGE);
+            } else {
+              setErrorFields((prev) => ({ ...prev, username: true, password: true }));
+              setLoginError(t('errorMessage.invalid_fields'));
+            }
+          });
+      } else {
+        setErrorFields((prev) => ({ ...prev, password: true }));
+        setLoginError(t('errorMessage.invalid_password_text'));
+      }
     }
   };
 
@@ -85,42 +119,39 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
           <img src={TalentLogo} className={classes.img} />
         </Box>
         <form className={classes.loginForm}>
-          <TextField
+          <TextFieldComponent
             name="username"
-            variant="outlined"
-            fullWidth
+            id="username"
+            label="Login"
+            type="text"
             value={login.username}
-            className={classes.textField}
+            // className={classes.textField}
             onChange={onChange}
             error={errorfields.username}
-            margin="normal"
           />
-          <TextField
+          <TextFieldComponent
             name="password"
-            variant="outlined"
-            fullWidth
+            id="passowrd"
+            label="Password"
+            // variant="outlined"
+            // fullWidth
             type="password"
-            className={classes.textField}
+            // className={classes.textField}
             value={login.password}
             onChange={onChange}
             error={errorfields.password}
-            margin="normal"
           />
           {loginError && (
             <Box textAlign="center" marginBottom="24px" className={classes.messageBox}>
               <Typography>{loginError}</Typography>
             </Box>
           )}
-          <Button
-            variant="contained"
-            color="secondary"
-            fullWidth
-            className={classes.btn}
-            onClick={handleSubmit}
-            disabled={loadingLogin}
-          >
-            {t('login.login')}
-          </Button>
+          <Box className={classes.btnFullWidth}>
+            <Button variant="contained" className={classes.button} onClick={handleSubmit} disabled={loadingLogin}>
+              {t('login.login')}
+            </Button>
+          </Box>
+
           <Box className={classes.linkContainer}>
             <Link className={classes.link} onClick={handleGoToCreateAccount}>
               Create an account

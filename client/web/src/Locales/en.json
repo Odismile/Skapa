@@ -35,21 +35,26 @@
       "stepTwo": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic laborum consequatur incidunt dicta magni optio neque culpa veniam nesciunt.",
       "stepThree": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic laborum consequatur incidunt dicta magni optio neque culpa veniam nesciunt."
     },
-    "errorMessage":{
+    "errorMessage": {
+      "empty_field_email": "Empty e-mail field",
+      "empty_field_password": "Empty password field",
+      "empty_fields": "Empty fields",
+      "invalid_fields": "E-mail or password is invalid",
       "invalid_surname": "Invalid surname",
       "invalid_lastName": "Invalid lastname",
       "invalid_email": "Invalid email",
       "invalid_password": "Invalid password",
       "invalid_password_text": "The password must be at least 8 characters long, one uppercase, one lowercase and one number.",
-      "Email is already taken.": "Email already taken",
+      "Email is already taken.": "Email is already taken",
+      "Username already taken":"Surname already taken",
       "undefined": "network error, please check your connection"
     },
-    "labelText":{
-      "labelSurname":"Surname",
-      "labelLastname":"Lastname",
-      "labelPassword":"Password",
+    "labelText": {
+      "labelSurname": "Surname",
+      "labelLastname": "Lastname",
+      "labelPassword": "Password",
       "createAccount": "Create account",
-      "createAccountFromLinkdln":"Create account from Linkedin profile"
+      "createAccountFromLinkdln": "Create account from Linkedin profile"
     }
   }
 }

@@ -1,23 +1,10 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Link,
-  Radio,
-  RadioGroup,
-  Typography,
-} from '@material-ui/core';
+import { Box, Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@material-ui/core';
 import React from 'react';
-import TextFieldComponent from '../../Components/TextField/TextField';
-import useStyles from './styles';
-import logoTalent from '../../Assets/images/logo-talent.svg';
-import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
 import { useHistory } from 'react-router-dom';
-import classNames from 'classnames';
-import mainLogo from '../../Assets/images/logo.svg';
+import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
+import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
+import useStyles from './styles';
 
 const OnboardingProfile = () => {
   const classes = useStyles();
@@ -54,9 +41,9 @@ const OnboardingProfile = () => {
         <TextFieldComponent label="Name of your organisation" id="organisation" placeholder="GRT Gaz" type="text" />
         <FormControl component="fieldset" className={classes.languages}>
           <FormLabel component="legend">Languages level</FormLabel>
-          <LanguagesChoice title="French" />
-          <LanguagesChoice title="English" />
-          <LanguagesChoice title="Spanish" />
+          <LanguagesChoice title="French" name="french"/>
+          <LanguagesChoice title="English" name="english" />
+          <LanguagesChoice title="Spanish" name="spanish" />
         </FormControl>
         <Box className={classes.btnNext}>
           <Button variant="contained" onClick={handleClick}>
