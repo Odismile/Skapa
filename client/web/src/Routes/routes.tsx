@@ -6,7 +6,8 @@ import Signup from '../Containers/Authentication/Signup';
 import Onboarding from '../Containers/Onboarding';
 import OnboardingStart from '../Containers/OnboardingStart';
 import OnboardingProfile from '../Containers/OnboardingProfile';
-import Project from '../Containers/Projects';
+import Project from '../Containers/Project';
+import CreateProject from '../Containers/Project/CreateProject';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -15,6 +16,7 @@ export const ONBOARDING = '/onboarding';
 export const ONBOARDING_START = '/onboarding-start';
 export const ONBOARDING_PROFILE = '/onboarding-profile';
 export const PROJECT = '/project';
+export const CREATE_PROJECT = '/project/create-project';
 
 export const UNAUTHORIZED = '/unauthorized';
 
@@ -69,5 +71,12 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: Project,
+  },
+  {
+    key: 'CREATE_PROJECT',
+    route: CREATE_PROJECT,
+    roles: [],
+    private: false,
+    component: CreateProject,
   },
 ];
