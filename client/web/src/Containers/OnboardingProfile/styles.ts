@@ -1,32 +1,75 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    padding: 30,
-    boxSizing: 'border-box',
-    alignItems: 'center',
-    maxWidth: 640,
-    minWidth: 320,
-    minHeight: '100vh',
-    margin: 'auto',
-    '& .body': {
-      width: '100%',
-      fontSize: 14,
+export default makeStyles(theme => ({
+  "@global": {
+    "*, *:before, *:after": {
+      boxSizing: 'border-box',
     },
-    '& .foot': {
-      justifyContent: 'flex-end',
-      display: 'flex',
-      width: '100%',
-      '& a':{
-        color: '#8870FF',
+  }, 
+  mainPage:  {
+    height: "100%",
+    maxWidth: "40rem",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxHeight: '42.5rem',
+    padding: '2.5rem 1.875rem 1.875rem',
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: "100%",
+    zIndex: 0,
+    "& .wrapPage": {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      height: "100%",
+      width: "100%",
+    },
+  },
+  main_header: {
+    "& .logo": {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      margin: 0,
+      "& img": {
+        maxWidth: "100%",
+        width: 105,
+      },
+    },
+  },
+  mainContainer: {
+    padding: '2.5rem 0',
+    "& .createProfile_start": {
+      margin: '0 auto',
+      textAlign: 'center',
+      "& h1": {
+        color: '#000',
+        fontSize: '1.75rem',
+        margin: "0 0 1.875rem ",
+        textAlign: 'center',
+      },
+    },
+  },
+  footerPage: {
+    "& .link-footer": {
+      color: '#8870ff',
+      fontSize: '1rem',
+      fontWeight: 600,
+      margin: 0,
+      textAlign: "right",
+      "@media(min-width: 640px)": {
+        textAlign: 'center',
+      },
+      '& a': {
+        color: 'inherit',
         textDecoration: 'none',
-        paddingBottom: 3,
-        borderBottom: '1px solid #8870ff',
-      }
-    },
+        borderBottom: '1px solid',
+      },
+    }
   },
   radio: {
     margin: '8px 0px',
@@ -42,6 +85,13 @@ const useStyles = makeStyles(() => ({
     },
     '& .Mui-checked':{
       color: '#8870FF',
+    },
+    '& div>label>span:last-child':{
+      marginBottom: 0,
+    },
+    '& .custom_radio>label>span>span>div>svg':{
+      fill: '#8870FF',
+
     }
   },
   languages:{
@@ -68,6 +118,6 @@ const useStyles = makeStyles(() => ({
       }
     }
   },
-}));
 
-export default useStyles;
+
+}));
