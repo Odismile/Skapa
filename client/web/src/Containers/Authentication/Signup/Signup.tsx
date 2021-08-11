@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, Link } from '@material-ui/core';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import TextFieldComponent from '../../../Components/TextField/TextField';
 import useStyles from './styles';
@@ -8,6 +8,10 @@ import { ISignup } from '../../../types/signup';
 import { isEmailValid, isPassValid } from '../../../Utils/validator';
 import { useTranslation } from 'react-i18next';
 import { ONBOARDING } from '../../../Routes';
+import classNames from 'classnames';
+import WrapOnBoarding from '../../../Components/WrapOnBoarding/WrapOnBoarding';
+
+
 
 const Signup: FC<RouteComponentProps> = (props) => {
   const { history } = props;
@@ -118,60 +122,58 @@ const Signup: FC<RouteComponentProps> = (props) => {
 
   return (
     <>
-      <Box className={classes.root}>
-        <Box className="head">
-          <img src="https://via.placeholder.com/100x54" alt="Logo" />
-        </Box>
-        <Box className="body">
-          <TextFieldComponent
-            label={t(`labelText.labelSurname`)}
-            id="surname"
-            name={'surname'}
-            type="text"
-            onChange={onChange}
-            value={signup.surname}
-            error={errorSurname}
-            helperText={textErrorSurname}
-          />
-          <TextFieldComponent
-            label={t(`labelText.labelLastname`)}
-            id="lastname"
-            name={'lastName'}
-            type="text"
-            onChange={onChange}
-            value={signup.lastName}
-            error={errorLastName}
-            helperText={textErrorLastName}
-          />
-          <TextFieldComponent
-            label="Email"
-            id="email"
-            type="text"
-            name={'email'}
-            onChange={onChange}
-            value={signup.email}
-            error={errorEmail}
-            helperText={textErrorEmail}
-          />
-          <TextFieldComponent
-            label={t(`labelText.labelPassword`)}
-            id="password"
-            type="password"
-            name={'password'}
-            onChange={onChange}
-            value={signup.password}
-            error={errorPassword}
-            helperText={textErrorPassword}
-          />
-          <Button variant="contained" className={classes.button} onClick={onPressRegister} disabled={loading}>
-            {t(`labelText.createAccount`)}
-          </Button>
-          <a className="link" href="#">
-            {t(`labelText.createAccountFromLinkdln`)}
-          </a>
-        </Box>
-        <Box className="foot"></Box>
+    <WrapOnBoarding>
+      <TextFieldComponent
+        label={t(`labelText.labelSurname`)}
+        id="surname"
+        name={'surname'}
+        type="text"
+        onChange={onChange}
+        value={signup.surname}
+        error={errorSurname}
+        helperText={textErrorSurname}
+      />
+      <TextFieldComponent
+        label={t(`labelText.labelLastname`)}
+        id="lastname"
+        name={'lastName'}
+        type="text"
+        onChange={onChange}
+        value={signup.lastName}
+        error={errorLastName}
+        helperText={textErrorLastName}
+      />
+      <TextFieldComponent
+        label="Email"
+        id="email"
+        type="text"
+        name={'email'}
+        onChange={onChange}
+        value={signup.email}
+        error={errorEmail}
+        helperText={textErrorEmail}
+      />
+      <TextFieldComponent
+        label={t(`labelText.labelPassword`)}
+        id="password"
+        type="password"
+        name={'password'}
+        onChange={onChange}
+        value={signup.password}
+        error={errorPassword}
+        helperText={textErrorPassword}
+      />
+      <Box className={classes.btnFullWidth}>
+        <Button variant="contained" className={classes.button} onClick={onPressRegister} disabled={loading}>
+        {t(`labelText.createAccount`)}
+      </Button>
       </Box>
+      <Box className={classes.linkContainer}>
+        <Link className={classes.link} >
+          {t(`labelText.createAccountFromLinkdln`)}
+        </Link>
+      </Box>
+    </WrapOnBoarding>
     </>
   );
 };
