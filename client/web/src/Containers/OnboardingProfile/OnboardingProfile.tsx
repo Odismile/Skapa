@@ -1,23 +1,10 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Link,
-  Radio,
-  RadioGroup,
-  Typography,
-} from '@material-ui/core';
+import { Box, Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@material-ui/core';
 import React from 'react';
-import TextFieldComponent from '../../Components/TextField/TextField';
-import useStyles from './styles';
-import logoTalent from '../../Assets/images/logo-talent.svg';
-import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
 import { useHistory } from 'react-router-dom';
-import classNames from 'classnames';
-import mainLogo from '../../Assets/images/logo.svg';
+import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
+import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
+import useStyles from './styles';
 
 const OnboardingProfile = () => {
   const classes = useStyles();

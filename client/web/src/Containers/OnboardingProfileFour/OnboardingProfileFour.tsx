@@ -1,13 +1,13 @@
-import useStyles from './style';
+import { Box, Button, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router';
-import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
-import { Box, Button, FormControl, FormLabel, InputBase, Typography } from '@material-ui/core';
-import bgTechnical from '../../Assets/images/technical.svg';
+import bgChange from '../../Assets/images/change.svg';
 import bgCreative from '../../Assets/images/creative.svg';
+import bgDelivery from '../../Assets/images/delivery.svg';
 import bgInnovation from '../../Assets/images/innovation.svg';
 import bgProspective from '../../Assets/images/prospective.svg';
-import bgDelivery from '../../Assets/images/delivery.svg';
-import bgChange from '../../Assets/images/change.svg';
+import bgTechnical from '../../Assets/images/technical.svg';
+import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
+import useStyles from './style';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
