@@ -7,6 +7,11 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum PublicationState {
+  LIVE = "LIVE",
+  PREVIEW = "PREVIEW",
+}
+
 export interface UsersPermissionsLoginInput {
   identifier: string;
   password: string;
