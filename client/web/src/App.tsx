@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import { Redirect, Route, Switch, withRouter, RouteComponentProps } from 'react-router-dom';
-
-import { ROUTES, UNAUTHORIZED } from './Routes';
-import { RouteInterface } from './Interfaces/Route';
+import { Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 import PrivateRoute from './Components/PrivateRoute';
 import NotFound from './Containers/Errors/NotFound';
 import Unauthorized from './Containers/Errors/Unauthorized';
+import { RouteInterface } from './Interfaces/Route';
+import { ROUTES, UNAUTHORIZED } from './Routes';
 
 const App: FC<RouteComponentProps> = (props) => {
   const { history } = props;

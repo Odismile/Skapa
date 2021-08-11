@@ -3,13 +3,11 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { UsersPermissionsRegisterCustomInput } from "./../../../types/graphql-global-types";
-
 // ====================================================
-// GraphQL mutation operation: Register
+// GraphQL mutation operation: EmailConfirmation
 // ====================================================
 
-export interface Register_registerCustom_user_role {
+export interface EmailConfirmation_registerCustom_user_role {
   __typename: "UsersPermissionsMeRole";
   id: string;
   name: string;
@@ -17,25 +15,25 @@ export interface Register_registerCustom_user_role {
   type: string | null;
 }
 
-export interface Register_registerCustom_user {
+export interface EmailConfirmation_registerCustom_user {
   __typename: "UsersPermissionsMe";
   username: string;
   email: string;
   confirmed: boolean | null;
   blocked: boolean | null;
-  role: Register_registerCustom_user_role | null;
+  role: EmailConfirmation_registerCustom_user_role | null;
 }
 
-export interface Register_registerCustom {
+export interface EmailConfirmation_registerCustom {
   __typename: "UsersPermissionsLoginPayload";
   jwt: string | null;
-  user: Register_registerCustom_user;
+  user: EmailConfirmation_registerCustom_user;
 }
 
-export interface Register {
-  registerCustom: Register_registerCustom;
+export interface EmailConfirmation {
+  registerCustom: EmailConfirmation_registerCustom;
 }
 
-export interface RegisterVariables {
-  input: UsersPermissionsRegisterCustomInput;
+export interface EmailConfirmationVariables {
+  confirmation: string;
 }
