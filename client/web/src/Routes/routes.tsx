@@ -10,6 +10,8 @@ import OnboardingProfileTwo from '../Containers/OnboardingProfileTwo/OnboardingP
 import OnboardingProfileSix from '../Containers/OnboardingProfileSix/OnboardingProfileSix';
 import Project from '../Containers/Project';
 import CreateProject from '../Containers/Project/CreateProject';
+import OnboardingProfileThree from '../Containers/OnboardingProfileThree/OnboardingProfileThree';
+import OnboardingProfileFour from '../Containers/OnboardingProfileFour/OnboardingProfileFour';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -21,6 +23,8 @@ export const ONBOARDING_PROFILE2 = '/onboarding-profile2';
 export const ONBOARDING_PROFILE6 = '/onboarding-profile6';
 export const PROJECT = '/project';
 export const CREATE_PROJECT = '/project/create-project';
+export const ONBOARDING_PROFILE3 = '/onboarding-profile3';
+export const ONBOARDING_PROFILE4 = '/onboarding-profile4';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
@@ -88,5 +92,19 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: OnboardingProfileSix,
+  },
+  {
+    key: 'ONBOARDING_PROFILE3',
+    route: ONBOARDING_PROFILE3,
+    roles: [],
+    private: false,
+    component: OnboardingProfileThree,
+  },
+  {
+    key: 'ONBOARDING_PROFILE4',
+    route: ONBOARDING_PROFILE4,
+    roles: [],
+    private: false,
+    component: OnboardingProfileFour,
   },
 ];
