@@ -6,6 +6,7 @@ export default makeStyles(
     mainContainer: {
       paddingLeft: 30,
       paddingRight: 30,
+      paddingBottom: 30,
     },
   }),
   { name: "CreateProject" }

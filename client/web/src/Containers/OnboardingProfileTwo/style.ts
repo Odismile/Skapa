@@ -1,6 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(  theme => ({
+  root:{
+    '& .title':{
+      color: "#000000",
+      fontStyle: 'italic',
+      fontWeight: 600,
+      fontSize:14,
+    }
+  },
   bio:{
     width: '100%',
     '& textarea':{
@@ -41,7 +49,7 @@ export default makeStyles(  theme => ({
     marginTop: 16,
     '& button': {
       backgroundColor: '#8870ff',
-      borderRadius: 20,
+      borderRadius: 25,
       color: 'white',
       padding: '6px 24px',
       textTransform: 'capitalize',

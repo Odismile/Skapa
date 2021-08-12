@@ -47,7 +47,7 @@
       "invalid_password_text": "The password must be at least 8 characters long, one uppercase, one lowercase and one number.",
       "Email is already taken.": "Email is already taken",
       "Username already taken":"Surname already taken",
-      "undefined": "network error, please check your connection"
+      "undefined": "server error"
     },
     "labelText": {
       "labelSurname": "Surname",
@@ -55,6 +55,18 @@
       "labelPassword": "Password",
       "createAccount": "Create account",
       "createAccountFromLinkdln": "Create account from Linkedin profile"
+    },
+    "onBordingProfile":{
+      "yourPosition": "Your position",
+      "jobSeniority": "Job seniority",
+      "nameOfOrganisation": "Name of your organisation",
+      "laguageslevel": "Laguages level",
+      "next":"Next",
+      "skipThisStep":"Skip this step",
+      "year": "Year",
+      "basic":"basic",
+      "intermediate":"Intermediate",
+      "fluente":"Fluente"
     }
   }
 }

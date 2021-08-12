@@ -12,6 +12,7 @@ import { PublicationState } from "./../../../types/graphql-global-types";
 export interface Items_items {
   __typename: "Items";
   id: string;
+  label: string | null;
 }
 
 export interface Items {
