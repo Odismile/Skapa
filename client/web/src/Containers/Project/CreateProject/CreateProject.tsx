@@ -8,6 +8,7 @@ import useStyles from "./styles";
 import PrimaryHeader from '../../../Components/Header';
 import TabLink from '../../../Components/TabLink';
 import Description from '../../Project/CreateProject/Description/Description';
+import Team from './Team';
 
 // install Swiper modules
 
@@ -23,6 +24,7 @@ const CreateProject = () => {
 
         <Box className={classes.mainContainer}>
           <TabLink />
+          <Team />
         </Box>
       </Box>
     </Box>
