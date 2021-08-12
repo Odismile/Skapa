@@ -22,8 +22,6 @@ const OnboardingProfile = () => {
     history.push('/onboarding-profile2');
   }
 
-  console.log(`data ===============>`, data);
-
   return (
     <>
       <WrapOnBoarding>
@@ -46,9 +44,9 @@ const OnboardingProfile = () => {
         <TextFieldComponent label="Name of your organisation" id="organisation" placeholder="GRT Gaz" type="text" />
         <FormControl component="fieldset" className={classes.languages}>
           <FormLabel component="legend">Languages level</FormLabel>
-          <LanguagesChoice title="French" name="french" />
-          <LanguagesChoice title="English" name="english" />
-          <LanguagesChoice title="Spanish" name="spanish" />
+          {data?.items?.map((item, index) => {
+            return <LanguagesChoice key={index} title={item?.label ?? ''} name={item?.label ?? ''} />;
+          })}
         </FormControl>
         <Box className={classes.btnNext}>
           <Button variant="contained" onClick={handleClick}>
