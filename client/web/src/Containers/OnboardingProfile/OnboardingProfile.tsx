@@ -94,7 +94,9 @@ const OnboardingProfile = () => {
           ) : (
             <>
               {data?.items?.map((item, index) => {
-                return <LanguagesChoice key={index} title={item?.label ?? ''} name={item?.label ?? ''} />;
+                return (
+                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} />
+                );
               })}
             </>
           )}
