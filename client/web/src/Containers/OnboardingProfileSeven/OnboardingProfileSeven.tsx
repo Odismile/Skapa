@@ -6,7 +6,7 @@ import useStyles from './style';
 import image_profile from '../../Assets/images/image_profile.png';
 import image_organisation from '../../Assets/images/organisation.png';
 import { useHistory } from 'react-router-dom';
-import { LOGIN } from '../../Routes';
+import { HOMEPAGE, LOGIN } from '../../Routes';
 
 // progressbar style
 const BorderLinearProgress = withStyles((theme) => ({
@@ -33,7 +33,7 @@ const OnboardingProfileSeven = () => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
-          history.push(LOGIN);
+          history.replace(HOMEPAGE);
           return 0;
         }
         const diff = Math.random() * 10;

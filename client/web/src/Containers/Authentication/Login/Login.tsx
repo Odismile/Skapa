@@ -8,7 +8,7 @@ import TextFieldComponent from '../../../Components/TextField/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import useStyles from './styles';
-import { HOMEPAGE, SIGNUP } from '../../../Routes';
+import { HOMEPAGE, ONBOARDING_PROFILE7, SIGNUP } from '../../../Routes';
 import TalentLogo from '../../../Assets/images/logo.svg';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { isAuthenticated } from '../../../Services';
@@ -87,7 +87,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
           })
           .catch((err) => {})
           .finally(() => {
-            if (test && isAuthenticated()) {
+            if (test) {
               snackbar.type = 'SUCCESS';
               snackbar.message = t('login.login_message');
               displaySnackbar(client, snackbar);
