@@ -24,7 +24,6 @@ const CreateProject = () => {
 
         <Box className={classes.mainContainer}>
           <TabLink />
-          <Team />
         </Box>
       </Box>
     </Box>

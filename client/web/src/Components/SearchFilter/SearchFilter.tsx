@@ -1,12 +1,27 @@
-import { Box, IconButton, InputBase, Paper } from "@material-ui/core";
+import React from 'react';
+import { Box, IconButton, InputBase, Paper, Popper } from "@material-ui/core";
 import useStyles from './style';
 import Filter from '../../Components/Icons/Filter/Filter';
 import Search from '../../Components/Icons/Search/Search';
+import SearchProject from '../SearchProject/SearchProject';
+
 
 
 
 const SearchFilter = () => {
   const classes = useStyles();
+
+    //Simple popper
+    const [anchorEl, setAnchorEl] = React.useState(null);
+  
+    const handleClick = (event:any) => {
+      setAnchorEl(anchorEl ? null : event.currentTarget);
+    };
+  
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popper' : undefined;
+
+    
 
   return (
     <Box className="search-bloc">
@@ -17,15 +32,19 @@ const SearchFilter = () => {
             placeholder="Look for projects by title, type, creator.."
             inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
           />
-          <IconButton type="submit" className="search-icon" aria-label="search">
+          <IconButton className="search-icon" aria-label="search">
             <Search />
           </IconButton>
         </Box>
-        <IconButton color="primary" className="filter-icon" aria-label="directions">
+        <IconButton color="primary" className="filter-icon" aria-label="directions"  aria-describedby={id} onClick={handleClick}>
           <Filter />
         </IconButton>
       </Paper>
+      <Popper id={id} open={open} anchorEl={anchorEl}>
+          <SearchProject />
+        </Popper>
     </Box>
+    
   );
 };
 
