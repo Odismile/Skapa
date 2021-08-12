@@ -9,10 +9,10 @@ const useStyles = makeStyles(() =>
         color: '#a1a1a1',
       },
       '& label':{
-        fontSize: 14,
+        fontSize: 19,
         fontStyle: 'italic',
         fontWeight: "600",
-        
+        color: '#000000',
       },
       '& div input':{
         color: '#000000',
