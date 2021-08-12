@@ -27,6 +27,7 @@ const useStyles = makeStyles(() =>
       },
       '& div':{
         marginTop: 24,
+        marginBottom: 0,
       },
       '& div:hover:before':{
         borderBottom: 'none!important',
