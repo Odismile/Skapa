@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Button, Typography, IconButton, Drawer } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Box, Button, Typography, IconButton, Drawer, Link, List, ListItem } from '@material-ui/core';
+//import { Link } from 'react-router-dom';
 import classNames from "classnames";
 import useStyles from './style';
 
@@ -57,9 +57,18 @@ const PrimaryHeader = () => {
       >
         <Box className={classes.filterList}>
           <IconButton className="btn btn_burger" aria-label="close" onClick={handleDrawer}>
-            <Burger />
           </IconButton>
-          <Typography>Test menu drawer</Typography>
+
+          <List>
+            <ListItem><Link className="nav_link">Profil</Link></ListItem>
+            <ListItem><Link className="nav_link">My activity</Link></ListItem>
+            <ListItem><Link className="nav_link">Projects</Link></ListItem>
+            <ListItem><Link className="nav_link">Talents</Link></ListItem>
+            <ListItem><Link className="nav_link">Places</Link></ListItem>
+            <ListItem><Link className="nav_link">Wishlist</Link></ListItem>
+            <ListItem><Link className="nav_link">Coaching</Link></ListItem>
+            <ListItem><Link className="nav_link">Wallet</Link></ListItem>
+          </List>
         </Box>
       </Drawer>
     </Box>
