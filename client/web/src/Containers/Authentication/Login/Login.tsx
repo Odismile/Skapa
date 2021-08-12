@@ -36,7 +36,6 @@ export const InitErrorFields: ErrorFieldsState = {
 
 const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const { history } = props;
-  console.log(props);
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
   const { t } = useTranslation();
@@ -92,7 +91,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
               snackbar.type = 'SUCCESS';
               snackbar.message = t('login.login_message');
               displaySnackbar(client, snackbar);
-              history.push(HOMEPAGE);
+              history.replace(HOMEPAGE);
             } else {
               setErrorFields((prev) => ({ ...prev, username: true, password: true }));
               setLoginError(t('errorMessage.invalid_fields'));

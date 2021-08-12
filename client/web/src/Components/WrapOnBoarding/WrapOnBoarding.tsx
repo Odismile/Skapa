@@ -26,11 +26,6 @@ const WrapOnBoarding: FC<WrapBoProps> = (props) => {
             </figure>
           </Box>
           <Box className={classNames(classes.mainContainer)}>{props.children}</Box>
-          <Box component="footer" className={classes.footerPage}>
-            <Typography className="link-footer">
-              <Link href="#"> {t(`onBordingProfile.skipThisStep`)}</Link>
-            </Typography>
-          </Box>
         </Box>
       </Box>
     </>
