@@ -21,7 +21,7 @@ export const ITEMS = gql`
 
 export const ITEMS_GET_LANGUAGE = gql`
   query Items_get_language($where: JSON) {
-    items(sort: $sort, limit: $limit, start: $start, where: $where) {
+    items(where: $where) {
       ...fragmentInfo
     }
   }

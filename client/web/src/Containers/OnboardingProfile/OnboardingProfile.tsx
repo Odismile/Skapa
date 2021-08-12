@@ -4,11 +4,14 @@ import { useHistory } from 'react-router-dom';
 import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
+import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
 import useStyles from './styles';
 
 const OnboardingProfile = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState('0-3');
+
+  const { data, loading } = useItemsGetlaguage();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
@@ -18,6 +21,8 @@ const OnboardingProfile = () => {
   function handleClick() {
     history.push('/onboarding-profile2');
   }
+
+  console.log(`data ===============>`, data);
 
   return (
     <>
@@ -41,7 +46,7 @@ const OnboardingProfile = () => {
         <TextFieldComponent label="Name of your organisation" id="organisation" placeholder="GRT Gaz" type="text" />
         <FormControl component="fieldset" className={classes.languages}>
           <FormLabel component="legend">Languages level</FormLabel>
-          <LanguagesChoice title="French" name="french"/>
+          <LanguagesChoice title="French" name="french" />
           <LanguagesChoice title="English" name="english" />
           <LanguagesChoice title="Spanish" name="spanish" />
         </FormControl>
