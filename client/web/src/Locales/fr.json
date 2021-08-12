@@ -2,31 +2,68 @@
   "translation": {
     "appname": "Talent Team",
     "applink": "",
-    "errorMessage":{
+    "login": {
+      "login": "Connexion",
+      "password": "Mot de passe",
+      "login_button": "Connexion",
+      "create_account": "Créer un compte",
+      "login_message": "Vous êtes connecté"
+    },
+    "signup": {
+      "surname": "Nom",
+      "lastname": "Prénom",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "signup_button": "Créer un compte",
+      "create_account_linkedin": "Créer un compte à partir du profil linkedin"
+    },
+    "onboarding": {
+      "skip_step": "Sauter cet étape",
+      "skip_tutorial": "Sauter le tutoriel",
+      "skip_profile": "Sauter la création du profil",
+      "profile_creation_title": "Maintenant, créons votre profil !",
+      "profile_creation_position": "Votre position",
+      "profile_creation_experience": "Ancienneté dans l'emploi (années)",
+      "profile_creation_organization": "Nom de votre organisation",
+      "profile_creation_photo": "Télécharger une photo de vous",
+      "profile_creation_video": "télécharger une présentation vidéo",
+      "profile_creation_bio": "Bio",
+      "profile_creation_skills": "Quelles sont vos compétences",
+      "profile_creation_projects": "Quel type de projet souhaitez-vous voir ?",
+      "validation": "Personnalisation de votre page d'accueil...",
+      "next": "Suivant",
+      "stepOne": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic laborum consequatur incidunt dicta magni optio neque culpa veniam nesciunt.",
+      "stepTwo": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic laborum consequatur incidunt dicta magni optio neque culpa veniam nesciunt.",
+      "stepThree": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic laborum consequatur incidunt dicta magni optio neque culpa veniam nesciunt."
+    },
+    "errorMessage": {
+      "empty_field_email": "Champ d'e-mail vide",
+      "empty_field_password": "champ de mot de passe vide",
+      "empty_fields": "champs vides",
+      "invalid_fields": "E-mail ou mot de passe invalide",
       "invalid_surname": "Nom invalide",
       "invalid_lastName": "Prénom invalide",
-      "invalid_email": "Email invalide",
+      "invalid_email": "E-mail invalide",
       "invalid_password": "Mot de passe invalide",
-      "invalid_password_text":"Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre.",
-      "Email is already taken.": "Votre email est déja utilisé",
-      "Username already taken":"Votre nom est déja utilisé",
-      "undefined": "Problème du serveur"
-
+      "invalid_password_text": "Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre.",
+      "Email is already taken.": "L'e-mail est déja pris",
+      "Username already taken": "Le Nom est déja pris",
+      "undefined": "Erreur de réseau, veuillez vérifier votre connexion"
     },
-    "labelText":{
-      "labelSurname":"Nom",
-      "labelLastname":"Prénom",
-      "labelPassword":"Mot de passe",
+    "labelText": {
+      "labelSurname": "Nom",
+      "labelLastname": "Prénom",
+      "labelPassword": "Mot de passe",
       "createAccount": "Créer un compte",
-      "createAccountFromLinkdln":"Créer un compte à partir du profil Linkedin"
+      "createAccountFromLinkdln": "Créer un compte à partir du profil Linkedin"
     },
-    "onBordingProfile":{
+    "onBordingProfile": {
       "yourPosition": "Votre position",
       "jobSeniority": "Ancienneté de l'emploi",
       "nameOfOrganisation": "Nom de votre ogranisation",
       "laguageslevel": "niveau de langues",
-      "next":"Suivant",
-      "skipThisStep":"Sauter cette étape",
+      "next": "Suivant",
+      "skipThisStep": "Sauter cette étape",
       "year": "Année"
     }
   }
