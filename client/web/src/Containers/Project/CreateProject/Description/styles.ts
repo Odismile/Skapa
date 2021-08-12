@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles(
   theme => ({
     description: {
-      paddingBottom: 30,
+      //paddingBottom: 30,
       "& .upload_bloc": {
         marginBottom: 20,
         "&  .upload_picture": {
@@ -249,7 +249,7 @@ export default makeStyles(
           fontWeight: 600,
           fontSize: 12,
           height: 35,
-          width: 118,
+          width: 120,
         },
       },
     },
