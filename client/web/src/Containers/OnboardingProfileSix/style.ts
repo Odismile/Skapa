@@ -17,7 +17,7 @@ export default makeStyles(  theme => ({
     marginTop: 16,
     '& button': {
       backgroundColor: '#8870ff',
-      borderRadius: 20,
+      borderRadius: 25,
       color: 'white',
       padding: '6px 24px',
       textTransform: 'capitalize',
