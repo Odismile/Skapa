@@ -16,7 +16,7 @@ export default makeStyles(  theme => ({
     padding: 5,
     borderRadius: 6,
     maxHeight: 305,
-    overflow: 'scroll',
+    overflow: 'auto',
     height: 305,
   },
   skills:{

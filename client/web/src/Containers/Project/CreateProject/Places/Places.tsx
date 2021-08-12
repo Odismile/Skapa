@@ -5,6 +5,7 @@ import classNames from "classnames";
 
 
 import useStyles from "./styles";
+import SearchFilter from '../../../../Components/SearchFilter/SearchFilter';
 
 
 
@@ -13,7 +14,7 @@ const Places = () => {
 
   return (
     <Box className={classes.places_bloc}>
-      <p>Places !</p>
+      <SearchFilter />
     </Box>
   );
 };

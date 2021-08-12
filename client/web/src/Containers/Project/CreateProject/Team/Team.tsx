@@ -1,19 +1,15 @@
-import React, { useRef, useState } from 'react';
-import { Box, Button, Container, Typography } from "@material-ui/core";
-import { Link } from 'react-router-dom';
-import classNames from "classnames";
-
-
+import React  from 'react';
+import { Box } from "@material-ui/core";
 import useStyles from "./styles";
-
+import SearchFilter from '../../../../Components/SearchFilter/SearchFilter';
 
 
 const Team = () => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.team_bloc}>
-      <p>Team !</p>
+    <Box className={classes.teamBloc}>
+      <SearchFilter />
     </Box>
   );
 };

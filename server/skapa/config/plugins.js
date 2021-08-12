@@ -11,5 +11,15 @@ module.exports = ({ env }) => ({
       testAddress: env("SENDGRID_MAILER_EMAIL"),
     },
   },
+  graphql: {
+    endpoint: '/graphql',
+    shadowCRUD: true,
+    playgroundAlways: true, //Change this to false in prod env
+    depthLimit: 7,
+    amountLimit: 100,
+    apolloServer: {
+      tracing: false,
+    },
+  },
   // ...
 });

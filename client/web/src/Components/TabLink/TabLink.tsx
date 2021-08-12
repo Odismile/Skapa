@@ -1,21 +1,25 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core';
-import { Switch, Route, Link } from 'react-router-dom';
-import classNames from 'classnames';
-
+import { Link } from 'react-router-dom';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
-import Team from '../../Containers/Project/CreateProject/Team/Team';
 import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
-
+import Team from '../../Containers/Project/CreateProject/Team/Team';
 import useStyles from './style';
 
 const TabLink = () => {
-  function getSteps() {
-    return ['Description', 'Team', 'Places', 'Review'];
-  }
+  const classes = useStyles();
 
-  function getStepContent(step: number) {
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
+
+  const getSteps = () => {
+    return ['Description', 'Team', 'Places', 'Review'];
+  };
+
+  const steps = getSteps();
+
+  const getStepContent = (step: number) => {
     switch (step) {
       case 0:
         return <Description />;
@@ -28,11 +32,7 @@ const TabLink = () => {
       default:
         return <Description />;
     }
-  }
-
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
-  const steps = getSteps();
+  };
 
   const totalSteps = () => {
     return steps.length;
@@ -60,61 +60,18 @@ const TabLink = () => {
     setActiveStep(newActiveStep);
   };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
   const handleStep = (step: number) => () => {
     setActiveStep(step);
   };
 
-  const handleComplete = () => {
-    const newCompleted = completed;
-    newCompleted[activeStep] = true;
-    setCompleted(newCompleted);
-    handleNext();
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-    setCompleted({});
-  };
-
-  const classes = useStyles();
-
   return (
     <>
-      {/* <Box className={classes.tabList}>
-        <Box className="tab_list">
-          <Link to="description" className="tab_link active">
-            Description
-          </Link>
-          <Link to="team" className="tab_link">
-            Team
-          </Link>
-          <Link to="places" className="tab_link">
-            Places
-          </Link>
-          <Link to="review" className="tab_link">
-            Review
-          </Link>
-        </Box>
-        <Box className="tab_content">
-          <Switch>
-            <Route path="description" component={Description} />
-            <Route path="team" component={Team} />
-            <Route path="places" component={Places} />
-            <Route path="review" component={Review} />
-          </Switch>
-        </Box>
-      </Box> */}
-
-      <div className={classes.root}>
+      <Box className={classes.root}>
         <Stepper
           nonLinear
           activeStep={activeStep}
           className={classes.customStepper}
-          connector={<div className={classes.connect}></div>}
+          connector={<Box className={classes.connect}></Box>}
         >
           {steps.map((label, index) => (
             <Step key={label}>
@@ -140,25 +97,18 @@ const TabLink = () => {
             </Step>
           ))}
         </Stepper>
-        <div>
-          {allStepsCompleted() ? (
-            <div>
-              <Typography className={classes.instructions}>All steps completed - you&apos;re finished</Typography>
-              <Button onClick={handleReset}>Reset</Button>
-            </div>
-          ) : (
-            <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-              <Box className={classes.Btn}>
-                <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
-                  Next
-                </Button>
-                <Link to="/" className='link'>Skip this step</Link>
-              </Box>
-            </div>
-          )}
-        </div>
-      </div>
+        <Box>
+          <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+          <Box className={classes.Btn}>
+            <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
+              Next
+            </Button>
+            <Link to="/" className="link">
+              Skip this step
+            </Link>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 };
