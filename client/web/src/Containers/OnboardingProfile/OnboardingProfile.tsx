@@ -7,28 +7,32 @@ import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
-import { nameOfOrganisation, yourPosition } from '../../ReactiveVariable/ItemsLanguage';
+import { ageProfil, nameOfOrganisation, yourPosition } from '../../ReactiveVariable/Profil/profil';
 import useStyles from './styles';
+import { useItemsGetYear } from '../../Providers/ItemsProvider/hooks/useItemsGetYear';
 
 const OnboardingProfile = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('0-3');
   const [disabledButton, setDisabledButton] = useState(true);
   const history = useHistory();
   const { t } = useTranslation();
+  const [radioButtonValue, setRadioButtonValue] = useState<string>('');
 
   const { data, loading } = useItemsGetlaguage();
+  const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
   const testButtonToEnabled = () => {
-    if (!!yourPosition() && !!nameOfOrganisation()) {
+    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil()) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+  const handleChangeAge = (event: React.ChangeEvent<HTMLInputElement>) => {
+    ageProfil((event.target as HTMLInputElement).value);
+    setRadioButtonValue((event.target as HTMLInputElement).value);
+    testButtonToEnabled();
   };
 
   const onChangeYourPosition = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,17 +63,21 @@ const OnboardingProfile = () => {
           <FormLabel component="legend">
             {t(`onBordingProfile.jobSeniority`)} ({t(`onBordingProfile.year`)})
           </FormLabel>
+          {loadingYears && <Skeleton count={2} height={25} />}
           <RadioGroup
             row
             aria-label="years"
             name="years"
-            value={value}
-            onChange={handleChange}
+            value={radioButtonValue}
+            onChange={handleChangeAge}
             className="custom_radio"
           >
-            <FormControlLabel value="0-3" control={<Radio />} label="0-3 yrs" />
-            <FormControlLabel value="3-8" control={<Radio />} label="3-8 yrs" />
-            <FormControlLabel value=">8" control={<Radio />} label="> 8 yrs" />
+            {!loadingYears &&
+              dataYears?.items?.map((item, index) => {
+                return (
+                  <FormControlLabel key={index} value={item?.label} control={<Radio />} label={item?.label ?? ''} />
+                );
+              })}
           </RadioGroup>
         </FormControl>
         <TextFieldComponent
