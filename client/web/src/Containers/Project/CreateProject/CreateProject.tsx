@@ -23,7 +23,6 @@ const CreateProject = () => {
 
         <Box className={classes.mainContainer}>
           <TabLink />
-          <Description />
         </Box>
       </Box>
     </Box>

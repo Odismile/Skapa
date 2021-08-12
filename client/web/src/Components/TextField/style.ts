@@ -9,6 +9,7 @@ const useStyles = makeStyles(() =>
         color: '#a1a1a1',
       },
       '& label':{
+		color: '#000000',
         fontSize: 14,
         fontStyle: 'italic',
         fontWeight: "600",

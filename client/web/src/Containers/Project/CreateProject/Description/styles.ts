@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles(
   theme => ({
     description: {
-      paddingBottom: 30,
+      //paddingBottom: 30,
       "& .upload_bloc": {
         marginBottom: 20,
         "&  .upload_picture": {
@@ -206,7 +206,6 @@ export default makeStyles(
             borderRadius: 20,
             border: "none",
             display: 'block',
-            height: 30,
             margin: 2.5,
             minWidth: 65,
             overflow: 'hidden',
@@ -214,9 +213,12 @@ export default makeStyles(
               color: '#000',
               border: '1px solid #979797',
               borderRadius: 20,
+              display: 'inline-flex',
+              alignItems: 'center',
+              fontSize: 12,
+              lineHeight: "100%",
               padding: '5px 12px',
               height: 30,
-              display: 'inline-block',
               textAlign: "center",
               transition: "all .25s ease-in-out",
               width: "100%",
@@ -249,7 +251,7 @@ export default makeStyles(
           fontWeight: 600,
           fontSize: 12,
           height: 35,
-          width: 118,
+          width: 120,
         },
       },
     },

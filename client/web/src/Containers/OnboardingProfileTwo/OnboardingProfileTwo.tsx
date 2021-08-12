@@ -18,39 +18,41 @@ const OnboardingProfileTwo = () => {
   return (
     <>
       <WrapOnBoarding>
-        <FormControl component="fieldset" className={classes.form}>
-          <FormLabel component="legend" className="title">
-            Upload a picture of you
-          </FormLabel>
-          <input accept="image/*" className={classes.input} id="contained-button-file" multiple type="file" />
-          <label htmlFor="contained-button-file">
-            <Button variant="contained" component="span">
-              +
+        <Box className={classes.root}>
+          <FormControl component="fieldset" className={classes.form}>
+            <FormLabel component="legend" className="title">
+              Upload a picture of you
+            </FormLabel>
+            <input accept="image/*" className={classes.input} id="contained-button-file" multiple type="file" />
+            <label htmlFor="contained-button-file">
+              <Button variant="contained" component="span">
+                +
+              </Button>
+            </label>
+          </FormControl>
+          <FormControl component="fieldset" className={classes.inputVideo}>
+            <FormLabel component="legend" className="title">
+              Upload a video pitch
+            </FormLabel>
+            <input accept="video/*" className={classes.input} id="contained-button-file" multiple type="file" />
+            <label htmlFor="contained-button-file">
+              <Box className="video">
+                <Box component="span">Import a video from your computer (mp4)</Box>
+                <img src={iconDownload} alt="iconDownload" />
+              </Box>
+            </label>
+          </FormControl>
+          <FormControl component="fieldset" className={classes.bio}>
+            <FormLabel component="legend" className="title">
+              Bio
+            </FormLabel>
+            <textarea placeholder="tell us more about you !"></textarea>
+          </FormControl>
+          <Box className={classes.btnNext}>
+            <Button variant="contained" onClick={handleClick}>
+              Next
             </Button>
-          </label>
-        </FormControl>
-        <FormControl component="fieldset" className={classes.inputVideo}>
-          <FormLabel component="legend" className="title">
-            Upload a video pitch
-          </FormLabel>
-          <input accept="video/*" className={classes.input} id="contained-button-file" multiple type="file" />
-          <label htmlFor="contained-button-file">
-            <Box className="video">
-              <Box component="span">Import a video from your computer (mp4)</Box>
-              <img src={iconDownload} alt="iconDownload" />
-            </Box>
-          </label>
-        </FormControl>
-        <FormControl component="fieldset" className={classes.bio}>
-          <FormLabel component="legend" className="title">
-            Bio
-          </FormLabel>
-          <textarea placeholder="tell us more about you !"></textarea>
-        </FormControl>
-        <Box className={classes.btnNext}>
-          <Button variant="contained" onClick={handleClick}>
-            Next
-          </Button>
+          </Box>
         </Box>
       </WrapOnBoarding>
     </>

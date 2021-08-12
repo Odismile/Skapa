@@ -206,9 +206,6 @@ const Description = () => {
             </Box>
             </Box>
           </Box>
-          <Box className="btn-group">
-            <Button variant="contained" href="" className="btn btn_next" color="primary" >Next</Button>
-          </Box>
         </form>
       </Box>
     </Box>
