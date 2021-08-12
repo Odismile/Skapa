@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import useStyles from './style';
-import imgCard from '../../Assets/images/lab.svg';
+// import imgCard from '../../Assets/images/lab.svg';
 
 const PrettoSlider = withStyles({
   root: {
@@ -50,7 +50,7 @@ const CardReview = () => {
   return (
     <>
       <Card className={classes.root}>
-        <CardMedia className={classes.media} image={imgCard} title="image" />
+        <CardMedia className={classes.media} image="" title="image" />
         <CardContent className={classes.content}>
           <Typography className="title" component="p">
             Lorem ipsum <br></br> Sit amet.
