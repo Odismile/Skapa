@@ -1,29 +1,49 @@
+import React, { useState } from 'react';
 import { Box, Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@material-ui/core';
-import React from 'react';
+import { useTranslation } from 'react-i18next';
+import Skeleton from 'react-loading-skeleton';
 import { useHistory } from 'react-router-dom';
 import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
-import Skeleton from 'react-loading-skeleton';
+import { nameOfOrganisation, yourPosition } from '../../ReactiveVariable/ItemsLanguage';
 import useStyles from './styles';
-import { useTranslation } from 'react-i18next';
 
 const OnboardingProfile = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState('0-3');
+  const [disabledButton, setDisabledButton] = useState(true);
+  const history = useHistory();
   const { t } = useTranslation();
 
   const { data, loading } = useItemsGetlaguage();
+
+  const testButtonToEnabled = () => {
+    if (!!yourPosition() && !!nameOfOrganisation()) {
+      setDisabledButton(false);
+    } else {
+      setDisabledButton(true);
+    }
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
 
-  const history = useHistory();
-  function handleClick() {
+  const onChangeYourPosition = (e: React.ChangeEvent<HTMLInputElement>) => {
+    yourPosition(e.target.value);
+    testButtonToEnabled();
+  };
+
+  const onChangeNameOfOrganisation = (e: React.ChangeEvent<HTMLInputElement>) => {
+    nameOfOrganisation(e.target.value);
+    testButtonToEnabled();
+  };
+
+  const handleClick = () => {
     history.push('/onboarding-profile2');
-  }
+  };
 
   return (
     <>
@@ -33,6 +53,7 @@ const OnboardingProfile = () => {
           id="position"
           placeholder="UX Designer"
           type="text"
+          onChange={onChangeYourPosition}
         />
         <FormControl component="fieldset" className={classes.radio}>
           <FormLabel component="legend">
@@ -56,6 +77,7 @@ const OnboardingProfile = () => {
           id="organisation"
           placeholder="GRT Gaz"
           type="text"
+          onChange={onChangeNameOfOrganisation}
         />
         <FormControl component="fieldset" className={classes.languages}>
           <FormLabel component="legend">{t(`onBordingProfile.laguageslevel`)}</FormLabel>
@@ -70,7 +92,7 @@ const OnboardingProfile = () => {
           )}
         </FormControl>
         <Box className={classes.btnNext}>
-          <Button variant="contained" onClick={handleClick}>
+          <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
             {t(`onBordingProfile.next`)}
           </Button>
         </Box>

@@ -11,6 +11,7 @@ import AuthProvider from './AuthProvider';
 import UserProvider from './UserProvider';
 import { createClient } from '../Services/ApolloClient';
 import { getAccessToken } from '../Services/LocalStorage';
+import { ItemsLanguageInfoProvider } from './ItemsProvider/hooks/ItemsProvider';
 
 interface ProviderProps {}
 
@@ -23,7 +24,9 @@ const Provider: FC<ProviderProps> = (props) => {
       <ApolloProvider client={client}>
         <ThemeProvider theme={Theme}>
           <AuthProvider>
-            <UserProvider>{props.children}</UserProvider>
+            <UserProvider>
+              <ItemsLanguageInfoProvider>{props.children}</ItemsLanguageInfoProvider>
+            </UserProvider>
           </AuthProvider>
         </ThemeProvider>
       </ApolloProvider>
