@@ -5,6 +5,8 @@ import classNames from "classnames";
 
 
 import useStyles from "./styles";
+import CardReview from '../../../../Components/CardReview/CardReview';
+import Tags from '../../../../Components/Tags/Tags';
 
 
 
@@ -13,7 +15,8 @@ const Review = () => {
 
   return (
     <Box className={classes.review_bloc}>
-      <p>Review !</p>
+      <CardReview/>
+      <Tags/>
     </Box>
   );
 };
