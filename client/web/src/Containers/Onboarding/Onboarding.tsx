@@ -75,7 +75,7 @@ const Onboarding = () => {
         </Box>
         <Box component="footer" className={classes.footerPage}>
           <Typography className="link-footer">
-            {!endPage ? <Link to="/">Skip tutorial</Link> : <Link to="/">Next</Link>}
+            {!endPage ? <Link to="/">Skip tutorial</Link> : <Link to="/onboarding-start">Next</Link>}
           </Typography>
         </Box>
       </Box>

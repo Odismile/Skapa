@@ -87,11 +87,10 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
           })
           .catch((err) => {})
           .finally(() => {
-            if (test) {
+            if (test && isAuthenticated()) {
               snackbar.type = 'SUCCESS';
               snackbar.message = t('login.login_message');
               displaySnackbar(client, snackbar);
-              history.replace(HOMEPAGE);
             } else {
               setErrorFields((prev) => ({ ...prev, username: true, password: true }));
               setLoginError(t('errorMessage.invalid_fields'));
