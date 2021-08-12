@@ -62,7 +62,6 @@ const Onboarding = () => {
             <Swiper {...paramsSlider} className="tuto_slider">
               {datas.map((data, index) => (
                 <SwiperSlide key={index}>
-                  {}
                   <figure className="tuto_img">
                     <img src={data.nameSrc} alt={data.altSrc} />
                   </figure>
