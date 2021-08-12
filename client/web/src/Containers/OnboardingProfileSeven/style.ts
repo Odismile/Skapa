@@ -1,8 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(  theme => ({
-  onBoard:{
-    // minHeight: 371,
+  onBoard:{ 
     overflowY: "auto",
     display: "flex",
     flexDirection: "column",
@@ -11,45 +10,70 @@ export default makeStyles(  theme => ({
       textAlign: "center",
       fontStyle: "italic",
       fontWeight: "600",
-      margin: "0 0 30 0",
+      margin: "0 0 30px 0",
+      color: "#000",
     },
-    "& .profile-organisation": {
+    "& .user": {
       position: "relative",
-      width: 120,
+      width: 137,
       margin: "30px auto 0 auto",
-      "& .figure-profile": {
+      "& .user-profile": {
         width: 120,
         height: 120,
         margin: "0 auto",
         borderRadius: "50%",
+        overflow: "hidden",
+        "& img": {
+          width: "100%",
+          height: "100%",
+          objectFit: "cover"
+        }
       },
-      "& .figure-organisation": {
+      "& .user-organisation-image": {
         position: "absolute",
-        top: -20,
-        left: -20,
-        width: 60,
-        height: 60,
+        top: -30,
+        left: -10,
+        width: 70,
+        height: 70,
         margin: "0 auto",
         borderRadius: "50%",
-        padding: "5px",
-        backgroundColor: "#ffffff",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        "& img": {
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          padding: "2px",
+          background: "#fff",
+        }
+      },
+      "& .user-name": {
+        marginTop: 10,
+        fontSize: 18,
+        fontWeight: 700,
+        lineHeight: "25px",
+        textAlign: "center",
+        color: "#000000"
+      },
+      "& .user-organisation": {
+        fontSize: 18,
+        fontWeight: 400,
+        lineHeight: "25px",
+        textAlign: "center",
+        color: "#000000"
       }
-    }
-  },
-  btnNext: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: 16,
-    '& button': {
-      backgroundColor: '#8870ff',
-      borderRadius: 20,
-      color: 'white',
-      padding: '6px 24px',
-      textTransform: 'capitalize',
-      '&:hover': {
-        backgroundColor: '#8870ff',
-        color: 'white',
+    },
+    "& .welcome-loader": {
+      marginTop: 88,
+      "& p": {
+        textAlign: "center",
+        fontSize: 16,
+        fontStyle: "italic",
+        fontWeight: "300",
       },
     },
   },
+
 }));

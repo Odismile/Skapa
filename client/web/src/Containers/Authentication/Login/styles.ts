@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     '& p': {
       fontSize: '0.875rem',
       color: '#ED655F',
+      margin: 0,
     },
   },
   btnFullWidth:{

@@ -11,8 +11,8 @@
   },
   "attributes": {
     "project_type_id": {
-      "model": "items",
-      "via": "profile_project_types"
+      "via": "profile_project_types",
+      "model": "items"
     },
     "users_id": {
       "plugin": "users-permissions",

@@ -3,23 +3,20 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PublicationState } from "./../../../types/graphql-global-types";
-
 // ====================================================
-// GraphQL query operation: Item
+// GraphQL query operation: Items_get_language
 // ====================================================
 
-export interface Item_item {
+export interface Items_get_language_items {
   __typename: "Items";
   id: string;
   label: string | null;
 }
 
-export interface Item {
-  item: Item_item | null;
+export interface Items_get_language {
+  items: (Items_get_language_items | null)[] | null;
 }
 
-export interface ItemVariables {
-  id: string;
-  publicationState?: PublicationState | null;
+export interface Items_get_languageVariables {
+  where?: any | null;
 }

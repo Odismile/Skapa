@@ -24,7 +24,7 @@ export const createClient = (token: string) => {
   const authLink = setContext((_, { headers }) => ({
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `bearer ${token}` : '',
     },
   }));
 

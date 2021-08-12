@@ -13,8 +13,7 @@ export const useRegister = () => {
   const [doRegister, { loading, data, error }] = useMutation<Register, RegisterVariables>(REGISTER, {
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
-      console.log(`errorMessage`, errorMessage);
-      console.log(`errorMessage`, errorMessage);
+
       if (errorMessage === 'Email is already taken.') {
         snackbar.type = 'ERROR';
         snackbar.message = t(`errorMessage.${errorMessage}`);
