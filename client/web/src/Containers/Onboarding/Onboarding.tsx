@@ -26,6 +26,9 @@ const Onboarding = () => {
     onReachEnd: () => {
       setEndPage(true);
     },
+    onActiveIndexChange: (e: SwiperCore) => {
+      e.activeIndex === 2 ? setEndPage(true) : setEndPage(false);
+    },
     spaceBetween: 0,
     centeredSlides: true,
     slidesPerRow: 1,

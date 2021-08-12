@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
+import { Redirect, RouteComponentProps, useHistory, withRouter } from 'react-router-dom';
 import { clearLocalStorage } from '../../Services';
 import { Button } from '@material-ui/core';
 import { LOGIN } from '../../Routes';
 
-const HomePage: FC<RouteComponentProps> = (props) => {
-  const { history } = props;
+const HomePage: ()=> {
+  //const history = useHistory();
   const logout = () => {
     clearLocalStorage();
     history.push(LOGIN);
