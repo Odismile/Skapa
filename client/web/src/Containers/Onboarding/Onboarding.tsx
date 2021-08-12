@@ -10,6 +10,7 @@ import mainLogo from '../../Assets/images/logo.svg';
 import photoTuto_01 from '../../Assets/images/photo-tuto-01.svg';
 import photoTuto_02 from '../../Assets/images/photo-tuto-02.svg';
 import photoTuto_03 from '../../Assets/images/photo-tuto-03.svg';
+import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from './styles';
 
 // install Swiper modules
@@ -37,60 +38,48 @@ const Onboarding = () => {
     },
   };
   return (
-    <Box className={classNames(classes.mainPage)}>
-      <Box className="wrapPage">
-        <Box component="header" className={classNames(classes.main_header)}>
-          <figure className="logo">
-            <img src={mainLogo} alt="logo" />
-          </figure>
-        </Box>
-        <Box className={classNames(classes.mainContainer)}>
-          {/* Slider */}
-          <Box className={classes.sliderTuto}>
-            <Swiper {...params} className="mySwiper">
-              <SwiperSlide>
-                <figure className="tuto_img">
-                  <img src={photoTuto_01} alt="photoTuto 02" />
-                </figure>
-                <Box className="tuto_text">
-                  <Typography variant="body1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                  </Typography>
-                </Box>
-              </SwiperSlide>
-              <SwiperSlide>
-                <figure className="tuto_img">
-                  <img src={photoTuto_02} alt="photoTuto 02" />
-                </figure>
-                <Box className="tuto_text">
-                  <Typography variant="body1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                  </Typography>
-                </Box>
-              </SwiperSlide>
-              <SwiperSlide>
-                <figure className="tuto_img">
-                  <img src={photoTuto_03} alt="photoTuto 03" />
-                </figure>
-                <Box className="tuto_text">
-                  <Typography variant="body1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                  </Typography>
-                </Box>
-              </SwiperSlide>
-            </Swiper>
-          </Box>
-        </Box>
-        <Box component="footer" className={classes.footerPage}>
-          <Typography className="link-footer">
-            <Link to="/">Skip tutorial</Link>
-          </Typography>
-        </Box>
+    <>
+    <WrapOnBoarding>
+      {/* Slider */}
+      <Box className={classes.sliderTuto}>
+          <Swiper {...params} className="mySwiper">
+          <SwiperSlide>
+            <figure className="tuto_img">
+              <img src={photoTuto_01} alt="photoTuto 02" />
+            </figure>
+            <Box className="tuto_text">
+              <Typography variant="body1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.
+              </Typography>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <figure className="tuto_img">
+              <img src={photoTuto_02} alt="photoTuto 02" />
+            </figure>
+            <Box className="tuto_text">
+              <Typography variant="body1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.
+              </Typography>
+            </Box>
+          </SwiperSlide>
+          <SwiperSlide>
+            <figure className="tuto_img">
+              <img src={photoTuto_03} alt="photoTuto 03" />
+            </figure>
+            <Box className="tuto_text">
+              <Typography variant="body1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.
+              </Typography>
+            </Box>
+          </SwiperSlide>
+        </Swiper>
       </Box>
-    </Box>
+    </WrapOnBoarding>
+    </>
   );
 };
 
