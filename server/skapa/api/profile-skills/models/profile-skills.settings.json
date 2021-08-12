@@ -11,8 +11,8 @@
   },
   "attributes": {
     "skill_id": {
-      "model": "items",
-      "via": "profile_skills"
+      "via": "profile_skills",
+      "model": "items"
     },
     "profile_id": {
       "model": "profiles",

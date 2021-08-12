@@ -1,7 +1,7 @@
 import React, { FC, useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { HOMEPAGE } from '../../Routes';
+import { LOGIN } from '../../Routes';
 import { isAuthenticated } from '../../Services/LocalStorage';
 
 interface PrivateRouteProps {
@@ -17,7 +17,7 @@ interface PrivateRouteProps {
  */
 const PrivateRoute: FC<PrivateRouteProps> = ({ component: Component, ...props }) => {
   if (!isAuthenticated()) {
-    <Redirect to={HOMEPAGE} />;
+    <Redirect to={LOGIN} />;
   }
   return <Route {...props} render={(routeProps: any) => <Component {...routeProps} />} />;
 };
