@@ -39,12 +39,11 @@ const SearchFilter = () => {
         <IconButton color="primary" className="filter-icon" aria-label="directions"  aria-describedby={id} onClick={handleClick}>
           <Filter />
         </IconButton>
-      </Paper>
-      <Popper id={id} open={open} anchorEl={anchorEl}>
+        <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start" >
           <SearchProject />
         </Popper>
+      </Paper>
     </Box>
-    
   );
 };
 

@@ -8,14 +8,12 @@ const SearchProject = () => {
   return (
     <Box className="search-project">
       <FormControl component="fieldset">
-        <FormGroup aria-label="position" row>
           <FormControlLabel
             value="Latest"
             control={<Checkbox />}
             label="Latest"
             labelPlacement="start"
           />
-        </FormGroup>
       </FormControl>
     </Box>
   );

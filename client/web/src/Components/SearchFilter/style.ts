@@ -2,6 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(
   theme => ({
+    "@global" :{
+      "#simple-popper" :{
+      width: '100%',
+      border: '1px solid #000'
+    },
+    },
     root: {
       display: 'flex',
       alignItems: 'center',
