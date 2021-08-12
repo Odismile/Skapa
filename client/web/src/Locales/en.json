@@ -55,6 +55,15 @@
       "labelPassword": "Password",
       "createAccount": "Create account",
       "createAccountFromLinkdln": "Create account from Linkedin profile"
+    },
+    "onBordingProfile":{
+      "yourPosition": "Your position",
+      "jobSeniority": "Job seniority",
+      "nameOfOrganisation": "Name of your organisation",
+      "laguageslevel": "Laguages level",
+      "next":"Next",
+      "skipThisStep":"Skip this step",
+      "year": "Year"
     }
   }
 }
