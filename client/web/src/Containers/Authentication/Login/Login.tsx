@@ -36,6 +36,7 @@ export const InitErrorFields: ErrorFieldsState = {
 
 const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const { history } = props;
+  console.log(props);
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
   const { t } = useTranslation();
