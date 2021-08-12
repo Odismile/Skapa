@@ -43,6 +43,14 @@ export default makeStyles (
         },
       },
     },
+    drawerFilter: {
+      width: 250,
+      
+    },
+    drawerPaperFilter: {
+
+    },
+    filterList: {},
   }),
   { name: "Header" }
 );
