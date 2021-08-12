@@ -4,10 +4,11 @@ import { SvgIcon, SvgIconProps } from '@material-ui/core';
 
 export default (props: SvgIconProps) => {
   return (
-    <SvgIcon {...props} viewBox="0 0 22 22">
-      <path d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" id="Oval" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M0.5 4L0.5 0" transform="translate(9.5 10)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M0.495 0.5L0.505 0.5" transform="translate(9.505 5.5)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <SvgIcon {...props} viewBox="0 0 21.5 21.5">
+      <path d="M10.8,21.5C4.8,21.5,0,16.7,0,10.8C0,4.8,4.8,0,10.8,0s10.8,4.8,10.8,10.8C21.5,16.7,16.7,21.5,10.8,21.5z M10.8,1.5
+      c-5.1,0-9.2,4.1-9.2,9.2c0,5.1,4.1,9.3,9.2,9.3s9.2-4.1,9.2-9.3C20,5.6,15.9,1.5,10.8,1.5z"/>
+      <path d="M10.8,15.5c-0.4,0-0.8-0.3-0.8-0.8v-4c0-0.4,0.3-0.8,0.8-0.8s0.8,0.3,0.8,0.8v4C11.5,15.2,11.2,15.5,10.8,15.5z"/>
+      <path d="M10.8,7.5c-0.4,0-0.8-0.3-0.8-0.8S10.3,6,10.8,6h0c0.4,0,0.8,0.3,0.8,0.8S11.2,7.5,10.8,7.5z"/>
     </SvgIcon>
   );
 };

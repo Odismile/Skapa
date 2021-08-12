@@ -12,7 +12,7 @@ const useStyles = makeStyles(() =>
         fontSize: 14,
         fontStyle: 'italic',
         fontWeight: "600",
-        
+        marginBottom: 0,
       },
       '& div input':{
         color: '#000000',
@@ -26,7 +26,9 @@ const useStyles = makeStyles(() =>
         border: 'none',
       },
       '& div':{
-        marginTop: 24,
+        marginTop: 20,
+        marginBottom: 10,
+        //marginTop: 24,
       },
       '& div:hover:before':{
         borderBottom: 'none!important',
