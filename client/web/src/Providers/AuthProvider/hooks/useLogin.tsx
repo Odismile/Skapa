@@ -4,6 +4,7 @@ import { useMutation, ApolloError } from '@apollo/client';
 
 import { LOGIN } from '../../../GraphQL/authentication/mutation';
 import { Login, LoginVariables } from '../../../GraphQL/authentication/types/Login';
+import { setAccessToken } from '../../../Services';
 
 const useAuth = () => {
   const { t } = useTranslation();
@@ -28,6 +29,11 @@ const useAuth = () => {
         setLoginError(t('statusMessages.SERVER_ERROR'));
       }
       return;
+    },
+    onCompleted: (data) => {
+      if (data?.login?.jwt) {
+        setAccessToken(data?.login?.jwt);
+      }
     },
   });
 
