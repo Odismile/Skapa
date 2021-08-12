@@ -5,6 +5,8 @@ export default makeStyles(theme => ({
     margin: '8px 0px',
     '& legend': {
       fontSize: 14,
+      color: '#000000',
+      fontWeight: 600,
       fontStyle: 'italic',
     },
     '& div>label': {
@@ -30,6 +32,8 @@ export default makeStyles(theme => ({
     '& legend': {
       fontSize: 14,
       fontStyle: 'italic',
+      color: '#000000',
+      fontWeight: 600,
     },
   },
   btnNext:{
