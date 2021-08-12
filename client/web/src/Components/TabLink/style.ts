@@ -7,7 +7,7 @@ export default makeStyles(
     },
     button: {
       borderRadius: 18,
-      width: '50%',
+      width: 120,
       padding: 10,
       height: 35,
     },
