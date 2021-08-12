@@ -2,18 +2,21 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   content: {
-    maxHeight: 315,
-    height: 315,
-    overflow: 'scroll',
+    maxHeight: 330,
+    height: 330,
+    overflow: 'auto',
     '& .choice': {
       display: 'flex',
-      width: '100%',
+      maxWidth: '375px',
       flexWrap: 'wrap',
       height: '100%',
-      justifyContent: 'space-between',
+      margin: 'auto',
+      justifyContent: 'center',
+      gap: 5,
     },
     '& .inputGroup': {
-      width: '48%',
+      maxWidth: 132,
+      width: 132,
       height: 100,
       position: 'relative',
       '& label': {
@@ -59,4 +62,10 @@ export default makeStyles((theme) => ({
       },
     },
   },
+  bloc:{
+    margin: 'auto',
+    '& .title':{
+      textAlign: 'center',
+    }
+  }
 }));
