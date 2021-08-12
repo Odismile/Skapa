@@ -77,14 +77,16 @@ module.exports = {
         description: "Register a user",
         resolverOf: "plugins::users-permissions.auth.register",
         resolver: async (obj, options, { context }) => {
+          console.log("AZERTY" , options.input);
           context.request.body = _.toPlainObject(options.input);
-
+          
           await strapi.plugins["users-permissions"].controllers.auth.register(
             context
-          );
+            );
           let output = context.body.toJSON
-            ? context.body.toJSON()
+          ? context.body.toJSON()
             : context.body;
+            console.log("MIPASY",output);
 
           checkBadRequest(output);
           return {
@@ -93,6 +95,7 @@ module.exports = {
           };
         },
       },
+      
     },
   },
 };

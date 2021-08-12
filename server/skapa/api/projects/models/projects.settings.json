@@ -17,6 +17,18 @@
     "teams": {
       "collection": "teams",
       "via": "project"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "item": {
+      "model": "items",
+      "via": "projects"
+    },
+    "project_skills": {
+      "collection": "project-skills",
+      "via": "project"
     }
   }
 }
