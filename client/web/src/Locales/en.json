@@ -63,7 +63,10 @@
       "laguageslevel": "Laguages level",
       "next":"Next",
       "skipThisStep":"Skip this step",
-      "year": "Year"
+      "year": "Year",
+      "basic":"basic",
+      "intermediate":"Intermediate",
+      "fluente":"Fluente"
     }
   }
 }
