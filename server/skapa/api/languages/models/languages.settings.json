@@ -20,8 +20,8 @@
       ]
     },
     "language": {
-      "model": "items",
-      "via": "languages"
+      "via": "languages",
+      "model": "items"
     },
     "users_permissions_user": {
       "via": "languages",

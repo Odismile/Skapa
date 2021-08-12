@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "items",
   "info": {
-    "name": "Items"
+    "name": "Items",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -18,24 +19,25 @@
       "enum": [
         "LANGUAGE",
         "SKILLS",
-        "PROJECT_TYPES"
+        "PROJECT_TYPES",
+        "JOB_SENIORITY"
       ]
     },
     "languages": {
-      "via": "language",
-      "collection": "languages"
+      "collection": "languages",
+      "via": "language"
     },
     "profiles": {
-      "via": "job_seniority_id",
-      "collection": "profiles"
+      "collection": "profiles",
+      "via": "job_seniority_id"
     },
     "profile_skills": {
-      "via": "skill_id",
-      "collection": "profile-skills"
+      "collection": "profile-skills",
+      "via": "skill_id"
     },
     "profile_project_types": {
-      "via": "project_type_id",
-      "collection": "profile-project-types"
+      "collection": "profile-project-types",
+      "via": "project_type_id"
     }
   }
 }

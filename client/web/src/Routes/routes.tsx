@@ -38,7 +38,7 @@ export const ROUTES: RouteInterface[] = [
     key: 'HOMEPAGE',
     route: HOMEPAGE,
     roles: [],
-    private: false,
+    private: true,
     component: WrappedHomePage,
   },
   {
