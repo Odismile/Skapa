@@ -22,7 +22,7 @@ const OnboardingProfile = () => {
   return (
     <>
       <WrapOnBoarding>
-        <TextFieldComponent label="Your position" id="position" placeholder="UX Designer" type="text" />
+        <TextFieldComponent label="Your position" id="position" placeholder="UX Designer" type="text" className="inputOnboard"/>
         <FormControl component="fieldset" className={classes.radio}>
           <FormLabel component="legend">Job Seniority (years)</FormLabel>
           <RadioGroup

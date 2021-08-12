@@ -12,6 +12,7 @@ interface TextFiedlProps {
   id: string;
   name?: string | undefined;
   placeholder?: string,
+  className?: string,
   // variant:string,
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
 }
@@ -32,7 +33,7 @@ const TextFieldComponent: FC<TextFiedlProps> = (props) => {
       value={props.value}
       error={props.error}
       helperText={props.helperText}
-      className={classes.textfield}
+      className={props.className || classes.textfield}
     />
   );
 };
