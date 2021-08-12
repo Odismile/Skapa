@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Box, Button, Link } from '@material-ui/core';
+import { Box, Button, Link, Typography } from '@material-ui/core';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import TextFieldComponent from '../../../Components/TextField/TextField';
 import useStyles from './styles';
@@ -10,8 +10,6 @@ import { useTranslation } from 'react-i18next';
 import { ONBOARDING } from '../../../Routes';
 import classNames from 'classnames';
 import WrapOnBoarding from '../../../Components/WrapOnBoarding/WrapOnBoarding';
-
-
 
 const Signup: FC<RouteComponentProps> = (props) => {
   const { history } = props;
@@ -122,58 +120,61 @@ const Signup: FC<RouteComponentProps> = (props) => {
 
   return (
     <>
-    <WrapOnBoarding>
-      <TextFieldComponent
-        label={t(`labelText.labelSurname`)}
-        id="surname"
-        name={'surname'}
-        type="text"
-        onChange={onChange}
-        value={signup.surname}
-        error={errorSurname}
-        helperText={textErrorSurname}
-      />
-      <TextFieldComponent
-        label={t(`labelText.labelLastname`)}
-        id="lastname"
-        name={'lastName'}
-        type="text"
-        onChange={onChange}
-        value={signup.lastName}
-        error={errorLastName}
-        helperText={textErrorLastName}
-      />
-      <TextFieldComponent
-        label="Email"
-        id="email"
-        type="text"
-        name={'email'}
-        onChange={onChange}
-        value={signup.email}
-        error={errorEmail}
-        helperText={textErrorEmail}
-      />
-      <TextFieldComponent
-        label={t(`labelText.labelPassword`)}
-        id="password"
-        type="password"
-        name={'password'}
-        onChange={onChange}
-        value={signup.password}
-        error={errorPassword}
-        helperText={textErrorPassword}
-      />
-      <Box className={classes.btnFullWidth}>
-        <Button variant="contained" className={classes.button} onClick={onPressRegister} disabled={loading}>
-        {t(`labelText.createAccount`)}
-      </Button>
-      </Box>
-      <Box className={classes.linkContainer}>
-        <Link className={classes.link} >
-          {t(`labelText.createAccountFromLinkdln`)}
-        </Link>
-      </Box>
-    </WrapOnBoarding>
+      <WrapOnBoarding>
+        <TextFieldComponent
+          label={t(`labelText.labelSurname`)}
+          id="surname"
+          name={'surname'}
+          type="text"
+          onChange={onChange}
+          value={signup.surname}
+          error={errorSurname}
+          helperText={textErrorSurname}
+        />
+        <TextFieldComponent
+          label={t(`labelText.labelLastname`)}
+          id="lastname"
+          name={'lastName'}
+          type="text"
+          onChange={onChange}
+          value={signup.lastName}
+          error={errorLastName}
+          helperText={textErrorLastName}
+        />
+        <TextFieldComponent
+          label="Email"
+          id="email"
+          type="text"
+          name={'email'}
+          onChange={onChange}
+          value={signup.email}
+          error={errorEmail}
+          helperText={textErrorEmail}
+        />
+        <TextFieldComponent
+          label={t(`labelText.labelPassword`)}
+          id="password"
+          type="password"
+          name={'password'}
+          onChange={onChange}
+          value={signup.password}
+          error={errorPassword}
+          helperText={textErrorPassword}
+        />
+        <Box className={classes.btnFullWidth}>
+          <Button variant="contained" className={classes.button} onClick={onPressRegister} disabled={loading}>
+            {t(`labelText.createAccount`)}
+          </Button>
+        </Box>
+        <Box className={classes.linkContainer}>
+          <Link className={classes.link}>{t(`labelText.createAccountFromLinkdln`)}</Link>
+        </Box>
+        <Box component="footer" className={classes.linkContainer}>
+          <Typography className="link-footer">
+            <Link href="#">{t('signup.create_account_linkedin')}</Link>
+          </Typography>
+        </Box>
+      </WrapOnBoarding>
     </>
   );
 };

@@ -4,8 +4,8 @@ import { clearLocalStorage } from '../../Services';
 import { Button } from '@material-ui/core';
 import { LOGIN } from '../../Routes';
 
-const HomePage: ()=> {
-  //const history = useHistory();
+const HomePage: FC = () => {
+  const history = useHistory();
   const logout = () => {
     clearLocalStorage();
     history.push(LOGIN);

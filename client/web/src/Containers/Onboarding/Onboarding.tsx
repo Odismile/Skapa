@@ -23,9 +23,6 @@ const Onboarding = () => {
     pagination: {
       clickable: true,
     },
-    onReachEnd: () => {
-      setEndPage(true);
-    },
     onActiveIndexChange: (e: SwiperCore) => {
       e.activeIndex === 2 ? setEndPage(true) : setEndPage(false);
     },
