@@ -27,8 +27,8 @@ export const PROJECT = '/project';
 export const CREATE_PROJECT = '/project/create-project';
 export const ONBOARDING_PROFILE3 = '/onboarding-profile3';
 export const ONBOARDING_PROFILE4 = '/onboarding-profile4';
-export const ONBOARDING_PROFILE7 = '/onboarding-profile7';
-export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen';
+export const ONBOARDING_PROFILE7 = '/onboarding-splashscreen1';
+export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen2';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
