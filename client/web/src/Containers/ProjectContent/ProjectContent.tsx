@@ -1,6 +1,6 @@
 import { Box, Button } from '@material-ui/core';
-import classNames from 'classnames';
 import CardReview from '../../Components/CardReview/CardReview';
+import FormerProject from '../../Components/FormerProjects/FormerProjects';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import useStyles from './styles';
 
@@ -22,6 +22,8 @@ const ProjectContent = () => {
           <Button>Contribute</Button>
         </Box>
       </Box>
+
+      <FormerProject/>
     </>
   );
 };
