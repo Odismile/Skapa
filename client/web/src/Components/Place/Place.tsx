@@ -13,7 +13,6 @@ const Place = () => {
   const classes = useStyles();
   return (
     <Box className={classes.box}>
-      <Typography variant='h6' className="title">Place</Typography>
       <Card className={classes.root}>
         <CardMedia className='media' image={imgPlace} title="image">
           <Box className="bitmap">

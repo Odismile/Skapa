@@ -21,6 +21,7 @@ const Review = () => {
       <Pitch/>
       <Presentation/>
       <Tags/>
+      <Typography variant='h6' className="titre">Place</Typography>
       <Place/>
     </Box>
   );
