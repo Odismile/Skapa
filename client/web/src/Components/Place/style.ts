@@ -2,11 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
     box: {
-        paddingTop: 23,
-        "& .title": {
-            color: '#000000',
-            marginBottom: 8,
-        },
+        
     },
     root: {
         boxShadow: '0px 2px 4px #0000001C',
