@@ -8,7 +8,7 @@ import TextFieldComponent from '../../../Components/TextField/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import useStyles from './styles';
-import { HOMEPAGE, SIGNUP } from '../../../Routes';
+import { HOMEPAGE, ONBOARDING_PROFILE7, SIGNUP } from '../../../Routes';
 import TalentLogo from '../../../Assets/images/logo.svg';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
@@ -90,7 +90,6 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
               snackbar.type = 'SUCCESS';
               snackbar.message = t('login.login_message');
               displaySnackbar(client, snackbar);
-              history.push(HOMEPAGE);
             } else {
               setErrorFields((prev) => ({ ...prev, username: true, password: true }));
               setLoginError(t('errorMessage.invalid_fields'));

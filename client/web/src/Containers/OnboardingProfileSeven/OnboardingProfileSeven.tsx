@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Box, Button, Container, Typography, LinearProgress, withStyles   } from "@material-ui/core";
+import { Box, Button, Container, Typography, LinearProgress, withStyles } from '@material-ui/core';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
-import useStyles from "./style";
+import useStyles from './style';
 
 import image_profile from '../../Assets/images/image_profile.png';
 import image_organisation from '../../Assets/images/organisation.png';
+import { useHistory } from 'react-router-dom';
+import { HOMEPAGE, LOGIN } from '../../Routes';
 
 // progressbar style
 const BorderLinearProgress = withStyles((theme) => ({
@@ -12,10 +14,10 @@ const BorderLinearProgress = withStyles((theme) => ({
     height: 11,
     borderRadius: 10.5,
     width: 210,
-    margin: "0 auto"
+    margin: '0 auto',
   },
   colorPrimary: {
-    backgroundColor: "#DFFFF2",
+    backgroundColor: '#DFFFF2',
   },
   bar: {
     borderRadius: 10.5,
@@ -26,11 +28,12 @@ const BorderLinearProgress = withStyles((theme) => ({
 const OnboardingProfileSeven = () => {
   const classes = useStyles();
   const [progress, setProgress] = React.useState(0);
-
+  const history = useHistory();
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
+          history.replace(HOMEPAGE);
           return 0;
         }
         const diff = Math.random() * 10;
@@ -45,7 +48,7 @@ const OnboardingProfileSeven = () => {
 
   return (
     <>
-      <WrapOnBoarding width={210} marginTop= {40}>
+      <WrapOnBoarding width={210} marginTop={40}>
         <Box className={classes.onBoard}>
           <h1 className="welcome">Welcome !</h1>
           <Box className="user">
@@ -55,17 +58,13 @@ const OnboardingProfileSeven = () => {
             <figure className="user-profile">
               <img src={image_profile} alt="profile" />
             </figure>
-            <Box className="user-name">
-              Nathan Dupont
-            </Box>
-            <Box className="user-organisation">
-              UX Designer
-            </Box>
+            <Box className="user-name">Nathan Dupont</Box>
+            <Box className="user-organisation">UX Designer</Box>
           </Box>
           <Box className="welcome-loader">
             <p>Customizing your homepage</p>
             <Box className="progress-bar">
-              <BorderLinearProgress variant="determinate" value={progress}/>
+              <BorderLinearProgress variant="determinate" value={progress} />
             </Box>
           </Box>
         </Box>
