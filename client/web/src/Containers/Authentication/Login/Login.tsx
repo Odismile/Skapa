@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
@@ -8,10 +8,9 @@ import TextFieldComponent from '../../../Components/TextField/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import useStyles from './styles';
-import { HOMEPAGE, SIGNUP } from '../../../Routes';
+import { HOMEPAGE, ONBOARDING_PROFILE7, SIGNUP } from '../../../Routes';
 import TalentLogo from '../../../Assets/images/logo.svg';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
-import { isAuthenticated } from '../../../Services';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import { Snackbar } from '@material-ui/core';
 import { displaySnackbar, InitSnackbarData } from '../../../Utils';
@@ -36,7 +35,6 @@ export const InitErrorFields: ErrorFieldsState = {
 
 const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const { history } = props;
-  console.log(props);
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
   const { t } = useTranslation();
@@ -92,7 +90,6 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
               snackbar.type = 'SUCCESS';
               snackbar.message = t('login.login_message');
               displaySnackbar(client, snackbar);
-              history.push(HOMEPAGE);
             } else {
               setErrorFields((prev) => ({ ...prev, username: true, password: true }));
               setLoginError(t('errorMessage.invalid_fields'));
@@ -104,10 +101,6 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
       }
     }
   };
-
-  if (isAuthenticated()) {
-    // return <Redirect {...{ to: '/' }} />;
-  }
 
   const handleGoToCreateAccount = () => {
     history.push(SIGNUP);

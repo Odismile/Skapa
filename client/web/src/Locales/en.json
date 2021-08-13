@@ -6,7 +6,8 @@
       "login": "Login",
       "password": "Password",
       "login_button": "Login",
-      "create_account": "Create an account"
+      "create_account": "Create an account",
+      "login_message": "You are connected"
     },
     "signup": {
       "surname": "Surname",
@@ -46,8 +47,8 @@
       "invalid_password": "Invalid password",
       "invalid_password_text": "The password must be at least 8 characters long, one uppercase, one lowercase and one number.",
       "Email is already taken.": "Email is already taken",
-      "Username already taken":"Surname already taken",
-      "undefined": "server error"
+      "Username already taken": "Surname already taken",
+      "undefined": "network error, please check your connection"
     },
     "labelText": {
       "labelSurname": "Surname",
@@ -56,17 +57,17 @@
       "createAccount": "Create account",
       "createAccountFromLinkdln": "Create account from Linkedin profile"
     },
-    "onBordingProfile":{
+    "onBordingProfile": {
       "yourPosition": "Your position",
       "jobSeniority": "Job seniority",
       "nameOfOrganisation": "Name of your organisation",
       "laguageslevel": "Laguages level",
-      "next":"Next",
-      "skipThisStep":"Skip this step",
+      "next": "Next",
+      "skipThisStep": "Skip this step",
       "year": "Year",
-      "basic":"basic",
-      "intermediate":"Intermediate",
-      "fluente":"Fluente"
+      "basic": "basic",
+      "intermediate": "Intermediate",
+      "fluente": "Fluente"
     }
   }
 }

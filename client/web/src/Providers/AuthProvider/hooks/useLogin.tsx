@@ -5,11 +5,13 @@ import { useMutation, ApolloError } from '@apollo/client';
 import { LOGIN } from '../../../GraphQL/authentication/mutation';
 import { Login, LoginVariables } from '../../../GraphQL/authentication/types/Login';
 import { setAccessToken } from '../../../Services';
+import { useHistory } from 'react-router-dom';
+import { HOMEPAGE, ONBOARDING_PROFILE7 } from '../../../Routes';
 
 const useAuth = () => {
   const { t } = useTranslation();
   const [loginError, setLoginError] = useState<string>('');
-
+  const history = useHistory();
   const [doLogin, { loading: loadingLogin }] = useMutation<Login, LoginVariables>(LOGIN, {
     onError: (error: ApolloError) => {
       if (
@@ -33,6 +35,7 @@ const useAuth = () => {
     onCompleted: (data) => {
       if (data?.login?.jwt) {
         setAccessToken(data?.login?.jwt);
+        history.replace(ONBOARDING_PROFILE7);
       }
     },
   });

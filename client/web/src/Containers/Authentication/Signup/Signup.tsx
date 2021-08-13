@@ -111,7 +111,6 @@ const Signup: FC<RouteComponentProps> = (props) => {
             surname: '',
             password: '',
           });
-          history.push(ONBOARDING);
         }
       });
     }
@@ -141,7 +140,7 @@ const Signup: FC<RouteComponentProps> = (props) => {
           helperText={textErrorLastName}
         />
         <TextFieldComponent
-          label="Email"
+          label={t('signup.email')}
           id="email"
           type="text"
           name={'email'}
