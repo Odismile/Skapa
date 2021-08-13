@@ -19,7 +19,9 @@ const Review = () => {
     <Box className={classes.review_bloc}>
       <CardReview/>
       <Pitch/>
+      <Typography variant='h6' className="titre">Présentation</Typography>
       <Presentation/>
+      <Typography variant='h6' className="titre">Tags</Typography>
       <Tags/>
       <Typography variant='h6' className="titre">Place</Typography>
       <Place/>

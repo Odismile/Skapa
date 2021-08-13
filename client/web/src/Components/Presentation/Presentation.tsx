@@ -5,7 +5,6 @@ const Presentation = () => {
   const classes = useStyles();
   return (
     <Box className={classes.content}>
-      <Typography variant='h6' className="title">Présentation</Typography>
       <TextareaAutosize
         minRows={4}
         maxRows={4}
