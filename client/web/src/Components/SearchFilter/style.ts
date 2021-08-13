@@ -8,6 +8,8 @@ export default makeStyles(
         padding: "0px 20px",
         background: "#ffffff",
         top: "14px!important",
+        maxHeight: 415,
+        overflowY: 'auto',
       },
     },
     root: {

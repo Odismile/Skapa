@@ -28,6 +28,9 @@ export default makeStyles(
           alignItems: "center",
           marginLeft: 0,
           marginBottom: 8,
+          "&:last-child": {
+            marginBottom: 0,
+          },
           "& span:nth-child(2)": {
             margin: 0,
             fontSize: 12,

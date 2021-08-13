@@ -13,7 +13,6 @@ const SearchProject = () => {
           <h2>Sort by</h2>
           <Box className="form-control-content">
             <FormControlLabel
-              checked={checked}
               className="form-control-label"
               value="Latest"
               control={<Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}className="form-checkbox"/>}
