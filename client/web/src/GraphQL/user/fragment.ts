@@ -11,6 +11,7 @@ export const USER_PERMISSION_ME_ROLE_FRAGMENT = gql`
 
 export const USER_PERMISSION_ME_FRAGMENT = gql`
   fragment UserPermissionMeInfo on UsersPermissionsMe {
+    id
     username
     email
     confirmed

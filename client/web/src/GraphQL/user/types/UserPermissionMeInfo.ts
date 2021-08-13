@@ -17,6 +17,7 @@ export interface UserPermissionMeInfo_role {
 
 export interface UserPermissionMeInfo {
   __typename: "UsersPermissionsMe";
+  id: string;
   username: string;
   email: string;
   confirmed: boolean | null;

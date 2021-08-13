@@ -7,6 +7,7 @@ import { Login, LoginVariables } from '../../../GraphQL/authentication/types/Log
 import { setAccessToken } from '../../../Services';
 import { useHistory } from 'react-router-dom';
 import { HOMEPAGE, ONBOARDING_PROFILE7 } from '../../../Routes';
+import { idMe } from '../../../ReactiveVariable/User/user';
 
 const useAuth = () => {
   const { t } = useTranslation();
@@ -35,6 +36,7 @@ const useAuth = () => {
     onCompleted: (data) => {
       if (data?.login?.jwt) {
         setAccessToken(data?.login?.jwt);
+        idMe(data.login.user.id)
         history.replace(ONBOARDING_PROFILE7);
       }
     },
