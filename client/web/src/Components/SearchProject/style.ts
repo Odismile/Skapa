@@ -4,6 +4,7 @@ export default makeStyles(
   theme => ({
     searchProject: {
       maxWidth: 320,
+      margin: "0 auto",
       "& .form-control": {
         width: "100%",
         "& .form-control-item": {
