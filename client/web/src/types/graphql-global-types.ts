@@ -12,6 +12,23 @@ export enum PublicationState {
   PREVIEW = "PREVIEW",
 }
 
+export interface ProjectInput {
+  Name?: string | null;
+  teams?: (string | null)[] | null;
+  description: string;
+  item?: string | null;
+  project_skills?: (string | null)[] | null;
+  Picture?: string | null;
+  Type?: string | null;
+  Ville?: string | null;
+  Video?: string | null;
+  Date_Start?: string | null;
+  Date_End?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface UsersPermissionsLoginInput {
   identifier: string;
   password: string;
@@ -24,6 +41,10 @@ export interface UsersPermissionsRegisterCustomInput {
   password: string;
   surname?: string | null;
   lastname?: string | null;
+}
+
+export interface createProjectInput {
+  data?: ProjectInput | null;
 }
 
 //==============================================================

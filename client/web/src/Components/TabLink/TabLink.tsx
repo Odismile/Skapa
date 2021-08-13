@@ -20,11 +20,14 @@ import {
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 import { useApolloClient } from '@apollo/client';
 import moment from 'moment';
+import { useCreateProject } from '../../Providers/ProjectProvider/useCreateProject';
+import { transformSkills } from '../../Utils/transformSkills';
 
 const TabLink = () => {
   const classes = useStyles();
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
+  const { doCreateProject, loading } = useCreateProject();
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
@@ -74,15 +77,6 @@ const TabLink = () => {
           // find the first step that has been completed
           steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
-    // console.log('  filesPictureVariable()', filesPictureVariable());
-    // console.log('  typeProjectVariable()', typeProjectVariable());
-    // console.log('   cityVariable()', cityVariable());
-    // console.log('    dateStartVariable()', dateStartVariable());
-    // console.log(' dateEndVariable()', dateEndVariable());
-    // console.log('   projectDescriptionVariable()', projectDescriptionVariable());
-    // console.log('   skillsSelectedVariable()', skillsSelectedVariable());
-    // console.log(' filesVideoVariable()', filesVideoVariable());
-    // console.log('***************************');
     if (filesPictureVariable() === null) {
       snackbar.type = 'ERROR';
       snackbar.message = 'Veuillez ajouter une image';
@@ -120,7 +114,33 @@ const TabLink = () => {
       snackbar.message = 'Veuillez entrer une video';
       displaySnackbar(client, snackbar);
     } else {
-      setActiveStep(newActiveStep);
+      doCreateProject({
+        variables: {
+          input: {
+            data: {
+              Picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                filesPictureVariable()?.[0].name
+              }`,
+              Type: typeProjectVariable(),
+              Ville: cityVariable(),
+              Date_Start: moment(dateStartVariable()).format('DD/MM/YYYY'),
+              Date_End: moment(dateEndVariable()).format('DD/MM/YYYY'),
+              description: projectDescriptionVariable(),
+              project_skills: transformSkills(skillsSelectedVariable()),
+              Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                filesVideoVariable()?.[0].name
+              }`,
+              // Name: '',
+              // teams: [],
+              // item: '',
+            },
+          },
+        },
+      }).then((result) => {
+        if (result.data?.createProject?.project?.id) {
+          setActiveStep(newActiveStep);
+        }
+      });
     }
   };
 
@@ -164,7 +184,13 @@ const TabLink = () => {
         <Box>
           <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
           <Box className={classes.Btn}>
-            <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleNext}
+              className={classes.button}
+              disabled={loading}
+            >
               {t(`createProject.next`)}
             </Button>
             <Link to="/" className="link">
