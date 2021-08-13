@@ -1,5 +1,6 @@
 import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 import useStyles from './style';
+import imgPlace from '../../Assets/images/lab.svg';
 
 const Place = () => {
   const classes = useStyles();
@@ -7,7 +8,7 @@ const Place = () => {
     <Box className={classes.box}>
       <Typography variant='h6' className="title">Place</Typography>
       <Card className={classes.root}>
-        <CardMedia className='media' image="" title="image" />
+        <CardMedia className='media' image={imgPlace} title="image" />
         <CardContent className='content'>
           <Box className='name-money'>
             <Typography className="title" component="p">

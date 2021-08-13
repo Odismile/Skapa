@@ -17,7 +17,6 @@ export default makeStyles((theme) => ({
             fontFamily: "Nunito",
             fontSize: 12,
             padding: 16,
-            height: '69px!important',
             resize: "none",
             width: "100%",
             "&::-webkit-input-placeholder": {

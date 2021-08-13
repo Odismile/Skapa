@@ -24,6 +24,7 @@ export default makeStyles(
       alignItems: 'unset',
       marginTop: 20,
       marginBottom: 20,
+      backgroundColor: 'transparent',
     },
     stepButton: {
       padding: 10,
@@ -51,6 +52,7 @@ export default makeStyles(
       flexDirection: 'column',
       width: '100%',
       alignItems: 'center',
+      marginTop: 28,
       '& .link':{
         color: '#8870FF',
         fontSize: 14,
