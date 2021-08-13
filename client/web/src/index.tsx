@@ -11,6 +11,8 @@ import GlobalSnackbar from './Components/GlobalSnackbar';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import theme from './Theme';
+import { initializeFirebase } from './Utils/firebase';
+initializeFirebase();
 
 ReactDOM.render(
   <React.StrictMode>
