@@ -13,7 +13,7 @@ import { initializeFirebase } from './Utils/firebase';
 
 const App: FC<RouteComponentProps> = (props) => {
   const { history } = props;
-  initializeFirebase()
+
 
   return (
     <>
