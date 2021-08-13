@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="20px" height="17px" viewBox="0 0 20 17" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="filter_1">
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.53333336 0 0 0 0 0.4392157 0 0 0 0 1 0 0 0 1 0" />
+    </filter>
+  </defs>
+  <g id="IconFilters">
+    <g id="sliders" transform="matrix(1 0 0 1 0 1.1723955E-13)" filter="url(#filter_1)">
+      <path d="M0.452675 6.33745L0.452675 0" transform="translate(2.2633746 9.958848)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0.452675 6.33745L0.452675 0" transform="translate(2.2633746 0)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0.452675 8.14815L0.452675 0" transform="translate(9.506173 8.148149)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0.452675 4.52675L0.452675 0" transform="translate(9.506173 -9.539694E-15)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0.452675 4.52675L0.452675 0" transform="translate(16.748972 11.769547)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0.452675 8.14815L0.452675 0" transform="translate(16.748972 0)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0 0.452675L5.4321 0.452675" transform="translate(5.5922345E-14 9.506173)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0 0.452675L5.4321 0.452675" transform="translate(7.2427983 4.0740743)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0 0.452675L5.4321 0.452675" transform="translate(14.485597 11.316873)" id="Path" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="1.2222222" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  </g>
+</svg>

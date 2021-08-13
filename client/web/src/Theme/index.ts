@@ -18,6 +18,10 @@ const theme = createMuiTheme ({
     h1: {
       fontSize: '1.75rem',
     },
+    h6:{
+      fontSize: 14,
+      fontWeight: 700,
+    }
   },
   palette: {
     primary: {
@@ -43,6 +47,7 @@ const theme = createMuiTheme ({
   overrides: {
     MuiButton: {
       root: {
+        borderRadius: 50,
         fontFamily: 'Nunito',
         fontSize: '1rem',
         fontWeight: 600,
@@ -67,6 +72,15 @@ const theme = createMuiTheme ({
         },
         '&:focus': {
           boxShadow: 'none',
+        },
+      },
+      containedSecondary: {
+        backgroundColor: '#fff',
+        color: '#7830ED',
+        fontWeight: 400,
+        '&:hover': {
+          backgroundColor: '#fff',
+          color: '#7830ED',
         },
       },
     },

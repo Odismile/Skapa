@@ -64,7 +64,10 @@
       "laguageslevel": "niveau de langues",
       "next": "Suivant",
       "skipThisStep": "Sauter cette étape",
-      "year": "Année"
+      "year": "Année",
+      "basic": "De base",
+      "intermediate": "Intermédiaire",
+      "fluente": "Courant"
     }
   }
 }

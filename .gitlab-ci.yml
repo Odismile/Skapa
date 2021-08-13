@@ -22,6 +22,25 @@ stages:
   rules:
     - if: '$CI_COMMIT_BRANCH == "develop"'
 
+#PREPROD
+.client_web_rules_preprod: &client_web_rules_preprod
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "preprod"'
+      changes:
+        - client/web/**/*
+        - .gitlab-ci.yml
+
+.strapi_rules_preprod: &strapi_rules_preprod
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "preprod"'
+      changes:
+        - server/skapa/**/*
+        - .gitlab-ci.yml
+
+.deploy_rules_preprod: &deploy_rules_preprod
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "preprod"'
+
 #---------------------------------BUILD------------------------------#
 
 .build_image: &build_image
@@ -60,6 +79,26 @@ build_strapi_dev:
     FOLDER: ./server/skapa
     ARG: '-f Dockerfile.dev'
 
+#PREPROD
+build_web_preprod:
+  <<: *build_image
+  <<: *client_web_rules_preprod
+  stage: build
+  variables:
+    IMAGE: ${CI_REGISTRY_IMAGE}/preprod/web
+    FOLDER: ./client/web/
+    ARG: '--build-arg REACT_APP_API_URL=$API_PREPROD --build-arg REACT_APP_WS_URL=$WS_PREPROD -f Dockerfile.preprod'
+    TAG: preprod
+
+build_strapi_preprod:
+  <<: *build_image
+  <<: *strapi_rules_preprod
+  variables:
+    IMAGE: ${CI_REGISTRY_IMAGE}/preprod/strapi
+    TAG: preprod
+    FOLDER: ./server/skapa
+    ARG: '-f Dockerfile.preprod'
+
 #---------------------------------DEPLOY-------------------------------#
 
 .deploy_all: &deploy_all
@@ -68,9 +107,10 @@ build_strapi_dev:
   services:
     - docker:18.09-dind
   variables:
-    USER: $USER_DEPLOYEMENT
-    HOST: $HOST_DEPLOYEMENT
-    PATH_COMPOSE: $PATH_COMPOSE
+    USER: ''
+    HOST: ''
+    PATH_COMPOSE: ''
+    COMPOSE_FILE: ''
   before_script:
     - apk update
     - apk add --update openssh-client bash
@@ -79,7 +119,7 @@ build_strapi_dev:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
-    - scp docker-compose.staging.yml ${USER}@${HOST}:${PATH_COMPOSE}/docker-compose.yml
+    - scp ${COMPOSE_FILE} ${USER}@${HOST}:${PATH_COMPOSE}/docker-compose.yml
     - ssh ${USER}@${HOST} "cd ${PATH_COMPOSE} && docker-compose pull && docker-compose up -d"
 
 #DEV
@@ -89,9 +129,22 @@ deploy_dev:
   stage: deploy
   environment: staging
   variables:
-    USER: ${DEPLOYEMENT_USER}
-    HOST: ${DEPLOYEMENT_IP_STAGING}
+    USER: ${DEPLOYMENT_USER}
+    HOST: ${DEPLOYMENT_IP_STAGING}
     PATH_COMPOSE: /root/Hairun-Project/skapa-staging
+    COMPOSE_FILE: 'docker-compose.staging.yml'
+
+#PREPROD
+deploy_preprod:
+  <<: *deploy_all
+  <<: *deploy_rules_preprod
+  stage: deploy
+  environment: preproduction
+  variables:
+    USER: ${DEPLOYMENT_USER}
+    HOST: ${DEPLOYMENT_IP_PREPROD}
+    PATH_COMPOSE: /root/Hairun-Project/skapa-preprod
+    COMPOSE_FILE: 'docker-compose.preprod.yml'
 
 
 

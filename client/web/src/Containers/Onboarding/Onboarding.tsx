@@ -35,17 +35,20 @@ const Onboarding = () => {
     {
       nameSrc: photoTuto_01,
       altSrc: 'photoTuto 01',
-      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      data:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
     {
       nameSrc: photoTuto_02,
       altSrc: 'photoTuto 02',
-      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      data:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
     {
       nameSrc: photoTuto_03,
       altSrc: 'photoTuto 03',
-      data: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      data:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
   ];
   return (
@@ -75,7 +78,7 @@ const Onboarding = () => {
         </Box>
         <Box component="footer" className={classes.footerPage}>
           <Typography className="link-footer">
-            {!endPage ? <Link to="/">Skip tutorial</Link> : <Link to="/onboarding-start">Next</Link>}
+            {!endPage ? <Link to="/onboarding-start">Skip tutorial</Link> : <Link to="/onboarding-start">Next</Link>}
           </Typography>
         </Box>
       </Box>

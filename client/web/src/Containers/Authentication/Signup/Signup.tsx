@@ -111,7 +111,6 @@ const Signup: FC<RouteComponentProps> = (props) => {
             surname: '',
             password: '',
           });
-          history.push(ONBOARDING);
         }
       });
     }
