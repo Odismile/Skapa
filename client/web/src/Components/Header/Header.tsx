@@ -47,28 +47,39 @@ const PrimaryHeader = () => {
       </Box>
     
       <Drawer
-        className={classes.drawerFilter}
+        className={classes.drawerMenu}
         anchor="left"
         open={open}
         onClose={handleDrawer}
+        BackdropProps= {
+          {className:'backDrop_menuMobile'}
+        }
         classes={{
-          paper: classes.drawerPaperFilter,
+          paper: classes.drawerPaperMenu,
+          
+        }}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
         }}
       >
-        <Box className={classes.filterList}>
+        <Box className={classes.MenuList}>
           <IconButton className="btn btn_burger" aria-label="close" onClick={handleDrawer}>
+            <Burger />
           </IconButton>
-
-          <List>
-            <ListItem><Link className="nav_link">Profil</Link></ListItem>
-            <ListItem><Link className="nav_link">My activity</Link></ListItem>
-            <ListItem><Link className="nav_link">Projects</Link></ListItem>
-            <ListItem><Link className="nav_link">Talents</Link></ListItem>
-            <ListItem><Link className="nav_link">Places</Link></ListItem>
-            <ListItem><Link className="nav_link">Wishlist</Link></ListItem>
-            <ListItem><Link className="nav_link">Coaching</Link></ListItem>
-            <ListItem><Link className="nav_link">Wallet</Link></ListItem>
+          <List className="list">
+            <ListItem disableGutters={true}><Link className="nav_link">Profil</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link">My activity</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link">Projects</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link">Talents</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link">Places</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link">Wishlist</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link">Coaching</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link">Wallet</Link></ListItem>
           </List>
+          <Button color="secondary" variant="contained" href="/project/create-project" className="btn_createProject" >Create new project</Button>
+          <Typography className="disconnect_wrap">
+            <Link className="disconnect_link">Logout</Link>
+          </Typography>
         </Box>
       </Drawer>
     </Box>

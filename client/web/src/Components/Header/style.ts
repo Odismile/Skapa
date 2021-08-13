@@ -2,6 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles (
   theme => ({
+    "@global": {
+      "* .backDrop_menuMobile": {
+        backgroundColor: "transparent"
+      },
+    },
     header_block: {
       background: theme.palette.primary.main,
       borderRadius: "0 0 15px 15px",
@@ -43,14 +48,80 @@ export default makeStyles (
         },
       },
     },
-    drawerFilter: {
-      width: 250,
+    drawerMenu: {
       
+      width: 250,
     },
-    drawerPaperFilter: {
+    drawerPaperMenu: {
+      background: "#383838",
+      padding: "20px 20px 30px",
+      width: 250,
+    },
+    MenuList: {
+      height: "100%",
+      "& .btn_burger": {
+        color: "#fff",
+        height: 20,
+        width: 20,
+        "& svg": {
+          fill: "#fff",
+        },
+      },
+      "& .list": {
+        maxHeight: "calc(100% - 165px)",
+        overflow: "hidden auto",
+        margin: "15px -20px 15px 0",
+        padding: "0 20px 0 0",
+        "& > li": {
+        },
+        "& a": {
+          color: "#fff",
+          cursor: "pointer",
+          fontSize: "1rem",
+          fontWeight: 400,
+          padding: "7px 0",
+          textDecoration: "none",
+          width: "100%",
+          "&:hover": {
+            textDecoration: "none",
+          }
+        },
+      },
+      "& .btn_createProject": {
+        borderRadius: 10,
+        display: "flex",
+        height: 60,
+        margin: "0 auto 30px",
+        maxWidth: 176,
+        width: "100%",
+      },
+      "& .disconnect_wrap": {
+        margin: 0,
+        textAlign: "center",
+        width: "100%",
+        
+      },
+      "& .disconnect_link": {
+        color: "#fff",
+        borderBottom: "1px solid #fff",
+        display: 'inline-block',
+        fontSize: "1rem",
+        fontStyle: "italic",
+        fontWeight: 400,
+        
+        paddingBottom: 5,
+        textDecoration: "none",
+      },
+      "& .MuiBackdrop-root": {
+        background: "green",
+      },
+    },
+    filterList: {
 
     },
-    filterList: {},
+    backDropMenu: {
+
+    }
   }),
   { name: "Header" }
 );
