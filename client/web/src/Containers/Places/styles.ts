@@ -219,6 +219,7 @@ export default makeStyles(
       paddingLeft: 0,
       paddingRight: 0,
       left: 4,
+      top: 3,
       '&$checked': {
         color: "#dffff2",
         transform: "translateX(22px)",
