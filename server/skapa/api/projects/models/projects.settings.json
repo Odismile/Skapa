@@ -29,6 +29,24 @@
     "project_skills": {
       "collection": "project-skills",
       "via": "project"
+    },
+    "Picture": {
+      "type": "string"
+    },
+    "Type": {
+      "type": "string"
+    },
+    "Ville": {
+      "type": "string"
+    },
+    "Video": {
+      "type": "string"
+    },
+    "Date_Start": {
+      "type": "string"
+    },
+    "Date_End": {
+      "type": "string"
     }
   }
 }
