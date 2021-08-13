@@ -15,6 +15,7 @@ export default makeStyles((theme) => ({
                 height: 168,
                 width: '100%',
                 borderRadius: 10,
+                objectFit: 'cover',
             }
         }
     },
