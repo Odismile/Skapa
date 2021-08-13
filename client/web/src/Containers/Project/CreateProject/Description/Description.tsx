@@ -1,3 +1,4 @@
+import React, { useRef, useState } from 'react';
 import { Box, IconButton, TextareaAutosize, TextField, Typography, FormControl, FormHelperText, Select, MenuItem, InputLabel  } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import { useTranslation } from 'react-i18next';
@@ -10,6 +11,7 @@ import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/use
 import useStyles from './styles';
 
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import Skeleton from 'react-loading-skeleton';
 
 const Description = () => {
   const classes = useStyles();

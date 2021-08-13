@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Checkbox, Chip, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, Checkbox, Chip, IconButton, Typography } from '@material-ui/core';
 import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
 import organisationImg from '../../Assets/images/organisation.png';
@@ -32,7 +32,10 @@ const CardTalents = () => {
                 <span>Level : </span>Junior <span>Rate : </span>318 $ / day
               </Typography>
             </Box>
-            <HeartLine color="primary" className='iconHeart'/>
+            <IconButton className="btn btn-favori">
+              <HeartLine color="primary" className='iconHeart'/>
+            </IconButton>
+            
             <img src={organisationImg} className='iconOrganisation' alt="organisation"/>
           </Box>
           <Box className="foot">

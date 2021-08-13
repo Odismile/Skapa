@@ -15,12 +15,24 @@ export default makeStyles((theme) => ({
         '& div': {
           padding: '0px 10px',
         },
-        '& .iconHeart':{
+        '& .btn-favori': {
           position: 'absolute',
           top: 0,
           right: 0,
+          '&:focus, &:hover': {
+            "& path": {
+              fill: "#8277FF",
+            }
+          }
+        },
+        '& .iconHeart':{
           width: 21,
           height: 20,
+          "& path": {
+            stroke: "#8277FF",
+            width: 21,
+            height: 20,
+          }
         },
         '& .iconOrganisation':{
           position: 'absolute',
