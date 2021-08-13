@@ -38,6 +38,14 @@
     "profile_project_types": {
       "collection": "profile-project-types",
       "via": "project_type_id"
+    },
+    "projects": {
+      "via": "item",
+      "collection": "projects"
+    },
+    "project_skills": {
+      "via": "item",
+      "collection": "project-skills"
     }
   }
 }
