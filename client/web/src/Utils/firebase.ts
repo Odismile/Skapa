@@ -10,4 +10,5 @@ export const initializeFirebase = () => {
   };
 
   firebase.initializeApp(config);
+  firebase.analytics();
 };

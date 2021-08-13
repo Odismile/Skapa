@@ -1,4 +1,4 @@
-import { storage } from 'firebase';
+import  firebase  from 'firebase';
 import {  useState } from 'react';
 import { idMe } from '../ReactiveVariable/User/user';
 
@@ -19,7 +19,7 @@ export const useUploadFile = () => {
         filesUpload.push({
           fileName: file.name,
           type: file.type.split('/')[1],
-          pathUrl: `project/profile/${idMe()}${file.name}`,
+          pathUrl: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${idMe()}${file.name}`,
         });
       }
       return filesUpload;
@@ -34,8 +34,8 @@ export const useUploadFile = () => {
         const metadata = {
           contentType: file.type,
         };
-        await storage()
-          .ref(`project/profile/${idMe()}${file.name}`)
+        await firebase.storage()
+          .ref(`${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${idMe()}${file.name}`)
           .put(file, metadata);
 
         setLoading(false);
