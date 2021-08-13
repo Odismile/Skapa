@@ -1,9 +1,28 @@
+import { Box, Button } from '@material-ui/core';
+import classNames from 'classnames';
+import CardReview from '../../Components/CardReview/CardReview';
+import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import useStyles from './styles';
 
 const ProjectContent = () => {
-
+  const classes = useStyles();
   return (
-    <>ProjectContent Page</>
+    <>
+      <SearchFilter />
+      <Box className={classes.content}>
+        <CardReview />
+        <Box className='btnContribute'>
+          <Button>Contribute</Button>
+        </Box>
+      </Box>
+
+      <Box className={classes.content}>
+        <CardReview />
+        <Box className='btnContribute'>
+          <Button>Contribute</Button>
+        </Box>
+      </Box>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, createStyles, makeStyles, Tab, Tabs, Typography } from '@material-ui/core';
 import useStyles from './styles';
 import PrimaryHeader from '../../Components/Header';
 import Talents from '../Talents/Talents';
@@ -20,6 +20,15 @@ function a11yProps(index: any) {
 }
 
 function TabPanel(props: TabPanelProps) {
+  const styleS = makeStyles({
+    content: {
+      '& >div': {
+        padding: '16px 0px',
+      },
+    },
+  });
+  const styles = styleS();
+
   const { children, value, index, ...other } = props;
 
   return (
@@ -29,6 +38,7 @@ function TabPanel(props: TabPanelProps) {
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
+      className={styles.content}
     >
       {value === index && (
         <Box p={3}>
