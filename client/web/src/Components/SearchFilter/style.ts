@@ -10,6 +10,7 @@ export default makeStyles(
         top: "14px!important",
         maxHeight: 415,
         overflowY: 'auto',
+        zIndex: 10,
       },
     },
     root: {
