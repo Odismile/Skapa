@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, IconButton, TextareaAutosize, TextField, Typography } from '@material-ui/core';
 import Skeleton from 'react-loading-skeleton';
 import EditIcon from '@material-ui/icons/Edit';
@@ -7,11 +7,28 @@ import IconPhoto from '../../../../Components/Icons/Photo/Photo';
 import TextFieldComponent from '../../../../Components/TextField/TextField';
 import useStyles from './styles';
 import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
+import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_get_language';
 
 const Description = () => {
   const classes = useStyles();
 
   const { data, loading } = useItemsGetSkills();
+
+  const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
+
+  const onClickSkill = (skill: Items_get_language_items | null) => {
+    if (skillsSelected?.length === 0) {
+      setSkillsSelected([skill]);
+    } else {
+      const findSkill = skillsSelected?.find((skillItem) => skillItem?.label === skill?.label);
+      if (findSkill) {
+        const newSkills = skillsSelected?.filter((skillItem) => skillItem?.label !== skill?.label);
+        setSkillsSelected(newSkills);
+      } else {
+        setSkillsSelected((prevState) => prevState && [...prevState, skill]);
+      }
+    }
+  };
 
   return (
     <Box className={classes.description}>
@@ -102,10 +119,14 @@ const Description = () => {
             </Box>
             <Box className="content_bloc skills_bloc" component="section">
               <Box className="selected_skills">
-                <Box className="inputGroup">
-                  <input id="Adobe_XD_selected" name="Adobe XD" type="checkbox" />
-                  <label htmlFor="Adobe_XD_selected">Adobe XD</label>
-                </Box>
+                {skillsSelected?.map((skill, index) => {
+                  return (
+                    <Box className="inputGroup" key={index}>
+                      <input id={skill?.id + 'selected'} name={skill?.label ?? ''} type="checkbox" />
+                      <label htmlFor={skill?.id + 'selected'}>{skill?.label ?? ''}</label>
+                    </Box>
+                  );
+                })}
               </Box>
               <Box className="all_skills">
                 {loading && (
@@ -118,8 +139,13 @@ const Description = () => {
                   data?.items?.map((skill, index) => {
                     return (
                       <Box className="inputGroup" key={index}>
-                        <input id={skill?.id ?? ''} name={skill?.label ?? ''} type="checkbox" />
-                        <label htmlFor="UX_Design">{skill?.label}</label>
+                        <input
+                          id={skill?.id ?? ''}
+                          name={skill?.label ?? ''}
+                          type="checkbox"
+                          onClick={() => onClickSkill(skill)}
+                        />
+                        <label htmlFor={skill?.id ?? ''}>{skill?.label}</label>
                       </Box>
                     );
                   })}
