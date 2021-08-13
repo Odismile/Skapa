@@ -66,4 +66,4 @@ services:
 networks:
   traefik:
     external:
-      name: skapa_preprod
+      name: traefik_skapa-preprod
