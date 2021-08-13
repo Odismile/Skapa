@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 import useStyles from './style';
 import imgPlace from '../../Assets/images/lab.svg';
 import Wifi from '../Icons/Wifi';
@@ -32,6 +32,11 @@ const Place = () => {
               <span>Equipement : </span>
               <Box className="icon-equipement"><Wifi className="icon" /><Photo className="icon" /><Computer className="icon" /><Cast className="icon" /></Box>
           </Typography>
+          <Box className={classes.addProject}>
+            <Button variant="contained" className={classes.button}>
+              Add to a project
+            </Button>
+          </Box>
         </CardContent>
       </Card>
     </Box>

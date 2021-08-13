@@ -1,5 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { findLastIndex } from 'lodash';
+import { relative } from 'path';
+import { Autoplay } from 'swiper';
 import imgCard from '../../Assets/images/lab.svg';
 import noir from '../../Assets/images/noir.svg';
 
@@ -24,6 +26,7 @@ export default makeStyles((theme) => ({
         '& .content': {
             marginTop: 10,
             padding: 0,
+            position: "relative",
             '& .title': {
                 fontSize: 14,
                 fontWeight: 700,
@@ -65,5 +68,17 @@ export default makeStyles((theme) => ({
                 }
             },
         }
+    },
+    addProject: {
+        position: "absolute",
+        bottom: 4,
+        right: 0,
+    },
+    button: {
+        borderRadius: 25,
+        fontSize: 12,
+        padding: "10px 15px",
+        height: "auto",
+        lineHeight: 1.5,
     }
 }));
