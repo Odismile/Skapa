@@ -1,6 +1,7 @@
 import { Box, IconButton, TextareaAutosize, TextField, Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
 import ReactPlayer from 'react-player';
 import Info from '../../../../Components/Icons/Info/Info';
@@ -14,6 +15,7 @@ const Description = () => {
   const classes = useStyles();
 
   const { data, loading } = useItemsGetSkills();
+  const { t } = useTranslation();
 
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
 
@@ -44,7 +46,6 @@ const Description = () => {
     setVideoUpload(url);
   };
 
-  console.log(`videoUpload`, videoUpload);
   return (
     <Box className={classes.description}>
       {/* upload picture */}
@@ -63,7 +64,7 @@ const Description = () => {
           ) : (
             <>
               <IconPhoto />
-              <span>Upload a picture </span>
+              <span>{t(`createProject.uploadAPicture`)}</span>
             </>
           )}
         </label>
@@ -79,21 +80,31 @@ const Description = () => {
                 <EditIcon />
               </IconButton>
               <Typography className="subTitle" variant="h3">
-                Basic informations
+                {t(`createProject.basicInformation`)}
               </Typography>
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item typeProject_item">
-                <TextFieldComponent label="Type project" id="TypeProject" placeholder="Type project" type="text" />
+                <TextFieldComponent
+                  label={t(`createProject.typeProject`)}
+                  id="TypeProject"
+                  placeholder="Type project"
+                  type="text"
+                />
               </Box>
               <Box className="field_item">
-                <TextFieldComponent label="Ville" id="VilleProject" placeholder="Ville " type="text" />
+                <TextFieldComponent
+                  label={t(`createProject.city`)}
+                  id="VilleProject"
+                  placeholder="Ville "
+                  type="text"
+                />
               </Box>
               <Box className="grid_field">
                 <Box className="field_item field_date">
                   <TextField
                     id="dateStarts"
-                    label="Starts"
+                    label={t(`createProject.starts`)}
                     type="date"
                     defaultValue="12/05/21"
                     className="input_date"
@@ -112,7 +123,7 @@ const Description = () => {
 
                   <TextField
                     id="dateEnd"
-                    label="Ends"
+                    label={t(`createProject.end`)}
                     type="date"
                     defaultValue="12/05/21"
                     className="input_date"
@@ -126,7 +137,7 @@ const Description = () => {
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Project description</Typography>
+              <Typography variant="h2">{t(`createProject.projectDescription`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
@@ -140,7 +151,7 @@ const Description = () => {
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Skills recquired</Typography>
+              <Typography variant="h2">{t(`createProject.skillsRecquired`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
@@ -182,7 +193,7 @@ const Description = () => {
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Video Pitch</Typography>
+              <Typography variant="h2">{t(`createProject.videoPitch`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
@@ -210,7 +221,7 @@ const Description = () => {
                     <>
                       <IconPhoto />
                       <span>
-                        Upload a video <br />
+                        {t(`createProject.uploadAVideo`)} <br />
                         (youtube, mp4.)
                       </span>
                     </>

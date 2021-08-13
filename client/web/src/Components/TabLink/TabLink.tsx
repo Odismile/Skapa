@@ -6,12 +6,14 @@ import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
 import Team from '../../Containers/Project/CreateProject/Team/Team';
 import useStyles from './style';
+import { useTranslation } from 'react-i18next';
 
 const TabLink = () => {
   const classes = useStyles();
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
+  const { t } = useTranslation();
 
   const getSteps = () => {
     return ['Description', 'Team', 'Places', 'Review'];
@@ -101,10 +103,10 @@ const TabLink = () => {
           <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
           <Box className={classes.Btn}>
             <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
-              Next
+              {t(`createProject.next`)}
             </Button>
             <Link to="/" className="link">
-              Skip this step
+              {t(`createProject.skipThisStep`)}
             </Link>
           </Box>
         </Box>
