@@ -65,9 +65,23 @@
       "next": "Suivant",
       "skipThisStep": "Sauter cette étape",
       "year": "Année",
-      "basic": "De base",
-      "intermediate": "Intermédiaire",
-      "fluente": "Courant"
+      "basic":"De base",
+      "intermediate":"Intermédiaire",
+      "fluente":"Courant"
+    },
+    "createProject":{
+      "uploadAPicture":"Télécharger une image",
+      "basicInformation":"Informations de base",
+      "typeProject": "Type de projet",
+      "city":"Ville",
+      "starts":"Départs",
+      "end":"Finir",
+      "projectDescription":"Description du projet",
+      "skillsRecquired":"Compétences requises",
+      "videoPitch":"Pitch vidéo",
+      "uploadAVideo": "Télécharger une vidéo",
+      "next":"Suivant",
+      "skipThisStep":"Passer cette étape"
     }
   }
 }

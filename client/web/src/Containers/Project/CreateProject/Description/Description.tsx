@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
 import { Box, IconButton, TextareaAutosize, TextField, Typography } from '@material-ui/core';
-import Skeleton from 'react-loading-skeleton';
 import EditIcon from '@material-ui/icons/Edit';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import Skeleton from 'react-loading-skeleton';
+import ReactPlayer from 'react-player';
 import Info from '../../../../Components/Icons/Info/Info';
 import IconPhoto from '../../../../Components/Icons/Photo/Photo';
 import TextFieldComponent from '../../../../Components/TextField/TextField';
-import useStyles from './styles';
-import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_get_language';
+import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
+import useStyles from './styles';
 
 const Description = () => {
   const classes = useStyles();
 
   const { data, loading } = useItemsGetSkills();
+  const { t } = useTranslation();
 
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
+
+  const [fileUpload, setFileUpload] = useState('');
+  const [videoUpload, setVideoUpload] = useState('');
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
@@ -30,14 +36,37 @@ const Description = () => {
     }
   };
 
+  const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    setFileUpload(url);
+  };
+
+  const onUploadVideoFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    setVideoUpload(url);
+  };
+
   return (
     <Box className={classes.description}>
       {/* upload picture */}
-      <Box className="upload_bloc">
-        <input accept="image/*" className="upload_picture" id="contained-button-file" multiple type="file" />
-        <label htmlFor="contained-button-file" className="upload_content">
-          <IconPhoto />
-          <span>Upload a picture </span>
+      <Box className="upload_bloc" key={'1'}>
+        <input
+          accept="image/*"
+          className="upload_picture"
+          id="contained-button-file-picture"
+          multiple
+          type="file"
+          onChange={(e) => onUploadFile(e)}
+        />
+        <label htmlFor="contained-button-file-picture" className="upload_content">
+          {fileUpload.length !== 0 ? (
+            <img src={fileUpload} className={classes.imageUpload} />
+          ) : (
+            <>
+              <IconPhoto />
+              <span>{t(`createProject.uploadAPicture`)}</span>
+            </>
+          )}
         </label>
       </Box>
 
@@ -51,21 +80,31 @@ const Description = () => {
                 <EditIcon />
               </IconButton>
               <Typography className="subTitle" variant="h3">
-                Basic informations
+                {t(`createProject.basicInformation`)}
               </Typography>
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item typeProject_item">
-                <TextFieldComponent label="Type project" id="TypeProject" placeholder="Type project" type="text" />
+                <TextFieldComponent
+                  label={t(`createProject.typeProject`)}
+                  id="TypeProject"
+                  placeholder="Type project"
+                  type="text"
+                />
               </Box>
               <Box className="field_item">
-                <TextFieldComponent label="Ville" id="VilleProject" placeholder="Ville " type="text" />
+                <TextFieldComponent
+                  label={t(`createProject.city`)}
+                  id="VilleProject"
+                  placeholder="Ville "
+                  type="text"
+                />
               </Box>
               <Box className="grid_field">
                 <Box className="field_item field_date">
                   <TextField
                     id="dateStarts"
-                    label="Starts"
+                    label={t(`createProject.starts`)}
                     type="date"
                     defaultValue="12/05/21"
                     className="input_date"
@@ -84,7 +123,7 @@ const Description = () => {
 
                   <TextField
                     id="dateEnd"
-                    label="Ends"
+                    label={t(`createProject.end`)}
                     type="date"
                     defaultValue="12/05/21"
                     className="input_date"
@@ -98,7 +137,7 @@ const Description = () => {
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Project description</Typography>
+              <Typography variant="h2">{t(`createProject.projectDescription`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
@@ -112,7 +151,7 @@ const Description = () => {
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Skills recquired</Typography>
+              <Typography variant="h2">{t(`createProject.skillsRecquired`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
@@ -154,20 +193,39 @@ const Description = () => {
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Video Pitch</Typography>
+              <Typography variant="h2">{t(`createProject.videoPitch`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
               <Box className="upload_bloc">
-                <input accept="videos/*" className="upload_picture" id="contained-button-file" multiple type="file" />
-                <label htmlFor="contained-button-file" className="upload_content">
-                  <IconPhoto />
-                  <span>
-                    Upload a video <br />
-                    (youtube, mp4.)
-                  </span>
+                <input
+                  accept="video/*"
+                  className="upload_picture"
+                  id="contained-button-file-video"
+                  type="file"
+                  onChange={onUploadVideoFile}
+                />
+                <label htmlFor="contained-button-file-video" className="upload_content">
+                  {videoUpload.length !== 0 ? (
+                    <ReactPlayer
+                      url={videoUpload}
+                      className={classes.imageUpload}
+                      width={'150px'}
+                      height={'100px'}
+                      playing={true}
+                      controls={true}
+                    />
+                  ) : (
+                    <>
+                      <IconPhoto />
+                      <span>
+                        {t(`createProject.uploadAVideo`)} <br />
+                        (youtube, mp4.)
+                      </span>
+                    </>
+                  )}
                 </label>
               </Box>
             </Box>

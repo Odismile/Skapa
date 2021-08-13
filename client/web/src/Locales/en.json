@@ -65,9 +65,23 @@
       "next": "Next",
       "skipThisStep": "Skip this step",
       "year": "Year",
-      "basic": "basic",
-      "intermediate": "Intermediate",
-      "fluente": "Fluente"
+      "basic":"basic",
+      "intermediate":"Intermediate",
+      "fluente":"Fluente"
+    },
+    "createProject":{
+      "uploadAPicture":"Upload a picture",
+      "basicInformation":"Basic information",
+      "typeProject": "Type project",
+      "city":"City",
+      "starts":"Starts",
+      "end":"End",
+      "projectDescription":"Project description",
+      "skillsRecquired":"Skills recquired",
+      "videoPitch":"Video Pitch",
+      "uploadAVideo": "Upload a video",
+      "next":"Next",
+      "skipThisStep":"Skip this step"
     }
   }
 }

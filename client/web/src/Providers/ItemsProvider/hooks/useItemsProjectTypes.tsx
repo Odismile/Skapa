@@ -4,7 +4,7 @@ import { ITEMS_GET_LANGUAGE } from '../../../GraphQL/items/query';
 import { Items_get_language, Items_get_languageVariables } from '../../../GraphQL/items/types/Items_get_language';
 import { displaySnackbar, InitSnackbarData } from '../../../Utils';
 
-export const useItemsGetYear = () => {
+export const useItemsProjectTypes = () => {
   const { t } = useTranslation();
 
   const snackbar = InitSnackbarData;
@@ -21,7 +21,7 @@ export const useItemsGetYear = () => {
       }
       return;
     },
-    variables: { where: { type: 'JOB_SENIORITY' } },
+    variables: { where: { type: 'PROJECT_TYPES' } },
   });
   return { data, loading };
 };
