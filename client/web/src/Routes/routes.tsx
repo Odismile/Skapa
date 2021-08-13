@@ -10,6 +10,7 @@ import OnboardingProfileTwo from '../Containers/OnboardingProfileTwo/OnboardingP
 import OnboardingProfileSix from '../Containers/OnboardingProfileSix/OnboardingProfileSix';
 import Project from '../Containers/Project';
 import CreateProject from '../Containers/Project/CreateProject';
+import CreateProjectCongrats from '../Containers/Project/CreateProject/Congrats';
 import OnboardingProfileThree from '../Containers/OnboardingProfileThree/OnboardingProfileThree';
 import OnboardingProfileFour from '../Containers/OnboardingProfileFour/OnboardingProfileFour';
 import OnboardingProfileSeven from '../Containers/OnboardingProfileSeven/OnboardingProfileSeven';
@@ -25,6 +26,7 @@ export const ONBOARDING_PROFILE2 = '/onboarding-profile2';
 export const ONBOARDING_PROFILE6 = '/onboarding-profile6';
 export const PROJECT = '/project';
 export const CREATE_PROJECT = '/project/create-project';
+export const CREATE_PROJECT_CONGRATS = '/project/create-project/congrats';
 export const ONBOARDING_PROFILE3 = '/onboarding-profile3';
 export const ONBOARDING_PROFILE4 = '/onboarding-profile4';
 export const ONBOARDING_PROFILE7 = '/onboarding-splashscreen1';
@@ -131,5 +133,12 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: OnboardingSplashScreen,
+  },
+  {
+    key: 'CREATE_PROJECT_CONGRATS',
+    route: CREATE_PROJECT_CONGRATS,
+    roles: [],
+    private: false,
+    component: CreateProjectCongrats,
   },
 ];
