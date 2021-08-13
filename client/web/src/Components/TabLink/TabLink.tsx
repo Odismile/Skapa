@@ -79,39 +79,39 @@ const TabLink = () => {
         : activeStep + 1;
     if (filesPictureVariable() === null) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'Veuillez ajouter une image';
+      snackbar.message = t(`createProjectError.picture`);
       displaySnackbar(client, snackbar);
     } else if (typeProjectVariable().trim().length === 0) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'Veuillez selectionner une type de projet';
+      snackbar.message = t(`createProjectError.typeProject`);
       displaySnackbar(client, snackbar);
     } else if (cityVariable().trim().length === 0) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'Veuillez entrer une ville';
+      snackbar.message = t(`createProjectError.city`);
       displaySnackbar(client, snackbar);
     } else if (dateStartVariable() === null) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'Veuillez entrer une date de debut';
+      snackbar.message = t(`createProjectError.start`);
       displaySnackbar(client, snackbar);
     } else if (dateEndVariable() === null) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'Veuillez entrer une date fin';
+      snackbar.message = t(`createProjectError.end`);
       displaySnackbar(client, snackbar);
     } else if (moment(dateStartVariable()).format('dd-MM-YYYY') > moment(dateEndVariable()).format('dd-MM-YYYY')) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'La date de debut du projet est superieur a la date du fin';
+      snackbar.message = t(`createProjectError.invalidDate`);
       displaySnackbar(client, snackbar);
     } else if (projectDescriptionVariable().trim().length === 0) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'Veuillez entrer une description';
+      snackbar.message = t(`createProjectError.description`);
       displaySnackbar(client, snackbar);
     } else if (skillsSelectedVariable() === null) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'Veuillez selectionner un ou plusieurs skills';
+      snackbar.message = t(`createProjectError.skills`);
       displaySnackbar(client, snackbar);
     } else if (filesVideoVariable() === null) {
       snackbar.type = 'ERROR';
-      snackbar.message = 'Veuillez entrer une video';
+      snackbar.message = t(`createProjectError.video`);
       displaySnackbar(client, snackbar);
     } else {
       doCreateProject({

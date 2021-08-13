@@ -1,7 +1,7 @@
-import  firebase  from 'firebase';
-import {  useState } from 'react';
-import { idMe } from '../ReactiveVariable/User/user';
-
+import { useApolloClient } from '@apollo/client';
+import firebase from 'firebase';
+import { useState } from 'react';
+import { displaySnackbar, InitSnackbarData } from './Snackbar';
 
 export interface Files {
   fileName?: string | null;
@@ -12,6 +12,9 @@ export interface Files {
 export const useUploadFile = () => {
   const [loading, setLoading] = useState(false);
 
+  const snackbar = InitSnackbarData;
+  const client = useApolloClient();
+
   const getFiles = async (files: File[] | null) => {
     const filesUpload: Files[] = [];
     if (files) {
@@ -19,7 +22,7 @@ export const useUploadFile = () => {
         filesUpload.push({
           fileName: file.name,
           type: file.type.split('/')[1],
-          pathUrl: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem("idMe")}/${file.name}`,
+          pathUrl: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${file.name}`,
         });
       }
       return filesUpload;
@@ -28,18 +31,25 @@ export const useUploadFile = () => {
   };
 
   const uploadFile = async (files: File[] | null) => {
-    if (files !== null) {
-      for (const file of files) {
-        setLoading(true);
-        const metadata = {
-          contentType: file.type,
-        };
-        await firebase.storage()
-          .ref(`${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem("idMe")}/${file.name}`)
-          .put(file, metadata);
+    try {
+      if (files !== null) {
+        for (const file of files) {
+          setLoading(true);
+          const metadata = {
+            contentType: file.type,
+          };
+          await firebase
+            .storage()
+            .ref(`${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${file.name}`)
+            .put(file, metadata);
 
-        setLoading(false);
+          setLoading(false);
+        }
       }
+    } catch (error) {
+      snackbar.type = 'ERROR';
+      snackbar.message = error;
+      displaySnackbar(client, snackbar);
     }
   };
 

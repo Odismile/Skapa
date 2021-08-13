@@ -82,6 +82,17 @@
       "uploadAVideo": "Upload a video",
       "next":"Next",
       "skipThisStep":"Skip this step"
+    },
+    "createProjectError":{
+      "picture":"Please add a picture",
+      "typeProject":"Please select a type of project",
+      "city":"Please enter a city",
+      "start":"Please enter a start date",
+      "end":"Please enter an end date",
+      "invalidDate":"The start date of the project is greater than the end date",
+      "description":"Please enter a description",
+      "skills":"Please select one or more skills",
+      "video":"Please enter a video"
     }
   }
 }
