@@ -1,4 +1,6 @@
-import { Box, IconButton, TextareaAutosize, TextField, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Box, IconButton, TextareaAutosize, TextField, Typography, FormControl, FormHelperText, Select, MenuItem, InputLabel  } from '@material-ui/core';
+import Skeleton from 'react-loading-skeleton';
 import EditIcon from '@material-ui/icons/Edit';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,8 +13,16 @@ import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_
 import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import useStyles from './styles';
 
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+
 const Description = () => {
   const classes = useStyles();
+
+  const [age, setAge] = React.useState('');
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setAge(event.target.value as string);
+  };
+
 
   const { data, loading } = useItemsGetSkills();
   const { t } = useTranslation();
@@ -84,13 +94,39 @@ const Description = () => {
               </Typography>
             </Box>
             <Box className="content_bloc" component="section">
-              <Box className="field_item typeProject_item">
-                <TextFieldComponent
-                  label={t(`createProject.typeProject`)}
-                  id="TypeProject"
-                  placeholder="Type project"
-                  type="text"
-                />
+              <Box className="field_item typeProject_item selectBox_item">
+                <InputLabel shrink>Type project</InputLabel>
+                <Select
+                  defaultValue="Type project"
+                  fullWidth
+                  className="selectBox"
+                  IconComponent= {KeyboardArrowDownIcon}
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: "bottom",
+                      horizontal: "left"
+                    },
+                    transformOrigin: {
+                      vertical: "top",
+                      horizontal: "left"
+                    },
+                    getContentAnchorEl: null
+                  }} >
+                    <MenuItem selected >Type project 1</MenuItem>
+                    <MenuItem value={1}>Type project 2</MenuItem>
+                    <MenuItem value={2}>Type project 3</MenuItem>
+                </Select>
+              {/* <TextField 
+                select 
+                fullWidth 
+                variant="outlined" 
+                Men
+              >
+                <MenuItem value=""><em>None</em></MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </TextField> */}
               </Box>
               <Box className="field_item">
                 <TextFieldComponent

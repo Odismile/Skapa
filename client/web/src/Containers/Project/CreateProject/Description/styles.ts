@@ -148,7 +148,24 @@ export default makeStyles(
         '& .typeProject_item': {
           maxWidth: 107,
         },
-        '& .grid_field': {
+        "& .selectBox_item": {
+          "& > label": {
+          },
+          "& .selectBox": {
+            border: 'solid 1px #dfdfdf',
+            boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
+            borderRadius: 25,
+            fontSize: 12,
+            padding: "0 10px",
+            "&:before, &:after": {
+              display: "none",
+            },
+            "& svg": {
+              
+            },
+          },
+        },
+        "& .grid_field": {
           display: 'flex',
           alignItems: 'center',
           '& .field_item': {
