@@ -14,8 +14,6 @@ export const useItemsGetYear = () => {
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
 
-      console.log(`errorMessage item language provider`, errorMessage);
-
       if (errorMessage === undefined) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`errorMessage.${errorMessage}`);
