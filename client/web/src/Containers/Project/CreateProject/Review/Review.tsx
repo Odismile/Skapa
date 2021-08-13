@@ -10,6 +10,7 @@ import Tags from '../../../../Components/Tags/Tags';
 import Presentation from '../../../../Components/Presentation/Presentation';
 import Pitch from '../../../../Components/Pitch/Pitch';
 import Place from '../../../../Components/Place/Place';
+import CardTalents from '../../../../Components/CardTalents/CardTalents';
 
 
 
@@ -23,6 +24,7 @@ const Review = () => {
       <Presentation/>
       <Tags/>
       <Place/>
+      <CardTalents/>
     </Box>
   );
 };
