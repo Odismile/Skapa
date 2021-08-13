@@ -226,6 +226,9 @@ export default makeStyles(
       '&$checked + $track': {
         backgroundColor: "#5bd3a0",
       },
+      '&$checked + $thumb': {
+        backgroundColor: "red",
+      },
     },
     checked: {},
     track: {
