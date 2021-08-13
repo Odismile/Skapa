@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { findLastIndex } from 'lodash';
 import imgCard from '../../Assets/images/lab.svg';
 import noir from '../../Assets/images/noir.svg';
 
@@ -42,12 +43,25 @@ export default makeStyles((theme) => ({
                 justifyContent: 'space-between',
                 alignItems: 'center',
             },
-            '& .location': {
+            '& p': {
                 fontSize: 10,
                 color: '#000000',
-                marginBottom: 0,
+                marginBottom: 5,
                 '& span': {
                     fontWeight: 700,
+                },
+                '&.equipement': {
+                    display: "flex",
+                    alignItems: "center",
+                    "& .icon-equipement" : {
+                        display: "flex",
+                        alignItems: "center",
+                        marginLeft: 7,
+                        "& .icon": {
+                            marginRight: 5,
+                            height: 12,
+                        }
+                    }
                 }
             },
         }
