@@ -1,18 +1,10 @@
-import React, { useRef, useState } from 'react';
-import { Box, Button, Container, Typography, IconButton, TextField, InputAdornment, TextareaAutosize } from "@material-ui/core";
-import { DatePicker } from "@material-ui/pickers";
-import { Link } from 'react-router-dom';
-import classNames from "classnames";
-
-import TextFieldComponent from '../../../../Components/TextField/TextField';
-import IconPhoto from '../../../../Components/Icons/Photo/Photo';
-import Calendar from '../../../../Components/Icons/Calendar/Calendar';
-import Info from '../../../../Components/Icons/Info/Info';
+import React from 'react';
+import { Box, IconButton, TextareaAutosize, TextField, Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
-
-import useStyles from "./styles";
-
-
+import Info from '../../../../Components/Icons/Info/Info';
+import IconPhoto from '../../../../Components/Icons/Photo/Photo';
+import TextFieldComponent from '../../../../Components/TextField/TextField';
+import useStyles from './styles';
 
 const Description = () => {
   const classes = useStyles();
@@ -20,28 +12,25 @@ const Description = () => {
     <Box className={classes.description}>
       {/* upload picture */}
       <Box className="upload_bloc">
-        <input
-          accept="image/*"
-          className="upload_picture"
-          id="contained-button-file"
-          multiple
-          type="file"
-        />
+        <input accept="image/*" className="upload_picture" id="contained-button-file" multiple type="file" />
         <label htmlFor="contained-button-file" className="upload_content">
-            <IconPhoto /><span>Upload a picture </span>
+          <IconPhoto />
+          <span>Upload a picture </span>
         </label>
       </Box>
-      
+
       {/* Forms content */}
       <Box className="form_bloc">
         <form className="formDescription">
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Lorem Ipsum Sit Amet  </Typography>
+              <Typography variant="h2">Lorem Ipsum Sit Amet </Typography>
               <IconButton aria-label="edit" className="btn_edit btn_title">
-                <EditIcon/>
+                <EditIcon />
               </IconButton>
-              <Typography className="subTitle" variant="h3">Basic informations</Typography>
+              <Typography className="subTitle" variant="h3">
+                Basic informations
+              </Typography>
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item typeProject_item">
@@ -64,7 +53,6 @@ const Description = () => {
                   />
                 </Box>
                 <Box className="field_item field_date">
-
                   {/* <DatePicker
                     label="Basic example"
                     value={selectedDate}
@@ -95,19 +83,14 @@ const Description = () => {
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item textarea_item">
-                <TextareaAutosize
-                  minRows="8"
-                  className="textarea_input"
-                  placeholder="Lorem Ipsum"
-                  defaultValue=""
-                />
+                <TextareaAutosize minRows="8" className="textarea_input" placeholder="Lorem Ipsum" defaultValue="" />
                 <Typography className="textLeft">0/240 symbols</Typography>
               </Box>
             </Box>
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Project description</Typography>
+              <Typography variant="h2">Skills recquired</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
@@ -119,7 +102,7 @@ const Description = () => {
                   <label htmlFor="Adobe_XD_selected">Adobe XD</label>
                 </Box>
               </Box>
-              <Box className="all_skills">
+              {/* <Box className="all_skills">
                 <Box className="inputGroup selected">
                   <input id="Adobe_XD" name="Adobe XD" type="checkbox" />
                   <label htmlFor="Adobe_XD">Adobe XD</label>
@@ -180,8 +163,7 @@ const Description = () => {
                   <input id="Photoshop_2" name="Photoshop" type="checkbox" />
                   <label htmlFor="Photoshop_2">Photoshop</label>
                 </Box>
-
-              </Box>
+              </Box> */}
             </Box>
           </Box>
           <Box className="item_bloc">
@@ -192,18 +174,16 @@ const Description = () => {
               </IconButton>
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
-            <Box className="upload_bloc">
-              <input
-                accept="videos/*"
-                className="upload_picture"
-                id="contained-button-file"
-                multiple
-                type="file"
-              />
-              <label htmlFor="contained-button-file" className="upload_content">
-                <IconPhoto /><span>Upload a video <br />(youtube, mp4.)</span>
-              </label>
-            </Box>
+              <Box className="upload_bloc">
+                <input accept="videos/*" className="upload_picture" id="contained-button-file" multiple type="file" />
+                <label htmlFor="contained-button-file" className="upload_content">
+                  <IconPhoto />
+                  <span>
+                    Upload a video <br />
+                    (youtube, mp4.)
+                  </span>
+                </label>
+              </Box>
             </Box>
           </Box>
         </form>
