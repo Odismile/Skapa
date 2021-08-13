@@ -4,8 +4,8 @@ export default makeStyles(
   theme => ({
     mainPage: { },
     mainContainer: {
-      paddingLeft: 30,
-      paddingRight: 30,
+      paddingLeft: 20,
+      paddingRight: 20,
       paddingBottom: 30,
     },
   }),
