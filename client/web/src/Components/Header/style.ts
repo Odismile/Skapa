@@ -49,8 +49,10 @@ export default makeStyles (
       },
     },
     drawerMenu: {
-      
       width: 250,
+      "@media(min-width: 640px)": {
+        width: 300,
+      },
     },
     drawerPaperMenu: {
       background: "#383838",
