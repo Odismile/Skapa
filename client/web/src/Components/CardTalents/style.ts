@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { Autoplay } from 'swiper';
 
 export default makeStyles((theme) => ({
   root: {
@@ -40,6 +41,30 @@ export default makeStyles((theme) => ({
         marginLeft: 12,
         color: '#5BD3A0',
         fontWeight: 600,
+        display: "flex",
+        alignItems: "center",
+        '&.recommanded': {
+          color: '#5bd3a0',
+          "& svg ": {
+            height: 12,
+            width: "auto",
+            paddingRight: 5,
+            "& path": {
+              stroke: "#5bd3a0",
+            }
+          }
+        },
+        '&.top-rated': {
+          color: '#E30057',
+          "& svg ": {
+            height: 12,
+            paddingRight: 5,
+            width: "auto",
+            "& path": {
+              stroke: "#E30057",
+            }
+          }
+        }
       },
       '& .name-adress': {
         fontSize: 10,
@@ -82,4 +107,12 @@ export default makeStyles((theme) => ({
       },
     },
   },
+  check: {
+    "& .checkbox": {
+        width: 20,
+        height: 20,
+        borderRadius: 5,
+        color: "#8870FF",
+    }
+},
 }));
