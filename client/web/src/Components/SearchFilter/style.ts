@@ -4,9 +4,11 @@ export default makeStyles(
   theme => ({
     "@global" :{
       "#simple-popper" :{
-      width: '100%',
-      border: '1px solid #000'
-    },
+        width: '100%',
+        padding: "0px 20px",
+        background: "#ffffff",
+        top: "14px!important",
+      },
     },
     root: {
       display: 'flex',
