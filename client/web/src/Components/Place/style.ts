@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
         padding: '7px 10px',
         '& .media': {
             height: 75,
-            backgroundColor: '#a1a1a1',
+            // backgroundColor: '#a1a1a1',
             borderRadius: 10,
         },
         '& .content': {
