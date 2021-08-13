@@ -1,9 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { findLastIndex } from 'lodash';
-import { relative } from 'path';
-import { Autoplay } from 'swiper';
-import imgCard from '../../Assets/images/lab.svg';
-import noir from '../../Assets/images/noir.svg';
 
 export default makeStyles((theme) => ({
     box: {
@@ -18,10 +13,46 @@ export default makeStyles((theme) => ({
         border: '1px solid #F4F4F4',
         borderRadius: 12,
         padding: '7px 10px',
+        position: "relative",
         '& .media': {
             height: 75,
-            // backgroundColor: '#a1a1a1',
             borderRadius: 10,
+            position: "relative",
+            "& .bitmap": {
+                position: "absolute",
+                top: 6,
+                left: 6,
+                zIndex: 10,
+            },
+            "& .bitmap-image": {
+                width: 24,
+                height: 24,
+                borderRadius: "50%",
+                background: "#D8D8D8",
+                display: "flex",
+                alignItems:  "center",
+                justifyContent: "center",
+                border: "2px solid #fff",
+                margin: 0,
+                padding: 0,
+            },
+            "& .btn-favori": {
+                position: "absolute",
+                top: 6,
+                right: 6,
+                zIndex: 10,
+                padding: 0,
+                "&:focus, &:hover": {
+                    "& svg": {
+                        fill: "#ffffff",
+                    }
+                  },
+                "& svg": {
+                    fill: "#ffffff",
+                    width: 20,
+                    height: 20,
+                }
+            }
         },
         '& .content': {
             marginTop: 10,
@@ -85,6 +116,17 @@ export default makeStyles((theme) => ({
         position: "absolute",
         bottom: 4,
         right: 0,
+    },
+    check: {
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        "& .checkbox": {
+            width: 20,
+            height: 20,
+            borderRadius: 5,
+            color: "#8870FF",
+        }
     },
     button: {
         borderRadius: 25,
