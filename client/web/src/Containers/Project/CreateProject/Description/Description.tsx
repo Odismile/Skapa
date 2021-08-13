@@ -27,26 +27,19 @@ import useStyles from './styles';
 
 const Description = () => {
   const classes = useStyles();
-
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
-  };
+  const { t } = useTranslation();
 
   const { uploadFile } = useUploadFile();
   const { data, loading } = useItemsGetSkills();
   const { data: dataProjectType } = useItemsProjectTypes();
-
-  const { t } = useTranslation();
 
   const [fileUpload, setFileUpload] = useState('');
   const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
 
   const [typeProject, setTypeProject] = useState('');
   const [city, setCity] = useState('');
-  const [dateStart, setdateStart] = useState(new Date());
-  const [dateEnd, setDateEnd] = useState(new Date());
+  const [dateStart, setdateStart] = useState<Date | null>();
+  const [dateEnd, setDateEnd] = useState<Date | null>();
   const [projectDescription, setProjectDescription] = useState('');
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
 
@@ -105,6 +98,8 @@ const Description = () => {
     setFilesVideo(filesConcat);
     setVideoUpload(url);
   };
+
+  console.log('dateStart', dateStart);
 
   return (
     <Box className={classes.description}>
