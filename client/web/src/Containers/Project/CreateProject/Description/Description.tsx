@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
 import { Box, IconButton, TextareaAutosize, TextField, Typography, FormControl, FormHelperText, Select, MenuItem, InputLabel  } from '@material-ui/core';
-import Skeleton from 'react-loading-skeleton';
 import EditIcon from '@material-ui/icons/Edit';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
