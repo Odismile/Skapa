@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
 import { Box, IconButton, TextareaAutosize, TextField, Typography } from '@material-ui/core';
-import Skeleton from 'react-loading-skeleton';
 import EditIcon from '@material-ui/icons/Edit';
+import React, { useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import ReactPlayer from 'react-player';
 import Info from '../../../../Components/Icons/Info/Info';
 import IconPhoto from '../../../../Components/Icons/Photo/Photo';
 import TextFieldComponent from '../../../../Components/TextField/TextField';
-import useStyles from './styles';
-import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_get_language';
+import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
+import useStyles from './styles';
 
 const Description = () => {
   const classes = useStyles();
@@ -15,6 +16,9 @@ const Description = () => {
   const { data, loading } = useItemsGetSkills();
 
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
+
+  const [fileUpload, setFileUpload] = useState('');
+  const [videoUpload, setVideoUpload] = useState('');
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
@@ -30,14 +34,38 @@ const Description = () => {
     }
   };
 
+  const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    setFileUpload(url);
+  };
+
+  const onUploadVideoFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    setVideoUpload(url);
+  };
+
+  console.log(`videoUpload`, videoUpload);
   return (
     <Box className={classes.description}>
       {/* upload picture */}
-      <Box className="upload_bloc">
-        <input accept="image/*" className="upload_picture" id="contained-button-file" multiple type="file" />
-        <label htmlFor="contained-button-file" className="upload_content">
-          <IconPhoto />
-          <span>Upload a picture </span>
+      <Box className="upload_bloc" key={'1'}>
+        <input
+          accept="image/*"
+          className="upload_picture"
+          id="contained-button-file-picture"
+          multiple
+          type="file"
+          onChange={(e) => onUploadFile(e)}
+        />
+        <label htmlFor="contained-button-file-picture" className="upload_content">
+          {fileUpload.length !== 0 ? (
+            <img src={fileUpload} className={classes.imageUpload} />
+          ) : (
+            <>
+              <IconPhoto />
+              <span>Upload a picture </span>
+            </>
+          )}
         </label>
       </Box>
 
@@ -161,13 +189,32 @@ const Description = () => {
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
               <Box className="upload_bloc">
-                <input accept="videos/*" className="upload_picture" id="contained-button-file" multiple type="file" />
-                <label htmlFor="contained-button-file" className="upload_content">
-                  <IconPhoto />
-                  <span>
-                    Upload a video <br />
-                    (youtube, mp4.)
-                  </span>
+                <input
+                  accept="video/*"
+                  className="upload_picture"
+                  id="contained-button-file-video"
+                  type="file"
+                  onChange={onUploadVideoFile}
+                />
+                <label htmlFor="contained-button-file-video" className="upload_content">
+                  {videoUpload.length !== 0 ? (
+                    <ReactPlayer
+                      url={videoUpload}
+                      className={classes.imageUpload}
+                      width={'150px'}
+                      height={'100px'}
+                      playing={true}
+                      controls={true}
+                    />
+                  ) : (
+                    <>
+                      <IconPhoto />
+                      <span>
+                        Upload a video <br />
+                        (youtube, mp4.)
+                      </span>
+                    </>
+                  )}
                 </label>
               </Box>
             </Box>
