@@ -1,8 +1,6 @@
 import { Box, IconButton, TextareaAutosize, TextField, Typography, FormControl, FormHelperText, Select, MenuItem, InputLabel  } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
-import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Skeleton from 'react-loading-skeleton';
 import ReactPlayer from 'react-player';
 import Info from '../../../../Components/Icons/Info/Info';
 import IconPhoto from '../../../../Components/Icons/Photo/Photo';
