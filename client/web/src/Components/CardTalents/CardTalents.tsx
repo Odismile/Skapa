@@ -1,8 +1,9 @@
-import { Box, Button, Card, CardContent, Chip, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, Checkbox, Chip, IconButton, Typography } from '@material-ui/core';
 import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
 import organisationImg from '../../Assets/images/organisation.png';
 import HeartLine from '../Icons/HeartLine';
+import Rate from '../Icons/Rate';
 
 const CardTalents = () => {
   const classes = useStyles();
@@ -16,9 +17,14 @@ const CardTalents = () => {
               <Typography component="h6" variant="h6">
                 UX Designer
               </Typography>
-              <Typography component="p" className="note">
-                RECOMMANDED
+              {/* recommended */}
+              <Typography component="p" className="note recommanded">
+               <Rate /> RECOMMANDED
               </Typography>
+              {/* top rated */}
+              {/* <Typography component="p" className="note top-rated">
+               <Rate /> TOP RATED
+              </Typography> */}
               <Typography component="p" className="name-adress">
                 <span>Baptiste Artaud</span> - Interne - Paris
               </Typography>
@@ -26,7 +32,10 @@ const CardTalents = () => {
                 <span>Level : </span>Junior <span>Rate : </span>318 $ / day
               </Typography>
             </Box>
-            <HeartLine color="primary" className='iconHeart'/>
+            <IconButton className="btn btn-favori">
+              <HeartLine color="primary" className='iconHeart'/>
+            </IconButton>
+            
             <img src={organisationImg} className='iconOrganisation' alt="organisation"/>
           </Box>
           <Box className="foot">
@@ -35,7 +44,12 @@ const CardTalents = () => {
                 <Chip label="Figma" />
                 <span className='number'>+13</span>
               </Box>
+            {/* si bouton */}
             <Button className="btnAdd">Add to a project</Button>
+            {/* Si checkbox */}
+            {/* <Box className={classes.check}>
+              <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="checkbox"/>
+            </Box> */}
           </Box>
         </CardContent>
       </Card>

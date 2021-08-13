@@ -52,6 +52,9 @@ export default makeStyles (
           },
           "& svg": {
             fontSize: "1.25rem",
+            "& path": {
+              stroke: "#fff",
+            }
           }
         },
       },
