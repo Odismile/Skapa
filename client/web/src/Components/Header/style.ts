@@ -10,21 +10,29 @@ export default makeStyles (
     header_block: {
       background: theme.palette.primary.main,
       borderRadius: "0 0 15px 15px",
+      padding: "20px",
     },
     header_top: {
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'space-between',
-      padding: 20,
+      padding: "0 0 30px",
       "& .logo": {
-        height: 53,
-        margin: "20px 30px 0 auto",
-        width: 105,
+        height: 45,
+        margin: "20px auto 0",
+        width: 90,
+        "& @media min(375px)": {
+          height: 53,
+          width: 105,
+        },
       },
       "& .btn": {
         "& svg": {
           fill: "#fff",
         },
+      },
+      "& .menu_wrap": {
+        width: 86,
       },
       "& .btn_burger": {
         marginLeft: -12,
@@ -50,21 +58,19 @@ export default makeStyles (
     },
     header_content: {
       "& .titlePage": {
-        color: "#fff",
+        color: "#fff",  
         fontSize: "1rem",
+        margin: 0,
         textAlign: "center",
       }
     },
     drawerMenu: {
-      width: 250,
-      "@media(min-width: 640px)": {
-        width: 300,
-      },
+      width: 280,
     },
     drawerPaperMenu: {
-      background: "#383838",
+      background: "#000",
       padding: "20px 20px 30px",
-      width: 250,
+      width: 280,
     },
     MenuList: {
       height: "100%",
@@ -72,6 +78,7 @@ export default makeStyles (
         color: "#fff",
         height: 20,
         width: 20,
+        marginBottom: 30,
         "& svg": {
           fill: "#fff",
         },
@@ -79,8 +86,9 @@ export default makeStyles (
       "& .list": {
         maxHeight: "calc(100% - 165px)",
         overflow: "hidden auto",
-        margin: "15px -20px 15px 0",
-        padding: "0 20px 0 0",
+        margin: "15px auto 30px",
+        padding: "0",
+        maxWidth: 95,
         "& > li": {
         },
         "& a": {
@@ -97,12 +105,20 @@ export default makeStyles (
         },
       },
       "& .btn_createProject": {
-        borderRadius: 10,
+        borderRadius: 30,
+        border: "2px solid  #8870ff",
+        boxShadow: "0px -2px 12px 2px rgba(108,89,206,0.43)",
         display: "flex",
-        height: 60,
+        fontWeight: 600,
+        fontSize: "1rem",
+        height: 50,
         margin: "0 auto 30px",
-        maxWidth: 176,
+        maxWidth: 218,
         width: "100%",
+        "& svg": {
+          fontSize: ".875rem",
+          marginRight: 10,
+        },
       },
       "& .disconnect_wrap": {
         margin: 0,

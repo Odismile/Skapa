@@ -12,6 +12,8 @@ import mainLogoWhite from '../../Assets/images/logo-white.svg';
 import Burger from '../../Components/Icons/Burger/Burger';
 import Award from '../../Components/Icons/Award/Award';
 import HeartLine from '../../Components/Icons/HeartLine/HeartLine';
+import Cross from '../../Components/Icons/Cross/Cross';
+import Plus from '../../Components/Icons/Plus/Plus';
 import Photo from '../../Components/Icons/Photo/Photo';
 
 
@@ -27,9 +29,11 @@ const PrimaryHeader = () => {
     <Box className={classes.header_block}>
       <Box className={classes.header_top}>
         {/* burger menu mobile */}
-        <IconButton className="btn btn_burger" aria-label="menu burger" onClick={handleDrawer}>
-          <Burger />
-        </IconButton>
+        <Box className="menu_wrap">
+          <IconButton className="btn btn_burger" aria-label="menu burger" onClick={handleDrawer}>
+            <Burger />
+          </IconButton>
+        </Box>
         {/* logo mobile */}
         <figure className="logo">
           <img src={mainLogoWhite} alt="logo"/>
@@ -45,9 +49,9 @@ const PrimaryHeader = () => {
           </IconButton>
         </Box>
       </Box>
-      {/* <Box className={classes.header_content}>
+      <Box className={classes.header_content}>
         <Typography className="titlePage">Create your own project</Typography>
-      </Box> */}
+      </Box>
       <Drawer
         className={classes.drawerMenu}
         anchor="left"
@@ -65,9 +69,11 @@ const PrimaryHeader = () => {
         }}
       >
         <Box className={classes.MenuList}>
-          <IconButton className="btn btn_burger" aria-label="close" onClick={handleDrawer}>
-            <Burger />
-          </IconButton>
+          
+            <IconButton className="btn btn_burger" aria-label="close" onClick={handleDrawer}>
+              <Cross />
+            </IconButton>
+          
           <List className="list">
             <ListItem disableGutters={true}><Link className="nav_link">Profil</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">My activity</Link></ListItem>
@@ -78,7 +84,7 @@ const PrimaryHeader = () => {
             <ListItem disableGutters={true}><Link className="nav_link">Coaching</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">Wallet</Link></ListItem>
           </List>
-          <Button color="secondary" variant="contained" href="/project/create-project" className="btn_createProject" >Create new project</Button>
+          <Button color="secondary" variant="contained" href="/project/create-project" className="btn_createProject" ><Plus /> Create new project</Button>
           <Typography className="disconnect_wrap">
             <Link className="disconnect_link">Logout</Link>
           </Typography>
