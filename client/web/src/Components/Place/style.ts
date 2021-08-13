@@ -46,6 +46,18 @@ export default makeStyles((theme) => ({
                 justifyContent: 'space-between',
                 alignItems: 'center',
             },
+            '& .top-rated': {
+                display: "flex",
+                alignItems: "center",
+                color: "#e30057",
+                fontSize: 14,
+                fontWeight: "600",
+                textTransform: "uppercase",
+                margin: "10px 0",
+                "& svg": {
+                    paddingRight: 4,
+                }
+            },
             '& p': {
                 fontSize: 10,
                 color: '#000000',

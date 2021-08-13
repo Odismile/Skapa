@@ -5,6 +5,7 @@ import Wifi from '../Icons/Wifi';
 import Photo from '../Icons/Photo';
 import Computer from '../Icons/Computer';
 import Cast from '../Icons/Cast';
+import Rate from '../Icons/Rate';
 
 const Place = () => {
   const classes = useStyles();
@@ -21,6 +22,9 @@ const Place = () => {
             <Box className='chips'>
               870 $/ day
             </Box>
+          </Box>
+          <Box className="top-rated">
+            <Rate /> Top rated
           </Box>
           <Typography component="p">
               <span>Location :</span> 238 rue Lafayette, 75009 <br></br> Bâtiment WeWork - 3e étage - salle Rousseau
