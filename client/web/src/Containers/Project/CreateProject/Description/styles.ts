@@ -6,10 +6,6 @@ export default makeStyles(
       width: '75px',
       height: '65px',
     },
-    videoUpload: {
-      width: '75px',
-      height: '75px',
-    },
     description: {
       //paddingBottom: 30,
       '& .upload_bloc': {
@@ -84,14 +80,14 @@ export default makeStyles(
             fontWeight: 700,
             lineHeight: '1.4',
             margin: 0,
-            '& + > div': {
+            '& > div': {
               marginBottom: 0,
             },
           },
           '& input': {
             borderRadius: 35,
             fontSize: 12,
-            height: 33,
+            height: 32,
             padding: '0 20px',
             '&::-webkit-input-placeholder': {
               color: '#979797',
@@ -152,21 +148,30 @@ export default makeStyles(
         '& .typeProject_item': {
           maxWidth: 107,
         },
-        '& .selectBox_item': {
-          '& > label': {},
-          '& .selectBox': {
+        "& .selectBox_item": {
+          "& > label": {
+          },
+          "& .selectBox": {
             border: 'solid 1px #dfdfdf',
             boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
             borderRadius: 25,
             fontSize: 12,
-            padding: '0 10px',
-            '&:before, &:after': {
-              display: 'none',
+            padding: "0 10px",
+            "&.Mui-focused": {
+              background: "none",
             },
-            '& svg': {},
+            "& > div": {
+              background: "none",
+            },
+            "&:before, &:after": {
+              display: "none",
+            },
+            "& svg": {
+              
+            },
           },
         },
-        '& .grid_field': {
+        "& .grid_field": {
           display: 'flex',
           alignItems: 'center',
           '& .field_item': {

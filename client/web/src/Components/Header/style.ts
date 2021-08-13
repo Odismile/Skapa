@@ -6,6 +6,11 @@ export default makeStyles (
       "* .backDrop_menuMobile": {
         backgroundColor: "transparent"
       },
+      "* .dropDownSelect": {
+        "&> ul": {
+          background: "green",
+        }
+      },
     },
     header_block: {
       background: theme.palette.primary.main,

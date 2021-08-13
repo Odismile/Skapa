@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -12,9 +13,9 @@ import {
 import EditIcon from '@material-ui/icons/Edit';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import moment from 'moment';
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
+
+import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player';
 import Info from '../../../../Components/Icons/Info/Info';
 import IconPhoto from '../../../../Components/Icons/Photo/Photo';
@@ -166,6 +167,9 @@ const Description = () => {
                     anchorOrigin: {
                       vertical: 'bottom',
                       horizontal: 'left',
+                    },
+                    PaperProps: {
+                      className: 'dropDownSelect'
                     },
                     transformOrigin: {
                       vertical: 'top',
