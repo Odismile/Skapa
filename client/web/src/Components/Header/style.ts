@@ -48,6 +48,13 @@ export default makeStyles (
         },
       },
     },
+    header_content: {
+      "& .titlePage": {
+        color: "#fff",
+        fontSize: "1rem",
+        textAlign: "center",
+      }
+    },
     drawerMenu: {
       width: 250,
       "@media(min-width: 640px)": {

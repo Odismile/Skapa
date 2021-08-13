@@ -45,7 +45,9 @@ const PrimaryHeader = () => {
           </IconButton>
         </Box>
       </Box>
-    
+      {/* <Box className={classes.header_content}>
+        <Typography className="titlePage">Create your own project</Typography>
+      </Box> */}
       <Drawer
         className={classes.drawerMenu}
         anchor="left"
