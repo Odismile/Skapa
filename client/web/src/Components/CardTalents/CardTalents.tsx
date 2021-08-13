@@ -1,6 +1,7 @@
 import { Box, Button, Card, CardContent, Chip, Typography } from '@material-ui/core';
 import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
+import organisationImg from '../../Assets/images/organisation.png';
 import HeartLine from '../Icons/HeartLine';
 
 const CardTalents = () => {
@@ -26,6 +27,7 @@ const CardTalents = () => {
               </Typography>
             </Box>
             <HeartLine color="primary" className='iconHeart'/>
+            <img src={organisationImg} className='iconOrganisation' alt="organisation"/>
           </Box>
           <Box className="foot">
               <Box className='tags'>

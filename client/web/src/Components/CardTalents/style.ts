@@ -20,6 +20,13 @@ export default makeStyles((theme) => ({
           right: 0,
           width: 21,
           height: 20,
+        },
+        '& .iconOrganisation':{
+          position: 'absolute',
+          top: -5,
+          left: -8,
+          width: 30,
+          height: 30,
         }
       },
       '& img': {
