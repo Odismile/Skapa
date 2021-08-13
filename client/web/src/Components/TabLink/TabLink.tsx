@@ -7,9 +7,24 @@ import Review from '../../Containers/Project/CreateProject/Review/Review';
 import Team from '../../Containers/Project/CreateProject/Team/Team';
 import useStyles from './style';
 import { useTranslation } from 'react-i18next';
+import {
+  filesPictureVariable,
+  typeProjectVariable,
+  cityVariable,
+  dateStartVariable,
+  dateEndVariable,
+  projectDescriptionVariable,
+  skillsSelectedVariable,
+  filesVideoVariable,
+} from '../../ReactiveVariable/Project/createProject';
+import { displaySnackbar, InitSnackbarData } from '../../Utils';
+import { useApolloClient } from '@apollo/client';
+import moment from 'moment';
 
 const TabLink = () => {
   const classes = useStyles();
+  const snackbar = InitSnackbarData;
+  const client = useApolloClient();
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
@@ -59,7 +74,54 @@ const TabLink = () => {
           // find the first step that has been completed
           steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
-    setActiveStep(newActiveStep);
+    // console.log('  filesPictureVariable()', filesPictureVariable());
+    // console.log('  typeProjectVariable()', typeProjectVariable());
+    // console.log('   cityVariable()', cityVariable());
+    // console.log('    dateStartVariable()', dateStartVariable());
+    // console.log(' dateEndVariable()', dateEndVariable());
+    // console.log('   projectDescriptionVariable()', projectDescriptionVariable());
+    // console.log('   skillsSelectedVariable()', skillsSelectedVariable());
+    // console.log(' filesVideoVariable()', filesVideoVariable());
+    // console.log('***************************');
+    if (filesPictureVariable() === null) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'Veuillez ajouter une image';
+      displaySnackbar(client, snackbar);
+    } else if (typeProjectVariable().trim().length === 0) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'Veuillez selectionner une type de projet';
+      displaySnackbar(client, snackbar);
+    } else if (cityVariable().trim().length === 0) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'Veuillez entrer une ville';
+      displaySnackbar(client, snackbar);
+    } else if (dateStartVariable() === null) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'Veuillez entrer une date de debut';
+      displaySnackbar(client, snackbar);
+    } else if (dateEndVariable() === null) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'Veuillez entrer une date fin';
+      displaySnackbar(client, snackbar);
+    } else if (moment(dateStartVariable()).format('dd-MM-YYYY') > moment(dateEndVariable()).format('dd-MM-YYYY')) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'La date de debut du projet est superieur a la date du fin';
+      displaySnackbar(client, snackbar);
+    } else if (projectDescriptionVariable().trim().length === 0) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'Veuillez entrer une description';
+      displaySnackbar(client, snackbar);
+    } else if (skillsSelectedVariable() === null) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'Veuillez selectionner un ou plusieurs skills';
+      displaySnackbar(client, snackbar);
+    } else if (filesVideoVariable() === null) {
+      snackbar.type = 'ERROR';
+      snackbar.message = 'Veuillez entrer une video';
+      displaySnackbar(client, snackbar);
+    } else {
+      setActiveStep(newActiveStep);
+    }
   };
 
   const handleStep = (step: number) => () => {

@@ -6,6 +6,10 @@ export default makeStyles(
       width: '75px',
       height: '65px',
     },
+    videoUpload: {
+      width: '75px',
+      height: '75px',
+    },
     description: {
       //paddingBottom: 30,
       '& .upload_bloc': {
@@ -148,24 +152,21 @@ export default makeStyles(
         '& .typeProject_item': {
           maxWidth: 107,
         },
-        "& .selectBox_item": {
-          "& > label": {
-          },
-          "& .selectBox": {
+        '& .selectBox_item': {
+          '& > label': {},
+          '& .selectBox': {
             border: 'solid 1px #dfdfdf',
             boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
             borderRadius: 25,
             fontSize: 12,
-            padding: "0 10px",
-            "&:before, &:after": {
-              display: "none",
+            padding: '0 10px',
+            '&:before, &:after': {
+              display: 'none',
             },
-            "& svg": {
-              
-            },
+            '& svg': {},
           },
         },
-        "& .grid_field": {
+        '& .grid_field': {
           display: 'flex',
           alignItems: 'center',
           '& .field_item': {

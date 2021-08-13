@@ -7,6 +7,6 @@ export const typeProjectVariable = makeVar<string>('');
 export const cityVariable = makeVar<string>('');
 export const dateStartVariable = makeVar<Date | null>(null);
 export const dateEndVariable = makeVar<Date | null>(null);
-export const projectDescription = makeVar<string>('');
+export const projectDescriptionVariable = makeVar<string>('');
 export const skillsSelectedVariable = makeVar<(Items_get_language_items | null)[] | null | undefined>(null);
 export const filesVideoVariable = makeVar<File[] | null>(null);

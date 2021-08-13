@@ -22,6 +22,16 @@ import TextFieldComponent from '../../../../Components/TextField/TextField';
 import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { useItemsProjectTypes } from '../../../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
+import {
+  cityVariable,
+  dateEndVariable,
+  dateStartVariable,
+  filesPictureVariable,
+  filesVideoVariable,
+  projectDescriptionVariable,
+  skillsSelectedVariable,
+  typeProjectVariable,
+} from '../../../../ReactiveVariable/Project/createProject';
 import { useUploadFile } from '../../../../Utils/uploadFile';
 import useStyles from './styles';
 
@@ -34,7 +44,6 @@ const Description = () => {
   const { data: dataProjectType } = useItemsProjectTypes();
 
   const [fileUpload, setFileUpload] = useState('');
-  const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
 
   const [typeProject, setTypeProject] = useState('');
   const [city, setCity] = useState('');
@@ -44,12 +53,11 @@ const Description = () => {
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
 
   const [videoUpload, setVideoUpload] = useState('');
-  const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
 
   const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
     const filesConcat = Array.from(event.target.files || []);
-    setFilesPicture(filesConcat);
+    filesPictureVariable(filesConcat);
     setFileUpload(url);
   };
 
@@ -60,34 +68,43 @@ const Description = () => {
     }>,
   ) => {
     setTypeProject('' + e.target.value);
+    typeProjectVariable('' + e.target.value);
   };
 
   const onChangeCity = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setCity(e.target.value);
+    cityVariable(e.target.value);
   };
 
   const onChangeDateStart = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setdateStart(moment(e.target.value).toDate());
+    dateStartVariable(moment(e.target.value).toDate());
   };
 
   const onChangeDateEnd = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setDateEnd(moment(e.target.value).toDate());
+    dateEndVariable(moment(e.target.value).toDate());
   };
 
   const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setProjectDescription(e.target.value);
+    projectDescriptionVariable(e.target.value);
   };
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
       setSkillsSelected([skill]);
+      skillsSelectedVariable([skill]);
     } else {
       const findSkill = skillsSelected?.find((skillItem) => skillItem?.label === skill?.label);
       if (findSkill) {
         const newSkills = skillsSelected?.filter((skillItem) => skillItem?.label !== skill?.label);
         setSkillsSelected(newSkills);
+        skillsSelectedVariable(newSkills);
       } else {
-        setSkillsSelected((prevState) => prevState && [...prevState, skill]);
+        const newSkills = skillsSelected && [...skillsSelected, skill];
+        skillsSelectedVariable(newSkills);
+        setSkillsSelected(newSkills);
       }
     }
   };
@@ -95,11 +112,9 @@ const Description = () => {
   const onUploadVideoFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
     const filesConcat = Array.from(event.target.files || []);
-    setFilesVideo(filesConcat);
+    filesVideoVariable(filesConcat);
     setVideoUpload(url);
   };
-
-  console.log('dateStart', dateStart);
 
   return (
     <Box className={classes.description}>
@@ -290,7 +305,7 @@ const Description = () => {
                   {videoUpload.length !== 0 ? (
                     <ReactPlayer
                       url={videoUpload}
-                      className={classes.imageUpload}
+                      className={classes.videoUpload}
                       width={'150px'}
                       height={'100px'}
                       playing={true}
