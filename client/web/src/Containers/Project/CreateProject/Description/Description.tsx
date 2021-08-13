@@ -1,6 +1,17 @@
-import { Box, Button, IconButton, InputLabel, MenuItem, Select, TextareaAutosize, TextField, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextareaAutosize,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import moment from 'moment';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
@@ -10,33 +21,69 @@ import IconPhoto from '../../../../Components/Icons/Photo/Photo';
 import TextFieldComponent from '../../../../Components/TextField/TextField';
 import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
+import { useItemsProjectTypes } from '../../../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
 import { useUploadFile } from '../../../../Utils/uploadFile';
 import useStyles from './styles';
-
 
 const Description = () => {
   const classes = useStyles();
 
   const [age, setAge] = React.useState('');
-  
+
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);
   };
 
-  const {uploadFile} = useUploadFile()
-
-
+  const { uploadFile } = useUploadFile();
   const { data, loading } = useItemsGetSkills();
-  const { t } = useTranslation();
+  const { data: dataProjectType } = useItemsProjectTypes();
 
-  const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
+  const { t } = useTranslation();
 
   const [fileUpload, setFileUpload] = useState('');
   const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
 
+  const [typeProject, setTypeProject] = useState('');
+  const [city, setCity] = useState('');
+  const [dateStart, setdateStart] = useState(new Date());
+  const [dateEnd, setDateEnd] = useState(new Date());
+  const [projectDescription, setProjectDescription] = useState('');
+  const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
+
   const [videoUpload, setVideoUpload] = useState('');
   const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
 
+  const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    const filesConcat = Array.from(event.target.files || []);
+    setFilesPicture(filesConcat);
+    setFileUpload(url);
+  };
+
+  const onChangeProjectType = (
+    e: React.ChangeEvent<{
+      name?: string | undefined;
+      value: unknown;
+    }>,
+  ) => {
+    setTypeProject('' + e.target.value);
+  };
+
+  const onChangeCity = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setCity(e.target.value);
+  };
+
+  const onChangeDateStart = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setdateStart(moment(e.target.value).toDate());
+  };
+
+  const onChangeDateEnd = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setDateEnd(moment(e.target.value).toDate());
+  };
+
+  const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setProjectDescription(e.target.value);
+  };
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
@@ -52,24 +99,12 @@ const Description = () => {
     }
   };
 
-  const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
-    const filesConcat = Array.from(event.target.files || []);
-    setFilesPicture(filesConcat)
-    setFileUpload(url);
-  };
-
   const onUploadVideoFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
     const filesConcat = Array.from(event.target.files || []);
-    setFilesVideo(filesConcat)
+    setFilesVideo(filesConcat);
     setVideoUpload(url);
   };
-
-  const onClickSendPicture = async () =>{
-    await uploadFile(filesVideo);
-  }
-  
 
   return (
     <Box className={classes.description}>
@@ -115,33 +150,28 @@ const Description = () => {
                   defaultValue="Type project"
                   fullWidth
                   className="selectBox"
-                  IconComponent= {KeyboardArrowDownIcon}
+                  onChange={onChangeProjectType}
+                  IconComponent={KeyboardArrowDownIcon}
                   MenuProps={{
                     anchorOrigin: {
-                      vertical: "bottom",
-                      horizontal: "left"
+                      vertical: 'bottom',
+                      horizontal: 'left',
                     },
                     transformOrigin: {
-                      vertical: "top",
-                      horizontal: "left"
+                      vertical: 'top',
+                      horizontal: 'left',
                     },
-                    getContentAnchorEl: null
-                  }} >
-                    <MenuItem selected >Type project 1</MenuItem>
-                    <MenuItem value={1}>Type project 2</MenuItem>
-                    <MenuItem value={2}>Type project 3</MenuItem>
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  {dataProjectType?.items?.map((project, index) => {
+                    return (
+                      <MenuItem key={index} value={project?.label ?? ''}>
+                        {project?.label}
+                      </MenuItem>
+                    );
+                  })}
                 </Select>
-              {/* <TextField 
-                select 
-                fullWidth 
-                variant="outlined" 
-                Men
-              >
-                <MenuItem value=""><em>None</em></MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </TextField> */}
               </Box>
               <Box className="field_item">
                 <TextFieldComponent
@@ -149,6 +179,8 @@ const Description = () => {
                   id="VilleProject"
                   placeholder="Ville "
                   type="text"
+                  value={city}
+                  onChange={(e) => onChangeCity(e)}
                 />
               </Box>
               <Box className="grid_field">
@@ -157,26 +189,19 @@ const Description = () => {
                     id="dateStarts"
                     label={t(`createProject.starts`)}
                     type="date"
-                    defaultValue="12/05/21"
                     className="input_date"
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    onChange={(e) => onChangeDateStart(e)}
                   />
                 </Box>
                 <Box className="field_item field_date">
-                  {/* <DatePicker
-                    label="Basic example"
-                    value={selectedDate}
-                    onChange={handleDateChange}
-                    animateYearScrolling
-                  /> */}
-
                   <TextField
                     id="dateEnd"
                     label={t(`createProject.end`)}
                     type="date"
-                    defaultValue="12/05/21"
+                    onChange={(e) => onChangeDateEnd(e)}
                     className="input_date"
                     InputLabelProps={{
                       shrink: true,
@@ -195,8 +220,16 @@ const Description = () => {
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item textarea_item">
-                <TextareaAutosize minRows="8" className="textarea_input" placeholder="Lorem Ipsum" defaultValue="" />
-                <Typography className="textLeft">0/240 symbols</Typography>
+                <TextareaAutosize
+                  minRows="8"
+                  className="textarea_input"
+                  placeholder="Lorem Ipsum"
+                  defaultValue=""
+                  onChange={onChangeDescription}
+                  value={projectDescription}
+                  maxLength={240}
+                />
+                <Typography className="textLeft">{projectDescription.length}/240 symbols</Typography>
               </Box>
             </Box>
           </Box>
@@ -283,7 +316,6 @@ const Description = () => {
           </Box>
         </form>
       </Box>
-    
     </Box>
   );
 };
