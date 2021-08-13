@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core';
 import CardTalents from '../../Components/CardTalents/CardTalents';
 import RadioExtInt from '../../Components/RadioExtInt/RadioExtInt';
-import SearchFilter from '../../Components/SearchFilter/SearchFilter';
+import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
 import useStyles from './styles';
 
 const Talents = () => {
@@ -11,7 +11,7 @@ const Talents = () => {
       <Box className={classes.content}>
         <RadioExtInt/>
       </Box>
-      <SearchFilter />
+      <SearchFilterTalents />
       <Box className={classes.box}>
         <CardTalents />
       </Box>
