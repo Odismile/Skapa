@@ -1,11 +1,15 @@
 import React, { FC } from 'react';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
-import { clearLocalStorage } from '../../Services';
+import { clearLocalStorage, isAuthenticated, removeAccessToken } from '../../Services';
 import { Box, Button } from '@material-ui/core';
 import { CREATE_PROJECT, LOGIN } from '../../Routes';
+import { forceLogout } from '../../Hooks/useForceLogout';
 
 const HomePage: FC<RouteComponentProps> = (props) => {
   const { history } = props;
+  if (!isAuthenticated()) {
+    history.push(LOGIN);
+  }
   const logout = () => {
     clearLocalStorage();
     history.push(LOGIN);
