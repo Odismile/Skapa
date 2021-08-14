@@ -11,88 +11,60 @@ interface TextFiedlProps {
   title: string;
   name: string;
 }
+interface Language {
+  id: string;
+  title: string;
+  name: string;
+  level: string;
+}
+let listLanguages: Language[] = [];
 
 const LanguagesChoice: FC<TextFiedlProps> = ({ id, title, name }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [levelLanguage, setLevelLanguage] = useState([
-    {
-      id: '',
-      title: '',
-      name: '',
-      level: '',
-    },
-  ]);
 
+  const [levelLanguage, setLevelLanguage] = useState<Language[] | null>();
   const onClickRadioLanguage = (level: string) => {
-    if (levelLanguage.length === 0) {
-      setLevelLanguage([
-        {
-          id: id,
-          title: title,
-          name: name,
-          level: level,
-        },
-      ]);
-      levelLanguages([
-        {
-          id: id,
-          title: title,
-          name: name,
-          level: level,
-        },
-      ]);
+    if (listLanguages.length === 0) {
+      listLanguages.push({ id: id, title: title, name: name, level: level });
+      setLevelLanguage(listLanguages);
     } else {
-      const findId = levelLanguage.find((language) => language.name === name);
-      console.log(`findId`, findId);
-      if (findId) {
-        // const filterLanguage = levelLanguage.filter((language) => language.name !== name);
-        // const newLanguages = [
-        //   ...filterLanguage,
-        //   {
-        //     id: id,
-        //     title: title,
-        //     name: name,
-        //     level: level,
-        //   },
-        // ];
-        // setLevelLanguage(newLanguages);
-        // levelLanguages(newLanguages);
-      } else {
-        // setLevelLanguage((prevState) => [
-        //   ...prevState,
-        //   {
-        //     id: id,
-        //     title: title,
-        //     name: name,
-        //     level: level,
-        //   },
-        // ]);
-        // levelLanguages(levelLanguage);
-      }
+      const data = listLanguages.filter((language) => language.id === id)?.map((list, index) => (list.level = level));
+      if (data.length === 0) listLanguages.push({ id: id, title: title, name: name, level: level });
+      setLevelLanguage(listLanguages);
     }
-    // console.log(`id`, id);
-    // console.log(`title`, title);
-    // console.log(`name`, name);
-    // console.log(`level`, level);
-    // console.log('******************');
+    console.log(levelLanguage);
   };
-  console.log(`levelLanguage`, levelLanguage);
 
   return (
     <Box className={classes.boxLang}>
       <Typography className="label">{title}</Typography>
       <Box className="contenuRadio">
-        <Box className="inputGroup" onClick={() => onClickRadioLanguage(t(`onBordingProfile.basic`))}>
-          <input id={name + 1} name={name} type="radio" />
+        <Box className="inputGroup">
+          <input
+            id={name + 1}
+            name={name}
+            type="radio"
+            onClick={() => onClickRadioLanguage(t(`onBordingProfile.basic`))}
+          />
           <label htmlFor={name + 1}>{t(`onBordingProfile.basic`)}</label>
         </Box>
-        <Box className="inputGroup" onClick={() => onClickRadioLanguage(t(`onBordingProfile.intermediate`))}>
-          <input id={name + 2} name={name} type="radio" />
+        <Box className="inputGroup">
+          <input
+            id={name + 2}
+            name={name}
+            type="radio"
+            onClick={() => onClickRadioLanguage(t(`onBordingProfile.intermediate`))}
+          />
           <label htmlFor={name + 2}>{t(`onBordingProfile.intermediate`)}</label>
         </Box>
-        <Box className="inputGroup" onClick={() => onClickRadioLanguage(t(`onBordingProfile.fluente`))}>
-          <input id={name + 3} name={name} type="radio" />
+        <Box className="inputGroup">
+          <input
+            id={name + 3}
+            name={name}
+            type="radio"
+            onClick={() => onClickRadioLanguage(t(`onBordingProfile.fluente`))}
+          />
           <label htmlFor={name + 3}>{t(`onBordingProfile.fluente`)}</label>
         </Box>
       </Box>
