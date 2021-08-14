@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Button, Card, CardContent, Checkbox, Chip, IconButton, Typography } from '@material-ui/core';
 import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
@@ -8,8 +9,7 @@ import Rate from '../Icons/Rate';
 const CardTalents = () => {
   const classes = useStyles();
   return (
-    <>
-      <Card className={classes.root}>
+    <Card className={classes.root}>
         <CardContent className="content">
           <Box className="head">
             <img src={photoCard} alt="photo" />
@@ -53,7 +53,6 @@ const CardTalents = () => {
           </Box>
         </CardContent>
       </Card>
-    </>
   );
 };
 

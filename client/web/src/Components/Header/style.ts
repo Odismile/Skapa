@@ -6,6 +6,31 @@ export default makeStyles (
       "* .backDrop_menuMobile": {
         backgroundColor: "transparent"
       },
+      "* .dropDownSelect": {
+        borderRadius: 15,
+        "&> ul": {
+          borderRadius: 15, 
+          paddingBottom: 0,
+          paddingTop: 0,
+          "& li": {
+            color: "#000",
+            fontSize: "1rem",
+            lineHeight: 1.2,
+            minHeight: 22,
+            margin: 0,
+            paddingBottom: 8,
+            paddingTop: 8,
+            "&:hover": {
+              backgroundColor: "#ece8ff",  
+              color: "#8870ff",
+            },
+          },
+          "& .Mui-selected, & .Mui-selected:hover": {
+            backgroundColor: "#ece8ff",
+            color: "#8870ff",
+          },
+        }
+      },
     },
     header_block: {
       background: theme.palette.primary.main,

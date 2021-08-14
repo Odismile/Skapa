@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Link, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 import { FC } from 'react';
