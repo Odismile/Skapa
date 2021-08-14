@@ -12,6 +12,7 @@ const OnboardingProfileTwo = () => {
 
   const history = useHistory();
   function handleClick() {
+    //Firebase
     history.push('/onboarding-profile3');
   }
 

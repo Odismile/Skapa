@@ -27,13 +27,12 @@ const LanguagesChoice: FC<TextFiedlProps> = ({ id, title, name }) => {
   const onClickRadioLanguage = (level: string) => {
     if (listLanguages.length === 0) {
       listLanguages.push({ id: id, title: title, name: name, level: level });
-      setLevelLanguage(listLanguages);
     } else {
       const data = listLanguages.filter((language) => language.id === id)?.map((list, index) => (list.level = level));
       if (data.length === 0) listLanguages.push({ id: id, title: title, name: name, level: level });
-      setLevelLanguage(listLanguages);
     }
-    console.log(levelLanguage);
+    setLevelLanguage(listLanguages);
+    console.log(listLanguages);
   };
 
   return (
