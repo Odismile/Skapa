@@ -146,9 +146,10 @@ export default makeStyles(
           },
         },
         '& .typeProject_item': {
-          maxWidth: 107,
+          maxWidth: 115,
         },
         "& .selectBox_item": {
+          marginBottom: 10,
           "& > label": {
           },
           "& .selectBox": {
@@ -156,18 +157,22 @@ export default makeStyles(
             boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
             borderRadius: 25,
             fontSize: 12,
-            padding: "0 10px",
+            padding: 0,
             "&.Mui-focused": {
               background: "none",
             },
             "& > div": {
               background: "none",
+              height: 32,
+              display: 'flex',
+              alignItems: "center",
+              padding: "0 10px",
             },
             "&:before, &:after": {
               display: "none",
             },
             "& svg": {
-              
+              right: 2,
             },
           },
         },
@@ -213,7 +218,6 @@ export default makeStyles(
             outline: 'none',
           },
         },
-
         '& .skills_bloc': {
           '& .selected_skills, & .all_skills': {
             display: 'flex',
