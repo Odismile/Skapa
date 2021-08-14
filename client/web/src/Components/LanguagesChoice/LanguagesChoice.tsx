@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { levelLanguages } from '../../ReactiveVariable/Profil/profil';
+import { levelLanguages, Language } from '../../ReactiveVariable/Profil/profil';
 
 import useStyles from './style';
 
@@ -10,29 +10,33 @@ interface TextFiedlProps {
   id: string;
   title: string;
   name: string;
-}
-interface Language {
-  id: string;
-  title: string;
-  name: string;
-  level: string;
+  test(): void;
 }
 let listLanguages: Language[] = [];
 
-const LanguagesChoice: FC<TextFiedlProps> = ({ id, title, name }) => {
+const LanguagesChoice: FC<TextFiedlProps> = ({ id, title, name, test }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const [levelLanguage, setLevelLanguage] = useState<Language[] | null>();
   const onClickRadioLanguage = (level: string) => {
-    if (listLanguages.length === 0) {
+    if (!listLanguages.length) {
       listLanguages.push({ id: id, title: title, name: name, level: level });
     } else {
-      const data = listLanguages.filter((language) => language.id === id)?.map((list, index) => (list.level = level));
-      if (data.length === 0) listLanguages.push({ id: id, title: title, name: name, level: level });
+      const data = listLanguages
+        .filter((language) => language.id === id && language.level !== level)
+        ?.map((list, index) => (list.level = level));
+      if (!data.length) {
+        const datas = listLanguages.filter((language) => language.id === id && language.level === level);
+        if (!datas.length) listLanguages.push({ id: id, title: title, name: name, level: level });
+        else {
+          const indexe = listLanguages.indexOf(datas[0]);
+          listLanguages.splice(indexe, 1);
+        }
+      }
     }
-    setLevelLanguage(listLanguages);
-    console.log(listLanguages);
+    levelLanguages(listLanguages);
+    test();
   };
 
   return (

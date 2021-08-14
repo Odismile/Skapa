@@ -4,13 +4,15 @@ import { clearLocalStorage, isAuthenticated, removeAccessToken } from '../../Ser
 import { Box, Button } from '@material-ui/core';
 import { CREATE_PROJECT, LOGIN } from '../../Routes';
 import { forceLogout } from '../../Hooks/useForceLogout';
+import { getAccessToken } from '../../Services';
 
 const HomePage: FC<RouteComponentProps> = (props) => {
   const { history } = props;
-  if (!isAuthenticated()) {
+  /* if (!isAuthenticated()) {
     history.push(LOGIN);
-  }
+  } */
   const logout = () => {
+    removeAccessToken();
     clearLocalStorage();
     history.push(LOGIN);
   };

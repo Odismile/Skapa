@@ -22,7 +22,7 @@ const OnboardingProfile = () => {
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
   const testButtonToEnabled = () => {
-    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil()) {
+    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() && levelLanguages().length !== 0) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -95,7 +95,13 @@ const OnboardingProfile = () => {
             <>
               {data?.items?.map((item, index) => {
                 return (
-                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} />
+                  <LanguagesChoice
+                    key={index}
+                    id={item?.id ?? ''}
+                    title={item?.label ?? ''}
+                    name={item?.label ?? ''}
+                    test={() => testButtonToEnabled()}
+                  />
                 );
               })}
             </>

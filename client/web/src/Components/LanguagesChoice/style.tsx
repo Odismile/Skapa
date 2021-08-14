@@ -1,15 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
-  boxLang:{
+  boxLang: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    '& .contenuRadio':{
+    '& .contenuRadio': {
       display: 'flex',
     },
-    '& .label':{
+    '& .label': {
       fontSize: 14,
       width: '20%',
       marginBottom: 0,
@@ -21,19 +21,19 @@ const useStyles = makeStyles(() => ({
       margin: 5,
       display: 'block',
       overflow: 'hidden',
-      '& label':{
+      '& label': {
         color: '#8870FF',
         padding: '8px 10px',
         display: 'inline-block',
       },
-      '& input':{
+      '& input': {
         display: 'none',
       },
       '& input:checked ~ label': {
-        backgroundColor: "#ece8ff",
-      }
-    }
-  }
+        backgroundColor: '#ece8ff',
+      },
+    },
+  },
 }));
 
 export default useStyles;
