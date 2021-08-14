@@ -47,6 +47,10 @@
     },
     "Date_End": {
       "type": "string"
+    },
+    "project_favorit": {
+      "via": "projects",
+      "model": "project-favorits"
     }
   }
 }

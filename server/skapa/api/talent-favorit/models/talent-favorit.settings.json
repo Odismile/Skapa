@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "profile_skills",
+  "collectionName": "talent_favorits",
   "info": {
-    "name": "ProfileSkills"
+    "name": "Talent-Favorit"
   },
   "options": {
     "increments": true,
@@ -10,12 +10,11 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "skill_id": {
-      "via": "profile_skills",
-      "model": "items"
+    "status": {
+      "type": "string"
     },
-    "profile_id": {
-      "via": "profile_skills",
+    "profile": {
+      "via": "talent_favorits",
       "model": "profiles"
     }
   }

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "project_favorits",
+  "info": {
+    "name": "Project-Favorits",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "status": {
+      "type": "string"
+    },
+    "profile": {
+      "via": "project_favorits",
+      "model": "profiles"
+    },
+    "projects": {
+      "collection": "projects",
+      "via": "project_favorit"
+    }
+  }
+}

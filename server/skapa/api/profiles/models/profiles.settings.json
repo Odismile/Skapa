@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "profiles",
   "info": {
-    "name": "Profiles"
+    "name": "Profiles",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -23,16 +24,24 @@
       "type": "string"
     },
     "job_seniority_id": {
-      "via": "profiles",
-      "model": "items"
+      "model": "items",
+      "via": "profiles"
     },
     "users_id": {
       "plugin": "users-permissions",
       "model": "user"
     },
     "profile_skills": {
-      "via": "profile_id",
-      "collection": "profile-skills"
+      "collection": "profile-skills",
+      "via": "profile_id"
+    },
+    "project_favorits": {
+      "collection": "project-favorits",
+      "via": "profile"
+    },
+    "talent_favorits": {
+      "collection": "talent-favorit",
+      "via": "profile"
     }
   }
 }
