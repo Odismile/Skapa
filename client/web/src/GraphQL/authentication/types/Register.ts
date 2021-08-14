@@ -19,6 +19,7 @@ export interface Register_registerCustom_user_role {
 
 export interface Register_registerCustom_user {
   __typename: "UsersPermissionsMe";
+  id: string;
   username: string;
   email: string;
   confirmed: boolean | null;
