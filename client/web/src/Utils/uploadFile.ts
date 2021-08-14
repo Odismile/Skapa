@@ -19,7 +19,7 @@ export const useUploadFile = () => {
         filesUpload.push({
           fileName: file.name,
           type: file.type.split('/')[1],
-          pathUrl: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${idMe()}${file.name}`,
+          pathUrl: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem("idMe")}/${file.name}`,
         });
       }
       return filesUpload;
@@ -35,7 +35,7 @@ export const useUploadFile = () => {
           contentType: file.type,
         };
         await firebase.storage()
-          .ref(`${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${idMe()}${file.name}`)
+          .ref(`${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem("idMe")}/${file.name}`)
           .put(file, metadata);
 
         setLoading(false);

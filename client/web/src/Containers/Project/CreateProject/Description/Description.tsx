@@ -1,25 +1,29 @@
-import React, { useRef, useState } from 'react';
-import { Box, IconButton, TextareaAutosize, TextField, Typography, FormControl, FormHelperText, Select, MenuItem, InputLabel  } from '@material-ui/core';
+import { Box, Button, IconButton, InputLabel, MenuItem, Select, TextareaAutosize, TextField, Typography } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import Skeleton from 'react-loading-skeleton';
 import ReactPlayer from 'react-player';
 import Info from '../../../../Components/Icons/Info/Info';
 import IconPhoto from '../../../../Components/Icons/Photo/Photo';
 import TextFieldComponent from '../../../../Components/TextField/TextField';
 import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
+import { useUploadFile } from '../../../../Utils/uploadFile';
 import useStyles from './styles';
 
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import Skeleton from 'react-loading-skeleton';
 
 const Description = () => {
   const classes = useStyles();
 
   const [age, setAge] = React.useState('');
+  
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);
   };
+
+  const {uploadFile} = useUploadFile()
 
 
   const { data, loading } = useItemsGetSkills();
@@ -28,7 +32,11 @@ const Description = () => {
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
 
   const [fileUpload, setFileUpload] = useState('');
+  const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
+
   const [videoUpload, setVideoUpload] = useState('');
+  const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
+
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
@@ -46,13 +54,22 @@ const Description = () => {
 
   const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    const filesConcat = Array.from(event.target.files || []);
+    setFilesPicture(filesConcat)
     setFileUpload(url);
   };
 
   const onUploadVideoFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    const filesConcat = Array.from(event.target.files || []);
+    setFilesVideo(filesConcat)
     setVideoUpload(url);
   };
+
+  const onClickSendPicture = async () =>{
+    await uploadFile(filesVideo);
+  }
+  
 
   return (
     <Box className={classes.description}>
@@ -266,6 +283,7 @@ const Description = () => {
           </Box>
         </form>
       </Box>
+    
     </Box>
   );
 };

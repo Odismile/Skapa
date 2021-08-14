@@ -37,6 +37,7 @@ const useAuth = () => {
       if (data?.login?.jwt) {
         setAccessToken(data?.login?.jwt);
         idMe(data.login.user.id)
+        localStorage.setItem("idMe",data.login.user.id)
         history.replace(ONBOARDING_PROFILE7);
       }
     },
