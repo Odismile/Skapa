@@ -22,12 +22,14 @@ import { useApolloClient } from '@apollo/client';
 import moment from 'moment';
 import { useCreateProject } from '../../Providers/ProjectProvider/useCreateProject';
 import { transformSkills } from '../../Utils/transformSkills';
+import { useUploadFile } from '../../Utils/uploadFile';
 
 const TabLink = () => {
   const classes = useStyles();
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
   const { doCreateProject, loading } = useCreateProject();
+  const { uploadFile, loading: loadingUpload } = useUploadFile();
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
@@ -136,9 +138,11 @@ const TabLink = () => {
             },
           },
         },
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.data?.createProject?.project?.id) {
           setActiveStep(newActiveStep);
+          await uploadFile(filesPictureVariable());
+          await uploadFile(filesVideoVariable());
         }
       });
     }
@@ -189,7 +193,7 @@ const TabLink = () => {
               color="primary"
               onClick={handleNext}
               className={classes.button}
-              disabled={loading}
+              disabled={loading || loadingUpload}
             >
               {t(`createProject.next`)}
             </Button>
