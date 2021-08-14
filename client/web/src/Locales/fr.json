@@ -82,6 +82,17 @@
       "uploadAVideo": "Télécharger une vidéo",
       "next":"Suivant",
       "skipThisStep":"Passer cette étape"
+    },
+    "createProjectError":{
+      "picture":"Veuillez ajouter une image",
+      "typeProject":"Veuillez selectionner une type de projet",
+      "city":"Veuillez entrer une ville",
+      "start":"Veuillez entrer une date de debut",
+      "end":"Veuillez entrer une date fin",
+      "invalidDate":"La date de debut du projet est superieur a la date du fin",
+      "description":"Veuillez entrer une description",
+      "skills":"Veuillez selectionner un ou plusieurs skills",
+      "video":"Veuillez entrer une video"
     }
   }
 }
