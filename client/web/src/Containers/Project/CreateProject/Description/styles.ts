@@ -6,6 +6,7 @@ export default makeStyles(
       width: '75px',
       height: '65px',
     },
+    videoUpload: {},
     description: {
       //paddingBottom: 30,
       '& .upload_bloc': {
