@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Button, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router';
 import bgChange from '../../Assets/images/change.svg';
@@ -18,7 +19,6 @@ const OnboardingProfileFour = () => {
   }
 
   return (
-    <>
       <WrapOnBoarding>
         <Box className={classes.bloc}>
           <Typography className='title'>What kind of project would you like to see ?</Typography>
@@ -75,7 +75,6 @@ const OnboardingProfileFour = () => {
           </Box>
         </Box>
       </WrapOnBoarding>
-    </>
   );
 };
 

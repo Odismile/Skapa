@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Chip, Typography } from '@material-ui/core';
 import useStyles from './style';
 

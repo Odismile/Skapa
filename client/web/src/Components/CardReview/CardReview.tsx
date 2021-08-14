@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Avatar,
   Box,
@@ -48,7 +49,6 @@ const PrettoSlider = withStyles({
 const CardReview = () => {
   const classes = useStyles();
   return (
-    <>
       <Card className={classes.root}>
         <CardMedia className={classes.media} image={imgCard} title="image" />
         <CardContent className={classes.content}>
@@ -91,7 +91,6 @@ const CardReview = () => {
         <Box className='category'>LAB</Box>
         <Box className='bgBlack'></Box>
       </Card>
-    </>
   );
 };
 

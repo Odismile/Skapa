@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box } from '@material-ui/core';
 import CardProject from '../../Components/CardProjects/CardProjects';
 import CardTalents from '../../Components/CardTalents/CardTalents';
