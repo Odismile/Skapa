@@ -20,7 +20,8 @@
         "LANGUAGE",
         "SKILLS",
         "PROJECT_TYPES",
-        "JOB_SENIORITY"
+        "JOB_SENIORITY",
+        "STATUS"
       ]
     },
     "languages": {
@@ -40,12 +41,12 @@
       "via": "project_type_id"
     },
     "projects": {
-      "via": "item",
-      "collection": "projects"
+      "collection": "projects",
+      "via": "item"
     },
     "project_skills": {
-      "via": "item",
-      "collection": "project-skills"
+      "collection": "project-skills",
+      "via": "item"
     }
   }
 }
