@@ -1,3 +1,4 @@
+import React from 'react';
 import { Avatar, Box, Card, CardContent, CardMedia, Checkbox, Typography } from '@material-ui/core';
 import useStyles from './style';
 import imgPlace from '../../Assets/images/lab.svg';
