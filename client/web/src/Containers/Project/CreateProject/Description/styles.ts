@@ -106,7 +106,7 @@ export default makeStyles(
           },
         },
         '& .field_date': {
-          width: 110,
+          width: 115,
           '& div:hover:before': {
             borderBottom: 'none!important',
           },
