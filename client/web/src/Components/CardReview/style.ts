@@ -4,18 +4,23 @@ import noir from '../../Assets/images/noir.svg';
 
 export default makeStyles((theme) => ({
   root: {
-      boxShadow: 'none',
-      position: 'relative',
-      '& .category':{
-          position: 'absolute',
-          top: 8,
-          left: 8,
-          backgroundColor: '#E3DDFF',
-          padding: '3px 10px',
-          textTransform: 'uppercase',
-          borderRadius: 13,
-          color: '#9A5CFF',
-          zIndex: 1,
+    boxShadow: 'none',
+    position: 'relative',
+    '& .category':{
+      backgroundColor: '#e3ddff',
+      borderRadius: 13,
+      color: '#9a5cff',
+      display: "flex",
+      alignItems: "center",
+      height: 20,
+      fontSize: 10,
+      fontWeight: 400,
+      padding: '0 10px',
+      position: 'absolute',
+      top: 8,
+      left: 8,
+      textTransform: 'uppercase',
+      zIndex: 1,
       },
       '& .bgBlack':{
           position: 'absolute',
