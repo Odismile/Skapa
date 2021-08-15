@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Button, Card, CardContent, Checkbox, Chip, IconButton, Typography } from '@material-ui/core';
 import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
