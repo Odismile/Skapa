@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Button, Divider, Typography } from '@material-ui/core';
 import FormerProject from '../../Components/FormerProjects/FormerProjects';
 import Pitch from '../../Components/Pitch/Pitch';

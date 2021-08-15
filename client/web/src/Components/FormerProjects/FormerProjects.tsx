@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box } from '@material-ui/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useStyles from './style';
