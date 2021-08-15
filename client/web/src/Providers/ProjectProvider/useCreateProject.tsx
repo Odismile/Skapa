@@ -22,5 +22,6 @@ export const useCreateProject = () => {
       return;
     },
   });
+
   return { doCreateProject, data, loading };
 };
