@@ -1,7 +1,7 @@
 import { useApolloClient } from '@apollo/client';
 import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core';
 import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
@@ -156,10 +156,10 @@ const TabLink = () => {
   };
 
   const handleStep = (step: number) => () => {
-    // if (projectIdVariable().trim().length !== 0) {
-    //   setActiveStep(step);
-    // }
-    setActiveStep(step);
+    if (projectIdVariable().trim().length !== 0) {
+      setActiveStep(step);
+    }
+    //setActiveStep(step);
   };
 
   return (

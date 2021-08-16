@@ -9,6 +9,7 @@ import { forceLogout } from '../Hooks/useForceLogout';
 import { API_URL, WS_URL } from '../Constants/Config';
 
 export const createClient = (token: string) => {
+  console.log(`token ===============>`, token);
   const httpLink = createHttpLink({
     uri: API_URL,
   });
