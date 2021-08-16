@@ -16,16 +16,24 @@ import organisationImg from '../../Assets/images/organisation.png';
 import HeartLine from '../Icons/HeartLine';
 import Rate from '../Icons/Rate';
 import CardProject from '../CardProjects/CardProjects';
+import { useHistory } from 'react-router-dom';
 
 const CardTalents = () => {
+  const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const handleDrawer = () => {
+  const handleDrawer = (event:any) => {
     setOpen((prev) => !prev);
+    event.stopPropagation();
   };
 
+  const goToDetailsTalents = (event:any) =>{
+    history.push('/details-talents');
+    event.stopPropagation();
+  }
+
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={goToDetailsTalents}>
       <CardContent className="content">
         <Box className="head">
           <img src={photoCard} alt="photo" />
@@ -79,7 +87,7 @@ const CardTalents = () => {
               <Box className="header">
                 <Button variant="contained" className="btn_handleDrawer" onClick={handleDrawer} ></Button>
                 <Typography variant="h6">You want to hire Emma ?</Typography>
-                <Button className='btn_done'>Done</Button>
+                <Button className='btn_done' onClick={handleDrawer}>Done</Button>
               </Box>
               <Box className="content">
                 <Typography variant="h6" className="selectText">
