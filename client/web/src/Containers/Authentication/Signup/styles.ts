@@ -1,4 +1,4 @@
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => 
 ({
@@ -28,10 +28,11 @@ const useStyles = makeStyles(() =>
   link: {
     cursor: 'pointer',
     borderBottom: "1px solid #8277FF",
+    "&:hover" : {
+      textDecoration: 'none',
+    },
   },
-  button:{
-
-  }
+  button: {},
   })
 );
 

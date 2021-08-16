@@ -54,6 +54,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   link: {
     cursor: 'pointer',
     borderBottom: "1px solid #8277FF",
+    "&:hover" : {
+      textDecoration: 'none',
+    },
   },
   imgContainer: {
     marginBottom: 40,

@@ -3,10 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles(  theme => ({
   search:{
     position: 'relative',
-    '& .icon':{
+    '& .iconSearch':{
       position: 'absolute',
-      bottom: 38,
-      right: 13,
+      top: "50%",
+      right: 17,
+      transform: "translateY(-14px)",
     }
   },
   content:{
@@ -26,16 +27,16 @@ export default makeStyles(  theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     '& .inputGroup': {
-      backgroundColor: 'white',
+      backgroundColor: '#fff',
       borderRadius: 20,
-      border: '1px solid #8870FF',
-      margin: 5,
       display: 'block',
+      margin: 2.5,
       overflow: 'hidden',
       '& label':{
-        color: '#8870FF',
-        padding: '8px 10px',
-        display: 'inline-block',
+        color: '#000',
+        border: '1px solid #979797',
+        display: 'inline-flex',
+        padding: '5px 12px',
       },
       '& input':{
         display: 'none',
