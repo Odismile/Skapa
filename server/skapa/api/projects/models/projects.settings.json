@@ -51,6 +51,10 @@
     "profile": {
       "via": "projects",
       "model": "profiles"
+    },
+    "project_favorits": {
+      "via": "project",
+      "collection": "project-favorits"
     }
   }
 }

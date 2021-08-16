@@ -12,8 +12,15 @@
   },
   "attributes": {
     "profile": {
-      "via": "project_favorits",
-      "model": "profiles"
+      "model": "profiles",
+      "via": "project_favorits"
+    },
+    "project": {
+      "model": "projects",
+      "via": "project_favorits"
+    },
+    "status": {
+      "type": "string"
     }
   }
 }
