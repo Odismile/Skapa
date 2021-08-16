@@ -28,7 +28,7 @@ const Place = () => {
         <CardContent className='content'>
           <Box className='name-money'>
             <Typography className="title" component="p">
-              WeWork Lafayette
+              WeWork - Lafayette
             </Typography>
             <Box className='chips'>
               870 $/ day

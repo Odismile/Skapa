@@ -40,13 +40,18 @@ export default makeStyles((theme) => ({
                 padding: 0,
                 "&:focus, &:hover": {
                     "& svg": {
-                        fill: "#ffffff",
+                        "& path": {
+                            fill: "#ffffff",
+                        }
                     }
-                  },
+                },
                 "& svg": {
-                    fill: "#ffffff",
-                    width: 20,
-                    height: 20,
+                    "& path": {
+                        stroke: "#ffffff",
+                        width: 20,
+                        height: 20,
+                    }
+
                 }
             }
         },
@@ -83,6 +88,11 @@ export default makeStyles((theme) => ({
                 margin: "10px 0",
                 "& svg": {
                     paddingRight: 4,
+                    width: 15,
+                    height: 25,
+                    "& path": {
+                        stroke: "#e30057",
+                    }
                 }
             },
             '& p': {

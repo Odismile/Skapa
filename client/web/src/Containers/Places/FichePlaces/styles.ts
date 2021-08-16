@@ -2,25 +2,36 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   root: {
-    boxShadow: '0px 2px 4px #0000001C',
-    border: '1px solid #F4F4F4',
-    borderRadius: 12,
-    padding: 8,
+    "& .details": {
+      width: "90%",
+      margin: "-125px auto 20px auto",
+      border: "dashed 1px #f4f4f4",
+      background: "#ffffff",
+      boxShadow: "0px 2px 4px rgba(0,0,0,0.11)",
+      padding: 11,
+      borderRadius: 12,
+      position: "relative",
+      zIndex: 2,
+    },
     '& .title': {
       color: '#000000',
       marginBottom: 8,
     },
     "& .places": {
       marginBottom: 20,
+      background: "#fff",
     },
     "& .presentation": {
       marginBottom: 20,
+      background: "#fff",
     },
     "& .picture": {
       marginBottom: 20,
+      background: "#fff",
     },
     "& .contact": {
       marginBottom: 20,
+      background: "#fff",
       "& p": {
         fontSize: 10,
         color: "#000000",
@@ -33,6 +44,7 @@ export default makeStyles((theme) => ({
       display: 'flex',
       justifyContent: 'center',
       margin: '20px 0px',
+      background: "#fff",
       '& .btnAdd': {
         backgroundColor: '#8870FF',
         height: 35,
@@ -44,6 +56,7 @@ export default makeStyles((theme) => ({
     },
     "& .disponibilite": {
       marginBottom: 20,
+      background: "#fff",
     },
     '& .list-picture': {
       display: "flex",
@@ -83,6 +96,7 @@ export default makeStyles((theme) => ({
       marginTop: 10,
       "& a": {
         borderBottom: "1px solid #8870ff",
+        fontStyle: "italic",
       }
     },
     "& .grid_field": {
@@ -102,6 +116,9 @@ export default makeStyles((theme) => ({
       },
       '& label': {
         marginBottom: 0,
+        fontSize: 10,
+        fontWeight: "700",
+        color: "#000",
       },
 
       '& .input_date': {
@@ -129,7 +146,7 @@ export default makeStyles((theme) => ({
           },
         },
         '& > div': {
-          marginTop: 24,
+          marginTop: 15,
           marginBottom: 0,
           '&:before, &:after': {
             border: 'none',
@@ -141,4 +158,10 @@ export default makeStyles((theme) => ({
         marginBottom: 20,
     },
   },
+  mainPage: { },
+    mainContainer: {
+      paddingLeft: 20,
+      paddingRight: 20,
+      paddingBottom: 30,
+    },
 }));
