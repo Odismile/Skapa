@@ -25,6 +25,12 @@ const useStyles = makeStyles(() =>
     fontSize: 16,
     fontWeight: 600,
   },
+  linkContainerLogin: {
+    marginTop: 30,
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 600,
+  },
   link: {
     cursor: 'pointer',
     borderBottom: "1px solid #8277FF",
