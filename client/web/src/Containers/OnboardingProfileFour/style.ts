@@ -18,6 +18,7 @@ export default makeStyles((theme) => ({
       maxWidth: 132,
       width: 132,
       height: 100,
+      overflow: "hidden",
       position: 'relative',
       '& label': {
         color: '#8870FF',
@@ -30,6 +31,7 @@ export default makeStyles((theme) => ({
         justifyContent: 'center',
         fontSize: 14,
         fontWeight: 700,
+        overflow: "hidden",
       },
       '& input': {
         display: 'none',
@@ -38,11 +40,17 @@ export default makeStyles((theme) => ({
         backgroundColor: '#ece8ff',
         border: 'solid 2px #8870ff',
       },
-      '& img':{
+      '& .bgIcon':{
+          fill: "#8870ff",
           position: 'absolute',
-          bottom: 0,
-          right: 0,
+          bottom: -2,
+          right: "-22.5%",
           opacity: '0.1',
+          height: 98,
+          width: 98,
+          "& svg": {
+            
+          }
       }
     },
   },
