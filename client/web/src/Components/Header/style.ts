@@ -75,9 +75,8 @@ export default makeStyles (
           marginRight: 6,
           "&:focus, &:hover": {
             background : "#000",
-            fill: "#8870ff",
-            color: "red",
             borderColor: "#000",
+            fill: "#8870ff",
           },
           "&:active, &.active": {
             background : "#fff",
