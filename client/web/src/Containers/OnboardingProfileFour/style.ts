@@ -45,7 +45,7 @@ export default makeStyles((theme) => ({
           position: 'absolute',
           bottom: -2,
           right: "-22.5%",
-          opacity: '0.1',
+          opacity: '0.08',
           height: 98,
           width: 98,
           "& svg": {
