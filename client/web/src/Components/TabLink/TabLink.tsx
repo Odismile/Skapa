@@ -15,6 +15,7 @@ import {
   dateStartVariable,
   filesPictureVariable,
   filesVideoVariable,
+  initCreateProjectVariable,
   projectDescriptionVariable,
   projectIdVariable,
   skillsSelectedVariable,
@@ -131,7 +132,7 @@ const TabLink = () => {
                 Date_Start: moment(dateStartVariable()).format('DD/MM/YYYY'),
                 Date_End: moment(dateEndVariable()).format('DD/MM/YYYY'),
                 description: projectDescriptionVariable(),
-                //project_skills: transformSkills(skillsSelectedVariable()),
+                project_skills: transformSkills(skillsSelectedVariable()),
                 Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
                   filesVideoVariable()?.[0].name
                 }`,
@@ -146,6 +147,7 @@ const TabLink = () => {
             projectIdVariable(result.data?.createProject?.project?.id);
             await uploadFile(filesPictureVariable());
             await uploadFile(filesVideoVariable());
+            initCreateProjectVariable();
             setActiveStep(newActiveStep);
           }
         });
@@ -154,10 +156,10 @@ const TabLink = () => {
   };
 
   const handleStep = (step: number) => () => {
-    // if (projectIdVariable().trim().length !== 0) {
-    //   setActiveStep(step);
-    // }
-    setActiveStep(step);
+    if (projectIdVariable().trim().length !== 0) {
+      setActiveStep(step);
+    }
+    //setActiveStep(step);
   };
 
   return (

@@ -5,6 +5,10 @@ export const PROJECT_INFO_FRAGMENT = gql`
     id
     Name
     description
+    project_skills {
+      id
+      name
+    }
   }
 `;
 

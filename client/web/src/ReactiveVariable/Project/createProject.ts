@@ -12,3 +12,14 @@ export const skillsSelectedVariable = makeVar<(Items_get_language_items | null)[
 export const filesVideoVariable = makeVar<File[] | null>(null);
 
 export const projectIdVariable = makeVar<string>('');
+
+export const initCreateProjectVariable = () => {
+  filesPictureVariable(null);
+  typeProjectVariable('');
+  cityVariable('');
+  dateStartVariable(null);
+  dateEndVariable(null);
+  projectDescriptionVariable('');
+  skillsSelectedVariable(null);
+  filesVideoVariable(null);
+};
