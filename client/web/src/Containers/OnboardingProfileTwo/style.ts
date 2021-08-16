@@ -109,6 +109,10 @@ export default makeStyles(  theme => ({
       fontStyle: 'italic',
       cursor: 'pointer',
       fontSize: 12,
+      "& svg": {
+        color: '#8870ff',
+        fontSize: "1rem",
+      },
     }
   },
 }));
