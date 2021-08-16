@@ -4,24 +4,27 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL fragment: ProjectsInfo
+// GraphQL query operation: project
 // ====================================================
 
-export interface ProjectsInfo_project_project_skills {
+export interface project_project_project_skills {
   __typename: "ProjectSkills";
   id: string;
   name: string;
 }
 
-export interface ProjectsInfo_project {
+export interface project_project {
   __typename: "Projects";
   id: string;
   Name: string | null;
   description: string;
-  project_skills: (ProjectsInfo_project_project_skills | null)[] | null;
+  project_skills: (project_project_project_skills | null)[] | null;
 }
 
-export interface ProjectsInfo {
-  __typename: "createProjectPayload";
-  project: ProjectsInfo_project | null;
+export interface project {
+  project: project_project | null;
+}
+
+export interface projectVariables {
+  id: string;
 }
