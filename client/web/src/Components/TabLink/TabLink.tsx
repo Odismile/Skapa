@@ -1,17 +1,41 @@
-import React from 'react';
+import { useApolloClient } from '@apollo/client';
 import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core';
+import moment from 'moment';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
 import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
 import Team from '../../Containers/Project/CreateProject/Team/Team';
+import { useCreateProject } from '../../Providers/ProjectProvider/useCreateProject';
+import {
+  cityVariable,
+  dateEndVariable,
+  dateStartVariable,
+  filesPictureVariable,
+  filesVideoVariable,
+  initCreateProjectVariable,
+  projectDescriptionVariable,
+  projectIdVariable,
+  skillsSelectedVariable,
+  typeProjectVariable,
+} from '../../ReactiveVariable/Project/createProject';
+import { displaySnackbar, InitSnackbarData } from '../../Utils';
+import { transformSkills } from '../../Utils/transformSkills';
+import { useUploadFile } from '../../Utils/uploadFile';
 import useStyles from './style';
 
 const TabLink = () => {
   const classes = useStyles();
+  const snackbar = InitSnackbarData;
+  const client = useApolloClient();
+  const { doCreateProject, loading } = useCreateProject();
+  const { uploadFile, loading: loadingUpload } = useUploadFile();
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
+  const { t } = useTranslation();
 
   const getSteps = () => {
     return ['Description', 'Team', 'Places', 'Review'];
@@ -57,11 +81,85 @@ const TabLink = () => {
           // find the first step that has been completed
           steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
-    setActiveStep(newActiveStep);
+
+    if (newActiveStep === 1) {
+      if (filesPictureVariable() === null) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.picture`);
+        displaySnackbar(client, snackbar);
+      } else if (typeProjectVariable().trim().length === 0) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.typeProject`);
+        displaySnackbar(client, snackbar);
+      } else if (cityVariable().trim().length === 0) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.city`);
+        displaySnackbar(client, snackbar);
+      } else if (dateStartVariable() === null) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.start`);
+        displaySnackbar(client, snackbar);
+      } else if (dateEndVariable() === null) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.end`);
+        displaySnackbar(client, snackbar);
+      } else if (moment(dateStartVariable()).format('dd-MM-YYYY') > moment(dateEndVariable()).format('dd-MM-YYYY')) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.invalidDate`);
+        displaySnackbar(client, snackbar);
+      } else if (projectDescriptionVariable().trim().length === 0) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.description`);
+        displaySnackbar(client, snackbar);
+      } else if (skillsSelectedVariable() === null) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.skills`);
+        displaySnackbar(client, snackbar);
+      } else if (filesVideoVariable() === null) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.video`);
+        displaySnackbar(client, snackbar);
+      } else {
+        doCreateProject({
+          variables: {
+            input: {
+              data: {
+                Picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                  filesPictureVariable()?.[0].name
+                }`,
+                Type: typeProjectVariable(),
+                Ville: cityVariable(),
+                Date_Start: moment(dateStartVariable()).format('DD/MM/YYYY'),
+                Date_End: moment(dateEndVariable()).format('DD/MM/YYYY'),
+                description: projectDescriptionVariable(),
+                project_skills: transformSkills(skillsSelectedVariable()),
+                Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                  filesVideoVariable()?.[0].name
+                }`,
+                // Name: '',
+                // teams: [],
+                // item: '',
+              },
+            },
+          },
+        }).then(async (result) => {
+          if (result.data?.createProject?.project?.id) {
+            projectIdVariable(result.data?.createProject?.project?.id);
+            await uploadFile(filesPictureVariable());
+            await uploadFile(filesVideoVariable());
+            initCreateProjectVariable();
+            setActiveStep(newActiveStep);
+          }
+        });
+      }
+    }
   };
 
   const handleStep = (step: number) => () => {
-    setActiveStep(step);
+    if (projectIdVariable().trim().length !== 0) {
+      setActiveStep(step);
+    }
+    //setActiveStep(step);
   };
 
   return (
@@ -100,11 +198,17 @@ const TabLink = () => {
         <Box>
           <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
           <Box className={classes.Btn}>
-            <Button variant="contained" color="primary" onClick={handleNext} className={classes.button}>
-              Next
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleNext}
+              className={classes.button}
+              disabled={loading || loadingUpload}
+            >
+              {t(`createProject.next`)}
             </Button>
             <Link to="/" className="link">
-              Skip this step
+              {t(`createProject.skipThisStep`)}
             </Link>
           </Box>
         </Box>

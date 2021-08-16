@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Chip, Typography } from '@material-ui/core';
 import useStyles from './style';
 
@@ -5,7 +6,7 @@ const Tags = () => {
   const classes = useStyles();
   return (
     <Box className={classes.content}>
-      <Typography variant='h6' className="title">Tags</Typography>
+      
       <Box className={classes.tags}>
         <Chip label="Sketch"/>
         <Chip label="Figma"/>

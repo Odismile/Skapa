@@ -19,6 +19,7 @@ export interface Login_login_user_role {
 
 export interface Login_login_user {
   __typename: "UsersPermissionsMe";
+  id: string;
   username: string;
   email: string;
   confirmed: boolean | null;

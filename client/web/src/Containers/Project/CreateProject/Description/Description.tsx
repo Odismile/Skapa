@@ -1,43 +1,152 @@
 import React, { useState } from 'react';
-import { Box, IconButton, TextareaAutosize, TextField, Typography } from '@material-ui/core';
-import Skeleton from 'react-loading-skeleton';
+import {
+  Box,
+  Button,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextareaAutosize,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import moment from 'moment';
+import Skeleton from 'react-loading-skeleton';
+
+import { useTranslation } from 'react-i18next';
+import ReactPlayer from 'react-player';
 import Info from '../../../../Components/Icons/Info/Info';
 import IconPhoto from '../../../../Components/Icons/Photo/Photo';
 import TextFieldComponent from '../../../../Components/TextField/TextField';
-import useStyles from './styles';
-import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_get_language';
+import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
+import { useItemsProjectTypes } from '../../../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
+import {
+  cityVariable,
+  dateEndVariable,
+  dateStartVariable,
+  filesPictureVariable,
+  filesVideoVariable,
+  projectDescriptionVariable,
+  skillsSelectedVariable,
+  testCreateObject,
+  typeProjectVariable,
+} from '../../../../ReactiveVariable/Project/createProject';
+import { useUploadFile } from '../../../../Utils/uploadFile';
+import useStyles from './styles';
 
 const Description = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
+  const { uploadFile } = useUploadFile();
   const { data, loading } = useItemsGetSkills();
+  const { data: dataProjectType } = useItemsProjectTypes();
 
+  const [fileUpload, setFileUpload] = useState('');
+
+  const [typeProject, setTypeProject] = useState('');
+  const [city, setCity] = useState('');
+  const [dateStart, setdateStart] = useState<Date | null>();
+  const [dateEnd, setDateEnd] = useState<Date | null>();
+  const [projectDescription, setProjectDescription] = useState('');
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
+
+  const [videoUpload, setVideoUpload] = useState('');
+
+  const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    const filesConcat = Array.from(event.target.files || []);
+    filesPictureVariable(filesConcat);
+    setFileUpload(url);
+    testCreateObject();
+  };
+
+  const onChangeProjectType = (
+    e: React.ChangeEvent<{
+      name?: string | undefined;
+      value: unknown;
+    }>,
+  ) => {
+    setTypeProject('' + e.target.value);
+    typeProjectVariable('' + e.target.value);
+    testCreateObject();
+  };
+
+  const onChangeCity = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setCity(e.target.value);
+    cityVariable(e.target.value);
+    testCreateObject();
+  };
+
+  const onChangeDateStart = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setdateStart(moment(e.target.value).toDate());
+    dateStartVariable(moment(e.target.value).toDate());
+    testCreateObject();
+  };
+
+  const onChangeDateEnd = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setDateEnd(moment(e.target.value).toDate());
+    dateEndVariable(moment(e.target.value).toDate());
+    testCreateObject();
+  };
+
+  const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setProjectDescription(e.target.value);
+    projectDescriptionVariable(e.target.value);
+    testCreateObject();
+  };
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
       setSkillsSelected([skill]);
+      skillsSelectedVariable([skill]);
     } else {
       const findSkill = skillsSelected?.find((skillItem) => skillItem?.label === skill?.label);
       if (findSkill) {
         const newSkills = skillsSelected?.filter((skillItem) => skillItem?.label !== skill?.label);
         setSkillsSelected(newSkills);
+        skillsSelectedVariable(newSkills);
       } else {
-        setSkillsSelected((prevState) => prevState && [...prevState, skill]);
+        const newSkills = skillsSelected && [...skillsSelected, skill];
+        skillsSelectedVariable(newSkills);
+        setSkillsSelected(newSkills);
       }
     }
+    testCreateObject();
+  };
+
+  const onUploadVideoFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+    const filesConcat = Array.from(event.target.files || []);
+    filesVideoVariable(filesConcat);
+    setVideoUpload(url);
+    testCreateObject();
   };
 
   return (
     <Box className={classes.description}>
       {/* upload picture */}
-      <Box className="upload_bloc">
-        <input accept="image/*" className="upload_picture" id="contained-button-file" multiple type="file" />
-        <label htmlFor="contained-button-file" className="upload_content">
-          <IconPhoto />
-          <span>Upload a picture </span>
+      <Box className="upload_bloc" key={'1'}>
+        <input
+          accept="image/*"
+          className="upload_picture"
+          id="contained-button-file-picture"
+          multiple
+          type="file"
+          onChange={(e) => onUploadFile(e)}
+        />
+        <label htmlFor="contained-button-file-picture" className="upload_content">
+          {fileUpload.length !== 0 ? (
+            <img src={fileUpload} className={classes.imageUpload} />
+          ) : (
+            <>
+              <IconPhoto />
+              <span>{t(`createProject.uploadAPicture`)}</span>
+            </>
+          )}
         </label>
       </Box>
 
@@ -51,42 +160,71 @@ const Description = () => {
                 <EditIcon />
               </IconButton>
               <Typography className="subTitle" variant="h3">
-                Basic informations
+                {t(`createProject.basicInformation`)}
               </Typography>
             </Box>
             <Box className="content_bloc" component="section">
-              <Box className="field_item typeProject_item">
-                <TextFieldComponent label="Type project" id="TypeProject" placeholder="Type project" type="text" />
+              <Box className="field_item typeProject_item selectBox_item">
+                <InputLabel shrink>Type project</InputLabel>
+                <Select
+                  defaultValue="Type project"
+                  fullWidth
+                  className="selectBox"
+                  onChange={onChangeProjectType}
+                  IconComponent={KeyboardArrowDownIcon}
+                  MenuProps={{
+                    anchorOrigin: {
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    },
+                    PaperProps: {
+                      className: 'dropDownSelect',
+                    },
+                    transformOrigin: {
+                      vertical: 'top',
+                      horizontal: 'left',
+                    },
+                    getContentAnchorEl: null,
+                  }}
+                >
+                  {dataProjectType?.items?.map((project, index) => {
+                    return (
+                      <MenuItem key={index} value={project?.label ?? ''}>
+                        {project?.label}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
               </Box>
               <Box className="field_item">
-                <TextFieldComponent label="Ville" id="VilleProject" placeholder="Ville " type="text" />
+                <TextFieldComponent
+                  label={t(`createProject.city`)}
+                  id="VilleProject"
+                  placeholder="Ville "
+                  type="text"
+                  value={city}
+                  onChange={(e) => onChangeCity(e)}
+                />
               </Box>
               <Box className="grid_field">
                 <Box className="field_item field_date">
                   <TextField
                     id="dateStarts"
-                    label="Starts"
+                    label={t(`createProject.starts`)}
                     type="date"
-                    defaultValue="12/05/21"
                     className="input_date"
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    onChange={(e) => onChangeDateStart(e)}
                   />
                 </Box>
                 <Box className="field_item field_date">
-                  {/* <DatePicker
-                    label="Basic example"
-                    value={selectedDate}
-                    onChange={handleDateChange}
-                    animateYearScrolling
-                  /> */}
-
                   <TextField
                     id="dateEnd"
-                    label="Ends"
+                    label={t(`createProject.end`)}
                     type="date"
-                    defaultValue="12/05/21"
+                    onChange={(e) => onChangeDateEnd(e)}
                     className="input_date"
                     InputLabelProps={{
                       shrink: true,
@@ -98,21 +236,29 @@ const Description = () => {
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Project description</Typography>
+              <Typography variant="h2">{t(`createProject.projectDescription`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item textarea_item">
-                <TextareaAutosize minRows="8" className="textarea_input" placeholder="Lorem Ipsum" defaultValue="" />
-                <Typography className="textLeft">0/240 symbols</Typography>
+                <TextareaAutosize
+                  minRows="8"
+                  className="textarea_input"
+                  placeholder="Lorem Ipsum"
+                  defaultValue=""
+                  onChange={onChangeDescription}
+                  value={projectDescription}
+                  maxLength={240}
+                />
+                <Typography className="textLeft">{projectDescription.length}/240 symbols</Typography>
               </Box>
             </Box>
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Skills recquired</Typography>
+              <Typography variant="h2">{t(`createProject.skillsRecquired`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
@@ -154,20 +300,39 @@ const Description = () => {
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Video Pitch</Typography>
+              <Typography variant="h2">{t(`createProject.videoPitch`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
               <Box className="upload_bloc">
-                <input accept="videos/*" className="upload_picture" id="contained-button-file" multiple type="file" />
-                <label htmlFor="contained-button-file" className="upload_content">
-                  <IconPhoto />
-                  <span>
-                    Upload a video <br />
-                    (youtube, mp4.)
-                  </span>
+                <input
+                  accept="video/*"
+                  className="upload_picture"
+                  id="contained-button-file-video"
+                  type="file"
+                  onChange={onUploadVideoFile}
+                />
+                <label htmlFor="contained-button-file-video" className="upload_content">
+                  {videoUpload.length !== 0 ? (
+                    <ReactPlayer
+                      url={videoUpload}
+                      className={classes.videoUpload}
+                      width={'150px'}
+                      height={'100px'}
+                      playing={true}
+                      controls={true}
+                    />
+                  ) : (
+                    <>
+                      <IconPhoto />
+                      <span>
+                        {t(`createProject.uploadAVideo`)} <br />
+                        (youtube, mp4.)
+                      </span>
+                    </>
+                  )}
                 </label>
               </Box>
             </Box>

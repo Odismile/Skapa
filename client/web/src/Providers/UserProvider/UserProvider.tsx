@@ -20,9 +20,7 @@ const UserProvider: FC = (props) => {
   const [token] = useState(getAccessToken());
   const [userInfo, setUserInfo] = useState<any>({});
 
-  useEffect(() => {
-    // if (token) doGetMe();
-  }, [token]);
+  useEffect(() => {}, [token]);
 
   return (
     <UserContext.Provider

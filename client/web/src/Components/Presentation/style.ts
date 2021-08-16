@@ -4,11 +4,6 @@ import noir from '../../Assets/images/noir.svg';
 
 export default makeStyles((theme) => ({
     content: {
-        paddingTop: 23,
-        "& .title": {
-            color: '#000000',
-            marginBottom: 8,
-        },
         '& textarea': {
             color: '#000',
             border: 'solid 1px #dfdfdf',
@@ -35,6 +30,7 @@ export default makeStyles((theme) => ({
                 color: '#8870FF',
                 textDecoration: 'none',
                 borderBottom: '1px solid #8870ff',
+                fontStyle: "italic",
             }
         }
     },

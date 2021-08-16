@@ -17,6 +17,36 @@
     "teams": {
       "collection": "teams",
       "via": "project"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "item": {
+      "model": "items",
+      "via": "projects"
+    },
+    "project_skills": {
+      "collection": "project-skills",
+      "via": "project"
+    },
+    "Picture": {
+      "type": "string"
+    },
+    "Type": {
+      "type": "string"
+    },
+    "Ville": {
+      "type": "string"
+    },
+    "Video": {
+      "type": "string"
+    },
+    "Date_Start": {
+      "type": "string"
+    },
+    "Date_End": {
+      "type": "string"
     }
   }
 }

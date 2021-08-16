@@ -55,6 +55,9 @@ const theme = createMuiTheme ({
         lineHeight: "100%",
         minWidth: 100,
         textTransform: "none",
+        "&:hover" : {
+          background: "rgb(236 232 255 / 6%)",
+        },
       },
       label: {
         justifyContent: 'center',
@@ -87,9 +90,9 @@ const theme = createMuiTheme ({
     MuiLink: {
       root: {
         color: '#8870ff',
-        textDecoration: 'underline',
+        textDecoration: 'none',
         "&:hover" : {
-
+          textDecoration: 'none',
         },
         "&:focus": {
           outline: "none",

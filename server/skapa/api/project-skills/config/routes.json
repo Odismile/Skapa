@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/project-skills",
+      "handler": "project-skills.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/project-skills/count",
+      "handler": "project-skills.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/project-skills/:id",
+      "handler": "project-skills.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/project-skills",
+      "handler": "project-skills.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/project-skills/:id",
+      "handler": "project-skills.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/project-skills/:id",
+      "handler": "project-skills.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

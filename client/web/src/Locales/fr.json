@@ -55,7 +55,8 @@
       "labelLastname": "Prénom",
       "labelPassword": "Mot de passe",
       "createAccount": "Créer un compte",
-      "createAccountFromLinkdln": "Créer un compte à partir du profil Linkedin"
+      "createAccountFromLinkdln": "Créer un compte à partir du profil Linkedin",
+      "backToLogin": "Revenir à la connexion"
     },
     "onBordingProfile": {
       "yourPosition": "Votre position",
@@ -68,6 +69,31 @@
       "basic": "De base",
       "intermediate": "Intermédiaire",
       "fluente": "Courant"
+    },
+    "createProject": {
+      "uploadAPicture": "Télécharger une image",
+      "basicInformation": "Informations de base",
+      "typeProject": "Type de projet",
+      "city": "Ville",
+      "starts": "Départs",
+      "end": "Finir",
+      "projectDescription": "Description du projet",
+      "skillsRecquired": "Compétences requises",
+      "videoPitch": "Pitch vidéo",
+      "uploadAVideo": "Télécharger une vidéo",
+      "next": "Suivant",
+      "skipThisStep": "Passer cette étape"
+    },
+    "createProjectError": {
+      "picture": "Veuillez ajouter une image",
+      "typeProject": "Veuillez selectionner une type de projet",
+      "city": "Veuillez entrer une ville",
+      "start": "Veuillez entrer une date de debut",
+      "end": "Veuillez entrer une date fin",
+      "invalidDate": "La date de debut du projet est superieur a la date du fin",
+      "description": "Veuillez entrer une description",
+      "skills": "Veuillez selectionner un ou plusieurs skills",
+      "video": "Veuillez entrer une video"
     }
   }
 }

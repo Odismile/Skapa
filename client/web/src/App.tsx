@@ -9,9 +9,11 @@ import { ROUTES, UNAUTHORIZED } from './Routes';
 import { ThemeProvider } from '@material-ui/styles';
 import { CssBaseline } from '@material-ui/core';
 import Theme from './Theme/index';
+import { initializeFirebase } from './Utils/firebase';
 
 const App: FC<RouteComponentProps> = (props) => {
   const { history } = props;
+
 
   return (
     <>

@@ -6,7 +6,13 @@ export default makeStyles(  theme => ({
       color: "#000000",
       fontStyle: 'italic',
       fontWeight: 600,
-      fontSize:14,
+      fontSize: 14,
+      "& svg": {
+        fill: '#8870ff',
+        fontSize: "1.1rem",
+        marginLeft: 6,
+        verticalAlign: "middle",
+      },
     }
   },
   bio:{
@@ -23,8 +29,19 @@ export default makeStyles(  theme => ({
         outline: 'none',
         fontStyle: 'normal',
         color: 'black',
-      }
-    }
+      },
+    },
+    position: 'relative',
+    '& .textLeft': {
+      color: '#000',
+      fontSize: 10,
+      fontStyle: 'italic',
+      margin: 0,
+      position: 'absolute',
+      right: 10,
+      bottom: 10,
+      zIndex: 1,
+    },
   },
   footerPage: {
     "& .link-footer": {
@@ -65,12 +82,15 @@ export default makeStyles(  theme => ({
   form: {
     '& label>span:first-child': {
       borderRadius: '100%',
-      height: 80,
-      width: 80,
-      minWidth: 80,
+      height: 75,
+      width: 75,
+      minWidth: 75,
       border: '2px solid #8870ff',
       backgroundColor: 'white',
       color: '#8870ff',
+      "& svg": {
+        fontSize: "1.4rem",
+      },
     },
   },
   inputVideo:{
@@ -89,6 +109,10 @@ export default makeStyles(  theme => ({
       fontStyle: 'italic',
       cursor: 'pointer',
       fontSize: 12,
+      "& svg": {
+        color: '#8870ff',
+        fontSize: "1rem",
+      },
     }
   },
 }));
