@@ -203,5 +203,5 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: Wishlist,
-  }
+  },
 ];
