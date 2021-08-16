@@ -20,27 +20,27 @@ export default makeStyles((theme) => ({
           top: 0,
           right: 0,
           '&:focus, &:hover': {
-            "& path": {
-              fill: "#8277FF",
-            }
-          }
+            '& path': {
+              fill: '#8277FF',
+            },
+          },
         },
-        '& .iconHeart':{
+        '& .iconHeart': {
           width: 21,
           height: 20,
-          "& path": {
-            stroke: "#8277FF",
+          '& path': {
+            stroke: '#8277FF',
             width: 21,
             height: 20,
-          }
+          },
         },
-        '& .iconOrganisation':{
+        '& .iconOrganisation': {
           position: 'absolute',
           top: -5,
           left: -8,
           width: 30,
           height: 30,
-        }
+        },
       },
       '& img': {
         height: 74,
@@ -53,30 +53,30 @@ export default makeStyles((theme) => ({
         marginLeft: 12,
         color: '#5BD3A0',
         fontWeight: 600,
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         '&.recommanded': {
           color: '#5bd3a0',
-          "& svg ": {
+          '& svg ': {
             height: 12,
-            width: "auto",
+            width: 'auto',
             paddingRight: 5,
-            "& path": {
-              stroke: "#5bd3a0",
-            }
-          }
+            '& path': {
+              stroke: '#5bd3a0',
+            },
+          },
         },
         '&.top-rated': {
           color: '#E30057',
-          "& svg ": {
+          '& svg ': {
             height: 12,
             paddingRight: 5,
-            width: "auto",
-            "& path": {
-              stroke: "#E30057",
-            }
-          }
-        }
+            width: 'auto',
+            '& path': {
+              stroke: '#E30057',
+            },
+          },
+        },
       },
       '& .name-adress': {
         fontSize: 10,
@@ -120,11 +120,59 @@ export default makeStyles((theme) => ({
     },
   },
   check: {
-    "& .checkbox": {
-        width: 20,
-        height: 20,
-        borderRadius: 5,
-        color: "#8870FF",
-    }
-},
+    '& .checkbox': {
+      width: 20,
+      height: 20,
+      borderRadius: 5,
+      color: '#8870FF',
+    },
+  },
+  drawerContribute: {
+    maxHeight: '75%',
+    width: '100%',
+  },
+  drawerPaperContribute: {
+    background: '#fff',
+    borderRadius: '12px 12px 0 0',
+    border: '1px solid #f4f4f4',
+    boxShadow: '0px 2px 4px rgba(0,0,0,0.11)',
+    maxHeight: '75%',
+    padding: '35px 30px 30px',
+  },
+  addProject_drawerContent: {
+    position: 'relative',
+    "& .btn_handleDrawer": {
+      background: "#e5e5e5",
+      borderRadius: 8,
+      height: 8,
+      position: "absolute",
+      left: "50%",
+      top: -25, 
+      transform: "translateX(-50%)",
+      width: 110,
+    },
+    '& .header': {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      '& .btn_done': {
+        height: 35,
+        backgroundColor: '#8870FF',
+        fontSize: 14,
+        color: 'white',
+        padding: '10px 28px',
+      },
+    },
+    '& .content': {
+      '& .selectText': {
+        color: '#979797',
+        fontWeight: 400,
+        fontStyle: 'italic',
+        marginTop: 12,
+      },
+      '& >div':{
+        marginTop: 10,
+      }
+    },
+  },
 }));
