@@ -89,8 +89,7 @@ const SearchProject = () => {
               labelPlacement="start"
             />
           </Box>
-        </Box>
-          
+        </Box> 
       </FormControl>
     </Box>
   );

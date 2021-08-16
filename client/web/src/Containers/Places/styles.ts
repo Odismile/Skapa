@@ -41,6 +41,7 @@ export default makeStyles(
     searchProject: {
       maxWidth: 320,
       margin: "0 auto",
+      background: "#ffffff",
       "& .form-control": {
         width: "100%",
         "& .form-control-item": {

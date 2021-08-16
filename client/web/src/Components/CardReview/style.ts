@@ -22,6 +22,25 @@ export default makeStyles((theme) => ({
       textTransform: 'uppercase',
       zIndex: 1,
       },
+      '& .btn_lik': {
+        position: "absolute",
+        top: 8,
+        right: 8,
+        zIndex: 2,
+        padding: 0,
+        "&:hover, &:focus": {
+          "& path": {
+            fill: "#ffffff",
+          }
+        },
+        '& svg': {
+          width: 20,
+          height: 21,
+          '& path': {
+            stroke: "#ffffff"
+          },
+        }
+      },
       '& .bgBlack':{
           position: 'absolute',
           top:0,

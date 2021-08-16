@@ -6,6 +6,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  IconButton,
   Slider,
   Typography,
   withStyles,
@@ -13,6 +14,7 @@ import {
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import useStyles from './style';
 import imgCard from '../../Assets/images/lab.svg';
+import HeartLine from '../Icons/HeartLine';
 
 const PrettoSlider = withStyles({
   root: {
@@ -93,6 +95,9 @@ const CardReview = () => {
         </Box>
       </CardContent>
       <Box className="category">LAB</Box>
+      <IconButton className="btn btn_lik" aria-label="Like">
+        <HeartLine />
+      </IconButton>
       <Box className="bgBlack"></Box>
     </Card>
   );

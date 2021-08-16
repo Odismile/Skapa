@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, IconButton, InputBase, Paper, Popper } from "@material-ui/core";
+import { Box, IconButton, InputBase, Modal, Paper, Popper, Typography } from "@material-ui/core";
 import useStyles from './style';
 import Filter from '../../Components/Icons/Filter/Filter';
 import Search from '../../Components/Icons/Search/Search';
 import SearchProject from '../SearchProject/SearchProject';
+import Cross from '../Icons/Cross';
 
 
 
@@ -11,18 +12,16 @@ import SearchProject from '../SearchProject/SearchProject';
 const SearchFilter = () => {
   const classes = useStyles();
 
-    //Simple popper
-    const [anchorEl, setAnchorEl] = React.useState(null);
-  
-    const handleClick = (event:any) => {
-      setAnchorEl(anchorEl ? null : event.currentTarget);
-    };
-  
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popper' : undefined;
+  const [open, setOpen] = React.useState(false);
 
-    
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
   return (
     <Box className="search-bloc">
       <Paper component="form" className={classes.root}>
@@ -36,12 +35,29 @@ const SearchFilter = () => {
             <Search />
           </IconButton>
         </Box>
-        <IconButton color="primary" className="filter-icon" aria-label="directions"  aria-describedby={id} onClick={handleClick}>
+        <IconButton color="primary" className="filter-icon" onClick={handleOpen}>
           <Filter />
         </IconButton>
-        <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start" >
-          <SearchProject />
-        </Popper>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <Box className="modal-content">
+            <Box className="modal-top">
+              <Typography component="h2" className="modal-title">
+                Filter
+              </Typography>
+              <IconButton onClick={handleClose} className="close-modal">
+                  <Cross />
+              </IconButton>
+            </Box>
+            <Box className="modal-body">
+              <SearchProject />
+            </Box>
+          </Box>
+        </Modal>
       </Paper>
     </Box>
   );

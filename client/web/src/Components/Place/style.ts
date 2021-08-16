@@ -4,13 +4,16 @@ export default makeStyles((theme) => ({
     box: {
         
     },
-    root: {
+    rootPlace: {
         boxShadow: '0px 2px 4px #0000001C',
         border: '1px solid #F4F4F4',
         borderRadius: 12,
         padding: '7px 10px',
         position: "relative",
         flexDirection: "column",
+        "& .card-place": {
+            boxShadow: "none",
+        },
         '& .media': {
             height: 75,
             borderRadius: 10,

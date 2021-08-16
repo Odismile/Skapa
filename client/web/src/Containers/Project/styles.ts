@@ -4,7 +4,7 @@ export default makeStyles(
   theme => ({
     mainPage: { },
     mainContainer: {
-      padding: '30px 22px',
+      padding: '0px 22px 30px 22px',
     },
     tabSelected:{
       color: '#8870FF!important',
