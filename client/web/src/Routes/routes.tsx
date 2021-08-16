@@ -10,6 +10,7 @@ import OnboardingProfileTwo from '../Containers/OnboardingProfileTwo/OnboardingP
 import OnboardingProfileSix from '../Containers/OnboardingProfileSix/OnboardingProfileSix';
 import Project from '../Containers/Project';
 import CreateProject from '../Containers/Project/CreateProject';
+import ProjectPlaces from '../Containers/Places/FichePlaces/FichePlaces';
 import CreateProjectCongrats from '../Containers/Project/CreateProject/Congrats';
 import OnboardingProfileThree from '../Containers/OnboardingProfileThree/OnboardingProfileThree';
 import OnboardingProfileFour from '../Containers/OnboardingProfileFour/OnboardingProfileFour';
@@ -26,6 +27,7 @@ export const ONBOARDING_PROFILE = '/onboarding-profile';
 export const ONBOARDING_PROFILE2 = '/onboarding-profile2';
 export const ONBOARDING_PROFILE6 = '/onboarding-profile6';
 export const PROJECT = '/project';
+export const PROJECT_PLACES = '/project/places';
 export const CREATE_PROJECT = '/project/create-project';
 export const CREATE_PROJECT_CONGRATS = '/project/create-project/congrats';
 export const ONBOARDING_PROFILE3 = '/onboarding-profile3';
@@ -93,6 +95,13 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: CreateProject,
+  },
+  {
+    key: 'PROJECT_PLACES',
+    route: PROJECT_PLACES,
+    roles: [],
+    private: false,
+    component: ProjectPlaces,
   },
   {
     key: 'ONBOARDING_PROFILE6',
