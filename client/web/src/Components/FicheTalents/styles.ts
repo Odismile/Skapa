@@ -2,10 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   root: {
+    marginTop: 15,
     boxShadow: '0px 2px 4px #0000001C',
     border: '1px solid #F4F4F4',
     borderRadius: 12,
     padding: 8,
+    backgroundColor: 'white',
     '& .title': {
       color: '#000000',
       marginBottom: 8,
