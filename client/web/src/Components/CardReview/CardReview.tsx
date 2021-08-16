@@ -17,8 +17,8 @@ import imgCard from '../../Assets/images/lab.svg';
 const PrettoSlider = withStyles({
   root: {
     color: '#9067ff',
-    height: 8,
-    padding: '11px 0px',
+    height: 5,
+    padding: 0,
   },
   thumb: {
     height: 24,
