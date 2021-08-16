@@ -8,7 +8,8 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "start:server": "export GOOGLE_APPLICATION_CREDENTIALS=\"${PWD}/skapa-b88c9-firebase-adminsdk-fviwf-0b0d51443a.json\" && start"
+    "start:server": "export GOOGLE_APPLICATION_CREDENTIALS=\"${PWD}/skapa-b88c9-firebase-adminsdk-fviwf-0b0d51443a.json\" && start",
+      "start:server:develop": "export GOOGLE_APPLICATION_CREDENTIALS=\"${PWD}/skapa-b88c9-firebase-adminsdk-fviwf-0b0d51443a.json\" && develop"
   },
   "devDependencies": {},
   "dependencies": {

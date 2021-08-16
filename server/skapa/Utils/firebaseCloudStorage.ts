@@ -20,10 +20,8 @@ interface RequestFileGenerateSignedUrl {
   pathURL: string;
 }
 
-export const generateReadSignedUrl = async (
-  data: RequestFileGenerateSignedUrl
-) => {
-  if (!data) {
+export const generateReadSignedUrl = async (filename:string) => {
+  if (!filename) {
     throw new Error("Error data to get in firebase");
   }
   try {
@@ -31,8 +29,8 @@ export const generateReadSignedUrl = async (
     // Content-Type: application/octet-stream header.
     const uuid = randomStr();
     // Get a v4 signed URL for uploading file
-    if (data.originalname.trim().length !== 0) {
-      const [url] = await bucket.file(data.originalname).getSignedUrl({
+    if (filename.trim().length !== 0) {
+      const [url] = await bucket.file(filename).getSignedUrl({
         version: "v4",
         action: "read",
         expires: Date.now() + 15 * 60 * 1000, // 15 minutes
