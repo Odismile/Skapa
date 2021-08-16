@@ -77,6 +77,11 @@ export default makeStyles (
             background : "#000",
             borderColor: "#000",
           },
+          "&:active, &.active": {
+            background : "#fff",
+            borderColor: "#fff",
+            color: "#000",
+          },
           "&:last-child": {
             marginRight: 0,
           },
@@ -199,6 +204,7 @@ export default makeStyles (
     },
     drawerPaperMenu: {
       background: "#000",
+      boxShadow: "6px 0px 9px rgba(55,55,55,0.32)",
       padding: "15px",
       overflow: "hidden",
       width: 280,
