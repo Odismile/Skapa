@@ -3,6 +3,7 @@ import Wrapper from '../Components/Wrapper';
 import HomePage from '../Containers/HomePage';
 import Login from '../Containers/Authentication/Login';
 import Signup from '../Containers/Authentication/Signup';
+import UserProfil from '../Containers/Profile/Profile';
 import Onboarding from '../Containers/Onboarding';
 import OnboardingStart from '../Containers/OnboardingStart';
 import OnboardingProfile from '../Containers/OnboardingProfile';
@@ -22,6 +23,7 @@ import DetailsTalents from '../Containers/DetailsTalents/DetailsTalents';
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
 export const SIGNUP = '/signup';
+export const USERPROFIL = '/profil';
 export const ONBOARDING = '/onboarding';
 export const ONBOARDING_START = '/onboarding-start';
 export const ONBOARDING_PROFILE = '/onboarding-profile';
@@ -62,6 +64,13 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: Signup,
+  },
+  {
+    key: 'USERPROFIL',
+    route: USERPROFIL,
+    roles: [],
+    private: true,
+    component: UserProfil,
   },
   {
     key: 'ONBOARDING',
