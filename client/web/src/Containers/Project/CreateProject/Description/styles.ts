@@ -244,9 +244,8 @@ export default makeStyles(
             minWidth: 65,
             overflow: 'hidden',
             '& label': {
-              color: '#000',
-              border: '1px solid #979797',
               borderRadius: 20,
+              color: '#000',
               display: 'inline-flex',
               alignItems: 'center',
               fontSize: 12,
@@ -254,7 +253,7 @@ export default makeStyles(
               padding: '5px 12px',
               height: 30,
               textAlign: 'center',
-              transition: 'all .25s ease-in-out',
+              transition: 'all .15s ease-in-out',
               width: '100%',
             },
             '& input': {
