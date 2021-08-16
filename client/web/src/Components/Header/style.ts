@@ -31,17 +31,22 @@ export default makeStyles (
           },
         }
       },
+      "* .flexFX": {
+        flex: "1 0 0",
+      },
     },
     header_block: {
       background: theme.palette.primary.main,
       borderRadius: "0 0 15px 15px",
+      marginBottom: 50,
       padding: "20px",
+      position: "relative",
     },
     header_top: {
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'space-between',
-      padding: "0 0 30px",
+      padding: "0 0 20px",
       "& .logo": {
         height: 45,
         margin: "20px auto 0",
@@ -90,7 +95,104 @@ export default makeStyles (
         fontSize: "1rem",
         margin: 0,
         textAlign: "center",
-      }
+      },
+      "& .btn_createProject": {
+        background: "#fff",
+        borderRadius: 30,
+        border: "2px solid  #8870ff",
+        boxShadow: "0px -2px 12px 2px rgba(108,89,206,0.43)",
+        display: "flex",
+        fontWeight: 600,
+        fontSize: "1rem",
+        height: 50,
+        margin: "0 auto -40px",
+        maxWidth: 218,
+        width: "100%",
+        "& svg": {
+          fontSize: ".875rem",
+          marginRight: 10,
+        },
+      },
+    },
+    user_infos_content: {
+      maxWidth: 480,
+      margin: "0 auto 10px",
+      width: "100%",
+    },
+    user_infos: {
+      background: "none",
+      borderRadius: 0,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: 8,
+      "& .user_avatar": {
+        borderRadius: 60,
+        height: 60,
+        margin: 0,
+        position: "relative",
+        width: 60,
+        "& > a": {
+          display: "block", 
+        },
+        "& img": {
+          borderRadius: 60,
+          display: "block",
+          height: "100%",
+          objectPosition: "center top",
+          objectFit: "cover",
+          overflow: "hidden",
+          width: "100%",
+        },
+        "& .labeled-img": {
+          borderRadius: 30,
+          left: -8, top: -8,
+          height: 30,
+          position: "absolute",
+          width: 30,
+          zIndex: 1,
+        },
+      },
+      "& .user_status": {
+        paddingLeft: 10,
+        "& *" : {
+          color: "#fff",
+        },
+        "& p": {
+          fontSize: "1rem",
+          fontWeight: 400,
+          marginBottom: 4,
+        },
+        "& .user_balance": {
+          background: "#dffff2",
+          border: "none",
+          borderRadius: 13,
+          color: "#5bd3a0",
+          display: "inline-block",
+          fontSize: 12,
+          fontWeight: 700,
+          height: 26,
+          margin: 0,
+          minWidth: 80,
+          padding: "5px 10px",
+          textAlign: "center",
+          whiteSpace: "nowrap",
+          "& .unity": {
+            color: "inherit",
+            fontSize: "inherit",
+            fontWeight: "inherit",
+            paddingLeft: 3,
+          },
+        },
+
+
+      },
+      "& .btn_goto": {
+        "& svg": {
+          fill: "#fff",
+          fontSize: "1.65rem",
+        },
+      },
     },
     drawerMenu: {
       width: 280,

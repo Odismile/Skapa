@@ -1,11 +1,13 @@
 import React from 'react';
-import { Box, Button, Typography, IconButton, Drawer, Link, List, ListItem } from '@material-ui/core';
+import { Box, Button, Card, CardContent, Typography, IconButton, Drawer, Link, List, ListItem } from '@material-ui/core';
 //import { Link } from 'react-router-dom';
 import classNames from "classnames";
 import useStyles from './style';
 
 // image
 import mainLogoWhite from '../../Assets/images/logo-white.svg';
+import photoUser from '../../Assets/images/photo-card.png';
+import organisationImg from '../../Assets/images/organisation.png';
 
 
 // icons
@@ -14,7 +16,8 @@ import Award from '../../Components/Icons/Award/Award';
 import HeartLine from '../../Components/Icons/HeartLine/HeartLine';
 import Cross from '../../Components/Icons/Cross/Cross';
 import Plus from '../../Components/Icons/Plus/Plus';
-import Photo from '../../Components/Icons/Photo/Photo';
+import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 
 const PrimaryHeader = () => {
@@ -35,11 +38,14 @@ const PrimaryHeader = () => {
           </IconButton>
         </Box>
         {/* logo mobile */}
+        
         <figure className="logo">
           <img src={mainLogoWhite} alt="logo"/>
         </figure>
-
         {/* list of notification */}
+
+        
+
         <Box className="notif_list">
           <IconButton className="btn btn_award" aria-label="Award">
             <Award />
@@ -50,7 +56,35 @@ const PrimaryHeader = () => {
         </Box>
       </Box>
       <Box className={classes.header_content}>
-        <Typography className="titlePage">Create your own project</Typography>
+        {/* show bloc for create-project page */}
+        {/* titre projet */}
+        <Typography style={{display: "none" }} className="titlePage">Create your own project</Typography>
+
+        {/* show bloc for project and talents page */}
+        {/* info User */}
+        <Box className={classes.user_infos_content}>
+          <Card className={classes.user_infos} elevation={0}>
+            <figure className="user_avatar">
+              <Link href="" className="user_link" title="user_infos">
+                <img src={photoUser} alt="user_photo" />
+                  <Box component="span" className="labeled-img">
+                    <img src={organisationImg} className='iconOrganisation' alt="organisation"/>
+                  </Box>
+              </Link>
+            </figure>
+            <Box className="user_status">
+              <Typography className="user_hello">Hello <span>Alexander_UX !</span></Typography>
+              <Typography className="user_balance" component="span">12 0000<span className="unity">$</span></Typography>
+            </Box>
+            <Typography className="flexFX" component="span"></Typography>
+            <IconButton className="btn btn_icon btn_goto">
+              <ChevronRight className='icon_arrow' />
+            </IconButton>
+          </Card>
+        </Box>
+
+        {/* Btn go to creat project */}
+        <Button className="btn_createProject" color="primary" variant="outlined" type="button" href="/project/create-project" ><Plus /> Create new project</Button>
       </Box>
       <Drawer
         className={classes.drawerMenu}
@@ -69,11 +103,9 @@ const PrimaryHeader = () => {
         }}
       >
         <Box className={classes.MenuList}>
-          
-            <IconButton className="btn btn_burger" aria-label="close" onClick={handleDrawer}>
-              <Cross />
-            </IconButton>
-          
+          <IconButton className="btn btn_burger" aria-label="close" onClick={handleDrawer}>
+            <Cross />
+          </IconButton>
           <List className="list">
             <ListItem disableGutters={true}><Link className="nav_link">Profil</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">My activity</Link></ListItem>
