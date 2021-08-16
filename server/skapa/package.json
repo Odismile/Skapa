@@ -9,12 +9,13 @@
     "build": "strapi build",
     "strapi": "strapi",
     "start:server": "export GOOGLE_APPLICATION_CREDENTIALS=\"${PWD}/skapa-b88c9-firebase-adminsdk-fviwf-0b0d51443a.json\" && start",
-      "start:server:develop": "export GOOGLE_APPLICATION_CREDENTIALS=\"${PWD}/skapa-b88c9-firebase-adminsdk-fviwf-0b0d51443a.json\" && develop"
+    "start:server:develop": "export GOOGLE_APPLICATION_CREDENTIALS=\"${PWD}/skapa-b88c9-firebase-adminsdk-fviwf-0b0d51443a.json\" && develop"
   },
   "devDependencies": {},
   "dependencies": {
     "@google-cloud/storage": "^5.13.0",
     "crypto": "^1.0.1",
+    "export": "^0.1.337",
     "firebase-admin": "^9.11.0",
     "knex": "<0.20.0",
     "pg": "^8.7.1",
