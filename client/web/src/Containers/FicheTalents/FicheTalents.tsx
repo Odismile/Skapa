@@ -1,4 +1,5 @@
 import { Box, Button, Divider, Typography } from '@material-ui/core';
+import React from 'react';
 import FormerProject from '../../Components/FormerProjects/FormerProjects';
 import Pitch from '../../Components/Pitch/Pitch';
 import Presentation from '../../Components/Presentation/Presentation';
@@ -13,7 +14,7 @@ const FicheTalents = () => {
       <Box className="profile">
         <SimpleCardTalents />
       </Box>
-      <Box className='bio'>
+      <Box className="bio">
         <Typography variant="h6" className="title">
           Bio
         </Typography>

@@ -1,4 +1,5 @@
 import { Box, Slider, Typography } from '@material-ui/core';
+import React from 'react';
 import useStyles from './styles';
 
 const Capacity = () => {
@@ -11,7 +12,7 @@ const Capacity = () => {
         defaultValue={[25, 50]}
         aria-labelledby="vertical-slider"
         valueLabelDisplay="on"
-        classes={{ valueLabel:classes.label }}
+        classes={{ valueLabel: classes.label }}
       />
     </Box>
   );

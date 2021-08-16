@@ -12,7 +12,11 @@ import { useUploadFile } from '../../Utils/uploadFile';
 
 const OnboardingProfileTwo = () => {
   const [fileUpload, setFileUpload] = useState('');
+  const [videoUpload, setVideoUpload] = useState('');
   const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
+  const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
+  const [disabledButton, setDisabledButton] = useState(true);
+
   const { uploadFile } = useUploadFile();
 
   const classes = useStyles();
@@ -20,6 +24,7 @@ const OnboardingProfileTwo = () => {
   const history = useHistory();
   const handleClick = async () => {
     await uploadFile(filesPicture);
+    await uploadFile(filesVideo);
     history.push('/onboarding-profile3');
   };
   return (
@@ -53,7 +58,18 @@ const OnboardingProfileTwo = () => {
             <FormLabel component="legend" className="title">
               Upload a video pitch
             </FormLabel>
-            <input accept="video/*" className={classes.input} id="contained-button-file" multiple type="file" />
+            <input
+              accept="video/mp4,video/x-m4v,video/*"
+              className={classes.input}
+              id="contained-button-file"
+              type="file"
+              /* onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+                const filesConcat = Array.from(event.target.files || []);
+                setFilesVideo(filesConcat);
+                setVideoUpload(url);
+              }} */
+            />
             <label htmlFor="contained-button-file">
               <Box className="video">
                 <Box component="span">Import a video from your computer (mp4)</Box>
