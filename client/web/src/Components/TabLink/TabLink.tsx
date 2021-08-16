@@ -16,6 +16,7 @@ import {
   filesPictureVariable,
   filesVideoVariable,
   projectDescriptionVariable,
+  projectIdVariable,
   skillsSelectedVariable,
   typeProjectVariable,
 } from '../../ReactiveVariable/Project/createProject';
@@ -80,7 +81,6 @@ const TabLink = () => {
           steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
 
-    console.log(`newActiveStep`, newActiveStep);
     if (newActiveStep === 1) {
       if (filesPictureVariable() === null) {
         snackbar.type = 'ERROR';
@@ -131,7 +131,7 @@ const TabLink = () => {
                 Date_Start: moment(dateStartVariable()).format('DD/MM/YYYY'),
                 Date_End: moment(dateEndVariable()).format('DD/MM/YYYY'),
                 description: projectDescriptionVariable(),
-                project_skills: transformSkills(skillsSelectedVariable()),
+                //project_skills: transformSkills(skillsSelectedVariable()),
                 Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
                   filesVideoVariable()?.[0].name
                 }`,
@@ -143,9 +143,10 @@ const TabLink = () => {
           },
         }).then(async (result) => {
           if (result.data?.createProject?.project?.id) {
-            setActiveStep(newActiveStep);
+            projectIdVariable(result.data?.createProject?.project?.id);
             await uploadFile(filesPictureVariable());
             await uploadFile(filesVideoVariable());
+            setActiveStep(newActiveStep);
           }
         });
       }
@@ -153,6 +154,9 @@ const TabLink = () => {
   };
 
   const handleStep = (step: number) => () => {
+    // if (projectIdVariable().trim().length !== 0) {
+    //   setActiveStep(step);
+    // }
     setActiveStep(step);
   };
 
