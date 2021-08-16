@@ -107,7 +107,7 @@ const PrimaryHeader = () => {
             <Cross />
           </IconButton>
           <List className="list">
-            <ListItem disableGutters={true}><Link className="nav_link">Profil</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link">Profile</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">My activity</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">Projects</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">Talents</Link></ListItem>

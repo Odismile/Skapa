@@ -199,8 +199,12 @@ export default makeStyles (
     },
     drawerPaperMenu: {
       background: "#000",
-      padding: "20px 20px 30px",
+      padding: "15px",
+      overflow: "hidden",
       width: 280,
+      "@media(min-height: 640px)": {
+        padding: "20px 20px 30px",
+      },
     },
     MenuList: {
       height: "100%",
@@ -208,17 +212,21 @@ export default makeStyles (
         color: "#fff",
         height: 20,
         width: 20,
-        marginBottom: 30,
+        marginBottom: 15,
+        
         "& svg": {
           fill: "#fff",
         },
       },
       "& .list": {
-        maxHeight: "calc(100% - 165px)",
+        maxHeight: "calc(100% - 175px)",
         overflow: "hidden auto",
-        margin: "15px auto 30px",
-        padding: "0",
-        maxWidth: 95,
+        margin: "15px auto",
+        padding: "0 0 0 70px",
+        maxWidth: 220,
+        "@media(min-height: 640px)": {
+          marginBottom: 30,
+        },
         "& > li": {
         },
         "& a": {
@@ -226,9 +234,12 @@ export default makeStyles (
           cursor: "pointer",
           fontSize: "1rem",
           fontWeight: 400,
-          padding: "7px 0",
+          padding: "4px 0",
           textDecoration: "none",
           width: "100%",
+          "@media(min-height: 640px)": {
+            padding: "7px 0",
+          },
           "&:hover": {
             textDecoration: "none",
           }
@@ -242,9 +253,12 @@ export default makeStyles (
         fontWeight: 600,
         fontSize: "1rem",
         height: 50,
-        margin: "0 auto 30px",
+        margin: "0 auto 15px",
         maxWidth: 218,
         width: "100%",
+        "@media(min-height: 640px)": {
+          marginBottom: 30,
+        },
         "& svg": {
           fontSize: ".875rem",
           marginRight: 10,
@@ -257,8 +271,9 @@ export default makeStyles (
         
       },
       "& .disconnect_link": {
-        color: "#fff",
         borderBottom: "1px solid #fff",
+        color: "#fff",
+        cursor: "pointer",
         display: 'inline-block',
         fontSize: "1rem",
         fontStyle: "italic",
