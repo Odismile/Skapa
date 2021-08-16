@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "talent_favorits",
+  "info": {
+    "name": "Talent_Favorits",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "profile": {
+      "via": "talent_favorits",
+      "model": "profiles"
+    },
+    "coach_id": {
+      "type": "string"
+    },
+    "talent_id": {
+      "type": "string"
+    }
+  }
+}
