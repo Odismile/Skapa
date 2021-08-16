@@ -10,6 +10,7 @@ export default makeStyles((theme) => ({
         borderRadius: 12,
         padding: '7px 10px',
         position: "relative",
+        flexDirection: "column",
         '& .media': {
             height: 75,
             borderRadius: 10,

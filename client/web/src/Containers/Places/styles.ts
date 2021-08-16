@@ -7,6 +7,7 @@ export default makeStyles(
       alignItems: 'center',
       boxShadow: "none",
       background: "none",
+      flexDirection: "column",
       "& .input-search": {
         fontSize: 14,
         padding: "10px 16px",
