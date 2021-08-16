@@ -22,7 +22,7 @@ const Places = () => {
   const id = open ? 'simple-popper' : undefined;
 
   return (
-    <Box className={classes.root}>
+    <>
       <Box className={classes.content}>
         <RadioExtInt />
       </Box>
@@ -183,7 +183,7 @@ const Places = () => {
       <Box className={classes.box}>
         <Place />
       </Box>
-    </Box>
+    </>
   );
 };
 

@@ -13,8 +13,8 @@ import HeartLine from '../Icons/HeartLine';
 const Place = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.box}>
-      <Card className={classes.root}>
+    <Box className={classes.root}>
+      <Card>
         <CardMedia className='media' image={imgPlace} title="image">
           <Box className="bitmap">
             <figure className="bitmap-image">
