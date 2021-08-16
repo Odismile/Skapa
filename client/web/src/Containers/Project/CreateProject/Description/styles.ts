@@ -236,8 +236,8 @@ export default makeStyles(
             padding: 10,
           },
           '& .inputGroup': {
-            backgroundColor: 'white',
-            borderRadius: 20,
+            backgroundColor: '#fff',
+            borderRadius: 0,
             border: 'none',
             display: 'block',
             margin: 2.5,
