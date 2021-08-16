@@ -12,6 +12,10 @@
   "attributes": {
     "label": {
       "type": "string"
+    },
+    "projects": {
+      "via": "status",
+      "collection": "projects"
     }
   }
 }
