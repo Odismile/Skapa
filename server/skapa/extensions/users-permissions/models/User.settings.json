@@ -59,10 +59,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "languages": {
-      "collection": "languages",
-      "via": "users_permissions_user"
-    },
     "surname": {
       "type": "string",
       "required": false,
@@ -73,9 +69,17 @@
       "configurable": false,
       "required": false
     },
+    "languages": {
+      "collection": "languages",
+      "via": "users_permissions_user"
+    },
     "profile_project_types": {
-      "via": "users_id",
-      "collection": "profile-project-types"
+      "collection": "profile-project-types",
+      "via": "users_id"
+    },
+    "isFirstConnection": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
