@@ -18,12 +18,12 @@ const Review = () => {
 
   return (
     <Box className={classes.review_bloc}>
-      <CardReview />
+      <CardReview data={data} />
       <Pitch />
       <Typography variant="h6" className="titre">
         Présentation
       </Typography>
-      <Presentation />
+      <Presentation data={data} />
       <Typography variant="h6" className="titre">
         Tags
       </Typography>
@@ -31,7 +31,7 @@ const Review = () => {
       <Typography variant="h6" className="titre">
         Place
       </Typography>
-      <Place />
+      <Place data={data} />
     </Box>
   );
 };

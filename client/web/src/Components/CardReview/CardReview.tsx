@@ -1,18 +1,9 @@
-import React from 'react';
-import {
-  Avatar,
-  Box,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Slider,
-  Typography,
-  withStyles,
-} from '@material-ui/core';
+import { Avatar, Box, Card, CardContent, CardMedia, Slider, Typography, withStyles } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import useStyles from './style';
+import React, { FC } from 'react';
 import imgCard from '../../Assets/images/lab.svg';
+import { project } from '../../GraphQL/project/types/project';
+import useStyles from './style';
 
 const PrettoSlider = withStyles({
   root: {
@@ -46,7 +37,11 @@ const PrettoSlider = withStyles({
   },
 })(Slider);
 
-const CardReview = () => {
+interface CardReviewProps {
+  data?: project | undefined;
+}
+
+const CardReview: FC<CardReviewProps> = ({ data }) => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>

@@ -31,6 +31,7 @@ import {
   filesVideoVariable,
   projectDescriptionVariable,
   skillsSelectedVariable,
+  testCreateObject,
   typeProjectVariable,
 } from '../../../../ReactiveVariable/Project/createProject';
 import { useUploadFile } from '../../../../Utils/uploadFile';
@@ -60,6 +61,7 @@ const Description = () => {
     const filesConcat = Array.from(event.target.files || []);
     filesPictureVariable(filesConcat);
     setFileUpload(url);
+    testCreateObject();
   };
 
   const onChangeProjectType = (
@@ -70,26 +72,31 @@ const Description = () => {
   ) => {
     setTypeProject('' + e.target.value);
     typeProjectVariable('' + e.target.value);
+    testCreateObject();
   };
 
   const onChangeCity = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setCity(e.target.value);
     cityVariable(e.target.value);
+    testCreateObject();
   };
 
   const onChangeDateStart = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setdateStart(moment(e.target.value).toDate());
     dateStartVariable(moment(e.target.value).toDate());
+    testCreateObject();
   };
 
   const onChangeDateEnd = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setDateEnd(moment(e.target.value).toDate());
     dateEndVariable(moment(e.target.value).toDate());
+    testCreateObject();
   };
 
   const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setProjectDescription(e.target.value);
     projectDescriptionVariable(e.target.value);
+    testCreateObject();
   };
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
@@ -108,6 +115,7 @@ const Description = () => {
         setSkillsSelected(newSkills);
       }
     }
+    testCreateObject();
   };
 
   const onUploadVideoFile = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,6 +123,7 @@ const Description = () => {
     const filesConcat = Array.from(event.target.files || []);
     filesVideoVariable(filesConcat);
     setVideoUpload(url);
+    testCreateObject();
   };
 
   return (
@@ -169,7 +178,7 @@ const Description = () => {
                       horizontal: 'left',
                     },
                     PaperProps: {
-                      className: 'dropDownSelect'
+                      className: 'dropDownSelect',
                     },
                     transformOrigin: {
                       vertical: 'top',
