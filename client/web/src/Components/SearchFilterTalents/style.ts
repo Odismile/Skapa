@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(
   theme => ({
-    "@global" :{
+    modal :{
       // "#simple-popper" :{
       //   width: '100%',
       //   padding: "0px 20px",
@@ -11,7 +11,7 @@ export default makeStyles(
       //   overflowY: 'auto',
       //   zIndex: 10,
       // },
-      ".modal-content": {
+      "& .modal-content": {
         background : "#ffffff",
         height: "80%",
         borderRadius: 12,

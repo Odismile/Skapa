@@ -2,6 +2,50 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(
   theme => ({
+    modal :{
+      "& .modal-content": {
+        background : "#ffffff",
+        height: "80%",
+        borderRadius: 12,
+        overflow: "hidden",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        padding: 14,
+        display: "flex",
+        flexDirection: "column",
+        minWidth: 300,
+        "& .modal-top": {
+          display: "flex",
+          justifyContent: "space-between",
+          height: 50,
+          flex: "1 0",
+          alignItems: "center",
+          padding: "0 0 15px 0",
+          borderBottom: "1px solid #dfdfdf",
+          "& h2": {
+            fontSize: 16,
+            color: "#000000",
+            marginBottom: 0,
+            fontWeight: 700,
+          },
+          "& .close-modal": {
+            padding: 0,
+          },
+          "& svg": {
+            width: 15,
+            height: 15,
+          }
+        },
+        "& .modal-body": {
+          height: "calc(100% - 50px)",
+          flex: "1 1 100%",
+          overflow: "hidden auto",
+          padding: 14,
+        }
+      },
+    },
     root: {
       display: 'flex',
       alignItems: 'center',

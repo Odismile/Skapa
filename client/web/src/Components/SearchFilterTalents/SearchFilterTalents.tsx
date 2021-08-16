@@ -42,6 +42,7 @@ const SearchFilterTalents = () => {
           onClose={handleClose}
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
+          className={classes.modal}
         >
           <Box className="modal-content">
             <Box className="modal-top">
