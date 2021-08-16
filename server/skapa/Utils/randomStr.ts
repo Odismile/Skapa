@@ -1,3 +1,4 @@
+//@ts-ignore
 import { randomBytes } from "crypto";
 
 export const randomStr = (length?: number) => {
