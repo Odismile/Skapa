@@ -16,12 +16,19 @@ const useStyles = makeStyles(() =>
         marginBottom: 0,
       },
       '& div input':{
-        color: '#000000',
-        fontSize: 14,
-        padding: 16,
         border: 'solid 1px #dfdfdf',
         boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
         borderRadius: 25,
+        boxSizing: "border-box",
+        color: '#000',
+        fontSize: 12,
+        padding: "8px 16px",
+        height: 40,
+        '&::-webkit-input-placeholder': {
+          color: '#979797',
+          fontStyle: 'italic',
+          opacity: 1,
+        },
       },
       '& div:focus':{
         border: 'none',

@@ -7,6 +7,10 @@ import classNames from 'classnames';
 import mainLogo from '../../Assets/images/logo.svg';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 
+// icons
+import Plus from '../../Components/Icons/Plus/Plus';
+import Info from '../../Components/Icons/Info/Info';
+
 const OnboardingProfileTwo = () => {
   const classes = useStyles();
 
@@ -26,13 +30,13 @@ const OnboardingProfileTwo = () => {
             <input accept="image/*" className={classes.input} id="contained-button-file" multiple type="file" />
             <label htmlFor="contained-button-file">
               <Button variant="contained" component="span">
-                +
+                <Plus />
               </Button>
             </label>
           </FormControl>
           <FormControl component="fieldset" className={classes.inputVideo}>
             <FormLabel component="legend" className="title">
-              Upload a video pitch
+              Upload a video pitch <Info />
             </FormLabel>
             <input accept="video/*" className={classes.input} id="contained-button-file" multiple type="file" />
             <label htmlFor="contained-button-file">
@@ -47,6 +51,7 @@ const OnboardingProfileTwo = () => {
               Bio
             </FormLabel>
             <textarea placeholder="tell us more about you !"></textarea>
+            <Typography className="textLeft">0/240 symbols</Typography>
           </FormControl>
           <Box className={classes.btnNext}>
             <Button variant="contained" onClick={handleClick}>

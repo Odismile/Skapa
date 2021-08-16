@@ -90,9 +90,9 @@ const theme = createMuiTheme ({
     MuiLink: {
       root: {
         color: '#8870ff',
-        textDecoration: 'underline',
+        textDecoration: 'none',
         "&:hover" : {
-
+          textDecoration: 'none',
         },
         "&:focus": {
           outline: "none",

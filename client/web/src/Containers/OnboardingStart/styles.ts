@@ -50,6 +50,8 @@ export default makeStyles(
         "& h1": {
           color: '#000',
           fontSize: '1.75rem',
+          fontWeight: 600,
+          fontStyle: "italic",
           margin: "0 0 1.875rem ",
           textAlign: 'center',
         },
