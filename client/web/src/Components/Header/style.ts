@@ -75,21 +75,23 @@ export default makeStyles (
           marginRight: 6,
           "&:focus, &:hover": {
             background : "#000",
+            fill: "#8870ff",
+            color: "red",
             borderColor: "#000",
           },
           "&:active, &.active": {
             background : "#fff",
             borderColor: "#fff",
             color: "#000",
+            "& svg": {
+              fill: "#8870ff",
+            },
           },
           "&:last-child": {
             marginRight: 0,
           },
           "& svg": {
             fontSize: "1.25rem",
-            "& path": {
-              stroke: "#fff",
-            }
           }
         },
       },

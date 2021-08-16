@@ -50,7 +50,7 @@ const PrimaryHeader = () => {
           <IconButton className="btn btn_award" aria-label="Award">
             <Award />
           </IconButton>
-          <IconButton className="btn btn_lik" aria-label="Like">
+          <IconButton className="btn btn_link" aria-label="Like">
             <HeartLine />
           </IconButton>
         </Box>
@@ -109,7 +109,7 @@ const PrimaryHeader = () => {
           <List className="list">
             <ListItem disableGutters={true}><Link className="nav_link">Profile</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">My activity</Link></ListItem>
-            <ListItem disableGutters={true}><Link className="nav_link">Projects</Link></ListItem>
+            <ListItem disableGutters={true}><Link className="nav_link" href="/project">Projects</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">Talents</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">Places</Link></ListItem>
             <ListItem disableGutters={true}><Link className="nav_link">Wishlist</Link></ListItem>
