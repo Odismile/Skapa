@@ -156,10 +156,10 @@ const TabLink = () => {
   };
 
   const handleStep = (step: number) => () => {
-    if (projectIdVariable().trim().length !== 0) {
-      setActiveStep(step);
-    }
-    //setActiveStep(step);
+    // if (projectIdVariable().trim().length !== 0) {
+    //   setActiveStep(step);
+    // }
+    setActiveStep(step);
   };
 
   return (
