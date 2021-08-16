@@ -167,6 +167,11 @@ const Signup: FC<RouteComponentProps> = (props) => {
         <Box className={classes.linkContainer}>
           <Link className={classes.link}>{t(`labelText.createAccountFromLinkdln`)}</Link>
         </Box>
+        <Box className={classes.linkContainerLogin}>
+          <Link className={classes.link} href="/login">
+            Back to login
+          </Link>
+        </Box>
       </WrapOnBoarding>
     </>
   );
