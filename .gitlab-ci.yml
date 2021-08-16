@@ -67,7 +67,7 @@ build_web_dev:
   variables:
     IMAGE: ${CI_REGISTRY_IMAGE}/staging/web
     FOLDER: ./client/web/
-    ARG: '--build-arg REACT_APP_API_URL=$API_STAGING --build-arg REACT_APP_WS_URL=$WS_STAGING -f Dockerfile.dev'
+    ARG: '${WEB_BUILD_ARGS_STAGING} -f Dockerfile.dev'
     TAG: staging
 
 build_strapi_dev:
@@ -87,7 +87,7 @@ build_web_preprod:
   variables:
     IMAGE: ${CI_REGISTRY_IMAGE}/preprod/web
     FOLDER: ./client/web/
-    ARG: '--build-arg REACT_APP_API_URL=$API_PREPROD --build-arg REACT_APP_WS_URL=$WS_PREPROD -f Dockerfile.preprod'
+    ARG: '${WEB_BUILD_ARGS_PREPROD} -f Dockerfile.preprod'
     TAG: preprod
 
 build_strapi_preprod:
