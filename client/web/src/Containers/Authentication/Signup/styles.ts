@@ -28,9 +28,10 @@ const useStyles = makeStyles(() =>
   link: {
     cursor: 'pointer',
     borderBottom: "1px solid #8277FF",
-    "&:hover" : {
+    textDecoration: 'none',
+    '&:hover':{
       textDecoration: 'none',
-    },
+    }
   },
   button: {},
   })
