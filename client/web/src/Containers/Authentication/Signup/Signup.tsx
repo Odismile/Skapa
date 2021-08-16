@@ -169,7 +169,7 @@ const Signup: FC<RouteComponentProps> = (props) => {
         </Box>
         <Box className={classes.linkContainerLogin}>
           <Link className={classes.link} href="/login">
-            Back to login
+            {t(`labelText.backToLogin`)}
           </Link>
         </Box>
       </WrapOnBoarding>
