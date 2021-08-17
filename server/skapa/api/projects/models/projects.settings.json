@@ -56,7 +56,14 @@
     "profile": {
       "via": "projects",
       "model": "profiles"
+<<<<<<< HEAD
 >>>>>>> 8248e6b (create profil)
+=======
+    },
+    "project_favorits": {
+      "via": "project",
+      "collection": "project-favorits"
+>>>>>>> c91651e (add field status)
     }
   }
 }

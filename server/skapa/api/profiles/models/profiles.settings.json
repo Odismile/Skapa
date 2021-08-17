@@ -40,8 +40,8 @@
       "via": "profile"
     },
     "project_favorits": {
-      "collection": "project-favorits",
-      "via": "profile"
+      "via": "profile",
+      "collection": "project-favorits"
     },
     "languages": {
       "collection": "languages",
