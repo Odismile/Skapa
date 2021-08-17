@@ -51,6 +51,13 @@ const WrappedHomePage = Wrapper(HomePage);
 
 export const ROUTES: RouteInterface[] = [
   {
+    key: 'COACHS',
+    route: COACHS,
+    roles: [],
+    private: true,
+    component: Coachs,
+  },
+  {
     key: 'HOMEPAGE',
     route: HOMEPAGE,
     roles: [],
