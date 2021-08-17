@@ -15,8 +15,8 @@
       "model": "items"
     },
     "profile_id": {
-      "model": "profiles",
-      "via": "profile_skills"
+      "via": "profile_skills",
+      "model": "profiles"
     }
   }
 }

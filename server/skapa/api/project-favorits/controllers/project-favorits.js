@@ -5,8 +5,4 @@
  * to customize this controller
  */
 
-module.exports = {
-    /*get:async ctx =>{
-        console.log("ity eh ",ctx);
-    }*/
-};
+module.exports = {};

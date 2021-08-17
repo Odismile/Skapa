@@ -2,52 +2,51 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/project-skills",
-      "handler": "project-skills.find",
+      "path": "/talent-favorits",
+      "handler": "talent-favorits.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/project-skills/count",
-      "handler": "project-skills.count",
+      "path": "/talent-favorits/count",
+      "handler": "talent-favorits.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/project-skills/:id",
-      "handler": "project-skills.findOne",
+      "path": "/talent-favorits/:id",
+      "handler": "talent-favorits.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/project-skills",
-      "handler": "project-skills.create",
+      "path": "/talent-favorits",
+      "handler": "talent-favorits.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/project-skills/:id",
-      "handler": "project-skills.update",
+      "path": "/talent-favorits/:id",
+      "handler": "talent-favorits.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/project-skills/:id",
-      "handler": "project-skills.delete",
+      "path": "/talent-favorits/:id",
+      "handler": "talent-favorits.delete",
       "config": {
         "policies": []
       }
     }
-    
   ]
 }
