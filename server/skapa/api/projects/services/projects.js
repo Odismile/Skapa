@@ -1,12 +1,18 @@
+<<<<<<< HEAD
 "use strict";
 const { isDraft } = require("strapi-utils").contentTypes;
 
+=======
+'use strict';
+import {generateReadSignedUrl} from "../../../Utils/firebaseCloudStorage"
+>>>>>>> 3907131 (create customer query strapi)
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/services.html#core-services)
  * to customize this service
  */
 
 module.exports = {
+<<<<<<< HEAD
   async create(data, { files } = {}) {
     const project_skills = data.project_skills;
     const items = await strapi
@@ -31,4 +37,15 @@ module.exports = {
 
     return entry;
   },
+=======
+    async find(params, populate) {
+        console.log("tonga ato tsika");
+        let az = await generateReadSignedUrl("/project/profile/76/kymco.jpg");
+        console.log(az);
+        let picture = "";
+        const result = strapi.query('projects').find(params, populate);
+        result.then((res)=>{console.log("result : ", res); picture = res.picture});
+        console.log("result : ", result);
+    }
+>>>>>>> 3907131 (create customer query strapi)
 };
