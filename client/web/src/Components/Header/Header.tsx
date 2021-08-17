@@ -52,6 +52,10 @@ const PrimaryHeader = () => {
     window.location.reload();
   };
 
+  const goToWishlist = () =>{
+    history.push('/wishlist');
+  }
+
   return (
     <Box className={classes.header_block}>
       <Box className={classes.header_top}>
@@ -72,7 +76,8 @@ const PrimaryHeader = () => {
           <IconButton className="btn btn_award" aria-label="Award">
             <Award />
           </IconButton>
-          <IconButton className="btn btn_link" aria-label="Like">
+          {/* Add class active when route is /whislist */}
+          <IconButton className="btn btn_link" aria-label="Like" onClick={goToWishlist}>
             <HeartLine />
           </IconButton>
         </Box>

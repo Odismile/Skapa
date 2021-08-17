@@ -109,6 +109,9 @@ export default makeStyles((theme) => ({
         '& .teams':{
             display: 'flex',
             alignItems: 'center',
+            '& p':{
+              marginRight: 4,
+            }
         }
     },
     '& .info':{
@@ -118,6 +121,9 @@ export default makeStyles((theme) => ({
             fontSize: 10,
             marginBottom: 0,
             color: '#000000',
+            '&.bold':{
+              fontWeight: 700,
+            }
         },
         '& .active':{
             color: '#9A5CFF',
