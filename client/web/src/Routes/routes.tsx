@@ -18,6 +18,7 @@ import OnboardingProfileFour from '../Containers/OnboardingProfileFour/Onboardin
 import OnboardingProfileSeven from '../Containers/OnboardingProfileSeven/OnboardingProfileSeven';
 import OnboardingSplashScreen from '../Containers/OnboardingSplashScreen/OnboardingSplashScreen';
 import DetailsTalents from '../Containers/DetailsTalents/DetailsTalents';
+import DetailsPlace from '../Containers/DetailsPlace/DetailsPlace';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -37,6 +38,7 @@ export const ONBOARDING_PROFILE4 = '/onboarding-profile4';
 export const ONBOARDING_PROFILE7 = '/onboarding-splashscreen1';
 export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen2';
 export const DETAILS_TALENTS = '/details-talents';
+export const DETAILS_PLACE = '/details-place';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
@@ -68,7 +70,7 @@ export const ROUTES: RouteInterface[] = [
     route: ONBOARDING,
     roles: [],
     private: false,
-    component: Onboarding,
+    component: Onboarding
   },
   {
     key: 'ONBOARDING_START',
@@ -167,5 +169,12 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: DetailsTalents,
+  },
+  {
+    key: 'DETAILS_PLACE',
+    route: DETAILS_PLACE,
+    roles: [],
+    private: false,
+    component: DetailsPlace,
   },
 ];

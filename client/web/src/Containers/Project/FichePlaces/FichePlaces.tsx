@@ -22,7 +22,6 @@ const FichePlaces = () => {
       <Box className={classes.mainPage}>
       <Box className="wrapPage">
         {/* header component */}
-        <PrimaryHeader />
         <Box className="details">
           <Box className="places">
             <Place />

@@ -10,6 +10,7 @@ import Rate from '../Icons/Rate';
 import Wifi from '../Icons/Wifi';
 import useStyles from './style';
 import { project } from '../../GraphQL/project/types/project';
+import { useHistory } from 'react-router';
 
 interface PlaceProps {
   data?: project | undefined;
@@ -17,8 +18,14 @@ interface PlaceProps {
 
 const Place: FC<PlaceProps> = ({ data }) => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const goToDetailsPlace = (event: any) => {
+    history.push('/details-place');
+    event.stopPropagation();
+  };
   return (
-    <Box className={classes.root}>
+    <Box className={classes.root} onClick={goToDetailsPlace}>
       <Card>
         <CardMedia className="media" image={imgPlace} title="image">
           <Box className="bitmap">
