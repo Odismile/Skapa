@@ -30,7 +30,7 @@ import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { clearLocalStorage, isAuthenticated } from '../../Services';
 import { CREATE_PROJECT, LOGIN } from '../../Routes';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 const PrimaryHeader = () => {
@@ -55,6 +55,8 @@ const PrimaryHeader = () => {
   const goToWishlist = () =>{
     history.push('/wishlist');
   }
+  const params = useLocation();
+  const activeWishList = params.pathname == '/wishlist' ? "btn btn_link active" : "btn btn_link";
 
   return (
     <Box className={classes.header_block}>
@@ -77,7 +79,7 @@ const PrimaryHeader = () => {
             <Award />
           </IconButton>
           {/* Add class active when route is /whislist */}
-          <IconButton className="btn btn_link" aria-label="Like" onClick={goToWishlist}>
+          <IconButton className={activeWishList} aria-label="Like" onClick={goToWishlist}>
             <HeartLine />
           </IconButton>
         </Box>
