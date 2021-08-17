@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import { clearLocalStorage, isAuthenticated, removeAccessToken } from '../../Services';
 import { Box, Button } from '@material-ui/core';
-import { CREATE_PROJECT, LOGIN } from '../../Routes';
+import { CREATE_PROJECT, LOGIN, PROJECT } from '../../Routes';
 import { forceLogout } from '../../Hooks/useForceLogout';
 
 const HomePage: FC<RouteComponentProps> = (props) => {
@@ -10,7 +10,7 @@ const HomePage: FC<RouteComponentProps> = (props) => {
   if (!isAuthenticated()) {
     history.push(LOGIN);
   } else {
-    history.push(CREATE_PROJECT);
+    history.push(PROJECT);
   }
   const logout = () => {
     clearLocalStorage();
