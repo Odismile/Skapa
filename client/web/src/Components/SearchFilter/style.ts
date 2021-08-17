@@ -15,6 +15,7 @@ export default makeStyles(
         padding: 14,
         display: "flex",
         flexDirection:"column",
+        maxHeight: "80%",
       },
       "& .modal-top": {
         display: "flex",
@@ -30,6 +31,7 @@ export default makeStyles(
         color: "#000000",
         fontWeight: "700",
         marginBottom: 0,
+        marginTop: 0,  
       },
       "& .btn-close": {
         padding: 0,
@@ -42,7 +44,8 @@ export default makeStyles(
         height: "calc(100% - 50px)",
         flex: "1 1 100%",
         marginTop: 8,
-        overflow: "hidden auto"
+        overflow: "hidden auto",
+        padding: "0 14px"
       }
     },
     root: {
