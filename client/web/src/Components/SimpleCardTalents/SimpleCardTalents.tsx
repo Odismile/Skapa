@@ -5,6 +5,7 @@ import photoCard from '../../Assets/images/photo-card.png';
 import organisationImg from '../../Assets/images/organisation.png';
 import HeartLine from '../Icons/HeartLine';
 import Rate from '../Icons/Rate';
+import Award from '../Icons/Award';
 
 const SimpleCardTalents = () => {
   const classes = useStyles();
@@ -15,18 +16,24 @@ const SimpleCardTalents = () => {
           <Box className="head">
             <img src={photoCard} alt="photo" />
             <Box>
-              <Typography component="h6" variant="h6">
+              <Box component="h6" className="head-title" textOverflow="ellipsis">
                 UX Designer
-              </Typography>
+              </Box>
               <Typography component="p" className="note top-rated">
-                TOP RATED
+                <Award /> TOP RATED
               </Typography>
               <Typography component="p" className="name-adress">
                 <span>Baptiste Artaud</span> - Interne - Paris
               </Typography>
-              <Typography component="p" className="name-adress">
-                <span>Level : </span>Junior <span>Rate : </span>318 $ / day
-              </Typography>
+              <Box className="level-rate">
+                <Typography component="p" className="name-adress">
+                  <span>Level : </span>Junior
+                </Typography>
+                <Typography component="p" className="name-adress">
+                  <span>Rate : </span>318 $ / day
+                </Typography>
+              </Box>
+              
             </Box>
 
             <img src={organisationImg} className="iconOrganisation" alt="organisation" />

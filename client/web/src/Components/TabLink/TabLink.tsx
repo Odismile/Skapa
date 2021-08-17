@@ -1,7 +1,7 @@
 import { useApolloClient } from '@apollo/client';
 import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core';
 import moment from 'moment';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
@@ -16,6 +16,7 @@ import {
   filesPictureVariable,
   filesVideoVariable,
   initCreateProjectVariable,
+  nameProjectVariable,
   projectDescriptionVariable,
   projectIdVariable,
   skillsSelectedVariable,
@@ -83,7 +84,11 @@ const TabLink = () => {
         : activeStep + 1;
 
     if (newActiveStep === 1) {
-      if (filesPictureVariable() === null) {
+      if (nameProjectVariable().trim().length === 0) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.nameOfProject`);
+        displaySnackbar(client, snackbar);
+      } else if (filesPictureVariable() === null) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.picture`);
         displaySnackbar(client, snackbar);
@@ -103,7 +108,7 @@ const TabLink = () => {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.end`);
         displaySnackbar(client, snackbar);
-      } else if (moment(dateStartVariable()).format('dd-MM-YYYY') > moment(dateEndVariable()).format('dd-MM-YYYY')) {
+      } else if (moment(dateStartVariable()).format('DD-MM-YYYY') > moment(dateEndVariable()).format('DD-MM-YYYY')) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.invalidDate`);
         displaySnackbar(client, snackbar);
@@ -127,6 +132,7 @@ const TabLink = () => {
                 Picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
                   filesPictureVariable()?.[0].name
                 }`,
+                Name: nameProjectVariable(),
                 Type: typeProjectVariable(),
                 Ville: cityVariable(),
                 Date_Start: moment(dateStartVariable()).format('DD/MM/YYYY'),
@@ -136,7 +142,7 @@ const TabLink = () => {
                 Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
                   filesVideoVariable()?.[0].name
                 }`,
-                // Name: '',
+                status: '1',
                 // teams: [],
                 // item: '',
               },
@@ -148,7 +154,7 @@ const TabLink = () => {
             await uploadFile(filesPictureVariable());
             await uploadFile(filesVideoVariable());
             initCreateProjectVariable();
-            setActiveStep(newActiveStep);
+            setActiveStep(3);
           }
         });
       }

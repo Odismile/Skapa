@@ -23,8 +23,8 @@
       "required": true
     },
     "item": {
-      "model": "items",
-      "via": "projects"
+      "via": "projects",
+      "model": "items"
     },
     "project_skills": {
       "collection": "project-skills",
@@ -51,6 +51,14 @@
     "status": {
       "model": "status",
       "via": "projects"
+    }, 
+    "profile": {
+      "via": "projects",
+      "model": "profiles"
+    },
+    "project_favorits": {
+      "via": "project",
+      "collection": "project-favorits"
     }
   }
 }

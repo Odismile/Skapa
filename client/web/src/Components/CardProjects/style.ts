@@ -30,8 +30,8 @@ export default makeStyles((theme) => ({
         marginBottom: 0,
         display: 'flex',
         '& .iconCalendar': {
-          height: 12.6,
-          width: 12.6,
+          height: 13,
+          width: 14,
           marginRight: 4,
         },
       },

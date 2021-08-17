@@ -1,9 +1,21 @@
-import { Avatar, Box, Card, CardContent, CardMedia, Slider, Typography, withStyles } from '@material-ui/core';
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  IconButton,
+  Slider,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
 import imgCard from '../../Assets/images/lab.svg';
 import { project } from '../../GraphQL/project/types/project';
+import Heart from '../Icons/Heart';
+import Trending from '../Icons/Trending';
 import useStyles from './style';
 
 const PrettoSlider = withStyles({
@@ -42,20 +54,29 @@ interface CardReviewProps {
   data?: project | undefined;
 }
 
+const handleClick = (event: any) => {
+  event.stopPropagation();
+};
+
 const CardReview: FC<CardReviewProps> = ({ data }) => {
   const classes = useStyles();
   const history = useHistory();
-  const goToDetailsProjects = (event:any) =>{
+  const goToDetailsProjects = (event: any) => {
     history.push('/details-projects');
     event.stopPropagation();
-  }
+  };
   return (
     <Card className={classes.root} onClick={goToDetailsProjects}>
       <CardMedia className={classes.media} image={imgCard} title="image" />
       <CardContent className={classes.content}>
-        <Typography className="title" component="p">
-          Lorem ipsum <br></br> Sit amet.
-        </Typography>
+        <Box className="detail-top">
+          <Typography className="title" component="p">
+            {data?.project?.Name}
+          </Typography>
+          <Typography component="p" className="trending">
+            <Trending /> TRENDING UP
+          </Typography>
+        </Box>
         <Box className="details">
           <Typography component="p" className="name-adress">
             <span>Founder : Alexander Holland</span> - Lorem - Paris
@@ -76,24 +97,32 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
         <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
         <Box className="info">
           <Box>
-            <Typography component="p" className="active">
-              0
+            <Typography component="p" className="active bold">
+              11 734 $
             </Typography>
-            <Typography component="p" className="active">
+            {/* if on create-project/Reviews, add this */}
+            {/* <Typography component="p" className="active">
               Your expenses are 78 000 $
-            </Typography>
+            </Typography> */}
           </Box>
           <Box>
-            <Typography component="p">0</Typography>
+            <Typography component="p" className="bold">
+              12
+            </Typography>
             <Typography component="p">contributors</Typography>
           </Box>
           <Box>
-            <Typography component="p">0</Typography>
+            <Typography component="p" className="bold">
+              29
+            </Typography>
             <Typography component="p">days left</Typography>
           </Box>
         </Box>
       </CardContent>
       <Box className="category">LAB</Box>
+      <IconButton className="btn-favori" onClick={handleClick}>
+        <Heart className="iconHeart" />
+      </IconButton>
       <Box className="bgBlack"></Box>
     </Card>
   );

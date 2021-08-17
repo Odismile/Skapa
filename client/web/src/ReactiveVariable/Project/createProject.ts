@@ -1,7 +1,8 @@
-import { InMemoryCache, makeVar } from '@apollo/client/cache';
+import { makeVar } from '@apollo/client/cache';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 
 // Create Reactive variable
+export const nameProjectVariable = makeVar<string>('');
 export const filesPictureVariable = makeVar<File[] | null>(null);
 export const typeProjectVariable = makeVar<string>('');
 export const cityVariable = makeVar<string>('');
@@ -14,6 +15,7 @@ export const filesVideoVariable = makeVar<File[] | null>(null);
 export const projectIdVariable = makeVar<string>('');
 
 export const initCreateProjectVariable = () => {
+  nameProjectVariable('');
   filesPictureVariable(null);
   typeProjectVariable('');
   cityVariable('');
