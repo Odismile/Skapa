@@ -43,6 +43,7 @@ module.exports = {
       password: String!
       surname: String
       lastname: String
+      isFirstConnection: Boolean
     }
   `,
   mutation: `
