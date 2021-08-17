@@ -289,26 +289,28 @@ const Description = () => {
                 })}
               </Box>
               <Box className="all_skills">
-                {loading && (
-                  <Box className="inputGroup">
-                    <Skeleton count={3} height={25} />
-                  </Box>
-                )}
+                <Box className='wrapSkills'>
+                  {loading && (
+                    <Box className="inputGroup">
+                      <Skeleton count={3} height={25} />
+                    </Box>
+                  )}
 
-                {!loading &&
-                  data?.items?.map((skill, index) => {
-                    return (
-                      <Box className="inputGroup" key={index}>
-                        <input
-                          id={skill?.id ?? ''}
-                          name={skill?.label ?? ''}
-                          type="checkbox"
-                          onClick={() => onClickSkill(skill)}
-                        />
-                        <label htmlFor={skill?.id ?? ''}>{skill?.label}</label>
-                      </Box>
-                    );
-                  })}
+                  {!loading &&
+                    data?.items?.map((skill, index) => {
+                      return (
+                        <Box className="inputGroup" key={index}>
+                          <input
+                            id={skill?.id ?? ''}
+                            name={skill?.label ?? ''}
+                            type="checkbox"
+                            onClick={() => onClickSkill(skill)}
+                          />
+                          <label htmlFor={skill?.id ?? ''}>{skill?.label}</label>
+                        </Box>
+                      );
+                    })}
+                </Box>
               </Box>
             </Box>
           </Box>
