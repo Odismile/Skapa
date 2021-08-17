@@ -22,7 +22,9 @@ export const useCreateProfile = () => {
       return;
     },
     onCompleted: (data) => {
-      console.log(loading);
+      snackbar.type = 'SUCCESS';
+      snackbar.message = 'profil enregistré';
+      displaySnackbar(client, snackbar);
     },
   });
   return { doCreateProfile, data, loading };

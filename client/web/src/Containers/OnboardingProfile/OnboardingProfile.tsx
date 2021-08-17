@@ -24,7 +24,7 @@ const OnboardingProfile = () => {
   const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
 
   const testButtonToEnabled = () => {
-    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil()) {
+    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() /*  && levelLanguages().length === 0 */) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -49,7 +49,7 @@ const OnboardingProfile = () => {
 
   const handleClick = () => {
     //TEST
-    doCreateProfile({
+    /* doCreateProfile({
       variables: {
         input: {
           data: {
@@ -65,8 +65,8 @@ const OnboardingProfile = () => {
       },
     }).then((result) => {
       //console.log('resultat', result.data);
-    });
-    //  history.push('/onboarding-profile2');
+    }); */
+    history.push('/onboarding-profile2');
   };
 
   return (
