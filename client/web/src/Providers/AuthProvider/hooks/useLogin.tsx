@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { LOGIN } from '../../../GraphQL/authentication/mutation';
 import { Login, LoginVariables } from '../../../GraphQL/authentication/types/Login';
-import { idMe } from '../../../ReactiveVariable/User/user';
 import { ONBOARDING_PROFILE7, ONBOARDING } from '../../../Routes';
+import { idMe, login } from '../../../ReactiveVariable/User/user';
 import { setAccessToken } from '../../../Services';
 
 const useAuth = () => {
@@ -34,6 +34,7 @@ const useAuth = () => {
     },
     onCompleted: (data) => {
       if (data?.loginCustom?.jwt) {
+        login(data);
         setAccessToken(data?.loginCustom?.jwt);
         idMe(data.loginCustom.user.id);
         localStorage.setItem('idMe', data.loginCustom.user.id);

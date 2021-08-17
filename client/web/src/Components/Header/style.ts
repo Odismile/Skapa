@@ -38,9 +38,22 @@ export default makeStyles (
     header_block: {
       background: theme.palette.primary.main,
       borderRadius: "0 0 15px 15px",
-      marginBottom: 50,
+      marginBottom: 20,
       padding: "20px",
       position: "relative",
+      "& .wrap-backLink": {
+        lineHeight: "1.4",
+        margin: 0,
+        textAlign: "left",
+      },
+      "& .backLink": {
+        borderBottom: "1px solid #fff",
+        color: "#fff",
+        fontSize: "1rem",
+        fontStyle: "italic",
+        fontWeight: 300, 
+        textDecoration: "none",
+      },
     },
     header_top: {
       display: 'flex',
@@ -296,12 +309,7 @@ export default makeStyles (
         background: "green",
       },
     },
-    filterList: {
-
-    },
-    backDropMenu: {
-
-    }
+    
   }),
   { name: "Header" }
 );

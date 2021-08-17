@@ -56,7 +56,7 @@ const theme = createMuiTheme ({
         minWidth: 100,
         textTransform: "none",
         "&:hover" : {
-          background: "rgb(236 232 255 / 6%)",
+          background: "rgba(130, 119, 255, 1)",
         },
       },
       label: {

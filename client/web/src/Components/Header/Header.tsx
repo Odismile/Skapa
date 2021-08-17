@@ -67,6 +67,7 @@ const PrimaryHeader = () => {
             <Burger />
           </IconButton>
         </Box>
+
         {/* logo mobile */}
 
         <figure className="logo">
@@ -84,16 +85,18 @@ const PrimaryHeader = () => {
           </IconButton>
         </Box>
       </Box>
+      
+      {/* content header */}
       <Box className={classes.header_content}>
         {/* show bloc for create-project page */}
         {/* titre projet */}
-        <Typography style={{ display: 'none' }} className="titlePage">
+        <Typography style={{ display: 'block' }} className="titlePage">
           Create your own project
         </Typography>
 
         {/* show bloc for project and talents page */}
         {/* info User */}
-        <Box className={classes.user_infos_content}>
+        <Box className={classes.user_infos_content} style={{display: "none" }}>
           <Card className={classes.user_infos} elevation={0}>
             <figure className="user_avatar">
               <Link href="" className="user_link" title="user_infos">
@@ -125,10 +128,16 @@ const PrimaryHeader = () => {
           variant="outlined"
           type="button"
           href="/project/create-project"
+          style={{display: "none" }}
         >
           <Plus /> Create new project
         </Button>
       </Box>
+
+      {/* link back to home-page */}
+      <Typography className="wrap-backLink">
+        <Link className="backLink" href="/project">Back</Link>
+      </Typography>
       <Drawer
         className={classes.drawerMenu}
         anchor="left"
