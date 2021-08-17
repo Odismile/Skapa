@@ -7,7 +7,6 @@ export default makeStyles((theme) => ({
   mainContainer: {
     padding: '0px 20px',
     width: '100%',
-    paddingBottom: 20,
     top:67,
     position: 'absolute',
     zIndex: 10,

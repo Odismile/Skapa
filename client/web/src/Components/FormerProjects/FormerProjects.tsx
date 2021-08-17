@@ -8,14 +8,20 @@ const FormerProject = () => {
   return (
     <Box className={classes.root}>
       <Swiper
+        spaceBetween={45}
+        slidesPerView={3}
+        className="container"
         breakpoints={{
           490: {
             slidesPerView: 4,
           },
+          360: {
+            slidesPerView: 3,
+          },
+          320: {
+            slidesPerView: 2,
+          },
         }}
-        spaceBetween={45}
-        slidesPerView={3}
-        className="container"
       >
         <SwiperSlide>
           <Box className="box">

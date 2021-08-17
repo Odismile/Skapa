@@ -1,6 +1,7 @@
 import { Avatar, Box, Card, CardContent, CardMedia, Slider, Typography, withStyles } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC } from 'react';
+import { useHistory } from 'react-router';
 import imgCard from '../../Assets/images/lab.svg';
 import { project } from '../../GraphQL/project/types/project';
 import useStyles from './style';
@@ -43,8 +44,13 @@ interface CardReviewProps {
 
 const CardReview: FC<CardReviewProps> = ({ data }) => {
   const classes = useStyles();
+  const history = useHistory();
+  const goToDetailsProjects = (event:any) =>{
+    history.push('/details-projects');
+    event.stopPropagation();
+  }
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={goToDetailsProjects}>
       <CardMedia className={classes.media} image={imgCard} title="image" />
       <CardContent className={classes.content}>
         <Typography className="title" component="p">
