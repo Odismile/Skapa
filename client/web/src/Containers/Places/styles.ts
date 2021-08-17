@@ -60,6 +60,9 @@ export default makeStyles(
         borderRadius: 25,
         display: "flex",
         flex: 1,
+        "&:focus": {
+          border: "1px solid #8870ff",
+        },
         "& .search-icon": {
           padding: 0,
         }

@@ -1,9 +1,11 @@
-import { Avatar, Box, Card, CardContent, CardMedia, Slider, Typography, withStyles } from '@material-ui/core';
+import { Avatar, Box, Card, CardContent, CardMedia, IconButton, Slider, Typography, withStyles } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
 import imgCard from '../../Assets/images/lab.svg';
 import { project } from '../../GraphQL/project/types/project';
+import Heart from '../Icons/Heart';
+import Trending from '../Icons/Trending';
 import useStyles from './style';
 
 const PrettoSlider = withStyles({
@@ -42,6 +44,10 @@ interface CardReviewProps {
   data?: project | undefined;
 }
 
+const handleClick = (event:any) =>{
+  event.stopPropagation();
+}
+
 const CardReview: FC<CardReviewProps> = ({ data }) => {
   const classes = useStyles();
   const history = useHistory();
@@ -53,9 +59,14 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
     <Card className={classes.root} onClick={goToDetailsProjects}>
       <CardMedia className={classes.media} image={imgCard} title="image" />
       <CardContent className={classes.content}>
-        <Typography className="title" component="p">
-          Lorem ipsum <br></br> Sit amet.
-        </Typography>
+        <Box className="detail-top">
+            <Typography className="title" component="p">
+            Lorem ipsum <br></br> Sit amet.
+            </Typography>
+            <Typography component="p" className="trending">
+              <Trending /> TRENDING UP
+            </Typography>
+          </Box>
         <Box className="details">
           <Typography component="p" className="name-adress">
             <span>Founder : Alexander Holland</span> - Lorem - Paris
@@ -94,6 +105,9 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
         </Box>
       </CardContent>
       <Box className="category">LAB</Box>
+      <IconButton className="btn-favori" onClick={handleClick}>
+        <Heart className="iconHeart" />
+      </IconButton>
       <Box className="bgBlack"></Box>
     </Card>
   );
