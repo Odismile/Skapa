@@ -85,7 +85,7 @@ export default makeStyles((theme) => ({
             paddingRight: 5,
             width: 'auto',
             '& path': {
-              stroke: '#E30057',
+              fill: '#E30057',
             },
           },
         },

@@ -93,7 +93,7 @@ export default makeStyles((theme) => ({
                     width: 15,
                     height: 25,
                     "& path": {
-                        stroke: "#e30057",
+                        fill: "#e30057",
                     }
                 }
             },
