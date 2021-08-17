@@ -19,4 +19,4 @@ export const videoFile = makeVar<string>('');
 export const bio = makeVar<string>('');
 
 export const skillsSelectedVariable = makeVar<(Items_get_language_items | null)[] | null | undefined>(null);
-export const projectsType = makeVar<string[]>([]);
+export const projectsTypeSelectedVariable = makeVar<(Items_get_language_items | null)[] | null | undefined>(null);

@@ -21,7 +21,7 @@ const OnboardingProfileTwo = () => {
   const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
   const { uploadFile } = useUploadFile();
   const testButtonToEnabled = () => {
-    if (!!pictureFile() && !!videoFile() && !!bio()) {
+    if (!!pictureFile() && !!bio()) {
       testButtonEnable(false);
     } else {
       testButtonEnable(true);
