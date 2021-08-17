@@ -51,10 +51,10 @@ const handleClick = (event:any) =>{
 const CardReview: FC<CardReviewProps> = ({ data }) => {
   const classes = useStyles();
   const history = useHistory();
-  const goToDetailsProjects = (event:any) =>{
+  const goToDetailsProjects = (event: any) => {
     history.push('/details-projects');
     event.stopPropagation();
-  }
+  };
   return (
     <Card className={classes.root} onClick={goToDetailsProjects}>
       <CardMedia className={classes.media} image={imgCard} title="image" />
@@ -87,19 +87,20 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
         <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
         <Box className="info">
           <Box>
-            <Typography component="p" className="active">
-              0
+            <Typography component="p" className="active bold">
+              11 734 $
             </Typography>
-            <Typography component="p" className="active">
+            {/* if on create-project/Reviews, add this */}
+            {/* <Typography component="p" className="active">
               Your expenses are 78 000 $
-            </Typography>
+            </Typography> */}
           </Box>
           <Box>
-            <Typography component="p">0</Typography>
+            <Typography component="p" className='bold'>12</Typography>
             <Typography component="p">contributors</Typography>
           </Box>
           <Box>
-            <Typography component="p">0</Typography>
+            <Typography component="p" className='bold'>29</Typography>
             <Typography component="p">days left</Typography>
           </Box>
         </Box>
