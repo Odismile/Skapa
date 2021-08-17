@@ -1,5 +1,5 @@
-import { Storage } from "@google-cloud/storage";
-import { randomStr } from "./randomStr";
+const { Storage } = require("@google-cloud/storage");
+const { randomStr } = require("./randomStr");
 
 // Create new storage instance with Firebase project credentials
 const storage = new Storage({
@@ -17,10 +17,10 @@ const bucket = storage.bucket(
 
 /* interface RequestFileGenerateSignedUrl {
   originalname: string;
-  pathURL: string;
-} */
+  pathU RL: string;
+}*/
 
-const generateReadSignedUrl  (filename)  {
+const generateReadSignedUrl = async (filename ='') => {
   if (!filename) {
     throw new Error("Error data to get in firebase");
   }
@@ -31,16 +31,19 @@ const generateReadSignedUrl  (filename)  {
     // Get a v4 signed URL for uploading file
     if (filename.trim().length !== 0) {
       const [url] = await bucket.file(filename).getSignedUrl({
-        version: "v4",
+        version: "v2",
         action: "read",
         expires: Date.now() + 15 * 60 * 1000, // 15 minutes
       });
 
-      return { url: url, uuid: uuid };
+      return { url, uuid };
     }
 
     return { url: "", uuid: "" };
   } catch (e) {
     throw new Error(e);
   }
-};
+} 
+module.exports = {
+  generateReadSignedUrl
+}

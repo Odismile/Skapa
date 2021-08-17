@@ -8,16 +8,15 @@ var {generateReadSignedUrl} = require("../../../Utils/firebaseCloudStorage");
 
 module.exports = {
     async find(params, populate) {
-        console.log("tonga ato tsika");
-        let az = await generateReadSignedUrl("project/profile/76/kymco.jpg");
-        console.log(az);
-        let picture = "";
-        const result = strapi.query('projects').find(params, populate);
-        result.then((res)=>{
-            console.log("result : ", res); 
-            picture = res.picture
-            console.log("SARYSARYSARYSARY", picture);
-        });
-        console.log("result : ", result);
+        
+        const results = await strapi.query('projects').find(params, populate);
+        const newResults = await Promise.all(results.map(async (project)=> {
+            const signedUrlPicture = await generateReadSignedUrl(project.Picture);
+            const signedUrlVideo = await generateReadSignedUrl(project.Video);
+            project.Picture = signedUrlPicture.url;
+            project.Video = signedUrlVideo.url;
+            return project;
+        }))
+        return newResults;
     }
 };
