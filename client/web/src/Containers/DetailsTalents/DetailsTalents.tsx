@@ -1,7 +1,6 @@
-import { Box, Link } from '@material-ui/core';
 import React from 'react';
-import FicheTalents from '../../Components/FicheTalents/FicheTalents';
 import HeaderDetails from '../../Components/HeaderDetails/HeaderDetails';
+import FicheTalents from '../Project/FicheTalents/FicheTalents';
 import useStyles from './styles';
 const DetailsTalents = () => {
   const classes = useStyles();

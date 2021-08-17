@@ -19,6 +19,7 @@ import OnboardingProfileSeven from '../Containers/OnboardingProfileSeven/Onboard
 import OnboardingSplashScreen from '../Containers/OnboardingSplashScreen/OnboardingSplashScreen';
 import DetailsTalents from '../Containers/DetailsTalents/DetailsTalents';
 import DetailsPlace from '../Containers/DetailsPlace/DetailsPlace';
+import DetailsProjects from '../Containers/DetailsProjects/DetailsProjects';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -39,6 +40,7 @@ export const ONBOARDING_PROFILE7 = '/onboarding-splashscreen1';
 export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen2';
 export const DETAILS_TALENTS = '/details-talents';
 export const DETAILS_PLACE = '/details-place';
+export const DETAILS_PROJECTS = '/details-projects';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
@@ -177,4 +179,11 @@ export const ROUTES: RouteInterface[] = [
     private: false,
     component: DetailsPlace,
   },
-];
+  {
+    key: 'DETAILS_PROJECTS',
+    route: DETAILS_PROJECTS,
+    roles: [],
+    private: false,
+    component: DetailsProjects,
+  }
+]

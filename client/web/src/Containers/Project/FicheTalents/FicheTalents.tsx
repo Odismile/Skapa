@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box, Button, Divider, Typography } from '@material-ui/core';
-import FormerProject from '../../Components/FormerProjects/FormerProjects';
-import Pitch from '../../Components/Pitch/Pitch';
-import Presentation from '../../Components/Presentation/Presentation';
-import SimpleCardTalents from '../../Components/SimpleCardTalents/SimpleCardTalents';
-import Tags from '../../Components/Tags/Tags';
 import useStyles from './styles';
+import SimpleCardTalents from '../../../Components/SimpleCardTalents/SimpleCardTalents';
+import Presentation from '../../../Components/Presentation/Presentation';
+import Tags from '../../../Components/Tags/Tags';
+import FormerProject from '../../../Components/FormerProjects/FormerProjects';
+import Pitch from '../../../Components/Pitch/Pitch';
 
 const FicheTalents = () => {
   const classes = useStyles();
