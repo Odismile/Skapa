@@ -25,6 +25,7 @@ export interface createProject_createProject_project {
   id: string;
   Name: string | null;
   description: string;
+  Picture: string | null;
   project_skills: (createProject_createProject_project_project_skills | null)[] | null;
 }
 

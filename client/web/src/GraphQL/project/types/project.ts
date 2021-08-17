@@ -23,6 +23,7 @@ export interface project_project {
   id: string;
   Name: string | null;
   description: string;
+  Picture: string | null;
   project_skills: (project_project_project_skills | null)[] | null;
 }
 

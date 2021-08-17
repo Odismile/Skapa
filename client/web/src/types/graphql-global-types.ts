@@ -29,6 +29,8 @@ export interface ProjectInput {
   Date_Start?: string | null;
   Date_End?: string | null;
   status?: string | null;
+  profile?: string | null;
+  project_favorits?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
