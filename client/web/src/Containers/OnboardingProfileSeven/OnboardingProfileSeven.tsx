@@ -34,13 +34,8 @@ const OnboardingProfileSeven = () => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
-          if (login()?.loginCustom.user.isFirstConnection) {
-            history.replace(ONBOARDING);
-            return 0;
-          } else {
-            history.replace(HOMEPAGE);
-            return 0;
-          }
+          history.replace(HOMEPAGE);
+          return 0;
         }
         const diff = Math.random() * 10;
         return Math.min(oldProgress + diff, 100);
