@@ -7,7 +7,9 @@ export const PROJECT_INFO_FRAGMENT = gql`
     description
     project_skills {
       id
-      name
+      item {
+        label
+      }
     }
   }
 `;

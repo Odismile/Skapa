@@ -71,6 +71,7 @@
       "fluente": "Courant"
     },
     "createProject": {
+      "nameOfProject": "Nom du projet",
       "uploadAPicture": "Télécharger une image",
       "basicInformation": "Informations de base",
       "typeProject": "Type de projet",
@@ -85,6 +86,7 @@
       "skipThisStep": "Passer cette étape"
     },
     "createProjectError": {
+      "nameOfProject":"Veuillez entrer un nom de projet",
       "picture": "Veuillez ajouter une image",
       "typeProject": "Veuillez selectionner une type de projet",
       "city": "Veuillez entrer une ville",

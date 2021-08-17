@@ -18,6 +18,9 @@ import OnboardingProfileFour from '../Containers/OnboardingProfileFour/Onboardin
 import OnboardingProfileSeven from '../Containers/OnboardingProfileSeven/OnboardingProfileSeven';
 import OnboardingSplashScreen from '../Containers/OnboardingSplashScreen/OnboardingSplashScreen';
 import DetailsTalents from '../Containers/DetailsTalents/DetailsTalents';
+import DetailsPlace from '../Containers/DetailsPlace/DetailsPlace';
+import DetailsProjects from '../Containers/DetailsProjects/DetailsProjects';
+import Wishlist from '../Containers/Wishlist/Wishlist';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -37,6 +40,9 @@ export const ONBOARDING_PROFILE4 = '/onboarding-profile4';
 export const ONBOARDING_PROFILE7 = '/onboarding-splashscreen1';
 export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen2';
 export const DETAILS_TALENTS = '/details-talents';
+export const DETAILS_PLACE = '/details-place';
+export const DETAILS_PROJECTS = '/details-projects';
+export const WISHLIST = '/wishlist';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
@@ -88,21 +94,21 @@ export const ROUTES: RouteInterface[] = [
     key: 'PROJECT',
     route: PROJECT,
     roles: [],
-    private: false,
+    private: true,
     component: Project,
   },
   {
     key: 'CREATE_PROJECT',
     route: CREATE_PROJECT,
     roles: [],
-    private: false,
+    private: true,
     component: CreateProject,
   },
   {
     key: 'PROJECT_PLACES',
     route: PROJECT_PLACES,
     roles: [],
-    private: false,
+    private: true,
     component: ProjectPlaces,
   },
   {
@@ -168,4 +174,25 @@ export const ROUTES: RouteInterface[] = [
     private: false,
     component: DetailsTalents,
   },
-];
+  {
+    key: 'DETAILS_PLACE',
+    route: DETAILS_PLACE,
+    roles: [],
+    private: false,
+    component: DetailsPlace,
+  },
+  {
+    key: 'DETAILS_PROJECTS',
+    route: DETAILS_PROJECTS,
+    roles: [],
+    private: false,
+    component: DetailsProjects,
+  },
+  {
+    key: 'WISHLIST',
+    route: WISHLIST,
+    roles: [],
+    private: false,
+    component: Wishlist,
+  }
+]

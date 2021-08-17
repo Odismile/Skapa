@@ -2,6 +2,51 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(
   theme => ({
+    modal :{
+      "& .modal-content": {
+        background: "#ffffff",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        minWidth: "300px",
+        transform: "translate(-50%, -50%)",
+        borderRadius: 12,
+        padding: 14,
+        display: "flex",
+        flexDirection:"column",
+        maxHeight: "80%",
+      },
+      "& .modal-top": {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingBottom: 5,
+        borderBottom: "1px solid #dfdfdf",
+        height: 50,
+        flex: "1 0",
+      },
+      "& .modal-title": {
+        fontSize: 18,
+        color: "#000000",
+        fontWeight: "700",
+        marginBottom: 0,
+        marginTop: 0,  
+      },
+      "& .btn-close": {
+        padding: 0,
+        "& svg": {
+          width: 15,
+          height: 15,
+        }
+      },
+      "& .modal-body": {
+        height: "calc(100% - 50px)",
+        flex: "1 1 100%",
+        marginTop: 8,
+        overflow: "hidden auto",
+        padding: "0 14px"
+      }
+    },
     root: {
       display: 'flex',
       alignItems: 'center',
@@ -15,6 +60,9 @@ export default makeStyles(
         borderRadius: 25,
         display: "flex",
         flex: 1,
+        "&:focus": {
+          border: "1px solid #8870ff",
+        },
         "& .search-icon": {
           padding: 0,
         }
@@ -31,6 +79,9 @@ export default makeStyles(
     },
     box:{
       marginTop:14,
+      '& >div>div':{
+        boxShadow: 'none',
+      }
     },
     content:{
       display: 'flex',
@@ -214,7 +265,7 @@ export default makeStyles(
       height: 28,
     },
     switchBase: {
-      color: "#dfdfdf",
+      color: "#979797",
       paddingTop: 0,
       paddingLeft: 0,
       paddingRight: 0,
@@ -236,10 +287,11 @@ export default makeStyles(
       width: 52,
       height: 28,
       borderRadius: 16,
+      background: "#dfdfdf"
     },
     thumb: {
       width: 22,
       height: 22,
-    }
+    },
   }),
 );

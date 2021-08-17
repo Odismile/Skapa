@@ -30,6 +30,27 @@ export default makeStyles((theme) => ({
           backgroundColor: 'rgba(0,0,0, 0.3)',
           borderRadius: 13,
           zIndex: 0,
+      },
+      "& .btn-favori": {
+        position: 'absolute',
+        top: 8,
+        right: 8,
+        zIndex: 1,
+        padding: 0,
+        "&:hover, &:focus": {
+          "& path": {
+            stroke: "#e30057",
+            fill: "#e30057",
+          }
+        },
+        "& svg": {
+          width: 20,
+          height: 21,
+          "& path": {
+            stroke: "#fff",
+            fill: "transparent"
+          }
+        }
       }
   },
   media: {
@@ -45,6 +66,27 @@ export default makeStyles((theme) => ({
       width: '50%',
       color: '#000000',
     },
+    '& .detail-top': {
+      display: "flex",
+      justifyContent: "space-between",
+      '& svg': {
+        '& path': {
+          stroke: "#5BD3A0",
+        }
+      },
+      '& .trending': {
+        color: '#5BD3A0',
+        textTransform: 'uppercase',
+        fontSize: 10,
+        display: "flex",
+        "& svg": {
+          width: 14,
+          height: 7,
+          marginRight: 5,
+          marginTop: 3,
+        }
+      },
+    },
     '& .details':{
         display: 'flex',
         justifyContent: 'space-between',
@@ -59,6 +101,7 @@ export default makeStyles((theme) => ({
                 fontWeight: 700,
             }
         },
+        
         '& .avatarGroup>div':{
             height: 28,
             width: 28,
@@ -66,6 +109,9 @@ export default makeStyles((theme) => ({
         '& .teams':{
             display: 'flex',
             alignItems: 'center',
+            '& p':{
+              marginRight: 4,
+            }
         }
     },
     '& .info':{
@@ -75,6 +121,9 @@ export default makeStyles((theme) => ({
             fontSize: 10,
             marginBottom: 0,
             color: '#000000',
+            '&.bold':{
+              fontWeight: 700,
+            }
         },
         '& .active':{
             color: '#9A5CFF',

@@ -3,8 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles(
   (theme) => ({
     imageUpload: {
-      width: '75px',
-      height: '65px',
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
     },
     videoUpload: {},
     description: {
@@ -24,6 +25,7 @@ export default makeStyles(
           alignItems: 'center',
           height: 80,
           width: '100%',
+          overflow: "hidden",
           '& svg': {
             fill: theme.palette.primary.main,
             fontSize: '1.25rem',

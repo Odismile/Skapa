@@ -9,12 +9,18 @@ import { ONBOARDING } from '../../../Routes';
 import { ISignup } from '../../../types/signup';
 import { isEmailValid, isPassValid } from '../../../Utils/validator';
 import useStyles from './styles';
+import { clearLocalStorage, isAuthenticated } from '../../../Services';
 
 const Signup: FC<RouteComponentProps> = (props) => {
   const { history } = props;
   const classes = useStyles();
   const { loading, doRegister } = useRegister();
   const { t } = useTranslation();
+
+  if (isAuthenticated()) {
+    clearLocalStorage();
+    window.location.reload();
+  }
 
   const [signup, setSignup] = useState<ISignup>({
     email: '',
@@ -58,6 +64,7 @@ const Signup: FC<RouteComponentProps> = (props) => {
   };
 
   const onPressRegister = () => {
+    clearLocalStorage();
     if (signup.surname.trim().length === 0) {
       setErrorSurname(true);
       setTextErrorSurname(t(`errorMessage.invalid_surname`));

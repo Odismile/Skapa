@@ -2,9 +2,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   root: {
+    marginTop: 15,
     "& .details": {
-      width: "90%",
-      margin: "-125px auto 20px auto",
       border: "dashed 1px #f4f4f4",
       background: "#ffffff",
       boxShadow: "0px 2px 4px rgba(0,0,0,0.11)",
@@ -20,6 +19,14 @@ export default makeStyles((theme) => ({
     "& .places": {
       marginBottom: 20,
       background: "#fff",
+      '& >div':{
+        boxShadow: 'none',
+        padding: 0,
+        border: 'none',
+        '& >div':{
+          boxShadow: 'none',
+        }
+      }
     },
     "& .presentation": {
       marginBottom: 20,
