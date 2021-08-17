@@ -154,7 +154,7 @@ const TabLink = () => {
             await uploadFile(filesPictureVariable());
             await uploadFile(filesVideoVariable());
             initCreateProjectVariable();
-            setActiveStep(newActiveStep);
+            setActiveStep(3);
           }
         });
       }

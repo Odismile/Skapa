@@ -1,16 +1,16 @@
 import gql from 'graphql-tag';
-import { USER_PERMISSION_ME_FRAGMENT } from '../user/fragment';
+import { USER_PERMISSION_CUSTOM_ME_FRAGMENT, USER_PERMISSION_ME_FRAGMENT } from '../user/fragment';
 
 export const LOGIN = gql`
   mutation Login($input: UsersPermissionsLoginInput!) {
-    login(input: $input) {
+    loginCustom(input: $input) {
       jwt
       user {
-        ...UserPermissionMeInfo
+        ...UserPermissionMeInfoCustom
       }
     }
   }
-  ${USER_PERMISSION_ME_FRAGMENT}
+  ${USER_PERMISSION_CUSTOM_ME_FRAGMENT}
 `;
 
 export const REGISTER = gql`
@@ -30,9 +30,9 @@ export const EMAIL_CONFIRMATION = gql`
     registerCustom(confirmation: $confirmation) {
       jwt
       user {
-        ...UserPermissionMeInfo
+        ...UserPermissionMeInfoCustom
       }
     }
   }
-  ${USER_PERMISSION_ME_FRAGMENT}
+  ${USER_PERMISSION_CUSTOM_ME_FRAGMENT}
 `;

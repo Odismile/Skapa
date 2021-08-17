@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import { ApolloError, useMutation } from '@apollo/client';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useMutation, ApolloError } from '@apollo/client';
-
+import { useHistory } from 'react-router-dom';
 import { LOGIN } from '../../../GraphQL/authentication/mutation';
 import { Login, LoginVariables } from '../../../GraphQL/authentication/types/Login';
-import { setAccessToken } from '../../../Services';
-import { useHistory } from 'react-router-dom';
-import { HOMEPAGE, ONBOARDING_PROFILE7 } from '../../../Routes';
 import { idMe } from '../../../ReactiveVariable/User/user';
+import { ONBOARDING_PROFILE7 } from '../../../Routes';
+import { setAccessToken } from '../../../Services';
 
 const useAuth = () => {
   const { t } = useTranslation();
@@ -34,10 +33,10 @@ const useAuth = () => {
       return;
     },
     onCompleted: (data) => {
-      if (data?.login?.jwt) {
-        setAccessToken(data?.login?.jwt);
-        idMe(data.login.user.id);
-        localStorage.setItem('idMe', data.login.user.id);
+      if (data?.loginCustom?.jwt) {
+        setAccessToken(data?.loginCustom?.jwt);
+        idMe(data.loginCustom.user.id);
+        localStorage.setItem('idMe', data.loginCustom.user.id);
         history.replace(ONBOARDING_PROFILE7);
         window.location.reload();
       }
