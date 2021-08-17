@@ -10,7 +10,7 @@ import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItems
 import { ageProfil, nameOfOrganisation, yourPosition, levelLanguages } from '../../ReactiveVariable/Profil/profil';
 import useStyles from './styles';
 import { useItemsGetYear } from '../../Providers/ItemsProvider/hooks/useItemsGetYear';
-
+import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 const OnboardingProfile = () => {
   const classes = useStyles();
   const [disabledButton, setDisabledButton] = useState(true);
@@ -21,8 +21,10 @@ const OnboardingProfile = () => {
   const { data, loading } = useItemsGetlaguage();
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
+  const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
+
   const testButtonToEnabled = () => {
-    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil()) {
+    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() /*  && levelLanguages().length === 0 */) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -46,6 +48,24 @@ const OnboardingProfile = () => {
   };
 
   const handleClick = () => {
+    //TEST
+    /* doCreateProfile({
+      variables: {
+        input: {
+          data: {
+            position: 'test position',
+            bio: 'test bio',
+            job_seniority_id: '',
+            picture: '',
+            profile_skills: [],
+            video: '',
+            users_id: '',
+          },
+        },
+      },
+    }).then((result) => {
+      //console.log('resultat', result.data);
+    }); */
     history.push('/onboarding-profile2');
   };
 

@@ -16,6 +16,23 @@ export interface InputID {
   id: string;
 }
 
+export interface ProfileInput {
+  position?: string | null;
+  bio?: string | null;
+  picture?: string | null;
+  video?: string | null;
+  job_seniority_id?: string | null;
+  users_id?: string | null;
+  profile_skills?: (string | null)[] | null;
+  talent_favorits?: (string | null)[] | null;
+  project_favorits?: (string | null)[] | null;
+  languages?: (string | null)[] | null;
+  projects?: (string | null)[] | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface ProjectInput {
   Name?: string | null;
   teams?: (string | null)[] | null;
@@ -29,6 +46,8 @@ export interface ProjectInput {
   Date_Start?: string | null;
   Date_End?: string | null;
   status?: string | null;
+  profile?: string | null;
+  project_favorits?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -46,6 +65,10 @@ export interface UsersPermissionsRegisterCustomInput {
   password: string;
   surname?: string | null;
   lastname?: string | null;
+}
+
+export interface createProfileInput {
+  data?: ProfileInput | null;
 }
 
 export interface createProjectInput {

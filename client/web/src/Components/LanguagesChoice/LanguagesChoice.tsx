@@ -44,40 +44,11 @@ const LanguagesChoice: FC<TextFiedlProps> = ({ id, title, name }) => {
       ]);
     } else {
       const findId = levelLanguage.find((language) => language.name === name);
-      console.log(`findId`, findId);
       if (findId) {
-        // const filterLanguage = levelLanguage.filter((language) => language.name !== name);
-        // const newLanguages = [
-        //   ...filterLanguage,
-        //   {
-        //     id: id,
-        //     title: title,
-        //     name: name,
-        //     level: level,
-        //   },
-        // ];
-        // setLevelLanguage(newLanguages);
-        // levelLanguages(newLanguages);
       } else {
-        // setLevelLanguage((prevState) => [
-        //   ...prevState,
-        //   {
-        //     id: id,
-        //     title: title,
-        //     name: name,
-        //     level: level,
-        //   },
-        // ]);
-        // levelLanguages(levelLanguage);
       }
     }
-    // console.log(`id`, id);
-    // console.log(`title`, title);
-    // console.log(`name`, name);
-    // console.log(`level`, level);
-    // console.log('******************');
   };
-  console.log(`levelLanguage`, levelLanguage);
 
   return (
     <Box className={classes.boxLang}>
