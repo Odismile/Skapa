@@ -19,9 +19,12 @@ export default makeStyles((theme) => ({
           position: 'absolute',
           top: 0,
           right: 0,
+          zIndex: 1,
+          padding: 0,
           '&:focus, &:hover': {
             '& path': {
-              fill: '#8277FF',
+              fill: '#e30057',
+              stroke: '#e30057'
             },
           },
         },

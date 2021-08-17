@@ -30,6 +30,27 @@ export default makeStyles((theme) => ({
           backgroundColor: 'rgba(0,0,0, 0.3)',
           borderRadius: 13,
           zIndex: 0,
+      },
+      "& .favori": {
+        position: 'absolute',
+        top: 8,
+        right: 8,
+        zIndex: 1,
+        padding: 0,
+        "&:hover, &:focus": {
+          "& path": {
+            stroke: "#e30057",
+            fill: "#e30057",
+          }
+        },
+        "& svg": {
+          width: 20,
+          height: 21,
+          "& path": {
+            stroke: "#fff",
+            fill: "transparent"
+          }
+        }
       }
   },
   media: {

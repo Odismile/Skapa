@@ -13,7 +13,7 @@ import {
 import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
 import organisationImg from '../../Assets/images/organisation.png';
-import HeartLine from '../Icons/HeartLine';
+import Heart from '../Icons/Heart';
 import Rate from '../Icons/Rate';
 import CardProject from '../CardProjects/CardProjects';
 import { useHistory } from 'react-router-dom';
@@ -29,6 +29,10 @@ const CardTalents = () => {
 
   const goToDetailsTalents = (event:any) =>{
     history.push('/details-talents');
+    event.stopPropagation();
+  }
+
+  const handleClick = (event:any) =>{
     event.stopPropagation();
   }
 
@@ -56,8 +60,8 @@ const CardTalents = () => {
               <span>Level : </span>Junior <span>Rate : </span>318 $ / day
             </Typography>
           </Box>
-          <IconButton className="btn btn-favori">
-            <HeartLine color="primary" className="iconHeart" />
+          <IconButton className="btn btn-favori" onClick={handleClick}>
+            <Heart className="iconHeart" />
           </IconButton>
 
           <img src={organisationImg} className="iconOrganisation" alt="organisation" />

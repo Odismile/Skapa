@@ -1,9 +1,10 @@
-import { Avatar, Box, Card, CardContent, CardMedia, Slider, Typography, withStyles } from '@material-ui/core';
+import { Avatar, Box, Card, CardContent, CardMedia, IconButton, Slider, Typography, withStyles } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
 import imgCard from '../../Assets/images/lab.svg';
 import { project } from '../../GraphQL/project/types/project';
+import Heart from '../Icons/Heart';
 import useStyles from './style';
 
 const PrettoSlider = withStyles({
@@ -94,6 +95,9 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
         </Box>
       </CardContent>
       <Box className="category">LAB</Box>
+      <IconButton className="favori">
+        <Heart className="iconHeart" />
+      </IconButton>
       <Box className="bgBlack"></Box>
     </Card>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Card, CardMedia, Drawer, List, ListItem, SwipeableDrawer, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardMedia, Drawer, IconButton, List, ListItem, SwipeableDrawer, Typography } from '@material-ui/core';
 import CardReview from '../../Components/CardReview/CardReview';
 import FormerProject from '../../Components/FormerProjects/FormerProjects';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
@@ -9,6 +9,7 @@ import useStyles from './styles';
 // img
 import imgCard from '../../Assets/images/lab.svg';
 import photoUser from '../../Assets/images/photo-card.png';
+import HeartLine from '../../Components/Icons/HeartLine';
 
 const ProjectContent = () => {
   const classes = useStyles();
@@ -58,6 +59,9 @@ const ProjectContent = () => {
               <Card className="contribute_media" elevation={0} >
                 <CardMedia className="contribute_picture" image={imgCard} title="image" />
                 <Box className='category' component="span">LAB</Box>
+                <IconButton className="favori">
+                  <HeartLine className="iconHeart" />
+                </IconButton>
               </Card>
               <Typography className="subtitle_text" variant="h3">Kit de composants Miro customisables   </Typography>
               <Typography className="text">What amount would you wish to give to support this project ?</Typography>

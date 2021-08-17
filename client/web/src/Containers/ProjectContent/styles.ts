@@ -96,6 +96,20 @@ export default makeStyles(
             left: 8,
             textTransform: 'uppercase',
             zIndex: 1,
+          },
+          "& .favori": {
+            position: 'absolute',
+            top: 8,
+            right: 8,
+            zIndex: 1,
+            "& svg": {
+              width: 20,
+              height: 21,
+              "& path": {
+                stroke: "none",
+                fill: "#fff"
+              }
+            }
           }
         },
         "& .contribute_picture": {
