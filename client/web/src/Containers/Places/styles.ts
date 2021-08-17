@@ -262,7 +262,7 @@ export default makeStyles(
       height: 28,
     },
     switchBase: {
-      color: "#dfdfdf",
+      color: "#979797",
       paddingTop: 0,
       paddingLeft: 0,
       paddingRight: 0,
@@ -284,10 +284,11 @@ export default makeStyles(
       width: 52,
       height: 28,
       borderRadius: 16,
+      background: "#dfdfdf"
     },
     thumb: {
       width: 22,
       height: 22,
-    }
+    },
   }),
 );
