@@ -42,7 +42,8 @@ export default makeStyles((theme) => ({
                 "&:focus, &:hover": {
                     "& svg": {
                         "& path": {
-                            fill: "#ffffff",
+                            fill: "#e30057",
+                            stroke: "#e30057"
                         }
                     }
                 },

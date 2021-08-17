@@ -31,7 +31,7 @@ export default makeStyles((theme) => ({
           borderRadius: 13,
           zIndex: 0,
       },
-      "& .favori": {
+      "& .btn-favori": {
         position: 'absolute',
         top: 8,
         right: 8,

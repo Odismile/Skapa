@@ -9,7 +9,7 @@ import useStyles from './styles';
 // img
 import imgCard from '../../Assets/images/lab.svg';
 import photoUser from '../../Assets/images/photo-card.png';
-import HeartLine from '../../Components/Icons/HeartLine';
+import Heart from '../../Components/Icons/Heart';
 
 const ProjectContent = () => {
   const classes = useStyles();
@@ -18,6 +18,10 @@ const ProjectContent = () => {
   const handleDrawer = () => {
     setOpen(prev => !prev);
   };
+
+  const handleClick = (event:any) =>{
+    event.stopPropagation();
+  }
 
   return (
     <Box className={classes.projectPage}>
@@ -59,8 +63,8 @@ const ProjectContent = () => {
               <Card className="contribute_media" elevation={0} >
                 <CardMedia className="contribute_picture" image={imgCard} title="image" />
                 <Box className='category' component="span">LAB</Box>
-                <IconButton className="favori">
-                  <HeartLine className="iconHeart" />
+                <IconButton className="btn-favori" onClick={handleClick}>
+                  <Heart className="iconHeart" />
                 </IconButton>
               </Card>
               <Typography className="subtitle_text" variant="h3">Kit de composants Miro customisables   </Typography>

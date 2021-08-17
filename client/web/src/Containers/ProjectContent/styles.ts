@@ -97,7 +97,7 @@ export default makeStyles(
             textTransform: 'uppercase',
             zIndex: 1,
           },
-          "& .favori": {
+          "& .btn-favori": {
             position: 'absolute',
             top: 8,
             right: 8,

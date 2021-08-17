@@ -44,6 +44,10 @@ interface CardReviewProps {
   data?: project | undefined;
 }
 
+const handleClick = (event:any) =>{
+  event.stopPropagation();
+}
+
 const CardReview: FC<CardReviewProps> = ({ data }) => {
   const classes = useStyles();
   const history = useHistory();
@@ -101,7 +105,7 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
         </Box>
       </CardContent>
       <Box className="category">LAB</Box>
-      <IconButton className="favori">
+      <IconButton className="btn-favori" onClick={handleClick}>
         <Heart className="iconHeart" />
       </IconButton>
       <Box className="bgBlack"></Box>

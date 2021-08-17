@@ -4,7 +4,7 @@ import image_bitmap from '../../Assets/images/Bitmap.png';
 import imgPlace from '../../Assets/images/lab.svg';
 import Cast from '../Icons/Cast';
 import Computer from '../Icons/Computer';
-import HeartLine from '../Icons/HeartLine';
+import Heart from '../Icons/Heart';
 import Photo from '../Icons/Photo';
 import Rate from '../Icons/Rate';
 import Wifi from '../Icons/Wifi';
@@ -14,6 +14,10 @@ import { useHistory } from 'react-router';
 
 interface PlaceProps {
   data?: project | undefined;
+}
+
+const handleClick = (event:any) =>{
+  event.stopPropagation();
 }
 
 const Place: FC<PlaceProps> = ({ data }) => {
@@ -33,8 +37,8 @@ const Place: FC<PlaceProps> = ({ data }) => {
               <img src={image_bitmap} alt="bitmap" />
             </figure>
           </Box>
-          <IconButton className="btn-favori" aria-label="favori">
-            <HeartLine />
+          <IconButton className="btn-favori" aria-label="favori" onClick={handleClick}>
+            <Heart />
           </IconButton>
         </CardMedia>
         <CardContent className="content">
