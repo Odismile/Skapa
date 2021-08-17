@@ -1,5 +1,5 @@
-import { Box, Button, Link } from '@material-ui/core';
 import React, { FC, useState } from 'react';
+import { Box, Button, Link } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { RouteComponentProps } from 'react-router-dom';
 import TextFieldComponent from '../../../Components/TextField/TextField';
@@ -166,6 +166,11 @@ const Signup: FC<RouteComponentProps> = (props) => {
         </Box>
         <Box className={classes.linkContainer}>
           <Link className={classes.link}>{t(`labelText.createAccountFromLinkdln`)}</Link>
+        </Box>
+        <Box className={classes.linkContainerLogin}>
+          <Link className={classes.link} href="/login">
+            {t(`labelText.backToLogin`)}
+          </Link>
         </Box>
       </WrapOnBoarding>
     </>

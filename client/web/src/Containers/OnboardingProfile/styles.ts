@@ -44,8 +44,10 @@ export default makeStyles(theme => ({
       backgroundColor: '#8870ff',
       borderRadius: 25,
       color: 'white',
+      height: 50,
       padding: '6px 24px',
       textTransform: 'capitalize',
+      width: 115,
       '&:hover':{
         backgroundColor: '#8870ff',
         color: 'white',

@@ -47,6 +47,10 @@
     },
     "Date_End": {
       "type": "string"
+    },
+    "status": {
+      "model": "status",
+      "via": "projects"
     }
   }
 }

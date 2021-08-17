@@ -31,6 +31,9 @@ export default makeStyles(
     },
     box:{
       marginTop:14,
+      '& >div>div':{
+        boxShadow: 'none',
+      }
     },
     content:{
       display: 'flex',

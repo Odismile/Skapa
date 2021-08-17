@@ -30,6 +30,7 @@ export default makeStyles((theme) => ({
                 color: '#8870FF',
                 textDecoration: 'none',
                 borderBottom: '1px solid #8870ff',
+                fontStyle: "italic",
             }
         }
     },

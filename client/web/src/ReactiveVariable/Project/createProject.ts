@@ -1,4 +1,4 @@
-import { makeVar } from '@apollo/client/cache';
+import { InMemoryCache, makeVar } from '@apollo/client/cache';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 
 // Create Reactive variable
@@ -10,3 +10,32 @@ export const dateEndVariable = makeVar<Date | null>(null);
 export const projectDescriptionVariable = makeVar<string>('');
 export const skillsSelectedVariable = makeVar<(Items_get_language_items | null)[] | null | undefined>(null);
 export const filesVideoVariable = makeVar<File[] | null>(null);
+
+export const projectIdVariable = makeVar<string>('');
+
+export const initCreateProjectVariable = () => {
+  filesPictureVariable(null);
+  typeProjectVariable('');
+  cityVariable('');
+  dateStartVariable(null);
+  dateEndVariable(null);
+  projectDescriptionVariable('');
+  skillsSelectedVariable(null);
+  filesVideoVariable(null);
+};
+
+export const testCreateObject = () => {
+  if (
+    filesPictureVariable() === null ||
+    typeProjectVariable().trim().length === 0 ||
+    cityVariable().trim().length === 0 ||
+    dateStartVariable() === null ||
+    dateEndVariable() === null ||
+    projectDescriptionVariable().trim().length === 0 ||
+    skillsSelectedVariable() === null ||
+    filesVideoVariable() === null
+  ) {
+    return true;
+  }
+  return false;
+};

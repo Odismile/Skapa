@@ -10,6 +10,11 @@ import IconPhoto from '../../Components/Icons/Photo/Photo';
 
 import { useUploadFile } from '../../Utils/uploadFile';
 
+// icons
+import Plus from '../../Components/Icons/Plus/Plus';
+import Info from '../../Components/Icons/Info/Info';
+import Download from '../../Components/Icons/Download/Download';
+
 const OnboardingProfileTwo = () => {
   const [fileUpload, setFileUpload] = useState('');
   const [videoUpload, setVideoUpload] = useState('');
@@ -28,69 +33,69 @@ const OnboardingProfileTwo = () => {
     history.push('/onboarding-profile3');
   };
   return (
-    <>
-      <WrapOnBoarding>
-        <Box className={classes.root}>
-          <FormControl component="fieldset" className={classes.form}>
-            <FormLabel component="legend" className="title">
-              Upload a picture of you
-            </FormLabel>
-            Send picture
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="contained-button-file"
-              type="file"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
-                const filesConcat = Array.from(event.target.files || []);
-                setFilesPicture(filesConcat);
-                setFileUpload(url);
-              }}
-            />
-            <label htmlFor="contained-button-file">
-              <Button variant="contained" component="span">
-                +
-              </Button>
-            </label>
-          </FormControl>
-          <FormControl component="fieldset" className={classes.inputVideo}>
-            <FormLabel component="legend" className="title">
-              Upload a video pitch
-            </FormLabel>
-            <input
-              accept="video/mp4,video/x-m4v,video/*"
-              className={classes.input}
-              id="contained-button-file"
-              type="file"
-              /* onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+    <WrapOnBoarding>
+      <Box className={classes.root}>
+        <FormControl component="fieldset" className={classes.form}>
+          <FormLabel component="legend" className="title">
+            Upload a picture of you
+          </FormLabel>
+          <input
+            accept="image/*"
+            className={classes.input}
+            id="contained-button-file"
+            multiple
+            type="file"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
+              const filesConcat = Array.from(event.target.files || []);
+              setFilesPicture(filesConcat);
+              setFileUpload(url);
+            }}
+          />
+          <label htmlFor="contained-button-file">
+            <Button variant="contained" component="span">
+              <Plus />
+            </Button>
+          </label>
+        </FormControl>
+        <FormControl component="fieldset" className={classes.inputVideo}>
+          <FormLabel component="legend" className="title">
+            Upload a video pitch <Info />
+          </FormLabel>
+          <input
+            accept="video/*"
+            className={classes.input}
+            id="contained-button-file"
+            multiple
+            type="file" /* onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
                 const filesConcat = Array.from(event.target.files || []);
                 setFilesVideo(filesConcat);
                 setVideoUpload(url);
               }} */
-            />
-            <label htmlFor="contained-button-file">
-              <Box className="video">
-                <Box component="span">Import a video from your computer (mp4)</Box>
-                <img src={iconDownload} alt="iconDownload" />
-              </Box>
-            </label>
-          </FormControl>
-          <FormControl component="fieldset" className={classes.bio}>
-            <FormLabel component="legend" className="title">
-              Bio
-            </FormLabel>
-            <textarea placeholder="tell us more about you !"></textarea>
-          </FormControl>
-          <Box className={classes.btnNext}>
-            <Button variant="contained" onClick={handleClick}>
-              Next
-            </Button>
-          </Box>
+          />
+          <label htmlFor="contained-button-file">
+            <Box className="video">
+              <Box component="span">Import a video from your computer (mp4)</Box>
+              <Download />
+              {/* <img src={iconDownload} alt="iconDownload" /> */}
+            </Box>
+          </label>
+        </FormControl>
+        <FormControl component="fieldset" className={classes.bio}>
+          <FormLabel component="legend" className="title">
+            Bio
+          </FormLabel>
+          <textarea placeholder="tell us more about you !"></textarea>
+          <Typography className="textLeft">0/240 symbols</Typography>
+        </FormControl>
+        <Box className={classes.btnNext}>
+          <Button variant="contained" onClick={handleClick}>
+            Next
+          </Button>
         </Box>
-      </WrapOnBoarding>
-    </>
+      </Box>
+    </WrapOnBoarding>
   );
 };
 

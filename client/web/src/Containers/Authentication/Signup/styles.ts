@@ -1,4 +1,4 @@
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => 
 ({
@@ -25,13 +25,21 @@ const useStyles = makeStyles(() =>
     fontSize: 16,
     fontWeight: 600,
   },
+  linkContainerLogin: {
+    marginTop: 30,
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 600,
+  },
   link: {
     cursor: 'pointer',
     borderBottom: "1px solid #8277FF",
+    textDecoration: 'none',
+    '&:hover':{
+      textDecoration: 'none',
+    }
   },
-  button:{
-
-  }
+  button: {},
   })
 );
 

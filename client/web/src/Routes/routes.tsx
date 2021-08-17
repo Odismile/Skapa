@@ -10,11 +10,15 @@ import OnboardingProfileTwo from '../Containers/OnboardingProfileTwo/OnboardingP
 import OnboardingProfileSix from '../Containers/OnboardingProfileSix/OnboardingProfileSix';
 import Project from '../Containers/Project';
 import CreateProject from '../Containers/Project/CreateProject';
+import ProjectPlaces from '../Containers/Places/Places';
+import ProjectFichePlaces from '../Containers/Project/FichePlaces/FichePlaces';
 import CreateProjectCongrats from '../Containers/Project/CreateProject/Congrats';
 import OnboardingProfileThree from '../Containers/OnboardingProfileThree/OnboardingProfileThree';
 import OnboardingProfileFour from '../Containers/OnboardingProfileFour/OnboardingProfileFour';
 import OnboardingProfileSeven from '../Containers/OnboardingProfileSeven/OnboardingProfileSeven';
 import OnboardingSplashScreen from '../Containers/OnboardingSplashScreen/OnboardingSplashScreen';
+import DetailsTalents from '../Containers/DetailsTalents/DetailsTalents';
+import DetailsPlace from '../Containers/DetailsPlace/DetailsPlace';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -25,12 +29,16 @@ export const ONBOARDING_PROFILE = '/onboarding-profile';
 export const ONBOARDING_PROFILE2 = '/onboarding-profile2';
 export const ONBOARDING_PROFILE6 = '/onboarding-profile6';
 export const PROJECT = '/project';
+export const PROJECT_PLACES = '/project/places';
+export const PROJECT_FICHES_PLACES = '/project/FichePlaces';
 export const CREATE_PROJECT = '/project/create-project';
 export const CREATE_PROJECT_CONGRATS = '/project/create-project/congrats';
 export const ONBOARDING_PROFILE3 = '/onboarding-profile3';
 export const ONBOARDING_PROFILE4 = '/onboarding-profile4';
 export const ONBOARDING_PROFILE7 = '/onboarding-splashscreen1';
 export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen2';
+export const DETAILS_TALENTS = '/details-talents';
+export const DETAILS_PLACE = '/details-place';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
@@ -62,7 +70,7 @@ export const ROUTES: RouteInterface[] = [
     route: ONBOARDING,
     roles: [],
     private: false,
-    component: Onboarding,
+    component: Onboarding
   },
   {
     key: 'ONBOARDING_START',
@@ -91,6 +99,20 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: CreateProject,
+  },
+  {
+    key: 'PROJECT_PLACES',
+    route: PROJECT_PLACES,
+    roles: [],
+    private: false,
+    component: ProjectPlaces,
+  },
+  {
+    key: 'PROJECT_FICHES_PLACES',
+    route: PROJECT_FICHES_PLACES,
+    roles: [],
+    private: false,
+    component: ProjectFichePlaces,
   },
   {
     key: 'ONBOARDING_PROFILE6',
@@ -140,5 +162,19 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: CreateProjectCongrats,
+  },
+  {
+    key: 'DETAILS_TALENTS',
+    route: DETAILS_TALENTS,
+    roles: [],
+    private: false,
+    component: DetailsTalents,
+  },
+  {
+    key: 'DETAILS_PLACE',
+    route: DETAILS_PLACE,
+    roles: [],
+    private: false,
+    component: DetailsPlace,
   },
 ];

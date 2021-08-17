@@ -15,9 +15,9 @@
       "model": "items"
     },
     "users_id": {
+      "via": "profile_project_types",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "profile_project_types"
+      "model": "user"
     }
   }
 }

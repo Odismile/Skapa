@@ -106,7 +106,7 @@ export default makeStyles(
           },
         },
         '& .field_date': {
-          width: 110,
+          width: 115,
           '& div:hover:before': {
             borderBottom: 'none!important',
           },
@@ -236,17 +236,16 @@ export default makeStyles(
             padding: 10,
           },
           '& .inputGroup': {
-            backgroundColor: 'white',
-            borderRadius: 20,
+            backgroundColor: '#fff',
+            borderRadius: 0,
             border: 'none',
             display: 'block',
             margin: 2.5,
             minWidth: 65,
             overflow: 'hidden',
             '& label': {
-              color: '#000',
-              border: '1px solid #979797',
               borderRadius: 20,
+              color: '#000',
               display: 'inline-flex',
               alignItems: 'center',
               fontSize: 12,
@@ -254,7 +253,7 @@ export default makeStyles(
               padding: '5px 12px',
               height: 30,
               textAlign: 'center',
-              transition: 'all .25s ease-in-out',
+              transition: 'all .15s ease-in-out',
               width: '100%',
             },
             '& input': {
