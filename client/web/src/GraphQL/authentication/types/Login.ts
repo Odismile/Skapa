@@ -9,7 +9,7 @@ import { UsersPermissionsLoginInput } from "./../../../types/graphql-global-type
 // GraphQL mutation operation: Login
 // ====================================================
 
-export interface Login_login_user_role {
+export interface Login_loginCustom_user_role {
   __typename: "UsersPermissionsMeRole";
   id: string;
   name: string;
@@ -17,24 +17,25 @@ export interface Login_login_user_role {
   type: string | null;
 }
 
-export interface Login_login_user {
-  __typename: "UsersPermissionsMe";
+export interface Login_loginCustom_user {
+  __typename: "UsersPermissionsCustomizeMe";
   id: string;
   username: string;
   email: string;
   confirmed: boolean | null;
   blocked: boolean | null;
-  role: Login_login_user_role | null;
+  isFirstConnection: boolean | null;
+  role: Login_loginCustom_user_role | null;
 }
 
-export interface Login_login {
-  __typename: "UsersPermissionsLoginPayload";
+export interface Login_loginCustom {
+  __typename: "UsersPermissionsLoginCustomizePayload";
   jwt: string | null;
-  user: Login_login_user;
+  user: Login_loginCustom_user;
 }
 
 export interface Login {
-  login: Login_login;
+  loginCustom: Login_loginCustom;
 }
 
 export interface LoginVariables {

@@ -228,6 +228,15 @@ export default makeStyles(
             margin: -2.5,
             paddingBottom: 10,
           },
+          '& .selected_skills':{
+            '& .inputGroup':{
+              '& label':{
+                backgroundColor: '#eeecff',
+                borderColor: '#b9b3ff',
+                color: '#8870FF',
+              }
+            }
+          },
 
           '& .all_skills': {
             borderRadius: 12,
@@ -236,6 +245,11 @@ export default makeStyles(
             height: 162,
             overflow: 'hidden auto',
             padding: 10,
+            '& .wrapSkills':{
+              display: 'flex',
+              flexWrap: 'wrap',
+              height: 'fit-content',
+            }
           },
           '& .inputGroup': {
             backgroundColor: '#fff',
@@ -247,6 +261,7 @@ export default makeStyles(
             overflow: 'hidden',
             '& label': {
               borderRadius: 20,
+              border: '1px solid #979797',
               color: '#000',
               display: 'inline-flex',
               alignItems: 'center',

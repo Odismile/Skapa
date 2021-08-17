@@ -28,6 +28,7 @@ module.exports = {
       blocked: Boolean
       lastname: String
       surname: String
+      isFirstConnection: Boolean
       role: UsersPermissionsMeRole
     }
 
@@ -42,7 +43,6 @@ module.exports = {
       password: String!
       surname: String
       lastname: String
-      isFirstConnection: Boolean
     }
   `,
   mutation: `

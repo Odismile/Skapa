@@ -1,23 +1,23 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(  theme => ({
-  root:{
-    '& .title':{
-      color: "#000000",
+export default makeStyles((theme) => ({
+  root: {
+    '& .title': {
+      color: '#000000',
       fontStyle: 'italic',
       fontWeight: 600,
       fontSize: 14,
-      "& svg": {
+      '& svg': {
         fill: '#8870ff',
-        fontSize: "1.1rem",
+        fontSize: '1.1rem',
         marginLeft: 6,
-        verticalAlign: "middle",
+        verticalAlign: 'middle',
       },
-    }
+    },
   },
-  bio:{
+  bio: {
     width: '100%',
-    '& textarea':{
+    '& textarea': {
       height: 148,
       fontStyle: 'italic',
       borderRadius: 8,
@@ -25,7 +25,7 @@ export default makeStyles(  theme => ({
       border: '1px solid #DFDFDF',
       padding: 10,
       color: '#979797',
-      '&:focus':{
+      '&:focus': {
         outline: 'none',
         fontStyle: 'normal',
         color: 'black',
@@ -44,13 +44,13 @@ export default makeStyles(  theme => ({
     },
   },
   footerPage: {
-    "& .link-footer": {
+    '& .link-footer': {
       color: '#8870ff',
       fontSize: '1rem',
       fontWeight: 600,
       margin: 0,
-      textAlign: "right",
-      "@media(min-width: 640px)": {
+      textAlign: 'right',
+      '@media(min-width: 640px)': {
         textAlign: 'center',
       },
       '& a': {
@@ -58,7 +58,7 @@ export default makeStyles(  theme => ({
         textDecoration: 'none',
         borderBottom: '1px solid',
       },
-    }
+    },
   },
   btnNext: {
     display: 'flex',
@@ -88,14 +88,14 @@ export default makeStyles(  theme => ({
       border: '2px solid #8870ff',
       backgroundColor: 'white',
       color: '#8870ff',
-      "& svg": {
-        fontSize: "1.4rem",
+      '& svg': {
+        fontSize: '1.4rem',
       },
     },
   },
-  inputVideo:{
+  inputVideo: {
     width: '100%',
-    '& .video':{
+    '& .video': {
       width: '100%',
       backgroundColor: '#EEEEEE',
       height: 35,
@@ -109,10 +109,14 @@ export default makeStyles(  theme => ({
       fontStyle: 'italic',
       cursor: 'pointer',
       fontSize: 12,
-      "& svg": {
+      '& svg': {
         color: '#8870ff',
-        fontSize: "1rem",
+        fontSize: '1rem',
       },
-    }
+    },
+  },
+  large: {
+    width: theme.spacing(10),
+    height: theme.spacing(10),
   },
 }));

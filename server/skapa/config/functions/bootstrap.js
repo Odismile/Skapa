@@ -9,5 +9,13 @@
  *
  * See more details here: https://strapi.io/documentation/v3.x/concepts/configurations.html#bootstrap
  */
-
-module.exports = () => {};
+const admin = require("firebase-admin");
+const serviceAccount = require("../../skapa-b88c9-firebase-adminsdk-fviwf-74d1cb2edf.json");
+module.exports = () => {
+    admin.initializeApp({
+       // credential: admin.credential.applicationDefault(),
+        credential: admin.credential.cert(serviceAccount),
+        databaseURL: "https://skapa-b88c9-default-rtdb.firebaseio.com"
+    })
+    strapi.firebase=admin
+};

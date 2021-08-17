@@ -86,11 +86,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
           })
           .catch((err) => {})
           .finally(() => {
-            if (test) {
-              snackbar.type = 'SUCCESS';
-              snackbar.message = t('login.login_message');
-              displaySnackbar(client, snackbar);
-            } else {
+            if (!test) {
               setErrorFields((prev) => ({ ...prev, username: true, password: true }));
               setLoginError(t('errorMessage.invalid_fields'));
             }

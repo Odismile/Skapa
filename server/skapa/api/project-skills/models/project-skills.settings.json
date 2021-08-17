@@ -20,8 +20,8 @@
       "model": "projects"
     },
     "item": {
-      "model": "items",
-      "via": "project_skills"
+      "via": "project_skills",
+      "model": "items"
     }
   }
 }
