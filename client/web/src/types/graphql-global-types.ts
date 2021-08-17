@@ -24,6 +24,7 @@ export interface ProjectInput {
   Video?: string | null;
   Date_Start?: string | null;
   Date_End?: string | null;
+  status?: string | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -41,6 +42,7 @@ export interface UsersPermissionsRegisterCustomInput {
   password: string;
   surname?: string | null;
   lastname?: string | null;
+  isFirstConnection?: boolean | null;
 }
 
 export interface createProjectInput {
