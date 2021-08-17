@@ -21,6 +21,7 @@ import DetailsTalents from '../Containers/DetailsTalents/DetailsTalents';
 import DetailsPlace from '../Containers/DetailsPlace/DetailsPlace';
 import DetailsProjects from '../Containers/DetailsProjects/DetailsProjects';
 import Wishlist from '../Containers/Wishlist/Wishlist';
+import Coachs from '../Containers/Coachs/Coachs';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -43,11 +44,19 @@ export const DETAILS_TALENTS = '/details-talents';
 export const DETAILS_PLACE = '/details-place';
 export const DETAILS_PROJECTS = '/details-projects';
 export const WISHLIST = '/wishlist';
+export const COACHS = '/coachs';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
 
 export const ROUTES: RouteInterface[] = [
+  {
+    key: 'COACHS',
+    route: COACHS,
+    roles: [],
+    private: true,
+    component: Coachs,
+  },
   {
     key: 'HOMEPAGE',
     route: HOMEPAGE,
@@ -195,4 +204,4 @@ export const ROUTES: RouteInterface[] = [
     private: false,
     component: Wishlist,
   }
-]
+];
