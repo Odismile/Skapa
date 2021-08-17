@@ -68,7 +68,7 @@ const ProjectContent = () => {
                 </IconButton>
               </Card>
               <Typography className="subtitle_text" variant="h3">Kit de composants Miro customisables   </Typography>
-              <Typography className="text">What amount would you wish to give to support this project ?</Typography>
+              <Typography className="text">What amount would you wish to <br/>give to support this project ?</Typography>
               <Box className="field_item amount_item">
                 <TextFieldComponent
                   label=""
@@ -86,7 +86,7 @@ const ProjectContent = () => {
                     <img src={photoUser} alt="user_photo" />
                   </figure>
                   <Box className="user_infos">
-                    <Typography>Your average contribution is :  5 690 $</Typography>
+                    <Typography>Your average contribution is :  <span className="price">5 690 $</span></Typography>
                   </Box>
                 </ListItem>
                 <ListItem disableGutters={true}>
@@ -94,7 +94,7 @@ const ProjectContent = () => {
                     <img src={photoUser} alt="user_photo" />
                   </figure>
                   <Box className="user_infos">
-                    <Typography>Your average contribution is :  5 690 $</Typography>
+                    <Typography>Your average contribution is :  <span className="price">5 690 $</span></Typography>
                   </Box>
                 </ListItem>
               </List>
