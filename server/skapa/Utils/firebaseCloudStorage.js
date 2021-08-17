@@ -15,12 +15,12 @@ const bucket = storage.bucket(
     : "skapa-b88c9.appspot.com"
 );
 
-interface RequestFileGenerateSignedUrl {
+/* interface RequestFileGenerateSignedUrl {
   originalname: string;
   pathURL: string;
-}
+} */
 
-export const generateReadSignedUrl = async (filename:string) => {
+const generateReadSignedUrl  (filename)  {
   if (!filename) {
     throw new Error("Error data to get in firebase");
   }
