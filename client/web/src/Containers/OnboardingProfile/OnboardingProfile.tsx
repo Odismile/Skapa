@@ -55,6 +55,11 @@ const OnboardingProfile = () => {
           data: {
             position: 'test position',
             bio: 'test bio',
+            job_seniority_id: '',
+            picture: '',
+            profile_skills: [],
+            video: '',
+            users_id: '',
           },
         },
       },

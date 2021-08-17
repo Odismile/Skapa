@@ -22,7 +22,7 @@ export const useCreateProfile = () => {
       return;
     },
     onCompleted: (data) => {
-      console.log(data);
+      console.log(loading);
     },
   });
   return { doCreateProfile, data, loading };
