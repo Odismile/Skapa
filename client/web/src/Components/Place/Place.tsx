@@ -11,6 +11,7 @@ import Wifi from '../Icons/Wifi';
 import useStyles from './style';
 import { project } from '../../GraphQL/project/types/project';
 import { useHistory } from 'react-router';
+import Award from '../Icons/Award';
 
 interface PlaceProps {
   data?: project | undefined;
@@ -49,7 +50,7 @@ const Place: FC<PlaceProps> = ({ data }) => {
             <Box className="chips">870 $/ day</Box>
           </Box>
           <Box className="top-rated">
-            <Rate /> Top rated
+            <Award /> Top rated
           </Box>
           <Typography component="p">
             <span>Location :</span> 238 rue Lafayette, 75009 <br></br> Bâtiment WeWork - 3e étage - salle Rousseau

@@ -14,7 +14,7 @@ import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
 import organisationImg from '../../Assets/images/organisation.png';
 import Heart from '../Icons/Heart';
-import Rate from '../Icons/Rate';
+import Award from '../Icons/Award';
 import CardProject from '../CardProjects/CardProjects';
 import { useHistory } from 'react-router-dom';
 
@@ -42,16 +42,16 @@ const CardTalents = () => {
         <Box className="head">
           <img src={photoCard} alt="photo" />
           <Box>
-            <Typography component="h6" variant="h6">
+            <Box component="h6" className="head-title">
               UX Designer
-            </Typography>
+            </Box>
             {/* recommended */}
             <Typography component="p" className="note recommanded">
-              <Rate /> RECOMMANDED
+              <Award /> RECOMMANDED
             </Typography>
             {/* top rated */}
             {/* <Typography component="p" className="note top-rated">
-               <Rate /> TOP RATED
+               <Award /> TOP RATED
               </Typography> */}
             <Typography component="p" className="name-adress">
               <span>Baptiste Artaud</span> - Interne - Paris
