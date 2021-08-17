@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Slider, Typography } from '@material-ui/core';
-import React from 'react';
 import useStyles from './styles';
 
 const Capacity = () => {
