@@ -1,4 +1,14 @@
-import { Avatar, Box, Card, CardContent, CardMedia, IconButton, Slider, Typography, withStyles } from '@material-ui/core';
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  IconButton,
+  Slider,
+  Typography,
+  withStyles,
+} from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
@@ -44,9 +54,9 @@ interface CardReviewProps {
   data?: project | undefined;
 }
 
-const handleClick = (event:any) =>{
+const handleClick = (event: any) => {
   event.stopPropagation();
-}
+};
 
 const CardReview: FC<CardReviewProps> = ({ data }) => {
   const classes = useStyles();
@@ -60,13 +70,13 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
       <CardMedia className={classes.media} image={imgCard} title="image" />
       <CardContent className={classes.content}>
         <Box className="detail-top">
-            <Typography className="title" component="p">
-            Lorem ipsum <br></br> Sit amet.
-            </Typography>
-            <Typography component="p" className="trending">
-              <Trending /> TRENDING UP
-            </Typography>
-          </Box>
+          <Typography className="title" component="p">
+            {data?.project?.Name}
+          </Typography>
+          <Typography component="p" className="trending">
+            <Trending /> TRENDING UP
+          </Typography>
+        </Box>
         <Box className="details">
           <Typography component="p" className="name-adress">
             <span>Founder : Alexander Holland</span> - Lorem - Paris
@@ -96,11 +106,15 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
             </Typography> */}
           </Box>
           <Box>
-            <Typography component="p" className='bold'>12</Typography>
+            <Typography component="p" className="bold">
+              12
+            </Typography>
             <Typography component="p">contributors</Typography>
           </Box>
           <Box>
-            <Typography component="p" className='bold'>29</Typography>
+            <Typography component="p" className="bold">
+              29
+            </Typography>
             <Typography component="p">days left</Typography>
           </Box>
         </Box>

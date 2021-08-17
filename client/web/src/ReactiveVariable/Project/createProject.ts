@@ -15,6 +15,7 @@ export const filesVideoVariable = makeVar<File[] | null>(null);
 export const projectIdVariable = makeVar<string>('');
 
 export const initCreateProjectVariable = () => {
+  nameProjectVariable('');
   filesPictureVariable(null);
   typeProjectVariable('');
   cityVariable('');

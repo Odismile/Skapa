@@ -1,7 +1,7 @@
 import { useApolloClient } from '@apollo/client';
 import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core';
 import moment from 'moment';
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
@@ -108,7 +108,7 @@ const TabLink = () => {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.end`);
         displaySnackbar(client, snackbar);
-      } else if (moment(dateStartVariable()).format('dd-MM-YYYY') > moment(dateEndVariable()).format('dd-MM-YYYY')) {
+      } else if (moment(dateStartVariable()).format('DD-MM-YYYY') > moment(dateEndVariable()).format('DD-MM-YYYY')) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.invalidDate`);
         displaySnackbar(client, snackbar);

@@ -7,10 +7,15 @@
 // GraphQL fragment: ProjectsInfo
 // ====================================================
 
+export interface ProjectsInfo_project_project_skills_item {
+  __typename: "Items";
+  label: string | null;
+}
+
 export interface ProjectsInfo_project_project_skills {
   __typename: "ProjectSkills";
   id: string;
-  name: string;
+  item: ProjectsInfo_project_project_skills_item | null;
 }
 
 export interface ProjectsInfo_project {
