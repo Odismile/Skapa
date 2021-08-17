@@ -27,7 +27,7 @@ const Review = () => {
       <Typography variant="h6" className="titre">
         Tags
       </Typography>
-      <Tags />
+      <Tags data={data} />
       <Typography variant="h6" className="titre">
         Place
       </Typography>

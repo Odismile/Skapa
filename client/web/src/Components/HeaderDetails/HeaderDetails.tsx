@@ -9,7 +9,7 @@ const HeaderDetails:FC = (props) =>{
         <Box className={classes.root}>
         <PrimaryHeader />
         <Box className={classes.mainContainer}>
-          <Link href='/project' className='linkBack'>Back to result</Link>
+          <Link href='/project' className='linkBack'>Back to results</Link>
           {props.children}
         </Box>
       </Box>

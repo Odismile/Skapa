@@ -4,7 +4,7 @@ export const transformSkills = (skills: (Items_get_language_items | null)[] | nu
   const data: string[] = [];
   if (skills) {
     for (const skill of skills) {
-      data.push(skill?.id ?? '');
+      data.push(skill?.label ?? '');
     }
     return data;
   } else {

@@ -1,20 +1,19 @@
-import React, { useState, useEffect, FC } from 'react';
+import { useApolloClient } from '@apollo/client';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import React, { FC, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Link';
-import Button from '@material-ui/core/Button';
-import TextFieldComponent from '../../../Components/TextField/TextField';
-import Typography from '@material-ui/core/Typography';
-
-import useStyles from './styles';
-import { HOMEPAGE, ONBOARDING_PROFILE7, SIGNUP } from '../../../Routes';
 import TalentLogo from '../../../Assets/images/logo.svg';
+import TextFieldComponent from '../../../Components/TextField/TextField';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
-import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
-import { Snackbar } from '@material-ui/core';
+import { SIGNUP } from '../../../Routes';
+import { clearLocalStorage } from '../../../Services';
 import { displaySnackbar, InitSnackbarData } from '../../../Utils';
-import { useApolloClient } from '@apollo/client';
+import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
+import useStyles from './styles';
 
 interface LoginInterface {}
 
@@ -80,6 +79,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
     }
     if (login.username && login.password) {
       if (isPassHasMinMaxLength(login.password)) {
+        clearLocalStorage();
         doLogin({ variables: { input: { identifier: login.username, password: login.password, provider: 'local' } } })
           .then((res) => {
             if (res.data) test = true;

@@ -1,22 +1,20 @@
-import React from 'react';
-import { Box, Chip, Typography } from '@material-ui/core';
+import React, { FC } from 'react';
+import { Box, Chip } from '@material-ui/core';
 import useStyles from './style';
+import { project } from '../../GraphQL/project/types/project';
 
-const Tags = () => {
+interface TagsProps {
+  data?: project | undefined;
+}
+
+const Tags: FC<TagsProps> = ({ data }) => {
   const classes = useStyles();
   return (
     <Box className={classes.content}>
-      
       <Box className={classes.tags}>
-        <Chip label="Sketch"/>
-        <Chip label="Figma"/>
-        <Chip label="Miro"/>
-        <Chip label="Adobe XD"/>
-        <Chip label="Protopie"/>
-        <Chip label="InVision"/>
-        <Chip label="HTML/CSS"/>
-        <Chip label="Angular"/>
-        <Chip label="Illustrator"/>
+        {data?.project?.project_skills?.map((tag, index) => {
+          return <Chip key={index} label={tag?.item?.label ?? ''} />;
+        })}
       </Box>
     </Box>
   );

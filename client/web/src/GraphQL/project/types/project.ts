@@ -7,10 +7,15 @@
 // GraphQL query operation: project
 // ====================================================
 
+export interface project_project_project_skills_item {
+  __typename: "Items";
+  label: string | null;
+}
+
 export interface project_project_project_skills {
   __typename: "ProjectSkills";
   id: string;
-  name: string;
+  item: project_project_project_skills_item | null;
 }
 
 export interface project_project {

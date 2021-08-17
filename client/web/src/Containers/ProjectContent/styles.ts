@@ -96,6 +96,21 @@ export default makeStyles(
             left: 8,
             textTransform: 'uppercase',
             zIndex: 1,
+          },
+          "& .btn-favori": {
+            position: 'absolute',
+            top: 8,
+            right: 8,
+            zIndex: 1,
+            padding: 0,
+            "& svg": {
+              width: 20,
+              height: 21,
+              "& path": {
+                stroke: "none",
+                fill: "#e30057"
+              }
+            }
           }
         },
         "& .contribute_picture": {
@@ -111,16 +126,19 @@ export default makeStyles(
         },
         "& .subtitle_text": {
           fontSize: 14,
+          fontWeight: 700,
         },
         "& .text": {
           fontSize: 12,
         },
         "& .text_status": {
-          fontSize: 12,
+          fontSize: 9,
           display: "flex",
           alignItems: "baseline",
           justifyContent: "center",
           marginBottom: 10,
+          fontStyle: "italic",
+          color: "#000",
           "& .amount_value": {
             backgroundColor: "#dffff2",
             borderRadius: 22,
@@ -162,6 +180,9 @@ export default makeStyles(
             alignItems: "center",
             margin: "0 0 10px",
             padding: 0,
+            "&:last-child": {
+              marginBottom: 0,
+            }
           },
           "& .user_avatar": {
             background: "#e2deff",
@@ -169,6 +190,8 @@ export default makeStyles(
             height: 40,
             margin: "0 10px 0 0",
             width: 40,
+            minWidth: 40,
+            overflow: "hidden",
             "& img": {
               height: "100%",
               objectFit: "cover",
@@ -177,11 +200,16 @@ export default makeStyles(
             },
           },
           "& .user_infos": {
-            fontSize: 10,
-            fontWeight: 400,
             textAlign: "left",
             "& p": {
               margin: 0,
+              fontSize: 9,
+              fontWeight: 400,
+              color: "#000",
+              fontStyle: "italic",
+              "& .price": {
+                fontStyle : "normal",
+              }
             },
           },
         },

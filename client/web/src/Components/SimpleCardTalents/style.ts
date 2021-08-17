@@ -25,6 +25,16 @@ export default makeStyles((theme) => ({
             }
           }
         },
+        "& .head-title": {
+          maxWidth: "55%",
+          marginBottom: 8,
+          fontSize: 14,
+          fontWeight: 700,
+          marginTop: 0,
+          whiteSpace: 'nowrap',
+          textOverflow: "ellipsis",
+          overflow: 'hidden'
+        },
         '& .iconHeart':{
           width: 21,
           height: 20,
@@ -50,13 +60,12 @@ export default makeStyles((theme) => ({
       '& .note': {
         marginBottom: 0,
         fontSize: 10,
-        marginLeft: 12,
         color: '#5BD3A0',
         fontWeight: 600,
         display: "flex",
-        alignItems: "center",
+        // alignItems: "center",
         position: 'absolute',
-        top: 0,
+        top: 12,
         right: 0,
         '&.recommanded': {
           color: '#5bd3a0',
@@ -76,15 +85,24 @@ export default makeStyles((theme) => ({
             paddingRight: 5,
             width: "auto",
             "& path": {
-              stroke: "#E30057",
+              fill: "#E30057",
             }
           }
         }
+      },
+      '& .level-rate': {
+        display: "flex",
+        alignItems: "center",
+        padding: "0!important",
       },
       '& .name-adress': {
         fontSize: 10,
         color: '#000000',
         marginBottom: 0,
+        paddingRight: 10,
+        "&:last-child": {
+          paddingRight: 0
+        },
         '& span': {
           fontWeight: 700,
         },

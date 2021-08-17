@@ -9,10 +9,15 @@ import { createProjectInput } from "./../../../types/graphql-global-types";
 // GraphQL mutation operation: createProject
 // ====================================================
 
+export interface createProject_createProject_project_project_skills_item {
+  __typename: "Items";
+  label: string | null;
+}
+
 export interface createProject_createProject_project_project_skills {
   __typename: "ProjectSkills";
   id: string;
-  name: string;
+  item: createProject_createProject_project_project_skills_item | null;
 }
 
 export interface createProject_createProject_project {

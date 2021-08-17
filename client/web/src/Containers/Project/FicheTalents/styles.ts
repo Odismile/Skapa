@@ -36,6 +36,7 @@ export default makeStyles((theme) => ({
       fontSize: 14,
       marginTop: 20,
       color: '#000000',
+      fontStyle: "italic",
     },
     '& .skills':{
         marginBottom: 20,

@@ -62,7 +62,7 @@ export default makeStyles(
       display: 'flex',
       maxWidth: '100%',
       flexWrap: 'wrap',
-      justifyContent: 'space-between',
+      // justifyContent: 'space-between',
       '& .inputGroup': {
         backgroundColor: 'white',
         borderRadius: 20,

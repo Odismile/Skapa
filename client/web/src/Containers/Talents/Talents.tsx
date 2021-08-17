@@ -1,19 +1,32 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import CardProject from '../../Components/CardProjects/CardProjects';
 import CardTalents from '../../Components/CardTalents/CardTalents';
 import RadioExtInt from '../../Components/RadioExtInt/RadioExtInt';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
 import useStyles from './styles';
+import { useLocation } from 'react-router';
 
 const Talents = () => {
   const classes = useStyles();
+  const params = useLocation();
   return (
     <>
-      <Box className={classes.content}>
-        <RadioExtInt/>
-      </Box>
-      <SearchFilterTalents />
+      {params.pathname == '/wishlist' ? (
+        <>
+          <SearchFilterTalents />
+          <Box className={classes.content}>
+            <RadioExtInt />
+          </Box>
+        </>
+      ) : (
+        <>
+          <Box className={classes.content}>
+            <RadioExtInt />
+          </Box>
+          <SearchFilterTalents />
+        </>
+      )}
+
       <Box className={classes.box}>
         <CardTalents />
       </Box>
