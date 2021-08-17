@@ -10,11 +10,14 @@ import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsG
 const OnboardingProfileThree = () => {
   const classes = useStyles();
   const { data, loading } = useItemsGetSkills();
+  let tabSkills = [];
   const history = useHistory();
   function handleClick() {
     history.push('/onboarding-profile4');
   }
-
+  const setTabSkills = (param: String) => {
+    console.log(param);
+  };
   return (
     <>
       <WrapOnBoarding>
@@ -28,13 +31,24 @@ const OnboardingProfileThree = () => {
           />
           <Search className="iconSearch" />
         </Box>
+        <Box className={classes.skills}>
+          <Box className="inputGroup">
+            <input id="data1" name="data1" type="checkbox" />
+            <label htmlFor="data1">data1</label>
+          </Box>
+        </Box>
         <Box className={classes.content}>
           <Box className={classes.skills}>
             {!loading &&
               data?.items?.map((item, index) => {
                 return (
                   <Box className="inputGroup">
-                    <input id={`option${index}`} name={`option${index}`} type="checkbox" />
+                    <input
+                      id={`option${index}`}
+                      name={`option${index}`}
+                      type="checkbox"
+                      // onClick={setTabSkills(item?.label)}
+                    />
                     <label htmlFor={`option${index}`}>{item?.label}</label>
                   </Box>
                 );

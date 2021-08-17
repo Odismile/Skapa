@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Button, FormControl, FormLabel, Link, TextField, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Avatar, Box, Button, FormControl, FormLabel, Link, TextField, Typography } from '@material-ui/core';
 import useStyles from './style';
 import iconDownload from '../../Assets/images/IconDownload.svg';
 import { useHistory } from 'react-router';
@@ -14,6 +14,7 @@ import Download from '../../Components/Icons/Download/Download';
 
 const OnboardingProfileTwo = () => {
   const classes = useStyles();
+  const [imageUpload, setImageUpload] = useState('');
 
   const history = useHistory();
   function handleClick() {
@@ -30,7 +31,15 @@ const OnboardingProfileTwo = () => {
           <input accept="image/*" className={classes.input} id="contained-button-file" multiple type="file" />
           <label htmlFor="contained-button-file">
             <Button variant="contained" component="span">
-              <Plus />
+              {imageUpload.length !== 0 ? (
+                <Avatar alt="Profil" src={imageUpload} className={classes.large} />
+              ) : (
+                <>
+                  <span>
+                    <Plus />
+                  </span>
+                </>
+              )}
             </Button>
           </label>
         </FormControl>
