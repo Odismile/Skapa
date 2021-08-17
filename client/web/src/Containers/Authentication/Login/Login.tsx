@@ -14,7 +14,8 @@ import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import { Snackbar } from '@material-ui/core';
 import { displaySnackbar, InitSnackbarData } from '../../../Utils';
-import { useApolloClient } from '@apollo/client';
+import { resetApolloContext, useApolloClient } from '@apollo/client';
+import { clearLocalStorage } from '../../../Services';
 
 interface LoginInterface {}
 
@@ -80,6 +81,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
     }
     if (login.username && login.password) {
       if (isPassHasMinMaxLength(login.password)) {
+        clearLocalStorage();
         doLogin({ variables: { input: { identifier: login.username, password: login.password, provider: 'local' } } })
           .then((res) => {
             if (res.data) test = true;
