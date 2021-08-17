@@ -42,9 +42,9 @@ const CardTalents = () => {
         <Box className="head">
           <img src={photoCard} alt="photo" />
           <Box>
-            <Typography component="h6" variant="h6">
+            <Box component="h6" className="head-title">
               UX Designer
-            </Typography>
+            </Box>
             {/* recommended */}
             <Typography component="p" className="note recommanded">
               <Rate /> RECOMMANDED

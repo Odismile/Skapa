@@ -28,6 +28,16 @@ export default makeStyles((theme) => ({
             },
           },
         },
+        "& .head-title": {
+          maxWidth: "90%",
+          marginBottom: 0,
+          fontSize: 14,
+          fontWeight: 700,
+          marginTop: 0,
+          whiteSpace: 'nowrap',
+          textOverflow: "ellipsis",
+          overflow: 'hidden'
+        },
         '& .iconHeart': {
           width: 21,
           height: 20,
@@ -53,7 +63,6 @@ export default makeStyles((theme) => ({
       '& .note': {
         marginBottom: 0,
         fontSize: 10,
-        marginLeft: 12,
         color: '#5BD3A0',
         fontWeight: 600,
         display: 'flex',
@@ -158,6 +167,7 @@ export default makeStyles((theme) => ({
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      paddingLeft: 10,
       '& .btn_done': {
         height: 35,
         backgroundColor: '#8870FF',
@@ -172,6 +182,7 @@ export default makeStyles((theme) => ({
         fontWeight: 400,
         fontStyle: 'italic',
         marginTop: 12,
+        paddingLeft: 10,
       },
       '& >div':{
         marginTop: 10,
