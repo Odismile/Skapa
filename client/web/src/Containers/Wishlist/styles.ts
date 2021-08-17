@@ -5,7 +5,14 @@ export default makeStyles(
     root:{
       '& .btn_createProject':{
         display: 'none',
-      }
+      },
+      '&>div:first-child':{
+        height: 170,
+        marginBottom: 20,
+      },
+      '&>div:first-child>div:last-child':{
+        display: 'none',
+      },
     },
     mainContainer: {
       padding: '0px 22px',
@@ -19,6 +26,9 @@ export default makeStyles(
       color: '#8870FF!important',
       textTransform: 'capitalize',
       fontWeight: 700,
+      '& .number':{
+        backgroundColor: '#ECE8FF!important',
+      }
     },
     label:{
       color: 'black',
