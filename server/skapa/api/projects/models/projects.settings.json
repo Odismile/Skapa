@@ -23,8 +23,8 @@
       "required": true
     },
     "item": {
-      "model": "items",
-      "via": "projects"
+      "via": "projects",
+      "model": "items"
     },
     "project_skills": {
       "collection": "project-skills",
@@ -48,9 +48,15 @@
     "Date_End": {
       "type": "string"
     },
+<<<<<<< HEAD
     "status": {
       "model": "status",
       "via": "projects"
+=======
+    "profile": {
+      "via": "projects",
+      "model": "profiles"
+>>>>>>> 8248e6b (create profil)
     }
   }
 }
