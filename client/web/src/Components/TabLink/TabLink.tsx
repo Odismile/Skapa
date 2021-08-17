@@ -16,6 +16,7 @@ import {
   filesPictureVariable,
   filesVideoVariable,
   initCreateProjectVariable,
+  nameProjectVariable,
   projectDescriptionVariable,
   projectIdVariable,
   skillsSelectedVariable,
@@ -83,7 +84,11 @@ const TabLink = () => {
         : activeStep + 1;
 
     if (newActiveStep === 1) {
-      if (filesPictureVariable() === null) {
+      if (nameProjectVariable().trim().length === 0) {
+        snackbar.type = 'ERROR';
+        snackbar.message = t(`createProjectError.nameOfProject`);
+        displaySnackbar(client, snackbar);
+      } else if (filesPictureVariable() === null) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.picture`);
         displaySnackbar(client, snackbar);
@@ -127,6 +132,7 @@ const TabLink = () => {
                 Picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
                   filesPictureVariable()?.[0].name
                 }`,
+                Name: nameProjectVariable(),
                 Type: typeProjectVariable(),
                 Ville: cityVariable(),
                 Date_Start: moment(dateStartVariable()).format('DD/MM/YYYY'),
@@ -136,7 +142,7 @@ const TabLink = () => {
                 Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
                   filesVideoVariable()?.[0].name
                 }`,
-                // Name: '',
+                status: '1',
                 // teams: [],
                 // item: '',
               },

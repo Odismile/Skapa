@@ -71,6 +71,7 @@
       "fluente": "Fluente"
     },
     "createProject": {
+      "nameOfProject": "Name of project",
       "uploadAPicture": "Upload a picture",
       "basicInformation": "Basic information",
       "typeProject": "Type project",
@@ -85,6 +86,7 @@
       "skipThisStep": "Skip this step"
     },
     "createProjectError": {
+      "nameOfProject":"Please enter the name of project",
       "picture": "Please add a picture",
       "typeProject": "Please select a type of project",
       "city": "Please enter a city",

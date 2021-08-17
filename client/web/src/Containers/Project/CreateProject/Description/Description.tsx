@@ -29,6 +29,7 @@ import {
   dateStartVariable,
   filesPictureVariable,
   filesVideoVariable,
+  nameProjectVariable,
   projectDescriptionVariable,
   skillsSelectedVariable,
   testCreateObject,
@@ -45,8 +46,8 @@ const Description = () => {
   const { data, loading } = useItemsGetSkills();
   const { data: dataProjectType } = useItemsProjectTypes();
 
+  const [nameOfProject, setNameOfProject] = useState('');
   const [fileUpload, setFileUpload] = useState('');
-
   const [typeProject, setTypeProject] = useState('');
   const [city, setCity] = useState('');
   const [dateStart, setdateStart] = useState<Date | null>();
@@ -55,6 +56,11 @@ const Description = () => {
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
 
   const [videoUpload, setVideoUpload] = useState('');
+
+  const onChageNameOfProject = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setNameOfProject(e.target.value);
+    nameProjectVariable(e.target.value);
+  };
 
   const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
@@ -155,10 +161,18 @@ const Description = () => {
         <form className="formDescription">
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
-              <Typography variant="h2">Lorem Ipsum Sit Amet </Typography>
-              <IconButton aria-label="edit" className="btn_edit btn_title">
+              <Typography variant="h2">{t(`createProject.nameOfProject`)}</Typography>
+              {/* <IconButton aria-label="edit" className="btn_edit btn_title">
                 <EditIcon />
-              </IconButton>
+              </IconButton> */}
+              <TextFieldComponent
+                label={''}
+                id="nameOfProject"
+                placeholder={t(`createProject.nameOfProject`)}
+                type="text"
+                value={nameOfProject}
+                onChange={(e) => onChageNameOfProject(e)}
+              />
               <Typography className="subTitle" variant="h3">
                 {t(`createProject.basicInformation`)}
               </Typography>
@@ -200,7 +214,7 @@ const Description = () => {
                 <TextFieldComponent
                   label={t(`createProject.city`)}
                   id="VilleProject"
-                  placeholder="Ville "
+                  placeholder={t(`createProject.city`)}
                   type="text"
                   value={city}
                   onChange={(e) => onChangeCity(e)}
