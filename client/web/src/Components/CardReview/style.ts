@@ -66,6 +66,27 @@ export default makeStyles((theme) => ({
       width: '50%',
       color: '#000000',
     },
+    '& .detail-top': {
+      display: "flex",
+      justifyContent: "space-between",
+      '& svg': {
+        '& path': {
+          stroke: "#5BD3A0",
+        }
+      },
+      '& .trending': {
+        color: '#5BD3A0',
+        textTransform: 'uppercase',
+        fontSize: 10,
+        display: "flex",
+        "& svg": {
+          width: 14,
+          height: 7,
+          marginRight: 5,
+          marginTop: 3,
+        }
+      },
+    },
     '& .details':{
         display: 'flex',
         justifyContent: 'space-between',
@@ -80,6 +101,7 @@ export default makeStyles((theme) => ({
                 fontWeight: 700,
             }
         },
+        
         '& .avatarGroup>div':{
             height: 28,
             width: 28,

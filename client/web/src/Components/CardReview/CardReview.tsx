@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import imgCard from '../../Assets/images/lab.svg';
 import { project } from '../../GraphQL/project/types/project';
 import Heart from '../Icons/Heart';
+import Trending from '../Icons/Trending';
 import useStyles from './style';
 
 const PrettoSlider = withStyles({
@@ -54,9 +55,14 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
     <Card className={classes.root} onClick={goToDetailsProjects}>
       <CardMedia className={classes.media} image={imgCard} title="image" />
       <CardContent className={classes.content}>
-        <Typography className="title" component="p">
-          Lorem ipsum <br></br> Sit amet.
-        </Typography>
+        <Box className="detail-top">
+            <Typography className="title" component="p">
+            Lorem ipsum <br></br> Sit amet.
+            </Typography>
+            <Typography component="p" className="trending">
+              <Trending /> TRENDING UP
+            </Typography>
+          </Box>
         <Box className="details">
           <Typography component="p" className="name-adress">
             <span>Founder : Alexander Holland</span> - Lorem - Paris
