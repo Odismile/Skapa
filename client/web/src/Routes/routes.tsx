@@ -70,7 +70,7 @@ export const ROUTES: RouteInterface[] = [
     route: ONBOARDING,
     roles: [],
     private: false,
-    component: Onboarding
+    component: Onboarding,
   },
   {
     key: 'ONBOARDING_START',
@@ -90,21 +90,21 @@ export const ROUTES: RouteInterface[] = [
     key: 'PROJECT',
     route: PROJECT,
     roles: [],
-    private: false,
+    private: true,
     component: Project,
   },
   {
     key: 'CREATE_PROJECT',
     route: CREATE_PROJECT,
     roles: [],
-    private: false,
+    private: true,
     component: CreateProject,
   },
   {
     key: 'PROJECT_PLACES',
     route: PROJECT_PLACES,
     roles: [],
-    private: false,
+    private: true,
     component: ProjectPlaces,
   },
   {

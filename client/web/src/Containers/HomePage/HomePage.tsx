@@ -9,10 +9,12 @@ const HomePage: FC<RouteComponentProps> = (props) => {
   const { history } = props;
   if (!isAuthenticated()) {
     history.push(LOGIN);
+  } else {
+    history.push(CREATE_PROJECT);
   }
   const logout = () => {
     clearLocalStorage();
-    history.push(LOGIN);
+    window.location.reload();
   };
 
   const goToCreateProject = () => {
