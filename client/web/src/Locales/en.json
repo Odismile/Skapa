@@ -83,7 +83,9 @@
       "videoPitch": "Video Pitch",
       "uploadAVideo": "Upload a video",
       "next": "Next",
-      "skipThisStep": "Skip this step"
+      "skipThisStep": "Skip this step",
+      "ValidateAndPostProject":"Validate and post project",
+      "SavAsDraft":"Save as draft"
     },
     "createProjectError": {
       "nameOfProject":"Please enter the name of project",

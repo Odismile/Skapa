@@ -1,7 +1,7 @@
 import { useApolloClient, useQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import { PROJECT } from '../../GraphQL/project/query';
-import { project, projectVariables } from '../../GraphQL/project/types/project';
+import { PROJECTS } from '../../GraphQL/project/query';
+import { projects, projectsVariables } from '../../GraphQL/project/types/projects';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 
 export const useGetProject = (idProject: string) => {
@@ -10,7 +10,7 @@ export const useGetProject = (idProject: string) => {
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
 
-  const { data, loading } = useQuery<project, projectVariables>(PROJECT, {
+  const { data, loading } = useQuery<projects, projectsVariables>(PROJECTS, {
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
 
@@ -21,7 +21,7 @@ export const useGetProject = (idProject: string) => {
       }
       return;
     },
-    variables: { id: idProject },
+    variables: { where: { id: idProject } },
   });
   return { data, loading };
 };

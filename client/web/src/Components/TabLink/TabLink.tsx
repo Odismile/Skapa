@@ -170,6 +170,8 @@ const TabLink = () => {
     //setActiveStep(step);
   };
 
+  console.log(`activeStep`, activeStep);
+
   return (
     <>
       <Box className={classes.root}>
@@ -213,10 +215,10 @@ const TabLink = () => {
               className={classes.button}
               disabled={loading || loadingUpload}
             >
-              {t(`createProject.next`)}
+              {activeStep !== 3 ? t(`createProject.next`) : t(`createProject.ValidateAndPostProject`)}
             </Button>
             <Link to="/project/create-project" className="link" onClick={handleNext}>
-              {t(`createProject.skipThisStep`)}
+              {activeStep !== 3 ? t(`createProject.skipThisStep`) : t(`createProject.SavAsDraft`)}
             </Link>
           </Box>
         </Box>

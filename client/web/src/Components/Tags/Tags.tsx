@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
 import { Box, Chip } from '@material-ui/core';
+import React, { FC } from 'react';
+import { projects } from '../../GraphQL/project/types/projects';
 import useStyles from './style';
-import { project } from '../../GraphQL/project/types/project';
 
 interface TagsProps {
-  data?: project | undefined;
+  data?: projects | undefined;
 }
 
 const Tags: FC<TagsProps> = ({ data }) => {
@@ -12,7 +12,7 @@ const Tags: FC<TagsProps> = ({ data }) => {
   return (
     <Box className={classes.content}>
       <Box className={classes.tags}>
-        {data?.project?.project_skills?.map((tag, index) => {
+        {data?.projects?.[0]?.project_skills?.map((tag, index) => {
           return <Chip key={index} label={tag?.item?.label ?? ''} />;
         })}
       </Box>
