@@ -15,7 +15,7 @@ const FicheProject = () => {
         <CardReview />
       </Box>
       <Box className="pitch">
-        <Pitch />
+        <Pitch url={''} />
       </Box>
       <Box className="presentation">
         <Typography variant="h6" className="title">
@@ -28,7 +28,7 @@ const FicheProject = () => {
           Tags
         </Typography>
         <Tags />
-        <Box className='btn'>
+        <Box className="btn">
           <Button className="btn-contibute">Contribute</Button>
         </Box>
       </Box>

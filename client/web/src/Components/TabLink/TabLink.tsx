@@ -170,8 +170,6 @@ const TabLink = () => {
     //setActiveStep(step);
   };
 
-  console.log(`activeStep`, activeStep);
-
   return (
     <>
       <Box className={classes.root}>

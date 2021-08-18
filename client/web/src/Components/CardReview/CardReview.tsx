@@ -67,7 +67,7 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
   };
   return (
     <Card className={classes.root} onClick={goToDetailsProjects}>
-      <CardMedia className={classes.media} image={imgCard} title="image" />
+      <CardMedia className={classes.media} image={data?.projects?.[0]?.Picture ?? imgCard} title="image" />
       <CardContent className={classes.content}>
         <Box className="detail-top">
           <Typography className="title" component="p">

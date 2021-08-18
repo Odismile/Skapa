@@ -21,6 +21,7 @@ export const useGetProject = (idProject: string) => {
       }
       return;
     },
+    fetchPolicy: 'network-only',
     variables: { where: { id: idProject } },
   });
   return { data, loading };
