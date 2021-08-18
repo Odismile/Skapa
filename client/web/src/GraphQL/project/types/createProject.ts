@@ -27,6 +27,7 @@ export interface createProject_createProject_project {
   description: string;
   Picture: string | null;
   Video: string | null;
+  Type: string | null;
   project_skills: (createProject_createProject_project_project_skills | null)[] | null;
 }
 

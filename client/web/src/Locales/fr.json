@@ -100,7 +100,8 @@
       "video": "Veuillez entrer une video"
     },
     "project":{
-      "none":"Aucun projet"
+      "none":"Aucun projet",
+      "textInputFilter":"Recherchez des projets par titre, type, créateur....."
     }
   }
 }

@@ -100,7 +100,8 @@
       "video": "Please enter a video"
     },
     "project":{
-      "none":"No project"
+      "none":"No project",
+      "textInputFilter":"Look for projects by title, type, creator..."
     }
   }
 }

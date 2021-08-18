@@ -7,6 +7,7 @@ export const PROJECT_INFO_FRAGMENT = gql`
     description
     Picture
     Video
+    Type
     project_skills {
       id
       item {
