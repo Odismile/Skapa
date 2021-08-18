@@ -6,6 +6,7 @@ import useStyles from './styles';
 import image_profile from '../../Assets/images/image_profile.png';
 import image_organisation from '../../Assets/images/organisation.png';
 import TextFieldComponent from '../../Components/TextField/TextField';
+import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
 
 const Profile = () => {
   const classes = useStyles();
@@ -84,6 +85,9 @@ const Profile = () => {
               </Box>
               <Box className="content_bloc language-level-bloc">
                 <FormLabel component="legend">Languages level</FormLabel>
+                <LanguagesChoice title="French" />
+                <LanguagesChoice title="English" />
+                <LanguagesChoice title="Spanish" />
               </Box>
               <Box className="content_bloc skills_bloc" component="section">
                 <FormLabel component="legend">Skills</FormLabel>
