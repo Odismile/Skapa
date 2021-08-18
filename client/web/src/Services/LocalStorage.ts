@@ -28,3 +28,6 @@ export const removeAccessToken = (): void => {
 export const clearLocalStorage = () => {
   localStorage.clear();
 };
+export const getIdUser = () => {
+  return localStorage.getItem('idMe');
+};

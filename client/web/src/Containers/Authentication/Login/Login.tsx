@@ -10,7 +10,7 @@ import TalentLogo from '../../../Assets/images/logo.svg';
 import TextFieldComponent from '../../../Components/TextField/TextField';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { SIGNUP } from '../../../Routes';
-import { clearLocalStorage } from '../../../Services';
+import { clearLocalStorage, removeAccessToken } from '../../../Services';
 import { displaySnackbar, InitSnackbarData } from '../../../Utils';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import useStyles from './styles';
@@ -79,6 +79,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
     }
     if (login.username && login.password) {
       if (isPassHasMinMaxLength(login.password)) {
+        removeAccessToken();
         clearLocalStorage();
         doLogin({ variables: { input: { identifier: login.username, password: login.password, provider: 'local' } } })
           .then((res) => {

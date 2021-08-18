@@ -19,16 +19,23 @@ import {
   projectsTypeSelectedVariable,
   yourPosition,
   bio,
-  skillsSelectedVariable,
   pictureFile,
+  videoFile,
+  skillsSelectedVariable,
+  levelLanguages,
+  nameOfOrganisation,
 } from '../../ReactiveVariable/Profil/profil';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { ONBOARDING_PROFILE7 } from '../../Routes';
 import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
+import { idMe } from '../../ReactiveVariable/User/user';
+import { getIdUser } from '../../Services';
 
 const OnboardingProfileFour = () => {
+  console.log('id profile', idMe());
+
   const classes = useStyles();
   const { data, loading } = useItemsProjectTypes();
   const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
@@ -38,6 +45,7 @@ const OnboardingProfileFour = () => {
 
   const history = useHistory();
   function handleClick() {
+    console.log(getIdUser());
     //TEST
     doCreateProfile({
       variables: {
@@ -45,16 +53,17 @@ const OnboardingProfileFour = () => {
           data: {
             position: yourPosition(),
             bio: bio(),
+            picture: pictureFile(),
+            video: videoFile(),
+            users_id: getIdUser(),
             job_seniority_id: ageProfil(),
-            //picture: pictureFile(),
             profile_skills: transformSkillsIds(skillsSelectedVariable()),
-            video: '',
-            users_id: '',
+            //  languages: levelLanguages(),
           },
         },
       },
     }).then((result) => {
-      console.log('resultat', result.data);
+      // console.log('resultat', result.data);
     });
     history.replace(ONBOARDING_PROFILE7);
   }
@@ -90,6 +99,7 @@ const OnboardingProfileFour = () => {
                     <input id={`option${index}`} type="checkbox" onClick={() => onClickProjectType(item)} />
                     <label htmlFor={`option${index}`}>
                       {item?.label}
+
                       <IconChange className="bgIcon" />
                     </label>
                   </Box>

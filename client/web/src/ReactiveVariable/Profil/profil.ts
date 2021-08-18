@@ -13,6 +13,7 @@ export const levelLanguages = makeVar([
     level: '',
   },
 ]);
+export const languageSelectVariable = makeVar<(string | null)[] | null | undefined>([]);
 
 export const pictureFile = makeVar<string>('');
 export const videoFile = makeVar<string>('');

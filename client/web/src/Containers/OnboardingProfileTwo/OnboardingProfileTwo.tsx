@@ -33,8 +33,8 @@ const OnboardingProfileTwo = () => {
 
   const history = useHistory();
   const handleClick = async () => {
-    await uploadFile(filesPicture);
-    await uploadFile(filesVideo);
+    //await uploadFile(filesPicture);
+    //await uploadFile(filesVideo);
     history.push('/onboarding-profile3');
   };
   let video;
@@ -116,6 +116,7 @@ const OnboardingProfileTwo = () => {
             <textarea
               placeholder="tell us more about you !"
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                bio(e.target.value);
                 testButtonToEnabled();
               }}
             ></textarea>
