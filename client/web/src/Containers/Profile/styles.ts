@@ -43,6 +43,9 @@ export default makeStyles(
         },
       },
       "& .perso-information": {
+        "& > div": {
+          marginBottom: 5,
+        },
         paddingTop: 20,
         "& h2": {
           fontSize: 14,
@@ -56,13 +59,70 @@ export default makeStyles(
           flexDirection: "row",
           alignItems: "center",
         },
-        "& legend, & label": {
+        "& label": {
           fontSize: 10,
           fontWeight: 600,
           color: "#000",
           fontStyle: "italic",
         }
-      }
+      },
+      "& .content_bloc": {
+        marginBottom: 15,
+        "& legend": {
+          fontSize: 10,
+          fontWeight: 600,
+          color: "#000",
+          fontStyle: "italic",
+        }
+      },
+      "& .skills_bloc": {
+        "& .selected_skills, & .all_skills": {
+          display: "flex",
+          flexWrap: "wrap",
+          margin: -2.5,
+          paddingBottom: 10,
+        },
+
+        "& .all_skills": {
+          borderRadius: 12,
+          border: "1px solid #dfdfdf",
+          boxShadow: "inset 0px 1px 3px rgba(0,0,0,0.5)",
+          height: 162,
+          overflow: "hidden auto",
+          padding: 10,
+        },
+        '& .inputGroup': {
+          backgroundColor: 'white',
+          borderRadius: 20,
+          border: "none",
+          display: 'block',
+          margin: 2.5,
+          minWidth: 65,
+          overflow: 'hidden',
+          '& label':{
+            color: '#000',
+            border: '1px solid #979797',
+            borderRadius: 20,
+            display: 'inline-flex',
+            alignItems: 'center',
+            fontSize: 12,
+            lineHeight: "100%",
+            padding: '5px 12px',
+            height: 30,
+            textAlign: "center",
+            transition: "all .25s ease-in-out",
+            width: "100%",
+          },
+          '& input':{
+            display: 'none',
+          },
+          '& input:checked ~ label': {
+            backgroundColor: "#eeecff",
+            borderColor: '#b9b3ff',
+            color: '#8870FF',
+          }
+        }
+      },
     },
     form: {
       display: "flex",
