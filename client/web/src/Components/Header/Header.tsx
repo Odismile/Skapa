@@ -157,7 +157,7 @@ const PrimaryHeader = () => {
           </IconButton>
           <List className="list">
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href="/profile">Profile</Link>
+              <Link className="nav_link">Profile</Link>
             </ListItem>
             <ListItem disableGutters={true}>
               <Link className="nav_link">My activity</Link>
