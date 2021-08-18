@@ -1,3 +1,4 @@
+import { useReactiveVar } from '@apollo/client/react/hooks/useReactiveVar';
 import {
   Box,
   Button,
@@ -21,6 +22,7 @@ import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
+import { projectSkills } from '../../ReactiveVariable/Project/projectSkills';
 import useStyles from './styles';
 
 const ProjectContent = () => {
@@ -31,6 +33,8 @@ const ProjectContent = () => {
 
   const [open, setOpen] = useState(false);
   const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
+
+  const projectCategory = useReactiveVar(projectSkills);
 
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -46,6 +50,17 @@ const ProjectContent = () => {
     }
   }, [data?.projects]);
 
+  useEffect(() => {
+    if (projectCategory.length !== 0) {
+      const newProjects = data?.projects?.filter((project) =>
+        projectCategory.find((category) => project?.Type === category),
+      );
+      setProjects(newProjects);
+    } else {
+      setProjects(data?.projects);
+    }
+  }, [projectCategory]);
+
   const onChangeFilter = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.target.value.trim().length === 0) {
       setProjects(data?.projects);
@@ -58,6 +73,8 @@ const ProjectContent = () => {
       setProjects(newProjects);
     }
   };
+
+  console.log(`projectSkills()`, projectCategory);
 
   return (
     <Box className={classes.projectPage}>
