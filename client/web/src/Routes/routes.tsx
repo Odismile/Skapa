@@ -22,6 +22,7 @@ import DetailsPlace from '../Containers/DetailsPlace/DetailsPlace';
 import DetailsProjects from '../Containers/DetailsProjects/DetailsProjects';
 import Wishlist from '../Containers/Wishlist/Wishlist';
 import Coachs from '../Containers/Coachs/Coachs';
+import Profile from '../Containers/Profile/Profile';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -46,6 +47,7 @@ export const DETAILS_PROJECTS = '/details-projects';
 export const WISHLIST = '/wishlist';
 export const COACHS = '/coachs';
 export const UNAUTHORIZED = '/unauthorized';
+export const PROFILE = '/profile';
 
 const WrappedHomePage = Wrapper(HomePage);
 
@@ -203,5 +205,12 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: Wishlist,
+  },
+  {
+    key: 'PROFILE',
+    route: PROFILE,
+    roles: [],
+    private: false,
+    component: Profile,
   },
 ];
