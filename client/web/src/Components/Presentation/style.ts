@@ -14,6 +14,7 @@ export default makeStyles((theme) => ({
             padding: 16,
             resize: "none",
             width: "100%",
+            background: "#fff",
             "&::-webkit-input-placeholder": {
                 color: "#979797",
                 fontStyle: "italic",
