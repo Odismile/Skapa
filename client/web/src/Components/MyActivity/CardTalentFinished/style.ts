@@ -97,25 +97,41 @@ const useStyles = makeStyles(() => ({
         },
       },
     },
-    '& .slider':{
-      '& .valueSlide':{
-        color: '#8870FF',
-        fontSize: 10,
-        fontWeight: 700,
-        marginBottom: 0,
+    '& .level': {
+      marginTop: 4,
+      fontWeight: 700,
+      fontSize: 10,
+      marginBottom: 0,
+      color: '#000000',
+      '& span': {
+        color: '#E30057',
+        marginLeft: 13,
+      },
+    },
+  },
+  iconFilled:{
+    color: '#8870FF',
+  },
+  iconEmpty:{
+    color: '#ECE8FF!important',
+  },
+  disabled:{
+    opacity: '1!important',
+  },
+  rating:{
+    display: 'flex',
+    justifyContent: 'flex-end',
+    fontSize: 10,
+    fontWeight: 700,
+    alignItems: 'center',
+    color: '#000000',
+    '& .rate':{
+      marginLeft: 6,
+      '& svg':{
+        height: 16,
+        width: 16,
       }
     }
-  },
-  rail:{
-    height: 8,
-    borderRadius: 2.5,
-  },
-  track:{
-    height: 8,
-    borderRadius: 2.5,
-  },
-  thumb:{
-    display: 'none',
   }
 }));
 
