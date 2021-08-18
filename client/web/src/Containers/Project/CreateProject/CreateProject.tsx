@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import PrimaryHeader from '../../../Components/Header';
 import TabLink from '../../../Components/TabLink';
-import useStyles from './styles';
+import useStyles from './styles'
 
 // install Swiper modules
 
