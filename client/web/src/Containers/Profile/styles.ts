@@ -42,17 +42,19 @@ export default makeStyles(
           }
         },
       },
-      "& .perso-information": {
-        "& > div": {
-          marginBottom: 5,
-        },
-        paddingTop: 20,
-        "& h2": {
+      "& .box-item": {
+        marginBottom: 20,
+        "& .box-title": {
           fontSize: 14,
           fontWeight: 700,
           marginTop: 0,
           marginBottom: 10,
           color: "#000"
+        },
+      },
+      "& .perso-information": {
+        "& > div": {
+          marginBottom: 5,
         },
         "& .job-radio": {
           display: "flex",
@@ -63,6 +65,37 @@ export default makeStyles(
           fontSize: 10,
           fontWeight: 600,
           color: "#000",
+        },
+      },
+      "& .bio": {
+        '& .textarea_input': {
+          color: '#000',
+          border: 'solid 1px #dfdfdf',
+          borderRadius: 12,
+          boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
+          fontFamily: 'Nunito',
+          fontSize: 12,
+          padding: 16,
+          height: 182,
+          resize: 'none',
+          width: '100%',
+          '&::-webkit-input-placeholder': {
+            color: '#979797',
+            fontStyle: 'italic',
+          },
+          '&:focus': {
+            outline: 'none',
+          },
+        },
+      },
+      "& .daily-rate": {
+        '& .money':{
+          color: '#8870FF',
+          fontSize: 12,
+          fontWeight: 700,
+        },
+        '& .text':{
+          fontSize: 10,
           fontStyle: "italic",
         }
       },
@@ -75,7 +108,7 @@ export default makeStyles(
           fontStyle: "italic",
         }
       },
-      "& .skills_bloc": {
+      "& .skills-bloc": {
         "& .selected_skills, & .all_skills": {
           display: "flex",
           flexWrap: "wrap",
@@ -123,6 +156,12 @@ export default makeStyles(
           }
         }
       },
+      "& .language-bloc": {
+        "& .label": {
+          color: "#000",
+          fontSize: 12,
+        }
+      },
     },
     form: {
       display: "flex",
@@ -153,6 +192,31 @@ export default makeStyles(
       margin: 0,
       paddingLeft: 6,
       fontStyle: "normal"
-    }
+    },
+    labelrate:{
+      top: -18,
+      '& span':{
+        borderRadius: 'none!important',
+        color: '#8870FF',
+        backgroundColor: 'transparent',
+        fontSize: 10,
+      }
+    },
+    btnvalidate: {
+      display: 'flex',
+      justifyContent: 'center',
+      marginTop: 16,
+      '& button': {
+        backgroundColor: '#8870ff',
+        borderRadius: 25,
+        color: 'white',
+        padding: '6px 24px',
+        textTransform: 'capitalize',
+        '&:hover': {
+          backgroundColor: '#8870ff',
+          color: 'white',
+        },
+      },
+    },
   }),
 );

@@ -1,4 +1,4 @@
-import { Box, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Typography } from '@material-ui/core';
+import { Box, Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider, TextareaAutosize, Typography } from '@material-ui/core';
 import React from 'react';
 import PrimaryHeader from '../../Components/Header';
 import useStyles from './styles';
@@ -21,7 +21,7 @@ const Profile = () => {
       <PrimaryHeader />
         <Box className={classes.mainContainer}>
           <FormControl component="fieldset" className={classes.form}>
-            <Box className="user">
+            <Box className="user box-item">
               <figure className="user-organisation-image">
                 <img src={image_organisation} alt="user-organisation" />
               </figure>
@@ -29,8 +29,8 @@ const Profile = () => {
                 <img src={image_profile} alt="profile" />
               </figure>
             </Box>
-            <Box className="perso-information">
-              <Typography component="h2">Personal informations</Typography>
+            <Box className="perso-information box-item">
+              <Typography component="h2" className="box-title">Personal informations</Typography>
               <TextFieldComponent
                 name="name"
                 id="name"
@@ -83,13 +83,29 @@ const Profile = () => {
                   label="Senior" />
               </RadioGroup>
               </Box>
-              <Box className="content_bloc language-level-bloc">
+              <Box className="content_bloc language-bloc">
                 <FormLabel component="legend">Languages level</FormLabel>
-                <LanguagesChoice title="French" />
-                <LanguagesChoice title="English" />
-                <LanguagesChoice title="Spanish" />
+                <LanguagesChoice title="French" name="french" id="" />
+                <LanguagesChoice title="English" name="english" id="" />
+                <LanguagesChoice title="Spanish" name="spanish" id="" />
               </Box>
-              <Box className="content_bloc skills_bloc" component="section">
+              </Box>
+            <Box className="bio box-item">
+              <Typography component="h2" className="box-title">Bio</Typography>
+              <Box className="field_item textarea_item">
+                <TextareaAutosize
+                  minRows="3"
+                  className="textarea_input"
+                  placeholder="Lorem Ipsum"
+                  defaultValue=""
+                  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                  maxLength={240}
+                />
+              </Box>
+            </Box>
+            <Box className="skills box-item">
+              <Typography component="h2" className="box-title">Skills</Typography>
+              <Box className="content_bloc skills-bloc" component="section">
                 <FormLabel component="legend">Skills</FormLabel>
                 <Box className="selected_skills">
                   <Box className="inputGroup">
@@ -158,10 +174,30 @@ const Profile = () => {
                   <input id="Photoshop_2" name="Photoshop" type="checkbox" />
                   <label htmlFor="Photoshop_2">Photoshop</label>
                 </Box>
-
-              </Box>
+                </Box>
               </Box>
             </Box>
+            <Box className="pitch box-item">
+              <Typography component="h2" className="box-title">Pitch</Typography>
+            </Box>
+            <Box className="daily-rate box-item">
+              <Typography component="h2" className="box-title">Daily Rate</Typography>
+              <Typography className="money">880£</Typography>
+                <Typography className="text">The average rate for yout type of profile is 750 $</Typography>
+                <Slider
+                  orientation="horizontal"
+                  value={800}
+                  aria-labelledby="vertical-slider"
+                  valueLabelDisplay="on"
+                  classes={{ valueLabel:classes.labelrate }}
+                  max={1600}
+                />
+            </Box>
+            <Box className={classes.btnvalidate}>
+            <Button variant="contained" >
+              Validate changes
+            </Button>
+          </Box>
           </FormControl>
         </Box>
       </Box>
