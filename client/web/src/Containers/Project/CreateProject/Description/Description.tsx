@@ -289,7 +289,7 @@ const Description = () => {
                 })}
               </Box>
               <Box className="all_skills">
-                <Box className='wrapSkills'>
+                <Box className="wrapSkills">
                   {loading && (
                     <Box className="inputGroup">
                       <Skeleton count={3} height={25} />

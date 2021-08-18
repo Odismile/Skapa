@@ -154,10 +154,12 @@ const TabLink = () => {
             await uploadFile(filesPictureVariable());
             await uploadFile(filesVideoVariable());
             initCreateProjectVariable();
-            setActiveStep(3);
+            setActiveStep(newActiveStep);
           }
         });
       }
+    } else {
+      setActiveStep(newActiveStep);
     }
   };
 
@@ -213,7 +215,7 @@ const TabLink = () => {
             >
               {t(`createProject.next`)}
             </Button>
-            <Link to="/" className="link">
+            <Link to="/project/create-project" className="link" onClick={handleNext}>
               {t(`createProject.skipThisStep`)}
             </Link>
           </Box>
