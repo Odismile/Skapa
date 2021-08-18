@@ -190,7 +190,7 @@ const Profile = () => {
             <Box className="pitch box-item">
               <Typography component="h2" className="box-title">Pitch</Typography>
               <ReactPlayer
-                  url=''
+                  url='' 
                   className={classes.videoUpload}
                   width={'100%'}
                   height={'168px'}
