@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
 import { Box, Typography } from '@material-ui/core';
+import React from 'react';
 import CardReview from '../../../../Components/CardReview/CardReview';
 import Pitch from '../../../../Components/Pitch/Pitch';
 import Place from '../../../../Components/Place/Place';
 import Presentation from '../../../../Components/Presentation/Presentation';
 import Tags from '../../../../Components/Tags/Tags';
-import useStyles from './styles';
 import { useGetProject } from '../../../../Providers/ProjectProvider/useGetProject';
 import { projectIdVariable } from '../../../../ReactiveVariable/Project/createProject';
+import useStyles from './styles';
 
 const Review = () => {
   const classes = useStyles();
