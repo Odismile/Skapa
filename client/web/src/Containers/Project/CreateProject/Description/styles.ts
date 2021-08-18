@@ -272,7 +272,7 @@ export default makeStyles(
               textAlign: 'center',
               transition: 'all .15s ease-in-out',
               width: '100%',
-              justifyContent: "center",
+              
             },
             '& input': {
               display: 'none',

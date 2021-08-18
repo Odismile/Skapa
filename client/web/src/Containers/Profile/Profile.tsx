@@ -7,6 +7,7 @@ import image_profile from '../../Assets/images/image_profile.png';
 import image_organisation from '../../Assets/images/organisation.png';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
+import ReactPlayer from 'react-player';
 
 const Profile = () => {
   const classes = useStyles();
@@ -14,7 +15,6 @@ const Profile = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value);
   };
-
   return (
     <>
       <Box className={classes.root}>
@@ -28,6 +28,16 @@ const Profile = () => {
               <figure className="user-profile">
                 <img src={image_profile} alt="profile" />
               </figure>
+              <Box className="upload-profile">
+                <input
+                  accept="image/*"
+                  className="upload_picture"
+                  id="contained-button-file-picture"
+                  multiple
+                  type="file"
+                />
+                <label htmlFor="contained-button-file-picture" className="upload_content">Change picture</label>
+              </Box>
             </Box>
             <Box className="perso-information box-item">
               <Typography component="h2" className="box-title">Personal informations</Typography>
@@ -179,6 +189,23 @@ const Profile = () => {
             </Box>
             <Box className="pitch box-item">
               <Typography component="h2" className="box-title">Pitch</Typography>
+              <ReactPlayer
+                  url=''
+                  className={classes.videoUpload}
+                  width={'100%'}
+                  height={'168px'}
+                  playing={true}
+                  controls={true}
+              />
+              <Box className="upload-video">
+              <input
+                  accept="video/*"
+                  className="upload_picture"
+                  id="contained-button-file-video"
+                  type="file"
+                />
+                <label htmlFor="contained-button-file-video">Download another pitch</label>
+              </Box>
             </Box>
             <Box className="daily-rate box-item">
               <Typography component="h2" className="box-title">Daily Rate</Typography>

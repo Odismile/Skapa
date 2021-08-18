@@ -41,6 +41,22 @@ export default makeStyles(
             background: "#fff",
           }
         },
+        "& .upload-profile": {
+          display: "flex",
+          justifyContent: "center",
+          "& input": {
+            display: "none",
+          },
+          "& label": {
+            cursor: "pointer",
+            color: "#8870FF",
+            fontSize: 12,
+            fontWeight: 600,
+            textAlign: "center",
+            marginTop: 7,
+            borderBottom: "1px solid #8870FF"
+          }
+        }
       },
       "& .box-item": {
         marginBottom: 20,
@@ -145,6 +161,7 @@ export default makeStyles(
             textAlign: "center",
             transition: "all .25s ease-in-out",
             width: "100%",
+            justifyContent: "center"
           },
           '& input':{
             display: 'none',
@@ -162,6 +179,24 @@ export default makeStyles(
           fontSize: 12,
         }
       },
+      "& .pitch": {
+        "& .upload-video": {
+          display: "flex",
+          justifyContent: "flex-end",
+          "& input": {
+            display: "none",
+          },
+          "& label": {
+            cursor: "pointer",
+            color: "#8870FF",
+            fontSize: 12,
+            fontWeight: 600,
+            textAlign: "center",
+            marginTop: 7,
+            borderBottom: "1px solid #8870FF"
+          }
+        }
+      }
     },
     form: {
       display: "flex",
@@ -201,6 +236,10 @@ export default makeStyles(
         backgroundColor: 'transparent',
         fontSize: 10,
       }
+    },
+    videoUpload: {
+      overflow: "hidden",
+      borderRadius: 12,
     },
     btnvalidate: {
       display: 'flex',
