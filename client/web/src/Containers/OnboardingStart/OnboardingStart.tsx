@@ -13,7 +13,7 @@ const OnboardingStart = () => {
 
   const onPressOnBoardingStart = () => {
     doUpdateUSer({
-      variables: { input: { where: { id: localStorage.getItem('idMe') ?? '' } } },
+      variables: { input: { where: { id: localStorage.getItem('idMe') ?? '' }, data: { isFirstConnection: false } } },
     });
   };
 
