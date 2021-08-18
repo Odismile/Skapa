@@ -154,10 +154,12 @@ const TabLink = () => {
             await uploadFile(filesPictureVariable());
             await uploadFile(filesVideoVariable());
             initCreateProjectVariable();
-            setActiveStep(3);
+            setActiveStep(newActiveStep);
           }
         });
       }
+    } else {
+      setActiveStep(newActiveStep);
     }
   };
 
@@ -211,10 +213,10 @@ const TabLink = () => {
               className={classes.button}
               disabled={loading || loadingUpload}
             >
-              {t(`createProject.next`)}
+              {activeStep !== 3 ? t(`createProject.next`) : t(`createProject.ValidateAndPostProject`)}
             </Button>
-            <Link to="/" className="link">
-              {t(`createProject.skipThisStep`)}
+            <Link to="/project/create-project" className="link" onClick={handleNext}>
+              {activeStep !== 3 ? t(`createProject.skipThisStep`) : t(`createProject.SavAsDraft`)}
             </Link>
           </Box>
         </Box>

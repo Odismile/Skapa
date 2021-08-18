@@ -1,25 +1,24 @@
-import React, { FC } from 'react';
 import { Box, Card, CardContent, CardMedia, Checkbox, IconButton, Typography } from '@material-ui/core';
+import React, { FC } from 'react';
+import { useHistory } from 'react-router';
 import image_bitmap from '../../Assets/images/Bitmap.png';
 import imgPlace from '../../Assets/images/lab.svg';
+import { projects } from '../../GraphQL/project/types/projects';
+import Award from '../Icons/Award';
 import Cast from '../Icons/Cast';
 import Computer from '../Icons/Computer';
 import Heart from '../Icons/Heart';
 import Photo from '../Icons/Photo';
-import Rate from '../Icons/Rate';
 import Wifi from '../Icons/Wifi';
 import useStyles from './style';
-import { project } from '../../GraphQL/project/types/project';
-import { useHistory } from 'react-router';
-import Award from '../Icons/Award';
 
 interface PlaceProps {
-  data?: project | undefined;
+  data?: projects | undefined;
 }
 
-const handleClick = (event:any) =>{
+const handleClick = (event: any) => {
   event.stopPropagation();
-}
+};
 
 const Place: FC<PlaceProps> = ({ data }) => {
   const classes = useStyles();

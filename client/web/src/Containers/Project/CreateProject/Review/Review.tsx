@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Typography } from '@material-ui/core';
 import CardReview from '../../../../Components/CardReview/CardReview';
 import Pitch from '../../../../Components/Pitch/Pitch';
@@ -14,12 +14,10 @@ const Review = () => {
 
   const { data, loading } = useGetProject(projectIdVariable());
 
-  console.log(`data reviews`, data);
-
   return (
     <Box className={classes.review_bloc}>
       <CardReview data={data} />
-      <Pitch />
+      <Pitch url={data?.projects?.[0]?.Video ?? ''} />
       <Typography variant="h6" className="titre">
         Présentation
       </Typography>

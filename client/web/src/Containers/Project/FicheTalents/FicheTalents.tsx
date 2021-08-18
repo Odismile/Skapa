@@ -14,7 +14,7 @@ const FicheTalents = () => {
       <Box className="profile">
         <SimpleCardTalents />
       </Box>
-      <Box className='bio'>
+      <Box className="bio">
         <Typography variant="h6" className="title">
           Bio
         </Typography>
@@ -33,7 +33,7 @@ const FicheTalents = () => {
         <FormerProject />
       </Box>
       <Box>
-        <Pitch />
+        <Pitch url={''} />
       </Box>
       <Box className="boxBtn">
         <Button className="btnAdd">Add to Project</Button>

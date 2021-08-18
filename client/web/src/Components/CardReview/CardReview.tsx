@@ -13,7 +13,7 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
 import imgCard from '../../Assets/images/lab.svg';
-import { project } from '../../GraphQL/project/types/project';
+import { projects } from '../../GraphQL/project/types/projects';
 import Heart from '../Icons/Heart';
 import Trending from '../Icons/Trending';
 import useStyles from './style';
@@ -51,7 +51,7 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 interface CardReviewProps {
-  data?: project | undefined;
+  data?: projects | undefined;
 }
 
 const handleClick = (event: any) => {
@@ -67,11 +67,11 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
   };
   return (
     <Card className={classes.root} onClick={goToDetailsProjects}>
-      <CardMedia className={classes.media} image={imgCard} title="image" />
+      <CardMedia className={classes.media} image={data?.projects?.[0]?.Picture ?? imgCard} title="image" />
       <CardContent className={classes.content}>
         <Box className="detail-top">
           <Typography className="title" component="p">
-            {data?.project?.Name}
+            {data?.projects?.[0]?.Name}
           </Typography>
           <Typography component="p" className="trending">
             <Trending /> TRENDING UP
