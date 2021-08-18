@@ -46,6 +46,7 @@ export const DETAILS_PLACE = '/details-place';
 export const DETAILS_PROJECTS = '/details-projects';
 export const WISHLIST = '/wishlist';
 export const COACHS = '/coachs';
+export const MYACTIVITY = '/myactivity';
 export const UNAUTHORIZED = '/unauthorized';
 export const PROFILE = '/profile';
 
