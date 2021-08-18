@@ -4,14 +4,15 @@ export default makeStyles(
   theme => ({
     mainPage: {
       "& .wrapPage": {
-        padding: "0 20px",
+        padding: "0 20px 10px",
       },
     },
     list_coachs: {
       margin: "20px auto 0",
-      maxWidth: "100%",
+      maxWidth: 335,
       width: "100%",
       "@media (min-width: 768px)": {
+        maxWidth: "100%",
         justifyContent: "flex-start",
       },
       "@media (min-width: 992px)": {
@@ -49,6 +50,34 @@ export default makeStyles(
         },
         "@media (min-width: 1200px)": {
           width: "calc(25% - 16px)",
+        },
+      },
+    },
+    modalCalendar: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    paperCalendar: {
+      backgroundColor: "#fff",
+      border: "none",
+      borderRadius: 15,
+      boxShadow: theme.shadows[1],
+      padding: theme.spacing(2),
+      "& .header_calendar": {},
+      "& .body_calendar": {
+        "& .field_item": {
+          "& label": {
+            fontStyle: "normal",
+            fontSize: 10,
+            fontWeight: 700,
+            transform: "none",
+          },
+          "& > div": {
+            "& input": {
+              fontSize: 12,
+            },
+          },
         },
       },
     },

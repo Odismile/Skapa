@@ -26,6 +26,7 @@ interface ICoachItem {
   coachAddress?: string;
   coachLevel: string;
   coachFee: number;
+  clickAction: any;
 }
 
 
@@ -39,6 +40,8 @@ const CoachsItem: FC<ICoachItem> =(props) => {
     coachAddress,
     coachLevel,
     coachFee,
+    clickAction,
+
   } = props;
 
   const classes = UseStyles();
@@ -61,7 +64,7 @@ const CoachsItem: FC<ICoachItem> =(props) => {
             </Box>
           </Box>
           <Box className="btn_wrap">
-            <Button color="primary" variant="contained" className="btn_planMeeting">Plan a meeting</Button>
+            <Button color="primary" variant="contained" className="btn_planMeeting" onClick={clickAction}>Plan a meeting</Button>
           </Box>
         </Box>
       </CardContent>

@@ -44,6 +44,9 @@ export default makeStyles (
       "& .wrap-backLink": {
         lineHeight: "1.4",
         margin: 0,
+        position: "absolute",
+        left: 20, 
+        top: "calc(100% - 65px)",
         textAlign: "left",
       },
       "& .backLink": {
