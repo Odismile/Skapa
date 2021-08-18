@@ -74,8 +74,6 @@ const ProjectContent = () => {
     }
   };
 
-  console.log(`projectSkills()`, projectCategory);
-
   return (
     <Box className={classes.projectPage}>
       <SearchFilter onChangeFitlerText={onChangeFilter} />
