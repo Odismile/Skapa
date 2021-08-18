@@ -1,3 +1,4 @@
+import { useReactiveVar } from '@apollo/client/react/hooks/useReactiveVar';
 import {
   Box,
   Button,
@@ -9,7 +10,7 @@ import {
   SwipeableDrawer,
   Typography,
 } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
 // img
@@ -19,7 +20,9 @@ import CardReview from '../../Components/CardReview/CardReview';
 import Heart from '../../Components/Icons/Heart';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
+import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
+import { projectSkills } from '../../ReactiveVariable/Project/projectSkills';
 import useStyles from './styles';
 
 const ProjectContent = () => {
@@ -28,7 +31,11 @@ const ProjectContent = () => {
   const { t } = useTranslation();
   const { data, loading } = useGetProjectAll();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
+
+  const projectCategory = useReactiveVar(projectSkills);
+
   const handleDrawer = () => {
     setOpen((prev) => !prev);
   };
@@ -37,14 +44,44 @@ const ProjectContent = () => {
     event.stopPropagation();
   };
 
+  useEffect(() => {
+    if (data?.projects) {
+      setProjects(data.projects);
+    }
+  }, [data?.projects]);
+
+  useEffect(() => {
+    if (projectCategory.length !== 0) {
+      const newProjects = data?.projects?.filter((project) =>
+        projectCategory.find((category) => project?.Type === category),
+      );
+      setProjects(newProjects);
+    } else {
+      setProjects(data?.projects);
+    }
+  }, [projectCategory]);
+
+  const onChangeFilter = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (e.target.value.trim().length === 0) {
+      setProjects(data?.projects);
+    } else {
+      const newProjects = data?.projects?.filter(
+        (project) =>
+          project?.Name?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
+          project?.Type?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()),
+      );
+      setProjects(newProjects);
+    }
+  };
+
   return (
     <Box className={classes.projectPage}>
-      <SearchFilter />
+      <SearchFilter onChangeFitlerText={onChangeFilter} />
       {loading && <Skeleton count={1} height={170} />}
 
       {!loading &&
-        data?.projects?.length !== 0 &&
-        data?.projects?.map((project, index) => {
+        projects?.length !== 0 &&
+        projects?.map((project, index) => {
           return (
             <Box className={classes.content} key={index}>
               <CardReview name={project?.Name ?? ''} imgCardUrl={project?.Picture ?? ''} />
@@ -55,7 +92,7 @@ const ProjectContent = () => {
           );
         })}
 
-      {!loading && data?.projects?.length === 0 && <Typography>{t(`project.none`)}</Typography>}
+      {!loading && projects?.length === 0 && <Typography>{t(`project.none`)}</Typography>}
 
       <SwipeableDrawer
         className={classes.drawerContribute}
