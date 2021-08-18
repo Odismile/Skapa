@@ -9,3 +9,12 @@ export const PROJECTS = gql`
   }
   ${PROJECT_INFO_FRAGMENT}
 `;
+
+export const PROJECTS_ALL = gql`
+  query projects_all {
+    projects {
+      ...ProjectInfo
+    }
+  }
+  ${PROJECT_INFO_FRAGMENT}
+`;

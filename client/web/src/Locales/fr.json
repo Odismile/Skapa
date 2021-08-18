@@ -98,6 +98,9 @@
       "description": "Veuillez entrer une description",
       "skills": "Veuillez selectionner un ou plusieurs skills",
       "video": "Veuillez entrer une video"
+    },
+    "project":{
+      "none":"Aucun projet"
     }
   }
 }

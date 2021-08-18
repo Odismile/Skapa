@@ -51,14 +51,16 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 interface CardReviewProps {
-  data?: projects | undefined;
+  //data?: projects | undefined;
+  imgCardUrl: string;
+  name: string;
 }
 
 const handleClick = (event: any) => {
   event.stopPropagation();
 };
 
-const CardReview: FC<CardReviewProps> = ({ data }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name }) => {
   const classes = useStyles();
   const history = useHistory();
   const goToDetailsProjects = (event: any) => {
@@ -67,11 +69,11 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
   };
   return (
     <Card className={classes.root} onClick={goToDetailsProjects}>
-      <CardMedia className={classes.media} image={data?.projects?.[0]?.Picture ?? imgCard} title="image" />
+      <CardMedia className={classes.media} image={imgCardUrl} title="image" />
       <CardContent className={classes.content}>
         <Box className="detail-top">
           <Typography className="title" component="p">
-            {data?.projects?.[0]?.Name}
+            {name}
           </Typography>
           <Typography component="p" className="trending">
             <Trending /> TRENDING UP
