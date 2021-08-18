@@ -10,6 +10,8 @@ import {
   Typography,
 } from '@material-ui/core';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import Skeleton from 'react-loading-skeleton';
 // img
 import imgCard from '../../Assets/images/lab.svg';
 import photoUser from '../../Assets/images/photo-card.png';
@@ -23,6 +25,7 @@ import useStyles from './styles';
 const ProjectContent = () => {
   const classes = useStyles();
 
+  const { t } = useTranslation();
   const { data, loading } = useGetProjectAll();
 
   const [open, setOpen] = React.useState(false);
@@ -37,17 +40,22 @@ const ProjectContent = () => {
   return (
     <Box className={classes.projectPage}>
       <SearchFilter />
+      {loading && <Skeleton count={1} height={170} />}
 
-      {data?.projects?.map((project, index) => {
-        return (
-          <Box className={classes.content} key={index}>
-            <CardReview name={project?.Name ?? ''} imgCardUrl={project?.Picture ?? ''} />
-            <Box className="btnContribute">
-              <Button onClick={handleDrawer}>Contribute</Button>
+      {!loading &&
+        data?.projects?.length !== 0 &&
+        data?.projects?.map((project, index) => {
+          return (
+            <Box className={classes.content} key={index}>
+              <CardReview name={project?.Name ?? ''} imgCardUrl={project?.Picture ?? ''} />
+              <Box className="btnContribute">
+                <Button onClick={handleDrawer}>Contribute</Button>
+              </Box>
             </Box>
-          </Box>
-        );
-      })}
+          );
+        })}
+
+      {!loading && data?.projects?.length === 0 && <Typography>{t(`project.none`)}</Typography>}
 
       <SwipeableDrawer
         className={classes.drawerContribute}

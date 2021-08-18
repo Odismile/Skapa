@@ -98,6 +98,9 @@
       "description": "Please enter a description",
       "skills": "Please select one or more skills",
       "video": "Please enter a video"
+    },
+    "project":{
+      "none":"No project"
     }
   }
 }
