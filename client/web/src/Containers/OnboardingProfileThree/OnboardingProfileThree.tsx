@@ -6,37 +6,37 @@ import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
-import { skillsSelectedVariable } from '../../ReactiveVariable/Profil/profil';
+//import { skillsSelectedVariable } from '../../ReactiveVariable/Profil/profil';
 import useStyles from './style';
 
 const OnboardingProfileThree = () => {
   const classes = useStyles();
   const { data, loading } = useItemsGetSkills();
   const history = useHistory();
-  const [searchSkills, setSearchSkills] = useState< (Items_get_language_items | null)[] | null | undefined>()
+  const [searchSkills, setSearchSkills] = useState<(Items_get_language_items | null)[] | null | undefined>();
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
 
   useEffect(() => {
-    if (data?.items){
-      setSearchSkills(data?.items)
+    if (data?.items) {
+      setSearchSkills(data?.items);
     }
-  }, [data])
-  
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (event.target.value.trim().length!==0) {
-      const skillToSearch = data?.items?.filter((item)=>item?.label?.toLocaleLowerCase().includes(event.target.value.toLowerCase()))
-      setSearchSkills(skillToSearch)      
-    }
-    else{
-      setSearchSkills(data?.items)
-    }
+  }, [data]);
 
-  }
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (event.target.value.trim().length !== 0) {
+      const skillToSearch = data?.items?.filter((item) =>
+        item?.label?.toLocaleLowerCase().includes(event.target.value.toLowerCase()),
+      );
+      setSearchSkills(skillToSearch);
+    } else {
+      setSearchSkills(data?.items);
+    }
+  };
 
   function handleClick() {
     history.push('/onboarding-profile4');
   }
-  const onClickSkill = (skill: Items_get_language_items | null) => {
+  /* const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
       setSkillsSelected([skill]);
       skillsSelectedVariable([skill]);
@@ -52,7 +52,7 @@ const OnboardingProfileThree = () => {
         setSkillsSelected(newSkills);
       }
     }
-  };
+  }; */
 
   return (
     <>
@@ -64,32 +64,27 @@ const OnboardingProfileThree = () => {
             type="text"
             id="skills"
             placeholder="Look for skills"
-            onChange={e=>handleSearch(e)}
+            onChange={(e) => handleSearch(e)}
           />
           <Search className="iconSearch" />
         </Box>
         <Box className={classes.skills}>
           {skillsSelected?.map((skill, index) => {
             return (
-                <Box className="inputGroup" key={index}>
-                  <input id={skill?.id + 'selected'} name={skill?.label ?? ''} type="checkbox" />
-                  <label htmlFor={skill?.id + 'selected'}>{skill?.label ?? ''}</label>
-                </Box>
-                );
-                })}
-                </Box>          
+              <Box className="inputGroup" key={index}>
+                <input id={skill?.id + 'selected'} name={skill?.label ?? ''} type="checkbox" />
+                <label htmlFor={skill?.id + 'selected'}>{skill?.label ?? ''}</label>
+              </Box>
+            );
+          })}
+        </Box>
         <Box className={classes.content}>
           <Box className={classes.skills}>
             {!loading &&
               searchSkills?.map((item, index) => {
                 return (
                   <Box className="inputGroup">
-                    <input
-                      id={`option${index}`}
-                      name={`option${index}`}
-                      type="checkbox"
-                      onClick={() => onClickSkill(item)}
-                    />
+                    <input id={`option${index}`} name={`option${index}`} type="checkbox" />
                     <label htmlFor={`option${index}`}>{item?.label}</label>
                   </Box>
                 );

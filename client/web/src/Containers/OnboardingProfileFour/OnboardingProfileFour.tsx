@@ -21,14 +21,17 @@ import {
   bio,
   skillsSelectedVariable,
   pictureFile,
+  videoFile,
 } from '../../ReactiveVariable/Profil/profil';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { ONBOARDING_PROFILE7 } from '../../Routes';
 import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
-import { transformSkillsIds } from '../../Utils/TransformSkillsId';
+import { getIdMe } from '../../Services';
+//import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 
 const OnboardingProfileFour = () => {
+  console.log('bio', bio());
   const classes = useStyles();
   const { data, loading } = useItemsProjectTypes();
   const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
@@ -46,10 +49,10 @@ const OnboardingProfileFour = () => {
             position: yourPosition(),
             bio: bio(),
             job_seniority_id: ageProfil(),
-            //picture: pictureFile(),
-            profile_skills: transformSkillsIds(skillsSelectedVariable()),
-            video: '',
-            users_id: '',
+            picture: pictureFile(),
+            video: videoFile(),
+            // profile_skills: transformSkillsIds(skillsSelectedVariable()),
+            users_id: getIdMe(),
           },
         },
       },
@@ -59,7 +62,7 @@ const OnboardingProfileFour = () => {
     history.replace(ONBOARDING_PROFILE7);
   }
 
-  const onClickProjectType = (projectType: Items_get_language_items | null) => {
+  /* const onClickProjectType = (projectType: Items_get_language_items | null) => {
     if (projectTypeSelected?.length === 0) {
       setProjectTypeSelected([projectType]);
       projectsTypeSelectedVariable([projectType]);
@@ -75,7 +78,7 @@ const OnboardingProfileFour = () => {
         projectsTypeSelectedVariable(newSkills);
       }
     }
-  };
+  }; */
 
   return (
     <WrapOnBoarding>
@@ -87,7 +90,7 @@ const OnboardingProfileFour = () => {
               data?.items?.map((item, index) => {
                 return (
                   <Box className="inputGroup">
-                    <input id={`option${index}`} type="checkbox" onClick={() => onClickProjectType(item)} />
+                    <input id={`option${index}`} type="checkbox" />
                     <label htmlFor={`option${index}`}>
                       {item?.label}
                       <IconChange className="bgIcon" />
