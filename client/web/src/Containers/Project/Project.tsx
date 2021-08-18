@@ -5,7 +5,6 @@ import PrimaryHeader from '../../Components/Header';
 import Talents from '../Talents/Talents';
 import Places from '../Places/Places';
 import ProjectContent from '../ProjectContent/ProjectContent';
-import CardSpace from '../../Components/CardSpace/CardSpace';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -87,8 +86,7 @@ const Project = () => {
             />
           </Tabs>
           <TabPanel value={value} index={0}>
-            {/* <ProjectContent /> */}
-            <CardSpace/>
+            <ProjectContent />
           </TabPanel>
           <TabPanel value={value} index={1}>
             <Talents />
