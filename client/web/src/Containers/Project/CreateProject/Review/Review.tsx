@@ -16,7 +16,7 @@ const Review = () => {
 
   return (
     <Box className={classes.review_bloc}>
-      <CardReview data={data} />
+      <CardReview imgCardUrl={data?.projects?.[0]?.Picture ?? ''} name={data?.projects?.[0]?.Name ?? ''} />
       <Pitch url={data?.projects?.[0]?.Video ?? ''} />
       <Typography variant="h6" className="titre">
         Présentation

@@ -1,29 +1,29 @@
-import React from 'react';
 import {
   Box,
   Button,
   Card,
   CardMedia,
-  Drawer,
   IconButton,
   List,
   ListItem,
   SwipeableDrawer,
   Typography,
 } from '@material-ui/core';
-import CardReview from '../../Components/CardReview/CardReview';
-import FormerProject from '../../Components/FormerProjects/FormerProjects';
-import SearchFilter from '../../Components/SearchFilter/SearchFilter';
-import TextFieldComponent from '../../Components/TextField/TextField';
-import useStyles from './styles';
-
+import React from 'react';
 // img
 import imgCard from '../../Assets/images/lab.svg';
 import photoUser from '../../Assets/images/photo-card.png';
+import CardReview from '../../Components/CardReview/CardReview';
 import Heart from '../../Components/Icons/Heart';
+import SearchFilter from '../../Components/SearchFilter/SearchFilter';
+import TextFieldComponent from '../../Components/TextField/TextField';
+import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
+import useStyles from './styles';
 
 const ProjectContent = () => {
   const classes = useStyles();
+
+  const { data, loading } = useGetProjectAll();
 
   const [open, setOpen] = React.useState(false);
   const handleDrawer = () => {
@@ -37,12 +37,17 @@ const ProjectContent = () => {
   return (
     <Box className={classes.projectPage}>
       <SearchFilter />
-      <Box className={classes.content}>
-        <CardReview />
-        <Box className="btnContribute">
-          <Button onClick={handleDrawer}>Contribute</Button>
-        </Box>
-      </Box>
+
+      {data?.projects?.map((project, index) => {
+        return (
+          <Box className={classes.content} key={index}>
+            <CardReview name={project?.Name ?? ''} imgCardUrl={project?.Picture ?? ''} />
+            <Box className="btnContribute">
+              <Button onClick={handleDrawer}>Contribute</Button>
+            </Box>
+          </Box>
+        );
+      })}
 
       <SwipeableDrawer
         className={classes.drawerContribute}

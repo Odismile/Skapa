@@ -12,7 +12,7 @@ const FicheProject = () => {
   return (
     <Box className={classes.root}>
       <Box className="card-review">
-        <CardReview />
+        <CardReview imgCardUrl={''} name={''} />
       </Box>
       <Box className="pitch">
         <Pitch url={''} />
