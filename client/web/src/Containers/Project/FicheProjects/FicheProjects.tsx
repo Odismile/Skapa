@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box, Button, Divider, Typography } from '@material-ui/core';
 import useStyles from './styles';
 import Presentation from '../../../Components/Presentation/Presentation';
@@ -7,7 +7,11 @@ import FormerProject from '../../../Components/FormerProjects/FormerProjects';
 import Pitch from '../../../Components/Pitch/Pitch';
 import CardReview from '../../../Components/CardReview/CardReview';
 
-const FicheProject = () => {
+interface FicheProjectProps {
+  projectId: string;
+}
+
+const FicheProject: FC<FicheProjectProps> = ({ projectId }) => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>

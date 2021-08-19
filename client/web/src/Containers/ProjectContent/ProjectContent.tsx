@@ -84,7 +84,7 @@ const ProjectContent = () => {
         projects?.map((project, index) => {
           return (
             <Box className={classes.content} key={index}>
-              <CardReview name={project?.Name ?? ''} imgCardUrl={project?.Picture ?? ''} />
+              <CardReview projectId={project?.id} name={project?.Name ?? ''} imgCardUrl={project?.Picture ?? ''} />
               <Box className="btnContribute">
                 <Button onClick={handleDrawer}>Contribute</Button>
               </Box>

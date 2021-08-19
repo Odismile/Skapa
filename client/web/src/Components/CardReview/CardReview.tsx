@@ -12,8 +12,6 @@ import {
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
-import imgCard from '../../Assets/images/lab.svg';
-import { projects } from '../../GraphQL/project/types/projects';
 import Heart from '../Icons/Heart';
 import Trending from '../Icons/Trending';
 import useStyles from './style';
@@ -52,6 +50,7 @@ const PrettoSlider = withStyles({
 
 interface CardReviewProps {
   //data?: projects | undefined;
+  projectId?: string;
   imgCardUrl: string;
   name: string;
 }
@@ -60,15 +59,18 @@ const handleClick = (event: any) => {
   event.stopPropagation();
 };
 
-const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
   const classes = useStyles();
   const history = useHistory();
-  const goToDetailsProjects = (event: any) => {
-    history.push('/details-projects');
+  const goToDetailsProjects = (event: any, projectId?: string) => {
+    if (projectId) {
+      console.log(`projectId`, projectId);
+      history.push(`/projects/${projectId}`);
+    }
     event.stopPropagation();
   };
   return (
-    <Card className={classes.root} onClick={goToDetailsProjects}>
+    <Card className={classes.root} onClick={(event) => goToDetailsProjects(event, projectId)}>
       <CardMedia className={classes.media} image={imgCardUrl} title="image" />
       <CardContent className={classes.content}>
         <Box className="detail-top">
