@@ -48,6 +48,7 @@ export interface ProjectInput {
   status?: string | null;
   profile?: string | null;
   project_favorits?: (string | null)[] | null;
+  organisation?: string | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;

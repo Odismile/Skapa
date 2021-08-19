@@ -1,9 +1,9 @@
 import { useReactiveVar } from '@apollo/client';
-import { Box, Checkbox, FormControl, FormControlLabel } from '@material-ui/core';
+import { Box, Checkbox, FormControl, FormControlLabel, Radio } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useItemsProjectTypes } from '../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
-import { projectFilterBy, projectSkills } from '../../ReactiveVariable/Project/projectSkills';
+import { projectSortedBy, projectSkills } from '../../ReactiveVariable/Project/projectSkills';
 import { filters } from '../../Utils/filterProject';
 import useStyles from './style';
 
@@ -11,9 +11,10 @@ const SearchProject = () => {
   const classes = useStyles();
   const { data, loading } = useItemsProjectTypes();
   const projectCategory = useReactiveVar(projectSkills);
-  const projectFilterByLocal = useReactiveVar(projectFilterBy);
+  const projectSortedByLocal = useReactiveVar(projectSortedBy);
 
   useEffect(() => {
+    projectSortedBy('');
     projectSkills([]);
   }, []);
 
@@ -28,13 +29,7 @@ const SearchProject = () => {
   };
 
   const onClickFilterBy = (label: string) => {
-    const newProjectCategory = projectFilterByLocal.find((category) => category === label);
-    if (newProjectCategory) {
-      const newCategories = projectFilterByLocal.filter((category) => category !== label);
-      projectFilterBy(newCategories);
-    } else {
-      projectFilterBy([...projectFilterByLocal, label]);
-    }
+    projectSortedBy(label);
   };
 
   return (
@@ -46,12 +41,16 @@ const SearchProject = () => {
             {filters.map((filter, index) => {
               return (
                 <FormControlLabel
-                  onClick={() => onClickFilterBy(filter.label)}
                   key={index}
                   className="form-control-label"
                   value={filter.label}
+                  checked={projectSortedByLocal === filter.label}
                   control={
-                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="form-checkbox" />
+                    <Radio
+                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
+                      className="form-checkbox"
+                      onClick={() => onClickFilterBy(filter.label)}
+                    />
                   }
                   label={filter.label}
                   labelPlacement="start"
@@ -70,9 +69,12 @@ const SearchProject = () => {
                   key={index}
                   className="form-control-label"
                   value={item?.label}
-                  onClick={() => onClickProject(item?.label ?? '')}
                   control={
-                    <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="form-checkbox" />
+                    <Checkbox
+                      inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
+                      className="form-checkbox"
+                      onClick={() => onClickProject(item?.label ?? '')}
+                    />
                   }
                   label={item?.label}
                   labelPlacement="start"

@@ -10,6 +10,7 @@ import {
   SwipeableDrawer,
   Typography,
 } from '@material-ui/core';
+import { orderBy } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
@@ -22,7 +23,7 @@ import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
-import { projectFilterBy, projectSkills } from '../../ReactiveVariable/Project/projectSkills';
+import { projectSortedBy, projectSkills } from '../../ReactiveVariable/Project/projectSkills';
 import useStyles from './styles';
 
 const ProjectContent = () => {
@@ -35,7 +36,7 @@ const ProjectContent = () => {
   const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
 
   const projectCategory = useReactiveVar(projectSkills);
-  const projectFilterByLocal = useReactiveVar(projectFilterBy);
+  const projectSortedByLocal = useReactiveVar(projectSortedBy);
 
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -62,6 +63,18 @@ const ProjectContent = () => {
     }
   }, [projectCategory]);
 
+  useEffect(() => {
+    if (projectSortedByLocal === 'Latest') {
+      const newProjects = orderBy(projects, ['created_at'], ['desc']);
+      setProjects(newProjects);
+    } else if (projectSortedByLocal === 'Oldest') {
+      const newProjects = orderBy(projects, ['created_at'], ['asc']);
+      setProjects(newProjects);
+    } else if (projectSortedByLocal === 'Trending Up') {
+    } else if (projectSortedByLocal === 'Expires Soon') {
+    }
+  }, [projectSortedByLocal]);
+
   const onChangeFilter = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.target.value.trim().length === 0) {
       setProjects(data?.projects);
@@ -74,8 +87,6 @@ const ProjectContent = () => {
       setProjects(newProjects);
     }
   };
-
-  console.log(`projectFilterByLocal`, projectFilterByLocal);
 
   return (
     <Box className={classes.projectPage}>

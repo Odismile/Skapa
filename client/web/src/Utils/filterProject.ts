@@ -15,12 +15,4 @@ export const filters = [
     id: 4,
     label: 'Expires Soon',
   },
-  {
-    id: 5,
-    label: 'Contribute',
-  },
-  {
-    id: 6,
-    label: 'Done',
-  },
 ];
