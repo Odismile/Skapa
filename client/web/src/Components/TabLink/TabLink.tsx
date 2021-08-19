@@ -3,7 +3,7 @@ import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@
 import moment from 'moment';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
 import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
@@ -23,6 +23,7 @@ import {
   skillsSelectedVariable,
   typeProjectVariable,
 } from '../../ReactiveVariable/Project/createProject';
+import { CREATE_PROJECT_CONGRATS } from '../../Routes';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 import { transformSkills } from '../../Utils/transformSkills';
 import { useUploadFile } from '../../Utils/uploadFile';
@@ -35,6 +36,7 @@ const TabLink = () => {
   const { doCreateProject, loading, data: dataProject } = useCreateProject();
   const { uploadFile, loading: loadingUpload } = useUploadFile();
   const { doUpdateProject, loading: loadingUpdate } = useUpdateProject();
+  const history = useHistory();
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
@@ -165,7 +167,7 @@ const TabLink = () => {
         variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '2' } } },
       }).then((result) => {
         if (result.data?.updateProject?.project?.id) {
-          //   setActiveStep(newActiveStep);
+          history.push(CREATE_PROJECT_CONGRATS);
         }
       });
     } else {
@@ -193,7 +195,7 @@ const TabLink = () => {
         variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '1' } } },
       }).then((result) => {
         if (result.data?.updateProject?.project?.id) {
-          //   setActiveStep(newActiveStep);
+          history.push(CREATE_PROJECT_CONGRATS);
         }
       });
     }
