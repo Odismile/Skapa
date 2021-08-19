@@ -63,7 +63,7 @@ export default makeStyles(
       backgroundColor: "#fff",
       border: "none",
       borderRadius: 15,
-      padding: theme.spacing(5, 2.5, 2.5),
+      padding: theme.spacing(5.5, 2.5, 2.5),
       position: "relative",
       maxWidth: 480,
       width: "100%",
