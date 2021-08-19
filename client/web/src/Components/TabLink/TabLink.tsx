@@ -27,6 +27,7 @@ import { CREATE_PROJECT_CONGRATS } from '../../Routes';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 import { transformSkills } from '../../Utils/transformSkills';
 import { useUploadFile } from '../../Utils/uploadFile';
+import Loader from '../Loader/Loader';
 import useStyles from './style';
 
 const TabLink = () => {
@@ -251,6 +252,7 @@ const TabLink = () => {
             </Link>
           </Box>
         </Box>
+        {loading && (<Loader/>)}
       </Box>
     </>
   );

@@ -22,6 +22,7 @@ import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfil
 import { getIdMe } from '../../Services';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 import { useUploadFile } from '../../Utils/uploadFile';
+import Loader from '../../Components/Loader/Loader';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -72,7 +73,7 @@ const OnboardingProfileFour = () => {
       }).then((result) => {
        
       });
-      history.replace(ONBOARDING_PROFILE7)
+      !loadingProfile && history.replace(ONBOARDING_PROFILE7)
     });
 
     /* doCreateProfile({
@@ -115,7 +116,7 @@ const OnboardingProfileFour = () => {
     }
     testButtonToEnabled()
   };
-
+  
   return (
     <WrapOnBoarding>
       <Box className={classes.bloc}>
@@ -141,6 +142,7 @@ const OnboardingProfileFour = () => {
             Next
           </Button>
         </Box>
+         {loadingProfile && (<Loader/>)} 
       </Box>
     </WrapOnBoarding>
   );
