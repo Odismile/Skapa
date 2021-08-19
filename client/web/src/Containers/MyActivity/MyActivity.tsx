@@ -9,6 +9,7 @@ import UserCreatorList from '../../Components/MyActivity/UserCreatorList/UserCre
 import CardContributor from '../../Components/MyActivity/CardContributor/CardContributor';
 import CardTalentOngoing from '../../Components/MyActivity/CardTalentOngoing/CardTalentOngoing';
 import CardTalentFinished from '../../Components/MyActivity/CardTalentFinished/CardTalentFinished';
+import CardCreatorFinished from '../../Components/MyActivity/CardCreatorFinished/CardCreatorFinished';
 
 const MyActivity = () => {
   const classes = useStyles();
@@ -29,6 +30,8 @@ const MyActivity = () => {
         <CardTalentOngoing/>
         <br></br>
         <CardTalentFinished/>
+        <br></br>
+        <CardCreatorFinished/>
       </Box>
     </Box>
   );
