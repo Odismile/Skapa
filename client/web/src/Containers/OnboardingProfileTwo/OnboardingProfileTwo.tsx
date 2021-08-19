@@ -8,6 +8,8 @@ import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 
 import { useUploadFile } from '../../Utils/uploadFile';
 import { bio } from '../../ReactiveVariable/Profil/profil';
+import { pictureFile, videoFile, bio, filesPicture, filesVideo } from '../../ReactiveVariable/Profil/profil';
+import { testButtonEnable } from '../../ReactiveVariable/ButtonTest/ButtonTestEnable';
 
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
@@ -16,6 +18,9 @@ const OnboardingProfileTwo = () => {
   const [disabledButton, setDisabledButton] = useState(true);
   const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
   const { uploadFile } = useUploadFile();
+  //const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
+  const [disabledButton, setDisabledButton] = useState(false);
+  //const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
   const testButtonToEnabled = () => {
     if (!!filesPicture && !!filesVideo && !!bio()) {
       setDisabledButton(false);
@@ -30,6 +35,9 @@ const OnboardingProfileTwo = () => {
   const handleClick = async () => {
     await uploadFile(filesPicture);
     await uploadFile(filesVideo);
+  const handleClick = () => {
+   /*  await uploadFile(filesPicture);
+    await uploadFile(filesVideo); */
     history.push('/onboarding-profile3');
   };
   return (
@@ -49,7 +57,7 @@ const OnboardingProfileTwo = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
                 const filesConcat = Array.from(event.target.files || []);
-                setFilesPicture(filesConcat);
+                filesPicture(filesConcat);
                 setImageUpload(url);
                 testButtonToEnabled();
               }}
@@ -78,7 +86,7 @@ const OnboardingProfileTwo = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
                 const filesConcat = Array.from(event.target.files || []);
-                setFilesVideo(filesConcat);
+                filesVideo(filesConcat);
                 setVideoUpload(url);
                 testButtonToEnabled();
               }}
