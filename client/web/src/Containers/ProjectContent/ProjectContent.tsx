@@ -20,6 +20,7 @@ import HeartLine from '../../Components/Icons/HeartLine';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
+import { useCreateContribution } from '../../Providers/ContributionProvider/Hooks/useCreateContribution';
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
 import { projectSkills, projectSortedBy } from '../../ReactiveVariable/Project/projectSkills';
 import useStyles from './styles';
@@ -34,6 +35,7 @@ const ProjectContent = () => {
   const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
   const [project, setProject] = useState<projects_all_projects | null>(null);
   const [priceToContribute, setPriceToContribute] = useState<number | null>(null);
+  const { doCreateContribution } = useCreateContribution();
 
   const projectCategory = useReactiveVar(projectSkills);
   const projectSortedByLocal = useReactiveVar(projectSortedBy);
@@ -102,6 +104,9 @@ const ProjectContent = () => {
     console.log(`project.id`, project?.id);
     console.log(`priceToContribute`, priceToContribute);
     console.log('**********************');
+    doCreateContribution({
+      variables: { input: { data: { profile_id: '', project_id: project?.id ?? '', value: priceToContribute } } },
+    });
   };
 
   return (
