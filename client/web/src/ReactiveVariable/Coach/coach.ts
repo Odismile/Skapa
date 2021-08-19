@@ -1,7 +1,8 @@
 import { makeVar } from '@apollo/client/cache';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 
-interface filterCoachInterface {
+interface filterTalentInterface {
+  search: string;
   isTopRated: boolean;
   isRecommended: boolean;
   isSenior: boolean;
@@ -11,7 +12,8 @@ interface filterCoachInterface {
   skills: Items_get_language_items[];
 }
 // Create Reactive variable
-export const filterCoachVar = makeVar<filterCoachInterface>({
+export const filterTalentVar = makeVar<filterTalentInterface>({
+  search: '',
   isJunior: false,
   isRecommended: false,
   isSenior: false,

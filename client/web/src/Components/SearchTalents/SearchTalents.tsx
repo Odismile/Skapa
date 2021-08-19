@@ -6,26 +6,26 @@ import LanguagesChoice from '../LanguagesChoice/LanguagesChoice';
 import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
 import { useReactiveVar } from '@apollo/client';
-import { filterCoachVar } from '../../ReactiveVariable/Coach/coach';
+import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 
 const SearchTalents = () => {
   const classes = useStyles();
-  const filterCoach = useReactiveVar(filterCoachVar);
+  const filterTalent = useReactiveVar(filterTalentVar);
   const { data: dataSkills } = useItemsGetSkills();
   const { data: dataLanguages } = useItemsGetlaguage();
 
   const handleCheck = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    filterCoachVar({
-      ...filterCoach,
+    filterTalentVar({
+      ...filterTalent,
       [event.target.name]: checked,
     });
   };
   const handleCheckSkill = (item: Items_get_language_items) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    const isChecked = filterCoach.skills.some((i) => i.id === item.id);
-    filterCoachVar({
-      ...filterCoach,
-      skills: isChecked ? filterCoach.skills.filter((i) => i.id !== item.id) : [...filterCoach.skills, item],
+    const isChecked = filterTalent.skills.some((i) => i.id === item.id);
+    filterTalentVar({
+      ...filterTalent,
+      skills: isChecked ? filterTalent.skills.filter((i) => i.id !== item.id) : [...filterTalent.skills, item],
     });
   };
   return (
@@ -39,7 +39,7 @@ const SearchTalents = () => {
               value="Top Rated"
               control={
                 <Checkbox
-                  checked={filterCoach.isTopRated}
+                  checked={filterTalent.isTopRated}
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                   name="isTopRated"
                   onChange={handleCheck}

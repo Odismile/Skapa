@@ -17,6 +17,10 @@ export interface CoachInfo_job_seniority_id {
 export interface CoachInfo_users_id {
   __typename: "UsersPermissionsUser";
   id: string;
+  username: string;
+  surname: string | null;
+  lastname: string | null;
+  email: string;
 }
 
 export interface CoachInfo_profile_skills {
@@ -62,6 +66,12 @@ export interface CoachInfo_languages {
   published_at: any | null;
 }
 
+export interface CoachInfo_profile_type_id {
+  __typename: "Items";
+  id: string;
+  label: string | null;
+}
+
 export interface CoachInfo_projects {
   __typename: "Projects";
   id: string;
@@ -83,5 +93,6 @@ export interface CoachInfo {
   talent_favorits: (CoachInfo_talent_favorits | null)[] | null;
   project_favorits: (CoachInfo_project_favorits | null)[] | null;
   languages: (CoachInfo_languages | null)[] | null;
+  profile_type_id: CoachInfo_profile_type_id | null;
   projects: (CoachInfo_projects | null)[] | null;
 }
