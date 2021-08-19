@@ -47,6 +47,8 @@ export const useUploadFile = () => {
           urlFirebase = `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${file.name}`;
           if (file.type.includes('video')) videoFile(urlFirebase);
           else pictureFile(urlFirebase);
+
+          setLoading(false);
         }
       }
     } catch (error) {

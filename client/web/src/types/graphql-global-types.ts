@@ -28,6 +28,7 @@ export interface ProfileInput {
   project_favorits?: (string | null)[] | null;
   languages?: (string | null)[] | null;
   projects?: (string | null)[] | null;
+  profile_type_id?: string | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -43,12 +44,12 @@ export interface ProjectInput {
   Type?: string | null;
   Ville?: string | null;
   Video?: string | null;
-  Date_Start?: string | null;
-  Date_End?: string | null;
   status?: string | null;
   profile?: string | null;
   project_favorits?: (string | null)[] | null;
   organisation?: string | null;
+  Date_start?: any | null;
+  Date_end?: any | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -76,6 +77,27 @@ export interface createProjectInput {
   data?: ProjectInput | null;
 }
 
+export interface editProjectInput {
+  Name?: string | null;
+  teams?: (string | null)[] | null;
+  description?: string | null;
+  item?: string | null;
+  project_skills?: (string | null)[] | null;
+  Picture?: string | null;
+  Type?: string | null;
+  Ville?: string | null;
+  Video?: string | null;
+  status?: string | null;
+  profile?: string | null;
+  project_favorits?: (string | null)[] | null;
+  organisation?: string | null;
+  Date_start?: any | null;
+  Date_end?: any | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface editUserInput {
   username?: string | null;
   email?: string | null;
@@ -93,6 +115,11 @@ export interface editUserInput {
   isFirstConnection?: boolean | null;
   created_by?: string | null;
   updated_by?: string | null;
+}
+
+export interface updateProjectInput {
+  where?: InputID | null;
+  data?: editProjectInput | null;
 }
 
 export interface updateUserInput {
