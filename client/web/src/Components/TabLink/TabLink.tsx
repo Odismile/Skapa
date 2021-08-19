@@ -9,6 +9,7 @@ import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
 import Team from '../../Containers/Project/CreateProject/Team/Team';
 import { useCreateProject } from '../../Providers/ProjectProvider/useCreateProject';
+import { useUpdateProject } from '../../Providers/ProjectProvider/useUpdateProject';
 import {
   cityVariable,
   dateEndVariable,
@@ -32,6 +33,7 @@ const TabLink = () => {
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
   const { doCreateProject, loading } = useCreateProject();
+  const { doUpdateProject, loading: loadingUpdate } = useUpdateProject();
   const { uploadFile, loading: loadingUpload } = useUploadFile();
 
   const [activeStep, setActiveStep] = React.useState(0);
@@ -160,6 +162,9 @@ const TabLink = () => {
       }
     } else {
       setActiveStep(newActiveStep);
+    }
+    if (newActiveStep === 3) {
+      console.log('tonga etoo');
     }
   };
 
