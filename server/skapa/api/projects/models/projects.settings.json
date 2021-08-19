@@ -58,10 +58,10 @@
       "type": "string"
     },
     "Date_start": {
-      "type": "date"
+      "type": "datetime"
     },
     "Date_end": {
-      "type": "date"
+      "type": "datetime"
     }
   }
 }
