@@ -14,6 +14,10 @@ export const COACH_INFO_FRAGMENT = gql`
     }
     users_id {
       id
+      username
+      surname
+      lastname
+      email
     }
     published_at
     profile_skills {
@@ -44,6 +48,10 @@ export const COACH_INFO_FRAGMENT = gql`
         label
       }
       published_at
+    }
+    profile_type_id {
+      id
+      label
     }
     projects {
       id
