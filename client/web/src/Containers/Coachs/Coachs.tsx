@@ -40,17 +40,16 @@ import Booking from '../../Assets/images/booking.svg';
 
 const Coachs = () => {
   const classes = useStyles();
-
-  const [openCalendar, setOpenCalendar] = React.useState(false);
-  const handleOpen = () => {
-    setOpenCalendar(true);
-  };
-  const handleClose = () => {
-    setOpenCalendar(false);
-  };
-
-  const [date, changeDate] = useState(new Date());
-
+  const { data, loading } = useQuery<coachs, coachsVariables>(LIST_COACH, {
+    variables: {
+      where: {
+        profile_type_id: {
+          label: 'Coach',
+        },
+      },
+    },
+  });
+  const listCoachs = (data?.profiles || []).filter((item) => item?.users_id);
   return (
     <Box className={classes.mainPage}>
       <PrimaryHeader />
@@ -59,57 +58,52 @@ const Coachs = () => {
         {/* List coachs */}
         <Box className={classes.list_coachs}>
           <Box className="item_bloc">
-            <Typography className="titre_item" component="h2">Design Thinking Process</Typography>
+            {/* <Typography className="titre_item" component="h2">
+              Design Thinking Process
+            </Typography> */}
             <Box className="item_list">
-              <CoachsItem 
-                coachPhoto={coachPhoto} 
-                iconJob={DesignThinkerPicto}  
-                jobTitle="Design Thinker"
-                coachName="Louis Tomaso"
-                coachAddress="Paris"
-                coachLevel="Senior"
-                coachFee= {500}
-                clickAction= {handleOpen}
-              />
-              <CoachsItem 
-                coachPhoto={coachPhoto} 
-                iconJob={DesignThinkerPicto}  
-                jobTitle="Design Thinker"
-                coachName="Louis Tomaso"
-                coachAddress="Paris"
-                coachLevel="Senior"
-                coachFee= {500}
-                clickAction= {handleOpen}
-              />
+              {listCoachs.map((profil) => (
+                <CoachsItem
+                  coachPhoto={profil?.picture || coachPhoto}
+                  iconJob={DesignThinkerPicto}
+                  jobTitle={profil?.position || ''}
+                  coachName={profil?.users_id?.username || ''}
+                  coachAddress={''}
+                  coachLevel={profil?.job_seniority_id?.label || ''}
+                  // coachFee={500}
+                />
+              ))}
             </Box>
           </Box>
-          <Box className="item_bloc">
-            <Typography className="titre_item" component="h2">Design to Change Process</Typography>
-            <Box className="item_list">
-              <CoachsItem 
-                coachPhoto={coachPhoto} 
-                iconJob={DesignThinkerPicto}  
-                jobTitle="Design Thinker"
-                coachName="Louis Tomaso"
-                coachAddress="Paris"
-                coachLevel="Senior"
-                coachFee= {500}
-                clickAction= {handleOpen}
-              />
-              <CoachsItem 
-                coachPhoto={coachPhoto} 
-                iconJob={DesignThinkerPicto}  
-                jobTitle="Design Thinker"
-                coachName="Louis Tomaso"
-                coachAddress="Paris"
-                coachLevel="Senior"
-                coachFee= {500}
-                clickAction= {handleOpen}
-              />
-            </Box>
-          </Box>
-          <Box className="item_bloc">
-            <Typography className="titre_item" component="h2">Digitalization Process</Typography>
+
+          {/* <Box className="item_bloc">
+              <Typography className="titre_item" component="h2">Design to Change Process</Typography>
+              <Box className="item_list">
+                <CoachsItem 
+                  coachPhoto={coachPhoto} 
+                  iconJob={DesignThinkerPicto}  
+                  jobTitle="Design Thinker"
+                  coachName="Louis Tomaso"
+                  coachAddress="Paris"
+                  coachLevel="Senior"
+                  coachFee= {500}
+                />
+                <CoachsItem 
+                  coachPhoto={coachPhoto} 
+                  iconJob={DesignThinkerPicto}  
+                  jobTitle="Design Thinker"
+                  coachName="Louis Tomaso"
+                  coachAddress="Paris"
+                  coachLevel="Senior"
+                  coachFee= {500}
+                />
+              </Box>
+            </Box> */}
+
+          {/* <Box className="item_bloc">
+            <Typography className="titre_item" component="h2">
+              Digitalization Process
+            </Typography>
             <Box className="item_list">
               <CoachsItem 
                 coachPhoto={coachPhoto} 
@@ -137,7 +131,7 @@ const Coachs = () => {
                 clickAction= {handleOpen}
               />
             </Box>
-          </Box>
+          </Box> */}
         </Box>
       </Box>
       <Modal
