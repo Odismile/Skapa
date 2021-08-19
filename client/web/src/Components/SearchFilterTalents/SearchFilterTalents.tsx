@@ -1,15 +1,17 @@
-import React from 'react';
-import { Box, IconButton, InputBase, Modal, Paper, Popper, Typography } from "@material-ui/core";
+import React, { ChangeEvent } from 'react';
+import { Box, IconButton, InputBase, Modal, Paper, Popper, Typography } from '@material-ui/core';
 import useStyles from './style';
 import Filter from '../../Components/Icons/Filter/Filter';
 import Search from '../../Components/Icons/Search/Search';
 import SearchTalents from '../SearchTalents/SearchTalents';
 import Cross from '../Icons/Cross';
-
+import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import { useReactiveVar } from '@apollo/client';
 
 const SearchFilterTalents = () => {
   const classes = useStyles();
 
+  const filterTalent = useReactiveVar(filterTalentVar);
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -19,13 +21,20 @@ const SearchFilterTalents = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const handleSearch = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    event.preventDefault();
+    filterTalentVar({
+      ...filterTalent,
+      search: event.target.value,
+    });
+  };
   return (
     <Box className="search-bloc">
       <Paper component="form" className={classes.root}>
         <Box className="input-search">
           <InputBase
             className={classes.input}
+            onChange={handleSearch}
             placeholder="Look for projects by title, type, creator.."
             inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
           />
@@ -63,4 +72,3 @@ const SearchFilterTalents = () => {
 };
 
 export default SearchFilterTalents;
-
