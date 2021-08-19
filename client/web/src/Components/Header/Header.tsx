@@ -180,7 +180,7 @@ const PrimaryHeader = () => {
               <Link className="nav_link" href="/coachs">Coaching</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link">Wallet</Link>
+              <Link className="nav_link" >Wallet</Link>
             </ListItem>
           </List>
           <Button color="secondary" variant="contained" href={CREATE_PROJECT} className="btn_createProject">
