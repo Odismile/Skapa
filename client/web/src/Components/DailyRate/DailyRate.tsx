@@ -1,19 +1,36 @@
-import React from 'react';
 import { Box, Slider, Typography } from '@material-ui/core';
 import useStyles from './styles';
+import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import { useReactiveVar } from '@apollo/client';
 
 const DailyRate = () => {
   const classes = useStyles();
+  const filterTalent = useReactiveVar(filterTalentVar);
   return (
     <Box className={classes.root}>
-      <Typography className="money">100£ - 880£</Typography>
-      <Typography className="text">The average rate is 675£</Typography>
+      <Typography className="money">
+        {filterTalent.minDailyRate}£ - {filterTalent.maxDailyRate}£
+      </Typography>
+      <Typography className="text">
+        The average rate is {(filterTalent.minDailyRate + filterTalent.maxDailyRate / 2).toFixed(2)}£
+      </Typography>
       <Slider
         orientation="horizontal"
-        defaultValue={[20, 37]}
+        defaultValue={[filterTalent.minDailyRate, filterTalent.maxDailyRate]}
         aria-labelledby="vertical-slider"
         valueLabelDisplay="on"
-        classes={{ valueLabel:classes.label }}
+        min={0}
+        max={1000}
+        onChange={(e, newValue) => {
+          const value = newValue as number[];
+          e.preventDefault();
+          filterTalentVar({
+            ...filterTalent,
+            maxDailyRate: value[1],
+            minDailyRate: value[0],
+          });
+        }}
+        classes={{ valueLabel: classes.label }}
       />
     </Box>
   );

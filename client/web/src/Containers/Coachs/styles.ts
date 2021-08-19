@@ -55,14 +55,14 @@ export default makeStyles(
     },
     modalCalendar: {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'flex-end',
       justifyContent: 'center',
       
     },
     paperCalendar: {
       backgroundColor: "#fff",
       border: "none",
-      borderRadius: 15,
+      borderRadius: '15px 15px 0px 0px',
       padding: theme.spacing(5.5, 2.5, 2.5),
       position: "relative",
       maxWidth: 480,
@@ -76,6 +76,16 @@ export default makeStyles(
           fontSize: "0.875rem",
           width: "0.875rem",
         },
+      },
+      "& .btn_handleDrawer": {
+        background: "#e5e5e5",
+        borderRadius: 8,
+        height: 8,
+        position: "absolute",
+        left: "50%",
+        top: 15, 
+        transform: "translateX(-50%)",
+        width: 110,
       },
       "& .content_calendar": {
       },

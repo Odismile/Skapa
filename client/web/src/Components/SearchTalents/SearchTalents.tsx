@@ -1,13 +1,33 @@
-import React from 'react';
-import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Typography } from '@material-ui/core';
+import React, { ChangeEvent } from 'react';
+import { Box, Checkbox, FormControl, FormControlLabel, Typography } from '@material-ui/core';
 import useStyles from './style';
 import DailyRate from '../DailyRate/DailyRate';
 import LanguagesChoice from '../LanguagesChoice/LanguagesChoice';
+import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
+import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
+import { useReactiveVar } from '@apollo/client';
+import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 
 const SearchTalents = () => {
   const classes = useStyles();
-  const [checked, setChecked] = React.useState(true);
+  const filterTalent = useReactiveVar(filterTalentVar);
+  const { data: dataSkills } = useItemsGetSkills();
+  const { data: dataLanguages } = useItemsGetlaguage();
 
+  const handleCheck = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
+    filterTalentVar({
+      ...filterTalent,
+      [event.target.name]: checked,
+    });
+  };
+  const handleCheckSkill = (item: Items_get_language_items) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = filterTalent.skills.some((i) => i.id === item.id);
+    filterTalentVar({
+      ...filterTalent,
+      skills: isChecked ? filterTalent.skills.filter((i) => i.id !== item.id) : [...filterTalent.skills, item],
+    });
+  };
   return (
     <Box className={classes.searchProject}>
       <FormControl component="fieldset" className="form-control">
@@ -17,14 +37,29 @@ const SearchTalents = () => {
             <FormControlLabel
               className="form-control-label"
               value="Top Rated"
-              control={<Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="form-checkbox" />}
+              control={
+                <Checkbox
+                  checked={filterTalent.isTopRated}
+                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
+                  name="isTopRated"
+                  onChange={handleCheck}
+                  className="form-checkbox"
+                />
+              }
               label="Top Rated"
               labelPlacement="start"
             />
             <FormControlLabel
               className="form-control-label"
               value="Recommanded"
-              control={<Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="form-checkbox" />}
+              control={
+                <Checkbox
+                  name="isRecommended"
+                  onChange={handleCheck}
+                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
+                  className="form-checkbox"
+                />
+              }
               label="Recommanded"
               labelPlacement="start"
             />
@@ -36,14 +71,28 @@ const SearchTalents = () => {
             <FormControlLabel
               className="form-control-label"
               value="Junior"
-              control={<Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="form-checkbox" />}
+              control={
+                <Checkbox
+                  name="isJunior"
+                  onChange={handleCheck}
+                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
+                  className="form-checkbox"
+                />
+              }
               label="Junior"
               labelPlacement="start"
             />
             <FormControlLabel
               className="form-control-label"
               value="Senior"
-              control={<Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="form-checkbox" />}
+              control={
+                <Checkbox
+                  name="isSenior"
+                  onChange={handleCheck}
+                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
+                  className="form-checkbox"
+                />
+              }
               label="Senior"
               labelPlacement="start"
             />
@@ -57,46 +106,39 @@ const SearchTalents = () => {
           <Typography component="h2">Skills</Typography>
           <Box className={classes.content}>
             <Box className={classes.skills}>
-              <Box className="inputGroup">
-                <input id="option1" name="option1" type="checkbox" />
-                <label htmlFor="option1">Product Design</label>
-              </Box>
-              <Box className="inputGroup">
-                <input id="option2" name="option2" type="checkbox" />
-                <label htmlFor="option2">UX Design</label>
-              </Box>
-              <Box className="inputGroup">
-                <input id="option3" name="option3" type="checkbox" />
-                <label htmlFor="option3">Scribing</label>
-              </Box>
-              <Box className="inputGroup">
-                <input id="option4" name="option4" type="checkbox" />
-                <label htmlFor="option4">UI Design</label>
-              </Box>
-              <Box className="inputGroup">
-                <input id="option5" name="option5" type="checkbox" />
-                <label htmlFor="option5">IT Challenge</label>
-              </Box>
-              <Box className="inputGroup">
-                <input id="option6" name="option6" type="checkbox" />
-                <label htmlFor="option6">Sujet RH</label>
-              </Box>
-              <Box className="inputGroup">
-                <input id="option7" name="option7" type="checkbox" />
-                <label htmlFor="option7">Supply chain knowledge</label>
-              </Box>
-              <Box className="inputGroup">
-                <input id="option8" name="option8" type="checkbox" />
-                <label htmlFor="option8">Juridiction</label>
-              </Box>
+              {dataSkills?.items?.map(
+                (item) =>
+                  item?.id &&
+                  item?.label && (
+                    <Box className="inputGroup">
+                      <input
+                        id={`skill-${item.id}`}
+                        name={`skill-${item.id}`}
+                        type="checkbox"
+                        value={item.id}
+                        onChange={handleCheckSkill(item)}
+                      />
+                      <label htmlFor={`skill-${item.id}`}>{item.label}</label>
+                    </Box>
+                  ),
+              )}
             </Box>
           </Box>
         </Box>
         <Box className="form-control-item">
           <Typography component="h2">Languages</Typography>
-            <LanguagesChoice name="English" id="english" title="English" test={()=>{}}/>
-            <LanguagesChoice name="French" id="french" title="French" test={()=>{}}/>
-            <LanguagesChoice name="Spanish" id="spanish" title="Spanish" test={()=>{}}/>
+          {dataLanguages?.items?.map(
+            (item) =>
+              item?.label &&
+              item?.id && (
+                <LanguagesChoice
+                  name={`language-${item.id}`}
+                  id={`language-${item.id}`}
+                  title={item.label}
+                  test={() => {}}
+                />
+              ),
+          )}
         </Box>
       </FormControl>
     </Box>
