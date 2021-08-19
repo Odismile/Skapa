@@ -83,7 +83,9 @@
       "videoPitch": "Pitch vidéo",
       "uploadAVideo": "Télécharger une vidéo",
       "next": "Suivant",
-      "skipThisStep": "Passer cette étape"
+      "skipThisStep": "Passer cette étape",
+      "ValidateAndPostProject":"Valider et poster",
+      "SavAsDraft":"Enregistrer comme brouillon"
     },
     "createProjectError": {
       "nameOfProject":"Veuillez entrer un nom de projet",
@@ -96,6 +98,10 @@
       "description": "Veuillez entrer une description",
       "skills": "Veuillez selectionner un ou plusieurs skills",
       "video": "Veuillez entrer une video"
+    },
+    "project":{
+      "none":"Aucun projet",
+      "textInputFilter":"Recherchez des projets par titre, type, créateur....."
     }
   }
 }

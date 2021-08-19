@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import { TextField, InputAdornment } from '@material-ui/core';
 import { FC } from 'react';
 import useStyles from './style';
 
@@ -12,6 +12,8 @@ interface TextFiedlProps {
   id: string;
   name?: string | undefined;
   placeholder?: string,
+  icons?: any;
+
   // variant:string,
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
 }
@@ -28,11 +30,15 @@ const TextFieldComponent: FC<TextFiedlProps> = (props) => {
       InputLabelProps={{
         shrink: true,
       }}
+      InputProps={{
+        endAdornment: <InputAdornment position="end" className="append_input">{props.icons}</InputAdornment>
+      }}
       placeholder={props.placeholder}
       value={props.value}
       error={props.error}
       helperText={props.helperText}
       className={classes.textfield}
+
     />
   );
 };

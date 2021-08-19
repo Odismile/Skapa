@@ -1,6 +1,7 @@
 import { useApolloClient } from '@apollo/client';
 import firebase from 'firebase';
 import { useState } from 'react';
+import { videoFile, pictureFile } from '../ReactiveVariable/Profil/profil';
 import { displaySnackbar, InitSnackbarData } from './Snackbar';
 
 export interface Files {
@@ -11,7 +12,7 @@ export interface Files {
 
 export const useUploadFile = () => {
   const [loading, setLoading] = useState(false);
-
+  let urlFirebase = '';
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
 
@@ -43,6 +44,10 @@ export const useUploadFile = () => {
             .ref(`${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${file.name}`)
             .put(file, metadata);
 
+          urlFirebase = `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${file.name}`;
+          if (file.type.includes('video')) videoFile(urlFirebase);
+          else pictureFile(urlFirebase);
+
           setLoading(false);
         }
       }
@@ -53,5 +58,5 @@ export const useUploadFile = () => {
     }
   };
 
-  return { uploadFile, loading, getFiles };
+  return { uploadFile, loading, getFiles, urlFirebase};
 };

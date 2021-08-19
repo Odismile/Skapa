@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Box, Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@material-ui/core';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
 import { useHistory } from 'react-router-dom';
@@ -7,10 +7,9 @@ import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
+import { useItemsGetYear } from '../../Providers/ItemsProvider/hooks/useItemsGetYear';
 import { ageProfil, nameOfOrganisation, yourPosition, levelLanguages } from '../../ReactiveVariable/Profil/profil';
 import useStyles from './styles';
-import { useItemsGetYear } from '../../Providers/ItemsProvider/hooks/useItemsGetYear';
-import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 const OnboardingProfile = () => {
   const classes = useStyles();
   const [disabledButton, setDisabledButton] = useState(true);
@@ -21,10 +20,10 @@ const OnboardingProfile = () => {
   const { data, loading } = useItemsGetlaguage();
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
-  const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
+  // const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
 
   const testButtonToEnabled = () => {
-    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() /*  && levelLanguages().length === 0 */) {
+    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() && !!levelLanguages()) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -48,24 +47,6 @@ const OnboardingProfile = () => {
   };
 
   const handleClick = () => {
-    //TEST
-    /* doCreateProfile({
-      variables: {
-        input: {
-          data: {
-            position: 'test position',
-            bio: 'test bio',
-            job_seniority_id: '',
-            picture: '',
-            profile_skills: [],
-            video: '',
-            users_id: '',
-          },
-        },
-      },
-    }).then((result) => {
-      //console.log('resultat', result.data);
-    }); */
     history.push('/onboarding-profile2');
   };
 
@@ -94,9 +75,7 @@ const OnboardingProfile = () => {
           >
             {!loadingYears &&
               dataYears?.items?.map((item, index) => {
-                return (
-                  <FormControlLabel key={index} value={item?.label} control={<Radio />} label={item?.label ?? ''} />
-                );
+                return <FormControlLabel key={index} value={item?.id} control={<Radio />} label={item?.label ?? ''} />;
               })}
           </RadioGroup>
         </FormControl>
@@ -115,7 +94,7 @@ const OnboardingProfile = () => {
             <>
               {data?.items?.map((item, index) => {
                 return (
-                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} />
+                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} test={testButtonToEnabled}/>
                 );
               })}
             </>

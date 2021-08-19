@@ -66,4 +66,4 @@ services:
 networks:
   traefik:
     external:
-      name: skapa_dev
+      name: traefik_skapa-dev

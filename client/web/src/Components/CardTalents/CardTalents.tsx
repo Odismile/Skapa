@@ -13,15 +13,17 @@ import {
 import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
 import organisationImg from '../../Assets/images/organisation.png';
-import Heart from '../Icons/Heart';
 import Award from '../Icons/Award';
 import CardProject from '../CardProjects/CardProjects';
 import { useHistory } from 'react-router-dom';
+import HeartLine from '../Icons/HeartLine';
+import Heart from '../Icons/Heart';
 
 const CardTalents = () => {
   const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [check, setCheck] = React.useState(false);
   const handleDrawer = (event:any) => {
     setOpen((prev) => !prev);
     event.stopPropagation();
@@ -32,9 +34,10 @@ const CardTalents = () => {
     event.stopPropagation();
   }
 
-  const handleClick = (event:any) =>{
-    event.stopPropagation();
-  }
+  const handleClick:React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation()
+    setCheck(current => !current)
+  };
 
   return (
     <Card className={classes.root} onClick={goToDetailsTalents}>
@@ -61,7 +64,7 @@ const CardTalents = () => {
             </Typography>
           </Box>
           <IconButton className="btn btn-favori" onClick={handleClick}>
-            <Heart className="iconHeart" />
+            { check ? <HeartLine className="iconHeartOutlined" /> : <Heart className="iconHeart"/>}
           </IconButton>
 
           <img src={organisationImg} className="iconOrganisation" alt="organisation" />

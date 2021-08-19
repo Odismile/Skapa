@@ -4,15 +4,6 @@ import { useHistory } from 'react-router';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from './style';
 import IconChange from '../../Components/Icons/Change/Change';
-import IconCreative from '../../Components/Icons/Creative/Creative';
-import IconInnovation from '../../Components/Icons/Innovation/Innovation';
-import IconProspective from '../../Components/Icons/Prospective/Prospective';
-import IconDelivery from '../../Components/Icons/Delivery/Delivery';
-import IconTechnical from '../../Components/Icons/Technical/Technical';
-
-import bgDelivery from '../../Assets/images/delivery.svg';
-import bgProspective from '../../Assets/images/prospective.svg';
-import bgTechnical from '../../Assets/images/technical.svg';
 import { useItemsProjectTypes } from '../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
 import {
   ageProfil,
@@ -21,12 +12,17 @@ import {
   bio,
   skillsSelectedVariable,
   pictureFile,
+  videoFile,
+  filesPicture,
+  filesVideo
 } from '../../ReactiveVariable/Profil/profil';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { ONBOARDING_PROFILE7 } from '../../Routes';
-import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
+import { getIdMe } from '../../Services';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
+import { useUploadFile } from '../../Utils/uploadFile';
+import Loader from '../../Components/Loader/Loader';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -35,28 +31,71 @@ const OnboardingProfileFour = () => {
   const [projectTypeSelected, setProjectTypeSelected] = useState<
     (Items_get_language_items | null)[] | null | undefined
   >([]);
+  const [disabledButton, setDisabledButton] = useState(true);
 
+  const testButtonToEnabled = () => {
+    if (projectsTypeSelectedVariable()?.length!==0) {
+      setDisabledButton(false);
+    } else {
+      setDisabledButton(true);
+    }
+  };
+
+  const { uploadFile } = useUploadFile();
+  const [load, setLoad] = useState<boolean>(false);
+  //const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
+
+  const sendFile=async () => {
+   // setFilesPicture(files)
+     await uploadFile(filesPicture());
+     await uploadFile(filesVideo());
+  }
   const history = useHistory();
   function handleClick() {
     //TEST
-    doCreateProfile({
+    sendFile().finally(()=>{
+      doCreateProfile({
+        variables: {
+          input: {
+            data: {
+              position: yourPosition(),
+              bio: bio(),
+              job_seniority_id: ageProfil(),
+              picture: pictureFile(),
+              video: videoFile(),
+              languages: ['1', '2'],
+              profile_skills: transformSkillsIds(skillsSelectedVariable()),
+              users_id: getIdMe(),
+              projects: transformSkillsIds(projectsTypeSelectedVariable()),
+            },
+          },
+        },
+      }).then((result) => {
+       
+      });
+      !loadingProfile && history.replace(ONBOARDING_PROFILE7)
+    });
+
+    /* doCreateProfile({
       variables: {
         input: {
           data: {
             position: yourPosition(),
             bio: bio(),
             job_seniority_id: ageProfil(),
-            //picture: pictureFile(),
+            picture: pictureFile(),
+            video: videoFile(),
+            languages: ['1', '2'],
             profile_skills: transformSkillsIds(skillsSelectedVariable()),
-            video: '',
-            users_id: '',
+            users_id: getIdMe(),
+            projects: transformSkillsIds(projectsTypeSelectedVariable()),
           },
         },
       },
     }).then((result) => {
-      console.log('resultat', result.data);
+     
     });
-    history.replace(ONBOARDING_PROFILE7);
+    history.replace(ONBOARDING_PROFILE7); */
   }
 
   const onClickProjectType = (projectType: Items_get_language_items | null) => {
@@ -75,8 +114,9 @@ const OnboardingProfileFour = () => {
         projectsTypeSelectedVariable(newSkills);
       }
     }
+    testButtonToEnabled()
   };
-
+  
   return (
     <WrapOnBoarding>
       <Box className={classes.bloc}>
@@ -98,10 +138,11 @@ const OnboardingProfileFour = () => {
           </Box>
         </Box>
         <Box className={classes.btnNext}>
-          <Button variant="contained" onClick={handleClick}>
+          <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
             Next
           </Button>
         </Box>
+         {loadingProfile && (<Loader/>)} 
       </Box>
     </WrapOnBoarding>
   );

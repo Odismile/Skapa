@@ -3,16 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles(
   theme => ({
     root:{
-      '& .btn_createProject':{
-        display: 'none',
-      },
-      '&>div:first-child':{
-        height: 170,
-        marginBottom: 20,
-      },
-      '&>div:first-child>div:last-child':{
-        display: 'none',
-      },
+ 
     },
     mainContainer: {
       padding: '0px 22px',

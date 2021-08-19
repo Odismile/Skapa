@@ -1,16 +1,19 @@
-import React from 'react';
-import { Box, IconButton, InputBase, Modal, Paper, Popper, Typography } from "@material-ui/core";
-import useStyles from './style';
+import { Box, IconButton, InputBase, Modal, Paper, Typography } from '@material-ui/core';
+import React, { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import Filter from '../../Components/Icons/Filter/Filter';
 import Search from '../../Components/Icons/Search/Search';
-import SearchProject from '../SearchProject/SearchProject';
 import Cross from '../Icons/Cross';
+import SearchProject from '../SearchProject/SearchProject';
+import useStyles from './style';
 
+interface SearchFilterProps {
+  onChangeFitlerText?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
+}
 
-
-
-const SearchFilter = () => {
+const SearchFilter: FC<SearchFilterProps> = ({ onChangeFitlerText }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const [open, setOpen] = React.useState(false);
 
@@ -22,16 +25,15 @@ const SearchFilter = () => {
     setOpen(false);
   };
 
-    
-
   return (
     <Box className="search-bloc">
       <Paper component="form" className={classes.root}>
         <Box className="input-search">
           <InputBase
             className={classes.input}
-            placeholder="Look for projects by title, type, creator.."
+            placeholder={t(`project.textInputFilter`)}
             inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
+            onChange={onChangeFitlerText}
           />
           <IconButton className="search-icon" aria-label="search">
             <Search />
@@ -60,7 +62,6 @@ const SearchFilter = () => {
               <SearchProject />
             </Box>
           </Box>
-          
         </Modal>
       </Paper>
     </Box>
@@ -68,4 +69,3 @@ const SearchFilter = () => {
 };
 
 export default SearchFilter;
-

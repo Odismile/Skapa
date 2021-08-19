@@ -1,43 +1,39 @@
-import { Avatar, Box, Button, FormControl, FormLabel, Link, TextField, Typography } from '@material-ui/core';
+import { Avatar, Box, Button, FormControl, FormLabel } from '@material-ui/core';
 import React, { useState } from 'react';
 import useStyles from './style';
 import ReactPlayer from 'react-player';
 import iconDownload from '../../Assets/images/IconDownload.svg';
 import { useHistory } from 'react-router';
-import classNames from 'classnames';
-import mainLogo from '../../Assets/images/logo.svg';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
-import IconPhoto from '../../Components/Icons/Photo/Photo';
 
 import { useUploadFile } from '../../Utils/uploadFile';
-import { pictureFile, videoFile, bio } from '../../ReactiveVariable/Profil/profil';
+import { pictureFile, videoFile, bio, filesPicture, filesVideo } from '../../ReactiveVariable/Profil/profil';
 import { testButtonEnable } from '../../ReactiveVariable/ButtonTest/ButtonTestEnable';
 
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
   const [videoUpload, setVideoUpload] = useState('');
   const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
-  const [disabledButton, setDisabledButton] = useState(false);
   const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
   const { uploadFile } = useUploadFile();
+  const [disabledButton, setDisabledButton] = useState(false);
+  //const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
   const testButtonToEnabled = () => {
-    if (!!pictureFile() && !!bio()) {
-      testButtonEnable(false);
+    if (!!filesPicture && !!filesVideo && !!bio()) {
+      setDisabledButton(false);
     } else {
-      testButtonEnable(true);
+      setDisabledButton(true);
     }
-    setDisabledButton(disabledButton);
   };
 
   const classes = useStyles();
-
   const history = useHistory();
+
   const handleClick = async () => {
     await uploadFile(filesPicture);
     await uploadFile(filesVideo);
     history.push('/onboarding-profile3');
   };
-  let video;
   return (
     <>
       <WrapOnBoarding>
@@ -63,7 +59,7 @@ const OnboardingProfileTwo = () => {
             <label htmlFor="contained-button-file">
               <Button variant="contained" component="span">
                 {imageUpload.length !== 0 ? (
-                  <Avatar alt="Profil" src={imageUpload} className={classes.large} />
+                  <Avatar alt="Profile" src={imageUpload} className={classes.large} />
                 ) : (
                   <>
                     <span>+</span>
@@ -94,14 +90,7 @@ const OnboardingProfileTwo = () => {
               <Box className="video">
                 <Box component="span">Import a video from your computer (mp4)</Box>
                 {videoUpload.length !== 0 ? (
-                  <ReactPlayer
-                    url={videoUpload}
-                    // className={classes.videoUpload}
-                    width={'150px'}
-                    height={'100px'}
-                    playing={true}
-                    controls={true}
-                  />
+                  <ReactPlayer url={videoUpload} width={'150px'} height={'100px'} playing={true} controls={true} />
                 ) : (
                   <></>
                 )}
@@ -116,6 +105,7 @@ const OnboardingProfileTwo = () => {
             <textarea
               placeholder="tell us more about you !"
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                bio(e.target.value);
                 testButtonToEnabled();
               }}
             ></textarea>

@@ -22,6 +22,10 @@ import DetailsPlace from '../Containers/DetailsPlace/DetailsPlace';
 import DetailsProjects from '../Containers/DetailsProjects/DetailsProjects';
 import Wishlist from '../Containers/Wishlist/Wishlist';
 import Coachs from '../Containers/Coachs/Coachs';
+import Profile from '../Containers/Profile/Profile';
+import MyActivity from '../Containers/MyActivity/MyActivity';
+import ContributeSpace from '../Containers/MyActivity/ContributeSpace/ContributeSpace';
+import TalentSpace from '../Containers/MyActivity/TalentSpace/TalentSpace';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -42,10 +46,14 @@ export const ONBOARDING_PROFILE7 = '/onboarding-splashscreen1';
 export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen2';
 export const DETAILS_TALENTS = '/details-talents';
 export const DETAILS_PLACE = '/details-place';
-export const DETAILS_PROJECTS = '/details-projects';
+export const DETAILS_PROJECTS = '/projects/:id';
 export const WISHLIST = '/wishlist';
 export const COACHS = '/coachs';
+export const MYACTIVITY = '/myactivity';
+export const MYACTIVITY_CONTRIBUTE_SPACE = '/myactivity/contribute';
+export const MYACTIVITY_TALENT_SPACE = '/myactivity/talent';
 export const UNAUTHORIZED = '/unauthorized';
+export const PROFILE = '/profile';
 
 const WrappedHomePage = Wrapper(HomePage);
 
@@ -203,5 +211,33 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: Wishlist,
+  },
+  {
+    key: 'PROFILE',
+    route: PROFILE,
+    roles: [],
+    private: false,
+    component: Profile,
+  },
+  {
+    key: 'MYACTIVITY',
+    route: MYACTIVITY,
+    roles: [],
+    private: false,
+    component: MyActivity,
+  },
+  {
+    key: 'MYACTIVITY_CONTRIBUTE_SPACE',
+    route: MYACTIVITY_CONTRIBUTE_SPACE,
+    roles: [],
+    private: false,
+    component: ContributeSpace,
+  },
+  {
+    key: 'MYACTIVITY_TALENT_SPACE',
+    route: MYACTIVITY_TALENT_SPACE,
+    roles: [],
+    private: false,
+    component: TalentSpace,
   },
 ];

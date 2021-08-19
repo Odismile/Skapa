@@ -83,7 +83,9 @@
       "videoPitch": "Video Pitch",
       "uploadAVideo": "Upload a video",
       "next": "Next",
-      "skipThisStep": "Skip this step"
+      "skipThisStep": "Skip this step",
+      "ValidateAndPostProject":"Validate and post project",
+      "SavAsDraft":"Save as draft"
     },
     "createProjectError": {
       "nameOfProject":"Please enter the name of project",
@@ -96,6 +98,10 @@
       "description": "Please enter a description",
       "skills": "Please select one or more skills",
       "video": "Please enter a video"
+    },
+    "project":{
+      "none":"No project",
+      "textInputFilter":"Look for projects by title, type, creator..."
     }
   }
 }

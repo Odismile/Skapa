@@ -5,6 +5,12 @@ export const PROJECT_INFO_FRAGMENT = gql`
     id
     Name
     description
+    Picture
+    Video
+    Type
+    Date_start
+    Date_end
+    created_at
     project_skills {
       id
       item {

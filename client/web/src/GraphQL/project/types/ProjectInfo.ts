@@ -23,5 +23,11 @@ export interface ProjectInfo {
   id: string;
   Name: string | null;
   description: string;
+  Picture: string | null;
+  Video: string | null;
+  Type: string | null;
+  Date_start: any | null;
+  Date_end: any | null;
+  created_at: any;
   project_skills: (ProjectInfo_project_skills | null)[] | null;
 }

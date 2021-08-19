@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import mainLogo from '../../Assets/images/logo.svg';
 import { useUpdateUser } from '../../Providers/AuthProvider/hooks/useUpdateUser';
 import useStyles from './styles';
+import { HOMEPAGE, ONBOARDING_PROFILE } from '../../Routes';
 
 const OnboardingStart = () => {
   const classes = useStyles();
@@ -13,7 +14,7 @@ const OnboardingStart = () => {
 
   const onPressOnBoardingStart = () => {
     doUpdateUSer({
-      variables: { input: { where: { id: localStorage.getItem('idMe') ?? '' } } },
+      variables: { input: { where: { id: localStorage.getItem('idMe') ?? '' }, data: { isFirstConnection: false } } },
     });
   };
 
@@ -34,7 +35,7 @@ const OnboardingStart = () => {
             <Button
               onClick={onPressOnBoardingStart}
               variant="contained"
-              href="/onboarding-profile"
+              href={ONBOARDING_PROFILE}
               className={classes.btn_createProfile}
               color="primary"
               disabled={loading}
@@ -43,9 +44,9 @@ const OnboardingStart = () => {
             </Button>
           </Box>
         </Box>
-        <Box component="footer" className={classes.footerPage} onClick={onPressOnBoardingStart}>
+        <Box component="footer" className={classes.footerPage}>
           <Typography className="link-footer">
-            <Link to="/">Skip profile creation</Link>
+            <Link to={HOMEPAGE}>Skip profile creation</Link>
           </Typography>
         </Box>
       </Box>

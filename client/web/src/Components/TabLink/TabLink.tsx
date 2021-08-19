@@ -3,12 +3,13 @@ import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@
 import moment from 'moment';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
 import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
 import Team from '../../Containers/Project/CreateProject/Team/Team';
 import { useCreateProject } from '../../Providers/ProjectProvider/useCreateProject';
+import { useUpdateProject } from '../../Providers/ProjectProvider/useUpdateProject';
 import {
   cityVariable,
   dateEndVariable,
@@ -22,17 +23,21 @@ import {
   skillsSelectedVariable,
   typeProjectVariable,
 } from '../../ReactiveVariable/Project/createProject';
+import { CREATE_PROJECT_CONGRATS } from '../../Routes';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 import { transformSkills } from '../../Utils/transformSkills';
 import { useUploadFile } from '../../Utils/uploadFile';
+import Loader from '../Loader/Loader';
 import useStyles from './style';
 
 const TabLink = () => {
   const classes = useStyles();
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
-  const { doCreateProject, loading } = useCreateProject();
+  const { doCreateProject, loading, data: dataProject } = useCreateProject();
   const { uploadFile, loading: loadingUpload } = useUploadFile();
+  const { doUpdateProject, loading: loadingUpdate } = useUpdateProject();
+  const history = useHistory();
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
@@ -83,7 +88,7 @@ const TabLink = () => {
           steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
 
-    if (newActiveStep === 1) {
+    if (activeStep === 0) {
       if (nameProjectVariable().trim().length === 0) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.nameOfProject`);
@@ -135,8 +140,8 @@ const TabLink = () => {
                 Name: nameProjectVariable(),
                 Type: typeProjectVariable(),
                 Ville: cityVariable(),
-                Date_Start: moment(dateStartVariable()).format('DD/MM/YYYY'),
-                Date_End: moment(dateEndVariable()).format('DD/MM/YYYY'),
+                Date_start: moment(dateStartVariable()).utcOffset(0, false).toISOString(),
+                Date_end: moment(dateEndVariable()).utcOffset(0, false).toISOString(),
                 description: projectDescriptionVariable(),
                 project_skills: transformSkills(skillsSelectedVariable()),
                 Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
@@ -154,10 +159,20 @@ const TabLink = () => {
             await uploadFile(filesPictureVariable());
             await uploadFile(filesVideoVariable());
             initCreateProjectVariable();
-            setActiveStep(3);
+            setActiveStep(newActiveStep);
           }
         });
       }
+    } else if (activeStep === 3) {
+      doUpdateProject({
+        variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '2' } } },
+      }).then((result) => {
+        if (result.data?.updateProject?.project?.id) {
+          history.push(CREATE_PROJECT_CONGRATS);
+        }
+      });
+    } else {
+      setActiveStep(newActiveStep);
     }
   };
 
@@ -165,7 +180,26 @@ const TabLink = () => {
     if (projectIdVariable().trim().length !== 0) {
       setActiveStep(step);
     }
-    //setActiveStep(step);
+  };
+
+  const handleNextLink = () => {
+    if (activeStep !== 3) {
+      const newActiveStep =
+        isLastStep() && !allStepsCompleted()
+          ? // It's the last step, but not all steps have been completed,
+            // find the first step that has been completed
+            steps.findIndex((step, i) => !(i in completed))
+          : activeStep + 1;
+      setActiveStep(newActiveStep);
+    } else {
+      doUpdateProject({
+        variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '1' } } },
+      }).then((result) => {
+        if (result.data?.updateProject?.project?.id) {
+          history.push(CREATE_PROJECT_CONGRATS);
+        }
+      });
+    }
   };
 
   return (
@@ -209,15 +243,16 @@ const TabLink = () => {
               color="primary"
               onClick={handleNext}
               className={classes.button}
-              disabled={loading || loadingUpload}
+              disabled={loadingUpload || loading || loadingUpdate}
             >
-              {t(`createProject.next`)}
+              {activeStep !== 3 ? t(`createProject.next`) : t(`createProject.ValidateAndPostProject`)}
             </Button>
-            <Link to="/" className="link">
-              {t(`createProject.skipThisStep`)}
+            <Link to="/project/create-project" className="link" onClick={handleNextLink}>
+              {activeStep !== 3 ? t(`createProject.skipThisStep`) : t(`createProject.SavAsDraft`)}
             </Link>
           </Box>
         </Box>
+        {loading && (<Loader/>)}
       </Box>
     </>
   );

@@ -7,7 +7,7 @@ export default makeStyles(
       boxShadow: "none",
       borderRadius: 0,
       maxWidth: 335,
-      margin: 0,
+      margin: 'auto',
       padding: "1px 1px 28px",
       position: 'relative',
       width: "100%",

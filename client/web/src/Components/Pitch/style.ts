@@ -12,8 +12,8 @@ export default makeStyles((theme) => ({
         '& .video':{
             marginTop: 15,
             '& video':{
-                height: 168,
-                width: '100%',
+                // height: 168,
+                // width: 'auto!important',
                 borderRadius: 10,
                 objectFit: 'cover',
             }

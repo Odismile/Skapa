@@ -29,7 +29,7 @@ import Plus from '../../Components/Icons/Plus/Plus';
 import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { clearLocalStorage, isAuthenticated } from '../../Services';
-import { CREATE_PROJECT, LOGIN } from '../../Routes';
+import { COACHS, CREATE_PROJECT, LOGIN } from '../../Routes';
 import { Route, Redirect, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
@@ -177,10 +177,10 @@ const PrimaryHeader = () => {
               <Link className="nav_link">Wishlist</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link">Coaching</Link>
+              <Link className="nav_link" href={COACHS}>Coaching</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link">Wallet</Link>
+              <Link className="nav_link" >Wallet</Link>
             </ListItem>
           </List>
           <Button color="secondary" variant="contained" href={CREATE_PROJECT} className="btn_createProject">

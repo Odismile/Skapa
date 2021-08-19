@@ -28,6 +28,7 @@
       "via": "profiles"
     },
     "users_id": {
+      "unique": true,
       "plugin": "users-permissions",
       "model": "user"
     },
@@ -40,8 +41,8 @@
       "via": "profile"
     },
     "project_favorits": {
-      "via": "profile",
-      "collection": "project-favorits"
+      "collection": "project-favorits",
+      "via": "profile"
     },
     "languages": {
       "collection": "languages",
@@ -50,6 +51,14 @@
     "projects": {
       "collection": "projects",
       "via": "profile"
+    },
+    "profile_type_id": {
+      "model": "items",
+      "via": "profiles_types"
+    },
+    "contributes": {
+      "collection": "contributes",
+      "via": "profile_id"
     }
   }
 }

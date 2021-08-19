@@ -10,11 +10,12 @@ import {
   withStyles,
 } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
 import imgCard from '../../Assets/images/lab.svg';
-import { project } from '../../GraphQL/project/types/project';
+import { projects } from '../../GraphQL/project/types/projects';
 import Heart from '../Icons/Heart';
+import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
 import useStyles from './style';
 
@@ -51,27 +52,37 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 interface CardReviewProps {
-  data?: project | undefined;
+  //data?: projects | undefined;
+  projectId?: string;
+  imgCardUrl: string;
+  name: string;
 }
 
-const handleClick = (event: any) => {
-  event.stopPropagation();
-};
 
-const CardReview: FC<CardReviewProps> = ({ data }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
   const classes = useStyles();
   const history = useHistory();
-  const goToDetailsProjects = (event: any) => {
-    history.push('/details-projects');
+  const [check, setCheck] = useState(false);
+  const goToDetailsProjects = (event: any, projectId?: string) => {
+    if (projectId) {
+      history.push(`/projects/${projectId}`);
+    }
     event.stopPropagation();
   };
+
+  const handleClick:React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation()
+    setCheck(current => !current)
+  };
+
+
   return (
-    <Card className={classes.root} onClick={goToDetailsProjects}>
-      <CardMedia className={classes.media} image={imgCard} title="image" />
+    <Card className={classes.root} onClick={(event) => goToDetailsProjects(event, projectId)}>
+      <CardMedia className={classes.media} image={imgCardUrl} title="image" />
       <CardContent className={classes.content}>
         <Box className="detail-top">
           <Typography className="title" component="p">
-            {data?.project?.Name}
+            {name}
           </Typography>
           <Typography component="p" className="trending">
             <Trending /> TRENDING UP
@@ -120,9 +131,13 @@ const CardReview: FC<CardReviewProps> = ({ data }) => {
         </Box>
       </CardContent>
       <Box className="category">LAB</Box>
-      <IconButton className="btn-favori" onClick={handleClick}>
-        <Heart className="iconHeart" />
-      </IconButton>
+      
+        <IconButton className="btn-favori" onClick={handleClick}>
+          {check ? <HeartLine className="iconHeartOutlined" /> : <Heart  className="iconHeart"/>}
+        </IconButton>
+      
+      
+
       <Box className="bgBlack"></Box>
     </Card>
   );

@@ -21,12 +21,13 @@ export default makeStyles((theme) => ({
           right: 0,
           zIndex: 1,
           padding: 0,
-          '&:focus, &:hover': {
-            '& path': {
-              fill: '#e30057',
-              stroke: '#e30057'
-            },
+          '& svg':{
+            width: 21,
+            height: 20,
           },
+          '& .iconHeartOutlined':{
+            stroke: '#8870ff',
+          }
         },
         "& .head-title": {
           maxWidth: "90%",
@@ -37,15 +38,6 @@ export default makeStyles((theme) => ({
           whiteSpace: 'nowrap',
           textOverflow: "ellipsis",
           overflow: 'hidden'
-        },
-        '& .iconHeart': {
-          width: 21,
-          height: 20,
-          '& path': {
-            stroke: '#8277FF',
-            width: 21,
-            height: 20,
-          },
         },
         '& .iconOrganisation': {
           position: 'absolute',

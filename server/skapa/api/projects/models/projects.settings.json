@@ -23,8 +23,8 @@
       "required": true
     },
     "item": {
-      "via": "projects",
-      "model": "items"
+      "model": "items",
+      "via": "projects"
     },
     "project_skills": {
       "collection": "project-skills",
@@ -42,23 +42,30 @@
     "Video": {
       "type": "string"
     },
-    "Date_Start": {
-      "type": "string"
-    },
-    "Date_End": {
-      "type": "string"
-    },
     "status": {
       "model": "status",
       "via": "projects"
-    }, 
+    },
     "profile": {
       "via": "projects",
       "model": "profiles"
     },
     "project_favorits": {
-      "via": "project",
-      "collection": "project-favorits"
+      "collection": "project-favorits",
+      "via": "project"
+    },
+    "organisation": {
+      "type": "string"
+    },
+    "Date_start": {
+      "type": "datetime"
+    },
+    "Date_end": {
+      "type": "datetime"
+    },
+    "contributes": {
+      "via": "project_id",
+      "collection": "contributes"
     }
   }
 }
