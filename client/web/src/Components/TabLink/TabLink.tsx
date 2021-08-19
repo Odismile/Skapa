@@ -85,7 +85,7 @@ const TabLink = () => {
           steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
 
-    if (newActiveStep === 1) {
+    if (activeStep === 0) {
       if (nameProjectVariable().trim().length === 0) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.nameOfProject`);
@@ -137,8 +137,8 @@ const TabLink = () => {
                 Name: nameProjectVariable(),
                 Type: typeProjectVariable(),
                 Ville: cityVariable(),
-                Date_Start: moment(dateStartVariable()).format('DD/MM/YYYY'),
-                Date_End: moment(dateEndVariable()).format('DD/MM/YYYY'),
+                Date_start: moment(dateStartVariable()).utcOffset(0, false).toISOString(),
+                Date_end: moment(dateEndVariable()).utcOffset(0, false).toISOString(),
                 description: projectDescriptionVariable(),
                 project_skills: transformSkills(skillsSelectedVariable()),
                 Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
@@ -160,9 +160,13 @@ const TabLink = () => {
           }
         });
       }
-    } else if (newActiveStep === 3) {
+    } else if (activeStep === 3) {
       doUpdateProject({
         variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '2' } } },
+      }).then((result) => {
+        if (result.data?.updateProject?.project?.id) {
+          //   setActiveStep(newActiveStep);
+        }
       });
     } else {
       setActiveStep(newActiveStep);
@@ -173,7 +177,6 @@ const TabLink = () => {
     if (projectIdVariable().trim().length !== 0) {
       setActiveStep(step);
     }
-    //setActiveStep(step);
   };
 
   return (
@@ -217,7 +220,7 @@ const TabLink = () => {
               color="primary"
               onClick={handleNext}
               className={classes.button}
-              disabled={loading || loadingUpload}
+              disabled={loadingUpload || loading || loadingUpdate}
             >
               {activeStep !== 3 ? t(`createProject.next`) : t(`createProject.ValidateAndPostProject`)}
             </Button>
