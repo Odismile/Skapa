@@ -16,6 +16,9 @@ export default makeStyles(
         display: "flex",
         flexDirection:"column",
         maxHeight: "80%",
+        "&:focus-visible": {
+          outline: "none"
+        }  
       },
       "& .modal-top": {
         display: "flex",

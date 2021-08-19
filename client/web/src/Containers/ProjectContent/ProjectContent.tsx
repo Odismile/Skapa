@@ -18,7 +18,7 @@ import Skeleton from 'react-loading-skeleton';
 import imgCard from '../../Assets/images/lab.svg';
 import photoUser from '../../Assets/images/photo-card.png';
 import CardReview from '../../Components/CardReview/CardReview';
-import Heart from '../../Components/Icons/Heart';
+import HeartLine from '../../Components/Icons/HeartLine';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
@@ -139,7 +139,7 @@ const ProjectContent = () => {
                   LAB
                 </Box>
                 <IconButton className="btn-favori" onClick={handleClick}>
-                  <Heart className="iconHeart" />
+                  <HeartLine className="iconHeart" />
                 </IconButton>
               </Card>
               <Typography className="subtitle_text" variant="h3">

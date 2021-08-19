@@ -8,6 +8,7 @@ import Award from '../Icons/Award';
 import Cast from '../Icons/Cast';
 import Computer from '../Icons/Computer';
 import Heart from '../Icons/Heart';
+import HeartLine from '../Icons/HeartLine';
 import Photo from '../Icons/Photo';
 import Wifi from '../Icons/Wifi';
 import useStyles from './style';
@@ -38,7 +39,7 @@ const Place: FC<PlaceProps> = ({ data }) => {
             </figure>
           </Box>
           <IconButton className="btn-favori" aria-label="favori" onClick={handleClick}>
-            <Heart />
+            <HeartLine />
           </IconButton>
         </CardMedia>
         <CardContent className="content">
