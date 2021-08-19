@@ -1,43 +1,37 @@
-import { Avatar, Box, Button, FormControl, FormLabel, Link, TextField, Typography } from '@material-ui/core';
+import { Avatar, Box, Button, FormControl, FormLabel } from '@material-ui/core';
 import React, { useState } from 'react';
 import useStyles from './style';
 import ReactPlayer from 'react-player';
 import iconDownload from '../../Assets/images/IconDownload.svg';
 import { useHistory } from 'react-router';
-import classNames from 'classnames';
-import mainLogo from '../../Assets/images/logo.svg';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
-import IconPhoto from '../../Components/Icons/Photo/Photo';
 
 import { useUploadFile } from '../../Utils/uploadFile';
-import { pictureFile, videoFile, bio } from '../../ReactiveVariable/Profil/profil';
-import { testButtonEnable } from '../../ReactiveVariable/ButtonTest/ButtonTestEnable';
+import { bio } from '../../ReactiveVariable/Profil/profil';
 
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
   const [videoUpload, setVideoUpload] = useState('');
   const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
-  const [disabledButton, setDisabledButton] = useState(false);
+  const [disabledButton, setDisabledButton] = useState(true);
   const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
   const { uploadFile } = useUploadFile();
   const testButtonToEnabled = () => {
-    if (!!pictureFile() && !!bio()) {
-      testButtonEnable(false);
+    if (!!filesPicture && !!filesVideo && !!bio()) {
+      setDisabledButton(false);
     } else {
-      testButtonEnable(true);
+      setDisabledButton(true);
     }
-    setDisabledButton(disabledButton);
   };
 
   const classes = useStyles();
-
   const history = useHistory();
+
   const handleClick = async () => {
     await uploadFile(filesPicture);
     await uploadFile(filesVideo);
     history.push('/onboarding-profile3');
   };
-  let video;
   return (
     <>
       <WrapOnBoarding>
@@ -63,7 +57,7 @@ const OnboardingProfileTwo = () => {
             <label htmlFor="contained-button-file">
               <Button variant="contained" component="span">
                 {imageUpload.length !== 0 ? (
-                  <Avatar alt="Profil" src={imageUpload} className={classes.large} />
+                  <Avatar alt="Profile" src={imageUpload} className={classes.large} />
                 ) : (
                   <>
                     <span>+</span>

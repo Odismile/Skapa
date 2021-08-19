@@ -6,7 +6,7 @@ import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
-//import { skillsSelectedVariable } from '../../ReactiveVariable/Profil/profil';
+import { skillsSelectedVariable } from '../../ReactiveVariable/Profil/profil';
 import useStyles from './style';
 
 const OnboardingProfileThree = () => {
@@ -15,6 +15,15 @@ const OnboardingProfileThree = () => {
   const history = useHistory();
   const [searchSkills, setSearchSkills] = useState<(Items_get_language_items | null)[] | null | undefined>();
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
+  const [disabledButton, setDisabledButton] = useState(true);
+
+  const testButtonToEnabled = () => {
+    if (skillsSelectedVariable()?.length!==0) {
+      setDisabledButton(false);
+    } else {
+      setDisabledButton(true);
+    }
+  };
 
   useEffect(() => {
     if (data?.items) {
@@ -33,10 +42,11 @@ const OnboardingProfileThree = () => {
     }
   };
 
-  function handleClick() {
+  const handleClick= () => {
     history.push('/onboarding-profile4');
   }
-  /* const onClickSkill = (skill: Items_get_language_items | null) => {
+
+  const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
       setSkillsSelected([skill]);
       skillsSelectedVariable([skill]);
@@ -52,7 +62,8 @@ const OnboardingProfileThree = () => {
         setSkillsSelected(newSkills);
       }
     }
-  }; */
+    testButtonToEnabled()
+  };
 
   return (
     <>
@@ -92,7 +103,7 @@ const OnboardingProfileThree = () => {
           </Box>
         </Box>
         <Box className={classes.btnNext}>
-          <Button variant="contained" onClick={handleClick}>
+          <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
             Next
           </Button>
         </Box>
