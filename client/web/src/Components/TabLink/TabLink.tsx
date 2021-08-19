@@ -179,6 +179,26 @@ const TabLink = () => {
     }
   };
 
+  const handleNextLink = () => {
+    if (activeStep !== 3) {
+      const newActiveStep =
+        isLastStep() && !allStepsCompleted()
+          ? // It's the last step, but not all steps have been completed,
+            // find the first step that has been completed
+            steps.findIndex((step, i) => !(i in completed))
+          : activeStep + 1;
+      setActiveStep(newActiveStep);
+    } else {
+      doUpdateProject({
+        variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '1' } } },
+      }).then((result) => {
+        if (result.data?.updateProject?.project?.id) {
+          //   setActiveStep(newActiveStep);
+        }
+      });
+    }
+  };
+
   return (
     <>
       <Box className={classes.root}>
@@ -224,7 +244,7 @@ const TabLink = () => {
             >
               {activeStep !== 3 ? t(`createProject.next`) : t(`createProject.ValidateAndPostProject`)}
             </Button>
-            <Link to="/project/create-project" className="link" onClick={handleNext}>
+            <Link to="/project/create-project" className="link" onClick={handleNextLink}>
               {activeStep !== 3 ? t(`createProject.skipThisStep`) : t(`createProject.SavAsDraft`)}
             </Link>
           </Box>
