@@ -6,7 +6,7 @@ export default makeStyles(
       background: "none",
       boxShadow: "none",
       borderRadius: 0,
-      maxWidth: 335,
+      //maxWidth: 335,
       margin: 0,
       padding: "1px 1px 28px",
       position: 'relative',

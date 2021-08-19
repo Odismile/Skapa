@@ -177,7 +177,7 @@ const PrimaryHeader = () => {
               <Link className="nav_link">Wishlist</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link">Coaching</Link>
+              <Link className="nav_link" href="/coachs">Coaching</Link>
             </ListItem>
             <ListItem disableGutters={true}>
               <Link className="nav_link">Wallet</Link>
