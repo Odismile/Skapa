@@ -22,7 +22,7 @@ import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
-import { projectSkills } from '../../ReactiveVariable/Project/projectSkills';
+import { projectFilterBy, projectSkills } from '../../ReactiveVariable/Project/projectSkills';
 import useStyles from './styles';
 
 const ProjectContent = () => {
@@ -35,6 +35,7 @@ const ProjectContent = () => {
   const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
 
   const projectCategory = useReactiveVar(projectSkills);
+  const projectFilterByLocal = useReactiveVar(projectFilterBy);
 
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -73,6 +74,8 @@ const ProjectContent = () => {
       setProjects(newProjects);
     }
   };
+
+  console.log(`projectFilterByLocal`, projectFilterByLocal);
 
   return (
     <Box className={classes.projectPage}>

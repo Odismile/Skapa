@@ -13,3 +13,4 @@ export const cache: InMemoryCache = new InMemoryCache({
 });
 
 export const projectSkills = cache.makeVar<string[]>([]);
+export const projectFilterBy = cache.makeVar<string[]>([]);
