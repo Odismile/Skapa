@@ -30,8 +30,8 @@
       "via": "language"
     },
     "profiles": {
-      "collection": "profiles",
-      "via": "job_seniority_id"
+      "via": "job_seniority_id",
+      "collection": "profiles"
     },
     "profile_skills": {
       "collection": "profile-skills",
@@ -50,8 +50,8 @@
       "via": "item"
     },
     "profiles_types": {
-      "collection": "profiles",
-      "via": "profile_type_id"
+      "via": "profile_type_id",
+      "collection": "profiles"
     }
   }
 }

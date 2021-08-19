@@ -1,4 +1,5 @@
-'use strict';
+"use strict";
+const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -6,7 +7,11 @@
  */
 
 module.exports = {
-    /*get:async ctx =>{
-        console.log("ity eh ",ctx);
-    }*/
+  async create(ctx) {
+    return await strapi.api.projects.services.projects.create(
+      ctx.request.body,
+      {},
+      ctx.state.user.id
+    );
+  },
 };

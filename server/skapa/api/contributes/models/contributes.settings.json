@@ -18,8 +18,8 @@
       "via": "contributes"
     },
     "profile_id": {
-      "model": "profiles",
-      "via": "contributes"
+      "via": "contributes",
+      "model": "profiles"
     }
   }
 }
