@@ -23,6 +23,7 @@ import DetailsProjects from '../Containers/DetailsProjects/DetailsProjects';
 import Wishlist from '../Containers/Wishlist/Wishlist';
 import Coachs from '../Containers/Coachs/Coachs';
 import Profile from '../Containers/Profile/Profile';
+import MyActivity from '../Containers/MyActivity/MyActivity';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -46,6 +47,7 @@ export const DETAILS_PLACE = '/details-place';
 export const DETAILS_PROJECTS = '/details-projects';
 export const WISHLIST = '/wishlist';
 export const COACHS = '/coachs';
+export const MYACTIVITY = '/myactivity';
 export const UNAUTHORIZED = '/unauthorized';
 export const PROFILE = '/profile';
 
@@ -212,5 +214,12 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: Profile,
+  },
+  {
+    key: 'MYACTIVITY',
+    route: MYACTIVITY,
+    roles: [],
+    private: false,
+    component: MyActivity,
   },
 ];

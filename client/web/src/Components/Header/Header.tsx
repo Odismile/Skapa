@@ -160,7 +160,7 @@ const PrimaryHeader = () => {
               <Link className="nav_link">Profile</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link">My activity</Link>
+              <Link className="nav_link" href="/myactivity">My activity</Link>
             </ListItem>
             <ListItem disableGutters={true}>
               <Link className="nav_link" href="/project">
