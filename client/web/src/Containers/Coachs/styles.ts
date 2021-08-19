@@ -77,6 +77,16 @@ export default makeStyles(
           width: "0.875rem",
         },
       },
+      "& .btn_handleDrawer": {
+        background: "#e5e5e5",
+        borderRadius: 8,
+        height: 8,
+        position: "absolute",
+        left: "50%",
+        top: 15, 
+        transform: "translateX(-50%)",
+        width: 110,
+      },
       "& .content_calendar": {
       },
       "& .header_calendar": {

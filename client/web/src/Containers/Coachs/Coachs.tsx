@@ -11,6 +11,7 @@ import {
   Typography,
   Fade,
   Link,
+  SwipeableDrawer,
 } from '@material-ui/core';
 import PrimaryHeader from '../../Components/Header/Header';
 import DailyRate from '../../Components/DailyRate/DailyRate';
@@ -141,23 +142,21 @@ const Coachs = () => {
           </Box> */}
         </Box>
       </Box>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
+      <SwipeableDrawer
         className={classes.modalCalendar}
+        anchor="bottom"
         open={openCalendar}
         onClose={handleClose}
+        onOpen={handleOpen}
         closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
+        // BackdropComponent={Backdrop}
+        // BackdropProps={{
+        //   timeout: 500,
+        // }}
       >
         <Fade in={openCalendar}>
           <Box className={classes.paperCalendar}>
-            <IconButton className="btn_close" onClick={handleClose}>
-              <Cross />
-            </IconButton>
+            <Button variant="contained" className="btn_handleDrawer" onClick={handleClose}></Button>
             <Box className="content_calendar" style={{ display: 'block' }}>
               <Box className="header_calendar" component="header">
                 <h2 id="transition-modal-title">Date and Time</h2>
@@ -204,7 +203,7 @@ const Coachs = () => {
             </Box>
           </Box>
         </Fade>
-      </Modal>
+      </SwipeableDrawer>
     </Box>
   );
 };
