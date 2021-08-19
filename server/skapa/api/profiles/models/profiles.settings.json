@@ -48,8 +48,8 @@
       "via": "profile"
     },
     "projects": {
-      "collection": "projects",
-      "via": "profile"
+      "via": "profile",
+      "collection": "projects"
     },
     "profile_type_id": {
       "via": "profiles_types",
