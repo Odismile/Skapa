@@ -92,6 +92,10 @@ export interface createProjectInput {
   data?: ProjectInput | null;
 }
 
+export interface deleteProjectFavoritInput {
+  where?: InputID | null;
+}
+
 export interface editProjectFavoritInput {
   profile?: string | null;
   project?: string | null;
