@@ -48,24 +48,6 @@ const OnboardingProfile = () => {
   };
 
   const handleClick = () => {
-    //TEST
-    /* doCreateProfile({
-      variables: {
-        input: {
-          data: {
-            position: 'test position',
-            bio: 'test bio',
-            job_seniority_id: '',
-            picture: '',
-            profile_skills: [],
-            video: '',
-            users_id: '',
-          },
-        },
-      },
-    }).then((result) => {
-      //console.log('resultat', result.data);
-    }); */
     history.push('/onboarding-profile2');
   };
 
@@ -94,9 +76,7 @@ const OnboardingProfile = () => {
           >
             {!loadingYears &&
               dataYears?.items?.map((item, index) => {
-                return (
-                  <FormControlLabel key={index} value={item?.label} control={<Radio />} label={item?.label ?? ''} />
-                );
+                return <FormControlLabel key={index} value={item?.id} control={<Radio />} label={item?.label ?? ''} />;
               })}
           </RadioGroup>
         </FormControl>

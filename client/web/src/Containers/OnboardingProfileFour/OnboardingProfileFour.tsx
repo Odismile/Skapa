@@ -4,15 +4,6 @@ import { useHistory } from 'react-router';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from './style';
 import IconChange from '../../Components/Icons/Change/Change';
-import IconCreative from '../../Components/Icons/Creative/Creative';
-import IconInnovation from '../../Components/Icons/Innovation/Innovation';
-import IconProspective from '../../Components/Icons/Prospective/Prospective';
-import IconDelivery from '../../Components/Icons/Delivery/Delivery';
-import IconTechnical from '../../Components/Icons/Technical/Technical';
-
-import bgDelivery from '../../Assets/images/delivery.svg';
-import bgProspective from '../../Assets/images/prospective.svg';
-import bgTechnical from '../../Assets/images/technical.svg';
 import { useItemsProjectTypes } from '../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
 import {
   ageProfil,
@@ -21,11 +12,13 @@ import {
   bio,
   skillsSelectedVariable,
   pictureFile,
+  videoFile,
 } from '../../ReactiveVariable/Profil/profil';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { ONBOARDING_PROFILE7 } from '../../Routes';
 import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
+import { getIdMe } from '../../Services';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 
 const OnboardingProfileFour = () => {
@@ -35,9 +28,9 @@ const OnboardingProfileFour = () => {
   const [projectTypeSelected, setProjectTypeSelected] = useState<
     (Items_get_language_items | null)[] | null | undefined
   >([]);
-
   const history = useHistory();
   function handleClick() {
+    console.log(projectTypeSelected);
     //TEST
     doCreateProfile({
       variables: {
@@ -46,16 +39,16 @@ const OnboardingProfileFour = () => {
             position: yourPosition(),
             bio: bio(),
             job_seniority_id: ageProfil(),
-            //picture: pictureFile(),
+            picture: pictureFile(),
+            video: videoFile(),
+            languages: ['1', '2'],
             profile_skills: transformSkillsIds(skillsSelectedVariable()),
-            video: '',
-            users_id: '',
+            users_id: getIdMe(),
+            projects: transformSkillsIds(projectsTypeSelectedVariable()),
           },
         },
       },
-    }).then((result) => {
-      console.log('resultat', result.data);
-    });
+    }).then((result) => {});
     history.replace(ONBOARDING_PROFILE7);
   }
 

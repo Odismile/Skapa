@@ -94,14 +94,7 @@ const OnboardingProfileTwo = () => {
               <Box className="video">
                 <Box component="span">Import a video from your computer (mp4)</Box>
                 {videoUpload.length !== 0 ? (
-                  <ReactPlayer
-                    url={videoUpload}
-                    // className={classes.videoUpload}
-                    width={'150px'}
-                    height={'100px'}
-                    playing={true}
-                    controls={true}
-                  />
+                  <ReactPlayer url={videoUpload} width={'150px'} height={'100px'} playing={true} controls={true} />
                 ) : (
                   <></>
                 )}
@@ -116,6 +109,7 @@ const OnboardingProfileTwo = () => {
             <textarea
               placeholder="tell us more about you !"
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                bio(e.target.value);
                 testButtonToEnabled();
               }}
             ></textarea>
