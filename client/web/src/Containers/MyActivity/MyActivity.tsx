@@ -11,6 +11,7 @@ import CardTalentOngoing from '../../Components/MyActivity/CardTalentOngoing/Car
 import CardTalentFinished from '../../Components/MyActivity/CardTalentFinished/CardTalentFinished';
 import CardCreatorFinished from '../../Components/MyActivity/CardCreatorFinished/CardCreatorFinished';
 import CardCreatorDraft from '../../Components/MyActivity/CardCreatorDraft/CardCreatorDraft';
+import CardReview from '../../Components/CardReview/CardReview';
 
 const MyActivity = () => {
   const classes = useStyles();
@@ -35,6 +36,8 @@ const MyActivity = () => {
         <CardCreatorFinished/>
         <br></br>
         <CardCreatorDraft/>
+        <br></br>
+        <CardReview projectId='33' imgCardUrl="" name=""/>
       </Box>
     </Box>
   );
