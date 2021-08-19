@@ -13,7 +13,6 @@ import {
 import useStyles from './style';
 import photoCard from '../../Assets/images/photo-card.png';
 import organisationImg from '../../Assets/images/organisation.png';
-import Heart from '../Icons/Heart';
 import Award from '../Icons/Award';
 import CardProject from '../CardProjects/CardProjects';
 import { useHistory } from 'react-router-dom';

@@ -40,18 +40,18 @@ export default makeStyles((theme) => ({
                 zIndex: 10,
                 padding: 0,
                 "&:focus, &:hover": {
-                    "& svg": {
-                        "& path": {
-                            fill: "#e30057",
-                            stroke: "#e30057"
-                        }
+                    '& svg': {
+                        '& path': {
+                          fill: '#e30057',
+                          d: "path('M19.4,1.8c-1-1.1-2.4-1.8-3.9-1.8s-2.9,0.6-3.9,1.8l-1.1,1.2L9.4,1.8c-2.2-2.4-5.7-2.4-7.8,0 c-2.2,2.4-2.2,6.2,0,8.5l1.1,1.2l7.8,8.5l7.8-8.5l1.1-1.2C20.4,9.2,21,7.6,21,6S20.4,2.9,19.4,1.8z')",
+                        },
                     }
                 },
                 "& svg": {
                     "& path": {
-                        stroke: "#ffffff",
                         width: 20,
                         height: 20,
+                        fill: "#fff"
                     }
 
                 }

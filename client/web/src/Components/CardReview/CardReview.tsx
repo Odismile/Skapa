@@ -12,7 +12,9 @@ import {
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC } from 'react';
 import { useHistory } from 'react-router';
-import Heart from '../Icons/Heart';
+import imgCard from '../../Assets/images/lab.svg';
+import { projects } from '../../GraphQL/project/types/projects';
+import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
 import useStyles from './style';
 
@@ -124,7 +126,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
       </CardContent>
       <Box className="category">LAB</Box>
       <IconButton className="btn-favori" onClick={handleClick}>
-        <Heart className="iconHeart" />
+        <HeartLine className="iconHeart" />
       </IconButton>
       <Box className="bgBlack"></Box>
     </Card>
