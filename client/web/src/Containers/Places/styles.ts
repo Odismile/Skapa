@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import check from '../../Assets/images/checkSwitch.svg';
 
 export default makeStyles(
   theme => ({
@@ -101,10 +102,10 @@ export default makeStyles(
             fontWeight: "700",
             color: "#000000",
             marginTop: 0,
-            paddingLeft: 18,
+            // paddingLeft: 18,
           },
           "& .filter-content": {
-            paddingLeft: 18,
+            // paddingLeft: 18,
           },
           '& .field_item': {
             position: 'relative',
@@ -271,23 +272,31 @@ export default makeStyles(
       paddingRight: 0,
       left: 4,
       top: 3,
-      '&$checked': {
-        color: "#dffff2",
-        transform: "translateX(22px)",
-      },
-      '&$checked + $track': {
-        backgroundColor: "#5bd3a0",
-      },
-      '&$checked + $thumb': {
-        backgroundColor: "red",
-      },
     },
-    checked: {},
+    checked: {
+      color: "#5BD3A0!important",
+      "&::before": {
+        content:'""',
+        display: "block",
+        position: "absolute",
+        backgroundImage: `url(${check})`,
+        width: 9,
+        height: 8,
+        top: 8,
+        left: 7,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "contain",
+        zIndex: 0,
+      }
+    },
     track: {
       width: 52,
       height: 28,
       borderRadius: 16,
-      background: "#dfdfdf"
+      background: "#dfdfdf",
+      "$checked$checked + &": {
+        backgroundColor: "#DFFFF2"
+      }
     },
     thumb: {
       width: 22,
