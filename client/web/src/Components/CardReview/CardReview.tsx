@@ -12,8 +12,8 @@ import {
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
-import imgCard from '../../Assets/images/lab.svg';
-import { projects } from '../../GraphQL/project/types/projects';
+import { useCreateProjectFavori } from '../../Providers/ProjectProvider/useCreateProjectFavori';
+import { useDeleteProjectFavori } from '../../Providers/ProjectProvider/useDeleteProjectFavori';
 import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
@@ -58,11 +58,14 @@ interface CardReviewProps {
   name: string;
 }
 
-
 const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
   const classes = useStyles();
   const history = useHistory();
   const [check, setCheck] = useState(false);
+
+  const { doCreateProjectFavorit, data: dataProjectFavorit } = useCreateProjectFavori();
+  const { doDeleteProjectFavorit } = useDeleteProjectFavori();
+
   const goToDetailsProjects = (event: any, projectId?: string) => {
     if (projectId) {
       history.push(`/projects/${projectId}`);
@@ -70,11 +73,22 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
     event.stopPropagation();
   };
 
-  const handleClick:React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation()
-    setCheck(current => !current)
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    const newCheck = !check;
+    setCheck(newCheck);
+    if (newCheck) {
+      doCreateProjectFavorit({
+        variables: {
+          input: { data: { profile: localStorage.getItem('idMe'), project: projectId ?? '', status: '2' } },
+        },
+      });
+    } else {
+      // doDeleteProjectFavorit({
+      //   variables: { input: { where: { id: dataProjectFavorit?.createProjectFavorit?.projectFavorit?.id ?? '' } } },
+      // });
+    }
   };
-
 
   return (
     <Card className={classes.root} onClick={(event) => goToDetailsProjects(event, projectId)}>
@@ -131,12 +145,10 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
         </Box>
       </CardContent>
       <Box className="category">LAB</Box>
-      
-        <IconButton className="btn-favori" onClick={handleClick}>
-          {check ? <HeartLine className="iconHeartOutlined" /> : <Heart  className="iconHeart"/>}
-        </IconButton>
-      
-      
+
+      <IconButton className="btn-favori" onClick={handleClick}>
+        {check ? <Heart className="iconHeart" /> : <HeartLine className="iconHeartOutlined" />}
+      </IconButton>
 
       <Box className="bgBlack"></Box>
     </Card>

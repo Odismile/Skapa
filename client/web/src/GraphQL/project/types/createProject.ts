@@ -20,6 +20,11 @@ export interface createProject_createProject_project_project_skills {
   item: createProject_createProject_project_project_skills_item | null;
 }
 
+export interface createProject_createProject_project_profile {
+  __typename: "Profiles";
+  id: string;
+}
+
 export interface createProject_createProject_project {
   __typename: "Projects";
   id: string;
@@ -32,6 +37,7 @@ export interface createProject_createProject_project {
   Date_end: any | null;
   created_at: any;
   project_skills: (createProject_createProject_project_project_skills | null)[] | null;
+  profile: createProject_createProject_project_profile | null;
 }
 
 export interface createProject_createProject {

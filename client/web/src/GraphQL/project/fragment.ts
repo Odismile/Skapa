@@ -17,6 +17,9 @@ export const PROJECT_INFO_FRAGMENT = gql`
         label
       }
     }
+    profile {
+      id
+    }
   }
 `;
 

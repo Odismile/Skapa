@@ -18,6 +18,11 @@ export interface projects_all_projects_project_skills {
   item: projects_all_projects_project_skills_item | null;
 }
 
+export interface projects_all_projects_profile {
+  __typename: "Profiles";
+  id: string;
+}
+
 export interface projects_all_projects {
   __typename: "Projects";
   id: string;
@@ -30,6 +35,7 @@ export interface projects_all_projects {
   Date_end: any | null;
   created_at: any;
   project_skills: (projects_all_projects_project_skills | null)[] | null;
+  profile: projects_all_projects_profile | null;
 }
 
 export interface projects_all {
