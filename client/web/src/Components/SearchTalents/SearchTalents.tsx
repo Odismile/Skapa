@@ -94,9 +94,9 @@ const SearchTalents = () => {
         </Box>
         <Box className="form-control-item">
           <Typography component="h2">Languages</Typography>
-            <LanguagesChoice name="English" id="english" title="English"/>
-            <LanguagesChoice name="French" id="french" title="French"/>
-            <LanguagesChoice name="Spanish" id="spanish" title="Spanish"/>
+            <LanguagesChoice name="English" id="english" title="English" test={()=>{}}/>
+            <LanguagesChoice name="French" id="french" title="French" test={()=>{}}/>
+            <LanguagesChoice name="Spanish" id="spanish" title="Spanish" test={()=>{}}/>
         </Box>
       </FormControl>
     </Box>

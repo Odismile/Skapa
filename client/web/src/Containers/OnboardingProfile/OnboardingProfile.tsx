@@ -8,8 +8,7 @@ import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
 import { useItemsGetYear } from '../../Providers/ItemsProvider/hooks/useItemsGetYear';
-import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
-import { ageProfil, nameOfOrganisation, yourPosition } from '../../ReactiveVariable/Profil/profil';
+import { ageProfil, nameOfOrganisation, yourPosition, levelLanguages } from '../../ReactiveVariable/Profil/profil';
 import useStyles from './styles';
 const OnboardingProfile = () => {
   const classes = useStyles();
@@ -21,10 +20,10 @@ const OnboardingProfile = () => {
   const { data, loading } = useItemsGetlaguage();
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
-  const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
+  // const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
 
   const testButtonToEnabled = () => {
-    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() /*  && levelLanguages().length === 0 */) {
+    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() && !!levelLanguages()) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -95,7 +94,7 @@ const OnboardingProfile = () => {
             <>
               {data?.items?.map((item, index) => {
                 return (
-                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} />
+                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} test={testButtonToEnabled}/>
                 );
               })}
             </>

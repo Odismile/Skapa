@@ -95,9 +95,9 @@ const Profile = () => {
               </Box>
               <Box className="content_bloc language-bloc">
                 <FormLabel component="legend">Languages level</FormLabel>
-                <LanguagesChoice title="French" name="french" id="" />
-                <LanguagesChoice title="English" name="english" id="" />
-                <LanguagesChoice title="Spanish" name="spanish" id="" />
+                <LanguagesChoice title="French" name="french" id=""  test={()=>{}}/>
+                <LanguagesChoice title="English" name="english" id=""  test={()=>{}}/>
+                <LanguagesChoice title="Spanish" name="spanish" id=""  test={()=>{}}/>
               </Box>
               </Box>
             <Box className="bio box-item">

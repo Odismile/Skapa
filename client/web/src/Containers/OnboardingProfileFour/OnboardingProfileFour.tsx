@@ -16,7 +16,6 @@ import {
 } from '../../ReactiveVariable/Profil/profil';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { ONBOARDING_PROFILE7 } from '../../Routes';
-import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { getIdMe } from '../../Services';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
@@ -28,9 +27,18 @@ const OnboardingProfileFour = () => {
   const [projectTypeSelected, setProjectTypeSelected] = useState<
     (Items_get_language_items | null)[] | null | undefined
   >([]);
+  const [disabledButton, setDisabledButton] = useState(true);
+
+  const testButtonToEnabled = () => {
+    if (projectsTypeSelectedVariable()?.length!==0) {
+      setDisabledButton(false);
+    } else {
+      setDisabledButton(true);
+    }
+  };
+
   const history = useHistory();
   function handleClick() {
-    console.log(projectTypeSelected);
     //TEST
     doCreateProfile({
       variables: {
@@ -68,6 +76,7 @@ const OnboardingProfileFour = () => {
         projectsTypeSelectedVariable(newSkills);
       }
     }
+    testButtonToEnabled()
   };
 
   return (
@@ -91,7 +100,7 @@ const OnboardingProfileFour = () => {
           </Box>
         </Box>
         <Box className={classes.btnNext}>
-          <Button variant="contained" onClick={handleClick}>
+          <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
             Next
           </Button>
         </Box>
