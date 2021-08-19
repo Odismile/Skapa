@@ -47,8 +47,8 @@
       "via": "projects"
     },
     "profile": {
-      "model": "profiles",
-      "via": "projects"
+      "via": "projects",
+      "model": "profiles"
     },
     "project_favorits": {
       "collection": "project-favorits",

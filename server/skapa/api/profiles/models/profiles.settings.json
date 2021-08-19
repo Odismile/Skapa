@@ -24,10 +24,11 @@
       "type": "string"
     },
     "job_seniority_id": {
-      "via": "profiles",
-      "model": "items"
+      "model": "items",
+      "via": "profiles"
     },
     "users_id": {
+      "unique": true,
       "plugin": "users-permissions",
       "model": "user"
     },
@@ -48,16 +49,16 @@
       "via": "profile"
     },
     "projects": {
-      "via": "profile",
-      "collection": "projects"
+      "collection": "projects",
+      "via": "profile"
     },
     "profile_type_id": {
-      "via": "profiles_types",
-      "model": "items"
+      "model": "items",
+      "via": "profiles_types"
     },
     "contributes": {
-      "via": "profile_id",
-      "collection": "contributes"
+      "collection": "contributes",
+      "via": "profile_id"
     }
   }
 }

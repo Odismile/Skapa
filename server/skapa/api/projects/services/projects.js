@@ -7,7 +7,11 @@ var { generateReadSignedUrl } = require("../../../Utils/firebaseCloudStorage");
  */
 
 module.exports = {
-  async create(data, { files } = {}) {
+  async create(data, { files } = {}, userId) {
+    const profile = await strapi
+      .query("profiles")
+      .findOne({ users_id: userId });
+
     const project_skills = data.project_skills;
     const items = await strapi
       .query("items")
@@ -16,7 +20,12 @@ module.exports = {
 
     delete data.project_skills;
 
-    const entry = await strapi.query("projects").create(data);
+    const entry = await strapi.query("projects").create({
+      ...data,
+      profile: profile.id,
+      created_by: userId,
+      updated_by: userId,
+    });
 
     const createPS = async function (projecId, skillId) {
       const prSkill = await strapi.query("project-skills").create({
