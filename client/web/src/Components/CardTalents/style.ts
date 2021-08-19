@@ -21,14 +21,13 @@ export default makeStyles((theme) => ({
           right: 0,
           zIndex: 1,
           padding: 0,
-          '&:focus, &:hover': {
-            '& svg': {
-              '& path': {
-                fill: '#e30057',
-                d: "path('M19.4,1.8c-1-1.1-2.4-1.8-3.9-1.8s-2.9,0.6-3.9,1.8l-1.1,1.2L9.4,1.8c-2.2-2.4-5.7-2.4-7.8,0 c-2.2,2.4-2.2,6.2,0,8.5l1.1,1.2l7.8,8.5l7.8-8.5l1.1-1.2C20.4,9.2,21,7.6,21,6S20.4,2.9,19.4,1.8z')",
-              },
-            }
+          '& svg':{
+            width: 21,
+            height: 20,
           },
+          '& .iconHeartOutlined':{
+            stroke: '#8870ff',
+          }
         },
         "& .head-title": {
           maxWidth: "90%",
@@ -39,15 +38,6 @@ export default makeStyles((theme) => ({
           whiteSpace: 'nowrap',
           textOverflow: "ellipsis",
           overflow: 'hidden'
-        },
-        '& .iconHeart': {
-          width: 21,
-          height: 20,
-          '& path': {
-            width: 21,
-            height: 20,
-            fill: "#8870ff"
-          },
         },
         '& .iconOrganisation': {
           position: 'absolute',
