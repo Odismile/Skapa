@@ -24,8 +24,8 @@
       "type": "string"
     },
     "job_seniority_id": {
-      "model": "items",
-      "via": "profiles"
+      "via": "profiles",
+      "model": "items"
     },
     "users_id": {
       "plugin": "users-permissions",
@@ -48,8 +48,8 @@
       "via": "profile"
     },
     "projects": {
-      "collection": "projects",
-      "via": "profile"
+      "via": "profile",
+      "collection": "projects"
     }
   }
 }
