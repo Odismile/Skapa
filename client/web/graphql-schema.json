@@ -8587,7 +8587,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Date",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -8599,7 +8599,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "Date",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -9654,7 +9654,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "ID",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -9690,7 +9690,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "ID",
+              "name": "DateTime",
               "ofType": null
             },
             "isDeprecated": false,
@@ -9934,7 +9934,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "Date",
+              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null,
@@ -9946,7 +9946,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "Date",
+              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null,
@@ -10174,7 +10174,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "Date",
+              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null,
@@ -10186,7 +10186,7 @@
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "Date",
+              "name": "DateTime",
               "ofType": null
             },
             "defaultValue": null,

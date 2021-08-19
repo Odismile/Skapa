@@ -20,3 +20,23 @@ export const UPDATE_PROJECT = gql`
   }
   ${PROJECT_INFO_FRAGMENT}
 `;
+
+export const CREATE_PROJECT_FAVORI = gql`
+  mutation createProjectFavorit($input: createProjectFavoritInput) {
+    createProjectFavorit(input: $input) {
+      projectFavorit {
+        id
+      }
+    }
+  }
+`;
+
+export const UPDATE_PROJECT_FAVORI = gql`
+  mutation updateProjectFavorit($input: updateProjectFavoritInput) {
+    updateProjectFavorit(input: $input) {
+      projectFavorit {
+        id
+      }
+    }
+  }
+`;

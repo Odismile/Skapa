@@ -127,7 +127,7 @@ const ProjectContent = () => {
             <Typography className="title_text" variant="h2">
               I contribute to thefollowing project{' '}
             </Typography>
-            <Button color="primary" variant="contained" href="" className="btn_done">
+            <Button color="primary" variant="contained" href="" className="btn_done" onClick={handleDrawer}>
               Done
             </Button>
           </Box>
