@@ -15,7 +15,7 @@ const Pitch: FC<pitchProps> = ({ url }) => {
         Pitch
       </Typography>
       <Box className="video">
-        <ReactPlayer className="video" url={url} playing={true} controls={true} />
+        <ReactPlayer className="video" url={url} playing={true} controls={true} width="100%" height="168px"/>
       </Box>
     </Box>
   );

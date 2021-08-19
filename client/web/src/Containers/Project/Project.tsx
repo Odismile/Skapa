@@ -1,7 +1,6 @@
 import { Box, makeStyles, Tab, Tabs, Typography } from '@material-ui/core';
 import React from 'react';
 import PrimaryHeader from '../../Components/Header';
-import Loader from '../../Components/Loader/Loader';
 import Places from '../Places/Places';
 import ProjectContent from '../ProjectContent/ProjectContent';
 import Talents from '../Talents/Talents';
@@ -97,7 +96,6 @@ const Project = () => {
           </TabPanel>
         </Box>
       </Box>
-      <Loader />
     </Box>
   );
 };

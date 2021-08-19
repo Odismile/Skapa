@@ -87,7 +87,10 @@ export default makeStyles((theme) => ({
           height: 7,
           marginRight: 5,
           marginTop: 3,
-        },
+          "& path": {
+            fill: "#5bd3a0",
+          }
+        }
       },
     },
     '& .details': {
