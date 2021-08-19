@@ -7,12 +7,6 @@
 // START Enums and Input Objects
 //==============================================================
 
-export enum ENUM_LANGUAGES_LEVEL {
-  BASIC = "BASIC",
-  FLUENT = "FLUENT",
-  INTERMEDIATE = "INTERMEDIATE",
-}
-
 export enum PublicationState {
   LIVE = "LIVE",
   PREVIEW = "PREVIEW",
@@ -35,6 +29,7 @@ export interface ProfileInput {
   languages?: (string | null)[] | null;
   projects?: (string | null)[] | null;
   profile_type_id?: string | null;
+  contributes?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -65,6 +60,7 @@ export interface ProjectInput {
   organisation?: string | null;
   Date_start?: any | null;
   Date_end?: any | null;
+  contributes?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -121,6 +117,7 @@ export interface editProjectInput {
   organisation?: string | null;
   Date_start?: any | null;
   Date_end?: any | null;
+  contributes?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
