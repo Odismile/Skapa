@@ -40,16 +40,20 @@
       "via": "profile"
     },
     "project_favorits": {
-      "via": "profile",
-      "collection": "project-favorits"
+      "collection": "project-favorits",
+      "via": "profile"
     },
     "languages": {
       "collection": "languages",
       "via": "profile"
     },
     "projects": {
-      "via": "profile",
-      "collection": "projects"
+      "collection": "projects",
+      "via": "profile"
+    },
+    "profile_type_id": {
+      "via": "profiles_types",
+      "model": "items"
     }
   }
 }
