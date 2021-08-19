@@ -29,8 +29,8 @@
       "via": "language"
     },
     "profiles": {
-      "via": "job_seniority_id",
-      "collection": "profiles"
+      "collection": "profiles",
+      "via": "job_seniority_id"
     },
     "profile_skills": {
       "collection": "profile-skills",
