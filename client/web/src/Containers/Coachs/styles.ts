@@ -55,14 +55,14 @@ export default makeStyles(
     },
     modalCalendar: {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'flex-end',
       justifyContent: 'center',
       
     },
     paperCalendar: {
       backgroundColor: "#fff",
       border: "none",
-      borderRadius: 15,
+      borderRadius: '15px 15px 0px 0px',
       padding: theme.spacing(5.5, 2.5, 2.5),
       position: "relative",
       maxWidth: 480,

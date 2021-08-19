@@ -135,6 +135,7 @@ const SearchTalents = () => {
                   name={`language-${item.id}`}
                   id={`language-${item.id}`}
                   title={item.label}
+                  test={() => {}}
                 />
               ),
           )}
