@@ -57,16 +57,50 @@ export default makeStyles(
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      
     },
     paperCalendar: {
       backgroundColor: "#fff",
       border: "none",
       borderRadius: 15,
-      boxShadow: theme.shadows[1],
-      padding: theme.spacing(2),
-      "& .header_calendar": {},
+      padding: theme.spacing(5, 2.5, 2.5),
+      position: "relative",
+      maxWidth: 480,
+      width: "100%",
+      "& .btn_close": {
+        position: "absolute",
+        right: 4,
+        top: 4,
+        "& svg": {
+          color: "#000",
+          fontSize: "0.875rem",
+          width: "0.875rem",
+        },
+      },
+      "& .content_calendar": {
+      },
+      "& .header_calendar": {
+        display: "flex",
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 20,
+        "& h2": {
+          color: "#000",
+          fontSize: 14,
+          fontWeight: 700,
+          margin: 0,
+          
+        },
+        "& .btn_book": {
+          borderRadius: 18,
+          height: 35,
+          width: 84,
+        },
+
+      },
       "& .body_calendar": {
         "& .field_item": {
+          marginBottom: 20,
           "& label": {
             fontStyle: "normal",
             fontSize: 10,
@@ -78,6 +112,46 @@ export default makeStyles(
               fontSize: 12,
             },
           },
+        },
+      },
+
+      "& .valid_calendar": {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: 'center',
+        height: "100%",
+        margin: "0 auto",
+        maxWidth: 320,
+        textAlign: "center",
+        "& h2": {
+          color: "#8870ff",
+          margin: "0 0 28px",
+        },
+        "& .img_path": {
+          marginBottom: 40,
+          textAlign: "center",
+          "& img": {
+            height: "auto",
+            maxWidth: "100%",
+          },
+        },
+        "& .text_bloc": {
+          fontSize: 14,
+          textAlign: "center",
+          "& p": {
+            fontSize: 14,
+            color: "#000",
+            margin: "0 0 20px",
+          },
+          "& .purple_text": {
+            color: "#8870ff",
+          },
+          "& .link": {
+            cursor: "pointer",
+            fontSize: 14,
+            textDecoration: "none",
+            borderBottom: "1px solid #8870ff",
+          }
         },
       },
     },
