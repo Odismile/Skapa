@@ -7,6 +7,7 @@ import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { skillsSelectedVariable } from '../../ReactiveVariable/Profil/profil';
+import { ONBOARDING_PROFILE4 } from '../../Routes';
 import useStyles from './style';
 
 const OnboardingProfileThree = () => {
@@ -18,7 +19,7 @@ const OnboardingProfileThree = () => {
   const [disabledButton, setDisabledButton] = useState(true);
 
   const testButtonToEnabled = () => {
-    if (skillsSelectedVariable()?.length!==0) {
+    if (skillsSelectedVariable()?.length !== 0) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -42,9 +43,9 @@ const OnboardingProfileThree = () => {
     }
   };
 
-  const handleClick= () => {
-    history.push('/onboarding-profile4');
-  }
+  const handleClick = () => {
+    history.push(ONBOARDING_PROFILE4);
+  };
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
     if (skillsSelected?.length === 0) {
@@ -62,7 +63,7 @@ const OnboardingProfileThree = () => {
         setSkillsSelected(newSkills);
       }
     }
-    testButtonToEnabled()
+    testButtonToEnabled();
   };
 
   return (
@@ -95,7 +96,12 @@ const OnboardingProfileThree = () => {
               searchSkills?.map((item, index) => {
                 return (
                   <Box className="inputGroup">
-                    <input id={`option${index}`} name={`option${index}`} type="checkbox" />
+                    <input
+                      id={`option${index}`}
+                      name={`option${index}`}
+                      type="checkbox"
+                      onClick={() => onClickSkill(item)}
+                    />
                     <label htmlFor={`option${index}`}>{item?.label}</label>
                   </Box>
                 );
