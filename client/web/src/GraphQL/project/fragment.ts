@@ -8,8 +8,8 @@ export const PROJECT_INFO_FRAGMENT = gql`
     Picture
     Video
     Type
-    Date_Start
-    Date_End
+    Date_start
+    Date_end
     created_at
     project_skills {
       id

@@ -26,8 +26,8 @@ export interface ProjectInfo {
   Picture: string | null;
   Video: string | null;
   Type: string | null;
-  Date_Start: string | null;
-  Date_End: string | null;
+  Date_start: any | null;
+  Date_end: any | null;
   created_at: any;
   project_skills: (ProjectInfo_project_skills | null)[] | null;
 }

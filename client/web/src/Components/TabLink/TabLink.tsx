@@ -32,9 +32,9 @@ const TabLink = () => {
   const classes = useStyles();
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
-  const { doCreateProject, loading } = useCreateProject();
-  const { doUpdateProject, loading: loadingUpdate } = useUpdateProject();
+  const { doCreateProject, loading, data: dataProject } = useCreateProject();
   const { uploadFile, loading: loadingUpload } = useUploadFile();
+  const { doUpdateProject, loading: loadingUpdate } = useUpdateProject();
 
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
@@ -160,11 +160,12 @@ const TabLink = () => {
           }
         });
       }
+    } else if (newActiveStep === 3) {
+      doUpdateProject({
+        variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '2' } } },
+      });
     } else {
       setActiveStep(newActiveStep);
-    }
-    if (newActiveStep === 3) {
-      console.log('tonga etoo');
     }
   };
 
