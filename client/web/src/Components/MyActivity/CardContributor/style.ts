@@ -7,6 +7,7 @@ const useStyles = makeStyles(() => ({
     border: 'solid 1px #f4f4f4',
     background: '#ffffff',
     boxShadow: '0px 2px 4px rgba(0,0,0,0.11)',
+    marginBottom: 10,
     '& .image':{
       height: 79,
       position: 'relative',
@@ -21,6 +22,7 @@ const useStyles = makeStyles(() => ({
         padding: '0px 9px',
         display: 'flex',
         alignItems: 'center',
+        fontSize: 10,
       }
     },
     '& .details':{

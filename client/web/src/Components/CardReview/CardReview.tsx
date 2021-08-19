@@ -10,10 +10,11 @@ import {
   withStyles,
 } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
 import imgCard from '../../Assets/images/lab.svg';
 import { projects } from '../../GraphQL/project/types/projects';
+import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
 import useStyles from './style';
@@ -57,19 +58,24 @@ interface CardReviewProps {
   name: string;
 }
 
-const handleClick = (event: any) => {
-  event.stopPropagation();
-};
 
 const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
   const classes = useStyles();
   const history = useHistory();
+  const [check, setCheck] = useState(false);
   const goToDetailsProjects = (event: any, projectId?: string) => {
     if (projectId) {
       history.push(`/projects/${projectId}`);
     }
     event.stopPropagation();
   };
+
+  const handleClick:React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation()
+    setCheck(current => !current)
+  };
+
+
   return (
     <Card className={classes.root} onClick={(event) => goToDetailsProjects(event, projectId)}>
       <CardMedia className={classes.media} image={imgCardUrl} title="image" />
@@ -125,9 +131,13 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
         </Box>
       </CardContent>
       <Box className="category">LAB</Box>
-      <IconButton className="btn-favori" onClick={handleClick}>
-        <HeartLine className="iconHeart" />
-      </IconButton>
+      
+        <IconButton className="btn-favori" onClick={handleClick}>
+          {check ? <HeartLine className="iconHeartOutlined" /> : <Heart  className="iconHeart"/>}
+        </IconButton>
+      
+      
+
       <Box className="bgBlack"></Box>
     </Card>
   );

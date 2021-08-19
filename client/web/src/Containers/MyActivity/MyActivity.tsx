@@ -2,31 +2,27 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import PrimaryHeader from '../../Components/Header';
 import useStyles from './styles';
-import UserActivityList from '../../Components/MyActivity/UserActivityList/UserActivityList';
-import UserContributorList from '../../Components/MyActivity/UserContributorList/UserContributorList';
-import UserTalentList from '../../Components/MyActivity/UserTalentList/UserTalentList';
-import UserCreatorList from '../../Components/MyActivity/UserCreatorList/UserCreatorList';
-import CardContributor from '../../Components/MyActivity/CardContributor/CardContributor';
-import CardTalentOngoing from '../../Components/MyActivity/CardTalentOngoing/CardTalentOngoing';
-import CardTalentFinished from '../../Components/MyActivity/CardTalentFinished/CardTalentFinished';
-import CardCreatorFinished from '../../Components/MyActivity/CardCreatorFinished/CardCreatorFinished';
-import CardCreatorDraft from '../../Components/MyActivity/CardCreatorDraft/CardCreatorDraft';
-import CardReview from '../../Components/CardReview/CardReview';
 import CardSpace from '../../Components/MyActivity/CardSpace/CardSpace';
+import { useHistory } from 'react-router';
 
 const MyActivity = () => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleClick = (params:string) => {
+    history.push("/myactivity/"+params)
+  }
   return (
     <Box>
       <PrimaryHeader />
       <Box className={classes.box}>
-        <Box>
+        <Box onClick={() => handleClick("contribute")}>
           <CardSpace title="Contributor space" subltitle="Lorem Ipsum" />
         </Box>
-        <Box>
+        <Box onClick={() => handleClick("talent")}>
           <CardSpace title="Talent space" subltitle="Lorem Ipsum" />
         </Box>
-        <Box>
+        <Box onClick={() => handleClick("creator")}>
           <CardSpace title="Creator space" subltitle="Lorem Ipsum" />
         </Box>
       </Box>
