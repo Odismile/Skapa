@@ -10,6 +10,7 @@ import CardContributor from '../../Components/MyActivity/CardContributor/CardCon
 import CardTalentOngoing from '../../Components/MyActivity/CardTalentOngoing/CardTalentOngoing';
 import CardTalentFinished from '../../Components/MyActivity/CardTalentFinished/CardTalentFinished';
 import CardCreatorFinished from '../../Components/MyActivity/CardCreatorFinished/CardCreatorFinished';
+import CardCreatorDraft from '../../Components/MyActivity/CardCreatorDraft/CardCreatorDraft';
 
 const MyActivity = () => {
   const classes = useStyles();
@@ -32,6 +33,8 @@ const MyActivity = () => {
         <CardTalentFinished/>
         <br></br>
         <CardCreatorFinished/>
+        <br></br>
+        <CardCreatorDraft/>
       </Box>
     </Box>
   );
