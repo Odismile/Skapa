@@ -17,5 +17,9 @@ export const pictureFile = makeVar<string>('');
 export const videoFile = makeVar<string>('');
 export const bio = makeVar<string>('');
 
+export const filesPicture = makeVar<File[] | null>(null);
+export const filesVideo = makeVar<File[] | null>(null);
+
+
 export const skillsSelectedVariable = makeVar<(Items_get_language_items | null)[] | null | undefined>(null);
 export const projectsTypeSelectedVariable = makeVar<(Items_get_language_items | null)[] | null | undefined>(null);

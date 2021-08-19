@@ -13,12 +13,16 @@ import {
   skillsSelectedVariable,
   pictureFile,
   videoFile,
+  filesPicture,
+  filesVideo
 } from '../../ReactiveVariable/Profil/profil';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { ONBOARDING_PROFILE7 } from '../../Routes';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { getIdMe } from '../../Services';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
+import { useUploadFile } from '../../Utils/uploadFile';
+import Loader from '../../Components/Loader/Loader';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -37,10 +41,42 @@ const OnboardingProfileFour = () => {
     }
   };
 
+  const { uploadFile } = useUploadFile();
+  const [load, setLoad] = useState<boolean>(false);
+  //const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
+
+  const sendFile=async () => {
+   // setFilesPicture(files)
+     await uploadFile(filesPicture());
+     await uploadFile(filesVideo());
+  }
   const history = useHistory();
   function handleClick() {
     //TEST
-    doCreateProfile({
+    sendFile().finally(()=>{
+      doCreateProfile({
+        variables: {
+          input: {
+            data: {
+              position: yourPosition(),
+              bio: bio(),
+              job_seniority_id: ageProfil(),
+              picture: pictureFile(),
+              video: videoFile(),
+              languages: ['1', '2'],
+              profile_skills: transformSkillsIds(skillsSelectedVariable()),
+              users_id: getIdMe(),
+              projects: transformSkillsIds(projectsTypeSelectedVariable()),
+            },
+          },
+        },
+      }).then((result) => {
+       
+      });
+      !loadingProfile && history.replace(ONBOARDING_PROFILE7)
+    });
+
+    /* doCreateProfile({
       variables: {
         input: {
           data: {
@@ -56,8 +92,10 @@ const OnboardingProfileFour = () => {
           },
         },
       },
-    }).then((result) => {});
-    history.replace(ONBOARDING_PROFILE7);
+    }).then((result) => {
+     
+    });
+    history.replace(ONBOARDING_PROFILE7); */
   }
 
   const onClickProjectType = (projectType: Items_get_language_items | null) => {
@@ -78,7 +116,7 @@ const OnboardingProfileFour = () => {
     }
     testButtonToEnabled()
   };
-
+  
   return (
     <WrapOnBoarding>
       <Box className={classes.bloc}>
@@ -104,6 +142,7 @@ const OnboardingProfileFour = () => {
             Next
           </Button>
         </Box>
+         {loadingProfile && (<Loader/>)} 
       </Box>
     </WrapOnBoarding>
   );

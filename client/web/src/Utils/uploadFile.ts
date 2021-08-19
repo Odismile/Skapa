@@ -58,5 +58,5 @@ export const useUploadFile = () => {
     }
   };
 
-  return { uploadFile, loading, getFiles };
+  return { uploadFile, loading, getFiles, urlFirebase};
 };
