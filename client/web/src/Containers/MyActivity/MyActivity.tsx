@@ -9,6 +9,9 @@ import UserCreatorList from '../../Components/MyActivity/UserCreatorList/UserCre
 import CardContributor from '../../Components/MyActivity/CardContributor/CardContributor';
 import CardTalentOngoing from '../../Components/MyActivity/CardTalentOngoing/CardTalentOngoing';
 import CardTalentFinished from '../../Components/MyActivity/CardTalentFinished/CardTalentFinished';
+import CardCreatorFinished from '../../Components/MyActivity/CardCreatorFinished/CardCreatorFinished';
+import CardCreatorDraft from '../../Components/MyActivity/CardCreatorDraft/CardCreatorDraft';
+import CardReview from '../../Components/CardReview/CardReview';
 
 const MyActivity = () => {
   const classes = useStyles();
@@ -29,6 +32,12 @@ const MyActivity = () => {
         <CardTalentOngoing/>
         <br></br>
         <CardTalentFinished/>
+        <br></br>
+        <CardCreatorFinished/>
+        <br></br>
+        <CardCreatorDraft/>
+        <br></br>
+        <CardReview projectId='33' imgCardUrl="" name=""/>
       </Box>
     </Box>
   );
