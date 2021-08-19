@@ -33,7 +33,7 @@ const ProjectContent = () => {
   const [open, setOpen] = useState(false);
   const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
   const [project, setProject] = useState<projects_all_projects | null>(null);
-  const [priceToContribute, setPriceToContribute] = useState<number>(0);
+  const [priceToContribute, setPriceToContribute] = useState<number | null>(null);
 
   const projectCategory = useReactiveVar(projectSkills);
   const projectSortedByLocal = useReactiveVar(projectSortedBy);
