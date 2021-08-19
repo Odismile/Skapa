@@ -72,6 +72,8 @@ const ProjectContent = () => {
       setProjects(newProjects);
     } else if (projectSortedByLocal === 'Trending Up') {
     } else if (projectSortedByLocal === 'Expires Soon') {
+      const newProjects = orderBy(projects, ['Date_End'], ['desc']);
+      setProjects(newProjects);
     }
   }, [projectSortedByLocal]);
 
