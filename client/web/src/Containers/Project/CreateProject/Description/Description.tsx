@@ -8,6 +8,7 @@ import {
   Select,
   TextareaAutosize,
   TextField,
+  Tooltip,
   Typography,
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
@@ -132,6 +133,10 @@ const Description = () => {
     testCreateObject();
   };
 
+  const infoText = `
+    Lorem ipsum
+    `;
+
   return (
     <Box className={classes.description}>
       {/* upload picture */}
@@ -251,9 +256,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.projectDescription`)}</Typography>
+              <Tooltip title={infoText} arrow>
               <IconButton aria-label="info" className="btn_info btn_title">
                 <Info />
               </IconButton>
+              </Tooltip>
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item textarea_item">
@@ -273,9 +280,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.skillsRecquired`)}</Typography>
-              <IconButton aria-label="info" className="btn_info btn_title">
-                <Info />
-              </IconButton>
+              <Tooltip title={infoText} arrow>
+                <IconButton aria-label="info" className="btn_info btn_title">
+                  <Info />
+                </IconButton>
+              </Tooltip>
             </Box>
             <Box className="content_bloc skills_bloc" component="section">
               <Box className="selected_skills">
@@ -318,7 +327,9 @@ const Description = () => {
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.videoPitch`)}</Typography>
               <IconButton aria-label="info" className="btn_info btn_title">
-                <Info />
+                <Tooltip title={infoText} arrow>
+                  <Info />
+                </Tooltip>
               </IconButton>
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
