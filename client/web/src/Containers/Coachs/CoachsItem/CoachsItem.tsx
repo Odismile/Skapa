@@ -15,10 +15,11 @@ interface ICoachItem {
   coachAddress?: string;
   coachLevel: string;
   coachFee?: number;
+  clickAction?: () => void;
 }
 
 const CoachsItem: FC<ICoachItem> = (props) => {
-  const { coachPhoto, iconJob, jobTitle, coachName, coachAddress, coachLevel, coachFee } = props;
+  const { coachPhoto, iconJob, jobTitle, coachName, coachAddress, coachLevel, coachFee, clickAction } = props;
 
   const classes = UseStyles();
 
@@ -41,8 +42,8 @@ const CoachsItem: FC<ICoachItem> = (props) => {
               <span>Top Rated</span>
             </Typography>
             <Typography className="info_coach">
-              <strong className="name_coach">{coachName}</strong> 
-              {coachAddress &&<span className="address_coach">{` - ${coachAddress}`}</span>}
+              <strong className="name_coach">{coachName}</strong>
+              {coachAddress && <span className="address_coach">{` - ${coachAddress}`}</span>}
             </Typography>
             <Box className="infoJob_coach">
               <Typography className="level_coach">
@@ -58,7 +59,9 @@ const CoachsItem: FC<ICoachItem> = (props) => {
             </Box>
           </Box>
           <Box className="btn_wrap">
-            <Button color="primary" variant="contained" className="btn_planMeeting" onClick={clickAction}>Plan a meeting</Button>
+            <Button color="primary" variant="contained" className="btn_planMeeting" onClick={clickAction}>
+              Plan a meeting
+            </Button>
           </Box>
         </Box>
       </CardContent>
