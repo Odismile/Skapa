@@ -24,10 +24,16 @@ const handleClick = (event: any) => {
 const Place: FC<PlaceProps> = ({ data }) => {
   const classes = useStyles();
   const history = useHistory();
+  const [check, setCheck] = React.useState(false);
 
   const goToDetailsPlace = (event: any) => {
     history.push('/details-place');
     event.stopPropagation();
+  };
+
+  const handleClick:React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation()
+    setCheck(current => !current)
   };
   return (
     <Box className={classes.root} onClick={goToDetailsPlace}>
@@ -39,7 +45,7 @@ const Place: FC<PlaceProps> = ({ data }) => {
             </figure>
           </Box>
           <IconButton className="btn-favori" aria-label="favori" onClick={handleClick}>
-            <HeartLine />
+            {check ? <HeartLine className="iconHeartOutlined" /> : <Heart  className="iconHeart"/>}
           </IconButton>
         </CardMedia>
         <CardContent className="content">
