@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contributes",
+  "info": {
+    "name": "Contributes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "value": {
+      "type": "float"
+    },
+    "project_id": {
+      "model": "projects",
+      "via": "contributes"
+    },
+    "profile_id": {
+      "model": "profiles",
+      "via": "contributes"
+    }
+  }
+}

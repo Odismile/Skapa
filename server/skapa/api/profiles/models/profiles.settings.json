@@ -54,6 +54,10 @@
     "profile_type_id": {
       "via": "profiles_types",
       "model": "items"
+    },
+    "contributes": {
+      "via": "profile_id",
+      "collection": "contributes"
     }
   }
 }

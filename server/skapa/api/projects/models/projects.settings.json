@@ -62,6 +62,10 @@
     },
     "Date_end": {
       "type": "datetime"
+    },
+    "contributes": {
+      "via": "project_id",
+      "collection": "contributes"
     }
   }
 }
