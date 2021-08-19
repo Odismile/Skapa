@@ -13,6 +13,7 @@ import {
   Link,
   SwipeableDrawer,
 } from '@material-ui/core';
+import Skeleton from '@material-ui/lab/Skeleton';
 import PrimaryHeader from '../../Components/Header/Header';
 import DailyRate from '../../Components/DailyRate/DailyRate';
 import Filter from '../../Components/Icons/Filter';
@@ -33,7 +34,6 @@ import Cross from '../../Components/Icons/Cross/Cross';
 import coachPhoto from '../../Assets/images/coach_avatar.png';
 import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 import Booking from '../../Assets/images/booking.svg';
-import Skeleton from 'react-loading-skeleton';
 import { useQuery, useReactiveVar } from '@apollo/client';
 import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import { coachsVariables, coachs } from '../../GraphQL/profiles/types/coachs';
@@ -149,6 +149,9 @@ const Coachs = () => {
         onClose={handleClose}
         onOpen={handleOpen}
         closeAfterTransition
+        classes={{
+          paper: classes.paperDrawer
+        }}
         // BackdropComponent={Backdrop}
         // BackdropProps={{
         //   timeout: 500,
