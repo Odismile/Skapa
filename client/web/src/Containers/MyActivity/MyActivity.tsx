@@ -12,6 +12,7 @@ import CardTalentFinished from '../../Components/MyActivity/CardTalentFinished/C
 import CardCreatorFinished from '../../Components/MyActivity/CardCreatorFinished/CardCreatorFinished';
 import CardCreatorDraft from '../../Components/MyActivity/CardCreatorDraft/CardCreatorDraft';
 import CardReview from '../../Components/CardReview/CardReview';
+import CardSpace from '../../Components/MyActivity/CardSpace/CardSpace';
 
 const MyActivity = () => {
   const classes = useStyles();
@@ -19,25 +20,15 @@ const MyActivity = () => {
     <Box>
       <PrimaryHeader />
       <Box className={classes.box}>
-        <UserActivityList />
-        <br></br>
-        <UserContributorList />
-        <br></br>
-        <UserTalentList />
-        <br></br>
-        <UserCreatorList />
-        <br></br>
-        <CardContributor/>
-        <br></br>
-        <CardTalentOngoing/>
-        <br></br>
-        <CardTalentFinished/>
-        <br></br>
-        <CardCreatorFinished/>
-        <br></br>
-        <CardCreatorDraft/>
-        <br></br>
-        <CardReview projectId='33' imgCardUrl="" name=""/>
+        <Box>
+          <CardSpace title="Contributor space" subltitle="Lorem Ipsum" />
+        </Box>
+        <Box>
+          <CardSpace title="Talent space" subltitle="Lorem Ipsum" />
+        </Box>
+        <Box>
+          <CardSpace title="Creator space" subltitle="Lorem Ipsum" />
+        </Box>
       </Box>
     </Box>
   );
