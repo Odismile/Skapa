@@ -22,6 +22,7 @@ const useStyles = makeStyles(() => ({
         padding: '0px 9px',
         display: 'flex',
         alignItems: 'center',
+        fontSize: 10,
       }
     },
     '& .details':{
