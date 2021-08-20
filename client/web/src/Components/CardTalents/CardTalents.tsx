@@ -68,7 +68,7 @@ const CardTalents: FC<CardTalentsProps> = ({
 
     if (newChecked) {
       doCreateFavoriteTalent({
-        variables: { input: { data: { talent_id: profilIdLocal ?? '' } } },
+        variables: { input: { data: { talent_id: talentId ?? '', profile: profilIdLocal } } },
       });
     } else {
       doDeleteTalentFavorit({ variables: { input: { where: { id: profilIdLocal ?? '' } } } });
