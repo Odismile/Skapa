@@ -6,6 +6,7 @@ import TextFieldComponent from '../../../Components/TextField/TextField';
 import CalendarIcon from '../../../Components/Icons/Calendar/Calendar';
 import Booking from '../../../Assets/images/booking.svg';
 import { useState } from 'react';
+import Calendar from '../../../Components/Calendar';
 
 interface MeetingModalProps {
   open: boolean;
