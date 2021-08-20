@@ -15,6 +15,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import moment from 'moment';
 import Skeleton from 'react-loading-skeleton';
+import classNames from 'classnames';
 
 import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player';
@@ -208,6 +209,7 @@ const Description = () => {
                 >
                   {dataProjectType?.items?.map((project, index) => {
                     return (
+                      
                       <MenuItem key={index} value={project?.label ?? ''}>
                         {project?.label}
                       </MenuItem>
@@ -345,7 +347,7 @@ const Description = () => {
                   {videoUpload.length !== 0 ? (
                     <ReactPlayer
                       url={videoUpload}
-                      className={classes.videoUpload}
+                      className={classNames(classes.videoUpload, "videoUpload")}
                       width={'150px'}
                       height={'100px'}
                       playing={true}

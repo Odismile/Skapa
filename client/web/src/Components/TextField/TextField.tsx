@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { TextField, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment, TextFieldProps } from '@material-ui/core';
 import classNames from 'classnames';
 import useStyles from './style';
 

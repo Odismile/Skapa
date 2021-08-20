@@ -242,6 +242,9 @@ export default makeStyles(
             fontStyle: 'italic',
           },
           '&:focus': {
+            border: '1px solid #8870FF',
+            background: "rgb(242,241,253)",
+            boxShadow: "inset 0px 1px 3px rgb(136 112 255 / 50%)",
             outline: 'none',
           },
         },
@@ -315,6 +318,10 @@ export default makeStyles(
           '& .upload_bloc': {
             '& .upload_content': {
               height: 145,
+              "& .videoUpload": {
+                height: "100% !important",
+                width: "100% !important",
+              },
             },
           },
         },
