@@ -7,7 +7,7 @@ import WrapOnBoarding from '../../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useRegister } from '../../../Providers/AuthProvider/hooks/useRegister';
 import { ONBOARDING } from '../../../Routes';
 import { ISignup } from '../../../types/signup';
-import { isEmailValid, isPassValid } from '../../../Utils/validator';
+import { isEmailValid, isPassValid,isPassHasNumber,isPassHasUpper,isPassHasLower } from '../../../Utils/validator';
 import useStyles from './styles';
 import { clearLocalStorage, isAuthenticated } from '../../../Services';
 
@@ -68,12 +68,31 @@ const Signup: FC<RouteComponentProps> = (props) => {
     if (signup.surname.trim().length === 0) {
       setErrorSurname(true);
       setTextErrorSurname(t(`errorMessage.invalid_surname`));
-    } else if (signup.lastName.trim().length === 0) {
+    }else if ((!isPassHasUpper(signup.surname) && !isPassHasLower(signup.surname))){
+      setErrorSurname(true);
+      setTextErrorSurname(t(`errorMessage.as_number_value`));
+      setErrorLastName(false)
+      setTextErrorLastName('')
+      setErrorEmail(false);
+      setTextErrorEmail('');
+      setErrorPassword(false);
+      setTextErrorPassword('');
+    }else if (signup.lastName.trim().length === 0) {
       setErrorSurname(false);
       setTextErrorSurname('');
       setErrorLastName(true);
       setTextErrorLastName(t(`errorMessage.invalid_lastName`));
-    } else if (signup.email.trim().length === 0 || !isEmailValid(signup.email)) {
+    }else if ((!isPassHasUpper(signup.lastName) && !isPassHasLower(signup.lastName))){
+      setErrorSurname(false);
+      setTextErrorSurname('');
+      setErrorLastName(true)
+      setTextErrorLastName(t(`errorMessage.as_number_value`))
+      setErrorEmail(false);
+      setTextErrorEmail('');
+      setErrorPassword(false);
+      setTextErrorPassword('');
+    }
+     else if (signup.email.trim().length === 0 || !isEmailValid(signup.email)) {
       setErrorSurname(false);
       setTextErrorSurname('');
       setErrorLastName(false);
@@ -98,7 +117,7 @@ const Signup: FC<RouteComponentProps> = (props) => {
       setTextErrorEmail('');
       setErrorPassword(true);
       setTextErrorPassword(t(`errorMessage.invalid_password_text`));
-    } else {
+    }else {
       initError();
       doRegister({
         variables: {
