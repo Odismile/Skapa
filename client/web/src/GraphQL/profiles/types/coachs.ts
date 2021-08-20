@@ -53,9 +53,15 @@ export interface coachs_profiles_project_favorits {
   profile: coachs_profiles_project_favorits_profile | null;
 }
 
+export interface coachs_profiles_talent_favorits_profile {
+  __typename: "Profiles";
+  id: string;
+}
+
 export interface coachs_profiles_talent_favorits {
   __typename: "TalentFavorits";
   id: string;
+  profile: coachs_profiles_talent_favorits_profile | null;
 }
 
 export interface coachs_profiles_languages {

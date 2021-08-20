@@ -35,6 +35,9 @@ export const COACH_INFO_FRAGMENT = gql`
     }
     talent_favorits {
       id
+      profile {
+        id
+      }
     }
     project_favorits {
       id
