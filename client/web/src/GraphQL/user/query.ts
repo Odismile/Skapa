@@ -1,11 +1,15 @@
 import gql from 'graphql-tag';
-import { USER_PERMISSION_CUSTOM_ME_FRAGMENT } from './fragment';
 
 export const ME_INFO = gql`
   query MeInfo($id: ID!, $publicationState: PublicationState) {
     user(id: $id, publicationState: $publicationState) {
-      ...UserPermissionMeInfoCustom
+      id
+      username
+      surname
+      lastname
+      email
+      confirmed
+      blocked
     }
   }
-  ${USER_PERMISSION_CUSTOM_ME_FRAGMENT}
 `;
