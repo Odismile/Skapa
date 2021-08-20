@@ -19,7 +19,7 @@ const Review = () => {
       <CardReview imgCardUrl={data?.projects?.[0]?.Picture ?? ''} name={data?.projects?.[0]?.Name ?? ''} />
       <Pitch url={data?.projects?.[0]?.Video ?? ''} />
       <Typography variant="h6" className="titre">
-        Présentation
+        Presentation
       </Typography>
       <Presentation description={data?.projects?.[0]?.description ?? ''} />
       <Typography variant="h6" className="titre">
