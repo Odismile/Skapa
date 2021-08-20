@@ -36,7 +36,8 @@ import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUse
 
 const PrimaryHeader = () => {
   const classes = useStyles();
-  const { user, photo } = useCurrentUser();
+  const { user, photo, isReader } = useCurrentUser();
+
   const history = useHistory();
 
   if (!isAuthenticated()) {
@@ -126,7 +127,7 @@ const PrimaryHeader = () => {
         )}
 
         {/* Btn go to creat project */}
-        {isShowProfilInfo && (
+        {isShowProfilInfo && !isReader && (
           <Button className="btn_createProject" color="primary" variant="outlined" type="button" href={CREATE_PROJECT}>
             <Plus /> Create new project
           </Button>

@@ -12,6 +12,7 @@ export const useCurrentUser = () => {
   });
   return {
     user: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id : null,
-    photo : result.data?.profiles?.length ? result.data?.profiles[0]?.picture : null
+    photo: result.data?.profiles?.length ? result.data?.profiles[0]?.picture : null,
+    isReader: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id?.isFirstConnection === true : true,
   };
 };
