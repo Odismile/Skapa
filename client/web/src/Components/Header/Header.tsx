@@ -39,6 +39,7 @@ const PrimaryHeader = () => {
   const { user, photo, isReader } = useCurrentUser();
 
   const history = useHistory();
+  const isInWishList = [WISHLIST].includes(history.location.pathname);
 
   if (!isAuthenticated()) {
     history.push(LOGIN);
@@ -94,7 +95,7 @@ const PrimaryHeader = () => {
         {/* show bloc for create-project page */}
         {/* titre projet */}
         <Typography style={{ display: 'block' }} className="titlePage">
-          Create your own project
+          {isInWishList ? 'Wishlist' : 'Create your own project'}
         </Typography>
 
         {/* show bloc for project and talents page */}
