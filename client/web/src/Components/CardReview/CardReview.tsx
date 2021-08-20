@@ -85,9 +85,9 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
         },
       });
     } else {
-      // doDeleteProjectFavorit({
-      //   variables: { input: { where: { id: dataProjectFavorit?.createProjectFavorit?.projectFavorit?.id ?? '' } } },
-      // });
+      doDeleteProjectFavorit({
+        variables: { input: { where: { id: dataProjectFavorit?.createProjectFavorit?.projectFavorit?.id ?? '' } } },
+      });
     }
   };
 

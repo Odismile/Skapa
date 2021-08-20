@@ -24,6 +24,13 @@ export const useCreateContribution = () => {
         }
         return;
       },
+      onCompleted: (data) => {
+        if (data.createContribute?.contribute?.id) {
+          snackbar.type = 'SUCCESS';
+          snackbar.message = t(`createFavorit.success`);
+          displaySnackbar(client, snackbar);
+        }
+      },
     },
   );
   return { doCreateContribution, data, loading };

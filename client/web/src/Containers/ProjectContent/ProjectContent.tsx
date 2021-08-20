@@ -103,15 +103,16 @@ const ProjectContent = () => {
   };
 
   const onClickContribute = () => {
-    console.log(`project.id`, project?.id);
-    console.log(`priceToContribute`, priceToContribute);
-    console.log('**********************');
     doCreateContribution({
       variables: {
         input: {
           data: { profile_id: project?.profile?.id ?? '', project_id: project?.id ?? '', value: priceToContribute },
         },
       },
+    }).then((result) => {
+      if (result.data?.createContribute?.contribute?.id) {
+        setPriceToContribute(null);
+      }
     });
   };
 
@@ -204,16 +205,6 @@ const ProjectContent = () => {
                     </Typography>
                   </Box>
                 </ListItem>
-                {/* <ListItem disableGutters={true}>
-                  <figure className="user_avatar">
-                    <img src={photoUser} alt="user_photo" />
-                  </figure>
-                  <Box className="user_infos">
-                    <Typography>
-                      Your average contribution is : <span className="price">5 690 $</span>
-                    </Typography>
-                  </Box>
-                </ListItem> */}
               </List>
               <Button
                 color="primary"

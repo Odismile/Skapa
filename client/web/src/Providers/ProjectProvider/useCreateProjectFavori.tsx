@@ -24,6 +24,13 @@ export const useCreateProjectFavori = () => {
         }
         return;
       },
+      onCompleted: (data) => {
+        if (data.createProjectFavorit?.projectFavorit?.id) {
+          snackbar.type = 'SUCCESS';
+          snackbar.message = t(`createFavorit.success`);
+          displaySnackbar(client, snackbar);
+        }
+      },
     },
   );
   return { doCreateProjectFavorit, data, loading };

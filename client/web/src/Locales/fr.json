@@ -102,7 +102,13 @@
     },
     "project":{
       "none":"Aucun projet",
-      "textInputFilter":"Recherchez des projets par titre, type, créateur....."
+      "textInputFilter":"Recherchez des projets par titre, type, créateur..."
+    },
+    "create":{
+      "success":"Ajout effectué avec succès"
+    },
+    "delete":{
+      "success":"Suppresssion effectué avec succès"
     }
   }
 }

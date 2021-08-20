@@ -24,6 +24,13 @@ export const useDeleteProjectFavori = () => {
         }
         return;
       },
+      onCompleted: (data) => {
+        if (data.deleteProjectFavorit?.projectFavorit?.id) {
+          snackbar.type = 'SUCCESS';
+          snackbar.message = t(`deleteFovorit.success`);
+          displaySnackbar(client, snackbar);
+        }
+      },
     },
   );
   return { doDeleteProjectFavorit, data, loading };
