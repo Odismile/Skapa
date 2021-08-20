@@ -54,6 +54,11 @@ export default makeStyles(
     },
     modalCalendar: {
       display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    drawerCalendar: {
+      display: 'flex',
       alignItems: 'flex-end',
       justifyContent: 'center',
     },
@@ -67,6 +72,7 @@ export default makeStyles(
       padding: theme.spacing(5.5, 2.5, 2.5),
       position: 'relative',
       maxWidth: 480,
+      margin: 'auto',
       width: '100%',
       '& .btn_close': {
         position: 'absolute',

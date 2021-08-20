@@ -1,44 +1,42 @@
 import React from 'react';
-import { TextField, InputAdornment } from '@material-ui/core';
+import { TextField, InputAdornment, TextFieldProps } from '@material-ui/core';
 import { FC } from 'react';
 import useStyles from './style';
 
-interface TextFiedlProps {
+interface TextFieldCustomProps {
   value?: any;
   error?: boolean;
   helperText?: string;
-  label: string;
-  type: string;
-  id: string;
   name?: string | undefined;
-  placeholder?: string,
+  placeholder?: string;
   icons?: any;
 
   // variant:string,
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
 }
 
-const TextFieldComponent: FC<TextFiedlProps> = (props) => {
+const TextFieldComponent: FC<TextFieldCustomProps & TextFieldProps> = (props) => {
   const classes = useStyles();
   return (
     <TextField
       name={props.name}
       onChange={props.onChange}
-      id={props.id}
-      label={props.label}
-      type={props.type}
       InputLabelProps={{
         shrink: true,
       }}
       InputProps={{
-        endAdornment: <InputAdornment position="end" className="append_input">{props.icons}</InputAdornment>
+        endAdornment: (
+          <InputAdornment position="end" className="append_input">
+            {props.icons}
+          </InputAdornment>
+        ),
       }}
       placeholder={props.placeholder}
       value={props.value}
       error={props.error}
       helperText={props.helperText}
       className={classes.textfield}
-
+      {...props}
     />
   );
 };
