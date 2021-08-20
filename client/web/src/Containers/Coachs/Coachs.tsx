@@ -10,17 +10,19 @@ import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilt
 // images
 import coachPhoto from '../../Assets/images/coach_avatar.png';
 import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
-import { useQuery, useReactiveVar } from '@apollo/client';
+import { useReactiveVar } from '@apollo/client';
 import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
-import { coachsVariables, coachs } from '../../GraphQL/profiles/types/coachs';
-import { LIST_COACH } from '../../GraphQL/profiles/query';
 import MeetingModal from './MeetingModal';
+import { useGetCoach } from '../../Providers/TalentProvider/useGetCoach';
 
 const Coachs = () => {
   const classes = useStyles();
 
-  const [date, changeDate] = useState(new Date());
   const [openCalendar, setOpenCalendar] = useState(false);
+  const handleClickItem = (coach: string) => {
+    setCoachId(coach);
+    handleOpen();
+  };
   const handleOpen = () => {
     setOpenCalendar(true);
   };
@@ -29,15 +31,8 @@ const Coachs = () => {
   };
 
   const filterTalent = useReactiveVar(filterTalentVar);
-  const { data, loading } = useQuery<coachs, coachsVariables>(LIST_COACH, {
-    variables: {
-      where: {
-        profile_type_id: {
-          label: 'Coach',
-        },
-      },
-    },
-  });
+  const { data, loading } = useGetCoach();
+  const [coachId, setCoachId] = useState<string | undefined>(undefined);
   const listCoachs = (data?.profiles || []).filter(
     (item) =>
       item &&
@@ -78,48 +73,49 @@ const Coachs = () => {
                   coachName={profil?.users_id?.username || ''}
                   coachAddress={''}
                   coachLevel={profil?.job_seniority_id?.label || ''}
-                  clickAction={handleOpen}
-                  // coachFee={500}
+                  clickAction={() => handleClickItem(profil?.users_id?.id || '')}
                 />
               ))}
             </Box>
           </Box>
 
-          {/* <Box className="item_bloc">
-            <Typography className="titre_item" component="h2">
+          <Box className="item_bloc">
+            {/* <Typography className="titre_item" component="h2">
               Digitalization Process
-            </Typography>
+            </Typography> */}
             <Box className="item_list">
-              <CoachsItem 
-                coachPhoto={coachPhoto} 
-                iconJob={DesignThinkerPicto}  
+              <CoachsItem
+                coachPhoto={coachPhoto}
+                iconJob={DesignThinkerPicto}
                 jobTitle="Design Thinker"
                 coachName="Louis Tomaso"
                 coachAddress="Paris"
                 coachLevel="Senior"
-                coachFee= {500}
-                clickAction= {handleOpen}
+                coachFee={500}
+                clickAction={() => handleClickItem('')}
               />
             </Box>
           </Box>
           <Box className="item_bloc">
-            <Typography className="titre_item" component="h2">UX Process</Typography>
+            {/* <Typography className="titre_item" component="h2">UX Process</Typography> */}
             <Box className="item_list">
-              <CoachsItem 
-                coachPhoto={coachPhoto} 
-                iconJob={DesignThinkerPicto}  
+              <CoachsItem
+                coachPhoto={coachPhoto}
+                iconJob={DesignThinkerPicto}
                 jobTitle="Design Thinker"
                 coachName="Louis Tomaso"
                 coachAddress="Paris"
                 coachLevel="Senior"
-                coachFee= {500}
-                clickAction= {handleOpen}
+                coachFee={500}
+                clickAction={() => handleClickItem('')}
               />
             </Box>
-          </Box> */}
+          </Box>
         </Box>
       </Box>
-      <MeetingModal open={openCalendar} handleClose={handleClose} handleOpen={handleOpen} />
+      {coachId && openCalendar && (
+        <MeetingModal coachId={coachId} open={openCalendar} handleClose={handleClose} handleOpen={handleOpen} />
+      )}
     </Box>
   );
 };
