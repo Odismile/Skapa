@@ -1,15 +1,11 @@
-import  { useState } from 'react';
-import {
-  Box,
-} from '@material-ui/core';
+import { useState } from 'react';
+import { Box } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import PrimaryHeader from '../../Components/Header/Header';
 
 import useStyles from './styles';
 import CoachsItem from './CoachsItem/CoachsItem';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
-
-
 
 // images
 import coachPhoto from '../../Assets/images/coach_avatar.png';
