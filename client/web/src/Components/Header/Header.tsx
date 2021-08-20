@@ -29,7 +29,7 @@ import Plus from '../../Components/Icons/Plus/Plus';
 import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { clearLocalStorage, isAuthenticated } from '../../Services';
-import { COACHS, CREATE_PROJECT, LOGIN } from '../../Routes';
+import { COACHS, CREATE_PROJECT, LOGIN, PROJECT, WISHLIST } from '../../Routes';
 import { Route, Redirect, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
@@ -52,11 +52,11 @@ const PrimaryHeader = () => {
     window.location.reload();
   };
 
-  const goToWishlist = () =>{
-    history.push('/wishlist');
-  }
+  const goToWishlist = () => {
+    history.push(WISHLIST);
+  };
   const params = useLocation();
-  const activeWishList = params.pathname == '/wishlist' ? "btn btn_link active" : "btn btn_link";
+  const activeWishList = params.pathname == WISHLIST ? 'btn btn_link active' : 'btn btn_link';
 
   return (
     <Box className={classes.header_block}>
@@ -85,7 +85,7 @@ const PrimaryHeader = () => {
           </IconButton>
         </Box>
       </Box>
-      
+
       {/* content header */}
       <Box className={classes.header_content}>
         {/* show bloc for create-project page */}
@@ -96,7 +96,7 @@ const PrimaryHeader = () => {
 
         {/* show bloc for project and talents page */}
         {/* info User */}
-        <Box className={classes.user_infos_content} style={{display: "none" }}>
+        <Box className={classes.user_infos_content} style={{ display: 'none' }}>
           <Card className={classes.user_infos} elevation={0}>
             <figure className="user_avatar">
               <Link href="" className="user_link" title="user_infos">
@@ -127,8 +127,8 @@ const PrimaryHeader = () => {
           color="primary"
           variant="outlined"
           type="button"
-          href="/project/create-project"
-          style={{display: "none" }}
+          href={CREATE_PROJECT}
+          style={{ display: 'none' }}
         >
           <Plus /> Create new project
         </Button>
@@ -136,7 +136,9 @@ const PrimaryHeader = () => {
 
       {/* link back to home-page */}
       <Typography className="wrap-backLink">
-        <Link className="backLink" href="/project">Back</Link>
+        <Link className="backLink" href={PROJECT}>
+          Back
+        </Link>
       </Typography>
       <Drawer
         className={classes.drawerMenu}
@@ -163,7 +165,7 @@ const PrimaryHeader = () => {
               <Link className="nav_link">My activity</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href="/project">
+              <Link className="nav_link" href={PROJECT}>
                 Projects
               </Link>
             </ListItem>
@@ -174,13 +176,17 @@ const PrimaryHeader = () => {
               <Link className="nav_link">Places</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link">Wishlist</Link>
+              <Link className="nav_link" href={WISHLIST}>
+                Wishlist
+              </Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href={COACHS}>Coaching</Link>
+              <Link className="nav_link" href={COACHS}>
+                Coaching
+              </Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" >Wallet</Link>
+              <Link className="nav_link">Wallet</Link>
             </ListItem>
           </List>
           <Button color="secondary" variant="contained" href={CREATE_PROJECT} className="btn_createProject">
