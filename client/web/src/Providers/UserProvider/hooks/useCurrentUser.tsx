@@ -5,8 +5,13 @@ import { MeInfo, MeInfoVariables } from '../../../GraphQL/user/types/MeInfo';
 export const useCurrentUser = () => {
   const result = useQuery<MeInfo, MeInfoVariables>(ME_INFO, {
     variables: {
-      id: `${localStorage.getItem('idMe')}`
-    }
+      where: {
+        id: `${localStorage.getItem('idMe')}`,
+      },
+    },
   });
-  return result;
+  return {
+    user: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id : null,
+    photo : result.data?.profiles?.length ? result.data?.profiles[0]?.picture : null
+  };
 };

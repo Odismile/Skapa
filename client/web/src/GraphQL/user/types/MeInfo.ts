@@ -14,6 +14,7 @@ export interface MeInfo_profiles_users_id {
   surname: string | null;
   lastname: string | null;
   email: string;
+  isFirstConnection: boolean | null;
 }
 
 export interface MeInfo_profiles {

@@ -11,6 +11,7 @@ export const ME_INFO = gql`
         surname
         lastname
         email
+        isFirstConnection
       }
     }
   }
