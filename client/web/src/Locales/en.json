@@ -15,6 +15,7 @@
       "email": "Email",
       "password": "Password",
       "signup_button": "Create account",
+      "success":"Registration successfully completed. Please check your email box!",
       "create_account_linkedin": "Create account from linkedin profile"
     },
     "onboarding": {
@@ -48,7 +49,7 @@
       "invalid_password_text": "The password must be at least 8 characters long, one uppercase, one lowercase and one number.",
       "Email is already taken.": "Email is already taken",
       "Username already taken": "Surname already taken",
-      "undefined": "network error, please check your connection",
+      "undefined": "Network error, please check your connection",
       "as_number_value":"This field must not contain only numbers"
     },
     "labelText": {
@@ -67,7 +68,7 @@
       "next": "Next",
       "skipThisStep": "Skip this step",
       "year": "Year",
-      "basic": "basic",
+      "basic": "Basic",
       "intermediate": "Intermediate",
       "fluente": "Fluent"
     },
@@ -103,6 +104,9 @@
     "project":{
       "none":"No project",
       "textInputFilter":"Look for projects by title, type, creator..."
+    },
+    "createProfile":{
+      "success":"Registered profile"
     }
   }
 }

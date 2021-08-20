@@ -23,7 +23,7 @@ export const useCreateProfile = () => {
     },
     onCompleted: (data) => {
       snackbar.type = 'SUCCESS';
-      snackbar.message = 'profil enregistré';
+      snackbar.message = t(`createProfile.success`);
       displaySnackbar(client, snackbar);
     },
   });
