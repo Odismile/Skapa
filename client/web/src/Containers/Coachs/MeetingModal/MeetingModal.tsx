@@ -34,7 +34,7 @@ interface MeetingModalProps {
 const MeetingModal = (props: MeetingModalProps) => {
   const classes = useStyles();
   const { open, handleClose: handleCloseProp, handleOpen, coachId, coachName } = props;
-  const { user } = useCurrentUser();
+  const { user, profilId } = useCurrentUser();
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [step, setStep] = useState(0);
   const [createBookMutation] = useCreateBook();
@@ -68,7 +68,7 @@ const MeetingModal = (props: MeetingModalProps) => {
       variables: {
         input: {
           data: {
-            talend_id: user?.id,
+            created_by: profilId,
             coach_id: coachId,
             date_start: date,
             date_end: date,
