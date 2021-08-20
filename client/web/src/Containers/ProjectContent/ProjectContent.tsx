@@ -81,7 +81,7 @@ const ProjectContent = () => {
   }, [projectCategory]);
 
   useEffect(() => {
-    let newProjects = [];
+    let newProjects: (projects_all_projects | null)[] | null | undefined = [];
     if (projectSortedByLocal === 'Latest') {
       newProjects = orderBy(projects, ['created_at'], ['desc']);
     } else if (projectSortedByLocal === 'Oldest') {
