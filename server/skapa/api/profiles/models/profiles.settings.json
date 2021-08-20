@@ -59,6 +59,10 @@
     "contributes": {
       "collection": "contributes",
       "via": "profile_id"
+    },
+    "books": {
+      "via": "talend_id",
+      "collection": "books"
     }
   }
 }

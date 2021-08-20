@@ -16,6 +16,10 @@
     "projects": {
       "via": "status",
       "collection": "projects"
+    },
+    "books": {
+      "via": "status",
+      "collection": "books"
     }
   }
 }
