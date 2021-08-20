@@ -28,12 +28,15 @@ const Talents = () => {
     },
   });
 
-  const listTalents = (data?.profiles || []).filter(
-    (item) =>
+  const listTalents = (data?.profiles || []).filter((item) => {
+    if (
       item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
       item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-      item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()),
-  );
+      item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
+    ) {
+      return true;
+    }
+  });
 
   return (
     <>
@@ -61,7 +64,6 @@ const Talents = () => {
             <Box className={classes.box} key={index}>
               <CardTalents
                 talentId={profil?.id}
-                profilId={''}
                 coachPhoto={profil?.picture || coachPhoto}
                 iconJob={DesignThinkerPicto}
                 jobTitle={profil?.position || ''}

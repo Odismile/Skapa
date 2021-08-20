@@ -50,7 +50,7 @@ const CardTalents: FC<CardTalentsProps> = ({
   };
 
   const goToDetailsTalents = (event: any) => {
-    history.push('/details-talents');
+    history.push(`/details-talents/${talentId}`);
     event.stopPropagation();
   };
 

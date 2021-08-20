@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box, Button, Divider, Typography } from '@material-ui/core';
 import useStyles from './styles';
 import SimpleCardTalents from '../../../Components/SimpleCardTalents/SimpleCardTalents';
@@ -7,7 +7,11 @@ import Tags from '../../../Components/Tags/Tags';
 import FormerProject from '../../../Components/FormerProjects/FormerProjects';
 import Pitch from '../../../Components/Pitch/Pitch';
 
-const FicheTalents = () => {
+interface FicheTalentsProps {
+  talentId: string;
+}
+
+const FicheTalents: FC<FicheTalentsProps> = ({ talentId }) => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
