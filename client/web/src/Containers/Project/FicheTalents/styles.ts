@@ -1,6 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  content: {},
+  tags: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap',
+    gap: 6,
+    '&>div': {
+      backgroundColor: '#ECE8FF',
+      color: '#8870FF',
+      height: 20,
+      fontSize: 10,
+    },
+  },
   root: {
     marginTop: 15,
     boxShadow: '0px 2px 4px #0000001C',
@@ -36,16 +49,16 @@ export default makeStyles((theme) => ({
       fontSize: 14,
       marginTop: 20,
       color: '#000000',
-      fontStyle: "italic",
+      fontStyle: 'italic',
     },
-    '& .skills':{
-        marginBottom: 20,
+    '& .skills': {
+      marginBottom: 20,
     },
-    '& .bio':{
-        margin: '20px 0px',
-        '& .link':{
-            display: 'none',
-        }
-    }
+    '& .bio': {
+      margin: '20px 0px',
+      '& .link': {
+        display: 'none',
+      },
+    },
   },
 }));

@@ -14,16 +14,16 @@ import { orderBy } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
-// img
-import imgCard from '../../Assets/images/lab.svg';
 import photoUser from '../../Assets/images/photo-card.png';
 import CardReview from '../../Components/CardReview/CardReview';
 import HeartLine from '../../Components/Icons/HeartLine';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
+import { useCreateContribution } from '../../Providers/ContributionProvider/Hooks/useCreateContribution';
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
-import { projectSortedBy, projectSkills } from '../../ReactiveVariable/Project/projectSkills';
+import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
+import { projectSkills, projectSortedBy } from '../../ReactiveVariable/Project/projectSkills';
 import useStyles from './styles';
 
 const ProjectContent = () => {
@@ -31,12 +31,20 @@ const ProjectContent = () => {
 
   const { t } = useTranslation();
   const { data, loading } = useGetProjectAll();
+  const { isReader } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
   const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
+  const [project, setProject] = useState<projects_all_projects | null>(null);
+  const [priceToContribute, setPriceToContribute] = useState<number | null>(null);
+  const { doCreateContribution } = useCreateContribution();
 
   const projectCategory = useReactiveVar(projectSkills);
   const projectSortedByLocal = useReactiveVar(projectSortedBy);
+
+  const onChangeValuePrice = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setPriceToContribute(+event.target.value);
+  };
 
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -44,6 +52,10 @@ const ProjectContent = () => {
 
   const handleClick = (event: any) => {
     event.stopPropagation();
+  };
+
+  const onClicklContribute = (project: projects_all_projects | null) => {
+    setProject(project);
   };
 
   useEffect(() => {
@@ -84,10 +96,26 @@ const ProjectContent = () => {
       const newProjects = data?.projects?.filter(
         (project) =>
           project?.Name?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
-          project?.Type?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()),
+          project?.Type?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
+          project?.profile?.users_id?.lastname?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
+          project?.profile?.users_id?.surname?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()),
       );
       setProjects(newProjects);
     }
+  };
+
+  const onClickContribute = () => {
+    doCreateContribution({
+      variables: {
+        input: {
+          data: { profile_id: project?.profile?.id ?? '', project_id: project?.id ?? '', value: priceToContribute },
+        },
+      },
+    }).then((result) => {
+      if (result.data?.createContribute?.contribute?.id) {
+        //setPriceToContribute(null);
+      }
+    });
   };
 
   return (
@@ -100,9 +128,17 @@ const ProjectContent = () => {
         projects?.map((project, index) => {
           return (
             <Box className={classes.content} key={index}>
-              <CardReview projectId={project?.id} name={project?.Name ?? ''} imgCardUrl={project?.Picture ?? ''} />
-              <Box className="btnContribute">
-                <Button onClick={handleDrawer}>Contribute</Button>
+              <CardReview
+                projectId={project?.id}
+                profilId={project?.profile?.id}
+                name={project?.Name ?? ''}
+                imgCardUrl={project?.Picture ?? ''}
+                users_id={project?.profile?.users_id?.id}
+              />
+              <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
+                <Button onClick={handleDrawer} disabled={isReader}>
+                  Contribute
+                </Button>
               </Box>
             </Box>
           );
@@ -123,37 +159,57 @@ const ProjectContent = () => {
       >
         <Box className={classes.contribute_drawerContent}>
           <Box className="header_content" component="header">
-            <Button variant="contained" className="btn_handleDrawer" onClick={handleDrawer}></Button>
+            <Button
+              variant="contained"
+              className="btn_handleDrawer"
+              disabled={isReader}
+              onClick={handleDrawer}
+            ></Button>
             <Typography className="title_text" variant="h2">
               I contribute to thefollowing project{' '}
             </Typography>
-            <Button color="primary" variant="contained" href="" className="btn_done" onClick={handleDrawer}>
+            <Button
+              color="primary"
+              variant="contained"
+              href=""
+              disabled={isReader}
+              className="btn_done"
+              onClick={handleDrawer}
+            >
               Done
             </Button>
           </Box>
           <Box className="body_content" component="section">
             <form className="formContribute" id="formContribute">
               <Card className="contribute_media" elevation={0}>
-                <CardMedia className="contribute_picture" image={imgCard} title="image" />
+                <CardMedia className="contribute_picture" image={project?.Picture ?? ''} title="image" />
                 <Box className="category" component="span">
                   LAB
                 </Box>
-                <IconButton className="btn-favori" onClick={handleClick}>
+                <IconButton className="btn-favori" disabled={isReader} onClick={handleClick}>
                   <HeartLine className="iconHeart" />
                 </IconButton>
               </Card>
               <Typography className="subtitle_text" variant="h3">
-                Kit de composants Miro customisables{' '}
+                {project?.Name}
               </Typography>
               <Typography className="text">
                 What amount would you wish to <br />
                 give to support this project ?
               </Typography>
               <Box className="field_item amount_item">
-                <TextFieldComponent label="" id="amountValue" type="text" name="" value="0000 $" />
+                <TextFieldComponent
+                  label=""
+                  id="amountValue"
+                  type="number"
+                  value={priceToContribute}
+                  placeholder={'0000 $'}
+                  onChange={(e) => onChangeValuePrice(e)}
+                />
               </Box>
               <Typography className="text_status">
-                You have <span className="amount_value">12 000 $</span>in your wallet
+                You have <span className="amount_value">{priceToContribute ? priceToContribute : 0} $</span>in your
+                wallet
               </Typography>
 
               <List className="list_relativeuser">
@@ -163,22 +219,20 @@ const ProjectContent = () => {
                   </figure>
                   <Box className="user_infos">
                     <Typography>
-                      Your average contribution is : <span className="price">5 690 $</span>
-                    </Typography>
-                  </Box>
-                </ListItem>
-                <ListItem disableGutters={true}>
-                  <figure className="user_avatar">
-                    <img src={photoUser} alt="user_photo" />
-                  </figure>
-                  <Box className="user_infos">
-                    <Typography>
-                      Your average contribution is : <span className="price">5 690 $</span>
+                      Your average contribution is :{' '}
+                      <span className="price">{priceToContribute ? priceToContribute : 0} $</span>
                     </Typography>
                   </Box>
                 </ListItem>
               </List>
-              <Button color="primary" variant="contained" href="" className="btn_contribute">
+              <Button
+                color="primary"
+                variant="contained"
+                href=""
+                className="btn_contribute"
+                disabled={isReader}
+                onClick={onClickContribute}
+              >
                 Contribute
               </Button>
             </form>

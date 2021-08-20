@@ -92,6 +92,9 @@ export default makeStyles((theme) => ({
         fontSize: '1.4rem',
       },
     },
+    '& .addIcon':{
+      fontSize: 40,
+    }
   },
   inputVideo: {
     width: '100%',
@@ -114,9 +117,20 @@ export default makeStyles((theme) => ({
         fontSize: '1rem',
       },
     },
+    "& .tooltip":{
+      padding: 0,
+    },
   },
   large: {
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
+  videoUpload:{
+    width: 'auto!important',
+    height: '120px!important',
+    marginTop: 10,
+    '& video':{
+      objectFit: 'cover',
+    }
+  }
 }));

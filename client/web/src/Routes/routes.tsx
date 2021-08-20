@@ -26,6 +26,7 @@ import Profile from '../Containers/Profile/Profile';
 import MyActivity from '../Containers/MyActivity/MyActivity';
 import ContributeSpace from '../Containers/MyActivity/ContributeSpace/ContributeSpace';
 import TalentSpace from '../Containers/MyActivity/TalentSpace/TalentSpace';
+import CreatorSpace from '../Containers/MyActivity/CreatorSpace/CreatorSpace';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -44,14 +45,15 @@ export const ONBOARDING_PROFILE3 = '/onboarding-profile3';
 export const ONBOARDING_PROFILE4 = '/onboarding-profile4';
 export const ONBOARDING_PROFILE7 = '/onboarding-splashscreen1';
 export const ONBOARDING_SPLASHSCREEN = '/onboarding-splashscreen2';
-export const DETAILS_TALENTS = '/details-talents';
+export const DETAILS_TALENTS = '/details-talents/:id';
 export const DETAILS_PLACE = '/details-place';
-export const DETAILS_PROJECTS = '/projects/:id';
+export const DETAILS_PROJECTS = '/project/:id/profil/:id';
 export const WISHLIST = '/wishlist';
 export const COACHS = '/coachs';
 export const MYACTIVITY = '/myactivity';
 export const MYACTIVITY_CONTRIBUTE_SPACE = '/myactivity/contribute';
 export const MYACTIVITY_TALENT_SPACE = '/myactivity/talent';
+export const MYACTIVITY_CREATOR_SPACE = '/myactivity/creator';
 export const UNAUTHORIZED = '/unauthorized';
 export const PROFILE = '/profile';
 
@@ -239,5 +241,12 @@ export const ROUTES: RouteInterface[] = [
     roles: [],
     private: false,
     component: TalentSpace,
+  },
+  {
+    key: 'MYACTIVITY_CREATOR_SPACE',
+    route: MYACTIVITY_CREATOR_SPACE,
+    roles: [],
+    private: false,
+    component: CreatorSpace,
   },
 ];

@@ -21,11 +21,11 @@ const Review = () => {
       <Typography variant="h6" className="titre">
         Présentation
       </Typography>
-      <Presentation data={data} />
+      <Presentation description={data?.projects?.[0]?.description ?? ''} />
       <Typography variant="h6" className="titre">
         Tags
       </Typography>
-      <Tags data={data} />
+      <Tags project_skills={data?.projects?.[0]?.project_skills} />
       <Typography variant="h6" className="titre">
         Place
       </Typography>

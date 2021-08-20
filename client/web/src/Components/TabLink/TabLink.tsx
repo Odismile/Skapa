@@ -252,7 +252,7 @@ const TabLink = () => {
             </Link>
           </Box>
         </Box>
-        {loading && (<Loader/>)}
+        {(loading || loadingUpload) && (<Loader/>)}
       </Box>
     </>
   );

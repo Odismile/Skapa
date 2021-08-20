@@ -28,6 +28,7 @@ const SearchFilterTalents = () => {
       search: event.target.value,
     });
   };
+
   return (
     <Box className="search-bloc">
       <Paper component="form" className={classes.root}>

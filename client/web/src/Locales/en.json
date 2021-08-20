@@ -15,7 +15,7 @@
       "email": "Email",
       "password": "Password",
       "signup_button": "Create account",
-      "success":"Registration successfully completed. Please check your email box!",
+      "success": "Registration successfully completed. Please check your email box!",
       "create_account_linkedin": "Create account from linkedin profile"
     },
     "onboarding": {
@@ -50,7 +50,7 @@
       "Email is already taken.": "Email is already taken",
       "Username already taken": "Surname already taken",
       "undefined": "Network error, please check your connection",
-      "as_number_value":"This field must not contain only numbers"
+      "as_number_value": "This field must not contain only numbers"
     },
     "labelText": {
       "labelSurname": "Surname",
@@ -86,11 +86,11 @@
       "uploadAVideo": "Upload a video",
       "next": "Next",
       "skipThisStep": "Skip this step",
-      "ValidateAndPostProject":"Validate and post project",
-      "SavAsDraft":"Save as draft"
+      "ValidateAndPostProject": "Validate and post project",
+      "SavAsDraft": "Save as draft"
     },
     "createProjectError": {
-      "nameOfProject":"Please enter the name of project",
+      "nameOfProject": "Please enter the name of project",
       "picture": "Please add a picture",
       "typeProject": "Please select a type of project",
       "city": "Please enter a city",
@@ -101,12 +101,18 @@
       "skills": "Please select one or more skills",
       "video": "Please enter a video"
     },
-    "project":{
-      "none":"No project",
-      "textInputFilter":"Look for projects by title, type, creator..."
+    "project": {
+      "none": "No project",
+      "textInputFilter": "Look for projects by title, type, creator..."
     },
-    "createProfile":{
-      "success":"Registered profile"
+    "createProfile": {
+      "success": "Registered profile"
+    },
+    "createFavorit": {
+      "success": "successful addition"
+    },
+    "deleteFovorit": {
+      "success": "successful delete"
     }
   }
 }

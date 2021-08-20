@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => ({
       fontSize: 14,
       width: '20%',
       marginBottom: 0,
+      color: '#000000',
     },
     '& .inputGroup': {
       backgroundColor: 'white',
@@ -25,6 +26,7 @@ const useStyles = makeStyles(() => ({
         color: '#8870FF',
         padding: '8px 10px',
         display: 'inline-block',
+        textTransform: 'capitalize',
       },
       '& input':{
         display: 'none',

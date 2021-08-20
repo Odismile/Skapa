@@ -12,6 +12,28 @@ export enum PublicationState {
   PREVIEW = "PREVIEW",
 }
 
+export interface BookInput {
+  coach_id?: string | null;
+  talend_id?: string | null;
+  date_start?: any | null;
+  date_end?: any | null;
+  start_time?: any | null;
+  end_time?: any | null;
+  status?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
+export interface ContributeInput {
+  value?: number | null;
+  project_id?: string | null;
+  profile_id?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface InputID {
   id: string;
 }
@@ -30,6 +52,7 @@ export interface ProfileInput {
   projects?: (string | null)[] | null;
   profile_type_id?: string | null;
   contributes?: (string | null)[] | null;
+  books?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -66,6 +89,15 @@ export interface ProjectInput {
   updated_by?: string | null;
 }
 
+export interface TalentFavoritInput {
+  profile?: string | null;
+  coach_id?: string | null;
+  talent_id?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface UsersPermissionsLoginInput {
   identifier: string;
   password: string;
@@ -80,6 +112,14 @@ export interface UsersPermissionsRegisterCustomInput {
   lastname?: string | null;
 }
 
+export interface createBookInput {
+  data?: BookInput | null;
+}
+
+export interface createContributeInput {
+  data?: ContributeInput | null;
+}
+
 export interface createProfileInput {
   data?: ProfileInput | null;
 }
@@ -90,6 +130,18 @@ export interface createProjectFavoritInput {
 
 export interface createProjectInput {
   data?: ProjectInput | null;
+}
+
+export interface createTalentFavoritInput {
+  data?: TalentFavoritInput | null;
+}
+
+export interface deleteProjectFavoritInput {
+  where?: InputID | null;
+}
+
+export interface deleteTalentFavoritInput {
+  where?: InputID | null;
 }
 
 export interface editProjectFavoritInput {

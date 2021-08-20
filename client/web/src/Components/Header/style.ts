@@ -14,7 +14,7 @@ export default makeStyles (
           paddingTop: 0,
           "& li": {
             color: "#000",
-            fontSize: "1rem",
+            fontSize: 12,
             lineHeight: 1.2,
             minHeight: 22,
             margin: 0,

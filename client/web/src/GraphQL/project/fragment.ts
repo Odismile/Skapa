@@ -17,6 +17,14 @@ export const PROJECT_INFO_FRAGMENT = gql`
         label
       }
     }
+    profile {
+      id
+      users_id {
+        id
+        lastname
+        surname
+      }
+    }
   }
 `;
 

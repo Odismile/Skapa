@@ -42,6 +42,11 @@ export default makeStyles(
       '& .item_bloc': {
         //maxWidth: 310,
         margin: '0 auto 20px',
+        "& .project_title": {
+          '& h2': {
+            margin: 0,
+          },
+        },
         '& .title_bloc': {
           display: 'flex',
           alignItems: 'center',
@@ -71,6 +76,22 @@ export default makeStyles(
             margin: '6px 0 0',
             width: '100%',
           },
+          "&.project_title": {
+            '& h2': {
+              fontSize: 10,
+              lineHeight: "1.4",
+              margin: "0 0 3px",
+              transform: "none",
+              transformOrigin: "left top",
+            },
+            "& .textField_content": {
+              margin: 0,
+              "& > div": {
+                marginBottom: 0,
+                marginTop: 0,
+              },
+            },
+          },
         },
         '& .field_item': {
           position: 'relative',
@@ -81,8 +102,10 @@ export default makeStyles(
             color: '#000',
             fontStyle: 'normal',
             fontWeight: 700,
+            fontSize: 10,
             lineHeight: '1.4',
             margin: 0,
+            transform: "none",
             '& > div': {
               marginBottom: 0,
             },
@@ -90,7 +113,7 @@ export default makeStyles(
           '& input': {
             borderRadius: 35,
             fontSize: 12,
-            height: 32,
+            height: 40,
             padding: '0 20px',
             '&::-webkit-input-placeholder': {
               color: '#979797',
@@ -115,7 +138,6 @@ export default makeStyles(
           '& label': {
             marginBottom: 0,
           },
-
           '& .input_date': {
             width: '100%',
             '& input': {
@@ -140,7 +162,7 @@ export default makeStyles(
               },
             },
             '& > div': {
-              marginTop: 24,
+              marginTop: 17,
               marginBottom: 0,
               '&:before, &:after': {
                 border: 'none',
@@ -153,23 +175,25 @@ export default makeStyles(
         },
         "& .selectBox_item": {
           marginBottom: 10,
-          "& > label": {
-          },
           "& .selectBox": {
             border: 'solid 1px #dfdfdf',
             boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
             borderRadius: 25,
             fontSize: 12,
+            height: 40,
+            marginTop: 3,
             padding: 0,
             "&.Mui-focused": {
-              background: "none",
+              background: "rgb(242,241,253)",
+              border: '1px solid #8870FF',
+              boxShadow: "inset 0px 1px 3px rgb(136 112 255 / 50%)",
             },
             "& > div": {
               background: "none",
               height: 32,
               display: 'flex',
               alignItems: "center",
-              padding: "0 10px",
+              padding: "0 15px",
             },
             "&:before, &:after": {
               display: "none",
@@ -218,6 +242,9 @@ export default makeStyles(
             fontStyle: 'italic',
           },
           '&:focus': {
+            border: '1px solid #8870FF',
+            background: "rgb(242,241,253)",
+            boxShadow: "inset 0px 1px 3px rgb(136 112 255 / 50%)",
             outline: 'none',
           },
         },
@@ -230,10 +257,12 @@ export default makeStyles(
           },
           '& .selected_skills':{
             '& .inputGroup':{
+              
               '& label':{
                 backgroundColor: '#eeecff',
                 borderColor: '#b9b3ff',
                 color: '#8870FF',
+                
               }
             }
           },
@@ -255,6 +284,7 @@ export default makeStyles(
             backgroundColor: '#fff',
             borderRadius: 0,
             border: 'none',
+            cursor: "pointer",
             display: 'block',
             margin: 2.5,
             minWidth: 65,
@@ -288,6 +318,10 @@ export default makeStyles(
           '& .upload_bloc': {
             '& .upload_content': {
               height: 145,
+              "& .videoUpload": {
+                height: "100% !important",
+                width: "100% !important",
+              },
             },
           },
         },

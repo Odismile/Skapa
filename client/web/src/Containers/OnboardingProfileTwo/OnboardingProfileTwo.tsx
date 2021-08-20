@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, FormControl, FormLabel } from '@material-ui/core';
+import { Avatar, Box, Button, FormControl, FormLabel, IconButton, Tooltip } from '@material-ui/core';
 import React, { useState } from 'react';
 import useStyles from './style';
 import ReactPlayer from 'react-player';
@@ -9,6 +9,7 @@ import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useUploadFile } from '../../Utils/uploadFile';
 import { pictureFile, videoFile, bio, filesPicture, filesVideo } from '../../ReactiveVariable/Profil/profil';
 import { testButtonEnable } from '../../ReactiveVariable/ButtonTest/ButtonTestEnable';
+import Info from '../../Components/Icons/Info';
 
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
@@ -42,7 +43,6 @@ const OnboardingProfileTwo = () => {
             <FormLabel component="legend" className="title">
               Upload a picture of you
             </FormLabel>
-            Send picture
             <input
               accept="image/*"
               className={classes.input}
@@ -62,7 +62,7 @@ const OnboardingProfileTwo = () => {
                   <Avatar alt="Profile" src={imageUpload} className={classes.large} />
                 ) : (
                   <>
-                    <span>+</span>
+                    <span className="addIcon">+</span>
                   </>
                 )}
               </Button>
@@ -71,6 +71,11 @@ const OnboardingProfileTwo = () => {
           <FormControl component="fieldset" className={classes.inputVideo}>
             <FormLabel component="legend" className="title">
               Upload a video pitch
+              <Tooltip title="Lorem ipsum" arrow>
+                <IconButton aria-label="info" className="tooltip">
+                  <Info />
+                </IconButton>
+              </Tooltip>
             </FormLabel>
             <input
               type="file"
@@ -89,14 +94,14 @@ const OnboardingProfileTwo = () => {
             <label htmlFor="contained-button-video">
               <Box className="video">
                 <Box component="span">Import a video from your computer (mp4)</Box>
-                {videoUpload.length !== 0 ? (
-                  <ReactPlayer url={videoUpload} width={'150px'} height={'100px'} playing={true} controls={true} />
-                ) : (
-                  <></>
-                )}
                 <img src={iconDownload} alt="iconDownload" />
               </Box>
             </label>
+            {videoUpload.length !== 0 ? (
+              <ReactPlayer url={videoUpload} className={classes.videoUpload} playing={true} controls={true} />
+            ) : (
+              <></>
+            )}
           </FormControl>
           <FormControl component="fieldset" className={classes.bio}>
             <FormLabel component="legend" className="title">
