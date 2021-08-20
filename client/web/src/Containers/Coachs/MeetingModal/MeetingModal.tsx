@@ -43,12 +43,12 @@ const MeetingModal = (props: MeetingModalProps) => {
           },
         },
       },
-    }).then(() => setStep(1));
+    }).then((res) => res.data?.createBook && setStep(1));
   };
   const content = (
     <Fade in={open}>
       <Box className={classes.paperCalendar}>
-        <Button variant="contained" className="btn_handleDrawer" onClick={handleClose}></Button>
+        <Button disabled={!date} variant="contained" className="btn_handleDrawer" onClick={handleClose}></Button>
         {step === 0 ? (
           <Box className="content_calendar" style={{ display: 'block' }}>
             <Box className="header_calendar" component="header">
