@@ -3,7 +3,7 @@ import { Box, Button, Typography, Fade, Link, SwipeableDrawer } from '@material-
 import useStyles from './styles';
 import TextFieldComponent from '../../../Components/TextField/TextField';
 
-import Calendar from '../../../Components/Icons/Calendar/Calendar';
+import CalendarIcon from '../../../Components/Icons/Calendar/Calendar';
 import Booking from '../../../Assets/images/booking.svg';
 import { useState } from 'react';
 
@@ -34,7 +34,7 @@ const MeetingModal = (props: MeetingModalProps) => {
       <Fade in={open}>
         <Box className={classes.paperCalendar}>
           <Button variant="contained" className="btn_handleDrawer" onClick={handleClose}></Button>
-          {step == 0 ? (
+          {step === 0 ? (
             <Box className="content_calendar" style={{ display: 'block' }}>
               <Box className="header_calendar" component="header">
                 <h2 id="transition-modal-title">Date and Time</h2>
@@ -51,10 +51,11 @@ const MeetingModal = (props: MeetingModalProps) => {
                     type="text"
                     //value= {moment(startDate).format('h:mm')}
                     value=""
-                    icons={<Calendar />}
+                    icons={<CalendarIcon />}
                   />
                 </Box>
                 <Box className="dateInline_bloc">
+                  <Calendar />
                   {/* <DatePicker
                   autoOk
                   variant="static"
