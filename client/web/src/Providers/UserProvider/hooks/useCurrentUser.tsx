@@ -6,10 +6,13 @@ export const useCurrentUser = () => {
   const result = useQuery<MeInfo, MeInfoVariables>(ME_INFO, {
     variables: {
       where: {
-        id: `${localStorage.getItem('idMe')}`,
+        users_id: {
+          id: `${localStorage.getItem('idMe')}`,
+        },
       },
     },
   });
+  console.log(result.data);
   return {
     user: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id : null,
     photo: result.data?.profiles?.length ? result.data?.profiles[0]?.picture : null,

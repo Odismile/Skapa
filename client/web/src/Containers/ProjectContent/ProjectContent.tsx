@@ -22,6 +22,7 @@ import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
 import { useCreateContribution } from '../../Providers/ContributionProvider/Hooks/useCreateContribution';
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
+import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { projectSkills, projectSortedBy } from '../../ReactiveVariable/Project/projectSkills';
 import useStyles from './styles';
 
@@ -30,6 +31,7 @@ const ProjectContent = () => {
 
   const { t } = useTranslation();
   const { data, loading } = useGetProjectAll();
+  const { isReader } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
   const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
@@ -133,8 +135,10 @@ const ProjectContent = () => {
                 imgCardUrl={project?.Picture ?? ''}
                 users_id={project?.profile?.users_id?.id}
               />
-              <Box className="btnContribute" onClick={() => onClicklContribute(project)}>
-                <Button onClick={handleDrawer}>Contribute</Button>
+              <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
+                <Button onClick={handleDrawer} disabled={isReader}>
+                  Contribute
+                </Button>
               </Box>
             </Box>
           );
@@ -155,11 +159,23 @@ const ProjectContent = () => {
       >
         <Box className={classes.contribute_drawerContent}>
           <Box className="header_content" component="header">
-            <Button variant="contained" className="btn_handleDrawer" onClick={handleDrawer}></Button>
+            <Button
+              variant="contained"
+              className="btn_handleDrawer"
+              disabled={isReader}
+              onClick={handleDrawer}
+            ></Button>
             <Typography className="title_text" variant="h2">
               I contribute to thefollowing project{' '}
             </Typography>
-            <Button color="primary" variant="contained" href="" className="btn_done" onClick={handleDrawer}>
+            <Button
+              color="primary"
+              variant="contained"
+              href=""
+              disabled={isReader}
+              className="btn_done"
+              onClick={handleDrawer}
+            >
               Done
             </Button>
           </Box>
@@ -170,7 +186,7 @@ const ProjectContent = () => {
                 <Box className="category" component="span">
                   LAB
                 </Box>
-                <IconButton className="btn-favori" onClick={handleClick}>
+                <IconButton className="btn-favori" disabled={isReader} onClick={handleClick}>
                   <HeartLine className="iconHeart" />
                 </IconButton>
               </Card>
@@ -214,6 +230,7 @@ const ProjectContent = () => {
                 variant="contained"
                 href=""
                 className="btn_contribute"
+                disabled={isReader}
                 onClick={onClickContribute}
               >
                 Contribute

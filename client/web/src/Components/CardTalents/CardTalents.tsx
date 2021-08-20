@@ -5,6 +5,7 @@ import organisationImg from '../../Assets/images/organisation.png';
 import { coachs_profiles_profile_skills } from '../../GraphQL/profiles/types/coachs';
 import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreateFavoritTalent';
 import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
+import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import CardProject from '../CardProjects/CardProjects';
 import Award from '../Icons/Award';
 import Heart from '../Icons/Heart';
@@ -40,6 +41,7 @@ const CardTalents: FC<CardTalentsProps> = ({
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [check, setCheck] = React.useState(false);
+  const { isReader } = useCurrentUser();
 
   const { doCreateFavoriteTalent } = useCreateFavoritTalent();
   const { doDeleteTalentFavorit } = useDeleteFavoriTalent();
@@ -50,11 +52,13 @@ const CardTalents: FC<CardTalentsProps> = ({
   };
 
   const goToDetailsTalents = (event: any) => {
+    if (isReader) return;
     history.push(`/details-talents/${talentId}`);
     event.stopPropagation();
   };
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    if (isReader) return;
     event.stopPropagation();
     const newChecked = !check;
     setCheck(newChecked);
@@ -111,7 +115,7 @@ const CardTalents: FC<CardTalentsProps> = ({
             {skills && skills?.length > 2 && <span className="number">+{skills?.length - 2}</span>}
           </Box>
           {/* si bouton */}
-          <Button className="btnAdd" onClick={(e) => handleDrawer(e)}>
+          <Button className="btnAdd" disabled={isReader} onClick={(e) => handleDrawer(e)}>
             Add to a project
           </Button>
 
