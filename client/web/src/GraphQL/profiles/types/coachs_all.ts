@@ -34,13 +34,25 @@ export interface coachs_all_profiles_profile_skills {
   skill_id: coachs_all_profiles_profile_skills_skill_id | null;
 }
 
-export interface coachs_all_profiles_talent_favorits {
-  __typename: "TalentFavorits";
+export interface coachs_all_profiles_project_favorits_profile_users_id {
+  __typename: "UsersPermissionsUser";
   id: string;
+}
+
+export interface coachs_all_profiles_project_favorits_profile {
+  __typename: "Profiles";
+  id: string;
+  users_id: coachs_all_profiles_project_favorits_profile_users_id | null;
 }
 
 export interface coachs_all_profiles_project_favorits {
   __typename: "ProjectFavorits";
+  id: string;
+  profile: coachs_all_profiles_project_favorits_profile | null;
+}
+
+export interface coachs_all_profiles_talent_favorits {
+  __typename: "TalentFavorits";
   id: string;
 }
 
@@ -69,8 +81,8 @@ export interface coachs_all_profiles {
   users_id: coachs_all_profiles_users_id | null;
   published_at: any | null;
   profile_skills: (coachs_all_profiles_profile_skills | null)[] | null;
-  talent_favorits: (coachs_all_profiles_talent_favorits | null)[] | null;
   project_favorits: (coachs_all_profiles_project_favorits | null)[] | null;
+  talent_favorits: (coachs_all_profiles_talent_favorits | null)[] | null;
   languages: (coachs_all_profiles_languages | null)[] | null;
   profile_type_id: coachs_all_profiles_profile_type_id | null;
   projects: (coachs_all_profiles_projects | null)[] | null;
