@@ -105,17 +105,20 @@ const ProjectContent = () => {
   };
 
   const onClickContribute = () => {
-    doCreateContribution({
-      variables: {
-        input: {
-          data: { profile_id: project?.profile?.id ?? '', project_id: project?.id ?? '', value: priceToContribute },
+    if (priceToContribute !== null && priceToContribute !== 0) {
+      doCreateContribution({
+        variables: {
+          input: {
+            data: { profile_id: project?.profile?.id ?? '', project_id: project?.id ?? '', value: priceToContribute },
+          },
         },
-      },
-    }).then((result) => {
-      if (result.data?.createContribute?.contribute?.id) {
-        //setPriceToContribute(null);
-      }
-    });
+      }).then((result) => {
+        if (result.data?.createContribute?.contribute?.id) {
+          //setPriceToContribute(null);
+        }
+      });
+    } else {
+    }
   };
 
   return (
@@ -133,7 +136,7 @@ const ProjectContent = () => {
                 profilId={project?.profile?.id}
                 name={project?.Name ?? ''}
                 imgCardUrl={project?.Picture ?? ''}
-                users_id={project?.profile?.users_id?.id}
+                project_favorits={project?.project_favorits}
               />
               <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
                 <Button onClick={handleDrawer} disabled={isReader}>
@@ -230,7 +233,7 @@ const ProjectContent = () => {
                 variant="contained"
                 href=""
                 className="btn_contribute"
-                disabled={isReader}
+                disabled={isReader && priceToContribute === null && priceToContribute === 0}
                 onClick={onClickContribute}
               >
                 Contribute

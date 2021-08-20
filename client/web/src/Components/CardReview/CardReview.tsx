@@ -12,6 +12,7 @@ import {
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
+import { projects_all_projects_project_favorits } from '../../GraphQL/project/types/projects_all';
 import { useCreateProjectFavori } from '../../Providers/ProjectProvider/useCreateProjectFavori';
 import { useDeleteProjectFavori } from '../../Providers/ProjectProvider/useDeleteProjectFavori';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
@@ -58,21 +59,17 @@ interface CardReviewProps {
   profilId?: string;
   imgCardUrl: string;
   name: string;
-  users_id?: string;
+  project_favorits?: (projects_all_projects_project_favorits | null)[] | null | undefined;
 }
 
-const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, users_id }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, project_favorits }) => {
   const classes = useStyles();
   const history = useHistory();
-  const { isReader } = useCurrentUser();
+  const { isReader, user, profilId: profilIdLocal } = useCurrentUser();
 
-  console.log(`users_id`, users_id);
-  console.log(`localStorage.getItem('idMe')`, localStorage.getItem('idMe'));
-  console.log('****************************');
+  const [check, setCheck] = useState(project_favorits?.some((project) => project?.profile?.id === profilIdLocal));
 
-  const [check, setCheck] = useState(users_id && users_id === localStorage.getItem('idMe') ? true : false);
-
-  const { doCreateProjectFavorit, data: dataProjectFavorit } = useCreateProjectFavori();
+  const { doCreateProjectFavorit } = useCreateProjectFavori();
   const { doDeleteProjectFavorit } = useDeleteProjectFavori();
 
   const goToDetailsProjects = (event: any, projectId?: string) => {
@@ -89,12 +86,12 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
     if (newCheck) {
       doCreateProjectFavorit({
         variables: {
-          input: { data: { profile: profilId ?? '', project: projectId ?? '', status: '2' } },
+          input: { data: { profile: profilIdLocal ?? '', project: projectId ?? '', status: '2' } },
         },
       });
     } else {
       doDeleteProjectFavorit({
-        variables: { input: { where: { id: dataProjectFavorit?.createProjectFavorit?.projectFavorit?.id ?? '' } } },
+        variables: { input: { where: { id: profilIdLocal ?? '' } } },
       });
     }
   };

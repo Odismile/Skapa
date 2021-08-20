@@ -18,6 +18,23 @@ export interface projects_projects_project_skills {
   item: projects_projects_project_skills_item | null;
 }
 
+export interface projects_projects_project_favorits_profile_users_id {
+  __typename: "UsersPermissionsUser";
+  id: string;
+}
+
+export interface projects_projects_project_favorits_profile {
+  __typename: "Profiles";
+  id: string;
+  users_id: projects_projects_project_favorits_profile_users_id | null;
+}
+
+export interface projects_projects_project_favorits {
+  __typename: "ProjectFavorits";
+  id: string;
+  profile: projects_projects_project_favorits_profile | null;
+}
+
 export interface projects_projects_profile_users_id {
   __typename: "UsersPermissionsUser";
   id: string;
@@ -43,6 +60,7 @@ export interface projects_projects {
   Date_end: any | null;
   created_at: any;
   project_skills: (projects_projects_project_skills | null)[] | null;
+  project_favorits: (projects_projects_project_favorits | null)[] | null;
   profile: projects_projects_profile | null;
 }
 

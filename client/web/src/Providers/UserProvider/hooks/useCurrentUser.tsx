@@ -14,8 +14,10 @@ export const useCurrentUser = () => {
   });
   console.log(result.data);
   return {
+    profilId: result.data?.profiles?.length ? result.data?.profiles[0]?.id : null,
     user: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id : null,
     photo: result.data?.profiles?.length ? result.data?.profiles[0]?.picture : null,
-    isReader: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id?.isFirstConnection === true : true,
+    // isReader: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id?.isFirstConnection === true : true,
+    isReader: false,
   };
 };

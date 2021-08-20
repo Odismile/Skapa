@@ -20,6 +20,23 @@ export interface createProject_createProject_project_project_skills {
   item: createProject_createProject_project_project_skills_item | null;
 }
 
+export interface createProject_createProject_project_project_favorits_profile_users_id {
+  __typename: "UsersPermissionsUser";
+  id: string;
+}
+
+export interface createProject_createProject_project_project_favorits_profile {
+  __typename: "Profiles";
+  id: string;
+  users_id: createProject_createProject_project_project_favorits_profile_users_id | null;
+}
+
+export interface createProject_createProject_project_project_favorits {
+  __typename: "ProjectFavorits";
+  id: string;
+  profile: createProject_createProject_project_project_favorits_profile | null;
+}
+
 export interface createProject_createProject_project_profile_users_id {
   __typename: "UsersPermissionsUser";
   id: string;
@@ -45,6 +62,7 @@ export interface createProject_createProject_project {
   Date_end: any | null;
   created_at: any;
   project_skills: (createProject_createProject_project_project_skills | null)[] | null;
+  project_favorits: (createProject_createProject_project_project_favorits | null)[] | null;
   profile: createProject_createProject_project_profile | null;
 }
 
