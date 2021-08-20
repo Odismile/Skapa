@@ -9,9 +9,10 @@ import useStyles from './style';
 
 interface SearchFilterProps {
   onChangeFitlerText?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
+  placeholder?: string,
 }
 
-const SearchFilter: FC<SearchFilterProps> = ({ onChangeFitlerText }) => {
+const SearchFilter: FC<SearchFilterProps> = ({ onChangeFitlerText, placeholder }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -31,7 +32,7 @@ const SearchFilter: FC<SearchFilterProps> = ({ onChangeFitlerText }) => {
         <Box className="input-search">
           <InputBase
             className={classes.input}
-            placeholder={t(`project.textInputFilter`)}
+            placeholder={placeholder ? placeholder : t(`project.textInputFilter`)}
             inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
             onChange={onChangeFitlerText}
           />
