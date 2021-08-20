@@ -1,6 +1,6 @@
-import React from 'react';
-import { TextField, InputAdornment, TextFieldProps } from '@material-ui/core';
-import { FC } from 'react';
+import React, { FC } from 'react';
+import { TextField, InputAdornment } from '@material-ui/core';
+import classNames from 'classnames';
 import useStyles from './style';
 
 interface TextFieldCustomProps {

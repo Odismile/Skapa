@@ -165,8 +165,8 @@ const Description = () => {
       <Box className="form_bloc">
         <form className="formDescription">
           <Box className="item_bloc">
-            <Box className="title_bloc" component="header">
-              <Typography variant="h2">{t(`createProject.nameOfProject`)}</Typography>
+            <Box className="title_bloc project_title" component="header">
+              <Typography variant="h2" className="nameProject_title">{t(`createProject.nameOfProject`)}</Typography>
               {/* <IconButton aria-label="edit" className="btn_edit btn_title">
                 <EditIcon />
               </IconButton> */}

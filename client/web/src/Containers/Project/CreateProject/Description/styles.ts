@@ -42,6 +42,11 @@ export default makeStyles(
       '& .item_bloc': {
         //maxWidth: 310,
         margin: '0 auto 20px',
+        "& .project_title": {
+          '& h2': {
+            margin: 0,
+          },
+        },
         '& .title_bloc': {
           display: 'flex',
           alignItems: 'center',
@@ -53,6 +58,9 @@ export default makeStyles(
             fontWeight: 700,
             margin: 0,
             lineHeight: '1.2',
+          },
+          "& .nameProject_title": {
+            margin: 0,
           },
           '& .btn_title': {
             fontSize: '1rem',
@@ -70,6 +78,12 @@ export default makeStyles(
             fontStyle: 'italic',
             margin: '6px 0 0',
             width: '100%',
+          },
+          "& .project_title": {
+            '& h2': {
+              margin: 0,
+              transform: "translate(0, 1.5px) scale(0.75)",
+            },
           },
         },
         '& .field_item': {
