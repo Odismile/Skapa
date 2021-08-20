@@ -2,16 +2,17 @@ import React, { FC } from 'react';
 import { Box, Typography } from '@material-ui/core';
 import useStyles from './styles';
 import CardTalentOngoing from '../../../../Components/MyActivity/CardTalentOngoing/CardTalentOngoing';
+import CardCreatorDraft from '../../../../Components/MyActivity/CardCreatorDraft/CardCreatorDraft';
 
-const TabOngoingContribute = () => {
+const TabDraftCreator = () => {
   const classes = useStyles();
 
   return (
     <Box>
-      <CardTalentOngoing/>
-      <CardTalentOngoing/>
+      <CardCreatorDraft/>
+      <CardCreatorDraft/>
     </Box>
   );
 };
 
-export default TabOngoingContribute;
+export default TabDraftCreator;
