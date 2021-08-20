@@ -122,8 +122,16 @@ export default makeStyles(
             transform: 'none',
           },
           '& > div': {
+            marginTop: 0,
             '& input': {
               fontSize: 12,
+            },
+            '& div': {
+              marginBottom: 0,
+              marginTop: 0,
+              "&:first-child": {
+                marginRight: 10,
+              },
             },
           },
         },
