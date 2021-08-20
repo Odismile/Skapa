@@ -7,7 +7,8 @@ import CalendarIcon from '../../../Components/Icons/Calendar/Calendar';
 import Booking from '../../../Assets/images/booking.svg';
 import { useState } from 'react';
 import Calendar from '../../../Components/Calendar';
-
+import { DateCallback } from 'react-calendar';
+import { format } from 'date-fns';
 interface MeetingModalProps {
   open: boolean;
   handleOpen: () => void;
@@ -16,9 +17,14 @@ interface MeetingModalProps {
 const MeetingModal = (props: MeetingModalProps) => {
   const classes = useStyles();
   const { open, handleClose, handleOpen } = props;
+  const [date, setDate] = useState<Date | undefined>(undefined);
   const [step, setStep] = useState(0);
   const handleValidateMeeting = () => {
     setStep(1);
+  };
+  const handleChangeDay: DateCallback = (value, event) => {
+    event.preventDefault();
+    setDate(value);
   };
   return (
     <SwipeableDrawer
@@ -50,13 +56,12 @@ const MeetingModal = (props: MeetingModalProps) => {
                     id="date-meeting"
                     placeholder="dd/mm/yyyy"
                     type="text"
-                    //value= {moment(startDate).format('h:mm')}
-                    value=""
+                    value={date ? format(date, 'dd/MM/yyyy') : ''}
                     icons={<CalendarIcon />}
                   />
                 </Box>
                 <Box className="dateInline_bloc">
-                  <Calendar />
+                  <Calendar onClickDay={handleChangeDay} />
                   {/* <DatePicker
                   autoOk
                   variant="static"
