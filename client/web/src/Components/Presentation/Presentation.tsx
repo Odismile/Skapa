@@ -1,17 +1,16 @@
 import { Box, Link, TextareaAutosize } from '@material-ui/core';
 import React, { FC } from 'react';
-import { projects } from '../../GraphQL/project/types/projects';
 import useStyles from './style';
 
 interface PresentationProps {
-  data?: projects | undefined;
+  description: string;
 }
 
-const Presentation: FC<PresentationProps> = ({ data }) => {
+const Presentation: FC<PresentationProps> = ({ description }) => {
   const classes = useStyles();
   return (
     <Box className={classes.content}>
-      <TextareaAutosize minRows={4} maxRows={4} defaultValue={data?.projects?.[0]?.description} disabled={true} />
+      <TextareaAutosize minRows={4} maxRows={4} defaultValue={description} disabled={true} />
       <Box className="link">
         <Link href="#">Show more</Link>
       </Box>

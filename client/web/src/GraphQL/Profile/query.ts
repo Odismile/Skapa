@@ -1,11 +1,11 @@
 import gql from 'graphql-tag';
-import { PROFILS_INFO_FRAGMENT } from './fragment';
+import { PROFIL_INFO_FRAGMENT } from './fragment';
 
 export const PROFILES = gql`
   query profiles($sort: String, $limit: Int, $start: Int, $where: JSON, $publicationState: PublicationState) {
     profiles(sort: $sort, limit: $limit, start: $start, where: $where, publicationState: $publicationState) {
-      ...ProfilsInfo
+      ...ProfilInfo
     }
   }
-  ${PROFILS_INFO_FRAGMENT}
+  ${PROFIL_INFO_FRAGMENT}
 `;
