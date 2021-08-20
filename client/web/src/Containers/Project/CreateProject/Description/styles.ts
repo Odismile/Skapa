@@ -59,9 +59,6 @@ export default makeStyles(
             margin: 0,
             lineHeight: '1.2',
           },
-          "& .nameProject_title": {
-            margin: 0,
-          },
           '& .btn_title': {
             fontSize: '1rem',
             marginLeft: 8,
@@ -79,10 +76,20 @@ export default makeStyles(
             margin: '6px 0 0',
             width: '100%',
           },
-          "& .project_title": {
+          "&.project_title": {
             '& h2': {
+              fontSize: 10,
+              lineHeight: "1.4",
+              margin: "0 0 3px",
+              transform: "none",
+              transformOrigin: "left top",
+            },
+            "& .textField_content": {
               margin: 0,
-              transform: "translate(0, 1.5px) scale(0.75)",
+              "& > div": {
+                marginBottom: 0,
+                marginTop: 0,
+              },
             },
           },
         },
@@ -95,8 +102,10 @@ export default makeStyles(
             color: '#000',
             fontStyle: 'normal',
             fontWeight: 700,
+            fontSize: 10,
             lineHeight: '1.4',
             margin: 0,
+            transform: "none",
             '& > div': {
               marginBottom: 0,
             },
@@ -104,7 +113,7 @@ export default makeStyles(
           '& input': {
             borderRadius: 35,
             fontSize: 12,
-            height: 32,
+            height: 40,
             padding: '0 20px',
             '&::-webkit-input-placeholder': {
               color: '#979797',
@@ -129,7 +138,6 @@ export default makeStyles(
           '& label': {
             marginBottom: 0,
           },
-
           '& .input_date': {
             width: '100%',
             '& input': {
@@ -154,7 +162,7 @@ export default makeStyles(
               },
             },
             '& > div': {
-              marginTop: 24,
+              marginTop: 17,
               marginBottom: 0,
               '&:before, &:after': {
                 border: 'none',
@@ -167,16 +175,18 @@ export default makeStyles(
         },
         "& .selectBox_item": {
           marginBottom: 10,
-          "& > label": {
-          },
           "& .selectBox": {
             border: 'solid 1px #dfdfdf',
             boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
             borderRadius: 25,
             fontSize: 12,
+            height: 40,
+            marginTop: 3,
             padding: 0,
             "&.Mui-focused": {
-              background: "none",
+              background: "rgb(242,241,253)",
+              border: '1px solid #8870FF',
+              boxShadow: "inset 0px 1px 3px rgb(136 112 255 / 50%)",
             },
             "& > div": {
               background: "none",
