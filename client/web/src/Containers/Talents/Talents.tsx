@@ -40,7 +40,7 @@ const Talents = () => {
 
   return (
     <>
-      {params.pathname == '/wishlist' ? (
+      {params.pathname === '/wishlist' ? (
         <>
           <SearchFilterTalents />
           <Box className={classes.content}>

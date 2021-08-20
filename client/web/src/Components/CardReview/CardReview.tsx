@@ -14,6 +14,7 @@ import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useCreateProjectFavori } from '../../Providers/ProjectProvider/useCreateProjectFavori';
 import { useDeleteProjectFavori } from '../../Providers/ProjectProvider/useDeleteProjectFavori';
+import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
@@ -63,6 +64,8 @@ interface CardReviewProps {
 const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, users_id }) => {
   const classes = useStyles();
   const history = useHistory();
+  const [check, setCheck] = useState(false);
+  const { isReader } = useCurrentUser();
 
   console.log(`users_id`, users_id);
   console.log(`localStorage.getItem('idMe')`, localStorage.getItem('idMe'));
@@ -98,7 +101,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
   };
 
   return (
-    <Card className={classes.root} onClick={(event) => goToDetailsProjects(event, projectId)}>
+    <Card className={classes.root} onClick={(event) => !isReader && goToDetailsProjects(event, projectId)}>
       <CardMedia className={classes.media} image={imgCardUrl} title="image" />
       <CardContent className={classes.content}>
         <Box className="detail-top">
@@ -153,7 +156,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
       </CardContent>
       <Box className="category">LAB</Box>
 
-      <IconButton className="btn-favori" onClick={handleClick}>
+      <IconButton className="btn-favori" disabled={isReader} onClick={handleClick}>
         {check ? <Heart className="iconHeart" /> : <HeartLine className="iconHeartOutlined" />}
       </IconButton>
 
