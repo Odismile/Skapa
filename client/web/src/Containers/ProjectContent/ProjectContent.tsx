@@ -91,7 +91,7 @@ const ProjectContent = () => {
       newProjects = orderBy(projects, ['Date_End'], ['desc']);
     }
     if (newProjects.length !== projects?.length) setProjects(newProjects);
-  }, [projectSortedByLocal, projects]);
+  }, [projectSortedByLocal]);
   useEffect(() => {
     if (isInWishList) {
       const newProjects = (projects || []).filter(
