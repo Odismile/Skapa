@@ -19,6 +19,11 @@ export const PROJECT_INFO_FRAGMENT = gql`
     }
     profile {
       id
+      users_id {
+        id
+        lastname
+        surname
+      }
     }
   }
 `;

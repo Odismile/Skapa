@@ -18,9 +18,17 @@ export interface projects_all_projects_project_skills {
   item: projects_all_projects_project_skills_item | null;
 }
 
+export interface projects_all_projects_profile_users_id {
+  __typename: "UsersPermissionsUser";
+  id: string;
+  lastname: string | null;
+  surname: string | null;
+}
+
 export interface projects_all_projects_profile {
   __typename: "Profiles";
   id: string;
+  users_id: projects_all_projects_profile_users_id | null;
 }
 
 export interface projects_all_projects {

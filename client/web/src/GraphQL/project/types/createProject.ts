@@ -20,9 +20,17 @@ export interface createProject_createProject_project_project_skills {
   item: createProject_createProject_project_project_skills_item | null;
 }
 
+export interface createProject_createProject_project_profile_users_id {
+  __typename: "UsersPermissionsUser";
+  id: string;
+  lastname: string | null;
+  surname: string | null;
+}
+
 export interface createProject_createProject_project_profile {
   __typename: "Profiles";
   id: string;
+  users_id: createProject_createProject_project_profile_users_id | null;
 }
 
 export interface createProject_createProject_project {

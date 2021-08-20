@@ -94,7 +94,9 @@ const ProjectContent = () => {
       const newProjects = data?.projects?.filter(
         (project) =>
           project?.Name?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
-          project?.Type?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()),
+          project?.Type?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
+          project?.profile?.users_id?.lastname?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
+          project?.profile?.users_id?.surname?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()),
       );
       setProjects(newProjects);
     }
