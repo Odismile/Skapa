@@ -142,7 +142,7 @@ const OnboardingProfileFour = () => {
             Next
           </Button>
         </Box>
-         {loadingProfile && (<Loader/>)} 
+        {loadingProfile && (<Loader/>)} 
       </Box>
     </WrapOnBoarding>
   );
