@@ -17,7 +17,7 @@ export const useCurrentUser = () => {
     profilId: result.data?.profiles?.length ? result.data?.profiles[0]?.id : null,
     user: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id : null,
     photo: result.data?.profiles?.length ? result.data?.profiles[0]?.picture : null,
-    // isReader: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id?.isFirstConnection === true : true,
-    isReader: false,
+    isReader: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id?.isFirstConnection === true : true,
+    //isReader: false,
   };
 };
