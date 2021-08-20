@@ -3,28 +3,30 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PublicationState } from "./../../../types/graphql-global-types";
-
 // ====================================================
 // GraphQL query operation: MeInfo
 // ====================================================
 
-export interface MeInfo_user {
+export interface MeInfo_profiles_users_id {
   __typename: "UsersPermissionsUser";
   id: string;
   username: string;
   surname: string | null;
   lastname: string | null;
   email: string;
-  confirmed: boolean | null;
-  blocked: boolean | null;
+}
+
+export interface MeInfo_profiles {
+  __typename: "Profiles";
+  id: string;
+  picture: string | null;
+  users_id: MeInfo_profiles_users_id | null;
 }
 
 export interface MeInfo {
-  user: MeInfo_user | null;
+  profiles: (MeInfo_profiles | null)[] | null;
 }
 
 export interface MeInfoVariables {
-  id: string;
-  publicationState?: PublicationState | null;
+  where?: any | null;
 }
