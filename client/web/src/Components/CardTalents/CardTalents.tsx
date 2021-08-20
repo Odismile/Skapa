@@ -2,6 +2,7 @@ import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typo
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
+import { coachs_profiles_profile_skills } from '../../GraphQL/profiles/types/coachs';
 import CardProject from '../CardProjects/CardProjects';
 import Award from '../Icons/Award';
 import Heart from '../Icons/Heart';
@@ -16,6 +17,7 @@ interface CardTalentsProps {
   coachAddress?: string;
   coachLevel?: string;
   coachFee?: number;
+  skills?: (coachs_profiles_profile_skills | null)[] | null | undefined;
 }
 
 const CardTalents: FC<CardTalentsProps> = ({
@@ -26,6 +28,7 @@ const CardTalents: FC<CardTalentsProps> = ({
   coachPhoto,
   iconJob,
   jobTitle,
+  skills,
 }) => {
   const history = useHistory();
   const classes = useStyles();
@@ -81,9 +84,13 @@ const CardTalents: FC<CardTalentsProps> = ({
         </Box>
         <Box className="foot">
           <Box className="tags">
-            <Chip label="Sketch" />
-            <Chip label="Figma" />
-            <span className="number">+13</span>
+            {skills?.map((skill, index) => {
+              if (index < 2) {
+                return <Chip key={index} label={skill?.skill_id?.label} />;
+              }
+            })}
+
+            {skills && skills?.length > 2 && <span className="number">+{skills?.length - 2}</span>}
           </Box>
           {/* si bouton */}
           <Button className="btnAdd" onClick={handleDrawer}>

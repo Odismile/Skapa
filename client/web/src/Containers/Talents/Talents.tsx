@@ -56,6 +56,7 @@ const Talents = () => {
                 jobTitle={profil?.position || ''}
                 coachName={profil?.users_id?.lastname || ''}
                 coachAddress={''}
+                skills={profil?.profile_skills}
                 coachLevel={profil?.job_seniority_id?.label || ''}
               />
             </Box>
