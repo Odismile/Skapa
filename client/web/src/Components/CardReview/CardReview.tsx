@@ -65,7 +65,7 @@ interface CardReviewProps {
 const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, project_favorits }) => {
   const classes = useStyles();
   const history = useHistory();
-  const { isReader, user, profilId: profilIdLocal } = useCurrentUser();
+  const { isReader, profilId: profilIdLocal } = useCurrentUser();
 
   const [check, setCheck] = useState(project_favorits?.some((project) => project?.profile?.id === profilIdLocal));
 
