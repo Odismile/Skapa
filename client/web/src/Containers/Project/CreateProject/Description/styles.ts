@@ -345,6 +345,12 @@ export default makeStyles(
         },
       },
     },
+    tooltip: {
+      background: 'rgba(136,112,255,0.8)',
+    },
+    tooltipArrow: {
+      color: 'rgba(136,112,255,0.8)',
+    }
   }),
   { name: 'description' },
 );
