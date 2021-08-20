@@ -38,13 +38,13 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
           <Typography variant="h6" className="title">
             Présentation
           </Typography>
-          <Presentation data={data} />
+          <Presentation description={data?.projects?.[0]?.description ?? ''} />
         </Box>
         <Box className="tags">
           <Typography variant="h6" className="title">
             Tags
           </Typography>
-          <Tags data={data} />
+          <Tags project_skills={data?.projects?.[0]?.project_skills} />
           <Box className="btn">
             <Button className="btn-contibute">Contribute</Button>
           </Box>

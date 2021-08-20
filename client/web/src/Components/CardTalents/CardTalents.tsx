@@ -3,6 +3,8 @@ import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
 import { coachs_profiles_profile_skills } from '../../GraphQL/profiles/types/coachs';
+import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreateFavoritTalent';
+import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
 import CardProject from '../CardProjects/CardProjects';
 import Award from '../Icons/Award';
 import Heart from '../Icons/Heart';
@@ -10,6 +12,8 @@ import HeartLine from '../Icons/HeartLine';
 import useStyles from './style';
 
 interface CardTalentsProps {
+  profilId?: string;
+  talentId?: string;
   coachPhoto?: string;
   iconJob?: string;
   jobTitle?: string;
@@ -29,11 +33,16 @@ const CardTalents: FC<CardTalentsProps> = ({
   iconJob,
   jobTitle,
   skills,
+  profilId,
+  talentId,
 }) => {
   const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [check, setCheck] = React.useState(false);
+
+  const { doCreateFavoriteTalent } = useCreateFavoritTalent();
+  const { doDeleteTalentFavorit } = useDeleteFavoriTalent();
 
   const handleDrawer = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setOpen((prev) => !prev);
@@ -41,13 +50,22 @@ const CardTalents: FC<CardTalentsProps> = ({
   };
 
   const goToDetailsTalents = (event: any) => {
-    history.push('/details-talents');
+    history.push(`/details-talents/${talentId}`);
     event.stopPropagation();
   };
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
-    setCheck((current) => !current);
+    const newChecked = !check;
+    setCheck(newChecked);
+
+    if (newChecked) {
+      doCreateFavoriteTalent({
+        variables: { input: { data: { talent_id: talentId ?? '' } } },
+      });
+    } else {
+      doDeleteTalentFavorit({ variables: { input: { where: { id: talentId ?? '' } } } });
+    }
   };
 
   return (
@@ -77,7 +95,7 @@ const CardTalents: FC<CardTalentsProps> = ({
             </Typography>
           </Box>
           <IconButton className="btn btn-favori" onClick={handleClick}>
-            {check ? <HeartLine className="iconHeartOutlined" /> : <Heart className="iconHeart" />}
+            {!check ? <HeartLine className="iconHeartOutlined" /> : <Heart className="iconHeart" />}
           </IconButton>
 
           <img src={organisationImg} className="iconOrganisation" alt="organisation" />
@@ -96,6 +114,7 @@ const CardTalents: FC<CardTalentsProps> = ({
           <Button className="btnAdd" onClick={(e) => handleDrawer(e)}>
             Add to a project
           </Button>
+
           <SwipeableDrawer
             className={classes.drawerContribute}
             anchor="bottom"
