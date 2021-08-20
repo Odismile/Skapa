@@ -79,39 +79,6 @@ const Coachs = () => {
               ))}
             </Box>
           </Box>
-
-          <Box className="item_bloc">
-            {/* <Typography className="titre_item" component="h2">
-              Digitalization Process
-            </Typography> */}
-            <Box className="item_list">
-              <CoachsItem
-                coachPhoto={coachPhoto}
-                iconJob={DesignThinkerPicto}
-                jobTitle="Design Thinker"
-                coachName="Louis Tomaso"
-                coachAddress="Paris"
-                coachLevel="Senior"
-                coachFee={500}
-                clickAction={() => handleClickItem(null)}
-              />
-            </Box>
-          </Box>
-          <Box className="item_bloc">
-            {/* <Typography className="titre_item" component="h2">UX Process</Typography> */}
-            <Box className="item_list">
-              <CoachsItem
-                coachPhoto={coachPhoto}
-                iconJob={DesignThinkerPicto}
-                jobTitle="Design Thinker"
-                coachName="Louis Tomaso"
-                coachAddress="Paris"
-                coachLevel="Senior"
-                coachFee={500}
-                clickAction={() => handleClickItem(null)}
-              />
-            </Box>
-          </Box>
         </Box>
       </Box>
       {coach && openCalendar && (
