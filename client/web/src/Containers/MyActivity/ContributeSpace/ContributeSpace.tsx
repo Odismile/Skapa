@@ -4,7 +4,7 @@ import useStyles from './styles';
 import PrimaryHeader from '../../../Components/Header';
 import TabOngoingContribute from './TabOngoingContribute/TabOngoingContribute';
 import TabFinishedContribute from './TabFinishedContribute/TabFinishedContribute';
-
+import SearchBar from '../../../Components/MyActivity/SearchBar/SearchBar';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -18,7 +18,6 @@ function a11yProps(index: any) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
-
 
 function TabPanel(props: TabPanelProps) {
   const styleS = makeStyles({
@@ -82,7 +81,6 @@ const TabLabelActivity: FC<TabLabelActivityProps> = (props) => {
   );
 };
 
-
 const ContributeSpace = () => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -92,7 +90,7 @@ const ContributeSpace = () => {
 
   return (
     <Box>
-      <PrimaryHeader/>
+      <PrimaryHeader />
       <Box className={classes.mainContainer}>
         <Tabs
           centered
@@ -113,10 +111,10 @@ const ContributeSpace = () => {
           />
         </Tabs>
         <TabPanel value={value} index={0}>
-          <TabOngoingContribute/>
+          <TabOngoingContribute />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <TabFinishedContribute/>
+          <TabFinishedContribute />
         </TabPanel>
       </Box>
     </Box>
