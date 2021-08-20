@@ -1,6 +1,6 @@
 import { useQuery, useReactiveVar } from '@apollo/client';
 import { Box } from '@material-ui/core';
-import React from 'react';
+import React, { useMemo } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useLocation } from 'react-router';
 import coachPhoto from '../../Assets/images/coach_avatar.png';
@@ -10,13 +10,18 @@ import RadioExtInt from '../../Components/RadioExtInt/RadioExtInt';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
 import { LIST_COACH } from '../../GraphQL/profiles/query';
 import { coachs, coachsVariables } from '../../GraphQL/profiles/types/coachs';
+import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import { WISHLIST } from '../../Routes';
 import useStyles from './styles';
 
 const Talents = () => {
   const classes = useStyles();
   const params = useLocation();
+
+  const isInWishList = [WISHLIST].includes(params.pathname);
   const filterTalent = useReactiveVar(filterTalentVar);
+  const { profilId } = useCurrentUser();
 
   const { data, loading } = useQuery<coachs, coachsVariables>(LIST_COACH, {
     variables: {
@@ -28,15 +33,22 @@ const Talents = () => {
     },
   });
 
-  const listTalents = (data?.profiles || []).filter((item) => {
-    if (
-      item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-      item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-      item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
-    ) {
-      return true;
-    }
-  });
+  const listTalents = useMemo(() => {
+    const newList = (data?.profiles || []).filter((item) => {
+      if (
+        item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+        item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+        item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
+      ) {
+        return true;
+      }
+    });
+    if (isInWishList)
+      return (data?.profiles || []).filter(
+        (item) => item?.talent_favorits?.length && item?.talent_favorits?.some((i) => i?.profile?.id === profilId),
+      );
+    return newList;
+  }, [data?.profiles, filterTalent.search, isInWishList, profilId]);
 
   return (
     <>

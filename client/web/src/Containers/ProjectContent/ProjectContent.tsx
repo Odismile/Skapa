@@ -10,10 +10,11 @@ import {
   SwipeableDrawer,
   Typography,
 } from '@material-ui/core';
-import { orderBy } from 'lodash';
+import { orderBy, filter } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
+import { useLocation } from 'react-router-dom';
 import photoUser from '../../Assets/images/photo-card.png';
 import CardReview from '../../Components/CardReview/CardReview';
 import HeartLine from '../../Components/Icons/HeartLine';
@@ -24,20 +25,24 @@ import { useCreateContribution } from '../../Providers/ContributionProvider/Hook
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { projectSkills, projectSortedBy } from '../../ReactiveVariable/Project/projectSkills';
+import { WISHLIST } from '../../Routes';
 import useStyles from './styles';
 
 const ProjectContent = () => {
   const classes = useStyles();
 
   const { t } = useTranslation();
+  const { pathname } = useLocation();
   const { data, loading } = useGetProjectAll();
-  const { isReader } = useCurrentUser();
+  const { isReader, profilId } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
   const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
   const [project, setProject] = useState<projects_all_projects | null>(null);
   const [priceToContribute, setPriceToContribute] = useState<number | null>(null);
   const { doCreateContribution } = useCreateContribution();
+
+  const isInWishList = [WISHLIST].includes(pathname);
 
   const projectCategory = useReactiveVar(projectSkills);
   const projectSortedByLocal = useReactiveVar(projectSortedBy);
@@ -76,19 +81,25 @@ const ProjectContent = () => {
   }, [projectCategory]);
 
   useEffect(() => {
+    let newProjects: (projects_all_projects | null)[] | null | undefined = [];
     if (projectSortedByLocal === 'Latest') {
-      const newProjects = orderBy(projects, ['created_at'], ['desc']);
-      setProjects(newProjects);
+      newProjects = orderBy(projects, ['created_at'], ['desc']);
     } else if (projectSortedByLocal === 'Oldest') {
-      const newProjects = orderBy(projects, ['created_at'], ['asc']);
-      setProjects(newProjects);
+      newProjects = orderBy(projects, ['created_at'], ['asc']);
     } else if (projectSortedByLocal === 'Trending Up') {
     } else if (projectSortedByLocal === 'Expires Soon') {
-      const newProjects = orderBy(projects, ['Date_End'], ['desc']);
-      setProjects(newProjects);
+      newProjects = orderBy(projects, ['Date_End'], ['desc']);
     }
-  }, [projectSortedByLocal]);
-
+    if (newProjects.length !== projects?.length) setProjects(newProjects);
+  }, [projectSortedByLocal, projects]);
+  useEffect(() => {
+    if (isInWishList) {
+      const newProjects = (projects || []).filter(
+        (item) => item?.project_favorits?.length && item?.project_favorits?.some((i) => i?.profile?.id === profilId),
+      );
+      if (projects?.length !== newProjects.length) setProjects(newProjects);
+    }
+  }, [isInWishList, profilId, projects]);
   const onChangeFilter = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.target.value.trim().length === 0) {
       setProjects(data?.projects);
