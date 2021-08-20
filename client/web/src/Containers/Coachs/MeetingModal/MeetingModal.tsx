@@ -69,8 +69,8 @@ const MeetingModal = (props: MeetingModalProps) => {
             coach_id: coachId,
             date_start: date,
             date_end: date,
-            end_time: `${time?.h || '00'}${time?.mn || '00'}${time?.s || '00'}${time?.ms || '00'}`,
-            start_time: `${time?.h || '00'}${time?.mn || '00'}${time?.s || '00'}${time?.ms || '00'}`,
+            end_time: `${time?.h || '00'}:${time?.mn || '00'}:${time?.s || '00'}:${time?.ms || '00'}`,
+            start_time: `${time?.h || '00'}:${time?.mn || '00'}:${time?.s || '00'}:${time?.ms || '00'}`,
           },
         },
       },
@@ -150,7 +150,7 @@ const MeetingModal = (props: MeetingModalProps) => {
   );
   return (
     <>
-      <Hidden mdUp={true}>
+      <Hidden lgUp={true}>
         <SwipeableDrawer
           className={classes.drawerCalendar}
           anchor="bottom"
