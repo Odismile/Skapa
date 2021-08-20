@@ -1,17 +1,17 @@
 import { useApolloClient, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import { CRETATE_FAVORIT_TALENT } from '../../GraphQL/Talent/mutation';
-import { createTalentFavorit, createTalentFavoritVariables } from '../../GraphQL/Talent/types/createTalentFavorit';
+import { DELETE_FAVORIT_TALENT } from '../../GraphQL/Talent/mutation';
+import { deleteTalentFavorit, deleteTalentFavoritVariables } from '../../GraphQL/Talent/types/deleteTalentFavorit';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 
-export const useCreateFavoritTalent = () => {
+export const useDeleteFavoriTalent = () => {
   const { t } = useTranslation();
 
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
 
-  const [doCreateFavoriteTalent, { loading, data }] = useMutation<createTalentFavorit, createTalentFavoritVariables>(
-    CRETATE_FAVORIT_TALENT,
+  const [doDeleteTalentFavorit, { loading, data }] = useMutation<deleteTalentFavorit, deleteTalentFavoritVariables>(
+    DELETE_FAVORIT_TALENT,
     {
       onError: (error) => {
         const errorMessage =
@@ -25,13 +25,13 @@ export const useCreateFavoritTalent = () => {
         return;
       },
       onCompleted: (data) => {
-        if (data.createTalentFavorit?.talentFavorit?.id) {
+        if (data.deleteTalentFavorit?.talentFavorit?.id) {
           snackbar.type = 'SUCCESS';
-          snackbar.message = t(`createFavorit.success`);
+          snackbar.message = t(`deleteFovorit.success`);
           displaySnackbar(client, snackbar);
         }
       },
     },
   );
-  return { doCreateFavoriteTalent, data, loading };
+  return { doDeleteTalentFavorit, data, loading };
 };

@@ -131,6 +131,7 @@ const ProjectContent = () => {
                 profilId={project?.profile?.id}
                 name={project?.Name ?? ''}
                 imgCardUrl={project?.Picture ?? ''}
+                users_id={project?.profile?.users_id?.id}
               />
               <Box className="btnContribute" onClick={() => onClicklContribute(project)}>
                 <Button onClick={handleDrawer}>Contribute</Button>

@@ -60,6 +60,8 @@ const Talents = () => {
           return (
             <Box className={classes.box} key={index}>
               <CardTalents
+                talentId={profil?.id}
+                profilId={''}
                 coachPhoto={profil?.picture || coachPhoto}
                 iconJob={DesignThinkerPicto}
                 jobTitle={profil?.position || ''}

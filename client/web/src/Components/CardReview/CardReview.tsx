@@ -57,12 +57,18 @@ interface CardReviewProps {
   profilId?: string;
   imgCardUrl: string;
   name: string;
+  users_id?: string;
 }
 
-const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, users_id }) => {
   const classes = useStyles();
   const history = useHistory();
-  const [check, setCheck] = useState(false);
+
+  console.log(`users_id`, users_id);
+  console.log(`localStorage.getItem('idMe')`, localStorage.getItem('idMe'));
+  console.log('****************************');
+
+  const [check, setCheck] = useState(users_id && users_id === localStorage.getItem('idMe') ? true : false);
 
   const { doCreateProjectFavorit, data: dataProjectFavorit } = useCreateProjectFavori();
   const { doDeleteProjectFavorit } = useDeleteProjectFavori();
