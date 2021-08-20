@@ -1,20 +1,22 @@
-import React from 'react';
+import { useQuery, useReactiveVar } from '@apollo/client';
 import { Box } from '@material-ui/core';
+import React from 'react';
+import Skeleton from 'react-loading-skeleton';
+import { useLocation } from 'react-router';
+import coachPhoto from '../../Assets/images/coach_avatar.png';
+import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 import CardTalents from '../../Components/CardTalents/CardTalents';
 import RadioExtInt from '../../Components/RadioExtInt/RadioExtInt';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
-import useStyles from './styles';
-import { useLocation } from 'react-router';
-import { coachs, coachsVariables } from '../../GraphQL/profiles/types/coachs';
-import { useQuery } from '@apollo/client';
 import { LIST_COACH } from '../../GraphQL/profiles/query';
-import coachPhoto from '../../Assets/images/coach_avatar.png';
-import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
-import Skeleton from 'react-loading-skeleton';
+import { coachs, coachsVariables } from '../../GraphQL/profiles/types/coachs';
+import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import useStyles from './styles';
 
 const Talents = () => {
   const classes = useStyles();
   const params = useLocation();
+  const filterTalent = useReactiveVar(filterTalentVar);
 
   const { data, loading } = useQuery<coachs, coachsVariables>(LIST_COACH, {
     variables: {
@@ -25,6 +27,13 @@ const Talents = () => {
       },
     },
   });
+
+  const listTalents = (data?.profiles || []).filter(
+    (item) =>
+      item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+      item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+      item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()),
+  );
 
   return (
     <>
@@ -47,7 +56,7 @@ const Talents = () => {
       {loading && <Skeleton count={1} height={170} />}
 
       {!loading &&
-        data?.profiles?.map((profil, index) => {
+        listTalents?.map((profil, index) => {
           return (
             <Box className={classes.box} key={index}>
               <CardTalents
