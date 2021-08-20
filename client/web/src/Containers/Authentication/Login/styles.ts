@@ -41,10 +41,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  loginContainer: {
-    maxWidth: 380,
-    margin: 'auto',
-  },
   linkContainer: {
     marginTop: 20,
     textAlign: 'center',
@@ -59,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   imgContainer: {
-    marginBottom: 40,
+    marginTop: 100,
   },
   img: {
     width: '100%',
@@ -71,6 +67,30 @@ const useStyles = makeStyles((theme: Theme) => ({
     loginContainer: {
       paddingLeft: 24,
       paddingRight: 24,
+    },
+  },
+
+  mainPage:  {
+    height: "100%",
+    maxWidth: "40rem",
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxHeight: '42.5rem',
+    padding: '2.5rem 1.875rem 1.875rem',
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: "100%",
+    zIndex: 0,
+    "& .wrapPage": {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      height: "100%",
+      width: "100%",
     },
   },
 }));
