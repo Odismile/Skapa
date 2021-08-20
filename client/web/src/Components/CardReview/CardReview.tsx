@@ -64,7 +64,6 @@ interface CardReviewProps {
 const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, users_id }) => {
   const classes = useStyles();
   const history = useHistory();
-  const [check, setCheck] = useState(false);
   const { isReader } = useCurrentUser();
 
   console.log(`users_id`, users_id);
