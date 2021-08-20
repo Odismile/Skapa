@@ -111,7 +111,7 @@ const ProjectContent = () => {
       },
     }).then((result) => {
       if (result.data?.createContribute?.contribute?.id) {
-        setPriceToContribute(null);
+        //setPriceToContribute(null);
       }
     });
   };
@@ -191,7 +191,8 @@ const ProjectContent = () => {
                 />
               </Box>
               <Typography className="text_status">
-                You have <span className="amount_value">12 000 $</span>in your wallet
+                You have <span className="amount_value">{priceToContribute ? priceToContribute : 0} $</span>in your
+                wallet
               </Typography>
 
               <List className="list_relativeuser">
@@ -201,7 +202,8 @@ const ProjectContent = () => {
                   </figure>
                   <Box className="user_infos">
                     <Typography>
-                      Your average contribution is : <span className="price">5 690 $</span>
+                      Your average contribution is :{' '}
+                      <span className="price">{priceToContribute ? priceToContribute : 0} $</span>
                     </Typography>
                   </Box>
                 </ListItem>

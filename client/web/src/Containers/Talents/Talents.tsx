@@ -8,6 +8,7 @@ import { useLocation } from 'react-router';
 import { coachs, coachsVariables } from '../../GraphQL/profiles/types/coachs';
 import { useQuery } from '@apollo/client';
 import { LIST_COACH } from '../../GraphQL/profiles/query';
+import Skeleton from 'react-loading-skeleton';
 
 const Talents = () => {
   const classes = useStyles();
@@ -41,7 +42,13 @@ const Talents = () => {
         </>
       )}
 
+      {loading && <Skeleton count={1} height={170} />}
+
       <Box className={classes.box}>
+        <CardTalents />
+      </Box>
+
+      {/* <Box className={classes.box}>
         <CardTalents />
       </Box>
       <Box className={classes.box}>
@@ -49,7 +56,7 @@ const Talents = () => {
       </Box>
       <Box className={classes.box}>
         <CardTalents />
-      </Box>
+      </Box> */}
     </>
   );
 };
