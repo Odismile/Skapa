@@ -193,7 +193,7 @@ export default makeStyles(
               height: 32,
               display: 'flex',
               alignItems: "center",
-              padding: "0 10px",
+              padding: "0 15px",
             },
             "&:before, &:after": {
               display: "none",
@@ -254,10 +254,12 @@ export default makeStyles(
           },
           '& .selected_skills':{
             '& .inputGroup':{
+              
               '& label':{
                 backgroundColor: '#eeecff',
                 borderColor: '#b9b3ff',
                 color: '#8870FF',
+                
               }
             }
           },
@@ -279,6 +281,7 @@ export default makeStyles(
             backgroundColor: '#fff',
             borderRadius: 0,
             border: 'none',
+            cursor: "pointer",
             display: 'block',
             margin: 2.5,
             minWidth: 65,
