@@ -8,6 +8,8 @@ import { useLocation } from 'react-router';
 import { coachs, coachsVariables } from '../../GraphQL/profiles/types/coachs';
 import { useQuery } from '@apollo/client';
 import { LIST_COACH } from '../../GraphQL/profiles/query';
+import coachPhoto from '../../Assets/images/coach_avatar.png';
+import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 import Skeleton from 'react-loading-skeleton';
 
 const Talents = () => {
@@ -18,7 +20,7 @@ const Talents = () => {
     variables: {
       where: {
         profile_type_id: {
-          label: 'Coach',
+          label: 'Talent',
         },
       },
     },
@@ -44,19 +46,21 @@ const Talents = () => {
 
       {loading && <Skeleton count={1} height={170} />}
 
-      <Box className={classes.box}>
-        <CardTalents />
-      </Box>
-
-      {/* <Box className={classes.box}>
-        <CardTalents />
-      </Box>
-      <Box className={classes.box}>
-        <CardTalents />
-      </Box>
-      <Box className={classes.box}>
-        <CardTalents />
-      </Box> */}
+      {!loading &&
+        data?.profiles?.map((profil, index) => {
+          return (
+            <Box className={classes.box} key={index}>
+              <CardTalents
+                coachPhoto={profil?.picture || coachPhoto}
+                iconJob={DesignThinkerPicto}
+                jobTitle={profil?.position || ''}
+                coachName={profil?.users_id?.lastname || ''}
+                coachAddress={''}
+                coachLevel={profil?.job_seniority_id?.label || ''}
+              />
+            </Box>
+          );
+        })}
     </>
   );
 };

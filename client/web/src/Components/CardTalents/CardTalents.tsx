@@ -2,16 +2,31 @@ import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typo
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
-import photoCard from '../../Assets/images/photo-card.png';
 import CardProject from '../CardProjects/CardProjects';
 import Award from '../Icons/Award';
 import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
 import useStyles from './style';
 
-interface CardTalentsProps {}
+interface CardTalentsProps {
+  coachPhoto?: string;
+  iconJob?: string;
+  jobTitle?: string;
+  coachName?: string;
+  coachAddress?: string;
+  coachLevel?: string;
+  coachFee?: number;
+}
 
-const CardTalents: FC<CardTalentsProps> = () => {
+const CardTalents: FC<CardTalentsProps> = ({
+  coachAddress,
+  coachFee,
+  coachLevel,
+  coachName,
+  coachPhoto,
+  iconJob,
+  jobTitle,
+}) => {
   const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -36,10 +51,10 @@ const CardTalents: FC<CardTalentsProps> = () => {
     <Card className={classes.root} onClick={goToDetailsTalents}>
       <CardContent className="content">
         <Box className="head">
-          <img src={photoCard} alt="photo" />
+          <img src={coachPhoto} alt="photo" />
           <Box>
             <Box component="h6" className="head-title">
-              UX Designer
+              {jobTitle}
             </Box>
             {/* recommended */}
             <Typography component="p" className="note recommanded">
@@ -50,10 +65,12 @@ const CardTalents: FC<CardTalentsProps> = () => {
                <Award /> TOP RATED
               </Typography> */}
             <Typography component="p" className="name-adress">
-              <span>Baptiste Artaud</span> - Interne - Paris
+              <span>{coachName}</span> - {coachAddress}
             </Typography>
             <Typography component="p" className="name-adress">
-              <span>Level : </span>Junior <span>Rate : </span>318 $ / day
+              <span>Level : </span>
+              {coachLevel} <span>Rate : </span>
+              {coachFee} $ / day
             </Typography>
           </Box>
           <IconButton className="btn btn-favori" onClick={handleClick}>
