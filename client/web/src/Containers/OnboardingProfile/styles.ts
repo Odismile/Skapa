@@ -15,16 +15,20 @@ export default makeStyles(theme => ({
         fontSize: 14,
       },
     },
-    '& .Mui-checked':{
-      color: '#8870FF',
-    },
     '& div>label>span:last-child':{
       marginBottom: 0,
     },
-    '& .custom_radio>label>span>span>div>svg':{
-      fill: '#8870FF',
-
-    }
+    '& .custom_radio':{
+      '&>label>span>span>div>svg':{
+        fill: '#8870FF',
+      },
+      '&>label>span.Mui-checked>span>div>svg:last-child':{
+        transform: 'scale(1.4)',
+      },
+      '&>label>span.Mui-checked ~ span':{
+        color: '#8870FF',
+      },
+    },
   },
   languages:{
     margin: '8px 0px',

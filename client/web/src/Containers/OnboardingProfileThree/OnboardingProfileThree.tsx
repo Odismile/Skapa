@@ -80,7 +80,7 @@ const OnboardingProfileThree = () => {
           />
           <Search className="iconSearch" />
         </Box>
-        <Box className={classes.skills}>
+        <Box className={classes.skillsSelected}>
           {skillsSelected?.map((skill, index) => {
             return (
               <Box className="inputGroup" key={index}>
