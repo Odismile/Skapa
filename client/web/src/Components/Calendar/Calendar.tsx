@@ -3,5 +3,5 @@ import Calendar, { CalendarProps } from 'react-calendar';
 import './Calendar.css';
 
 export default (props: CalendarProps) => {
-  return <Calendar />;
+  return <Calendar {...props} />;
 };
