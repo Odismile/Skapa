@@ -31,6 +31,16 @@ export const CREATE_PROJECT_FAVORI = gql`
   }
 `;
 
+export const DELETE_PROJECT_FAVORI = gql`
+  mutation deleteProjectFavorit($input: deleteProjectFavoritInput) {
+    deleteProjectFavorit(input: $input) {
+      projectFavorit {
+        id
+      }
+    }
+  }
+`;
+
 export const UPDATE_PROJECT_FAVORI = gql`
   mutation updateProjectFavorit($input: updateProjectFavoritInput) {
     updateProjectFavorit(input: $input) {

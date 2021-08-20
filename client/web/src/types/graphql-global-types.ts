@@ -12,6 +12,15 @@ export enum PublicationState {
   PREVIEW = "PREVIEW",
 }
 
+export interface ContributeInput {
+  value?: number | null;
+  project_id?: string | null;
+  profile_id?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface InputID {
   id: string;
 }
@@ -80,6 +89,10 @@ export interface UsersPermissionsRegisterCustomInput {
   lastname?: string | null;
 }
 
+export interface createContributeInput {
+  data?: ContributeInput | null;
+}
+
 export interface createProfileInput {
   data?: ProfileInput | null;
 }
@@ -90,6 +103,10 @@ export interface createProjectFavoritInput {
 
 export interface createProjectInput {
   data?: ProjectInput | null;
+}
+
+export interface deleteProjectFavoritInput {
+  where?: InputID | null;
 }
 
 export interface editProjectFavoritInput {

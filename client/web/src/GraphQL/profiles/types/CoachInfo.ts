@@ -22,9 +22,16 @@ export interface CoachInfo_users_id {
   email: string;
 }
 
+export interface CoachInfo_profile_skills_skill_id {
+  __typename: "Items";
+  id: string;
+  label: string | null;
+}
+
 export interface CoachInfo_profile_skills {
   __typename: "ProfileSkills";
   id: string;
+  skill_id: CoachInfo_profile_skills_skill_id | null;
 }
 
 export interface CoachInfo_talent_favorits {
