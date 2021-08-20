@@ -89,6 +89,15 @@ export interface ProjectInput {
   updated_by?: string | null;
 }
 
+export interface TalentFavoritInput {
+  profile?: string | null;
+  coach_id?: string | null;
+  talent_id?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface UsersPermissionsLoginInput {
   identifier: string;
   password: string;
@@ -123,7 +132,15 @@ export interface createProjectInput {
   data?: ProjectInput | null;
 }
 
+export interface createTalentFavoritInput {
+  data?: TalentFavoritInput | null;
+}
+
 export interface deleteProjectFavoritInput {
+  where?: InputID | null;
+}
+
+export interface deleteTalentFavoritInput {
   where?: InputID | null;
 }
 
