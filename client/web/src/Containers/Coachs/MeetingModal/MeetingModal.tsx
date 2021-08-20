@@ -1,27 +1,47 @@
-import { Backdrop, Box, Button, Typography, Fade, Link, SwipeableDrawer, Hidden, Modal } from '@material-ui/core';
+import {
+  Backdrop,
+  Box,
+  Button,
+  Typography,
+  Fade,
+  Link,
+  SwipeableDrawer,
+  Hidden,
+  Modal,
+  InputLabel,
+} from '@material-ui/core';
 
 import useStyles from './styles';
 import TextFieldComponent from '../../../Components/TextField/TextField';
 
 import CalendarIcon from '../../../Components/Icons/Calendar/Calendar';
 import Booking from '../../../Assets/images/booking.svg';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Calendar from '../../../Components/Calendar';
 import { DateCallback } from 'react-calendar';
 import { format } from 'date-fns';
 import { useCreateBook } from '../../../Providers/TalentProvider/useCreateBook';
+import { TimeType } from '../../../types/types';
+
 interface MeetingModalProps {
   coachId: string;
+  coachName: string;
   open: boolean;
   handleOpen: () => void;
   handleClose: () => void;
 }
 const MeetingModal = (props: MeetingModalProps) => {
   const classes = useStyles();
-  const { open, handleClose: handleCloseProp, handleOpen, coachId } = props;
+  const { open, handleClose: handleCloseProp, handleOpen, coachId, coachName } = props;
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [step, setStep] = useState(0);
   const [createBookMutation] = useCreateBook();
+  const [time, setTime] = useState<TimeType>({
+    h: '00',
+    mn: '00',
+    ms: '00',
+    s: '00',
+  });
 
   const handleClose = () => {
     setStep(0);
@@ -30,6 +50,15 @@ const MeetingModal = (props: MeetingModalProps) => {
   const handleChangeDay: DateCallback = (value, event) => {
     event.preventDefault();
     setDate(value);
+  };
+  const handleChangeTime = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const [h, mn] = event.target.value.split(':');
+    setTime({
+      ...time,
+      h,
+      mn,
+    });
   };
   const handleCreateBook = () => {
     if (!date) return;
@@ -40,6 +69,8 @@ const MeetingModal = (props: MeetingModalProps) => {
             coach_id: coachId,
             date_start: date,
             date_end: date,
+            end_time: `${time?.h || '00'}${time?.mn || '00'}${time?.s || '00'}${time?.ms || '00'}`,
+            start_time: `${time?.h || '00'}${time?.mn || '00'}${time?.s || '00'}${time?.ms || '00'}`,
           },
         },
       },
@@ -59,14 +90,32 @@ const MeetingModal = (props: MeetingModalProps) => {
             </Box>
             <Box className="body_calendar" component="section">
               <Box className="field_item">
-                <TextFieldComponent
-                  label="Your selection"
-                  id="date-meeting"
-                  placeholder="dd/mm/yyyy"
-                  type="text"
-                  value={date ? format(date, 'dd/MM/yyyy') : ''}
-                  icons={<CalendarIcon />}
-                />
+                <InputLabel>Your selection</InputLabel>
+                <div
+                  style={{
+                    display: 'flex',
+                  }}
+                >
+                  <TextFieldComponent
+                    id="date-meeting"
+                    placeholder="dd/mm/yyyy"
+                    type="text"
+                    value={date ? format(date, 'dd/MM/yyyy') : ''}
+                    icons={<CalendarIcon />}
+                  />
+                  <TextFieldComponent
+                    id="time"
+                    type="time"
+                    defaultValue="07:30"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={handleChangeTime}
+                    inputProps={{
+                      step: 3600, // 60 min
+                    }}
+                  />
+                </div>
               </Box>
               <Box className="dateInline_bloc">
                 <Calendar onClickDay={handleChangeDay} />
@@ -88,8 +137,9 @@ const MeetingModal = (props: MeetingModalProps) => {
             </Box>
             <Box className="text_bloc">
               <Typography>
-                You’ve booked an appointment with <span className="purple_text">Louis Tomaso</span> for the{' '}
-                <span className="purple_text">12/05/21</span> at <span className="purple_text">10 A.M</span>
+                You’ve booked an appointment with <span className="purple_text">{coachName}</span> for the{' '}
+                <span className="purple_text">{date ? format(date, 'dd/MM/yy') : ''}</span> at{' '}
+                <span className="purple_text">10 A.M</span>
               </Typography>
               <Link className="link">Add the meeting to your Google Calendar</Link>
             </Box>

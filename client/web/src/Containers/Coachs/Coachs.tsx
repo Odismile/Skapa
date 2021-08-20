@@ -14,25 +14,16 @@ import { useReactiveVar } from '@apollo/client';
 import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import MeetingModal from './MeetingModal';
 import { useGetCoach } from '../../Providers/TalentProvider/useGetCoach';
+import { coachs_profiles } from '../../GraphQL/profiles/types/coachs';
 
 const Coachs = () => {
   const classes = useStyles();
 
   const [openCalendar, setOpenCalendar] = useState(false);
-  const handleClickItem = (coach: string) => {
-    setCoachId(coach);
-    handleOpen();
-  };
-  const handleOpen = () => {
-    setOpenCalendar(true);
-  };
-  const handleClose = () => {
-    setOpenCalendar(false);
-  };
 
   const filterTalent = useReactiveVar(filterTalentVar);
   const { data, loading } = useGetCoach();
-  const [coachId, setCoachId] = useState<string | undefined>(undefined);
+  const [coach, setCoach] = useState<coachs_profiles['users_id']>(null);
   const listCoachs = (data?.profiles || []).filter(
     (item) =>
       item &&
@@ -42,6 +33,16 @@ const Coachs = () => {
         .includes(filterTalent.search.toLowerCase()) ||
         `${item?.position}`.toLowerCase().includes(filterTalent.search.toLowerCase())),
   );
+  const handleClickItem = (coachInfo: coachs_profiles['users_id']) => {
+    setCoach(coachInfo);
+    handleOpen();
+  };
+  const handleOpen = () => {
+    setOpenCalendar(true);
+  };
+  const handleClose = () => {
+    setOpenCalendar(false);
+  };
   return (
     <Box className={classes.mainPage}>
       <PrimaryHeader />
@@ -73,7 +74,7 @@ const Coachs = () => {
                   coachName={profil?.users_id?.username || ''}
                   coachAddress={''}
                   coachLevel={profil?.job_seniority_id?.label || ''}
-                  clickAction={() => handleClickItem(profil?.users_id?.id || '')}
+                  clickAction={() => handleClickItem(profil?.users_id || null)}
                 />
               ))}
             </Box>
@@ -92,7 +93,7 @@ const Coachs = () => {
                 coachAddress="Paris"
                 coachLevel="Senior"
                 coachFee={500}
-                clickAction={() => handleClickItem('')}
+                clickAction={() => handleClickItem(null)}
               />
             </Box>
           </Box>
@@ -107,14 +108,20 @@ const Coachs = () => {
                 coachAddress="Paris"
                 coachLevel="Senior"
                 coachFee={500}
-                clickAction={() => handleClickItem('')}
+                clickAction={() => handleClickItem(null)}
               />
             </Box>
           </Box>
         </Box>
       </Box>
-      {coachId && openCalendar && (
-        <MeetingModal coachId={coachId} open={openCalendar} handleClose={handleClose} handleOpen={handleOpen} />
+      {coach && openCalendar && (
+        <MeetingModal
+          coachId={coach.id}
+          open={openCalendar}
+          handleClose={handleClose}
+          handleOpen={handleOpen}
+          coachName={coach.surname || ''}
+        />
       )}
     </Box>
   );
