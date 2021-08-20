@@ -12,8 +12,8 @@ export default makeStyles((theme) => ({
   },
   button: {
     borderRadius: 18,
-    width: 120,
-    padding: 10,
+    width: "auto",
+    padding: "10px 20px",
     height: 35,
   },
   completed: {

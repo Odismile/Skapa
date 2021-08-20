@@ -7,7 +7,13 @@ export default makeStyles(
       height: '100%',
       objectFit: 'cover',
     },
-    videoUpload: {},
+    videoUpload: {
+      width: "100%!important",
+      height: "100%!important",
+      "& video": {
+        objectFit: "cover",
+      }
+    },
     description: {
       //paddingBottom: 30,
       '& .upload_bloc': {
@@ -339,6 +345,12 @@ export default makeStyles(
         },
       },
     },
+    tooltip: {
+      background: 'rgba(136,112,255,0.9)',
+    },
+    tooltipArrow: {
+      color: 'rgba(136,112,255,0.9)',
+    }
   }),
   { name: 'description' },
 );

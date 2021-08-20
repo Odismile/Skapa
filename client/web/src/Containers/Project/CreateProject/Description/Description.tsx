@@ -258,11 +258,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.projectDescription`)}</Typography>
-              <Tooltip title={infoText} arrow>
-              <IconButton aria-label="info" className="btn_info btn_title">
-                <Info />
-              </IconButton>
-              </Tooltip>
+                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
+                  <IconButton aria-label="info" className="btn_info btn_title">
+                    <Info />
+                  </IconButton>
+                </Tooltip>
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item textarea_item">
@@ -282,11 +282,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.skillsRecquired`)}</Typography>
-              <Tooltip title={infoText} arrow>
-                <IconButton aria-label="info" className="btn_info btn_title">
-                  <Info />
-                </IconButton>
-              </Tooltip>
+                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
+                  <IconButton aria-label="info" className="btn_info btn_title">
+                    <Info />
+                  </IconButton>
+                </Tooltip>
             </Box>
             <Box className="content_bloc skills_bloc" component="section">
               <Box className="selected_skills">
@@ -328,11 +328,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.videoPitch`)}</Typography>
-              <IconButton aria-label="info" className="btn_info btn_title">
-                <Tooltip title={infoText} arrow>
-                  <Info />
+                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
+                  <IconButton aria-label="info" className="btn_info btn_title">
+                    <Info />
+                  </IconButton>
                 </Tooltip>
-              </IconButton>
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
               <Box className="upload_bloc">
