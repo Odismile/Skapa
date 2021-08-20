@@ -48,7 +48,8 @@
       "invalid_password_text": "Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre.",
       "Email is already taken.": "L'e-mail est déja pris",
       "Username already taken": "Le Nom est déja pris",
-      "undefined": "Erreur de réseau, veuillez vérifier votre connexion"
+      "undefined": "Erreur de réseau, veuillez vérifier votre connexion",
+      "as_number_value":"Ce champ ne doit pas contenir que des chiffres"
     },
     "labelText": {
       "labelSurname": "Nom",
