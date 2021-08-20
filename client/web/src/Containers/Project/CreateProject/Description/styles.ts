@@ -346,10 +346,10 @@ export default makeStyles(
       },
     },
     tooltip: {
-      background: 'rgba(136,112,255,0.8)',
+      background: 'rgba(136,112,255,0.9)',
     },
     tooltipArrow: {
-      color: 'rgba(136,112,255,0.8)',
+      color: 'rgba(136,112,255,0.9)',
     }
   }),
   { name: 'description' },
