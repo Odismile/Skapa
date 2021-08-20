@@ -9,6 +9,9 @@ export default makeStyles((theme) => ({
     padding: '7px 10px',
     position: 'relative',
     flexDirection: 'column',
+    '& .card': {
+      boxShadow: 'none',
+    },
     '& .media': {
       height: 75,
       borderRadius: 10,
