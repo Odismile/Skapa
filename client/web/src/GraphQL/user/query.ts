@@ -1,15 +1,18 @@
 import gql from 'graphql-tag';
 
 export const ME_INFO = gql`
-  query MeInfo($id: ID!, $publicationState: PublicationState) {
-    user(id: $id, publicationState: $publicationState) {
+  query MeInfo($where: JSON) {
+    profiles(where: $where) {
       id
-      username
-      surname
-      lastname
-      email
-      confirmed
-      blocked
+      picture
+      users_id {
+        id
+        username
+        surname
+        lastname
+        email
+        isFirstConnection
+      }
     }
   }
 `;

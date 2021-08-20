@@ -34,7 +34,7 @@ interface MeetingModalProps {
 const MeetingModal = (props: MeetingModalProps) => {
   const classes = useStyles();
   const { open, handleClose: handleCloseProp, handleOpen, coachId, coachName } = props;
-  const { data: dataMe } = useCurrentUser();
+  const { user } = useCurrentUser();
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [step, setStep] = useState(0);
   const [createBookMutation] = useCreateBook();
@@ -63,12 +63,12 @@ const MeetingModal = (props: MeetingModalProps) => {
     });
   };
   const handleCreateBook = () => {
-    if (!date) return;
+    if (!date || !time) return;
     createBookMutation({
       variables: {
         input: {
           data: {
-            talend_id: dataMe?.user?.id,
+            talend_id: user?.id,
             coach_id: coachId,
             date_start: date,
             date_end: date,
@@ -142,7 +142,7 @@ const MeetingModal = (props: MeetingModalProps) => {
               <Typography>
                 You’ve booked an appointment with <span className="purple_text">{coachName}</span> for the{' '}
                 <span className="purple_text">{date ? format(date, 'dd/MM/yy') : ''}</span> at{' '}
-                <span className="purple_text">10 A.M</span>
+                <span className="purple_text">{`${time.h}:${time.mn}`}</span>
               </Typography>
               <Link className="link">Add the meeting to your Google Calendar</Link>
             </Box>
