@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { TextField, InputAdornment, TextFieldProps } from '@material-ui/core';
-import { FC } from 'react';
+import classNames from 'classnames';
 import useStyles from './style';
 
 interface TextFieldCustomProps {
@@ -35,7 +35,7 @@ const TextFieldComponent: FC<TextFieldCustomProps & TextFieldProps> = (props) =>
       value={props.value}
       error={props.error}
       helperText={props.helperText}
-      className={classes.textfield}
+      className={classNames(classes.textfield, "textField_content")}
       {...props}
     />
   );

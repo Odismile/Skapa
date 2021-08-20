@@ -15,6 +15,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import moment from 'moment';
 import Skeleton from 'react-loading-skeleton';
+import classNames from 'classnames';
 
 import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player';
@@ -165,8 +166,8 @@ const Description = () => {
       <Box className="form_bloc">
         <form className="formDescription">
           <Box className="item_bloc">
-            <Box className="title_bloc" component="header">
-              <Typography variant="h2">{t(`createProject.nameOfProject`)}</Typography>
+            <Box className="title_bloc project_title" component="header">
+              <Typography variant="h2" className="nameProject_title">{t(`createProject.nameOfProject`)}</Typography>
               {/* <IconButton aria-label="edit" className="btn_edit btn_title">
                 <EditIcon />
               </IconButton> */}
@@ -208,6 +209,7 @@ const Description = () => {
                 >
                   {dataProjectType?.items?.map((project, index) => {
                     return (
+                      
                       <MenuItem key={index} value={project?.label ?? ''}>
                         {project?.label}
                       </MenuItem>
@@ -345,7 +347,7 @@ const Description = () => {
                   {videoUpload.length !== 0 ? (
                     <ReactPlayer
                       url={videoUpload}
-                      className={classes.videoUpload}
+                      className={classNames(classes.videoUpload, "videoUpload")}
                       width={'150px'}
                       height={'100px'}
                       playing={true}
