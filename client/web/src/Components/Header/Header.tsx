@@ -33,8 +33,13 @@ import { Route, Redirect, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
+import { FC } from 'react';
 
-const PrimaryHeader = () => {
+interface HeaderProps {
+  noBack?:boolean
+}
+
+const PrimaryHeader : FC<HeaderProps> = ({noBack}) => {
   const classes = useStyles();
   const { user, photo, isReader } = useCurrentUser();
 
@@ -142,6 +147,10 @@ const PrimaryHeader = () => {
           </Link>
         </Typography>
       )}
+      {!noBack && (<Typography className="wrap-backLink">
+        <Link className="backLink" href="/project">Back</Link>
+      </Typography>)}
+      
       <Drawer
         className={classes.drawerMenu}
         anchor="left"
