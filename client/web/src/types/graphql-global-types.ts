@@ -12,15 +12,6 @@ export enum PublicationState {
   PREVIEW = "PREVIEW",
 }
 
-export interface ContributeInput {
-  value?: number | null;
-  project_id?: string | null;
-  profile_id?: string | null;
-  published_at?: any | null;
-  created_by?: string | null;
-  updated_by?: string | null;
-}
-
 export interface BookInput {
   coach_id?: string | null;
   talend_id?: string | null;
@@ -29,6 +20,15 @@ export interface BookInput {
   start_time?: any | null;
   end_time?: any | null;
   status?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
+export interface ContributeInput {
+  value?: number | null;
+  project_id?: string | null;
+  profile_id?: string | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -103,12 +103,12 @@ export interface UsersPermissionsRegisterCustomInput {
   lastname?: string | null;
 }
 
-export interface createContributeInput {
-  data?: ContributeInput | null;
-}
-
 export interface createBookInput {
   data?: BookInput | null;
+}
+
+export interface createContributeInput {
+  data?: ContributeInput | null;
 }
 
 export interface createProfileInput {
