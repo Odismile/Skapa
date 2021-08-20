@@ -5,6 +5,7 @@ const useStyles = makeStyles(() =>
   btnFullWidth:{
     display: 'flex',
     justifyContent: 'center',
+    marginTop: 5,
     '& button':{
       width: "100%",
       backgroundColor: '#8870ff',

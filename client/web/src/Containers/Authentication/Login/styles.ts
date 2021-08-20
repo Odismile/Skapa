@@ -12,13 +12,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderRadius: 4,
     '& p': {
       fontSize: '0.875rem',
-      color: '#ED655F',
+      color: '#E30057',
       margin: 0,
     },
   },
   btnFullWidth:{
     display: 'flex',
     justifyContent: 'center',
+    marginTop: 5,
     '& button':{
       width: "100%",
       backgroundColor: '#8870ff',

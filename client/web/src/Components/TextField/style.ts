@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     },
     "& > div": {
       marginTop: 20,
-      marginBottom: 10,
+      marginBottom: 0,
       //marginTop: 24,
       '&:after, &:before': {
         border: 'none',
