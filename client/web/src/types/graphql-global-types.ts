@@ -21,6 +21,19 @@ export interface ContributeInput {
   updated_by?: string | null;
 }
 
+export interface BookInput {
+  coach_id?: string | null;
+  talend_id?: string | null;
+  date_start?: any | null;
+  date_end?: any | null;
+  start_time?: any | null;
+  end_time?: any | null;
+  status?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface InputID {
   id: string;
 }
@@ -39,6 +52,7 @@ export interface ProfileInput {
   projects?: (string | null)[] | null;
   profile_type_id?: string | null;
   contributes?: (string | null)[] | null;
+  books?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -91,6 +105,10 @@ export interface UsersPermissionsRegisterCustomInput {
 
 export interface createContributeInput {
   data?: ContributeInput | null;
+}
+
+export interface createBookInput {
+  data?: BookInput | null;
 }
 
 export interface createProfileInput {

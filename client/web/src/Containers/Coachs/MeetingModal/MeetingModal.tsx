@@ -9,22 +9,41 @@ import { useState } from 'react';
 import Calendar from '../../../Components/Calendar';
 import { DateCallback } from 'react-calendar';
 import { format } from 'date-fns';
+import { useCreateBook } from '../../../Providers/TalentProvider/useCreateBook';
 interface MeetingModalProps {
+  coachId: string;
   open: boolean;
   handleOpen: () => void;
   handleClose: () => void;
 }
 const MeetingModal = (props: MeetingModalProps) => {
   const classes = useStyles();
-  const { open, handleClose, handleOpen } = props;
+  const { open, handleClose: handleCloseProp, handleOpen, coachId } = props;
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [step, setStep] = useState(0);
-  const handleValidateMeeting = () => {
-    setStep(1);
+  const [createBookMutation] = useCreateBook();
+
+  const handleClose = () => {
+    setStep(0);
+    handleCloseProp();
   };
   const handleChangeDay: DateCallback = (value, event) => {
     event.preventDefault();
     setDate(value);
+  };
+  const handleCreateBook = () => {
+    if (!date) return;
+    createBookMutation({
+      variables: {
+        input: {
+          data: {
+            coach_id: coachId,
+            date_start: date,
+            date_end: date,
+          },
+        },
+      },
+    }).then(() => setStep(1));
   };
   const content = (
     <Fade in={open}>
@@ -34,7 +53,7 @@ const MeetingModal = (props: MeetingModalProps) => {
           <Box className="content_calendar" style={{ display: 'block' }}>
             <Box className="header_calendar" component="header">
               <h2 id="transition-modal-title">Date and Time</h2>
-              <Button color="primary" variant="contained" className="btn_book" onClick={handleValidateMeeting}>
+              <Button color="primary" variant="contained" className="btn_book" onClick={handleCreateBook}>
                 Book
               </Button>
             </Box>
