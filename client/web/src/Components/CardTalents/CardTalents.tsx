@@ -35,9 +35,9 @@ const CardTalents: FC<CardTalentsProps> = ({
   const [open, setOpen] = React.useState(false);
   const [check, setCheck] = React.useState(false);
 
-  const handleDrawer = (event: any) => {
+  const handleDrawer = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setOpen((prev) => !prev);
-    event.stopPropagation();
+    // event.stopPropagation();
   };
 
   const goToDetailsTalents = (event: any) => {
@@ -93,7 +93,7 @@ const CardTalents: FC<CardTalentsProps> = ({
             {skills && skills?.length > 2 && <span className="number">+{skills?.length - 2}</span>}
           </Box>
           {/* si bouton */}
-          <Button className="btnAdd" onClick={handleDrawer}>
+          <Button className="btnAdd" onClick={(e) => handleDrawer(e)}>
             Add to a project
           </Button>
           <SwipeableDrawer

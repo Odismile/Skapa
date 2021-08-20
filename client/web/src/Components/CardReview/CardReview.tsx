@@ -69,7 +69,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
 
   const goToDetailsProjects = (event: any, projectId?: string) => {
     if (projectId) {
-      history.push(`/projects/${projectId}`);
+      history.push(`/project/${projectId}/profil/${profilId}`);
     }
     event.stopPropagation();
   };
