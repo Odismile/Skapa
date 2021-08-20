@@ -18,8 +18,8 @@ import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_la
 import { ONBOARDING_PROFILE7 } from '../../Routes';
 import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
-import { getIdMe } from '../../Services';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
+import { useUploadFile } from '../../Utils/uploadFile';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -28,9 +28,10 @@ const OnboardingProfileFour = () => {
   const [projectTypeSelected, setProjectTypeSelected] = useState<
     (Items_get_language_items | null)[] | null | undefined
   >([]);
+  const { uploadFile } = useUploadFile();
+
   const history = useHistory();
   function handleClick() {
-    console.log(projectTypeSelected);
     //TEST
     doCreateProfile({
       variables: {
@@ -39,16 +40,25 @@ const OnboardingProfileFour = () => {
             position: yourPosition(),
             bio: bio(),
             job_seniority_id: ageProfil(),
-            picture: pictureFile(),
-            video: videoFile(),
+            picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+              pictureFile()?.[0].name
+            }`,
+            video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+              videoFile()?.[0].name
+            }`,
             languages: ['1', '2'],
             profile_skills: transformSkillsIds(skillsSelectedVariable()),
-            users_id: getIdMe(),
+            users_id: localStorage.getItem('idMe'),
             projects: transformSkillsIds(projectsTypeSelectedVariable()),
           },
         },
       },
-    }).then((result) => {});
+    }).then(async (result) => {
+      if (result.data?.createProfile?.profile?.id) {
+        await uploadFile(pictureFile());
+        await uploadFile(videoFile());
+      }
+    });
     history.replace(ONBOARDING_PROFILE7);
   }
 

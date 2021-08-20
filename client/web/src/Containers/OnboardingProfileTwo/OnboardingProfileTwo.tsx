@@ -16,10 +16,7 @@ import { testButtonEnable } from '../../ReactiveVariable/ButtonTest/ButtonTestEn
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
   const [videoUpload, setVideoUpload] = useState('');
-  const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
   const [disabledButton, setDisabledButton] = useState(false);
-  const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
-  const { uploadFile } = useUploadFile();
   const testButtonToEnabled = () => {
     if (!!pictureFile() && !!bio()) {
       testButtonEnable(false);
@@ -32,9 +29,7 @@ const OnboardingProfileTwo = () => {
   const classes = useStyles();
 
   const history = useHistory();
-  const handleClick = async () => {
-    await uploadFile(filesPicture);
-    await uploadFile(filesVideo);
+  const handleClick = () => {
     history.push('/onboarding-profile3');
   };
   let video;
@@ -55,7 +50,6 @@ const OnboardingProfileTwo = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
                 const filesConcat = Array.from(event.target.files || []);
-                setFilesPicture(filesConcat);
                 setImageUpload(url);
                 testButtonToEnabled();
               }}
@@ -84,7 +78,6 @@ const OnboardingProfileTwo = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
                 const filesConcat = Array.from(event.target.files || []);
-                setFilesVideo(filesConcat);
                 setVideoUpload(url);
                 testButtonToEnabled();
               }}
