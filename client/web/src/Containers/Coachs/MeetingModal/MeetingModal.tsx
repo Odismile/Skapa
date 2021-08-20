@@ -22,6 +22,7 @@ import { DateCallback } from 'react-calendar';
 import { format } from 'date-fns';
 import { useCreateBook } from '../../../Providers/TalentProvider/useCreateBook';
 import { TimeType } from '../../../types/types';
+import { useCurrentUser } from '../../../Providers/UserProvider/hooks/useCurrentUser';
 
 interface MeetingModalProps {
   coachId: string;
@@ -33,6 +34,7 @@ interface MeetingModalProps {
 const MeetingModal = (props: MeetingModalProps) => {
   const classes = useStyles();
   const { open, handleClose: handleCloseProp, handleOpen, coachId, coachName } = props;
+  const { data: dataMe } = useCurrentUser();
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [step, setStep] = useState(0);
   const [createBookMutation] = useCreateBook();
@@ -66,6 +68,7 @@ const MeetingModal = (props: MeetingModalProps) => {
       variables: {
         input: {
           data: {
+            talend_id: dataMe?.user?.id,
             coach_id: coachId,
             date_start: date,
             date_end: date,
