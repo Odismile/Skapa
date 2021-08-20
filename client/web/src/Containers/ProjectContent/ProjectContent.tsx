@@ -105,7 +105,11 @@ const ProjectContent = () => {
     console.log(`priceToContribute`, priceToContribute);
     console.log('**********************');
     doCreateContribution({
-      variables: { input: { data: { profile_id: '', project_id: project?.id ?? '', value: priceToContribute } } },
+      variables: {
+        input: {
+          data: { profile_id: project?.profile?.id ?? '', project_id: project?.id ?? '', value: priceToContribute },
+        },
+      },
     });
   };
 
@@ -119,7 +123,12 @@ const ProjectContent = () => {
         projects?.map((project, index) => {
           return (
             <Box className={classes.content} key={index}>
-              <CardReview projectId={project?.id} name={project?.Name ?? ''} imgCardUrl={project?.Picture ?? ''} />
+              <CardReview
+                projectId={project?.id}
+                profilId={project?.profile?.id}
+                name={project?.Name ?? ''}
+                imgCardUrl={project?.Picture ?? ''}
+              />
               <Box className="btnContribute" onClick={() => onClicklContribute(project)}>
                 <Button onClick={handleDrawer}>Contribute</Button>
               </Box>

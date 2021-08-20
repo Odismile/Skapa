@@ -54,11 +54,12 @@ const PrettoSlider = withStyles({
 interface CardReviewProps {
   //data?: projects | undefined;
   projectId?: string;
+  profilId?: string;
   imgCardUrl: string;
   name: string;
 }
 
-const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId }) => {
   const classes = useStyles();
   const history = useHistory();
   const [check, setCheck] = useState(false);
@@ -80,7 +81,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId }) => {
     if (newCheck) {
       doCreateProjectFavorit({
         variables: {
-          input: { data: { profile: localStorage.getItem('idMe'), project: projectId ?? '', status: '2' } },
+          input: { data: { profile: profilId ?? '', project: projectId ?? '', status: '2' } },
         },
       });
     } else {
