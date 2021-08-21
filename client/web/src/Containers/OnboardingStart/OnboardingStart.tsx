@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Typography } from '@material-ui/core';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import mainLogo from '../../Assets/images/logo.svg';
 import { useUpdateUser } from '../../Providers/AuthProvider/hooks/useUpdateUser';
 import useStyles from './styles';
@@ -9,6 +9,7 @@ import { HOMEPAGE, ONBOARDING_PROFILE } from '../../Routes';
 
 const OnboardingStart = () => {
   const classes = useStyles();
+  const history = useHistory();
 
   const { doUpdateUSer, loading } = useUpdateUser();
 
@@ -16,6 +17,7 @@ const OnboardingStart = () => {
     doUpdateUSer({
       variables: { input: { where: { id: localStorage.getItem('idMe') ?? '' }, data: { isFirstConnection: false } } },
     });
+    history.push(ONBOARDING_PROFILE);
   };
 
   return (
@@ -35,7 +37,6 @@ const OnboardingStart = () => {
             <Button
               onClick={onPressOnBoardingStart}
               variant="contained"
-              href={ONBOARDING_PROFILE}
               className={classes.btn_createProfile}
               color="primary"
               disabled={loading}
