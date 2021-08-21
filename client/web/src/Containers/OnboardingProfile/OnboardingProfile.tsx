@@ -20,10 +20,11 @@ const OnboardingProfile = () => {
   const { data, loading } = useItemsGetlaguage();
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
-  // const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
-
   const testButtonToEnabled = () => {
-    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() && !!levelLanguages()) {
+    if (
+      (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() && !!levelLanguages()) ||
+      levelLanguages()?.length === 0
+    ) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -94,7 +95,13 @@ const OnboardingProfile = () => {
             <>
               {data?.items?.map((item, index) => {
                 return (
-                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} test={testButtonToEnabled}/>
+                  <LanguagesChoice
+                    key={index}
+                    id={item?.id ?? ''}
+                    title={item?.label ?? ''}
+                    name={item?.label ?? ''}
+                    test={testButtonToEnabled}
+                  />
                 );
               })}
             </>
