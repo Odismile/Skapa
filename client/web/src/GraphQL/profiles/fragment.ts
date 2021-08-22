@@ -19,9 +19,25 @@ export const COACH_INFO_FRAGMENT = gql`
     published_at
     profile_skills {
       id
+      skill_id {
+        id
+        label
+      }
+    }
+    project_favorits {
+      id
+      profile {
+        id
+        users_id {
+          id
+        }
+      }
     }
     talent_favorits {
       id
+      profile {
+        id
+      }
     }
     project_favorits {
       id

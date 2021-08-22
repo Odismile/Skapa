@@ -15,6 +15,7 @@
       "email": "E-mail",
       "password": "Mot de passe",
       "signup_button": "Créer un compte",
+      "success": "Registration successfully completed. Please check your email box!",
       "create_account_linkedin": "Créer un compte à partir du profil linkedin"
     },
     "onboarding": {
@@ -38,8 +39,8 @@
     },
     "errorMessage": {
       "empty_field_email": "Champ d'e-mail vide",
-      "empty_field_password": "champ de mot de passe vide",
-      "empty_fields": "champs vides",
+      "empty_field_password": "Champ de mot de passe vide",
+      "empty_fields": "Champs vides",
       "invalid_fields": "E-mail ou mot de passe invalide",
       "invalid_surname": "Nom invalide",
       "invalid_lastName": "Prénom invalide",
@@ -62,7 +63,7 @@
       "yourPosition": "Votre position",
       "jobSeniority": "Ancienneté de l'emploi",
       "nameOfOrganisation": "Nom de votre ogranisation",
-      "laguageslevel": "niveau de langues",
+      "laguageslevel": "Niveau de langues",
       "next": "Suivant",
       "skipThisStep": "Sauter cette étape",
       "year": "Année",
@@ -84,11 +85,11 @@
       "uploadAVideo": "Télécharger une vidéo",
       "next": "Suivant",
       "skipThisStep": "Passer cette étape",
-      "ValidateAndPostProject":"Valider et poster",
-      "SavAsDraft":"Enregistrer comme brouillon"
+      "ValidateAndPostProject": "Valider et poster",
+      "SavAsDraft": "Enregistrer comme brouillon"
     },
     "createProjectError": {
-      "nameOfProject":"Veuillez entrer un nom de projet",
+      "nameOfProject": "Veuillez entrer un nom de projet",
       "picture": "Veuillez ajouter une image",
       "typeProject": "Veuillez selectionner une type de projet",
       "city": "Veuillez entrer une ville",
@@ -99,9 +100,18 @@
       "skills": "Veuillez selectionner un ou plusieurs skills",
       "video": "Veuillez entrer une video"
     },
-    "project":{
-      "none":"Aucun projet",
-      "textInputFilter":"Recherchez des projets par titre, type, créateur....."
+    "project": {
+      "none": "Aucun projet",
+      "textInputFilter": "Recherchez des projets par titre, type, créateur....."
+    },
+    "createProfile": {
+      "success": "Profil enregistré"
+    },
+    "create": {
+      "success": "Ajout effectué avec succès"
+    },
+    "delete": {
+      "success": "Suppresssion effectué avec succès"
     }
   }
 }

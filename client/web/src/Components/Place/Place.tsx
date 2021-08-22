@@ -37,7 +37,7 @@ const Place: FC<PlaceProps> = ({ data }) => {
   };
   return (
     <Box className={classes.root} onClick={goToDetailsPlace}>
-      <Card>
+      <Card className="card">
         <CardMedia className="media" image={imgPlace} title="image">
           <Box className="bitmap">
             <figure className="bitmap-image">

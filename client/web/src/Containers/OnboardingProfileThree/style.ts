@@ -1,16 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(  theme => ({
-  search:{
+export default makeStyles((theme) => ({
+  search: {
     position: 'relative',
-    '& .iconSearch':{
+    '& .iconSearch': {
       position: 'absolute',
-      top: "50%",
+      top: 42,
       right: 17,
-      transform: "translateY(-14px)",
-    }
+      transform: 'translateY(-14px)',
+    },
   },
-  content:{
+  content: {
     width: '100%',
     border: 'solid 1px #dfdfdf',
     boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
@@ -19,8 +19,9 @@ export default makeStyles(  theme => ({
     maxHeight: 305,
     overflow: 'hidden auto',
     padding: 10,
+    marginTop: 10,
   },
-  skills:{
+  skills: {
     fontSize: 12,
     display: 'flex',
     flexWrap: 'wrap',
@@ -32,7 +33,7 @@ export default makeStyles(  theme => ({
       display: 'block',
       margin: 2.5,
       overflow: 'hidden',
-      '& label':{
+      '& label': {
         borderRadius: 20,
         color: '#000',
         border: '1px solid #979797',
@@ -45,17 +46,53 @@ export default makeStyles(  theme => ({
         textAlign: 'center',
         transition: 'all .15s ease-in-out',
       },
-      '& input':{
+      '& input': {
         display: 'none',
       },
       '& input:checked ~ label': {
-        backgroundColor: "#ece8ff",
+        backgroundColor: '#ece8ff',
         borderColor: '#b9b3ff',
-              color: '#8870FF',
-      }
-    }
+        color: '#8870FF',
+      },
+    },
   },
-    btnNext: {
+  skillsSelected: {
+    fontSize: 12,
+    display: 'flex',
+    flexWrap: 'wrap',
+    margin: -2.5,
+    maxWidth: '100%',
+    '& .inputGroup': {
+      backgroundColor: '#fff',
+      borderRadius: 0,
+      display: 'block',
+      margin: 2.5,
+      overflow: 'hidden',
+      '& label': {
+        borderRadius: 20,
+        backgroundColor: '#ece8ff',
+        border: '1px solid #8870ff',
+        color: '#8870FF',
+        display: 'inline-flex',
+        alignItems: 'center',
+        fontSize: 12,
+        height: 30,
+        lineHeight: '100%',
+        padding: '5px 12px',
+        textAlign: 'center',
+        transition: 'all .15s ease-in-out',
+      },
+      '& input': {
+        display: 'none',
+      },
+      '& input:checked ~ label': {
+        backgroundColor: '#ece8ff',
+        borderColor: '#b9b3ff',
+        color: '#8870FF',
+      },
+    },
+  },
+  btnNext: {
     display: 'flex',
     justifyContent: 'center',
     marginTop: 16,

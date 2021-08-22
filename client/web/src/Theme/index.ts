@@ -4,13 +4,13 @@ const theme = createMuiTheme ({
   typography: {
     fontFamily: 'Nunito',
     body1: {
-      color: "#666",
+      color: "#000",
       fontSize: '1rem',
       fontWeight: 400,
       marginBottom: '0.5rem',
     },
     body2: {
-      color: "#666",
+      color: "#000",
       fontSize: '0.75rem',
       fontWeight: 400,
       marginBottom: '1rem',
@@ -38,7 +38,7 @@ const theme = createMuiTheme ({
       main: '#9AC61E',
     },
     error: {
-      main: '#F2344B',
+      main: '#E30057',
     },
     warning: {
       main: '#F98436',

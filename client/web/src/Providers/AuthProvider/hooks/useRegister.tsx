@@ -33,7 +33,7 @@ export const useRegister = () => {
     },
     onCompleted: (data) => {
       snackbar.type = 'SUCCESS';
-      snackbar.message = 'Registration successfully completed. please check your email box!';
+      snackbar.message = t(`signup.success`);
       displaySnackbar(client, snackbar);
       //doSendEmail({ variables: { confirmation: data?.registerCustom?.user?.email } });
     },

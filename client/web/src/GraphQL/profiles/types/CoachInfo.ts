@@ -22,19 +22,44 @@ export interface CoachInfo_users_id {
   email: string;
 }
 
+export interface CoachInfo_profile_skills_skill_id {
+  __typename: "Items";
+  id: string;
+  label: string | null;
+}
+
 export interface CoachInfo_profile_skills {
   __typename: "ProfileSkills";
+  id: string;
+  skill_id: CoachInfo_profile_skills_skill_id | null;
+}
+
+export interface CoachInfo_project_favorits_profile_users_id {
+  __typename: "UsersPermissionsUser";
+  id: string;
+}
+
+export interface CoachInfo_project_favorits_profile {
+  __typename: "Profiles";
+  id: string;
+  users_id: CoachInfo_project_favorits_profile_users_id | null;
+}
+
+export interface CoachInfo_project_favorits {
+  __typename: "ProjectFavorits";
+  id: string;
+  profile: CoachInfo_project_favorits_profile | null;
+}
+
+export interface CoachInfo_talent_favorits_profile {
+  __typename: "Profiles";
   id: string;
 }
 
 export interface CoachInfo_talent_favorits {
   __typename: "TalentFavorits";
   id: string;
-}
-
-export interface CoachInfo_project_favorits {
-  __typename: "ProjectFavorits";
-  id: string;
+  profile: CoachInfo_talent_favorits_profile | null;
 }
 
 export interface CoachInfo_languages {
@@ -62,8 +87,8 @@ export interface CoachInfo {
   users_id: CoachInfo_users_id | null;
   published_at: any | null;
   profile_skills: (CoachInfo_profile_skills | null)[] | null;
-  talent_favorits: (CoachInfo_talent_favorits | null)[] | null;
   project_favorits: (CoachInfo_project_favorits | null)[] | null;
+  talent_favorits: (CoachInfo_talent_favorits | null)[] | null;
   languages: (CoachInfo_languages | null)[] | null;
   profile_type_id: CoachInfo_profile_type_id | null;
   projects: (CoachInfo_projects | null)[] | null;

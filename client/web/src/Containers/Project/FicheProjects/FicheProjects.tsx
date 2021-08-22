@@ -11,9 +11,10 @@ import Skeleton from 'react-loading-skeleton';
 
 interface FicheProjectProps {
   projectId: string;
+  profilId: string;
 }
 
-const FicheProject: FC<FicheProjectProps> = ({ projectId }) => {
+const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
   const { data, loading } = useGetProject(projectId);
   const classes = useStyles();
   return (
@@ -22,7 +23,12 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId }) => {
         <Box className="card-review">
           {loading && <Skeleton count={1} height={170} />}
           {!loading && (
-            <CardReview imgCardUrl={data?.projects?.[0]?.Picture ?? ''} name={data?.projects?.[0]?.Name ?? ''} />
+            <CardReview
+              projectId={projectId}
+              profilId={profilId}
+              imgCardUrl={data?.projects?.[0]?.Picture ?? ''}
+              name={data?.projects?.[0]?.Name ?? ''}
+            />
           )}
         </Box>
         <Box className="pitch">
@@ -32,13 +38,13 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId }) => {
           <Typography variant="h6" className="title">
             Présentation
           </Typography>
-          <Presentation data={data} />
+          <Presentation description={data?.projects?.[0]?.description ?? ''} />
         </Box>
         <Box className="tags">
           <Typography variant="h6" className="title">
             Tags
           </Typography>
-          <Tags data={data} />
+          <Tags project_skills={data?.projects?.[0]?.project_skills} />
           <Box className="btn">
             <Button className="btn-contibute">Contribute</Button>
           </Box>

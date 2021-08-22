@@ -15,6 +15,7 @@
       "email": "Email",
       "password": "Password",
       "signup_button": "Create account",
+      "success": "Registration successfully completed. Please check your email box!",
       "create_account_linkedin": "Create account from linkedin profile"
     },
     "onboarding": {
@@ -24,7 +25,7 @@
       "profile_creation_title": "Now, let's create your profile !",
       "profile_creation_position": "Your position",
       "profile_creation_experience": "Job seniority (years)",
-      "profile_creation_organization": "Name of your organisation",
+      "profile_creation_organization": "Name of your organization",
       "profile_creation_photo": "Upload a picture of you",
       "profile_creation_video": "Upload a video pitch",
       "profile_creation_bio": "Bio",
@@ -48,7 +49,8 @@
       "invalid_password_text": "The password must be at least 8 characters long, one uppercase, one lowercase and one number.",
       "Email is already taken.": "Email is already taken",
       "Username already taken": "Surname already taken",
-      "undefined": "network error, please check your connection"
+      "undefined": "Network error, please check your connection",
+      "as_number_value": "This field must not contain only numbers"
     },
     "labelText": {
       "labelSurname": "Surname",
@@ -62,13 +64,13 @@
       "yourPosition": "Your position",
       "jobSeniority": "Job seniority",
       "nameOfOrganisation": "Name of your organisation",
-      "laguageslevel": "Laguages level",
+      "laguageslevel": "Languages level",
       "next": "Next",
       "skipThisStep": "Skip this step",
       "year": "Year",
-      "basic": "basic",
+      "basic": "Basic",
       "intermediate": "Intermediate",
-      "fluente": "Fluente"
+      "fluente": "Fluent"
     },
     "createProject": {
       "nameOfProject": "Name of project",
@@ -79,16 +81,16 @@
       "starts": "Starts",
       "end": "End",
       "projectDescription": "Project description",
-      "skillsRecquired": "Skills recquired",
+      "skillsRecquired": "Skills required",
       "videoPitch": "Video Pitch",
       "uploadAVideo": "Upload a video",
       "next": "Next",
       "skipThisStep": "Skip this step",
-      "ValidateAndPostProject":"Validate and post project",
-      "SavAsDraft":"Save as draft"
+      "ValidateAndPostProject": "Validate and post project",
+      "SavAsDraft": "Save as draft"
     },
     "createProjectError": {
-      "nameOfProject":"Please enter the name of project",
+      "nameOfProject": "Please enter the name of project",
       "picture": "Please add a picture",
       "typeProject": "Please select a type of project",
       "city": "Please enter a city",
@@ -99,9 +101,18 @@
       "skills": "Please select one or more skills",
       "video": "Please enter a video"
     },
-    "project":{
-      "none":"No project",
-      "textInputFilter":"Look for projects by title, type, creator..."
+    "project": {
+      "none": "No project",
+      "textInputFilter": "Look for projects by title, type, creator..."
+    },
+    "createProfile": {
+      "success": "Registered profile"
+    },
+    "createFavorit": {
+      "success": "successful addition"
+    },
+    "deleteFovorit": {
+      "success": "successful delete"
     }
   }
 }

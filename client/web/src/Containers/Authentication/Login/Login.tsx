@@ -104,8 +104,8 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   };
 
   return (
-    <Box className={classes.root}>
-      <Box className={classes.loginContainer}>
+    <Box className={classes.mainPage}>
+      <Box className="wrapPage">
         <Box className={classes.imgContainer}>
           <img src={TalentLogo} className={classes.img} />
         </Box>
@@ -142,13 +142,12 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
               {t('login.login')}
             </Button>
           </Box>
-
-          <Box className={classes.linkContainer}>
-            <Link className={classes.link} onClick={handleGoToCreateAccount}>
-              Create an account
-            </Link>
-          </Box>
         </form>
+        <Box className={classes.linkContainer}>
+          <Link className={classes.link} onClick={handleGoToCreateAccount}>
+            Create an account
+          </Link>
+        </Box>
       </Box>
     </Box>
   );
