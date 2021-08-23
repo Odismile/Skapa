@@ -49,8 +49,8 @@ const Places = () => {
           <Box className="input-search">
             <InputBase
               className={classes.input}
-              placeholder="Look for projects by title, type, creator.."
-              inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
+              placeholder="Look for one of your favorite"
+              inputProps={{ 'aria-label': 'Look for one of your favorite' }}
             />
             <IconButton className="search-icon" aria-label="search">
               <Search />
