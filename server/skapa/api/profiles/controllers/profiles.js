@@ -11,7 +11,7 @@ module.exports = {
   async getProfile(ctx) {
     const { id } = ctx.params;
     const entity = await strapi.query("profiles").findOne({ users_id: id });
-    if (entity) {
+    /*if (entity) {
       const getUrl = async (profile, isPicture) => {
         let signedUrl;
         try {
@@ -28,7 +28,7 @@ module.exports = {
       const video = await getUrl(entity, false);
       entity.picture = url;
       entity.video = video;
-    }
+    }*/
     return entity;
   },
 };
