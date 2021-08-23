@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography } from '@material-ui/core';
-import { useHistory } from 'react-router';
+import { useHistory, Link } from 'react-router-dom';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from './style';
 import IconChange from '../../Components/Icons/Change/Change';
@@ -13,16 +13,14 @@ import {
   skillsSelectedVariable,
   pictureFile,
   videoFile,
-  filesPicture,
-  filesVideo
+  levelLanguages,
 } from '../../ReactiveVariable/Profil/profil';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { ONBOARDING_PROFILE7 } from '../../Routes';
+import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
-import { getIdMe } from '../../Services';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 import { useUploadFile } from '../../Utils/uploadFile';
-import Loader from '../../Components/Loader/Loader';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -31,71 +29,38 @@ const OnboardingProfileFour = () => {
   const [projectTypeSelected, setProjectTypeSelected] = useState<
     (Items_get_language_items | null)[] | null | undefined
   >([]);
-  const [disabledButton, setDisabledButton] = useState(true);
-
-  const testButtonToEnabled = () => {
-    if (projectsTypeSelectedVariable()?.length!==0) {
-      setDisabledButton(false);
-    } else {
-      setDisabledButton(true);
-    }
-  };
-
   const { uploadFile } = useUploadFile();
-  const [load, setLoad] = useState<boolean>(false);
-  //const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
 
-  const sendFile=async () => {
-   // setFilesPicture(files)
-     await uploadFile(filesPicture());
-     await uploadFile(filesVideo());
-  }
   const history = useHistory();
   function handleClick() {
     //TEST
-    sendFile().finally(()=>{
-      doCreateProfile({
-        variables: {
-          input: {
-            data: {
-              position: yourPosition(),
-              bio: bio(),
-              job_seniority_id: ageProfil(),
-              picture: pictureFile(),
-              video: videoFile(),
-              languages: ['1', '2'],
-              profile_skills: transformSkillsIds(skillsSelectedVariable()),
-              users_id: getIdMe(),
-              projects: transformSkillsIds(projectsTypeSelectedVariable()),
-            },
-          },
-        },
-      }).then((result) => {
-       
-      });
-      !loadingProfile && history.replace(ONBOARDING_PROFILE7)
-    });
-
-    /* doCreateProfile({
+    doCreateProfile({
       variables: {
         input: {
           data: {
             position: yourPosition(),
             bio: bio(),
             job_seniority_id: ageProfil(),
-            picture: pictureFile(),
-            video: videoFile(),
-            languages: ['1', '2'],
+            picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+              pictureFile()?.[0].name
+            }`,
+            video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+              videoFile()?.[0].name
+            }`,
+            // languages: levelLanguages()?.map((e) => e.id),
             profile_skills: transformSkillsIds(skillsSelectedVariable()),
-            users_id: getIdMe(),
+            users_id: localStorage.getItem('idMe'),
             projects: transformSkillsIds(projectsTypeSelectedVariable()),
           },
         },
       },
-    }).then((result) => {
-     
+    }).then(async (result) => {
+      if (result.data?.createProfile?.profile?.id) {
+        await uploadFile(pictureFile());
+        await uploadFile(videoFile());
+      }
     });
-    history.replace(ONBOARDING_PROFILE7); */
+    !loadingProfile && history.replace(ONBOARDING_PROFILE7);
   }
 
   const onClickProjectType = (projectType: Items_get_language_items | null) => {
@@ -114,9 +79,8 @@ const OnboardingProfileFour = () => {
         projectsTypeSelectedVariable(newSkills);
       }
     }
-    testButtonToEnabled()
   };
-  
+
   return (
     <WrapOnBoarding>
       <Box className={classes.bloc}>
@@ -138,11 +102,15 @@ const OnboardingProfileFour = () => {
           </Box>
         </Box>
         <Box className={classes.btnNext}>
-          <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
+          <Button variant="contained" onClick={handleClick}>
             Next
           </Button>
         </Box>
-        {loadingProfile && (<Loader/>)} 
+      </Box>
+      <Box component="footer" className={classes.footerPage}>
+        <Typography className="link-footer">
+          <Link to={ONBOARDING_PROFILE7}>Skip this step</Link>
+        </Typography>
       </Box>
     </WrapOnBoarding>
   );

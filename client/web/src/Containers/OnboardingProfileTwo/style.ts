@@ -92,9 +92,9 @@ export default makeStyles((theme) => ({
         fontSize: '1.4rem',
       },
     },
-    '& .addIcon':{
+    '& .addIcon': {
       fontSize: 40,
-    }
+    },
   },
   inputVideo: {
     width: '100%',
@@ -117,7 +117,7 @@ export default makeStyles((theme) => ({
         fontSize: '1rem',
       },
     },
-    "& .tooltip":{
+    '& .tooltip': {
       padding: 0,
     },
   },
@@ -125,12 +125,12 @@ export default makeStyles((theme) => ({
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
-  videoUpload:{
+  videoUpload: {
     width: 'auto!important',
     height: '120px!important',
     marginTop: 10,
-    '& video':{
+    '& video': {
       objectFit: 'cover',
-    }
-  }
+    },
+  },
 }));

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   radio: {
     margin: '8px 0px',
     '& legend': {
@@ -15,22 +15,22 @@ export default makeStyles(theme => ({
         fontSize: 14,
       },
     },
-    '& div>label>span:last-child':{
+    '& div>label>span:last-child': {
       marginBottom: 0,
     },
-    '& .custom_radio':{
-      '&>label>span>span>div>svg':{
+    '& .custom_radio': {
+      '&>label>span>span>div>svg': {
         fill: '#8870FF',
       },
-      '&>label>span.Mui-checked>span>div>svg:last-child':{
+      '&>label>span.Mui-checked>span>div>svg:last-child': {
         transform: 'scale(1.4)',
       },
-      '&>label>span.Mui-checked ~ span':{
+      '&>label>span.Mui-checked ~ span': {
         color: '#8870FF',
       },
     },
   },
-  languages:{
+  languages: {
     margin: '8px 0px',
     width: '100%',
     '& legend': {
@@ -40,11 +40,11 @@ export default makeStyles(theme => ({
       fontWeight: 600,
     },
   },
-  btnNext:{
+  btnNext: {
     display: 'flex',
     justifyContent: 'center',
     marginTop: 16,
-    '& button':{
+    '& button': {
       backgroundColor: '#8870ff',
       borderRadius: 25,
       color: 'white',
@@ -52,12 +52,29 @@ export default makeStyles(theme => ({
       padding: '6px 24px',
       textTransform: 'capitalize',
       width: 115,
-      '&:hover':{
+      '&:hover': {
         backgroundColor: '#8870ff',
         color: 'white',
-      }
-    }
+      },
+    },
   },
-
-
+  footerPage: {
+    '& .link-footer': {
+      color: '#8870ff',
+      fontSize: '1rem',
+      fontWeight: 600,
+      margin: 0,
+      textAlign: 'right',
+      displa: 'flex',
+      justifyContent: 'flex-end',
+      '@media(min-width: 640px)': {
+        textAlign: 'center',
+      },
+      '& a': {
+        color: 'inherit',
+        textDecoration: 'none',
+        borderBottom: '1px solid #8870ff',
+      },
+    },
+  },
 }));

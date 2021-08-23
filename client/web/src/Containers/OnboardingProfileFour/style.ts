@@ -18,7 +18,7 @@ export default makeStyles((theme) => ({
       maxWidth: 132,
       width: 132,
       height: 100,
-      overflow: "hidden",
+      overflow: 'hidden',
       position: 'relative',
       '& label': {
         color: '#8870FF',
@@ -31,7 +31,7 @@ export default makeStyles((theme) => ({
         justifyContent: 'center',
         fontSize: 14,
         fontWeight: 700,
-        overflow: "hidden",
+        overflow: 'hidden',
       },
       '& input': {
         display: 'none',
@@ -40,18 +40,16 @@ export default makeStyles((theme) => ({
         backgroundColor: '#ece8ff',
         border: 'solid 2px #8870ff',
       },
-      '& .bgIcon':{
-          fill: "#8870ff",
-          position: 'absolute',
-          bottom: -2,
-          right: "-22.5%",
-          opacity: '0.08',
-          height: 98,
-          width: 98,
-          "& svg": {
-            
-          }
-      }
+      '& .bgIcon': {
+        fill: '#8870ff',
+        position: 'absolute',
+        bottom: -2,
+        right: '-22.5%',
+        opacity: '0.08',
+        height: 98,
+        width: 98,
+        '& svg': {},
+      },
     },
   },
   btnNext: {
@@ -70,10 +68,29 @@ export default makeStyles((theme) => ({
       },
     },
   },
-  bloc:{
+  bloc: {
     margin: 'auto',
-    '& .title':{
+    '& .title': {
       textAlign: 'center',
-    }
-  }
+    },
+  },
+  footerPage: {
+    '& .link-footer': {
+      color: '#8870ff',
+      fontSize: '1rem',
+      fontWeight: 600,
+      margin: 0,
+      textAlign: 'right',
+      displa: 'flex',
+      justifyContent: 'flex-end',
+      '@media(min-width: 640px)': {
+        textAlign: 'center',
+      },
+      '& a': {
+        color: 'inherit',
+        textDecoration: 'none',
+        borderBottom: '1px solid #8870ff',
+      },
+    },
+  },
 }));
