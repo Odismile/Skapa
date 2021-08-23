@@ -134,7 +134,7 @@ const ProjectContent = () => {
 
   return (
     <Box className={classes.projectPage}>
-      <SearchFilter onChangeFitlerText={onChangeFilter} />
+      <SearchFilter onChangeFitlerText={onChangeFilter} placeholder="Look for one of your favorite"/>
       {loading && <Skeleton count={1} height={170} />}
 
       {!loading &&
