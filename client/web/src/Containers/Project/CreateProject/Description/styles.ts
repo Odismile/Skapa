@@ -2,6 +2,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(
   (theme) => ({
+    "@global": {
+      "* .datePickerPop": {
+        "& button": {
+          "& p": {
+            margin: 0,
+          },
+        }
+      }
+    },
     imageUpload: {
       width: '100%',
       height: '100%',
@@ -48,11 +57,6 @@ export default makeStyles(
       '& .item_bloc': {
         //maxWidth: 310,
         margin: '0 auto 20px',
-        "& .project_title": {
-          '& h2': {
-            margin: 0,
-          },
-        },
         '& .title_bloc': {
           display: 'flex',
           alignItems: 'center',
@@ -95,6 +99,9 @@ export default makeStyles(
               "& > div": {
                 marginBottom: 0,
                 marginTop: 0,
+                "& input": {
+                  fontSize: 12,
+                },
               },
             },
           },
@@ -344,6 +351,7 @@ export default makeStyles(
           width: 120,
         },
       },
+      
     },
     tooltip: {
       background: 'rgba(136,112,255,0.9)',
