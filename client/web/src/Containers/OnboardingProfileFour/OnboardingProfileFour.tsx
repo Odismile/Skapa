@@ -87,6 +87,7 @@ const OnboardingProfileFour = () => {
   };
 
   return (
+    <>
     <WrapOnBoarding>
       <Box className={classes.bloc}>
         <Typography className="title">What kind of project would you like to see ?</Typography>
@@ -117,8 +118,9 @@ const OnboardingProfileFour = () => {
           <Link to={ONBOARDING_PROFILE7}>Skip this step</Link>
         </Typography>
       </Box>
-      {loadingUploadFile && <Loader/>}
     </WrapOnBoarding>
+    {loadingUploadFile && <Loader/>}
+    </>
   );
 };
 
