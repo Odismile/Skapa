@@ -44,6 +44,9 @@ module.exports = {
       picture: String
       video: String
       job_seniority: String
+      language: languages
+      project: projects
+      skill: skills
     }
   `,
   mutation: `
