@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
     position: 'relative',
     '& .iconSearch': {
       position: 'absolute',
-      top: 42,
+      top: 40,
       right: 17,
       transform: 'translateY(-14px)',
     },

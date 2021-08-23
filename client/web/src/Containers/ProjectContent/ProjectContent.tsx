@@ -202,9 +202,6 @@ const ProjectContent = () => {
                 <Box className="category" component="span">
                   LAB
                 </Box>
-                <IconButton className="btn-favori" disabled={isReader} onClick={handleClick}>
-                  <HeartLine className="iconHeart" />
-                </IconButton>
               </Card>
               <Typography className="subtitle_text" variant="h3">
                 {project?.Name}
