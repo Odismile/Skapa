@@ -74,6 +74,7 @@ const MeetingModal = (props: MeetingModalProps) => {
             date_end: date,
             end_time: `${time?.h || '00'}:${time?.mn || '00'}:${time?.s || '00'}:${time?.ms || '00'}`,
             start_time: `${time?.h || '00'}:${time?.mn || '00'}:${time?.s || '00'}:${time?.ms || '00'}`,
+            //  talend_id:
           },
         },
       },
