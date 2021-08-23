@@ -36,6 +36,7 @@ export default makeStyles((theme) => ({
     '& .divider': {
       marginTop: 23,
       marginBottom: 20,
+      background: "#eeeeee"
     },
     '& div.btn': {
       marginTop: 20,

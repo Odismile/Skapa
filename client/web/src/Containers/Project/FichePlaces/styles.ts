@@ -14,7 +14,7 @@ export default makeStyles((theme) => ({
     },
     '& .title': {
       color: '#000000',
-      marginBottom: 0,
+      marginBottom: 5,
     },
     "& .places": {
       marginBottom: 20,
@@ -61,6 +61,11 @@ export default makeStyles((theme) => ({
         padding: "10px 15px",
       },
     },
+    '& .divider': {
+      marginTop: 23,
+      marginBottom: 20,
+      background: "#eeeeee"
+    },
     "& .disponibilite": {
       marginBottom: 20,
       background: "#fff",
@@ -104,6 +109,8 @@ export default makeStyles((theme) => ({
       "& a": {
         borderBottom: "1px solid #8870ff",
         fontStyle: "italic",
+        fontWeight: 600,
+        fontSize: 14,
       }
     },
     "& .grid_field": {
