@@ -128,6 +128,9 @@ export default makeStyles((theme) => ({
       height: 20,
       borderRadius: 5,
       color: '#8870FF',
+      '& svg': {
+        borderRadius: 4,
+      }
     },
   },
   button: {
