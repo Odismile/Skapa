@@ -47,13 +47,13 @@ const FicheTalents: FC<FicheTalentsProps> = ({ talentId }) => {
           );
         })}
       </Box>
-      <Box>
+      <Box className="former-project">
         <Typography variant="h6" className="title">
           Former projects
         </Typography>
         <FormerProject />
       </Box>
-      <Box>
+      <Box className="pitch">
         <Pitch url={data?.profile?.video ?? ''} />
       </Box>
       <Box className="boxBtn">

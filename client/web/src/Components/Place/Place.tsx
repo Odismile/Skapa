@@ -6,6 +6,8 @@ import imgPlace from '../../Assets/images/lab.svg';
 import { projects } from '../../GraphQL/project/types/projects';
 import Award from '../Icons/Award';
 import Cast from '../Icons/Cast';
+import CheckboxChecked from '../Icons/CheckboxChecked';
+import CheckboxLine from '../Icons/CheckboxLine';
 import Computer from '../Icons/Computer';
 import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
@@ -83,7 +85,12 @@ const Place: FC<PlaceProps> = ({ data }) => {
 
           {/* Si checkbox */}
           <Box className={classes.check}>
-            <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="checkbox" />
+            <Checkbox 
+            inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} 
+            className="checkbox"
+            icon= {<CheckboxLine fontSize='small' />}
+            checkedIcon={<CheckboxChecked fontSize='small'/>}
+             />
           </Box>
         </CardContent>
       </Card>

@@ -118,6 +118,7 @@ const FichePlaces = () => {
             <Box className="boxBtn">
               <Button className="btnAdd">Book this place for a project</Button>
             </Box>
+            <Divider className="divider" />
             <Box>
               <Typography variant="h6" className="title">
                 Similar places

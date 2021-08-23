@@ -22,6 +22,8 @@ import useStyles from './styles';
 import Capacity from '../../Components/Capacity/Capacity';
 import Cross from '../../Components/Icons/Cross';
 import { useLocation } from 'react-router-dom';
+import CheckboxLine from '../../Components/Icons/CheckboxLine';
+import CheckboxChecked from '../../Components/Icons/CheckboxChecked';
 
 const Places = () => {
   const classes = useStyles();
@@ -172,6 +174,8 @@ const Places = () => {
                             <Checkbox
                               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                               className="form-checkbox"
+                              icon= {<CheckboxLine fontSize='small' />}
+                              checkedIcon={<CheckboxChecked fontSize='small'/>}
                             />
                           }
                           label="Latest"
@@ -184,6 +188,8 @@ const Places = () => {
                             <Checkbox
                               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                               className="form-checkbox"
+                              icon= {<CheckboxLine fontSize='small' />}
+                              checkedIcon={<CheckboxChecked fontSize='small'/>}
                             />
                           }
                           label="Oldest"
@@ -196,6 +202,8 @@ const Places = () => {
                             <Checkbox
                               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                               className="form-checkbox"
+                              icon= {<CheckboxLine fontSize='small' />}
+                              checkedIcon={<CheckboxChecked fontSize='small'/>}
                             />
                           }
                           label="Latest"
@@ -208,6 +216,8 @@ const Places = () => {
                             <Checkbox
                               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                               className="form-checkbox"
+                              icon= {<CheckboxLine fontSize='small' />}
+                              checkedIcon={<CheckboxChecked fontSize='small'/>}
                             />
                           }
                           label="Latest"

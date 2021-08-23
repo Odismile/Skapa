@@ -44,10 +44,18 @@ export default makeStyles(
             width: 20,
             height: 20,
             borderWidth: 1,
+            "& svg": {
+              borderRadius: 4,
+            },
           }
         }
       }
-    }
+    },
+    checked: {
+      "& svg:last-child": {
+        transform: "scale(1.3)!important"
+      }
+    },
   }),
   { name: "SearchProject" }
 );

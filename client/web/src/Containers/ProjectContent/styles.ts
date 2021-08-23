@@ -115,7 +115,7 @@ export default makeStyles(
               width: 20,
               height: 21,
               "& path": {
-                fill: "#e30057"
+                fill: "#fff"
               }
             }
           }
