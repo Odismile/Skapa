@@ -21,6 +21,7 @@ import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 import { useUploadFile } from '../../Utils/uploadFile';
+import Loader from '../../Components/Loader/Loader'
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -29,11 +30,14 @@ const OnboardingProfileFour = () => {
   const [projectTypeSelected, setProjectTypeSelected] = useState<
     (Items_get_language_items | null)[] | null | undefined
   >([]);
-  const { uploadFile } = useUploadFile();
-
+  const { uploadFile, loading: loadingUpload } = useUploadFile();
+  
+  const [loadingUploadFile,setLoadingUploadFile] = useState(false);
+  
   const history = useHistory();
   function handleClick() {
     //TEST
+    setLoadingUploadFile(true)
     doCreateProfile({
       variables: {
         input: {
@@ -58,9 +62,10 @@ const OnboardingProfileFour = () => {
       if (result.data?.createProfile?.profile?.id) {
         await uploadFile(pictureFile());
         await uploadFile(videoFile());
+        !loadingProfile && history.replace(ONBOARDING_PROFILE7);
+        setLoadingUploadFile(false);
       }
     });
-    !loadingProfile && history.replace(ONBOARDING_PROFILE7);
   }
 
   const onClickProjectType = (projectType: Items_get_language_items | null) => {
@@ -82,6 +87,7 @@ const OnboardingProfileFour = () => {
   };
 
   return (
+    <>
     <WrapOnBoarding>
       <Box className={classes.bloc}>
         <Typography className="title">What kind of project would you like to see ?</Typography>
@@ -107,7 +113,14 @@ const OnboardingProfileFour = () => {
           </Button>
         </Box>
       </Box>
+      <Box component="footer" className={classes.footerPage}>
+        <Typography className="link-footer">
+          <Link to={ONBOARDING_PROFILE7}>Skip this step</Link>
+        </Typography>
+      </Box>
     </WrapOnBoarding>
+    {loadingUploadFile && <Loader/>}
+    </>
   );
 };
 
