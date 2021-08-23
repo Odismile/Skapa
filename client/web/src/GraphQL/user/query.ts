@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const ME_INFO = gql`
-  query MeInfo($where: JSON) {
-    profiles(where: $where) {
+  query MeInfo($id: ID!, $publicationState: PublicationState) {
+    profile(id: $id, publicationState: $publicationState) {
       id
       picture
       users_id {
