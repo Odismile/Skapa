@@ -18,7 +18,7 @@ export default makeStyles((theme) => ({
   },
   completed: {
     display: 'inline-block',
-  },
+  }, 
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),

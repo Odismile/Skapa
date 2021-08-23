@@ -8,6 +8,8 @@ import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItems
 import { useReactiveVar } from '@apollo/client';
 import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
+import CheckboxChecked from '../Icons/CheckboxChecked';
+import CheckboxLine from '../Icons/CheckboxLine';
 
 const SearchTalents = () => {
   const classes = useStyles();
@@ -44,6 +46,8 @@ const SearchTalents = () => {
                   name="isTopRated"
                   onChange={handleCheck}
                   className="form-checkbox"
+                  icon= {<CheckboxLine fontSize='small' />}
+                  checkedIcon={<CheckboxChecked fontSize='small'/>}
                 />
               }
               label="Top Rated"
@@ -58,6 +62,8 @@ const SearchTalents = () => {
                   onChange={handleCheck}
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                   className="form-checkbox"
+                  icon= {<CheckboxLine fontSize='small' />}
+                  checkedIcon={<CheckboxChecked fontSize='small'/>}
                 />
               }
               label="Recommanded"
@@ -77,6 +83,8 @@ const SearchTalents = () => {
                   onChange={handleCheck}
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                   className="form-checkbox"
+                  icon= {<CheckboxLine fontSize='small' />}
+                  checkedIcon={<CheckboxChecked fontSize='small'/>}
                 />
               }
               label="Junior"
@@ -91,6 +99,8 @@ const SearchTalents = () => {
                   onChange={handleCheck}
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                   className="form-checkbox"
+                  icon= {<CheckboxLine fontSize='small' />}
+                  checkedIcon={<CheckboxChecked fontSize='small'/>}
                 />
               }
               label="Senior"

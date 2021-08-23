@@ -111,11 +111,11 @@ const useStyles = makeStyles(() => ({
   },
   rail:{
     height: 8,
-    borderRadius: 2.5,
+    borderRadius: 14,
   },
   track:{
     height: 8,
-    borderRadius: 2.5,
+    borderRadius: 14,
   },
   thumb:{
     display: 'none',

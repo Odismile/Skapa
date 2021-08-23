@@ -1,4 +1,14 @@
-import { Avatar, Box, Button, FormControl, FormLabel, IconButton, Tooltip, Typography } from '@material-ui/core';
+import {
+  Avatar,
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  IconButton,
+  Tooltip,
+  Typography,
+  TextareaAutosize,
+} from '@material-ui/core';
 import React, { useState } from 'react';
 import useStyles from './style';
 import ReactPlayer from 'react-player';
@@ -10,12 +20,15 @@ import { useUploadFile } from '../../Utils/uploadFile';
 import { pictureFile, videoFile, bio } from '../../ReactiveVariable/Profil/profil';
 import Info from '../../Components/Icons/Info';
 import { ONBOARDING_PROFILE3 } from '../../Routes';
+import { createBrotliCompress } from 'zlib';
 
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
   const [videoUpload, setVideoUpload] = useState('');
   const { uploadFile } = useUploadFile();
   const [disabledButton, setDisabledButton] = useState(false);
+  const [bios, setBios] = useState('');
+
   const testButtonToEnabled = () => {
     if (!!pictureFile() && !!videoFile() && !!bio()) {
       setDisabledButton(false);
@@ -102,13 +115,19 @@ const OnboardingProfileTwo = () => {
             <FormLabel component="legend" className="title">
               Bio
             </FormLabel>
-            <textarea
-              placeholder="tell us more about you !"
+            <TextareaAutosize
+              minRows="8"
+              placeholder="Tell us more about you !"
+              defaultValue=""
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                setBios(e.target.value);
                 bio(e.target.value);
                 testButtonToEnabled();
               }}
-            ></textarea>
+              value={bios}
+              maxLength={240}
+            />
+            <Typography className="textLeft">{bios.length}/240 symbols</Typography>
           </FormControl>
           <Box className={classes.btnNext}>
             <Button variant="contained" onClick={handleClick} disabled={disabledButton}>

@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
     position: 'relative',
     '& .iconSearch': {
       position: 'absolute',
-      top: 42,
+      top: 40,
       right: 17,
       transform: 'translateY(-14px)',
     },
@@ -96,6 +96,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     marginTop: 16,
+    marginBottom: 20,
     '& button': {
       backgroundColor: '#8870ff',
       borderRadius: 25,

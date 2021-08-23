@@ -27,11 +27,12 @@ export default makeStyles((theme) => ({
             display: 'flex',
             justifyContent: 'center',
             '& a':{
-                fontSize: 12,
+                fontSize: 14,
                 color: '#8870FF',
                 textDecoration: 'none',
                 borderBottom: '1px solid #8870ff',
                 fontStyle: "italic",
+                fontWeight: 600,
             }
         }
     },

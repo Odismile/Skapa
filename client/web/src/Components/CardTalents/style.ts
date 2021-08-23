@@ -26,7 +26,7 @@ export default makeStyles((theme) => ({
             height: 20,
           },
           '& .iconHeartOutlined':{
-            stroke: '#8870ff',
+            fill: '#8870ff',
           }
         },
         "& .head-title": {

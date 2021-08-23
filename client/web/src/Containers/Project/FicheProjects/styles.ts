@@ -23,7 +23,7 @@ export default makeStyles((theme) => ({
     backgroundColor: 'white',
     '& .title': {
       color: '#000000',
-      marginBottom: 8,
+      marginBottom: 5,
     },
     '& .pitch, .presentation, .tags': {
       marginTop: 20,
@@ -36,6 +36,7 @@ export default makeStyles((theme) => ({
     '& .divider': {
       marginTop: 23,
       marginBottom: 20,
+      background: "#eeeeee"
     },
     '& div.btn': {
       marginTop: 20,

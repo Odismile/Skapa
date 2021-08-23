@@ -64,6 +64,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     marginTop: 16,
+    marginBottom: 20,
     '& button': {
       backgroundColor: '#8870ff',
       borderRadius: 25,
