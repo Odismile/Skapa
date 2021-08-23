@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import { Box, IconButton, InputBase, Modal, Paper, Popper, Typography } from '@material-ui/core';
 import useStyles from './style';
 import Filter from '../../Components/Icons/Filter/Filter';
@@ -8,7 +8,11 @@ import Cross from '../Icons/Cross';
 import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import { useReactiveVar } from '@apollo/client';
 
-const SearchFilterTalents = () => {
+interface SearchFilterTalentsProps {
+  placeholder?: string,
+}
+
+const SearchFilterTalents:FC<SearchFilterTalentsProps> = (props:SearchFilterTalentsProps) => {
   const classes = useStyles();
 
   const filterTalent = useReactiveVar(filterTalentVar);
@@ -36,7 +40,7 @@ const SearchFilterTalents = () => {
           <InputBase
             className={classes.input}
             onChange={handleSearch}
-            placeholder="Look for projects by title, type, creator.."
+            placeholder={props.placeholder ? props.placeholder : "Look for projects by title, type, creator.."}
             inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
           />
           <IconButton className="search-icon" aria-label="search">

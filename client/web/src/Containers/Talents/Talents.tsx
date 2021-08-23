@@ -54,17 +54,17 @@ const Talents = () => {
     <>
       {params.pathname === '/wishlist' ? (
         <>
-          <SearchFilterTalents />
-          <Box className={classes.content}>
+          <SearchFilterTalents placeholder="Look for one of your favorite"/>
+          <Box className={classes.contentTop}>
             <RadioExtInt />
           </Box>
         </>
       ) : (
         <>
-          <Box className={classes.content}>
+          <Box className={classes.contentBottom}>
             <RadioExtInt />
           </Box>
-          <SearchFilterTalents />
+          <SearchFilterTalents placeholder="Look for one of your favorite"/>
         </>
       )}
 
