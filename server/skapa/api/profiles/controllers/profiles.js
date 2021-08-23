@@ -8,9 +8,11 @@ var { sanitizeEntity } = require("strapi-utils");
  */
 
 module.exports = {
-  async find(ctx) {
-    const results = await strapi.services.profiles.find(ctx.query);
-    if (results && results[0]) {
+  async findOne(ctx) {
+    const { id } = ctx.params;
+    const entity = await strapi.services.profiles.findOne({ id });
+
+    if (entity) {
       const getUrl = async (profile, isPicture) => {
         let signedUrl;
         try {
@@ -23,13 +25,11 @@ module.exports = {
         return signedUrl.url;
       };
 
-      const url = await getUrl(results[0], true);
-      const video = await getUrl(results[0], false);
-      results[0].picture = url;
-      results[0].video = video;
-      return results;
+      const url = await getUrl(entity, true);
+      const video = await getUrl(entity, false);
+      entity.picture = url;
+      entity.video = video;
     }
-
-    return null;
+    return entity;
   },
 };
