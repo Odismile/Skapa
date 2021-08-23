@@ -11,9 +11,10 @@ module.exports = {
     const profile = await strapi
       .query("profiles")
       .findOne({ users_id: userId });
+
     const results = await strapi
       .query("talent-favorits")
-      .find({ coach_id: profile.id, talent_id: talentId });
+      .find({ profile: profile.id, talent_id: talentId });
 
     let entity;
     if (results && results[0]) {
