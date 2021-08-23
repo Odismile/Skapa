@@ -2,7 +2,11 @@ import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typo
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
-import { coachs_profiles_profile_skills, coachs_profiles_project_favorits } from '../../GraphQL/profiles/types/coachs';
+import {
+  coachs_profiles_profile_skills,
+  coachs_profiles_project_favorits,
+  coachs_profiles_talent_favorits,
+} from '../../GraphQL/profiles/types/coachs';
 import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreateFavoritTalent';
 import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
@@ -24,6 +28,7 @@ interface CardTalentsProps {
   coachFee?: number;
   skills?: (coachs_profiles_profile_skills | null)[] | null | undefined;
   project_favorits?: (coachs_profiles_project_favorits | null)[] | null | undefined;
+  talent_favorits?: (coachs_profiles_talent_favorits | null)[] | null | undefined;
 }
 
 const CardTalents: FC<CardTalentsProps> = ({
@@ -38,13 +43,14 @@ const CardTalents: FC<CardTalentsProps> = ({
   profilId,
   talentId,
   project_favorits,
+  talent_favorits,
 }) => {
   const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const { isReader, profilId: profilIdLocal } = useCurrentUser();
-  const [check, setCheck] = React.useState(project_favorits?.some((project) => project?.profile?.id === profilIdLocal));
+  const [check, setCheck] = React.useState(talent_favorits?.some((profile) => profile?.profile?.id === profilIdLocal));
 
   const { doCreateFavoriteTalent } = useCreateFavoritTalent();
   const { doDeleteTalentFavorit } = useDeleteFavoriTalent();
