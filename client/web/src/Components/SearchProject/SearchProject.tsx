@@ -52,7 +52,6 @@ const SearchProject = () => {
                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                       className="form-checkbox"
                       onClick={() => onClickFilterBy(filter.label)}
-                      size={'medium'}
                     />
                   }
                   label={filter.label}

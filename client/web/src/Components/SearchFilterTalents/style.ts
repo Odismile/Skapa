@@ -44,7 +44,7 @@ export default makeStyles(
         flex: "1 1 100%",
         marginTop: 8,
         overflow: "hidden auto",
-        padding: "0 0"
+        padding: "0 14px"
       }
     },
     root: {
