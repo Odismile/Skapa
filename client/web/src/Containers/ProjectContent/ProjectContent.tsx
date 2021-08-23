@@ -180,7 +180,7 @@ const ProjectContent = () => {
               onClick={handleDrawer}
             ></Button>
             <Typography className="title_text" variant="h2">
-              I contribute to thefollowing project{' '}
+              I contribute to the following project{' '}
             </Typography>
             <Button
               color="primary"

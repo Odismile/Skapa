@@ -109,10 +109,10 @@
       "success": "Profile created successfully"
     },
     "createFavorit": {
-      "success": "successful addition"
+      "success": "Added successfully to the wishlist"
     },
     "deleteFovorit": {
-      "success": "successful delete"
+      "success": "Deleted successfullt to the wishlist"
     }
   }
 }
