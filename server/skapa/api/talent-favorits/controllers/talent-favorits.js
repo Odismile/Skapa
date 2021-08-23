@@ -7,14 +7,14 @@
 
 module.exports = {
   async deleteTalentFavorits(ctx) {
-    const { userId, talentId } = ctx.request.body;
-    const profile = await strapi
+    const { profileId, talentId } = ctx.request.body;
+    /*const profile = await strapi
       .query("profiles")
-      .findOne({ users_id: userId });
+      .findOne({ users_id: userId });*/
 
     const results = await strapi
       .query("talent-favorits")
-      .find({ profile: profile.id, talent_id: talentId });
+      .find({ profile: profileId, talent_id: talentId });
 
     let entity;
     if (results && results[0]) {
