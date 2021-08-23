@@ -10,8 +10,7 @@ var { sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async findOne(ctx) {
     const { id } = ctx.params;
-    const entity = await strapi.services.profiles.findOne({ id });
-
+    const entity = await strapi.query("profiles").findOne({ users_id: id });
     if (entity) {
       const getUrl = async (profile, isPicture) => {
         let signedUrl;
