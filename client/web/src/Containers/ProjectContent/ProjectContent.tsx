@@ -10,7 +10,7 @@ import {
   SwipeableDrawer,
   Typography,
 } from '@material-ui/core';
-import { orderBy, filter } from 'lodash';
+import { orderBy } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
@@ -92,6 +92,7 @@ const ProjectContent = () => {
     }
     if (newProjects.length !== projects?.length) setProjects(newProjects);
   }, [projectSortedByLocal]);
+
   useEffect(() => {
     if (isInWishList) {
       const newProjects = (projects || []).filter(
@@ -100,6 +101,7 @@ const ProjectContent = () => {
       if (projects?.length !== newProjects.length) setProjects(newProjects);
     }
   }, [isInWishList, profilId, projects]);
+
   const onChangeFilter = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.target.value.trim().length === 0) {
       setProjects(data?.projects);
