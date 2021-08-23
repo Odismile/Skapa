@@ -13,7 +13,7 @@ const CreateProject = () => {
     <Box className={classes.mainPage}>
       <Box className="wrapPage">
         {/* header component */}
-        <PrimaryHeader />
+        <PrimaryHeader noBack/>
 
         <Box className={classes.mainContainer}>
           <TabLink />

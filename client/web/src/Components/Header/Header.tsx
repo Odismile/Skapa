@@ -33,8 +33,12 @@ import { Route, Redirect, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
+import { FC } from 'react'
 
-const PrimaryHeader = () => {
+interface HeaderProps {
+  noBack?:boolean;
+}
+const PrimaryHeader : FC<HeaderProps> = ({noBack}) => {
   const classes = useStyles();
   const { user, photo, isReader } = useCurrentUser();
 
@@ -136,7 +140,7 @@ const PrimaryHeader = () => {
       </Box>
 
       {/* link back to home-page */}
-      {(!isShowProfilInfo || isShowBackButton) && (
+      {!noBack && (!isShowProfilInfo || isShowBackButton) && (
         <Typography className="wrap-backLink">
           <Link className="backLink" href={PROJECT}>
             Back

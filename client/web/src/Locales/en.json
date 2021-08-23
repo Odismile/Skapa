@@ -87,7 +87,10 @@
       "next": "Next",
       "skipThisStep": "Skip this step",
       "ValidateAndPostProject": "Validate and post project",
-      "SavAsDraft": "Save as draft"
+      "SavAsDraft": "Save as draft",
+      "Presentation": "Presentation",
+      "Tags": "Tags",
+      "Place": "Place"
     },
     "createProjectError": {
       "nameOfProject": "Please enter the name of project",
