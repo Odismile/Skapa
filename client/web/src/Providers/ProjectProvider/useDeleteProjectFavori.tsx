@@ -25,7 +25,7 @@ export const useDeleteProjectFavori = () => {
         return;
       },
       onCompleted: (data) => {
-        if (data.deleteProjectFavorit?.projectFavorit?.id) {
+        if (data.deleteProjectFavorits) {
           snackbar.type = 'SUCCESS';
           snackbar.message = t(`deleteFovorit.success`);
           displaySnackbar(client, snackbar);
