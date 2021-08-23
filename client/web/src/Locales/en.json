@@ -106,7 +106,7 @@
       "textInputFilter": "Look for projects by title, type, creator..."
     },
     "createProfile": {
-      "success": "Registered profile"
+      "success": "Profile created successfully"
     },
     "createFavorit": {
       "success": "successful addition"

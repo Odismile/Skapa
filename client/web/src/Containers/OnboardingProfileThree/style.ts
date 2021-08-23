@@ -108,4 +108,23 @@ export default makeStyles((theme) => ({
       },
     },
   },
+  footerPage: {
+    '& .link-footer': {
+      color: '#8870ff',
+      fontSize: '1rem',
+      fontWeight: 600,
+      margin: 0,
+      textAlign: 'right',
+      displa: 'flex',
+      justifyContent: 'flex-end',
+      '@media(min-width: 640px)': {
+        textAlign: 'center',
+      },
+      '& a': {
+        color: 'inherit',
+        textDecoration: 'none',
+        borderBottom: '1px solid #8870ff',
+      },
+    },
+  },
 }));

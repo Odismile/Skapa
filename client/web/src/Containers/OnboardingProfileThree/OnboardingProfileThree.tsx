@@ -1,6 +1,6 @@
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, Link } from 'react-router-dom';
 import Search from '../../Components/Icons/Search/Search';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
@@ -112,6 +112,11 @@ const OnboardingProfileThree = () => {
           <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
             Next
           </Button>
+        </Box>
+        <Box component="footer" className={classes.footerPage}>
+          <Typography className="link-footer">
+            <Link to={ONBOARDING_PROFILE4}>Skip this step</Link>
+          </Typography>
         </Box>
       </WrapOnBoarding>
     </>

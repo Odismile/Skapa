@@ -1,14 +1,15 @@
-import { Avatar, Box, Button, FormControl, FormLabel, IconButton, Tooltip } from '@material-ui/core';
+import { Avatar, Box, Button, FormControl, FormLabel, IconButton, Tooltip, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import useStyles from './style';
 import ReactPlayer from 'react-player';
 import iconDownload from '../../Assets/images/IconDownload.svg';
-import { useHistory } from 'react-router';
+import { useHistory, Link } from 'react-router-dom';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 
 import { useUploadFile } from '../../Utils/uploadFile';
 import { pictureFile, videoFile, bio } from '../../ReactiveVariable/Profil/profil';
 import Info from '../../Components/Icons/Info';
+import { ONBOARDING_PROFILE3 } from '../../Routes';
 
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
@@ -27,7 +28,7 @@ const OnboardingProfileTwo = () => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push('/onboarding-profile3');
+    history.push(ONBOARDING_PROFILE3);
   };
   return (
     <>
@@ -114,6 +115,11 @@ const OnboardingProfileTwo = () => {
               Next
             </Button>
           </Box>
+        </Box>
+        <Box component="footer" className={classes.footerPage}>
+          <Typography className="link-footer">
+            <Link to={ONBOARDING_PROFILE3}>Skip this step</Link>
+          </Typography>
         </Box>
       </WrapOnBoarding>
     </>

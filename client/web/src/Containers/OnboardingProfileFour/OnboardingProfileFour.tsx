@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography } from '@material-ui/core';
-import { useHistory } from 'react-router';
+import { useHistory, Link } from 'react-router-dom';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from './style';
 import IconChange from '../../Components/Icons/Change/Change';
@@ -106,6 +106,11 @@ const OnboardingProfileFour = () => {
             Next
           </Button>
         </Box>
+      </Box>
+      <Box component="footer" className={classes.footerPage}>
+        <Typography className="link-footer">
+          <Link to={ONBOARDING_PROFILE7}>Skip this step</Link>
+        </Typography>
       </Box>
     </WrapOnBoarding>
   );
