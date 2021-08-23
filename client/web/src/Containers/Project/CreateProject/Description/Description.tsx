@@ -167,7 +167,9 @@ const Description = () => {
         <form className="formDescription">
           <Box className="item_bloc">
             <Box className="title_bloc project_title" component="header">
-              <Typography variant="h2" className="nameProject_title">{t(`createProject.nameOfProject`)}</Typography>
+              <Typography variant="h2" className="nameProject_title">
+                {t(`createProject.nameOfProject`)}
+              </Typography>
               {/* <IconButton aria-label="edit" className="btn_edit btn_title">
                 <EditIcon />
               </IconButton> */}
@@ -209,7 +211,6 @@ const Description = () => {
                 >
                   {dataProjectType?.items?.map((project, index) => {
                     return (
-                      
                       <MenuItem key={index} value={project?.label ?? ''}>
                         {project?.label}
                       </MenuItem>
@@ -258,11 +259,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.projectDescription`)}</Typography>
-                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
-                  <IconButton aria-label="info" className="btn_info btn_title">
-                    <Info />
-                  </IconButton>
-                </Tooltip>
+              <Tooltip title={infoText} arrow classes={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}>
+                <IconButton aria-label="info" className="btn_info btn_title">
+                  <Info />
+                </IconButton>
+              </Tooltip>
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item textarea_item">
@@ -282,11 +283,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.skillsRecquired`)}</Typography>
-                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
-                  <IconButton aria-label="info" className="btn_info btn_title">
-                    <Info />
-                  </IconButton>
-                </Tooltip>
+              <Tooltip title={infoText} arrow classes={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}>
+                <IconButton aria-label="info" className="btn_info btn_title">
+                  <Info />
+                </IconButton>
+              </Tooltip>
             </Box>
             <Box className="content_bloc skills_bloc" component="section">
               <Box className="selected_skills">
@@ -328,11 +329,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.videoPitch`)}</Typography>
-                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
-                  <IconButton aria-label="info" className="btn_info btn_title">
-                    <Info />
-                  </IconButton>
-                </Tooltip>
+              <Tooltip title={infoText} arrow classes={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}>
+                <IconButton aria-label="info" className="btn_info btn_title">
+                  <Info />
+                </IconButton>
+              </Tooltip>
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
               <Box className="upload_bloc">
@@ -347,7 +348,7 @@ const Description = () => {
                   {videoUpload.length !== 0 ? (
                     <ReactPlayer
                       url={videoUpload}
-                      className={classNames(classes.videoUpload, "videoUpload")}
+                      className={classNames(classes.videoUpload, 'videoUpload')}
                       width={'150px'}
                       height={'100px'}
                       playing={true}

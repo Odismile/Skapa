@@ -180,7 +180,7 @@ const ProjectContent = () => {
               onClick={handleDrawer}
             ></Button>
             <Typography className="title_text" variant="h2">
-              I contribute to the following project{' '}
+              I contribute to thefollowing project{' '}
             </Typography>
             <Button
               color="primary"
@@ -200,9 +200,6 @@ const ProjectContent = () => {
                 <Box className="category" component="span">
                   LAB
                 </Box>
-                <IconButton className="btn-favori" disabled={isReader} onClick={handleClick}>
-                  <HeartLine className="iconHeart" />
-                </IconButton>
               </Card>
               <Typography className="subtitle_text" variant="h3">
                 {project?.Name}
