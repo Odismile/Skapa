@@ -68,6 +68,7 @@ export default makeStyles((theme) => ({
       fontWeight: 700,
       width: '50%',
       color: '#000000',
+      marginBottom: 0,
     },
     '& .detail-top': {
       display: 'flex',
@@ -82,6 +83,7 @@ export default makeStyles((theme) => ({
         textTransform: 'uppercase',
         fontSize: 10,
         display: 'flex',
+        marginBottom: 0,
         '& svg': {
           width: 14,
           height: 7,
