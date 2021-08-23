@@ -86,7 +86,10 @@
       "next": "Suivant",
       "skipThisStep": "Passer cette étape",
       "ValidateAndPostProject": "Valider et poster",
-      "SavAsDraft": "Enregistrer comme brouillon"
+      "SavAsDraft": "Enregistrer comme brouillon",
+      "Presentation": "Presentation",
+      "Tags": "Mots-clés",
+      "Place": "Lieu"
     },
     "createProjectError": {
       "nameOfProject": "Veuillez entrer un nom de projet",
