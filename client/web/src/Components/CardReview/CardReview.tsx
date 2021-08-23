@@ -90,9 +90,11 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
         },
       });
     } else {
-      doDeleteProjectFavorit({
-        variables: { input: { where: { id: profilIdLocal ?? '' } } },
-      });
+      if (profilIdLocal && +profilIdLocal && projectId && +projectId) {
+        doDeleteProjectFavorit({
+          variables: { profileId: +profilIdLocal, projectId: +projectId },
+        });
+      }
     }
   };
 

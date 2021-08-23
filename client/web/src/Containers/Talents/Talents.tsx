@@ -34,6 +34,8 @@ const Talents = () => {
   });
 
   const listTalents = useMemo(() => {
+    console.table(data?.profiles);
+
     const newList = (data?.profiles || []).filter((item) => {
       if (
         item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
@@ -47,14 +49,22 @@ const Talents = () => {
       return (data?.profiles || []).filter(
         (item) => item?.talent_favorits?.length && item?.talent_favorits?.some((i) => i?.profile?.id === profilId),
       );
+
+    if (filterTalent.skills.length !== 0) {
+      return (data?.profiles || []).filter(
+        (item) =>
+          item?.profile_skills?.length && item?.profile_skills?.find((i) => i?.skill_id?.label === item.profile_skills),
+      );
+    }
+
     return newList;
-  }, [data?.profiles, filterTalent.search, isInWishList, profilId]);
+  }, [data?.profiles, filterTalent.search, isInWishList, profilId, filterTalent.skills]);
 
   return (
     <>
       {params.pathname === '/wishlist' ? (
         <>
-          <SearchFilterTalents placeholder="Look for one of your favorite"/>
+          <SearchFilterTalents placeholder="Look for one of your favorite" />
           <Box className={classes.contentTop}>
             <RadioExtInt />
           </Box>
@@ -64,7 +74,7 @@ const Talents = () => {
           <Box className={classes.contentBottom}>
             <RadioExtInt />
           </Box>
-          <SearchFilterTalents placeholder="Look for one of your favorite"/>
+          <SearchFilterTalents placeholder="Look for one of your favorite" />
         </>
       )}
 

@@ -136,10 +136,6 @@ export interface createTalentFavoritInput {
   data?: TalentFavoritInput | null;
 }
 
-export interface deleteProjectFavoritInput {
-  where?: InputID | null;
-}
-
 export interface deleteTalentFavoritInput {
   where?: InputID | null;
 }
