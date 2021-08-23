@@ -21,6 +21,12 @@ const SearchFilterTalents = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const getPlaceholder = () => {
+    const pathname = window.location.pathname;
+    if (pathname === '/coachs') return 'Look for coaches';
+    return 'Look for projects by title, type, creator..';
+  };
   const handleSearch = (event: ChangeEvent<HTMLTextAreaElement>) => {
     event.preventDefault();
     filterTalentVar({
@@ -36,7 +42,7 @@ const SearchFilterTalents = () => {
           <InputBase
             className={classes.input}
             onChange={handleSearch}
-            placeholder="Look for projects by title, type, creator.."
+            placeholder={getPlaceholder()}
             inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
           />
           <IconButton className="search-icon" aria-label="search">
