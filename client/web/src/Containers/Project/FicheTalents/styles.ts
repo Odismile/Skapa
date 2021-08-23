@@ -23,7 +23,7 @@ export default makeStyles((theme) => ({
     backgroundColor: 'white',
     '& .title': {
       color: '#000000',
-      marginBottom: 8,
+      marginBottom: 0,
     },
     '& .boxBtn': {
       display: 'flex',

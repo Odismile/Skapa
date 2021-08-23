@@ -14,7 +14,7 @@ export default makeStyles((theme) => ({
     },
     '& .title': {
       color: '#000000',
-      marginBottom: 8,
+      marginBottom: 0,
     },
     "& .places": {
       marginBottom: 20,
