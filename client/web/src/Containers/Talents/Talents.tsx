@@ -60,11 +60,11 @@ const Talents = () => {
           item?.profile_skills?.length && item?.profile_skills?.find((i) => i?.skill_id?.label === item.profile_skills),
       );
     }
-    if (filterTalent.isJunior) {
-      newList = newList.filter((item) => juniorValues.includes(item?.job_seniority_id?.label ?? ''));
-    }
-    if (filterTalent.isSenior) {
-      newList = newList.filter((item) => seniorValues.includes(item?.job_seniority_id?.label ?? ''));
+
+    if (filterTalent.levels.length) {
+      newList = newList.filter(
+        (item) => filterTalent.levels.findIndex((level) => level?.label === item?.job_seniority_id?.label) >= 0,
+      );
     }
     return newList;
   }, [data?.profiles, isInWishList, filterTalent, profil?.talent_favorits]);

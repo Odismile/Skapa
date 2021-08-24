@@ -10,6 +10,7 @@ interface filterTalentInterface {
   minDailyRate: number;
   maxDailyRate: number;
   skills: Items_get_language_items[];
+  levels: Items_get_language_items[];
 }
 // Create Reactive variable
 export const filterTalentVar = makeVar<filterTalentInterface>({
@@ -21,6 +22,7 @@ export const filterTalentVar = makeVar<filterTalentInterface>({
   maxDailyRate: 500,
   minDailyRate: 20,
   skills: [],
+  levels: [],
 });
 
 export const juniorValues = ['0 - 3 yrs'];
