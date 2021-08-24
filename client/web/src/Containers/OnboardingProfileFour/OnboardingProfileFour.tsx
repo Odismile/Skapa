@@ -22,6 +22,7 @@ import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfil
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 import { useUploadFile } from '../../Utils/uploadFile';
 import Loader from '../../Components/Loader/Loader';
+import { Level } from '../../types/graphql-global-types';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -52,7 +53,10 @@ const OnboardingProfileFour = () => {
           video: videoFile()
             ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${videoFile()?.[0].name}`
             : '',
-          // languages: levelLanguages()?.map((e) => e.id),
+          languages : levelLanguages()?.map((e) => ({
+            id: e.id,
+            level: (e.level) as Level,
+          })),
           profile_skills: transformSkillsIds(skillsSelectedVariable()),
           user_id: localStorage.getItem('idMe'),
           projects: transformSkillsIds(projectsTypeSelectedVariable()),
