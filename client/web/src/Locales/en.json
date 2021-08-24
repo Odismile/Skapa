@@ -87,10 +87,7 @@
       "next": "Next",
       "skipThisStep": "Skip this step",
       "ValidateAndPostProject": "Validate and post project",
-      "SavAsDraft": "Save as draft",
-      "Presentation": "Presentation",
-      "Tags": "Tags",
-      "Place": "Place"
+      "SavAsDraft": "Save as draft"
     },
     "createProjectError": {
       "nameOfProject": "Please enter the name of project",
@@ -108,6 +105,13 @@
       "none": "No project",
       "textInputFilter": "Look for projects by title, type, creator..."
     },
+    "ficheProject":{
+      "Pitch":"Pitch",
+      "Presentation": "Presentation",
+      "Tags": "Tags",
+      "Place": "Place",
+      "similarProject":"Similar projects"
+    },
     "createProfile": {
       "success": "Profile created successfully"
     },
@@ -115,7 +119,7 @@
       "success": "Added successfully to the wishlist"
     },
     "deleteFovorit": {
-      "success": "Deleted successfullt to the wishlist"
+      "success": "Deleted successfully to the wishlist"
     }
   }
 }

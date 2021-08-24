@@ -10,12 +10,14 @@ import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import CheckboxChecked from '../Icons/CheckboxChecked';
 import CheckboxLine from '../Icons/CheckboxLine';
+import { useItemsGetLevels } from '../../Providers/ItemsProvider/hooks/useItemsGetLevels';
 
 const SearchTalents = () => {
   const classes = useStyles();
   const filterTalent = useReactiveVar(filterTalentVar);
   const { data: dataSkills } = useItemsGetSkills();
   const { data: dataLanguages } = useItemsGetlaguage();
+  const { data: dataLevels } = useItemsGetLevels();
 
   const handleCheck = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
     filterTalentVar({
@@ -23,13 +25,20 @@ const SearchTalents = () => {
       [event.target.name]: checked,
     });
   };
-  const handleCheckSkill = (item: Items_get_language_items) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    const isChecked = filterTalent.skills.some((i) => i.id === item.id);
-    filterTalentVar({
-      ...filterTalent,
-      skills: isChecked ? filterTalent.skills.filter((i) => i.id !== item.id) : [...filterTalent.skills, item],
-    });
-  };
+  const handleCheckSkill =
+    (item: Items_get_language_items, isChecked: boolean) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      filterTalentVar({
+        ...filterTalent,
+        skills: isChecked ? filterTalent.skills.filter((i) => i.id !== item.id) : [...filterTalent.skills, item],
+      });
+    };
+  const handleCheckLevel =
+    (item: Items_get_language_items, isChecked: boolean) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      filterTalentVar({
+        ...filterTalent,
+        levels: isChecked ? filterTalent.levels.filter((i) => i.id !== item.id) : [...filterTalent.levels, item],
+      });
+    };
   return (
     <Box className={classes.searchProject}>
       <FormControl component="fieldset" className="form-control">
@@ -46,8 +55,9 @@ const SearchTalents = () => {
                   name="isTopRated"
                   onChange={handleCheck}
                   className="form-checkbox"
-                  icon= {<CheckboxLine fontSize='small' />}
-                  checkedIcon={<CheckboxChecked fontSize='small'/>}
+                  defaultChecked={filterTalent.isTopRated}
+                  icon={<CheckboxLine fontSize="small" />}
+                  checkedIcon={<CheckboxChecked fontSize="small" />}
                 />
               }
               label="Top Rated"
@@ -58,12 +68,14 @@ const SearchTalents = () => {
               value="Recommanded"
               control={
                 <Checkbox
+                  checked={filterTalent.isRecommended}
+                  defaultChecked={filterTalent.isRecommended}
                   name="isRecommended"
                   onChange={handleCheck}
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                   className="form-checkbox"
-                  icon= {<CheckboxLine fontSize='small' />}
-                  checkedIcon={<CheckboxChecked fontSize='small'/>}
+                  icon={<CheckboxLine fontSize="small" />}
+                  checkedIcon={<CheckboxChecked fontSize="small" />}
                 />
               }
               label="Recommanded"
@@ -74,38 +86,32 @@ const SearchTalents = () => {
         <Box className="form-control-item">
           <Typography component="h2">Level</Typography>
           <Box className="form-control-content">
-            <FormControlLabel
-              className="form-control-label"
-              value="Junior"
-              control={
-                <Checkbox
-                  name="isJunior"
-                  onChange={handleCheck}
-                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
-                  className="form-checkbox"
-                  icon= {<CheckboxLine fontSize='small' />}
-                  checkedIcon={<CheckboxChecked fontSize='small'/>}
-                />
-              }
-              label="Junior"
-              labelPlacement="start"
-            />
-            <FormControlLabel
-              className="form-control-label"
-              value="Senior"
-              control={
-                <Checkbox
-                  name="isSenior"
-                  onChange={handleCheck}
-                  inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
-                  className="form-checkbox"
-                  icon= {<CheckboxLine fontSize='small' />}
-                  checkedIcon={<CheckboxChecked fontSize='small'/>}
-                />
-              }
-              label="Senior"
-              labelPlacement="start"
-            />
+            {dataLevels?.items?.map((level) => {
+              const isChecked = filterTalent.levels.some((i) => i.id === level?.id);
+              return (
+                level &&
+                level?.label && (
+                  <FormControlLabel
+                    className="form-control-label"
+                    value={level.id}
+                    control={
+                      <Checkbox
+                        checked={isChecked}
+                        defaultChecked={isChecked}
+                        name="isJunior"
+                        onChange={handleCheckLevel(level, isChecked)}
+                        inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
+                        className="form-checkbox"
+                        icon={<CheckboxLine fontSize="small" />}
+                        checkedIcon={<CheckboxChecked fontSize="small" />}
+                      />
+                    }
+                    label={level.label}
+                    labelPlacement="start"
+                  />
+                )
+              );
+            })}
           </Box>
         </Box>
         <Box className="form-control-item">
@@ -116,8 +122,9 @@ const SearchTalents = () => {
           <Typography component="h2">Skills</Typography>
           <Box className={classes.content}>
             <Box className={classes.skills}>
-              {dataSkills?.items?.map(
-                (item) =>
+              {dataSkills?.items?.map((item) => {
+                const isChecked = filterTalent.skills.some((i) => i.id === item?.id);
+                return (
                   item?.id &&
                   item?.label && (
                     <Box className="inputGroup">
@@ -126,12 +133,15 @@ const SearchTalents = () => {
                         name={`skill-${item.id}`}
                         type="checkbox"
                         value={item.id}
-                        onChange={handleCheckSkill(item)}
+                        defaultChecked={isChecked}
+                        checked={isChecked}
+                        onChange={handleCheckSkill(item, isChecked)}
                       />
                       <label htmlFor={`skill-${item.id}`}>{item.label}</label>
                     </Box>
-                  ),
-              )}
+                  )
+                );
+              })}
             </Box>
           </Box>
         </Box>

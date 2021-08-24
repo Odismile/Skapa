@@ -12,10 +12,11 @@ import {
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
-import { projects_all_projects_project_favorits } from '../../GraphQL/project/types/projects_all';
+import { projects_all_projects_profile_users_id } from '../../GraphQL/project/types/projects_all';
 import { useCreateProjectFavori } from '../../Providers/ProjectProvider/useCreateProjectFavori';
 import { useDeleteProjectFavori } from '../../Providers/ProjectProvider/useDeleteProjectFavori';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
+import { getUserFullName } from '../../Utils/utils';
 import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
@@ -59,15 +60,18 @@ interface CardReviewProps {
   profilId?: string;
   imgCardUrl: string;
   name: string;
-  project_favorits?: (projects_all_projects_project_favorits | null)[] | null | undefined;
+  type?: string;
+  user?: projects_all_projects_profile_users_id | null;
 }
 
-const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, project_favorits }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, user, type }) => {
   const classes = useStyles();
   const history = useHistory();
-  const { isReader, profilId: profilIdLocal } = useCurrentUser();
+  const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
 
-  const [check, setCheck] = useState(project_favorits?.some((project) => project?.profile?.id === profilIdLocal));
+  const [check, setCheck] = useState(
+    profil?.project_favorits?.some((favoris) => projectId && favoris?.project?.id === projectId),
+  );
 
   const { doCreateProjectFavorit } = useCreateProjectFavori();
   const { doDeleteProjectFavorit } = useDeleteProjectFavori();
@@ -112,7 +116,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
         </Box>
         <Box className="details">
           <Typography component="p" className="name-adress">
-            <span>Founder : Alexander Holland</span> - Lorem - Paris
+            <span>Founder : {getUserFullName(user as any)}</span> - Lorem - Paris
           </Typography>
           <Box className="teams">
             <Typography component="p" className="name-adress">
@@ -152,7 +156,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
           </Box>
         </Box>
       </CardContent>
-      <Box className="category">LAB</Box>
+      <Box className="category">{type}</Box>
 
       <IconButton className="btn-favori" disabled={isReader} onClick={handleClick}>
         {check ? <Heart className="iconHeart" /> : <HeartLine className="iconHeartOutlined" />}

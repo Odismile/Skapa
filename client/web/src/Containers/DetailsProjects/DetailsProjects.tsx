@@ -1,14 +1,12 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import HeaderDetails from '../../Components/HeaderDetails/HeaderDetails';
+import { LocationInterface } from '../../types/types';
 import FicheProjects from '../Project/FicheProjects/FicheProjects';
 const DetailsPlace = () => {
-  const { pathname } = useLocation();
-  const projectId = pathname.split('/')[2];
-  const profilId = pathname.split('/')[4];
+  const { profilId, projectId } = useParams<LocationInterface>();
   return (
     <HeaderDetails>
-      <FicheProjects projectId={projectId} profilId={profilId} />
+      <FicheProjects projectId={projectId ?? ''} profilId={profilId ?? ''} />
     </HeaderDetails>
   );
 };

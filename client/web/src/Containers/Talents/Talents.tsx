@@ -11,7 +11,7 @@ import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilt
 import { LIST_COACH } from '../../GraphQL/profiles/query';
 import { coachs, coachsVariables } from '../../GraphQL/profiles/types/coachs';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
-import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import { filterTalentVar, juniorValues, seniorValues } from '../../ReactiveVariable/Coach/coach';
 import { WISHLIST } from '../../Routes';
 import useStyles from './styles';
 
@@ -21,7 +21,7 @@ const Talents = () => {
 
   const isInWishList = [WISHLIST].includes(params.pathname);
   const filterTalent = useReactiveVar(filterTalentVar);
-  const { profilId } = useCurrentUser();
+  const { profil } = useCurrentUser();
 
   const { data, loading } = useQuery<coachs, coachsVariables>(LIST_COACH, {
     variables: {
@@ -34,31 +34,40 @@ const Talents = () => {
   });
 
   const listTalents = useMemo(() => {
-    console.table(data?.profiles);
-
-    const newList = (data?.profiles || []).filter((item) => {
-      if (
-        item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-        item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-        item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
-      ) {
-        return true;
-      }
-    });
+    let newList = data?.profiles || [];
+    if (filterTalent.search.length) {
+      newList = newList.filter((item) => {
+        if (
+          item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+          item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+          item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
+        ) {
+          return true;
+        }
+      });
+    }
     if (isInWishList)
-      return (data?.profiles || []).filter(
-        (item) => item?.talent_favorits?.length && item?.talent_favorits?.some((i) => i?.profile?.id === profilId),
+      newList = newList.filter(
+        (item) =>
+          item?.id &&
+          profil?.talent_favorits?.length &&
+          profil?.talent_favorits?.some((i) => i?.talent_id && +i.talent_id === +item.id),
       );
 
     if (filterTalent.skills.length !== 0) {
-      return (data?.profiles || []).filter(
+      newList = newList.filter(
         (item) =>
           item?.profile_skills?.length && item?.profile_skills?.find((i) => i?.skill_id?.label === item.profile_skills),
       );
     }
 
+    if (filterTalent.levels.length) {
+      newList = newList.filter(
+        (item) => filterTalent.levels.findIndex((level) => level?.label === item?.job_seniority_id?.label) >= 0,
+      );
+    }
     return newList;
-  }, [data?.profiles, filterTalent.search, isInWishList, profilId, filterTalent.skills]);
+  }, [data?.profiles, isInWishList, filterTalent, profil?.talent_favorits]);
 
   return (
     <>
@@ -74,7 +83,7 @@ const Talents = () => {
           <Box className={classes.contentBottom}>
             <RadioExtInt />
           </Box>
-          <SearchFilterTalents placeholder="Look for one of your favorite" />
+          <SearchFilterTalents placeholder="Look for talent by name, position" />
         </>
       )}
 
@@ -93,8 +102,6 @@ const Talents = () => {
                 coachAddress={''}
                 skills={profil?.profile_skills}
                 coachLevel={profil?.job_seniority_id?.label || ''}
-                project_favorits={profil?.project_favorits}
-                talent_favorits={profil?.talent_favorits}
               />
             </Box>
           );
