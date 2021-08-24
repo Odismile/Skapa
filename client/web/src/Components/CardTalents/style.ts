@@ -1,5 +1,7 @@
+import { Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Autoplay } from 'swiper';
+import defaultImg from '../../Assets/images/default_img.png';
 
 export default makeStyles((theme) => ({
   root: {
@@ -7,7 +9,7 @@ export default makeStyles((theme) => ({
     border: '1px solid #F4F4F4',
     borderRadius: 12,
     '& .content': {
-      padding: 7,
+      padding: 10,
       '& .head': {
         display: 'flex',
         alignItems: 'center',
@@ -39,14 +41,32 @@ export default makeStyles((theme) => ({
           textOverflow: "ellipsis",
           overflow: 'hidden'
         },
+        
+      },
+      '& .userPhoto': {
+        backgroundImage: `url(${defaultImg})`,
+        backgroundSize: "cover",
+        borderRadius: 10,
+        margin: 0,
+        position: 'relative',
+        width: 73, height: 63,
+        "& [id='alttext-container']": {
+          display: 'none',
+        },
+        
+        "& > img": {
+          fontSize: 0,
+          overflow: "Hidden"
+        },
         '& .iconOrganisation': {
           position: 'absolute',
-          top: -5,
+          top: -8,
           left: -8,
           width: 30,
           height: 30,
         },
       },
+
       '& img': {
         height: 74,
         width: 74,
@@ -176,7 +196,7 @@ export default makeStyles((theme) => ({
         marginTop: 12,
         paddingLeft: 10,
       },
-      '& >div':{
+      '& > div':{
         marginTop: 10,
       }
     },

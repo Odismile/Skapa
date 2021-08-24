@@ -5,6 +5,7 @@ import Filter from '../../Components/Icons/Filter/Filter';
 import Search from '../../Components/Icons/Search/Search';
 import Cross from '../Icons/Cross';
 import SearchProject from '../SearchProject/SearchProject';
+import classNames from 'classnames';
 import useStyles from './style';
 
 interface SearchFilterProps {
@@ -31,7 +32,7 @@ const SearchFilter: FC<SearchFilterProps> = ({ onChangeFitlerText, placeholder }
       <Paper component="form" className={classes.root}>
         <Box className="input-search">
           <InputBase
-            className={classes.input}
+            className= {classNames(classes.input, "inputSearchField")}
             placeholder={placeholder ? placeholder : t(`project.textInputFilter`)}
             inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
             onChange={onChangeFitlerText}

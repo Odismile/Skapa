@@ -270,7 +270,7 @@ const Description = () => {
                     className="calendar-field"
                     variant="inline"
                     inputVariant="standard"
-                    format="dd/MM/yyyy"
+                    format="DD/MM/yyyy"
                     id="date-picker-start"
                     label="Date picker inline"
                     value={date}
@@ -303,7 +303,7 @@ const Description = () => {
                     className="calendar-field"
                     variant="inline"
                     inputVariant="standard"
-                    format="dd/MM/yyyy"
+                    format="DD/MM/yyyy"
                     id="date-picker-start"
                     label="Date picker inline"
                     value={date}
