@@ -9,3 +9,16 @@ export const CREATE_PROFIL = gql`
   }
   ${PROFILS_INFO_FRAGMENT}
 `;
+
+export const CREATE_MY_PROFIL = gql`
+  mutation ProfileCustomizeMeInput($input: profileCustomizeMeInput!) {
+    profileCustomizeMeInput(input: $input) {
+      profile {
+        id
+        bio
+        picture
+        video
+      }
+    }
+  }
+`;
