@@ -2,9 +2,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(
   theme => ({
-    mainPage: { },
-    mainContainer: {
-      padding: '0px 22px 30px 22px',
+    projectPage: { },
+    projectContainer: {
+      padding: '30px 20px 30px',
     },
     tabSelected:{
       color: '#8870FF!important',

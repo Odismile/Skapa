@@ -5,6 +5,7 @@ import Places from '../Places/Places';
 import ProjectContent from '../ProjectContent/ProjectContent';
 import Talents from '../Talents/Talents';
 import useStyles from './styles';
+import classNames from 'classnames';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -57,11 +58,11 @@ const Project = () => {
   };
 
   return (
-    <Box className={classes.mainPage}>
+    <Box className={classNames(classes.projectPage)}>
       <Box className="wrapPage">
         {/* header component */}
         <PrimaryHeader />
-        <Box className={classes.mainContainer}>
+        <Box className={classNames(classes.projectContainer)}>
           <Tabs
             centered
             value={value}
