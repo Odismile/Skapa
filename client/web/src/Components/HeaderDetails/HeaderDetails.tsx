@@ -7,7 +7,7 @@ const HeaderDetails:FC = (props) =>{
     const classes = useStyles();
     return(
         <Box className={classes.root}>
-        <PrimaryHeader />
+        <PrimaryHeader noBack/>
         <Box className={classes.mainContainer}>
           <Link href='/project' className='linkBack'>Back to results</Link>
           {props.children}
