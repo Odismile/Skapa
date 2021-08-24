@@ -44,7 +44,7 @@ const CardTalents: FC<CardTalentsProps> = ({
   const [open, setOpen] = React.useState(false);
 
   const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
-  const [check, setCheck] = React.useState(profil?.talent_favorits?.some((profile) => profile?.talent_id && profilIdLocal && +profile.talent_id === +profilIdLocal));
+  const [check, setCheck] = React.useState(profil?.talent_favorits?.some((profile) => profile?.talent_id && talentId && +profile.talent_id === +talentId));
 
   const { doCreateFavoriteTalent } = useCreateFavoritTalent();
   const { doDeleteTalentFavorit } = useDeleteFavoriTalent();
