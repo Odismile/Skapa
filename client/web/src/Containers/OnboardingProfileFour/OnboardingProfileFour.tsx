@@ -46,16 +46,14 @@ const OnboardingProfileFour = () => {
           bio: bio(),
           job_seniority: ageProfil(),
           picture: pictureFile()
-            ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-                pictureFile()?.[0].name
-              }`
+            ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${pictureFile()?.[0].name}`
             : '',
           video: videoFile()
             ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${videoFile()?.[0].name}`
             : '',
-          languages : levelLanguages()?.map((e) => ({
+          languages: levelLanguages()?.map((e) => ({
             id: e.id,
-            level: (e.level) as Level,
+            level: e.level.toUpperCase() as Level,
           })),
           profile_skills: transformSkillsIds(skillsSelectedVariable()),
           user_id: localStorage.getItem('idMe'),
@@ -63,12 +61,12 @@ const OnboardingProfileFour = () => {
         },
       },
     }).then(async (result) => {
-      if (result.data?.profileCustomizeMeInput?.profile?.id) {
-        await uploadFile(pictureFile());
-        await uploadFile(videoFile());
-        !loadingProfile && history.replace(ONBOARDING_PROFILE7);
-        setLoadingUploadFile(false);
-      }
+      //if (result.data?.profileCustomizeMeInput?.profile?.id) {
+      await uploadFile(pictureFile());
+      await uploadFile(videoFile());
+      !loadingProfile && history.replace(ONBOARDING_PROFILE7);
+      setLoadingUploadFile(false);
+      //  }
     });
   }
 
