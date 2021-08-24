@@ -8,6 +8,7 @@ import Pitch from '../../../Components/Pitch/Pitch';
 import CardReview from '../../../Components/CardReview/CardReview';
 import { useGetProject } from '../../../Providers/ProjectProvider/useGetProject';
 import Skeleton from 'react-loading-skeleton';
+import { useTranslation } from 'react-i18next';
 
 interface FicheProjectProps {
   projectId: string;
@@ -15,6 +16,7 @@ interface FicheProjectProps {
 }
 
 const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
+  const { t } = useTranslation();
   const { data, loading } = useGetProject(projectId);
   const classes = useStyles();
   return (
@@ -36,13 +38,13 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
         </Box>
         <Box className="presentation">
           <Typography variant="h6" className="title">
-            Présentation
+            {t(`ficheProject.Presentation`)}
           </Typography>
           <Presentation description={data?.projects?.[0]?.description ?? ''} />
         </Box>
         <Box className="tags">
           <Typography variant="h6" className="title">
-            Tags
+          {t(`ficheProject.Tags`)}
           </Typography>
           <Tags project_skills={data?.projects?.[0]?.project_skills} />
           <Box className="btn">
@@ -52,7 +54,7 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
         <Divider className="divider" />
         <Box className="similarProjects">
           <Typography variant="h6" className="title">
-            Similar projects
+          {t(`ficheProject.similarProject`)}
           </Typography>
           <FormerProject />
         </Box>
