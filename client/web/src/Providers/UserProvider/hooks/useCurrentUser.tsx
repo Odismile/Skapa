@@ -3,14 +3,13 @@ import { ME_INFO } from '../../../GraphQL/user/query';
 import { MeInfo, MeInfoVariables } from '../../../GraphQL/user/types/MeInfo';
 
 export const useCurrentUser = () => {
-  let userId = 0;
-  if (localStorage.getItem('idMe')) {
-    userId = Number(localStorage.getItem('idMe'));
-  }
+  const userId = localStorage.getItem('idMe') || null;
   const result = useQuery<MeInfo, MeInfoVariables>(ME_INFO, {
     variables: {
-      userId: userId,
+      userId : userId? +userId : null,
     },
+    skip: !Boolean(userId),
+    fetchPolicy: 'cache-first',
   });
   return {
     profilId: result.data?.getProfile?.id ?? null,
