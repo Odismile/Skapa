@@ -34,8 +34,6 @@ const Talents = () => {
   });
 
   const listTalents = useMemo(() => {
-    console.table(data?.profiles);
-
     const newList = (data?.profiles || []).filter((item) => {
       if (
         item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
