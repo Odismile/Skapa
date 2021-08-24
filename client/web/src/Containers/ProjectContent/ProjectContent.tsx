@@ -1,5 +1,5 @@
 import { useReactiveVar } from '@apollo/client/react/hooks/useReactiveVar';
-import { Box, Button, Card, CardMedia, List, ListItem, SwipeableDrawer, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardMedia, List, ListItem, Drawer, Typography } from '@material-ui/core';
 import { orderBy } from 'lodash';
 import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
