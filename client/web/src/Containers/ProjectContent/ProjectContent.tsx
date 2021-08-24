@@ -122,6 +122,8 @@ const ProjectContent = () => {
                 profilId={project?.profile?.id}
                 name={project?.Name ?? ''}
                 imgCardUrl={project?.Picture ?? ''}
+                user={project?.profile?.users_id}
+                type={project?.Type ?? ''}
               />
               <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
                 <Button onClick={handleDrawer} disabled={isReader}>
