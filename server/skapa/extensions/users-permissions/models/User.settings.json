@@ -73,10 +73,6 @@
       "collection": "languages",
       "via": "users_permissions_user"
     },
-    "profile_project_types": {
-      "collection": "profile-project-types",
-      "via": "users_id"
-    },
     "isFirstConnection": {
       "type": "boolean",
       "default": true
