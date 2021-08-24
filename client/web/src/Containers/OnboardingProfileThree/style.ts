@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
       position: 'absolute',
       top: 40,
       right: 17,
-      transform: 'translateY(-14px)',
+      transform: 'translateY(-10px)',
     },
   },
   content: {
