@@ -74,7 +74,7 @@ const Talents = () => {
           <Box className={classes.contentBottom}>
             <RadioExtInt />
           </Box>
-          <SearchFilterTalents placeholder="Look for one of your favorite" />
+          <SearchFilterTalents placeholder="Look for talent by name, position" />
         </>
       )}
 
