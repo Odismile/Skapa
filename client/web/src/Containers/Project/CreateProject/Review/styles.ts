@@ -8,6 +8,12 @@ export default makeStyles(
         marginBottom: 8,
         marginTop:23,
       },
+      "& .btn-favori": {
+        display: "none",
+      },
+      "& .checkbox": {
+        display: "none",
+      },
     },
   }),
   { name: 'Review' },

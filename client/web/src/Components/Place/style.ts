@@ -99,6 +99,8 @@ export default makeStyles((theme) => ({
           fontWeight: 700,
         },
         '&.equipement': {
+          fontSize: 10,
+          color: '#000000',
           display: 'flex',
           alignItems: 'center',
           '& .icon-equipement': {
