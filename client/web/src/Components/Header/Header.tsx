@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  Typography,
-  IconButton,
-  Drawer,
-  Link,
-  List,
-  ListItem,
-} from '@material-ui/core';
+import { Box, Button, Card, Typography, IconButton, Drawer, Link, List, ListItem } from '@material-ui/core';
 //import { Link } from 'react-router-dom';
 import useStyles from './style';
 
@@ -27,11 +17,12 @@ import Plus from '../../Components/Icons/Plus/Plus';
 import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
 import { clearLocalStorage, isAuthenticated } from '../../Services';
 import { COACHS, CREATE_PROJECT, DETAILS_TALENTS, LOGIN, PROJECT, WISHLIST } from '../../Routes';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { FC } from 'react';
+import { LocationInterface } from '../../types/types';
 
 interface HeaderProps {
   noBack?: boolean;
@@ -39,6 +30,7 @@ interface HeaderProps {
 const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   const classes = useStyles();
   const { user, photo, isReader } = useCurrentUser();
+  const { talentId, projectId, profilId } = useParams<LocationInterface>();
 
   const history = useHistory();
   const isInWishList = [WISHLIST].includes(history.location.pathname);
@@ -46,7 +38,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   if (!isAuthenticated()) {
     history.push(LOGIN);
   }
-
+  console.log('history.location.pathname ', history.location.pathname);
   const [open, setOpen] = React.useState(false);
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -63,7 +55,8 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   const params = useLocation();
   const activeWishList = params.pathname === WISHLIST ? 'btn btn_link active' : 'btn btn_link';
   const isShowProfilInfo = isConnected && [PROJECT].includes(history.location.pathname);
-  const isShowBackButton = [DETAILS_TALENTS].includes(history.location.pathname);
+  const isShowBackButton =
+    [DETAILS_TALENTS].includes(history.location.pathname) && !Boolean(talentId || projectId || profilId);
 
   const handleClickRoute = (path: string) => () => {
     history.push(path);
@@ -101,7 +94,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
         {/* show bloc for create-project page */}
         {/* titre projet */}
         <Typography style={{ display: 'block' }} className="titlePage">
-          {isInWishList ? 'Wishlist' : 'Create your own project'}
+          {isInWishList ? 'Wishlist' : !isShowProfilInfo ? 'Create your own project' : ''}
         </Typography>
 
         {/* show bloc for project and talents page */}
@@ -142,7 +135,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
       </Box>
 
       {/* link back to home-page */}
-      {!noBack && (!isShowProfilInfo || isShowBackButton) && (
+      {!isShowProfilInfo && isShowBackButton && (
         <Typography className="wrap-backLink">
           <Link className="backLink" onClick={handleClickRoute(PROJECT)}>
             Back
