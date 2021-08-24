@@ -13,8 +13,11 @@ import Cast from '../../../Components/Icons/Cast';
 import Computer from '../../../Components/Icons/Computer';
 import PrimaryHeader from '../../../Components/Header';
 import TabLink from '../../../Components/TabLink';
+import { useTranslation } from 'react-i18next';
+
 
 const FichePlaces = () => {
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <Box className={classes.root}>
@@ -27,7 +30,7 @@ const FichePlaces = () => {
             </Box>
             <Box className="presentation">
               <Typography variant="h6" className="title">
-                Présentation
+                {t(`createProject.Presentation`)}
               </Typography>
               <Presentation description={''} />
             </Box>

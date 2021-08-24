@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Typography } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from './style';
 import IconChange from '../../Components/Icons/Change/Change';
@@ -21,6 +21,7 @@ import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 import { useUploadFile } from '../../Utils/uploadFile';
+import Loader from '../../Components/Loader/Loader';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -29,11 +30,14 @@ const OnboardingProfileFour = () => {
   const [projectTypeSelected, setProjectTypeSelected] = useState<
     (Items_get_language_items | null)[] | null | undefined
   >([]);
-  const { uploadFile } = useUploadFile();
+  const { uploadFile, loading: loadingUpload } = useUploadFile();
+
+  const [loadingUploadFile, setLoadingUploadFile] = useState(false);
 
   const history = useHistory();
   function handleClick() {
     //TEST
+    setLoadingUploadFile(true);
     doCreateProfile({
       variables: {
         input: {
@@ -41,12 +45,14 @@ const OnboardingProfileFour = () => {
             position: yourPosition(),
             bio: bio(),
             job_seniority_id: ageProfil(),
-            picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-              pictureFile()?.[0].name
-            }`,
-            video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-              videoFile()?.[0].name
-            }`,
+            picture: pictureFile()
+              ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                  pictureFile()?.[0].name
+                }`
+              : '',
+            video: videoFile()
+              ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${videoFile()?.[0].name}`
+              : '',
             // languages: levelLanguages()?.map((e) => e.id),
             profile_skills: transformSkillsIds(skillsSelectedVariable()),
             users_id: localStorage.getItem('idMe'),
@@ -58,9 +64,10 @@ const OnboardingProfileFour = () => {
       if (result.data?.createProfile?.profile?.id) {
         await uploadFile(pictureFile());
         await uploadFile(videoFile());
+        !loadingProfile && history.replace(ONBOARDING_PROFILE7);
+        setLoadingUploadFile(false);
       }
     });
-    !loadingProfile && history.replace(ONBOARDING_PROFILE7);
   }
 
   const onClickProjectType = (projectType: Items_get_language_items | null) => {
@@ -82,32 +89,40 @@ const OnboardingProfileFour = () => {
   };
 
   return (
-    <WrapOnBoarding>
-      <Box className={classes.bloc}>
-        <Typography className="title">What kind of project would you like to see ?</Typography>
-        <Box className={classes.content}>
-          <Box className="choice">
-            {!loading &&
-              data?.items?.map((item, index) => {
-                return (
-                  <Box className="inputGroup">
-                    <input id={`option${index}`} type="checkbox" onClick={() => onClickProjectType(item)} />
-                    <label htmlFor={`option${index}`}>
-                      {item?.label}
-                      <IconChange className="bgIcon" />
-                    </label>
-                  </Box>
-                );
-              })}
+    <>
+      <WrapOnBoarding>
+        <Box className={classes.bloc}>
+          <Typography className="title">What kind of project would you like to see ?</Typography>
+          <Box className={classes.content}>
+            <Box className="choice">
+              {!loading &&
+                data?.items?.map((item, index) => {
+                  return (
+                    <Box className="inputGroup">
+                      <input id={`option${index}`} type="checkbox" onClick={() => onClickProjectType(item)} />
+                      <label htmlFor={`option${index}`}>
+                        {item?.label}
+                        <IconChange className="bgIcon" />
+                      </label>
+                    </Box>
+                  );
+                })}
+            </Box>
+          </Box>
+          <Box className={classes.btnNext}>
+            <Button variant="contained" onClick={handleClick}>
+              Next
+            </Button>
           </Box>
         </Box>
-        <Box className={classes.btnNext}>
-          <Button variant="contained" onClick={handleClick}>
-            Next
-          </Button>
+        <Box component="footer" className={classes.footerPage}>
+          <Typography className="link-footer">
+            <Link to={ONBOARDING_PROFILE7}>Skip this step</Link>
+          </Typography>
         </Box>
-      </Box>
-    </WrapOnBoarding>
+      </WrapOnBoarding>
+      {loadingUploadFile && <Loader />}
+    </>
   );
 };
 

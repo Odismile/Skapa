@@ -8,9 +8,9 @@ export interface Language {
   level: string;
 }
 // Create Reactive variable
-export const yourPosition = makeVar<string>('');
-export const nameOfOrganisation = makeVar<string>('');
-export const ageProfil = makeVar<string>('');
+export const yourPosition = makeVar<string | null>(null);
+export const nameOfOrganisation = makeVar<string | null>(null);
+export const ageProfil = makeVar<string | null>(null);
 export const levelLanguages = makeVar<Language[] | null>(null);
 
 export const pictureFile = makeVar<File[] | null>(null);
