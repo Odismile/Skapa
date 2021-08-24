@@ -1,9 +1,8 @@
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import {
   Box,
   Button,
   Card,
-  CardContent,
   Typography,
   IconButton,
   Drawer,
@@ -12,7 +11,6 @@ import {
   ListItem,
 } from '@material-ui/core';
 //import { Link } from 'react-router-dom';
-import classNames from 'classnames';
 import useStyles from './style';
 
 // image
@@ -29,7 +27,7 @@ import Plus from '../../Components/Icons/Plus/Plus';
 import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
 import { clearLocalStorage, isAuthenticated } from '../../Services';
 import { COACHS, CREATE_PROJECT, DETAILS_TALENTS, LOGIN, PROJECT, WISHLIST } from '../../Routes';
-import { Route, Redirect, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
@@ -146,7 +144,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
       {/* link back to home-page */}
       {!noBack && (!isShowProfilInfo || isShowBackButton) && (
         <Typography className="wrap-backLink">
-          <Link className="backLink" onChange={handleClickRoute(PROJECT)}>
+          <Link className="backLink" onClick={handleClickRoute(PROJECT)}>
             Back
           </Link>
         </Typography>
@@ -176,7 +174,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
               <Link className="nav_link">My activity</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" onChange={handleClickRoute(PROJECT)}>
+              <Link className="nav_link" onClick={handleClickRoute(PROJECT)}>
                 Projects
               </Link>
             </ListItem>

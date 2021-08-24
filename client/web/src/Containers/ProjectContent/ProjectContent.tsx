@@ -1,23 +1,12 @@
 import { useReactiveVar } from '@apollo/client/react/hooks/useReactiveVar';
-import {
-  Box,
-  Button,
-  Card,
-  CardMedia,
-  List,
-  ListItem,
-  Drawer,
-  Typography,
-} from '@material-ui/core';
+import { Box, Button, Card, CardMedia, List, ListItem, SwipeableDrawer, Typography } from '@material-ui/core';
 import { orderBy } from 'lodash';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
 import { useLocation } from 'react-router-dom';
 import photoUser from '../../Assets/images/photo-card.png';
 import CardReview from '../../Components/CardReview/CardReview';
-import HeartLine from '../../Components/Icons/HeartLine';
-import Search from '../../Components/Icons/Search';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
@@ -37,7 +26,7 @@ const ProjectContent = () => {
   const { isReader, profilId, profil } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>('');
   const [project, setProject] = useState<projects_all_projects | null>(null);
   const [priceToContribute, setPriceToContribute] = useState<number | null>(null);
   const { doCreateContribution } = useCreateContribution();
@@ -58,13 +47,11 @@ const ProjectContent = () => {
   const handleClick = (event: any) => {
     event.stopPropagation();
   };
-  const projects = useMemo(()=> {
-    let newProjects :( projects_all_projects | null)[] | null | undefined = data?.projects;
+  const projects = useMemo(() => {
+    let newProjects: (projects_all_projects | null)[] | null | undefined = data?.projects;
     if (projectCategory.length !== 0) {
-      newProjects = data?.projects?.filter((project) =>
-        projectCategory.find((category) => project?.Type === category),
-      );
-    } 
+      newProjects = data?.projects?.filter((project) => projectCategory.find((category) => project?.Type === category));
+    }
 
     if (projectSortedByLocal === 'Latest') {
       newProjects = orderBy(newProjects, ['created_at'], ['desc']);
@@ -77,11 +64,14 @@ const ProjectContent = () => {
 
     if (isInWishList) {
       newProjects = (newProjects || []).filter(
-        (item) => item?.id && profil?.project_favorits?.length && profil?.project_favorits?.some((favoris) => favoris?.project?.id === item?.id),
+        (item) =>
+          item?.id &&
+          profil?.project_favorits?.length &&
+          profil?.project_favorits?.some((favoris) => favoris?.project?.id === item?.id),
       );
     }
 
-    if(search.length){
+    if (search.length) {
       newProjects = newProjects?.filter(
         (project) =>
           project?.Name?.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
@@ -91,14 +81,13 @@ const ProjectContent = () => {
       );
     }
     return newProjects;
-  }, [data?.projects, projectCategory, projectSortedByLocal, isInWishList, profil?.project_favorits, search])
+  }, [data?.projects, projectCategory, projectSortedByLocal, isInWishList, profil?.project_favorits, search]);
   const onClicklContribute = (project: projects_all_projects | null) => {
     setProject(project);
   };
 
-
   const onChangeFilter = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setSearch(e.target.value.trim());
+    setSearch(e.target.value.trim());
   };
 
   const onClickContribute = () => {
@@ -120,7 +109,7 @@ const ProjectContent = () => {
 
   return (
     <Box className={classes.projectPage}>
-      <SearchFilter onChangeFitlerText={onChangeFilter} placeholder="Look for one of your favorite"/>
+      <SearchFilter onChangeFitlerText={onChangeFilter} placeholder="Look for one of your favorite" />
       {loading && <Skeleton count={1} height={170} />}
 
       {!loading &&
