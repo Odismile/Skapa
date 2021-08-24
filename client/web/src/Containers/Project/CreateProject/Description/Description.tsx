@@ -75,9 +75,9 @@ const Description = () => {
   const [city, setCity] = useState('');
   const [dateStart, setdateStart] = useState<Date | null>();
   const [dateEnd, setDateEnd] = useState<Date | null>();
+  const [date, setDate] = useState<Date | undefined>(undefined);
   
   const [locale, setLocale] = useState("en");
-  const [date, setDate] = useState<Date | undefined>(undefined);
 
 
   const [projectDescription, setProjectDescription] = useState('');
@@ -264,28 +264,28 @@ const Description = () => {
                 />
               </Box>
               <Box className="grid_field">
-                <Box className="field_item field_date">
-                  
                 <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={locale}>
+                <Box className="field_item field_date">
                   <KeyboardDatePicker
                     disableToolbar
-                    PopoverProps= {{
-                      className:"datePickerPop datePicker-start"
-                    }}
-                    
+                    className="calendar-field"
                     variant="inline"
+                    inputVariant="standard"
                     format="dd/MM/yyyy"
                     id="date-picker-start"
                     label="Date picker inline"
                     value={date}
                     onChange={(e) => onChangeDate(e)}
-                    
                     KeyboardButtonProps={{
                       'aria-label': 'change date',
+                      className: "calendarButtonIcon"
                     }}
                     keyboardIcon={<Calendar />}
+                    PopoverProps= {{
+                      className:"datePickerPop datePicker-start"
+                    }}
                   />
-                </MuiPickersUtilsProvider>
+                
 
                   {/* <TextField
                     id="dateStarts"
@@ -299,7 +299,26 @@ const Description = () => {
                   /> */}
                 </Box>
                 <Box className="field_item field_date">
-                  <TextField
+                  <KeyboardDatePicker
+                    disableToolbar
+                    className="calendar-field"
+                    variant="inline"
+                    inputVariant="standard"
+                    format="dd/MM/yyyy"
+                    id="date-picker-start"
+                    label="Date picker inline"
+                    value={date}
+                    onChange={(e) => onChangeDate(e)}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                      className: "calendarButtonIcon"
+                    }}
+                    keyboardIcon={<Calendar />}
+                    PopoverProps= {{
+                      className:"datePickerPop datePicker-start"
+                    }}
+                  />
+                  {/* <TextField
                     id="dateEnd"
                     label={t(`createProject.end`)}
                     type="date"
@@ -308,8 +327,9 @@ const Description = () => {
                     InputLabelProps={{
                       shrink: true,
                     }}
-                  />
+                  /> */}
                 </Box>
+                </MuiPickersUtilsProvider>
               </Box>
             </Box>
           </Box>

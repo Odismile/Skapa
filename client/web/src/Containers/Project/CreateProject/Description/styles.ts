@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { before } from 'lodash';
 
 export default makeStyles(
   (theme) => ({
@@ -8,7 +9,7 @@ export default makeStyles(
           "& p": {
             margin: 0,
           },
-        }
+        },
       }
     },
     imageUpload: {
@@ -144,7 +145,8 @@ export default makeStyles(
           },
         },
         '& .field_date': {
-          width: 115,
+          minWidth: 115,
+          //width: 115,
           '& div:hover:before': {
             borderBottom: 'none!important',
           },
@@ -179,6 +181,44 @@ export default makeStyles(
               marginBottom: 0,
               '&:before, &:after': {
                 border: 'none',
+              },
+            },
+          },
+          "& .calendar-field": {
+            "& label ": {
+              "& + div": {
+                "&:before, &:after": {
+                  display: "none",
+                },
+              },
+            },
+            "& .calendarButtonIcon": {
+              position: 'absolute',
+              right: 4, top: 1,
+              "&:hover": {
+                background: "#ece8ff",
+              },
+              "& svg": {
+                fontSize: "0.875rem",
+                color: "#8870FF",
+              },
+            },
+            "& input": {
+              border: 'solid 1px #dfdfdf',
+              boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
+              boxSizing: "border-box",
+              borderRadius: 35,
+              color: '#000000',
+              fontSize: 12,
+              height: 40,
+              padding: "0 16px",
+              '&:focus':{
+                border: '1px solid #8870FF',
+                background: "rgb(242,241,253)",
+                boxShadow: "inset 0px 1px 3px rgb(136 112 255 / 50%)",
+              },
+              "& + div": {
+                marginLeft: 0,
               },
             },
           },
