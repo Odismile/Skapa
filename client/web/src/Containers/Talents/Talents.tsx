@@ -21,7 +21,7 @@ const Talents = () => {
 
   const isInWishList = [WISHLIST].includes(params.pathname);
   const filterTalent = useReactiveVar(filterTalentVar);
-  const { profilId } = useCurrentUser();
+  const { profil } = useCurrentUser();
 
   const { data, loading } = useQuery<coachs, coachsVariables>(LIST_COACH, {
     variables: {
@@ -34,8 +34,6 @@ const Talents = () => {
   });
 
   const listTalents = useMemo(() => {
-    console.table(data?.profiles);
-
     const newList = (data?.profiles || []).filter((item) => {
       if (
         item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
@@ -47,7 +45,7 @@ const Talents = () => {
     });
     if (isInWishList)
       return (data?.profiles || []).filter(
-        (item) => item?.talent_favorits?.length && item?.talent_favorits?.some((i) => i?.profile?.id === profilId),
+        (item) => item?.id && profil?.talent_favorits?.length && profil?.talent_favorits?.some((i) => i?.talent_id && +i.talent_id === +item.id),
       );
 
     if (filterTalent.skills.length !== 0) {
@@ -58,7 +56,7 @@ const Talents = () => {
     }
 
     return newList;
-  }, [data?.profiles, filterTalent.search, isInWishList, profilId, filterTalent.skills]);
+  }, [data?.profiles, isInWishList, filterTalent.skills.length, filterTalent.search, profil?.talent_favorits]);
 
   return (
     <>
@@ -93,8 +91,6 @@ const Talents = () => {
                 coachAddress={''}
                 skills={profil?.profile_skills}
                 coachLevel={profil?.job_seniority_id?.label || ''}
-                project_favorits={profil?.project_favorits}
-                talent_favorits={profil?.talent_favorits}
               />
             </Box>
           );
