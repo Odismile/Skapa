@@ -46,8 +46,9 @@ const SearchTalents = () => {
                   name="isTopRated"
                   onChange={handleCheck}
                   className="form-checkbox"
-                  icon= {<CheckboxLine fontSize='small' />}
-                  checkedIcon={<CheckboxChecked fontSize='small'/>}
+                  defaultChecked={filterTalent.isTopRated}
+                  icon={<CheckboxLine fontSize="small" />}
+                  checkedIcon={<CheckboxChecked fontSize="small" />}
                 />
               }
               label="Top Rated"
@@ -58,12 +59,14 @@ const SearchTalents = () => {
               value="Recommanded"
               control={
                 <Checkbox
+                  checked={filterTalent.isRecommended}
+                  defaultChecked={filterTalent.isRecommended}
                   name="isRecommended"
                   onChange={handleCheck}
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                   className="form-checkbox"
-                  icon= {<CheckboxLine fontSize='small' />}
-                  checkedIcon={<CheckboxChecked fontSize='small'/>}
+                  icon={<CheckboxLine fontSize="small" />}
+                  checkedIcon={<CheckboxChecked fontSize="small" />}
                 />
               }
               label="Recommanded"
@@ -79,12 +82,14 @@ const SearchTalents = () => {
               value="Junior"
               control={
                 <Checkbox
+                  checked={filterTalent.isJunior}
+                  defaultChecked={filterTalent.isJunior}
                   name="isJunior"
                   onChange={handleCheck}
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                   className="form-checkbox"
-                  icon= {<CheckboxLine fontSize='small' />}
-                  checkedIcon={<CheckboxChecked fontSize='small'/>}
+                  icon={<CheckboxLine fontSize="small" />}
+                  checkedIcon={<CheckboxChecked fontSize="small" />}
                 />
               }
               label="Junior"
@@ -95,12 +100,14 @@ const SearchTalents = () => {
               value="Senior"
               control={
                 <Checkbox
+                  checked={filterTalent.isSenior}
+                  defaultChecked={filterTalent.isSenior}
                   name="isSenior"
                   onChange={handleCheck}
                   inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                   className="form-checkbox"
-                  icon= {<CheckboxLine fontSize='small' />}
-                  checkedIcon={<CheckboxChecked fontSize='small'/>}
+                  icon={<CheckboxLine fontSize="small" />}
+                  checkedIcon={<CheckboxChecked fontSize="small" />}
                 />
               }
               label="Senior"
