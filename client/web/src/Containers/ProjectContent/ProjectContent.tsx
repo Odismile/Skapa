@@ -38,6 +38,8 @@ const ProjectContent = () => {
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState<string>("");
+  const [disabledButton, setDisabledButton] = useState(false);
+  const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
   const [project, setProject] = useState<projects_all_projects | null>(null);
   const [priceToContribute, setPriceToContribute] = useState<number | null>(null);
   const { doCreateContribution } = useCreateContribution();
@@ -53,6 +55,7 @@ const ProjectContent = () => {
 
   const handleDrawer = () => {
     setOpen((prev) => !prev);
+    setDisabledButton(false);
   };
 
   const handleClick = (event: any) => {
@@ -112,9 +115,11 @@ const ProjectContent = () => {
       }).then((result) => {
         if (result.data?.createContribute?.contribute?.id) {
           //setPriceToContribute(null);
+          setDisabledButton(true)
         }
       });
     } else {
+      
     }
   };
 
@@ -227,7 +232,7 @@ const ProjectContent = () => {
                 variant="contained"
                 href=""
                 className="btn_contribute"
-                disabled={isReader && priceToContribute === null && priceToContribute === 0}
+                disabled={disabledButton}
                 onClick={onClickContribute}
               >
                 Contribute
