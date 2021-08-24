@@ -52,12 +52,21 @@ export default makeStyles((theme) => ({
       fontStyle: 'italic',
     },
     '& .bio': {
+      marginBottom: 10,
       '& .link': {
         display: 'none',
       },
     },
-    '& .former-project, & .skills, & .bio': {
+    '& .skills, & .bio': {
       marginBottom: 20,
-    }
+    },
+    "& .former-project": {
+      marginBottom: 10,
+    },
+    "& .pitch": {
+      "& h6": {
+        marginBottom: 0,
+      },
+    },
   },
 }));

@@ -4,10 +4,9 @@ import {
   Button,
   Card,
   CardMedia,
-  IconButton,
   List,
   ListItem,
-  SwipeableDrawer,
+  Drawer,
   Typography,
 } from '@material-ui/core';
 import { orderBy } from 'lodash';
@@ -146,16 +145,17 @@ const ProjectContent = () => {
 
       {!loading && projects?.length === 0 && <Typography>{t(`project.none`)}</Typography>}
 
-      <SwipeableDrawer
+      <Drawer
         className={classes.drawerContribute}
         anchor="bottom"
         open={open}
         onClose={handleDrawer}
-        onOpen={handleDrawer}
+        //onOpen={handleDrawer}
         classes={{
           paper: classes.drawerPaperContribute,
         }}
-        SwipeAreaProps={{ className: 'backDrop_contribute' }}
+        BackdropProps={{ className: 'backDrop_contribute' }}
+        //SwipeAreaProps={{ className: 'backDrop_contribute' }}
       >
         <Box className={classes.contribute_drawerContent}>
           <Box className="header_content" component="header">
@@ -235,7 +235,7 @@ const ProjectContent = () => {
             </form>
           </Box>
         </Box>
-      </SwipeableDrawer>
+      </Drawer>
     </Box>
   );
 };

@@ -40,8 +40,11 @@ export default makeStyles(
       padding: "35px 30px 30px",
     },
     contribute_drawerContent: {
-      
       position: "relative",
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      overflow: "hidden",
       /*
       "& .btn_handleDrawer": {}
       */
@@ -57,8 +60,9 @@ export default makeStyles(
       },
       "& .header_content": {
         display: "flex",
+        flex: "1 0 44px",
         justifyContent: "space-between",
-        marginBottom: 20,
+        minHeight: 44,
         "& .title_text": {
           color: "#383838",
           fontSize: "1rem",
@@ -75,6 +79,10 @@ export default makeStyles(
         },
       },
       "& .body_content": {
+        flex: "1 1 100%",
+        height: "calc(100% - 44px)",
+        overflow: "hidden auto",
+        marginTop: 20,
         "& .contribute_media": {
           borderRadius: 10,
           height: 75,
@@ -233,5 +241,5 @@ export default makeStyles(
       },
     },
   }),
-  { name: "Project" }
+  { name: "ProjectContent" }
 );
