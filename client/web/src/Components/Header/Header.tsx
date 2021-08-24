@@ -1,5 +1,18 @@
+import React, { FC } from 'react';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Typography,
+  IconButton,
+  Drawer,
+  Link,
+  List,
+  ListItem,
+  Hidden,
+} from '@material-ui/core';
 import React from 'react';
-import { Box, Button, Card, Typography, IconButton, Drawer, Link, List, ListItem } from '@material-ui/core';
 //import { Link } from 'react-router-dom';
 import useStyles from './style';
 
@@ -15,14 +28,16 @@ import HeartLine from '../../Components/Icons/HeartLine/HeartLine';
 import Cross from '../../Components/Icons/Cross/Cross';
 import Plus from '../../Components/Icons/Plus/Plus';
 import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
+
 import { clearLocalStorage, isAuthenticated } from '../../Services';
 import { COACHS, CREATE_PROJECT, DETAILS_TALENTS, LOGIN, PROJECT, WISHLIST } from '../../Routes';
 import { useLocation, useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
-import { FC } from 'react';
 import { LocationInterface } from '../../types/types';
+import MenuList from '../../Components/MenuList/MenuList'
+
 
 interface HeaderProps {
   noBack?: boolean;
@@ -71,13 +86,19 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
           </IconButton>
         </Box>
 
-        {/* logo mobile */}
-
+        {/* logo */}
         <figure className="logo">
           <img src={mainLogoWhite} alt="logo" />
         </figure>
-        {/* list of notification */}
+        {/* menu desktop < 1200 */}
+        <Hidden smDown={true}>
+          <Box className="menu_lg">
+            {/* Menu list */}
+            <MenuList />
+          </Box>
+        </Hidden>
 
+        {/* list of notification */}
         <Box className="notif_list">
           <IconButton className="btn btn_award" aria-label="Award">
             <Award />
@@ -159,6 +180,9 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
           <IconButton className="btn btn_burger" aria-label="close" onClick={handleDrawer}>
             <Cross />
           </IconButton>
+          {/* Menu list */}
+          <MenuList />
+          <Button color="secondary" variant="contained" href={CREATE_PROJECT} className="btn_createProject">
           <List className="list">
             <ListItem disableGutters={true}>
               <Link className="nav_link">Profile</Link>

@@ -1,4 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { url } from 'inspector';
+import imgDefaultProfil from '../../Assets/images/default_img_profile.png'
 
 export default makeStyles (
   theme => ({
@@ -41,6 +43,14 @@ export default makeStyles (
       marginBottom: 20,
       padding: "20px",
       position: "relative",
+      "@media(min-width: 960px)": {
+        position: "sticky",
+        top: 0,
+        zIndex: 1,
+      },
+      "@media(min-width: 1200px)": {
+        padding: "10px 15px",
+      },
       "& .wrap-backLink": {
         lineHeight: "1.4",
         margin: 0,
@@ -57,12 +67,48 @@ export default makeStyles (
         fontWeight: 300, 
         textDecoration: "none",
       },
+      "& .menu_lg": {
+        "& .list": {
+          display: "flex",
+          alignItems: 'center',
+          margin: 0,
+          maxHeight: "100%",
+          maxWidth: "100%",
+          padding: 0,
+          "& li": {
+            padding: "0 5px",
+            position: "relative",
+            "&:last-child": {
+              "&:after": {
+                display: 'none',
+              },
+            },
+            "&:after": {
+              background: "#fff",
+              content: "''",
+              display: "block",
+              position: "absolute",
+              right: 0,
+              top: 7,
+              height: 14,
+              width: 1,
+            },
+            "& > a": {
+              padding: "4px 8px",
+              whiteSpace: "nowrap",
+            },
+          },
+        },
+      },
     },
     header_top: {
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'space-between',
       padding: "0 0 20px",
+      "@media(min-width: 960px)": {
+        alignItems: 'center',
+      },
       "& .logo": {
         height: 45,
         margin: "20px auto 0",
@@ -74,6 +120,10 @@ export default makeStyles (
         "@media (min-width: 768px)": {
           marginTop: 0,
         },
+        "@media(min-width: 960px)": {
+          marginLeft: 0,
+          marginRight: 0,
+        }
       },
       "& .btn": {
         "& svg": {
@@ -82,6 +132,9 @@ export default makeStyles (
       },
       "& .menu_wrap": {
         width: 86,
+        "@media(min-width: 960px)": {
+          display: "none",
+        },
       },
       "& .btn_burger": {
         marginLeft: -12,
@@ -123,6 +176,9 @@ export default makeStyles (
         fontSize: "1rem",
         margin: 0,
         textAlign: "center",
+        "@media(min-width: 1200px)": {
+          fontSize: "1.5rem",
+        },
       },
       "& .btn_createProject": {
         background: "#fff",
@@ -155,7 +211,12 @@ export default makeStyles (
       justifyContent: "center",
       padding: 8,
       "& .user_avatar": {
+        //backgroundImage: `url(${imgDefaultProfil})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundColor: "#fff",
         borderRadius: 60,
+        fontSize: 0,
         height: 60,
         margin: 0,
         position: "relative",
@@ -242,36 +303,11 @@ export default makeStyles (
         height: 20,
         width: 20,
         marginBottom: 15,
-        
-        "& svg": {
-          fill: "#fff",
-        },
-      },
-      "& .list": {
-        maxHeight: "calc(100% - 175px)",
-        overflow: "hidden auto",
-        margin: "15px auto",
-        padding: "0 0 0 70px",
-        maxWidth: 220,
-        "@media(min-height: 640px)": {
+        "@media(min-with: 640px)": {
           marginBottom: 30,
         },
-        "& > li": {
-        },
-        "& a": {
-          color: "#fff",
-          cursor: "pointer",
-          fontSize: "1rem",
-          fontWeight: 400,
-          padding: "4px 0",
-          textDecoration: "none",
-          width: "100%",
-          "@media(min-height: 640px)": {
-            padding: "7px 0",
-          },
-          "&:hover": {
-            textDecoration: "none",
-          }
+        "& svg": {
+          fill: "#fff",
         },
       },
       "& .btn_createProject": {
@@ -307,12 +343,10 @@ export default makeStyles (
         fontSize: "1rem",
         fontStyle: "italic",
         fontWeight: 400,
-        
         paddingBottom: 5,
         textDecoration: "none",
       },
       "& .MuiBackdrop-root": {
-        background: "green",
       },
     },
     
