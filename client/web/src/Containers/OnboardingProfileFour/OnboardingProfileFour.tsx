@@ -45,12 +45,14 @@ const OnboardingProfileFour = () => {
             position: yourPosition(),
             bio: bio(),
             job_seniority_id: ageProfil(),
-            picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-              pictureFile()?.[0].name
-            }`,
-            video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-              videoFile()?.[0].name
-            }`,
+            picture: pictureFile()
+              ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                  pictureFile()?.[0].name
+                }`
+              : '',
+            video: videoFile()
+              ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${videoFile()?.[0].name}`
+              : '',
             // languages: levelLanguages()?.map((e) => e.id),
             profile_skills: transformSkillsIds(skillsSelectedVariable()),
             users_id: localStorage.getItem('idMe'),
