@@ -12,7 +12,6 @@ import {
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC, useState } from 'react';
 import { useHistory } from 'react-router';
-import { projects_all_projects_project_favorits } from '../../GraphQL/project/types/projects_all';
 import { useCreateProjectFavori } from '../../Providers/ProjectProvider/useCreateProjectFavori';
 import { useDeleteProjectFavori } from '../../Providers/ProjectProvider/useDeleteProjectFavori';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
@@ -66,7 +65,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
   const history = useHistory();
   const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
 
-  const [check, setCheck] = useState(profil?.project_favorits?.some((project) => project?.profile?.id === profilIdLocal));
+  const [check, setCheck] = useState(profil?.project_favorits?.some((favoris) =>projectId &&  favoris?.project?.id === projectId));
 
   const { doCreateProjectFavorit } = useCreateProjectFavori();
   const { doDeleteProjectFavorit } = useDeleteProjectFavori();
