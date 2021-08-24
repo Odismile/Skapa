@@ -165,7 +165,6 @@ const Description = () => {
     `;
 
   const onChangeDate = (e: any) => {
-    console.log(e);
   };
 
 
