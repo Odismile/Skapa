@@ -20,6 +20,9 @@ export const ME_INFO = gql`
       }
       project_favorits {
         id
+        profile {
+          id
+        }
       }
     }
   }

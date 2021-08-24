@@ -59,15 +59,14 @@ interface CardReviewProps {
   profilId?: string;
   imgCardUrl: string;
   name: string;
-  project_favorits?: (projects_all_projects_project_favorits | null)[] | null | undefined;
 }
 
-const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, project_favorits }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId }) => {
   const classes = useStyles();
   const history = useHistory();
-  const { isReader, profilId: profilIdLocal } = useCurrentUser();
+  const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
 
-  const [check, setCheck] = useState(project_favorits?.some((project) => project?.profile?.id === profilIdLocal));
+  const [check, setCheck] = useState(profil?.project_favorits?.some((project) => project?.profile?.id === profilIdLocal));
 
   const { doCreateProjectFavorit } = useCreateProjectFavori();
   const { doDeleteProjectFavorit } = useDeleteProjectFavori();

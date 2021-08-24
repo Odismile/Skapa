@@ -24,9 +24,15 @@ export interface MeInfo_getProfile_talent_favorits {
   coach_id: string | null;
 }
 
+export interface MeInfo_getProfile_project_favorits_profile {
+  __typename: "Profiles";
+  id: string;
+}
+
 export interface MeInfo_getProfile_project_favorits {
   __typename: "ProjectFavorits";
   id: string;
+  profile: MeInfo_getProfile_project_favorits_profile | null;
 }
 
 export interface MeInfo_getProfile {

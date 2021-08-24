@@ -149,7 +149,6 @@ const ProjectContent = () => {
                 profilId={project?.profile?.id}
                 name={project?.Name ?? ''}
                 imgCardUrl={project?.Picture ?? ''}
-                project_favorits={project?.project_favorits}
               />
               <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
                 <Button onClick={handleDrawer} disabled={isReader}>
