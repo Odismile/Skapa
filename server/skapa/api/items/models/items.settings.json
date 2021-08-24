@@ -38,8 +38,8 @@
       "via": "skill_id"
     },
     "profile_project_types": {
-      "collection": "profile-project-types",
-      "via": "project_type_id"
+      "via": "project_type_id",
+      "collection": "profile-project-types"
     },
     "projects": {
       "via": "item",

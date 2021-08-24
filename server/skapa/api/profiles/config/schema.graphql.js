@@ -9,19 +9,9 @@ module.exports = {
       FLUENT
     }
 
-    input projects {
-      id: ID!
-      item: String
-    }
-
     input languages {
       id: ID!
       level: Level
-    }
-
-    input skills {
-      id: ID!
-      skills_id: String
     }
 
     type ProfileCustomizeMe {
@@ -39,27 +29,29 @@ module.exports = {
       bio: String
       picture: String
       video: String
+      position: String
       job_seniority: String
-      language: languages
-      project: projects
-      skill: skills
+      languages: [languages]
+      projects: [ID!]
+      profile_skills: [ID!]
+      user_id: String
     }
   `,
-  // query: `
-  //   getProfile(userId:Int):Profiles
-  // `,
+  query: `
+    getProfile(userId:Int):Profiles
+   `,
   mutation: `
   profileCustomizeMeInput(input:profileCustomizeMeInput!): profileCustomizePayload!
 `,
   type: {},
   resolver: {
-    // Query: {
-    //   getProfile: {
-    //     description: "Get profile by user ID",
-    //     resolverOf: "application::profiles.profiles.find",
-    //     resolver: "application::profiles.profiles.getProfile",
-    //   },
-    // },
+    Query: {
+      getProfile: {
+        description: "Get profile by user ID",
+        resolverOf: "application::profiles.profiles.find",
+        resolver: "application::profiles.profiles.getProfile",
+      },
+    },
     Mutation: {
       // deleteProjectFavorits: {},
       profileCustomizeMeInput: {
