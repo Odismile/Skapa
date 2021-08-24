@@ -91,8 +91,6 @@ const Talents = () => {
                 coachAddress={''}
                 skills={profil?.profile_skills}
                 coachLevel={profil?.job_seniority_id?.label || ''}
-                project_favorits={profil?.project_favorits}
-                talent_favorits={profil?.talent_favorits}
               />
             </Box>
           );

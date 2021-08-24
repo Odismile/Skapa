@@ -4,8 +4,6 @@ import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
 import {
   coachs_profiles_profile_skills,
-  coachs_profiles_project_favorits,
-  coachs_profiles_talent_favorits,
 } from '../../GraphQL/profiles/types/coachs';
 import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreateFavoritTalent';
 import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
@@ -27,8 +25,6 @@ interface CardTalentsProps {
   coachLevel?: string;
   coachFee?: number;
   skills?: (coachs_profiles_profile_skills | null)[] | null | undefined;
-  project_favorits?: (coachs_profiles_project_favorits | null)[] | null | undefined;
-  talent_favorits?: (coachs_profiles_talent_favorits | null)[] | null | undefined;
 }
 
 const CardTalents: FC<CardTalentsProps> = ({
@@ -42,15 +38,13 @@ const CardTalents: FC<CardTalentsProps> = ({
   skills,
   profilId,
   talentId,
-  project_favorits,
-  talent_favorits,
 }) => {
   const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  const { isReader, profilId: profilIdLocal } = useCurrentUser();
-  const [check, setCheck] = React.useState(talent_favorits?.some((profile) => profile?.profile?.id && profilIdLocal && +profile.profile.id === +profilIdLocal));
+  const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
+  const [check, setCheck] = React.useState(profil?.talent_favorits?.some((profile) => profile?.talent_id && profilIdLocal && +profile.talent_id === +profilIdLocal));
 
   const { doCreateFavoriteTalent } = useCreateFavoritTalent();
   const { doDeleteTalentFavorit } = useDeleteFavoriTalent();
