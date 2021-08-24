@@ -1,7 +1,7 @@
 import { useApolloClient, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import { CREATE_PROFIL } from '../../GraphQL/Profile/mutation';
-import { createProfile, createProfileVariables } from '../../GraphQL/Profile/types/createProfile';
+import { CREATE_MY_PROFIL } from '../../GraphQL/Profile/mutation';
+import { ProfileCustomizeMeInput, ProfileCustomizeMeInputVariables } from '../../GraphQL/Profile/types/ProfileCustomizeMeInput';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 
 export const useCreateProfile = () => {
@@ -10,7 +10,7 @@ export const useCreateProfile = () => {
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
 
-  const [doCreateProfile, { loading, data }] = useMutation<createProfile, createProfileVariables>(CREATE_PROFIL, {
+  const [doCreateProfile, { loading, data }] = useMutation<ProfileCustomizeMeInput, ProfileCustomizeMeInputVariables>(CREATE_MY_PROFIL, {
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
 

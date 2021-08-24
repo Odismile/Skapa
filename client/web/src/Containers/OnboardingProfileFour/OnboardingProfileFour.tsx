@@ -22,6 +22,7 @@ import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfil
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 import { useUploadFile } from '../../Utils/uploadFile';
 import Loader from '../../Components/Loader/Loader';
+import { Level } from '../../types/graphql-global-types';
 
 const OnboardingProfileFour = () => {
   const classes = useStyles();
@@ -41,27 +42,28 @@ const OnboardingProfileFour = () => {
     doCreateProfile({
       variables: {
         input: {
-          data: {
-            position: yourPosition(),
-            bio: bio(),
-            job_seniority_id: ageProfil(),
-            picture: pictureFile()
-              ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-                  pictureFile()?.[0].name
-                }`
-              : '',
-            video: videoFile()
-              ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${videoFile()?.[0].name}`
-              : '',
-            // languages: levelLanguages()?.map((e) => e.id),
-            profile_skills: transformSkillsIds(skillsSelectedVariable()),
-            users_id: localStorage.getItem('idMe'),
-            projects: transformSkillsIds(projectsTypeSelectedVariable()),
-          },
+          position: yourPosition(),
+          bio: bio(),
+          job_seniority: ageProfil(),
+          picture: pictureFile()
+            ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                pictureFile()?.[0].name
+              }`
+            : '',
+          video: videoFile()
+            ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${videoFile()?.[0].name}`
+            : '',
+          languages : levelLanguages()?.map((e) => ({
+            id: e.id,
+            level: (e.level) as Level,
+          })),
+          profile_skills: transformSkillsIds(skillsSelectedVariable()),
+          user_id: localStorage.getItem('idMe'),
+          projects: transformSkillsIds(projectsTypeSelectedVariable()),
         },
       },
     }).then(async (result) => {
-      if (result.data?.createProfile?.profile?.id) {
+      if (result.data?.profileCustomizeMeInput?.profile?.id) {
         await uploadFile(pictureFile());
         await uploadFile(videoFile());
         !loadingProfile && history.replace(ONBOARDING_PROFILE7);
