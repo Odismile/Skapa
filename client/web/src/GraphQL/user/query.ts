@@ -13,6 +13,14 @@ export const ME_INFO = gql`
         email
         isFirstConnection
       }
+      talent_favorits {
+        id
+        talent_id
+        coach_id
+      }
+      project_favorits {
+        id
+      }
     }
   }
 `;
