@@ -45,23 +45,23 @@ module.exports = {
       skill: skills
     }
   `,
-  query: `
-    getProfile(userId:Int):Profiles
-  `,
+  // query: `
+  //   getProfile(userId:Int):Profiles
+  // `,
   mutation: `
-  profileCustomizeMeInput(test:String): profileCustomizePayload!
+  profileCustomizeMeInput(input:profileCustomizeMeInput!): profileCustomizePayload!
 `,
   type: {},
   resolver: {
-    Query: {
-      getProfile: {
-        description: "Get profile by user ID",
-        resolverOf: "application::profiles.profiles.find",
-        resolver: "application::profiles.profiles.getProfile",
-      },
-    },
+    // Query: {
+    //   getProfile: {
+    //     description: "Get profile by user ID",
+    //     resolverOf: "application::profiles.profiles.find",
+    //     resolver: "application::profiles.profiles.getProfile",
+    //   },
+    // },
     Mutation: {
-      deleteProjectFavorits: {},
+      // deleteProjectFavorits: {},
       profileCustomizeMeInput: {
         description: "Create profile ",
         resolverOf: "application::profiles.profiles.create",
