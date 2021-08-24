@@ -22,3 +22,6 @@ export const filterTalentVar = makeVar<filterTalentInterface>({
   minDailyRate: 20,
   skills: [],
 });
+
+export const juniorValues = ['0 - 3 yrs'];
+export const seniorValues = ['3 - 8 yrs', '> 8 yrs'];

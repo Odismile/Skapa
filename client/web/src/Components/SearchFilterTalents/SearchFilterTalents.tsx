@@ -9,10 +9,10 @@ import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import { useReactiveVar } from '@apollo/client';
 
 interface SearchFilterTalentsProps {
-  placeholder?: string,
+  placeholder?: string;
 }
 
-const SearchFilterTalents:FC<SearchFilterTalentsProps> = (props:SearchFilterTalentsProps) => {
+const SearchFilterTalents: FC<SearchFilterTalentsProps> = (props: SearchFilterTalentsProps) => {
   const classes = useStyles();
 
   const filterTalent = useReactiveVar(filterTalentVar);
@@ -40,7 +40,7 @@ const SearchFilterTalents:FC<SearchFilterTalentsProps> = (props:SearchFilterTale
           <InputBase
             className={classes.input}
             onChange={handleSearch}
-            placeholder={props.placeholder ? props.placeholder : "Look for coaches"}
+            placeholder={props.placeholder ? props.placeholder : 'Look for coaches'}
             inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
           />
           <IconButton className="search-icon" aria-label="search">

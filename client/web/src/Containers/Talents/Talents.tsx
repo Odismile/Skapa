@@ -11,7 +11,7 @@ import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilt
 import { LIST_COACH } from '../../GraphQL/profiles/query';
 import { coachs, coachsVariables } from '../../GraphQL/profiles/types/coachs';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
-import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import { filterTalentVar, juniorValues, seniorValues } from '../../ReactiveVariable/Coach/coach';
 import { WISHLIST } from '../../Routes';
 import useStyles from './styles';
 
@@ -34,29 +34,40 @@ const Talents = () => {
   });
 
   const listTalents = useMemo(() => {
-    const newList = (data?.profiles || []).filter((item) => {
-      if (
-        item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-        item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-        item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
-      ) {
-        return true;
-      }
-    });
+    let newList = data?.profiles || [];
+    if (filterTalent.search.length) {
+      newList = newList.filter((item) => {
+        if (
+          item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+          item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+          item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
+        ) {
+          return true;
+        }
+      });
+    }
     if (isInWishList)
-      return (data?.profiles || []).filter(
-        (item) => item?.id && profil?.talent_favorits?.length && profil?.talent_favorits?.some((i) => i?.talent_id && +i.talent_id === +item.id),
+      newList = newList.filter(
+        (item) =>
+          item?.id &&
+          profil?.talent_favorits?.length &&
+          profil?.talent_favorits?.some((i) => i?.talent_id && +i.talent_id === +item.id),
       );
 
     if (filterTalent.skills.length !== 0) {
-      return (data?.profiles || []).filter(
+      newList = newList.filter(
         (item) =>
           item?.profile_skills?.length && item?.profile_skills?.find((i) => i?.skill_id?.label === item.profile_skills),
       );
     }
-
+    if (filterTalent.isJunior) {
+      newList = newList.filter((item) => juniorValues.includes(item?.job_seniority_id?.label ?? ''));
+    }
+    if (filterTalent.isSenior) {
+      newList = newList.filter((item) => seniorValues.includes(item?.job_seniority_id?.label ?? ''));
+    }
     return newList;
-  }, [data?.profiles, isInWishList, filterTalent.skills.length, filterTalent.search, profil?.talent_favorits]);
+  }, [data?.profiles, isInWishList, filterTalent, profil?.talent_favorits]);
 
   return (
     <>
