@@ -11,24 +11,12 @@ module.exports = {
   async getProfile(ctx) {
     const { id } = ctx.params;
     const entity = await strapi.query("profiles").findOne({ users_id: id });
-    /*if (entity) {
-      const getUrl = async (profile, isPicture) => {
-        let signedUrl;
-        try {
-          if (isPicture)
-            signedUrl = await generateReadSignedUrl(profile.picture);
-          else signedUrl = await generateReadSignedUrl(profile.video);
-        } catch (error) {
-          console.log("error", error);
-        }
-        return signedUrl.url;
-      };
-
-      const url = await getUrl(entity, true);
-      const video = await getUrl(entity, false);
-      entity.picture = url;
-      entity.video = video;
-    }*/
+    if (entity) {
+      if (entity.picture)
+        entity.picture = (await generateReadSignedUrl(entity.picture)).url;
+      if (entity.video)
+        entity.video = (await generateReadSignedUrl(entity.video)).url;
+    }
     return entity;
   },
 };
