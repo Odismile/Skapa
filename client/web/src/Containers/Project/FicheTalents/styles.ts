@@ -19,7 +19,7 @@ export default makeStyles((theme) => ({
     boxShadow: '0px 2px 4px #0000001C',
     border: '1px solid #F4F4F4',
     borderRadius: 12,
-    padding: "8px 18px 20px 18px",
+    padding: "8px 10px 26px",
     backgroundColor: 'white',
     '& .title': {
       color: '#000000',
