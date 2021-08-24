@@ -5,9 +5,15 @@ export default makeStyles(
     projectPage: { },
     projectContainer: {
       padding: '30px 20px 30px',
+      "@media (min-width: 768px)": {
+        margin: "0 auto",
+        maxWidth: 640,
+        paddingLeft: 64,
+        paddingRight: 64,
+      },
     },
     tabSelected:{
-      color: '#8870FF!important',
+      color: '#8870FF !important',
       textTransform: 'capitalize',
       fontWeight: 700,
     },
@@ -19,7 +25,8 @@ export default makeStyles(
       display: 'none',
     },
     tab:{
-      padding: 0,
+      minWidth: "auto",
+      padding: "0 10px",
       minHeight: 'unset',
     },
     tabs:{

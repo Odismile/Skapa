@@ -85,7 +85,10 @@ const CardTalents: FC<CardTalentsProps> = ({
     <Card className={classes.root} onClick={goToDetailsTalents}>
       <CardContent className="content">
         <Box className="head">
-          <img src={coachPhoto} alt="photo" />
+          <figure className="userPhoto">
+            <img src={coachPhoto} alt="photo_user"/>
+            <img src={organisationImg} className="iconOrganisation" alt="organisation" />
+          </figure>
           <Box>
             <Box component="h6" className="head-title">
               {jobTitle}
@@ -111,7 +114,7 @@ const CardTalents: FC<CardTalentsProps> = ({
             {!check ? <HeartLine className="iconHeartOutlined" /> : <Heart className="iconHeart" />}
           </IconButton>
 
-          <img src={organisationImg} className="iconOrganisation" alt="organisation" />
+          
         </Box>
         <Box className="foot">
           <Box className="tags">
