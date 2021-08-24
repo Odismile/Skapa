@@ -1,16 +1,14 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import HeaderDetails from '../../Components/HeaderDetails/HeaderDetails';
+import { LocationInterface } from '../../types/types';
 import FicheTalents from '../Project/FicheTalents/FicheTalents';
-import useStyles from './styles';
+
 const DetailsTalents = () => {
-  const classes = useStyles();
-  const { pathname } = useLocation();
-  const talentId = pathname.split('/')[2];
+  const { talentId } = useParams<LocationInterface>();
 
   return (
     <HeaderDetails>
-      <FicheTalents talentId={talentId} />
+      <FicheTalents talentId={talentId ?? ''} />
     </HeaderDetails>
   );
 };
