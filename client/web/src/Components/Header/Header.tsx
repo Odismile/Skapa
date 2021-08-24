@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import {
   Box,
   Button,
@@ -33,12 +33,12 @@ import { Route, Redirect, useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
-import { FC } from 'react'
+import { FC } from 'react';
 
 interface HeaderProps {
-  noBack?:boolean;
+  noBack?: boolean;
 }
-const PrimaryHeader : FC<HeaderProps> = ({noBack}) => {
+const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   const classes = useStyles();
   const { user, photo, isReader } = useCurrentUser();
 
@@ -66,6 +66,10 @@ const PrimaryHeader : FC<HeaderProps> = ({noBack}) => {
   const activeWishList = params.pathname === WISHLIST ? 'btn btn_link active' : 'btn btn_link';
   const isShowProfilInfo = isConnected && [PROJECT].includes(history.location.pathname);
   const isShowBackButton = [DETAILS_TALENTS].includes(history.location.pathname);
+
+  const handleClickRoute = (path: string) => () => {
+    history.push(path);
+  };
   return (
     <Box className={classes.header_block}>
       <Box className={classes.header_top}>
@@ -142,7 +146,7 @@ const PrimaryHeader : FC<HeaderProps> = ({noBack}) => {
       {/* link back to home-page */}
       {!noBack && (!isShowProfilInfo || isShowBackButton) && (
         <Typography className="wrap-backLink">
-          <Link className="backLink" href={PROJECT}>
+          <Link className="backLink" onChange={handleClickRoute(PROJECT)}>
             Back
           </Link>
         </Typography>
@@ -172,7 +176,7 @@ const PrimaryHeader : FC<HeaderProps> = ({noBack}) => {
               <Link className="nav_link">My activity</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href={PROJECT}>
+              <Link className="nav_link" onChange={handleClickRoute(PROJECT)}>
                 Projects
               </Link>
             </ListItem>
@@ -183,12 +187,12 @@ const PrimaryHeader : FC<HeaderProps> = ({noBack}) => {
               <Link className="nav_link">Places</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href={WISHLIST}>
+              <Link className="nav_link" onClick={handleClickRoute(WISHLIST)}>
                 Wishlist
               </Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href={COACHS}>
+              <Link className="nav_link" onClick={handleClickRoute(COACHS)}>
                 Coaching
               </Link>
             </ListItem>
@@ -196,7 +200,12 @@ const PrimaryHeader : FC<HeaderProps> = ({noBack}) => {
               <Link className="nav_link">Wallet</Link>
             </ListItem>
           </List>
-          <Button color="secondary" variant="contained" href={CREATE_PROJECT} className="btn_createProject">
+          <Button
+            color="secondary"
+            variant="contained"
+            onClick={handleClickRoute(CREATE_PROJECT)}
+            className="btn_createProject"
+          >
             <Plus /> Create new project
           </Button>
           <Typography className="disconnect_wrap">
