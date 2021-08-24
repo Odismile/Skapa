@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
+import { Box, Button } from '@material-ui/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useStyles from './style';
 
@@ -12,42 +12,74 @@ const FormerProject = () => {
         slidesPerView={3}
         className="container"
         breakpoints={{
-          490: {
-            slidesPerView: 4,
-          },
-          360: {
-            slidesPerView: 3,
-          },
           320: {
-            slidesPerView: 2,
+            slidesPerView: 2.5,
+            spaceBetween: 10,
+          },
+          575: {
+            slidesPerView: 3.5,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 4.75,
+            spaceBetween: 10,
+          },
+          960: {
+            slidesPerView: 5.75,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 6.75,
+            spaceBetween: 10,
+          },
+          1200: {
+            slidesPerView: 7.75,
+            spaceBetween: 10,
           },
         }}
       >
         <SwiperSlide>
           <Box className="box">
-            <Box component="span" className="badge">
-              Innovation
+            <Box className="badge">
+              <Button className="btn_badge btn_innovation" variant="contained" type="button">
+                Innovation
+              </Button>
             </Box>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box className="box">
-            <Box component="span" className="badge">
-              Interface design
+            <Box className="badge">
+              <Button className="btn_badge btn_interfaceDesign" variant="contained" type="button">
+                Interface design
+              </Button>
             </Box>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box className="box">
-            <Box component="span" className="badge">
-              Innovation
+            <Box className="badge">
+              <Button className="btn_badge btn_innovation" variant="contained" type="button">
+                Innovation
+              </Button>
             </Box>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box className="box">
-            <Box component="span" className="badge">
-              Innovation
+            <Box className="badge">
+              <Button className="btn_badge btn_innovation" variant="contained" type="button">
+                Innovation
+              </Button>
+            </Box>
+          </Box>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Box className="box">
+            <Box className="badge">
+              <Button className="btn_badge btn_innovation" variant="contained" type="button">
+                Innovation
+              </Button>
             </Box>
           </Box>
         </SwiperSlide>
