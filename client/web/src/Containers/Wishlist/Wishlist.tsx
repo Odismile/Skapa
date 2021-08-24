@@ -23,7 +23,7 @@ function TabPanel(props: TabPanelProps) {
   const styleS = makeStyles({
     content: {
       '& >div': {
-        padding: '16px 0px',
+        padding: '20px 0px',
       },
     },
   });
@@ -42,7 +42,7 @@ function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <Box>{children}</Box>
         </Box>
       )}
     </Box>

@@ -78,10 +78,10 @@ export default makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         color: '#e30057',
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: '600',
         textTransform: 'uppercase',
-        margin: '10px 0',
+        margin: '5px 0',
         '& svg': {
           paddingRight: 4,
           width: 15,
@@ -128,6 +128,9 @@ export default makeStyles((theme) => ({
       height: 20,
       borderRadius: 5,
       color: '#8870FF',
+      '& svg': {
+        borderRadius: 4,
+      }
     },
   },
   button: {

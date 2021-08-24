@@ -10,12 +10,15 @@ export default makeStyles(
         top: "50%",
         left: "50%",
         minWidth: "300px",
+        maxWidth: 640,
         transform: "translate(-50%, -50%)",
         borderRadius: 12,
-        padding: 14,
         display: "flex",
         flexDirection:"column",
-        maxHeight: "80%",
+        margin: "0",
+        maxHeight: "calc(100% - 10px)",
+        padding: 15,
+        width: "calc(100% - 10px)",
         "&:focus-visible": {
           outline: "none"
         }  
@@ -57,18 +60,46 @@ export default makeStyles(
       boxShadow: "none",
       background: "none",
       "& .input-search": {
-        fontSize: 14,
-        padding: "10px 16px",
-        border: 'solid 1px #dfdfdf',
-        boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
-        borderRadius: 25,
         display: "flex",
         flex: 1,
-        "&:focus": {
-          border: "1px solid #8870ff",
+        position: "relative",
+        "& .inputSearchField": {
+          border: 'solid 1px #dfdfdf',
+          borderRadius: 25,
+          boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
+          fontSize: 12,
+          height: 40,
+          padding: "0 46px 0 16px",
+          "&.Mui-focused": {
+            background: "rgb(242,241,253)",
+            border: '1px solid #8870FF',
+            boxShadow: "inset 0px 1px 3px rgb(136 112 255 / 50%)",
+          },
+          "& input": {
+            "&::-webkit-input-placeholder": {
+              color: '#979797',
+              fontStyle: 'italic',
+            },
+            "&::-moz-input-placeholder": {
+              color: '#979797',
+              fontStyle: 'italic',
+            },
+          },
         },
         "& .search-icon": {
           padding: 0,
+          height: 38,
+          position: "absolute",
+          right: 4,
+          top: 1,
+          width: 38,
+          "& svg": {
+            fill: "#8870FF",
+          }
+
+        },
+        "& input": {
+          display: 'block',
         }
       },
       "& .filter-icon": {
@@ -92,7 +123,6 @@ export default makeStyles(
           fontSize: 12
         }
       },
-      
     },
     iconButton: {
       padding: "0px 0px 0px 8px",

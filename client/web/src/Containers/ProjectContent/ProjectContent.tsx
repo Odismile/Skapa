@@ -1,23 +1,12 @@
 import { useReactiveVar } from '@apollo/client/react/hooks/useReactiveVar';
-import {
-  Box,
-  Button,
-  Card,
-  CardMedia,
-  IconButton,
-  List,
-  ListItem,
-  SwipeableDrawer,
-  Typography,
-} from '@material-ui/core';
-import { orderBy, filter } from 'lodash';
-import React, { useEffect, useState } from 'react';
+import { Box, Button, Card, CardMedia, List, ListItem, Drawer, Typography } from '@material-ui/core';
+import { orderBy } from 'lodash';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
 import { useLocation } from 'react-router-dom';
 import photoUser from '../../Assets/images/photo-card.png';
 import CardReview from '../../Components/CardReview/CardReview';
-import HeartLine from '../../Components/Icons/HeartLine';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
@@ -34,10 +23,10 @@ const ProjectContent = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const { data, loading } = useGetProjectAll();
-  const { isReader, profilId } = useCurrentUser();
+  const { isReader, profilId, profil } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
-  const [projects, setProjects] = useState<(projects_all_projects | null)[] | null | undefined>();
+  const [search, setSearch] = useState<string>('');
   const [project, setProject] = useState<projects_all_projects | null>(null);
   const [priceToContribute, setPriceToContribute] = useState<number | null>(null);
   const { doCreateContribution } = useCreateContribution();
@@ -58,61 +47,47 @@ const ProjectContent = () => {
   const handleClick = (event: any) => {
     event.stopPropagation();
   };
+  const projects = useMemo(() => {
+    let newProjects: (projects_all_projects | null)[] | null | undefined = data?.projects;
+    if (projectCategory.length !== 0) {
+      newProjects = data?.projects?.filter((project) => projectCategory.find((category) => project?.Type === category));
+    }
 
+    if (projectSortedByLocal === 'Latest') {
+      newProjects = orderBy(newProjects, ['created_at'], ['desc']);
+    } else if (projectSortedByLocal === 'Oldest') {
+      newProjects = orderBy(newProjects, ['created_at'], ['asc']);
+    } else if (projectSortedByLocal === 'Trending Up') {
+    } else if (projectSortedByLocal === 'Expires Soon') {
+      newProjects = orderBy(newProjects, ['Date_End'], ['desc']);
+    }
+
+    if (isInWishList) {
+      newProjects = (newProjects || []).filter(
+        (item) =>
+          item?.id &&
+          profil?.project_favorits?.length &&
+          profil?.project_favorits?.some((favoris) => favoris?.project?.id === item?.id),
+      );
+    }
+
+    if (search.length) {
+      newProjects = newProjects?.filter(
+        (project) =>
+          project?.Name?.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
+          project?.Type?.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
+          project?.profile?.users_id?.lastname?.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
+          project?.profile?.users_id?.surname?.trim().toLowerCase().includes(search.trim().toLowerCase()),
+      );
+    }
+    return newProjects;
+  }, [data?.projects, projectCategory, projectSortedByLocal, isInWishList, profil?.project_favorits, search]);
   const onClicklContribute = (project: projects_all_projects | null) => {
     setProject(project);
   };
 
-  useEffect(() => {
-    if (data?.projects) {
-      setProjects(data.projects);
-    }
-  }, [data?.projects]);
-
-  useEffect(() => {
-    if (projectCategory.length !== 0) {
-      const newProjects = data?.projects?.filter((project) =>
-        projectCategory.find((category) => project?.Type === category),
-      );
-      setProjects(newProjects);
-    } else {
-      setProjects(data?.projects);
-    }
-  }, [projectCategory]);
-
-  useEffect(() => {
-    let newProjects: (projects_all_projects | null)[] | null | undefined = [];
-    if (projectSortedByLocal === 'Latest') {
-      newProjects = orderBy(projects, ['created_at'], ['desc']);
-    } else if (projectSortedByLocal === 'Oldest') {
-      newProjects = orderBy(projects, ['created_at'], ['asc']);
-    } else if (projectSortedByLocal === 'Trending Up') {
-    } else if (projectSortedByLocal === 'Expires Soon') {
-      newProjects = orderBy(projects, ['Date_End'], ['desc']);
-    }
-    if (newProjects.length !== projects?.length) setProjects(newProjects);
-  }, [projectSortedByLocal]);
-  useEffect(() => {
-    if (isInWishList) {
-      const newProjects = (projects || []).filter(
-        (item) => item?.project_favorits?.length && item?.project_favorits?.some((i) => i?.profile?.id === profilId),
-      );
-      if (projects?.length !== newProjects.length) setProjects(newProjects);
-    }
-  }, [isInWishList, profilId, projects]);
   const onChangeFilter = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (e.target.value.trim().length === 0) {
-      setProjects(data?.projects);
-    } else {
-      const newProjects = data?.projects?.filter(
-        (project) =>
-          project?.Name?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
-          project?.Type?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
-          project?.profile?.users_id?.lastname?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()) ||
-          project?.profile?.users_id?.surname?.trim().toLowerCase().includes(e.target.value.trim().toLowerCase()),
-      );
-      setProjects(newProjects);
-    }
+    setSearch(e.target.value.trim());
   };
 
   const onClickContribute = () => {
@@ -134,7 +109,7 @@ const ProjectContent = () => {
 
   return (
     <Box className={classes.projectPage}>
-      <SearchFilter onChangeFitlerText={onChangeFilter} />
+      <SearchFilter onChangeFitlerText={onChangeFilter} placeholder="Look for one of your favorite" />
       {loading && <Skeleton count={1} height={170} />}
 
       {!loading &&
@@ -147,7 +122,8 @@ const ProjectContent = () => {
                 profilId={project?.profile?.id}
                 name={project?.Name ?? ''}
                 imgCardUrl={project?.Picture ?? ''}
-                project_favorits={project?.project_favorits}
+                user={project?.profile?.users_id}
+                type={project?.Type ?? ''}
               />
               <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
                 <Button onClick={handleDrawer} disabled={isReader}>
@@ -160,16 +136,17 @@ const ProjectContent = () => {
 
       {!loading && projects?.length === 0 && <Typography>{t(`project.none`)}</Typography>}
 
-      <SwipeableDrawer
+      <Drawer
         className={classes.drawerContribute}
         anchor="bottom"
         open={open}
         onClose={handleDrawer}
-        onOpen={handleDrawer}
+        //onOpen={handleDrawer}
         classes={{
           paper: classes.drawerPaperContribute,
         }}
-        SwipeAreaProps={{ className: 'backDrop_contribute' }}
+        BackdropProps={{ className: 'backDrop_contribute' }}
+        //SwipeAreaProps={{ className: 'backDrop_contribute' }}
       >
         <Box className={classes.contribute_drawerContent}>
           <Box className="header_content" component="header">
@@ -180,7 +157,7 @@ const ProjectContent = () => {
               onClick={handleDrawer}
             ></Button>
             <Typography className="title_text" variant="h2">
-              I contribute to thefollowing project{' '}
+              I contribute to the following project{' '}
             </Typography>
             <Button
               color="primary"
@@ -200,9 +177,6 @@ const ProjectContent = () => {
                 <Box className="category" component="span">
                   LAB
                 </Box>
-                <IconButton className="btn-favori" disabled={isReader} onClick={handleClick}>
-                  <HeartLine className="iconHeart" />
-                </IconButton>
               </Card>
               <Typography className="subtitle_text" variant="h3">
                 {project?.Name}
@@ -252,7 +226,7 @@ const ProjectContent = () => {
             </form>
           </Box>
         </Box>
-      </SwipeableDrawer>
+      </Drawer>
     </Box>
   );
 };

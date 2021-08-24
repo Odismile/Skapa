@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const ME_INFO = gql`
-  query MeInfo($where: JSON) {
-    profiles(where: $where) {
+  query MeInfo($userId: Int) {
+    getProfile(userId: $userId) {
       id
       picture
       users_id {
@@ -12,6 +12,17 @@ export const ME_INFO = gql`
         lastname
         email
         isFirstConnection
+      }
+      talent_favorits {
+        id
+        talent_id
+        coach_id
+      }
+      project_favorits {
+        id
+        project {
+          id
+        }
       }
     }
   }

@@ -22,8 +22,12 @@ import useStyles from './styles';
 import Capacity from '../../Components/Capacity/Capacity';
 import Cross from '../../Components/Icons/Cross';
 import { useLocation } from 'react-router-dom';
+import CheckboxLine from '../../Components/Icons/CheckboxLine';
+import CheckboxChecked from '../../Components/Icons/CheckboxChecked';
+import { useTranslation } from 'react-i18next';
 
 const Places = () => {
+  const t = useTranslation();
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -49,8 +53,8 @@ const Places = () => {
           <Box className="input-search">
             <InputBase
               className={classes.input}
-              placeholder="Look for projects by title, type, creator.."
-              inputProps={{ 'aria-label': 'Look for projects by title, type, creator..' }}
+              placeholder="Look for place by name ...."
+              inputProps={{ 'aria-label': 'Look for one of your favorite' }}
             />
             <IconButton className="search-icon" aria-label="search">
               <Search />
@@ -172,6 +176,8 @@ const Places = () => {
                             <Checkbox
                               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                               className="form-checkbox"
+                              icon= {<CheckboxLine fontSize='small' />}
+                              checkedIcon={<CheckboxChecked fontSize='small'/>}
                             />
                           }
                           label="Latest"
@@ -184,6 +190,8 @@ const Places = () => {
                             <Checkbox
                               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                               className="form-checkbox"
+                              icon= {<CheckboxLine fontSize='small' />}
+                              checkedIcon={<CheckboxChecked fontSize='small'/>}
                             />
                           }
                           label="Oldest"
@@ -196,6 +204,8 @@ const Places = () => {
                             <Checkbox
                               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                               className="form-checkbox"
+                              icon= {<CheckboxLine fontSize='small' />}
+                              checkedIcon={<CheckboxChecked fontSize='small'/>}
                             />
                           }
                           label="Latest"
@@ -208,6 +218,8 @@ const Places = () => {
                             <Checkbox
                               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                               className="form-checkbox"
+                              icon= {<CheckboxLine fontSize='small' />}
+                              checkedIcon={<CheckboxChecked fontSize='small'/>}
                             />
                           }
                           label="Latest"

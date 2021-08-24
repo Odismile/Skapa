@@ -1,26 +1,36 @@
-import { Avatar, Box, Button, FormControl, FormLabel, IconButton, Tooltip } from '@material-ui/core';
+import {
+  Avatar,
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  IconButton,
+  Tooltip,
+  Typography,
+  TextareaAutosize,
+} from '@material-ui/core';
 import React, { useState } from 'react';
 import useStyles from './style';
 import ReactPlayer from 'react-player';
 import iconDownload from '../../Assets/images/IconDownload.svg';
-import { useHistory } from 'react-router';
+import { useHistory, Link } from 'react-router-dom';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 
 import { useUploadFile } from '../../Utils/uploadFile';
-import { pictureFile, videoFile, bio, filesPicture, filesVideo } from '../../ReactiveVariable/Profil/profil';
-import { testButtonEnable } from '../../ReactiveVariable/ButtonTest/ButtonTestEnable';
+import { pictureFile, videoFile, bio } from '../../ReactiveVariable/Profil/profil';
 import Info from '../../Components/Icons/Info';
+import { ONBOARDING_PROFILE3 } from '../../Routes';
+import { createBrotliCompress } from 'zlib';
 
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
   const [videoUpload, setVideoUpload] = useState('');
-  const [filesPicture, setFilesPicture] = useState<File[] | null>(null);
-  const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
   const { uploadFile } = useUploadFile();
   const [disabledButton, setDisabledButton] = useState(false);
-  //const [filesVideo, setFilesVideo] = useState<File[] | null>(null);
+  const [bios, setBios] = useState('');
+
   const testButtonToEnabled = () => {
-    if (!!filesPicture && !!filesVideo && !!bio()) {
+    if (!!pictureFile() && !!videoFile() && !!bio()) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -30,10 +40,8 @@ const OnboardingProfileTwo = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const handleClick = async () => {
-    await uploadFile(filesPicture);
-    await uploadFile(filesVideo);
-    history.push('/onboarding-profile3');
+  const handleClick = () => {
+    history.push(ONBOARDING_PROFILE3);
   };
   return (
     <>
@@ -51,7 +59,7 @@ const OnboardingProfileTwo = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
                 const filesConcat = Array.from(event.target.files || []);
-                setFilesPicture(filesConcat);
+                pictureFile(filesConcat);
                 setImageUpload(url);
                 testButtonToEnabled();
               }}
@@ -85,7 +93,7 @@ const OnboardingProfileTwo = () => {
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
                 const filesConcat = Array.from(event.target.files || []);
-                setFilesVideo(filesConcat);
+                videoFile(filesConcat);
                 setVideoUpload(url);
                 testButtonToEnabled();
               }}
@@ -107,19 +115,30 @@ const OnboardingProfileTwo = () => {
             <FormLabel component="legend" className="title">
               Bio
             </FormLabel>
-            <textarea
-              placeholder="tell us more about you !"
+            <TextareaAutosize
+              minRows="8"
+              placeholder="Tell us more about you !"
+              defaultValue=""
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                setBios(e.target.value);
                 bio(e.target.value);
                 testButtonToEnabled();
               }}
-            ></textarea>
+              value={bios}
+              maxLength={240}
+            />
+            <Typography className="textLeft">{bios.length}/240 symbols</Typography>
           </FormControl>
           <Box className={classes.btnNext}>
             <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
               Next
             </Button>
           </Box>
+        </Box>
+        <Box component="footer" className={classes.footerPage}>
+          <Typography className="link-footer">
+            <Link to={ONBOARDING_PROFILE3}>Skip this step</Link>
+          </Typography>
         </Box>
       </WrapOnBoarding>
     </>

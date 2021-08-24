@@ -19,11 +19,11 @@ export default makeStyles((theme) => ({
     boxShadow: '0px 2px 4px #0000001C',
     border: '1px solid #F4F4F4',
     borderRadius: 12,
-    padding: 8,
+    padding: "8px 10px 26px",
     backgroundColor: 'white',
     '& .title': {
       color: '#000000',
-      marginBottom: 8,
+      marginBottom: 5,
     },
     '& .boxBtn': {
       display: 'flex',
@@ -51,13 +51,21 @@ export default makeStyles((theme) => ({
       color: '#000000',
       fontStyle: 'italic',
     },
-    '& .skills': {
-      marginBottom: 20,
-    },
     '& .bio': {
-      margin: '20px 0px',
+      marginBottom: 10,
       '& .link': {
         display: 'none',
+      },
+    },
+    '& .skills, & .bio': {
+      marginBottom: 20,
+    },
+    "& .former-project": {
+      marginBottom: 10,
+    },
+    "& .pitch": {
+      "& h6": {
+        marginBottom: 0,
       },
     },
   },

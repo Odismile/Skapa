@@ -2,7 +2,9 @@ import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typo
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
-import { coachs_profiles_profile_skills, coachs_profiles_project_favorits } from '../../GraphQL/profiles/types/coachs';
+import {
+  coachs_profiles_profile_skills,
+} from '../../GraphQL/profiles/types/coachs';
 import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreateFavoritTalent';
 import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
@@ -23,7 +25,6 @@ interface CardTalentsProps {
   coachLevel?: string;
   coachFee?: number;
   skills?: (coachs_profiles_profile_skills | null)[] | null | undefined;
-  project_favorits?: (coachs_profiles_project_favorits | null)[] | null | undefined;
 }
 
 const CardTalents: FC<CardTalentsProps> = ({
@@ -37,14 +38,13 @@ const CardTalents: FC<CardTalentsProps> = ({
   skills,
   profilId,
   talentId,
-  project_favorits,
 }) => {
   const history = useHistory();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  const { isReader, profilId: profilIdLocal } = useCurrentUser();
-  const [check, setCheck] = React.useState(project_favorits?.some((project) => project?.profile?.id === profilIdLocal));
+  const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
+  const [check, setCheck] = React.useState(profil?.talent_favorits?.some((profile) => profile?.talent_id && talentId && +profile.talent_id === +talentId));
 
   const { doCreateFavoriteTalent } = useCreateFavoritTalent();
   const { doDeleteTalentFavorit } = useDeleteFavoriTalent();
@@ -79,7 +79,10 @@ const CardTalents: FC<CardTalentsProps> = ({
     <Card className={classes.root} onClick={goToDetailsTalents}>
       <CardContent className="content">
         <Box className="head">
-          <img src={coachPhoto} alt="photo" />
+          <figure className="userPhoto">
+            <img src={coachPhoto} alt="photo_user"/>
+            <img src={organisationImg} className="iconOrganisation" alt="organisation" />
+          </figure>
           <Box>
             <Box component="h6" className="head-title">
               {jobTitle}
@@ -105,7 +108,7 @@ const CardTalents: FC<CardTalentsProps> = ({
             {!check ? <HeartLine className="iconHeartOutlined" /> : <Heart className="iconHeart" />}
           </IconButton>
 
-          <img src={organisationImg} className="iconOrganisation" alt="organisation" />
+          
         </Box>
         <Box className="foot">
           <Box className="tags">

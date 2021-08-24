@@ -7,6 +7,12 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum Level {
+  BASIC = "BASIC",
+  FLUENT = "FLUENT",
+  INTERMEDIATE = "INTERMEDIATE",
+}
+
 export enum PublicationState {
   LIVE = "LIVE",
   PREVIEW = "PREVIEW",
@@ -53,6 +59,7 @@ export interface ProfileInput {
   profile_type_id?: string | null;
   contributes?: (string | null)[] | null;
   books?: (string | null)[] | null;
+  profile_project_types?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -136,10 +143,6 @@ export interface createTalentFavoritInput {
   data?: TalentFavoritInput | null;
 }
 
-export interface deleteProjectFavoritInput {
-  where?: InputID | null;
-}
-
 export interface deleteTalentFavoritInput {
   where?: InputID | null;
 }
@@ -188,10 +191,26 @@ export interface editUserInput {
   surname?: string | null;
   lastname?: string | null;
   languages?: (string | null)[] | null;
-  profile_project_types?: (string | null)[] | null;
   isFirstConnection?: boolean | null;
   created_by?: string | null;
   updated_by?: string | null;
+}
+
+export interface languages {
+  id: string;
+  level?: Level | null;
+}
+
+export interface profileCustomizeMeInput {
+  bio?: string | null;
+  picture?: string | null;
+  video?: string | null;
+  position?: string | null;
+  job_seniority?: string | null;
+  languages?: (languages | null)[] | null;
+  projects?: string[] | null;
+  profile_skills?: string[] | null;
+  user_id?: string | null;
 }
 
 export interface updateProjectFavoritInput {

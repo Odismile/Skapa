@@ -5,9 +5,9 @@ export default makeStyles((theme) => ({
     position: 'relative',
     '& .iconSearch': {
       position: 'absolute',
-      top: 42,
+      top: 40,
       right: 17,
-      transform: 'translateY(-14px)',
+      transform: 'translateY(-10px)',
     },
   },
   content: {
@@ -96,6 +96,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     marginTop: 16,
+    marginBottom: 20,
     '& button': {
       backgroundColor: '#8870ff',
       borderRadius: 25,
@@ -105,6 +106,25 @@ export default makeStyles((theme) => ({
       '&:hover': {
         backgroundColor: '#8870ff',
         color: 'white',
+      },
+    },
+  },
+  footerPage: {
+    '& .link-footer': {
+      color: '#8870ff',
+      fontSize: '1rem',
+      fontWeight: 600,
+      margin: 0,
+      textAlign: 'right',
+      displa: 'flex',
+      justifyContent: 'flex-end',
+      '@media(min-width: 640px)': {
+        textAlign: 'center',
+      },
+      '& a': {
+        color: 'inherit',
+        textDecoration: 'none',
+        borderBottom: '1px solid #8870ff',
       },
     },
   },

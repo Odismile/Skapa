@@ -5,6 +5,8 @@ import Skeleton from 'react-loading-skeleton';
 import { useItemsProjectTypes } from '../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
 import { projectSortedBy, projectSkills } from '../../ReactiveVariable/Project/projectSkills';
 import { filters } from '../../Utils/filterProject';
+import CheckboxChecked from '../Icons/CheckboxChecked';
+import CheckboxLine from '../Icons/CheckboxLine';
 import useStyles from './style';
 
 const SearchProject = () => {
@@ -74,6 +76,8 @@ const SearchProject = () => {
                       inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
                       className="form-checkbox"
                       onClick={() => onClickProject(item?.label ?? '')}
+                      icon= {<CheckboxLine fontSize='small' />}
+                      checkedIcon={<CheckboxChecked fontSize='small'/>}
                     />
                   }
                   label={item?.label}

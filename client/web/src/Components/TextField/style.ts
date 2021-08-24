@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
       transform: 'translate(0, 1.5px) scale(1)',
     },
     "& > div": {
-      marginTop: 17,
+      marginTop: 22,
       marginBottom: 10,
       //marginTop: 24,
       '&:after, &:before': {

@@ -43,6 +43,9 @@ export default makeStyles(
             width: 20,
             height: 20,
             borderWidth: 1,
+            "& svg": {
+              borderRadius: 4,
+            },
           }
         }
       }

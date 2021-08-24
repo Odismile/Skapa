@@ -3,20 +3,22 @@ import { ME_INFO } from '../../../GraphQL/user/query';
 import { MeInfo, MeInfoVariables } from '../../../GraphQL/user/types/MeInfo';
 
 export const useCurrentUser = () => {
+  const userId = localStorage.getItem('idMe') || null;
   const result = useQuery<MeInfo, MeInfoVariables>(ME_INFO, {
     variables: {
-      where: {
-        users_id: {
-          id: `${localStorage.getItem('idMe')}`,
-        },
-      },
+      userId : userId? +userId : null,
     },
+    skip: !Boolean(userId),
+    fetchPolicy: 'cache-first',
   });
   return {
-    profilId: result.data?.profiles?.length ? result.data?.profiles[0]?.id : null,
-    user: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id : null,
-    photo: result.data?.profiles?.length ? result.data?.profiles[0]?.picture : null,
-    isReader: result.data?.profiles?.length ? result.data?.profiles[0]?.users_id?.isFirstConnection === true : true,
+    loading: result.loading,
+    error: result.error,
+    profilId: result.data?.getProfile?.id ?? null,
+    user: result.data?.getProfile?.users_id ?? null,
+    photo: result.data?.getProfile?.picture ?? null,
+    profil : result?.data?.getProfile ?? null,
+    isReader: result.data?.getProfile?.users_id?.isFirstConnection === true ? true : false,
     //isReader: false,
   };
 };

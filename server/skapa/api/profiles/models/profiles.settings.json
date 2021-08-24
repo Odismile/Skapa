@@ -63,6 +63,10 @@
     "books": {
       "via": "talend_id",
       "collection": "books"
+    },
+    "profile_project_types": {
+      "via": "profile",
+      "collection": "profile-project-types"
     }
   }
 }

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
+
 import {
   Box,
   Button,
+  Icon,
   IconButton,
   InputLabel,
   MenuItem,
@@ -11,20 +13,26 @@ import {
   Tooltip,
   Typography,
 } from '@material-ui/core';
+import { Overrides } from '@material-ui/core/styles/overrides';
 import EditIcon from '@material-ui/icons/Edit';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import MomentUtils from "@date-io/moment";
 import moment from 'moment';
+
 import Skeleton from 'react-loading-skeleton';
 import classNames from 'classnames';
 
 import { useTranslation } from 'react-i18next';
 import ReactPlayer from 'react-player';
 import Info from '../../../../Components/Icons/Info/Info';
+import Calendar from '../../../../Components/Icons/Calendar/Calendar';
+
 import IconPhoto from '../../../../Components/Icons/Photo/Photo';
 import TextFieldComponent from '../../../../Components/TextField/TextField';
 import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { useItemsProjectTypes } from '../../../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
+
 import {
   cityVariable,
   dateEndVariable,
@@ -38,7 +46,20 @@ import {
   typeProjectVariable,
 } from '../../../../ReactiveVariable/Project/createProject';
 import { useUploadFile } from '../../../../Utils/uploadFile';
+//import Calendar from '../../../../Components/Calendar';
+// import Calendar, { CalendarProps } from 'react-calendar';
+// import { DateCallback } from 'react-calendar';
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import "moment/locale/en-in";
+
+
 import useStyles from './styles';
+
+moment.locale("en");
+// const localeMap = {
+//   en: "en",
+// };
+
 
 const Description = () => {
   const classes = useStyles();
@@ -50,10 +71,15 @@ const Description = () => {
 
   const [nameOfProject, setNameOfProject] = useState('');
   const [fileUpload, setFileUpload] = useState('');
-  const [typeProject, setTypeProject] = useState('');
+  const [typeProject, setTypeProject] = useState('Change');
   const [city, setCity] = useState('');
   const [dateStart, setdateStart] = useState<Date | null>();
   const [dateEnd, setDateEnd] = useState<Date | null>();
+  const [date, setDate] = useState<Date | undefined>(undefined);
+  
+  const [locale, setLocale] = useState("en");
+
+
   const [projectDescription, setProjectDescription] = useState('');
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
 
@@ -138,7 +164,12 @@ const Description = () => {
     Lorem ipsum
     `;
 
+  const onChangeDate = (e: any) => {
+  };
+
+
   return (
+    
     <Box className={classes.description}>
       {/* upload picture */}
       <Box className="upload_bloc" key={'1'}>
@@ -167,12 +198,16 @@ const Description = () => {
         <form className="formDescription">
           <Box className="item_bloc">
             <Box className="title_bloc project_title" component="header">
-              <Typography variant="h2" className="nameProject_title">{t(`createProject.nameOfProject`)}</Typography>
+              <Typography variant="h2" className="nameProject_title">
+                {t(`createProject.nameOfProject`)}
+              </Typography>
               {/* <IconButton aria-label="edit" className="btn_edit btn_title">
                 <EditIcon />
               </IconButton> */}
               <TextFieldComponent
                 label={''}
+                // error={true}
+                // helperText='diso'
                 id="nameOfProject"
                 placeholder={t(`createProject.nameOfProject`)}
                 type="text"
@@ -187,10 +222,11 @@ const Description = () => {
               <Box className="field_item typeProject_item selectBox_item">
                 <InputLabel shrink>Type project</InputLabel>
                 <Select
-                  defaultValue="Type project"
+                  defaultValue={dataProjectType?.items?.[0]?.label ?? "Change"}
                   fullWidth
                   className="selectBox"
                   onChange={onChangeProjectType}
+                  value={typeProject}
                   IconComponent={KeyboardArrowDownIcon}
                   MenuProps={{
                     anchorOrigin: {
@@ -209,7 +245,6 @@ const Description = () => {
                 >
                   {dataProjectType?.items?.map((project, index) => {
                     return (
-                      
                       <MenuItem key={index} value={project?.label ?? ''}>
                         {project?.label}
                       </MenuItem>
@@ -228,8 +263,30 @@ const Description = () => {
                 />
               </Box>
               <Box className="grid_field">
+                <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={locale}>
                 <Box className="field_item field_date">
-                  <TextField
+                  <KeyboardDatePicker
+                    disableToolbar
+                    className="calendar-field"
+                    variant="inline"
+                    inputVariant="standard"
+                    format="DD/MM/yyyy"
+                    id="date-picker-start"
+                    label="Date picker inline"
+                    value={date}
+                    onChange={(e) => onChangeDate(e)}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                      className: "calendarButtonIcon"
+                    }}
+                    keyboardIcon={<Calendar />}
+                    PopoverProps= {{
+                      className:"datePickerPop datePicker-start"
+                    }}
+                  />
+                
+
+                  {/* <TextField
                     id="dateStarts"
                     label={t(`createProject.starts`)}
                     type="date"
@@ -238,10 +295,29 @@ const Description = () => {
                       shrink: true,
                     }}
                     onChange={(e) => onChangeDateStart(e)}
-                  />
+                  /> */}
                 </Box>
                 <Box className="field_item field_date">
-                  <TextField
+                  <KeyboardDatePicker
+                    disableToolbar
+                    className="calendar-field"
+                    variant="inline"
+                    inputVariant="standard"
+                    format="DD/MM/yyyy"
+                    id="date-picker-start"
+                    label="Date picker inline"
+                    value={date}
+                    onChange={(e) => onChangeDate(e)}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                      className: "calendarButtonIcon"
+                    }}
+                    keyboardIcon={<Calendar />}
+                    PopoverProps= {{
+                      className:"datePickerPop datePicker-start"
+                    }}
+                  />
+                  {/* <TextField
                     id="dateEnd"
                     label={t(`createProject.end`)}
                     type="date"
@@ -250,19 +326,20 @@ const Description = () => {
                     InputLabelProps={{
                       shrink: true,
                     }}
-                  />
+                  /> */}
                 </Box>
+                </MuiPickersUtilsProvider>
               </Box>
             </Box>
           </Box>
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.projectDescription`)}</Typography>
-                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
-                  <IconButton aria-label="info" className="btn_info btn_title">
-                    <Info />
-                  </IconButton>
-                </Tooltip>
+              <Tooltip title={infoText} arrow classes={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}>
+                <IconButton aria-label="info" className="btn_info btn_title">
+                  <Info />
+                </IconButton>
+              </Tooltip>
             </Box>
             <Box className="content_bloc" component="section">
               <Box className="field_item textarea_item">
@@ -282,11 +359,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.skillsRecquired`)}</Typography>
-                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
-                  <IconButton aria-label="info" className="btn_info btn_title">
-                    <Info />
-                  </IconButton>
-                </Tooltip>
+              <Tooltip title={infoText} arrow classes={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}>
+                <IconButton aria-label="info" className="btn_info btn_title">
+                  <Info />
+                </IconButton>
+              </Tooltip>
             </Box>
             <Box className="content_bloc skills_bloc" component="section">
               <Box className="selected_skills">
@@ -328,11 +405,11 @@ const Description = () => {
           <Box className="item_bloc">
             <Box className="title_bloc" component="header">
               <Typography variant="h2">{t(`createProject.videoPitch`)}</Typography>
-                <Tooltip title={infoText} arrow classes={{tooltip: classes.tooltip, arrow: classes.tooltipArrow}}>
-                  <IconButton aria-label="info" className="btn_info btn_title">
-                    <Info />
-                  </IconButton>
-                </Tooltip>
+              <Tooltip title={infoText} arrow classes={{ tooltip: classes.tooltip, arrow: classes.tooltipArrow }}>
+                <IconButton aria-label="info" className="btn_info btn_title">
+                  <Info />
+                </IconButton>
+              </Tooltip>
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
               <Box className="upload_bloc">
@@ -347,7 +424,7 @@ const Description = () => {
                   {videoUpload.length !== 0 ? (
                     <ReactPlayer
                       url={videoUpload}
-                      className={classNames(classes.videoUpload, "videoUpload")}
+                      className={classNames(classes.videoUpload, 'videoUpload')}
                       width={'150px'}
                       height={'100px'}
                       playing={true}
@@ -369,6 +446,7 @@ const Description = () => {
         </form>
       </Box>
     </Box>
+    
   );
 };
 

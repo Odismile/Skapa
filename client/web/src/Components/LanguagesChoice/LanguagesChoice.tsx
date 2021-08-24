@@ -10,7 +10,7 @@ interface TextFiedlProps {
   id: string;
   title: string;
   name: string;
-  test():void;
+  test(): void;
 }
 let listLanguages: Language[] = [];
 
@@ -36,7 +36,6 @@ const LanguagesChoice: FC<TextFiedlProps> = ({ id, title, name, test }) => {
       }
     }
     levelLanguages(listLanguages);
-test();
   };
 
   return (

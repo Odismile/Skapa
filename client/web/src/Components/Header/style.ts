@@ -67,9 +67,12 @@ export default makeStyles (
         height: 45,
         margin: "20px auto 0",
         width: 90,
-        "& @media min(375px)": {
+        "@media (min-width: 375px)": {
           height: 53,
           width: 105,
+        },
+        "@media (min-width: 768px)": {
+          marginTop: 0,
         },
       },
       "& .btn": {

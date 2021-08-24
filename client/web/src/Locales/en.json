@@ -105,14 +105,21 @@
       "none": "No project",
       "textInputFilter": "Look for projects by title, type, creator..."
     },
+    "ficheProject":{
+      "Pitch":"Pitch",
+      "Presentation": "Presentation",
+      "Tags": "Tags",
+      "Place": "Place",
+      "similarProject":"Similar projects"
+    },
     "createProfile": {
-      "success": "Registered profile"
+      "success": "Profile created successfully"
     },
     "createFavorit": {
-      "success": "successful addition"
+      "success": "Added successfully to the wishlist"
     },
     "deleteFovorit": {
-      "success": "successful delete"
+      "success": "Deleted successfully to the wishlist"
     }
   }
 }

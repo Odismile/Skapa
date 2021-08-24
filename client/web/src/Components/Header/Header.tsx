@@ -1,18 +1,6 @@
 import React from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Typography,
-  IconButton,
-  Drawer,
-  Link,
-  List,
-  ListItem,
-} from '@material-ui/core';
+import { Box, Button, Card, Typography, IconButton, Drawer, Link, List, ListItem } from '@material-ui/core';
 //import { Link } from 'react-router-dom';
-import classNames from 'classnames';
 import useStyles from './style';
 
 // image
@@ -29,14 +17,20 @@ import Plus from '../../Components/Icons/Plus/Plus';
 import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
 import { clearLocalStorage, isAuthenticated } from '../../Services';
 import { COACHS, CREATE_PROJECT, DETAILS_TALENTS, LOGIN, PROJECT, WISHLIST } from '../../Routes';
-import { Route, Redirect, useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
+import { FC } from 'react';
+import { LocationInterface } from '../../types/types';
 
-const PrimaryHeader = () => {
+interface HeaderProps {
+  noBack?: boolean;
+}
+const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   const classes = useStyles();
   const { user, photo, isReader } = useCurrentUser();
+  const { talentId, projectId, profilId } = useParams<LocationInterface>();
 
   const history = useHistory();
   const isInWishList = [WISHLIST].includes(history.location.pathname);
@@ -44,7 +38,7 @@ const PrimaryHeader = () => {
   if (!isAuthenticated()) {
     history.push(LOGIN);
   }
-
+  console.log('history.location.pathname ', history.location.pathname);
   const [open, setOpen] = React.useState(false);
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -61,7 +55,12 @@ const PrimaryHeader = () => {
   const params = useLocation();
   const activeWishList = params.pathname === WISHLIST ? 'btn btn_link active' : 'btn btn_link';
   const isShowProfilInfo = isConnected && [PROJECT].includes(history.location.pathname);
-  const isShowBackButton = [DETAILS_TALENTS].includes(history.location.pathname);
+  const isShowBackButton =
+    [DETAILS_TALENTS].includes(history.location.pathname) && !Boolean(talentId || projectId || profilId);
+
+  const handleClickRoute = (path: string) => () => {
+    history.push(path);
+  };
   return (
     <Box className={classes.header_block}>
       <Box className={classes.header_top}>
@@ -95,7 +94,7 @@ const PrimaryHeader = () => {
         {/* show bloc for create-project page */}
         {/* titre projet */}
         <Typography style={{ display: 'block' }} className="titlePage">
-          {isInWishList ? 'Wishlist' : 'Create your own project'}
+          {isInWishList ? 'Wishlist' : !isShowProfilInfo ? 'Create your own project' : ''}
         </Typography>
 
         {/* show bloc for project and talents page */}
@@ -136,9 +135,9 @@ const PrimaryHeader = () => {
       </Box>
 
       {/* link back to home-page */}
-      {(!isShowProfilInfo || isShowBackButton) && (
+      {!isShowProfilInfo && isShowBackButton && (
         <Typography className="wrap-backLink">
-          <Link className="backLink" href={PROJECT}>
+          <Link className="backLink" onClick={handleClickRoute(PROJECT)}>
             Back
           </Link>
         </Typography>
@@ -168,7 +167,7 @@ const PrimaryHeader = () => {
               <Link className="nav_link">My activity</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href={PROJECT}>
+              <Link className="nav_link" onClick={handleClickRoute(PROJECT)}>
                 Projects
               </Link>
             </ListItem>
@@ -179,12 +178,12 @@ const PrimaryHeader = () => {
               <Link className="nav_link">Places</Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href={WISHLIST}>
+              <Link className="nav_link" onClick={handleClickRoute(WISHLIST)}>
                 Wishlist
               </Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link" href={COACHS}>
+              <Link className="nav_link" onClick={handleClickRoute(COACHS)}>
                 Coaching
               </Link>
             </ListItem>
@@ -192,7 +191,12 @@ const PrimaryHeader = () => {
               <Link className="nav_link">Wallet</Link>
             </ListItem>
           </List>
-          <Button color="secondary" variant="contained" href={CREATE_PROJECT} className="btn_createProject">
+          <Button
+            color="secondary"
+            variant="contained"
+            onClick={handleClickRoute(CREATE_PROJECT)}
+            className="btn_createProject"
+          >
             <Plus /> Create new project
           </Button>
           <Typography className="disconnect_wrap">

@@ -1,14 +1,24 @@
-import { Box, Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  Typography,
+} from '@material-ui/core';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import LanguagesChoice from '../../Components/LanguagesChoice/LanguagesChoice';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
 import { useItemsGetYear } from '../../Providers/ItemsProvider/hooks/useItemsGetYear';
 import { ageProfil, nameOfOrganisation, yourPosition, levelLanguages } from '../../ReactiveVariable/Profil/profil';
+import { ONBOARDING_PROFILE2 } from '../../Routes';
 import useStyles from './styles';
 const OnboardingProfile = () => {
   const classes = useStyles();
@@ -20,10 +30,11 @@ const OnboardingProfile = () => {
   const { data, loading } = useItemsGetlaguage();
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
-  // const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
-
   const testButtonToEnabled = () => {
-    if (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() && !!levelLanguages()) {
+    if (
+      (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() && !!levelLanguages()) ||
+      levelLanguages()?.length === 0
+    ) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
@@ -47,7 +58,7 @@ const OnboardingProfile = () => {
   };
 
   const handleClick = () => {
-    history.push('/onboarding-profile2');
+    history.push(ONBOARDING_PROFILE2);
   };
 
   return (
@@ -94,7 +105,13 @@ const OnboardingProfile = () => {
             <>
               {data?.items?.map((item, index) => {
                 return (
-                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} test={testButtonToEnabled}/>
+                  <LanguagesChoice
+                    key={index}
+                    id={item?.id ?? ''}
+                    title={item?.label ?? ''}
+                    name={item?.label ?? ''}
+                    test={testButtonToEnabled}
+                  />
                 );
               })}
             </>
@@ -104,6 +121,11 @@ const OnboardingProfile = () => {
           <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
             {t(`onBordingProfile.next`)}
           </Button>
+        </Box>
+        <Box component="footer" className={classes.footerPage}>
+          <Typography className="link-footer">
+            <Link to={ONBOARDING_PROFILE2}>Skip this step</Link>
+          </Typography>
         </Box>
       </WrapOnBoarding>
     </>
