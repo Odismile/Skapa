@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Box } from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import PrimaryHeader from '../../Components/Header/Header';
@@ -11,7 +11,7 @@ import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilt
 import coachPhoto from '../../Assets/images/coach_avatar.png';
 import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 import { useReactiveVar } from '@apollo/client';
-import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import { filterTalentVar, juniorValues, seniorValues } from '../../ReactiveVariable/Coach/coach';
 import MeetingModal from './MeetingModal';
 import { useGetCoach } from '../../Providers/TalentProvider/useGetCoach';
 import { coachs_profiles } from '../../GraphQL/profiles/types/coachs';
@@ -24,15 +24,36 @@ const Coachs = () => {
   const filterTalent = useReactiveVar(filterTalentVar);
   const { data, loading } = useGetCoach();
   const [coach, setCoach] = useState<coachs_profiles['users_id']>(null);
-  const listCoachs = (data?.profiles || []).filter(
-    (item) =>
-      item &&
-      item?.users_id &&
-      (`${item?.users_id?.username}${item?.users_id?.surname}${item?.users_id?.lastname}${item?.users_id?.email}`
-        .toLowerCase()
-        .includes(filterTalent.search.toLowerCase()) ||
-        `${item?.position}`.toLowerCase().includes(filterTalent.search.toLowerCase())),
-  );
+
+  const listCoachs = useMemo(() => {
+    let newList = data?.profiles || [];
+    if (filterTalent.search.length) {
+      newList = newList.filter(
+        (item) =>
+          item &&
+          item?.users_id &&
+          (`${item?.users_id?.username}${item?.users_id?.surname}${item?.users_id?.lastname}${item?.users_id?.email}`
+            .toLowerCase()
+            .includes(filterTalent.search.toLowerCase()) ||
+            `${item?.position}`.toLowerCase().includes(filterTalent.search.toLowerCase())),
+      );
+    }
+
+    if (filterTalent.skills.length !== 0) {
+      newList = newList.filter(
+        (item) =>
+          item?.profile_skills?.length && item?.profile_skills?.find((i) => i?.skill_id?.label === item.profile_skills),
+      );
+    }
+    if (filterTalent.isJunior) {
+      newList = newList.filter((item) => juniorValues.includes(item?.job_seniority_id?.label ?? ''));
+    }
+    if (filterTalent.isSenior) {
+      newList = newList.filter((item) => seniorValues.includes(item?.job_seniority_id?.label ?? ''));
+    }
+    return newList;
+  }, [data?.profiles, filterTalent]);
+
   const handleClickItem = (coachInfo: coachs_profiles['users_id']) => {
     setCoach(coachInfo);
     handleOpen();
