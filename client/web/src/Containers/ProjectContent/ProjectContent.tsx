@@ -57,8 +57,8 @@ const ProjectContent = () => {
       newProjects = orderBy(newProjects, ['created_at'], ['desc']);
     } else if (projectSortedByLocal === 'Oldest') {
       newProjects = orderBy(newProjects, ['created_at'], ['asc']);
-    } else if (projectSortedByLocal === 'Trending Up') {
-    } else if (projectSortedByLocal === 'Expires Soon') {
+    }/*  else if (projectSortedByLocal === 'Trending Up') {
+    } */ else if (projectSortedByLocal === 'Expires Soon') {
       newProjects = orderBy(newProjects, ['Date_End'], ['desc']);
     }
 

@@ -7,12 +7,12 @@ export const filters = [
     id: 2,
     label: 'Oldest',
   },
-  {
+  /* {
     id: 3,
     label: 'Trending Up',
-  },
+  }, */
   {
-    id: 4,
+    id: 3, //4,
     label: 'Expires Soon',
   },
 ];

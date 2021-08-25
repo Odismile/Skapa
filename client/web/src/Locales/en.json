@@ -78,7 +78,7 @@
       "basicInformation": "Basic information",
       "typeProject": "Type project",
       "city": "City",
-      "starts": "Starts",
+      "starts": "Start",
       "end": "End",
       "projectDescription": "Project description",
       "skillsRecquired": "Skills required",
@@ -105,12 +105,12 @@
       "none": "No project",
       "textInputFilter": "Look for projects by title, type, creator..."
     },
-    "ficheProject":{
-      "Pitch":"Pitch",
+    "ficheProject": {
+      "Pitch": "Pitch",
       "Presentation": "Presentation",
       "Tags": "Tags",
       "Place": "Place",
-      "similarProject":"Similar projects"
+      "similarProject": "Similar projects"
     },
     "createProfile": {
       "success": "Profile created successfully"
