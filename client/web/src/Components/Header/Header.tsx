@@ -12,7 +12,6 @@ import {
   ListItem,
   Hidden,
 } from '@material-ui/core';
-import React from 'react';
 //import { Link } from 'react-router-dom';
 import useStyles from './style';
 
@@ -182,39 +181,6 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
           </IconButton>
           {/* Menu list */}
           <MenuList />
-          <Button color="secondary" variant="contained" href={CREATE_PROJECT} className="btn_createProject">
-          <List className="list">
-            <ListItem disableGutters={true}>
-              <Link className="nav_link">Profile</Link>
-            </ListItem>
-            <ListItem disableGutters={true}>
-              <Link className="nav_link">My activity</Link>
-            </ListItem>
-            <ListItem disableGutters={true}>
-              <Link className="nav_link" onClick={handleClickRoute(PROJECT)}>
-                Projects
-              </Link>
-            </ListItem>
-            <ListItem disableGutters={true}>
-              <Link className="nav_link">Talents</Link>
-            </ListItem>
-            <ListItem disableGutters={true}>
-              <Link className="nav_link">Places</Link>
-            </ListItem>
-            <ListItem disableGutters={true}>
-              <Link className="nav_link" onClick={handleClickRoute(WISHLIST)}>
-                Wishlist
-              </Link>
-            </ListItem>
-            <ListItem disableGutters={true}>
-              <Link className="nav_link" onClick={handleClickRoute(COACHS)}>
-                Coaching
-              </Link>
-            </ListItem>
-            <ListItem disableGutters={true}>
-              <Link className="nav_link">Wallet</Link>
-            </ListItem>
-          </List>
           <Button
             color="secondary"
             variant="contained"
@@ -224,9 +190,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
             <Plus /> Create new project
           </Button>
           <Typography className="disconnect_wrap">
-            <Link className="disconnect_link" onClick={logout}>
-              Logout
-            </Link>
+            <Link className="disconnect_link" onClick={logout}>Logout</Link>
           </Typography>
         </Box>
       </Drawer>
