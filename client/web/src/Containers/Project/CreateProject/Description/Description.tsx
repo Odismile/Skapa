@@ -54,6 +54,7 @@ import "moment/locale/en-in";
 
 
 import useStyles from './styles';
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
 moment.locale("en");
 // const localeMap = {
@@ -75,7 +76,6 @@ const Description = () => {
   const [city, setCity] = useState('');
   const [dateStart, setdateStart] = useState<Date | null>();
   const [dateEnd, setDateEnd] = useState<Date | null>();
-  const [date, setDate] = useState<Date | undefined>(undefined);
   
   const [locale, setLocale] = useState("en");
 
@@ -115,15 +115,15 @@ const Description = () => {
     testCreateObject();
   };
 
-  const onChangeDateStart = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    setdateStart(moment(e.target.value).toDate());
-    dateStartVariable(moment(e.target.value).toDate());
+  const onChangeDateStart = (date: MaterialUiPickersDate) => {
+    setdateStart(moment(date).toDate());
+    dateStartVariable(moment(date).toDate());
     testCreateObject();
   };
 
-  const onChangeDateEnd = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    setDateEnd(moment(e.target.value).toDate());
-    dateEndVariable(moment(e.target.value).toDate());
+  const onChangeDateEnd = (date: MaterialUiPickersDate) => {
+    setDateEnd(moment(date).toDate());
+    dateEndVariable(moment(date).toDate());
     testCreateObject();
   };
 
@@ -164,8 +164,6 @@ const Description = () => {
     Lorem ipsum
     `;
 
-  const onChangeDate = (e: any) => {
-  };
 
 
   return (
@@ -272,9 +270,11 @@ const Description = () => {
                     inputVariant="standard"
                     format="DD/MM/yyyy"
                     id="date-picker-start"
-                    label="Date picker inline"
-                    value={date}
-                    onChange={(e) => onChangeDate(e)}
+                    label={t(`createProject.starts`)}
+                    value={dateStart}
+                    autoOk={true}
+                    onChange={onChangeDateStart}
+                    maxDate={dateEnd}
                     KeyboardButtonProps={{
                       'aria-label': 'change date',
                       className: "calendarButtonIcon"
@@ -284,18 +284,6 @@ const Description = () => {
                       className:"datePickerPop datePicker-start"
                     }}
                   />
-                
-
-                  {/* <TextField
-                    id="dateStarts"
-                    label={t(`createProject.starts`)}
-                    type="date"
-                    className="input_date"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    onChange={(e) => onChangeDateStart(e)}
-                  /> */}
                 </Box>
                 <Box className="field_item field_date">
                   <KeyboardDatePicker
@@ -305,9 +293,11 @@ const Description = () => {
                     inputVariant="standard"
                     format="DD/MM/yyyy"
                     id="date-picker-start"
-                    label="Date picker inline"
-                    value={date}
-                    onChange={(e) => onChangeDate(e)}
+                    label={t(`createProject.end`)}
+                    value={dateEnd}
+                    minDate={dateStart}
+                    autoOk={true}
+                    onChange={onChangeDateEnd}
                     KeyboardButtonProps={{
                       'aria-label': 'change date',
                       className: "calendarButtonIcon"
@@ -317,15 +307,6 @@ const Description = () => {
                       className:"datePickerPop datePicker-start"
                     }}
                   />
-                  {/* <TextField
-                    id="dateEnd"
-                    label={t(`createProject.end`)}
-                    type="date"
-                    onChange={(e) => onChangeDateEnd(e)}
-                    className="input_date"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
                   /> */}
                 </Box>
                 </MuiPickersUtilsProvider>
