@@ -307,7 +307,6 @@ const Description = () => {
                       className:"datePickerPop datePicker-start"
                     }}
                   />
-                  /> */}
                 </Box>
                 </MuiPickersUtilsProvider>
               </Box>
