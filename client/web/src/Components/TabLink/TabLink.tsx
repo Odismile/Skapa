@@ -1,7 +1,8 @@
+import React from 'react';
 import { useApolloClient } from '@apollo/client';
 import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core';
 import moment from 'moment';
-import React from 'react';
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { Link, useHistory } from 'react-router-dom';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
@@ -236,7 +237,7 @@ const TabLink = () => {
           ))}
         </Stepper>
         <Box>
-          <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+          <Box className={classNames(classes.instructions, "instructions")}>{getStepContent(activeStep)}</Box>
           <Box className={classes.Btn}>
             <Button
               variant="contained"
