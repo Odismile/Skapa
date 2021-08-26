@@ -44,9 +44,6 @@ const ProjectContent = () => {
     setOpen((prev) => !prev);
   };
 
-  const handleClick = (event: any) => {
-    event.stopPropagation();
-  };
   const projects = useMemo(() => {
     let newProjects: (projects_all_projects | null)[] | null | undefined = data?.projects;
     if (projectCategory.length !== 0) {
@@ -100,7 +97,8 @@ const ProjectContent = () => {
         },
       }).then((result) => {
         if (result.data?.createContribute?.contribute?.id) {
-          //setPriceToContribute(null);
+          setPriceToContribute(0);
+          handleDrawer();
         }
       });
     } else {
@@ -115,6 +113,7 @@ const ProjectContent = () => {
       {!loading &&
         projects?.length !== 0 &&
         projects?.map((project, index) => {
+          const isAlreadyContributor = project?.contributes?.some((c) => profilId && c?.profile_id?.id === profilId);
           return (
             <Box className={classes.content} key={index}>
               <CardReview
@@ -124,9 +123,10 @@ const ProjectContent = () => {
                 imgCardUrl={project?.Picture ?? ''}
                 user={project?.profile?.users_id}
                 type={project?.Type ?? ''}
+                projectInfo={project}
               />
               <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
-                <Button onClick={handleDrawer} disabled={isReader}>
+                <Button onClick={handleDrawer} disabled={isReader || isAlreadyContributor}>
                   Contribute
                 </Button>
               </Box>

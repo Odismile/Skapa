@@ -10,9 +10,12 @@ import {
   withStyles,
 } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import React, { FC, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { useHistory } from 'react-router';
-import { projects_all_projects_profile_users_id } from '../../GraphQL/project/types/projects_all';
+import {
+  projects_all_projects,
+  projects_all_projects_profile_users_id,
+} from '../../GraphQL/project/types/projects_all';
 import { useCreateProjectFavori } from '../../Providers/ProjectProvider/useCreateProjectFavori';
 import { useDeleteProjectFavori } from '../../Providers/ProjectProvider/useDeleteProjectFavori';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
@@ -62,9 +65,10 @@ interface CardReviewProps {
   name: string;
   type?: string;
   user?: projects_all_projects_profile_users_id | null;
+  projectInfo?: projects_all_projects | null;
 }
 
-const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, user, type }) => {
+const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId, user, type, projectInfo }) => {
   const classes = useStyles();
   const history = useHistory();
   const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
@@ -75,6 +79,10 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
 
   const { doCreateProjectFavorit } = useCreateProjectFavori();
   const { doDeleteProjectFavorit } = useDeleteProjectFavori();
+
+  const totalContribution = useMemo(() => {
+    return (projectInfo?.contributes || []).reduce((acc, item) => acc + (item?.value || 0), 0);
+  }, [projectInfo?.contributes]);
 
   const goToDetailsProjects = (event: any, projectId?: string) => {
     if (projectId) {
@@ -101,7 +109,6 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
       }
     }
   };
-
   return (
     <Card className={classes.root} onClick={(event) => !isReader && goToDetailsProjects(event, projectId)}>
       <CardMedia className={classes.media} image={imgCardUrl} title="image" />
@@ -135,7 +142,8 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
         <Box className="info">
           <Box>
             <Typography component="p" className="active bold">
-              11 734 $
+              {/* 11 734 $ */}
+              {`${totalContribution} $`}
             </Typography>
             {/* if on create-project/Reviews, add this */}
             {/* <Typography component="p" className="active">
@@ -144,7 +152,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
           </Box>
           <Box>
             <Typography component="p" className="bold">
-              12
+              {projectInfo?.contributes?.length || 0}
             </Typography>
             <Typography component="p">contributors</Typography>
           </Box>
