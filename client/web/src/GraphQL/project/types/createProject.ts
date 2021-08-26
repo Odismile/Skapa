@@ -50,6 +50,18 @@ export interface createProject_createProject_project_profile {
   users_id: createProject_createProject_project_profile_users_id | null;
 }
 
+export interface createProject_createProject_project_contributes_profile_id {
+  __typename: "Profiles";
+  id: string;
+}
+
+export interface createProject_createProject_project_contributes {
+  __typename: "Contributes";
+  id: string;
+  value: number | null;
+  profile_id: createProject_createProject_project_contributes_profile_id | null;
+}
+
 export interface createProject_createProject_project {
   __typename: "Projects";
   id: string;
@@ -64,6 +76,7 @@ export interface createProject_createProject_project {
   project_skills: (createProject_createProject_project_project_skills | null)[] | null;
   project_favorits: (createProject_createProject_project_project_favorits | null)[] | null;
   profile: createProject_createProject_project_profile | null;
+  contributes: (createProject_createProject_project_contributes | null)[] | null;
 }
 
 export interface createProject_createProject {
