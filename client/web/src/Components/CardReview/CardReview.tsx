@@ -26,6 +26,8 @@ import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
 import useStyles from './style';
 
+export const maxContribution = 1000;
+
 const PrettoSlider = withStyles({
   root: {
     color: '#9067ff',
@@ -140,7 +142,12 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
             </AvatarGroup>
           </Box>
         </Box>
-        <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
+        <PrettoSlider
+          valueLabelDisplay="auto"
+          aria-label="pretto slider"
+          defaultValue={totalContribution}
+          max={maxContribution}
+        />
         <Box className="info">
           <Box>
             <Typography component="p" className="active bold">
