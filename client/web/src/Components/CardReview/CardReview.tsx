@@ -124,7 +124,8 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
         </Box>
         <Box className="details">
           <Typography component="p" className="name-adress">
-            <span>Founder : {getUserFullName(user as any)}</span> - Lorem - Paris
+            <span>Founder : {getUserFullName(user as any)}</span>
+            {/* <span>Founder : {getUserFullName(user as any)}</span> - Lorem - Paris */}
           </Typography>
           <Box className="teams">
             <Typography component="p" className="name-adress">

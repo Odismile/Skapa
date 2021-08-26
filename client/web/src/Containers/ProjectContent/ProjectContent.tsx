@@ -23,7 +23,7 @@ const ProjectContent = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const { data, loading } = useGetProjectAll();
-  const { isReader, profilId, profil } = useCurrentUser();
+  const { isReader, profilId, profil, averageContrubution } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState<string>('');
@@ -203,12 +203,11 @@ const ProjectContent = () => {
               <List className="list_relativeuser">
                 <ListItem disableGutters={true}>
                   <figure className="user_avatar">
-                    <img src={photoUser} alt="user_photo" />
+                    <img src={profil?.picture || photoUser} alt="user_photo" />
                   </figure>
                   <Box className="user_infos">
                     <Typography>
-                      Your average contribution is :{' '}
-                      <span className="price">{priceToContribute ? priceToContribute : 0} $</span>
+                      Your average contribution is : <span className="price">{averageContrubution} $</span>
                     </Typography>
                   </Box>
                 </ListItem>
