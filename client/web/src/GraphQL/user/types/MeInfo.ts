@@ -17,6 +17,12 @@ export interface MeInfo_getProfile_users_id {
   isFirstConnection: boolean | null;
 }
 
+export interface MeInfo_getProfile_contributes {
+  __typename: "Contributes";
+  id: string;
+  value: number | null;
+}
+
 export interface MeInfo_getProfile_talent_favorits {
   __typename: "TalentFavorits";
   id: string;
@@ -40,6 +46,7 @@ export interface MeInfo_getProfile {
   id: string;
   picture: string | null;
   users_id: MeInfo_getProfile_users_id | null;
+  contributes: (MeInfo_getProfile_contributes | null)[] | null;
   talent_favorits: (MeInfo_getProfile_talent_favorits | null)[] | null;
   project_favorits: (MeInfo_getProfile_project_favorits | null)[] | null;
 }
