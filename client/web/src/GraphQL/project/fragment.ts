@@ -34,6 +34,13 @@ export const PROJECT_INFO_FRAGMENT = gql`
         surname
       }
     }
+    contributes {
+      id
+      value
+      profile_id {
+        id
+      }
+    }
   }
 `;
 
