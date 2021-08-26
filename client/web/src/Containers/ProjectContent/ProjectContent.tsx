@@ -95,7 +95,7 @@ const ProjectContent = () => {
       doCreateContribution({
         variables: {
           input: {
-            data: { profile_id: project?.profile?.id ?? '', project_id: project?.id ?? '', value: priceToContribute },
+            data: { profile_id: profilId ?? '', project_id: project?.id ?? '', value: priceToContribute },
           },
         },
       }).then((result) => {
