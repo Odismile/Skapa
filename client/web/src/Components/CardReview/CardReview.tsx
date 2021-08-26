@@ -12,6 +12,7 @@ import {
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import React, { FC, useMemo, useState } from 'react';
 import { useHistory } from 'react-router';
+import { differenceInDays } from 'date-fns';
 import {
   projects_all_projects,
   projects_all_projects_profile_users_id,
@@ -158,7 +159,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
           </Box>
           <Box>
             <Typography component="p" className="bold">
-              29
+              {differenceInDays(new Date(projectInfo?.Date_end), new Date())}
             </Typography>
             <Typography component="p">days left</Typography>
           </Box>
