@@ -15,8 +15,8 @@
       "via": "books"
     },
     "talend_id": {
-      "model": "profiles",
-      "via": "books"
+      "via": "books",
+      "model": "profiles"
     },
     "date_start": {
       "type": "datetime"
