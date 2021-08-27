@@ -7,6 +7,12 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum ENUM_LANGUAGES_LEVEL {
+  BASIC = "BASIC",
+  FLUENT = "FLUENT",
+  INTERMEDIATE = "INTERMEDIATE",
+}
+
 export enum Level {
   BASIC = "BASIC",
   FLUENT = "FLUENT",
@@ -60,6 +66,8 @@ export interface ProfileInput {
   contributes?: (string | null)[] | null;
   books?: (string | null)[] | null;
   profile_project_types?: (string | null)[] | null;
+  wallet?: number | null;
+  currentBalance?: number | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -211,6 +219,7 @@ export interface profileCustomizeMeInput {
   projects?: string[] | null;
   profile_skills?: string[] | null;
   user_id?: string | null;
+  wallet?: number | null;
 }
 
 export interface updateProjectFavoritInput {

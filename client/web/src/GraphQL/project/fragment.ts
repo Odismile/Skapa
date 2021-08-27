@@ -5,8 +5,8 @@ export const PROJECT_INFO_FRAGMENT = gql`
     id
     Name
     description
-    Picture
-    Video
+    Picture @client
+    Video @client
     Type
     Date_start
     Date_end
@@ -34,6 +34,22 @@ export const PROJECT_INFO_FRAGMENT = gql`
         surname
       }
     }
+    contributes {
+      id
+      value
+      profile_id {
+        id
+        wallet
+        currentBalance
+      }
+    }
+  }
+`;
+export const PROJECT_INFO_MEDIA_FRAGMENT = gql`
+  fragment ProjectInfoMedia on Projects {
+    id
+    Picture
+    Video
   }
 `;
 

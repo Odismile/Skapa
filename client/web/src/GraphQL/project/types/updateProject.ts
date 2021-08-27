@@ -50,6 +50,20 @@ export interface updateProject_updateProject_project_profile {
   users_id: updateProject_updateProject_project_profile_users_id | null;
 }
 
+export interface updateProject_updateProject_project_contributes_profile_id {
+  __typename: "Profiles";
+  id: string;
+  wallet: number | null;
+  currentBalance: number | null;
+}
+
+export interface updateProject_updateProject_project_contributes {
+  __typename: "Contributes";
+  id: string;
+  value: number | null;
+  profile_id: updateProject_updateProject_project_contributes_profile_id | null;
+}
+
 export interface updateProject_updateProject_project {
   __typename: "Projects";
   id: string;
@@ -64,6 +78,7 @@ export interface updateProject_updateProject_project {
   project_skills: (updateProject_updateProject_project_project_skills | null)[] | null;
   project_favorits: (updateProject_updateProject_project_project_favorits | null)[] | null;
   profile: updateProject_updateProject_project_profile | null;
+  contributes: (updateProject_updateProject_project_contributes | null)[] | null;
 }
 
 export interface updateProject_updateProject {

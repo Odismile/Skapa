@@ -16,8 +16,8 @@
       "via": "profile_project_types"
     },
     "profile": {
-      "model": "profiles",
-      "via": "profile_project_types"
+      "via": "profile_project_types",
+      "model": "profiles"
     }
   }
 }

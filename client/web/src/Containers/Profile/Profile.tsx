@@ -1,4 +1,15 @@
-import { Box, Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Slider, TextareaAutosize, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  Slider,
+  TextareaAutosize,
+  Typography,
+} from '@material-ui/core';
 import React from 'react';
 import PrimaryHeader from '../../Components/Header';
 import useStyles from './styles';
@@ -18,7 +29,7 @@ const Profile = () => {
   return (
     <>
       <Box className={classes.root}>
-      <PrimaryHeader />
+        <PrimaryHeader />
         <Box className={classes.mainContainer}>
           <FormControl component="fieldset" className={classes.form}>
             <Box className="user box-item">
@@ -36,39 +47,19 @@ const Profile = () => {
                   multiple
                   type="file"
                 />
-                <label htmlFor="contained-button-file-picture" className="upload_content">Change picture</label>
+                <label htmlFor="contained-button-file-picture" className="upload_content">
+                  Change picture
+                </label>
               </Box>
             </Box>
             <Box className="perso-information box-item">
-              <Typography component="h2" className="box-title">Personal informations</Typography>
-              <TextFieldComponent
-                name="name"
-                id="name"
-                label="Your name"
-                type="text"
-                value="Alexander Logan"
-              />
-              <TextFieldComponent
-                name="email"
-                id="email"
-                label="Email"
-                type="text"
-                value="alex.logan@grtgaz.fr"
-              />
-              <TextFieldComponent
-                name="phone"
-                id="phone"
-                label="Phone"
-                type="text"
-                value="+33 6 78 56 43 56"
-              />
-              <TextFieldComponent
-                name="position"
-                id="position"
-                label="Your position"
-                type="text"
-                value="UX Designer"
-              />
+              <Typography component="h2" className="box-title">
+                Personal informations
+              </Typography>
+              <TextFieldComponent name="name" id="name" label="Your name" type="text" value="Alexander Logan" />
+              <TextFieldComponent name="email" id="email" label="Email" type="text" value="alex.logan@grtgaz.fr" />
+              <TextFieldComponent name="phone" id="phone" label="Phone" type="text" value="+33 6 78 56 43 56" />
+              <TextFieldComponent name="position" id="position" label="Your position" type="text" value="UX Designer" />
               <TextFieldComponent
                 name="organisation"
                 id="organisation"
@@ -78,30 +69,38 @@ const Profile = () => {
               />
               <Box className="content_bloc job_bloc" component="section">
                 <FormLabel component="legend">Job seniority</FormLabel>
-                <RadioGroup aria-label="jobseniority" name="jobseniority1" value={value}  onChange={handleChange} className="job-radio">
-                <FormControlLabel 
-                  value="junior"
-                  classes={{root: classes.formControlLabelRoot, label: classes.formControlLabel}}
-                  control={<Radio disableRipple
-                  classes={{root: classes.radio, checked: classes.checked}} />}
-                  label="Junior" />
-                <FormControlLabel
-                  value="senior"
-                  classes={{root: classes.formControlLabelRoot, label: classes.formControlLabel}}
-                  control={<Radio disableRipple
-                  classes={{root: classes.radio, checked: classes.checked}} />}
-                  label="Senior" />
-              </RadioGroup>
+                <RadioGroup
+                  aria-label="jobseniority"
+                  name="jobseniority1"
+                  value={value}
+                  onChange={handleChange}
+                  className="job-radio"
+                >
+                  <FormControlLabel
+                    value="junior"
+                    classes={{ root: classes.formControlLabelRoot, label: classes.formControlLabel }}
+                    control={<Radio disableRipple classes={{ root: classes.radio, checked: classes.checked }} />}
+                    label="Junior"
+                  />
+                  <FormControlLabel
+                    value="senior"
+                    classes={{ root: classes.formControlLabelRoot, label: classes.formControlLabel }}
+                    control={<Radio disableRipple classes={{ root: classes.radio, checked: classes.checked }} />}
+                    label="Senior"
+                  />
+                </RadioGroup>
               </Box>
               <Box className="content_bloc language-bloc">
                 <FormLabel component="legend">Languages level</FormLabel>
-                <LanguagesChoice title="French" name="french" id=""  test={()=>{}}/>
-                <LanguagesChoice title="English" name="english" id=""  test={()=>{}}/>
-                <LanguagesChoice title="Spanish" name="spanish" id=""  test={()=>{}}/>
+                <LanguagesChoice title="French" name="french" id="" />
+                <LanguagesChoice title="English" name="english" id="" />
+                <LanguagesChoice title="Spanish" name="spanish" id="" />
               </Box>
-              </Box>
+            </Box>
             <Box className="bio box-item">
-              <Typography component="h2" className="box-title">Bio</Typography>
+              <Typography component="h2" className="box-title">
+                Bio
+              </Typography>
               <Box className="field_item textarea_item">
                 <TextareaAutosize
                   minRows="3"
@@ -114,7 +113,9 @@ const Profile = () => {
               </Box>
             </Box>
             <Box className="skills box-item">
-              <Typography component="h2" className="box-title">Skills</Typography>
+              <Typography component="h2" className="box-title">
+                Skills
+              </Typography>
               <Box className="content_bloc skills-bloc" component="section">
                 <FormLabel component="legend">Skills</FormLabel>
                 <Box className="selected_skills">
@@ -124,107 +125,104 @@ const Profile = () => {
                   </Box>
                 </Box>
                 <Box className="all_skills">
-                <Box className="inputGroup selected">
-                  <input id="Adobe_XD" name="Adobe XD" type="checkbox" />
-                  <label htmlFor="Adobe_XD">Adobe XD</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="UX_Design" name="UX Design" type="checkbox" />
-                  <label htmlFor="UX_Design">UX Design</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="Scribing" name="Scribing" type="checkbox" />
-                  <label htmlFor="Scribing">Scribing</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="3D" name="3D" type="checkbox" />
-                  <label htmlFor="3D">3D</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="after_Effect" name="After Effect" type="checkbox" />
-                  <label htmlFor="after_Effect">After Effect</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="Design_Sprint" name="Design Sprint" type="checkbox" />
-                  <label htmlFor="Design_Sprint">Design Sprint</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="Illustrator" name="Illustrator" type="checkbox" />
-                  <label htmlFor="Illustrator">Illustrator</label>
-                </Box>
-                <Box className="inputGroup selected">
-                  <input id="Photoshop" name="Photoshop" type="checkbox" />
-                  <label htmlFor="Photoshop">Photoshop</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="UX_Design_2" name="UX Design" type="checkbox" />
-                  <label htmlFor="UX_Design_2">UX Design</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="Scribing_2" name="Scribing" type="checkbox" />
-                  <label htmlFor="Scribing_2">Scribing</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="3D_2" name="3D" type="checkbox" />
-                  <label htmlFor="3D_2">3D</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="after_Effect_2" name="After Effect" type="checkbox" />
-                  <label htmlFor="after_Effect_2">After Effect</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="Design_Sprint_2" name="Design Sprint" type="checkbox" />
-                  <label htmlFor="Design_Sprint_2">Design Sprint</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="Illustrator_2" name="Illustrator" type="checkbox" />
-                  <label htmlFor="Illustrator_2">Illustrator</label>
-                </Box>
-                <Box className="inputGroup">
-                  <input id="Photoshop_2" name="Photoshop" type="checkbox" />
-                  <label htmlFor="Photoshop_2">Photoshop</label>
-                </Box>
+                  <Box className="inputGroup selected">
+                    <input id="Adobe_XD" name="Adobe XD" type="checkbox" />
+                    <label htmlFor="Adobe_XD">Adobe XD</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="UX_Design" name="UX Design" type="checkbox" />
+                    <label htmlFor="UX_Design">UX Design</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="Scribing" name="Scribing" type="checkbox" />
+                    <label htmlFor="Scribing">Scribing</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="3D" name="3D" type="checkbox" />
+                    <label htmlFor="3D">3D</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="after_Effect" name="After Effect" type="checkbox" />
+                    <label htmlFor="after_Effect">After Effect</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="Design_Sprint" name="Design Sprint" type="checkbox" />
+                    <label htmlFor="Design_Sprint">Design Sprint</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="Illustrator" name="Illustrator" type="checkbox" />
+                    <label htmlFor="Illustrator">Illustrator</label>
+                  </Box>
+                  <Box className="inputGroup selected">
+                    <input id="Photoshop" name="Photoshop" type="checkbox" />
+                    <label htmlFor="Photoshop">Photoshop</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="UX_Design_2" name="UX Design" type="checkbox" />
+                    <label htmlFor="UX_Design_2">UX Design</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="Scribing_2" name="Scribing" type="checkbox" />
+                    <label htmlFor="Scribing_2">Scribing</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="3D_2" name="3D" type="checkbox" />
+                    <label htmlFor="3D_2">3D</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="after_Effect_2" name="After Effect" type="checkbox" />
+                    <label htmlFor="after_Effect_2">After Effect</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="Design_Sprint_2" name="Design Sprint" type="checkbox" />
+                    <label htmlFor="Design_Sprint_2">Design Sprint</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="Illustrator_2" name="Illustrator" type="checkbox" />
+                    <label htmlFor="Illustrator_2">Illustrator</label>
+                  </Box>
+                  <Box className="inputGroup">
+                    <input id="Photoshop_2" name="Photoshop" type="checkbox" />
+                    <label htmlFor="Photoshop_2">Photoshop</label>
+                  </Box>
                 </Box>
               </Box>
             </Box>
             <Box className="pitch box-item">
-              <Typography component="h2" className="box-title">Pitch</Typography>
+              <Typography component="h2" className="box-title">
+                Pitch
+              </Typography>
               <ReactPlayer
-                  url='' 
-                  className={classes.videoUpload}
-                  width={'100%'}
-                  height={'168px'}
-                  playing={true}
-                  controls={true}
+                url=""
+                className={classes.videoUpload}
+                width={'100%'}
+                height={'168px'}
+                playing={true}
+                controls={true}
               />
               <Box className="upload-video">
-              <input
-                  accept="video/*"
-                  className="upload_picture"
-                  id="contained-button-file-video"
-                  type="file"
-                />
+                <input accept="video/*" className="upload_picture" id="contained-button-file-video" type="file" />
                 <label htmlFor="contained-button-file-video">Download another pitch</label>
               </Box>
             </Box>
             <Box className="daily-rate box-item">
-              <Typography component="h2" className="box-title">Daily Rate</Typography>
+              <Typography component="h2" className="box-title">
+                Daily Rate
+              </Typography>
               <Typography className="money">880£</Typography>
-                <Typography className="text">The average rate for yout type of profile is 750 $</Typography>
-                <Slider
-                  orientation="horizontal"
-                  value={800}
-                  aria-labelledby="vertical-slider"
-                  valueLabelDisplay="on"
-                  classes={{ valueLabel:classes.labelrate }}
-                  max={1600}
-                />
+              <Typography className="text">The average rate for yout type of profile is 750 $</Typography>
+              <Slider
+                orientation="horizontal"
+                value={800}
+                aria-labelledby="vertical-slider"
+                valueLabelDisplay="on"
+                classes={{ valueLabel: classes.labelrate }}
+                max={1600}
+              />
             </Box>
             <Box className={classes.btnvalidate}>
-            <Button variant="contained" >
-              Validate changes
-            </Button>
-          </Box>
+              <Button variant="contained">Validate changes</Button>
+            </Box>
           </FormControl>
         </Box>
       </Box>

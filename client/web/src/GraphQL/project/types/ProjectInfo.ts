@@ -48,6 +48,20 @@ export interface ProjectInfo_profile {
   users_id: ProjectInfo_profile_users_id | null;
 }
 
+export interface ProjectInfo_contributes_profile_id {
+  __typename: "Profiles";
+  id: string;
+  wallet: number | null;
+  currentBalance: number | null;
+}
+
+export interface ProjectInfo_contributes {
+  __typename: "Contributes";
+  id: string;
+  value: number | null;
+  profile_id: ProjectInfo_contributes_profile_id | null;
+}
+
 export interface ProjectInfo {
   __typename: "Projects";
   id: string;
@@ -62,4 +76,5 @@ export interface ProjectInfo {
   project_skills: (ProjectInfo_project_skills | null)[] | null;
   project_favorits: (ProjectInfo_project_favorits | null)[] | null;
   profile: ProjectInfo_profile | null;
+  contributes: (ProjectInfo_contributes | null)[] | null;
 }

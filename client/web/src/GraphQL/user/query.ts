@@ -5,6 +5,8 @@ export const ME_INFO = gql`
     getProfile(userId: $userId) {
       id
       picture
+      wallet
+      currentBalance
       users_id {
         id
         username
@@ -12,6 +14,10 @@ export const ME_INFO = gql`
         lastname
         email
         isFirstConnection
+      }
+      contributes {
+        id
+        value
       }
       talent_favorits {
         id

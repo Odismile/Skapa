@@ -130,38 +130,40 @@ const TabLink = () => {
         snackbar.message = t(`createProjectError.video`);
         displaySnackbar(client, snackbar);
       } else {
-        doCreateProject({
-          variables: {
-            input: {
-              data: {
-                Picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-                  filesPictureVariable()?.[0].name
-                }`,
-                Name: nameProjectVariable(),
-                Type: typeProjectVariable(),
-                Ville: cityVariable(),
-                Date_start: moment(dateStartVariable()).utcOffset(0, false).toISOString(),
-                Date_end: moment(dateEndVariable()).utcOffset(0, false).toISOString(),
-                description: projectDescriptionVariable(),
-                project_skills: transformSkills(skillsSelectedVariable()),
-                Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-                  filesVideoVariable()?.[0].name
-                }`,
-                status: '1',
-                // teams: [],
-                // item: '',
+        if (nameProjectVariable().length) {
+          doCreateProject({
+            variables: {
+              input: {
+                data: {
+                  Picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                    filesPictureVariable()?.[0].name
+                  }`,
+                  Name: nameProjectVariable(),
+                  Type: typeProjectVariable(),
+                  Ville: cityVariable(),
+                  Date_start: moment(dateStartVariable()).utcOffset(0, false).toISOString(),
+                  Date_end: moment(dateEndVariable()).utcOffset(0, false).toISOString(),
+                  description: projectDescriptionVariable(),
+                  project_skills: transformSkills(skillsSelectedVariable()),
+                  Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                    filesVideoVariable()?.[0].name
+                  }`,
+                  status: '1',
+                  // teams: [],
+                  // item: '',
+                },
               },
             },
-          },
-        }).then(async (result) => {
-          if (result.data?.createProject?.project?.id) {
-            projectIdVariable(result.data?.createProject?.project?.id);
-            await uploadFile(filesPictureVariable());
-            await uploadFile(filesVideoVariable());
-            initCreateProjectVariable();
-            setActiveStep(newActiveStep);
-          }
-        });
+          }).then(async (result) => {
+            if (result.data?.createProject?.project?.id) {
+              projectIdVariable(result.data?.createProject?.project?.id);
+              await uploadFile(filesPictureVariable());
+              await uploadFile(filesVideoVariable());
+              initCreateProjectVariable();
+              setActiveStep(newActiveStep);
+            }
+          });
+        }
       }
     } else if (activeStep === 3) {
       doUpdateProject({
@@ -252,7 +254,7 @@ const TabLink = () => {
             </Link>
           </Box>
         </Box>
-        {(loading || loadingUpload) && (<Loader/>)}
+        {(loading || loadingUpload) && <Loader />}
       </Box>
     </>
   );

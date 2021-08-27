@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { ENUM_LANGUAGES_LEVEL } from "./../../../types/graphql-global-types";
+
 // ====================================================
 // GraphQL fragment: CoachInfo
 // ====================================================
@@ -62,9 +64,17 @@ export interface CoachInfo_talent_favorits {
   profile: CoachInfo_talent_favorits_profile | null;
 }
 
+export interface CoachInfo_languages_language {
+  __typename: "Items";
+  id: string;
+  label: string | null;
+}
+
 export interface CoachInfo_languages {
   __typename: "Languages";
   id: string;
+  level: ENUM_LANGUAGES_LEVEL | null;
+  language: CoachInfo_languages_language | null;
 }
 
 export interface CoachInfo_profile_type_id {

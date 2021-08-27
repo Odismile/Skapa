@@ -1,12 +1,11 @@
 import { makeVar } from '@apollo/client/cache';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
+import { ENUM_LANGUAGES_LEVEL } from '../../types/graphql-global-types';
 
-export interface Language {
-  id: string;
-  title: string;
-  name: string;
-  level: string;
+export interface Language extends Items_get_language_items {
+  level: ENUM_LANGUAGES_LEVEL;
 }
+
 // Create Reactive variable
 export const yourPosition = makeVar<string | null>(null);
 export const nameOfOrganisation = makeVar<string | null>(null);

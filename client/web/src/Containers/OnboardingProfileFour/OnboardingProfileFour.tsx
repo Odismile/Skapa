@@ -51,9 +51,9 @@ const OnboardingProfileFour = () => {
           video: videoFile()
             ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${videoFile()?.[0].name}`
             : '',
-          languages: levelLanguages()?.map((e) => ({
+          languages: (levelLanguages() || [])?.map((e) => ({
             id: e.id,
-            level: e.level.toUpperCase() as Level,
+            level: e.level as unknown as Level,
           })),
           profile_skills: transformSkillsIds(skillsSelectedVariable()),
           user_id: localStorage.getItem('idMe'),

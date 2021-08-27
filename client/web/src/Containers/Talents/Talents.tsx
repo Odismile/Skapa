@@ -1,4 +1,4 @@
-import { useQuery, useReactiveVar } from '@apollo/client';
+import { useReactiveVar } from '@apollo/client';
 import { Box } from '@material-ui/core';
 import React, { useMemo } from 'react';
 import Skeleton from 'react-loading-skeleton';
@@ -8,10 +8,9 @@ import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 import CardTalents from '../../Components/CardTalents/CardTalents';
 import RadioExtInt from '../../Components/RadioExtInt/RadioExtInt';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
-import { LIST_COACH } from '../../GraphQL/profiles/query';
-import { coachs, coachsVariables } from '../../GraphQL/profiles/types/coachs';
+import { useGetProfiles } from '../../Providers/TalentProvider/useGetProfiles';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
-import { filterTalentVar, juniorValues, seniorValues } from '../../ReactiveVariable/Coach/coach';
+import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import { WISHLIST } from '../../Routes';
 import useStyles from './styles';
 
@@ -23,15 +22,7 @@ const Talents = () => {
   const filterTalent = useReactiveVar(filterTalentVar);
   const { profil } = useCurrentUser();
 
-  const { data, loading } = useQuery<coachs, coachsVariables>(LIST_COACH, {
-    variables: {
-      where: {
-        profile_type_id: {
-          label: 'Talent',
-        },
-      },
-    },
-  });
+  const { data, loading } = useGetProfiles('Talent');
 
   const listTalents = useMemo(() => {
     let newList = data?.profiles || [];
@@ -57,10 +48,24 @@ const Talents = () => {
     if (filterTalent.skills.length !== 0) {
       newList = newList.filter(
         (item) =>
-          item?.profile_skills?.length && item?.profile_skills?.find((i) => i?.skill_id?.label === item.profile_skills),
+          item?.profile_skills?.length &&
+          item?.profile_skills?.find((i) =>
+            filterTalent.skills.some((filterSkill) => filterSkill && i?.skill_id?.label === filterSkill?.label),
+          ),
       );
     }
-
+    if (filterTalent.languages.length !== 0) {
+      newList = newList.filter(
+        (item) =>
+          item?.languages?.length &&
+          item?.languages?.find((i) =>
+            filterTalent.languages.some(
+              (filterSkill) =>
+                filterSkill && i?.language?.label === filterSkill?.label && i?.level && i.level === filterSkill?.level,
+            ),
+          ),
+      );
+    }
     if (filterTalent.levels.length) {
       newList = newList.filter(
         (item) => filterTalent.levels.findIndex((level) => level?.label === item?.job_seniority_id?.label) >= 0,

@@ -4,7 +4,7 @@ export const COACH_INFO_FRAGMENT = gql`
   fragment CoachInfo on Profiles {
     id
     position
-    picture
+    picture @client
     job_seniority_id {
       id
       label
@@ -51,12 +51,11 @@ export const COACH_INFO_FRAGMENT = gql`
     }
     languages {
       id
-      # level
-      # language {
-      #   id
-      #   label
-      # }
-      # published_at
+      level
+      language {
+        id
+        label
+      }
     }
     profile_type_id {
       id
@@ -65,5 +64,12 @@ export const COACH_INFO_FRAGMENT = gql`
     projects {
       id
     }
+  }
+`;
+
+export const COACH_INFO_PICTURE_FRAGMENT = gql`
+  fragment CoachPictureInfo on Profiles {
+    id
+    picture
   }
 `;

@@ -29,7 +29,7 @@ interface HeaderProps {
 }
 const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   const classes = useStyles();
-  const { user, photo, isReader } = useCurrentUser();
+  const { user, photo, isReader, profil } = useCurrentUser();
   const { talentId, projectId, profilId } = useParams<LocationInterface>();
 
   const history = useHistory();
@@ -38,7 +38,6 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   if (!isAuthenticated()) {
     history.push(LOGIN);
   }
-  console.log('history.location.pathname ', history.location.pathname);
   const [open, setOpen] = React.useState(false);
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -115,7 +114,8 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
                   Hello <span>{user?.surname || ''} !</span>
                 </Typography>
                 <Typography className="user_balance" component="span">
-                  12 0000<span className="unity">$</span>
+                  {profil?.currentBalance || 0}
+                  <span className="unity">$</span>
                 </Typography>
               </Box>
               <Typography className="flexFX" component="span"></Typography>

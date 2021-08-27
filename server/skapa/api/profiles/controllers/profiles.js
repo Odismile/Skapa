@@ -8,8 +8,10 @@ var { sanitizeEntity } = require("strapi-utils");
 
 module.exports = {
   async getProfile(ctx) {
-    const { id } = ctx.params;
-    const entity = await strapi.query("profiles").findOne({ users_id: id });
+    const { _userId } = ctx.params;
+    const entity = await strapi.query("profiles").findOne({
+      users_id: _userId,
+    });
     if (entity) {
       if (entity.picture)
         entity.picture = (await generateReadSignedUrl(entity.picture)).url;
@@ -29,6 +31,8 @@ module.exports = {
       job_seniority_id: data.job_seniority,
       profile_type_id: talent.id,
       position: data.position,
+      wallet: data.wallet > 0 ? data.wallet : 100000,
+      currentBalance: data.wallet > 0 ? data.wallet : 100000,
       users_id: data.user_id,
     });
 

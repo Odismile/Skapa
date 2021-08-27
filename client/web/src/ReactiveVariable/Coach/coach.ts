@@ -1,5 +1,10 @@
 import { makeVar } from '@apollo/client/cache';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
+import { ENUM_LANGUAGES_LEVEL } from '../../types/graphql-global-types';
+
+export interface languageItem extends Items_get_language_items {
+  level: ENUM_LANGUAGES_LEVEL;
+}
 
 interface filterTalentInterface {
   search: string;
@@ -11,6 +16,7 @@ interface filterTalentInterface {
   maxDailyRate: number;
   skills: Items_get_language_items[];
   levels: Items_get_language_items[];
+  languages: languageItem[];
 }
 // Create Reactive variable
 export const filterTalentVar = makeVar<filterTalentInterface>({
@@ -23,6 +29,7 @@ export const filterTalentVar = makeVar<filterTalentInterface>({
   minDailyRate: 20,
   skills: [],
   levels: [],
+  languages: [],
 });
 
 export const juniorValues = ['0 - 3 yrs'];

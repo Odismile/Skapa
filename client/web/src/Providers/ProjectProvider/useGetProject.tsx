@@ -1,6 +1,6 @@
 import { useApolloClient, useQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import { PROJECTS } from '../../GraphQL/project/query';
+import { PROJECTS, PROJECTS_ALL_MEDIA } from '../../GraphQL/project/query';
 import { projects, projectsVariables } from '../../GraphQL/project/types/projects';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 
@@ -9,7 +9,9 @@ export const useGetProject = (idProject: string) => {
 
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
-
+  useQuery(PROJECTS_ALL_MEDIA, {
+    fetchPolicy: 'cache-first'
+  });
   const { data, loading } = useQuery<projects, projectsVariables>(PROJECTS, {
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
