@@ -4,7 +4,7 @@ export const COACH_INFO_FRAGMENT = gql`
   fragment CoachInfo on Profiles {
     id
     position
-    picture
+    picture @client
     job_seniority_id {
       id
       label
@@ -65,5 +65,12 @@ export const COACH_INFO_FRAGMENT = gql`
     projects {
       id
     }
+  }
+`;
+
+export const COACH_INFO_PICTURE_FRAGMENT = gql`
+  fragment CoachPictureInfo on Profiles {
+    id
+    picture
   }
 `;

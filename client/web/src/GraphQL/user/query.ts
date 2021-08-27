@@ -5,6 +5,8 @@ export const ME_INFO = gql`
     getProfile(userId: $userId) {
       id
       picture
+      wallet
+      currentBalance
       users_id {
         id
         username

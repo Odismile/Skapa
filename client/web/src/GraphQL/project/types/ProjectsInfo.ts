@@ -51,6 +51,8 @@ export interface ProjectsInfo_project_profile {
 export interface ProjectsInfo_project_contributes_profile_id {
   __typename: "Profiles";
   id: string;
+  wallet: number | null;
+  currentBalance: number | null;
 }
 
 export interface ProjectsInfo_project_contributes {
