@@ -39,6 +39,8 @@ export const PROJECT_INFO_FRAGMENT = gql`
       value
       profile_id {
         id
+        wallet
+        currentBalance
       }
     }
   }
