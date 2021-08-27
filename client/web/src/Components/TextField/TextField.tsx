@@ -17,14 +17,17 @@ interface TextFieldCustomProps {
 
 const TextFieldComponent: FC<TextFieldCustomProps & TextFieldProps> = (props) => {
   const classes = useStyles();
+  const { InputProps, InputLabelProps, ...otherProps } = props;
   return (
     <TextField
       name={props.name}
       onChange={props.onChange}
       InputLabelProps={{
+        ...InputLabelProps,
         shrink: true,
       }}
       InputProps={{
+        ...InputProps,
         endAdornment: (
           <InputAdornment position="end" className="append_input">
             {props.icons}
@@ -35,8 +38,8 @@ const TextFieldComponent: FC<TextFieldCustomProps & TextFieldProps> = (props) =>
       value={props.value}
       error={props.error}
       helperText={props.helperText}
-      className={classNames(classes.textfield, "textField_content")}
-      {...props}
+      className={classNames(classes.textfield, 'textField_content')}
+      {...otherProps}
     />
   );
 };
