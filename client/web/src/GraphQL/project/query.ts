@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { PROJECT_INFO_FRAGMENT } from './fragment';
+import { PROJECT_INFO_FRAGMENT, PROJECT_INFO_MEDIA_FRAGMENT } from './fragment';
 
 export const PROJECTS = gql`
   query projects($where: JSON) {
@@ -17,4 +17,12 @@ export const PROJECTS_ALL = gql`
     }
   }
   ${PROJECT_INFO_FRAGMENT}
+`;
+export const PROJECTS_ALL_MEDIA = gql`
+  query projects_all {
+    projects {
+      ...ProjectInfoMedia
+    }
+  }
+  ${PROJECT_INFO_MEDIA_FRAGMENT}
 `;
