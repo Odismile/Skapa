@@ -82,7 +82,6 @@ const ProjectContent = () => {
 
   const onChangeValuePrice = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (+event.target.value <= restContribution) {
-      console.log(+event.target.value, ' <= ', restContribution);
       setPriceToContribute(+event.target.value);
     }
   };
