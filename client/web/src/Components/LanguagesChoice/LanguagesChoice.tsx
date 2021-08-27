@@ -4,39 +4,43 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import useStyles from './style';
-import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
-import { filterTalentVar, languageItem } from '../../ReactiveVariable/Coach/coach';
 import { ENUM_LANGUAGES_LEVEL } from '../../types/graphql-global-types';
 import { useReactiveVar } from '@apollo/client';
+import { Language, levelLanguages } from '../../ReactiveVariable/Profil/profil';
+import { isEqual } from 'lodash';
 
 interface TextFiedlProps {
   id: string;
   title: string;
   name: string;
   index?: number;
-  handleClick?: (item: languageItem, index: number) => void;
-  item?: Items_get_language_items;
+  handleSetData?: (item: Language[]) => void;
 }
 
-const LanguagesChoice: FC<TextFiedlProps> = ({ id, title, name, index, item, handleClick }) => {
+const LanguagesChoice: FC<TextFiedlProps> = ({ id, title, name, handleSetData }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const filterTalent = useReactiveVar(filterTalentVar);
+  const languages = useReactiveVar(levelLanguages);
 
   const onClickRadio = (level: ENUM_LANGUAGES_LEVEL) => (e: MouseEvent<HTMLInputElement>) => {
-    if (item && index !== undefined && handleClick) {
-      handleClick(
-        {
-          ...item,
-          level,
-        },
-        index,
-      );
-    }
+    const index = (languages || []).findIndex((i) => i.id === id);
+    const item: Language = {
+      __typename: 'Items',
+      id,
+      label: title,
+      level,
+    };
+    let cloneLanguages = [...(languages || [])];
+    if (index >= 0) {
+      if (isEqual(cloneLanguages[index], item)) cloneLanguages = cloneLanguages.filter((i) => id && item.id !== i.id);
+      else cloneLanguages[index] = item;
+    } else cloneLanguages = [...cloneLanguages, item];
+    levelLanguages(cloneLanguages);
+    if (handleSetData) handleSetData(cloneLanguages);
   };
   const selectedLanguage = useMemo(() => {
-    return filterTalent.languages.find((i) => i.id === item?.id);
-  }, [filterTalent.languages, item?.id]);
+    return (languages || []).find((i) => i.id === id);
+  }, [id, languages]);
   return (
     <Box className={classes.boxLang}>
       <Typography className="label">{title}</Typography>

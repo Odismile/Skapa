@@ -1,3 +1,4 @@
+import { useReactiveVar } from '@apollo/client';
 import {
   Box,
   Button,
@@ -8,7 +9,7 @@ import {
   RadioGroup,
   Typography,
 } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
 import { useHistory, Link } from 'react-router-dom';
@@ -22,39 +23,32 @@ import { ONBOARDING_PROFILE2 } from '../../Routes';
 import useStyles from './styles';
 const OnboardingProfile = () => {
   const classes = useStyles();
-  const [disabledButton, setDisabledButton] = useState(true);
   const history = useHistory();
   const { t } = useTranslation();
   const [radioButtonValue, setRadioButtonValue] = useState<string>('');
+  const position = useReactiveVar(yourPosition);
+  const organisation = useReactiveVar(nameOfOrganisation);
+  const age = useReactiveVar(ageProfil);
+  const languages = useReactiveVar(levelLanguages);
 
   const { data, loading } = useItemsGetlaguage();
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
-  const testButtonToEnabled = () => {
-    if (
-      (!!yourPosition() && !!nameOfOrganisation() && !!ageProfil() && !!levelLanguages()) ||
-      levelLanguages()?.length === 0
-    ) {
-      setDisabledButton(false);
-    } else {
-      setDisabledButton(true);
-    }
-  };
-
+  const disabledButton = useMemo(() => {
+    if (position?.length && organisation?.length && age?.length && languages?.length === 3) return false;
+    return true;
+  }, [position, organisation, age, languages]);
   const handleChangeAge = (event: React.ChangeEvent<HTMLInputElement>) => {
     ageProfil((event.target as HTMLInputElement).value);
     setRadioButtonValue((event.target as HTMLInputElement).value);
-    testButtonToEnabled();
   };
 
   const onChangeYourPosition = (e: React.ChangeEvent<HTMLInputElement>) => {
     yourPosition(e.target.value);
-    testButtonToEnabled();
   };
 
   const onChangeNameOfOrganisation = (e: React.ChangeEvent<HTMLInputElement>) => {
     nameOfOrganisation(e.target.value);
-    testButtonToEnabled();
   };
 
   const handleClick = () => {
@@ -105,12 +99,7 @@ const OnboardingProfile = () => {
             <>
               {data?.items?.map((item, index) => {
                 return (
-                  <LanguagesChoice
-                    key={index}
-                    id={item?.id ?? ''}
-                    title={item?.label ?? ''}
-                    name={item?.label ?? ''}
-                  />
+                  <LanguagesChoice key={index} id={item?.id ?? ''} title={item?.label ?? ''} name={item?.label ?? ''} />
                 );
               })}
             </>

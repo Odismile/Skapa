@@ -11,7 +11,6 @@ import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_la
 import CheckboxChecked from '../Icons/CheckboxChecked';
 import CheckboxLine from '../Icons/CheckboxLine';
 import { useItemsGetLevels } from '../../Providers/ItemsProvider/hooks/useItemsGetLevels';
-import { isEqual } from 'lodash';
 
 const SearchTalents = () => {
   const classes = useStyles();
@@ -41,15 +40,10 @@ const SearchTalents = () => {
       });
     };
 
-  const handleCheckLanguage = (item: languageItem, index: number) => {
-    let cloneLanguages = [...filterTalent.languages];
-    if (index >= 0) {
-      if (isEqual(cloneLanguages[index], item)) cloneLanguages = cloneLanguages.filter((i) => i.id !== item.id);
-      else cloneLanguages[index] = item;
-    } else cloneLanguages = [...cloneLanguages, item];
+  const handleCheckLanguage = (items: languageItem[]) => {
     filterTalentVar({
       ...filterTalent,
-      languages: cloneLanguages,
+      languages: items,
     });
   };
   return (
@@ -161,17 +155,14 @@ const SearchTalents = () => {
         <Box className="form-control-item">
           <Typography component="h2">Languages</Typography>
           {dataLanguages?.items?.map((item) => {
-            const index = filterTalent.languages.findIndex((i) => i.id === item?.id);
             return (
               item?.label &&
               item?.id && (
                 <LanguagesChoice
                   name={`language-${item.id}`}
-                  id={`language-${item.id}`}
-                  item={item}
-                  index={index}
+                  id={item.id}
                   title={item.label}
-                  handleClick={handleCheckLanguage}
+                  handleSetData={handleCheckLanguage}
                 />
               )
             );

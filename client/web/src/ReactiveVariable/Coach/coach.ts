@@ -1,8 +1,9 @@
 import { makeVar } from '@apollo/client/cache';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
+import { ENUM_LANGUAGES_LEVEL } from '../../types/graphql-global-types';
 
 export interface languageItem extends Items_get_language_items {
-  level: string;
+  level: ENUM_LANGUAGES_LEVEL;
 }
 
 interface filterTalentInterface {
