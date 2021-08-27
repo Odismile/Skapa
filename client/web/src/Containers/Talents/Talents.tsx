@@ -48,7 +48,10 @@ const Talents = () => {
     if (filterTalent.skills.length !== 0) {
       newList = newList.filter(
         (item) =>
-          item?.profile_skills?.length && item?.profile_skills?.find((i) => i?.skill_id?.label === item.profile_skills),
+          item?.profile_skills?.length &&
+          item?.profile_skills?.find((i) =>
+            filterTalent.skills.some((filterSkill) => filterSkill && i?.skill_id?.label === filterSkill?.label),
+          ),
       );
     }
 
