@@ -51,12 +51,11 @@ export const COACH_INFO_FRAGMENT = gql`
     }
     languages {
       id
-      # level
-      # language {
-      #   id
-      #   label
-      # }
-      # published_at
+      level
+      language {
+        id
+        label
+      }
     }
     profile_type_id {
       id

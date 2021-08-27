@@ -48,10 +48,24 @@ const Talents = () => {
     if (filterTalent.skills.length !== 0) {
       newList = newList.filter(
         (item) =>
-          item?.profile_skills?.length && item?.profile_skills?.find((i) => i?.skill_id?.label === item.profile_skills),
+          item?.profile_skills?.length &&
+          item?.profile_skills?.find((i) =>
+            filterTalent.skills.some((filterSkill) => filterSkill && i?.skill_id?.label === filterSkill?.label),
+          ),
       );
     }
-
+    if (filterTalent.languages.length !== 0) {
+      newList = newList.filter(
+        (item) =>
+          item?.languages?.length &&
+          item?.languages?.find((i) =>
+            filterTalent.languages.some(
+              (filterSkill) =>
+                filterSkill && i?.language?.label === filterSkill?.label && i?.level && i.level === filterSkill?.level,
+            ),
+          ),
+      );
+    }
     if (filterTalent.levels.length) {
       newList = newList.filter(
         (item) => filterTalent.levels.findIndex((level) => level?.label === item?.job_seniority_id?.label) >= 0,
