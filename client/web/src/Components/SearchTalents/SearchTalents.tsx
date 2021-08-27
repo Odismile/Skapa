@@ -6,7 +6,7 @@ import LanguagesChoice from '../LanguagesChoice/LanguagesChoice';
 import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
 import { useReactiveVar } from '@apollo/client';
-import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
+import { filterTalentVar, languageItem } from '../../ReactiveVariable/Coach/coach';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import CheckboxChecked from '../Icons/CheckboxChecked';
 import CheckboxLine from '../Icons/CheckboxLine';
@@ -39,6 +39,16 @@ const SearchTalents = () => {
         levels: isChecked ? filterTalent.levels.filter((i) => i.id !== item.id) : [...filterTalent.levels, item],
       });
     };
+
+  const handleCheckLanguage = (item: languageItem, index: number) => {
+    let cloneLanguages = [...filterTalent.languages];
+    if (index >= 0) cloneLanguages[index] = item;
+    else cloneLanguages = [...cloneLanguages, item];
+    filterTalentVar({
+      ...filterTalent,
+      languages: cloneLanguages,
+    });
+  };
   return (
     <Box className={classes.searchProject}>
       <FormControl component="fieldset" className="form-control">
@@ -147,18 +157,22 @@ const SearchTalents = () => {
         </Box>
         <Box className="form-control-item">
           <Typography component="h2">Languages</Typography>
-          {dataLanguages?.items?.map(
-            (item) =>
+          {dataLanguages?.items?.map((item) => {
+            const index = filterTalent.languages.findIndex((i) => i.id === item?.id);
+            return (
               item?.label &&
               item?.id && (
                 <LanguagesChoice
                   name={`language-${item.id}`}
                   id={`language-${item.id}`}
+                  item={item}
+                  index={index}
                   title={item.label}
-                  test={() => {}}
+                  handleClick={handleCheckLanguage}
                 />
-              ),
-          )}
+              )
+            );
+          })}
         </Box>
       </FormControl>
     </Box>

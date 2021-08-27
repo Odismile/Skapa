@@ -110,7 +110,6 @@ const OnboardingProfile = () => {
                     id={item?.id ?? ''}
                     title={item?.label ?? ''}
                     name={item?.label ?? ''}
-                    test={testButtonToEnabled}
                   />
                 );
               })}
