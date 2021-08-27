@@ -11,6 +11,7 @@ import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_la
 import CheckboxChecked from '../Icons/CheckboxChecked';
 import CheckboxLine from '../Icons/CheckboxLine';
 import { useItemsGetLevels } from '../../Providers/ItemsProvider/hooks/useItemsGetLevels';
+import { isEqual } from 'lodash';
 
 const SearchTalents = () => {
   const classes = useStyles();
@@ -42,8 +43,10 @@ const SearchTalents = () => {
 
   const handleCheckLanguage = (item: languageItem, index: number) => {
     let cloneLanguages = [...filterTalent.languages];
-    if (index >= 0) cloneLanguages[index] = item;
-    else cloneLanguages = [...cloneLanguages, item];
+    if (index >= 0) {
+      if (isEqual(cloneLanguages[index], item)) cloneLanguages = cloneLanguages.filter((i) => i.id !== item.id);
+      else cloneLanguages[index] = item;
+    } else cloneLanguages = [...cloneLanguages, item];
     filterTalentVar({
       ...filterTalent,
       languages: cloneLanguages,

@@ -11,7 +11,7 @@ import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilt
 import coachPhoto from '../../Assets/images/coach_avatar.png';
 import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 import { useReactiveVar } from '@apollo/client';
-import { filterTalentVar, juniorValues, seniorValues } from '../../ReactiveVariable/Coach/coach';
+import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import MeetingModal from './MeetingModal';
 import { useGetProfiles } from '../../Providers/TalentProvider/useGetProfiles';
 import { coachs_profiles } from '../../GraphQL/profiles/types/coachs';
@@ -45,6 +45,18 @@ const Coachs = () => {
           item?.profile_skills?.length &&
           item?.profile_skills?.find((i) =>
             filterTalent.skills.some((filterSkill) => filterSkill && i?.skill_id?.label === filterSkill?.label),
+          ),
+      );
+    }
+    if (filterTalent.languages.length !== 0) {
+      newList = newList.filter(
+        (item) =>
+          item?.languages?.length &&
+          item?.languages?.find((i) =>
+            filterTalent.languages.some(
+              (filterSkill) =>
+                filterSkill && i?.language?.label === filterSkill?.label && i?.level && i.level === filterSkill?.level,
+            ),
           ),
       );
     }
