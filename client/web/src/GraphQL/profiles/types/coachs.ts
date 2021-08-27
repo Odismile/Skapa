@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PublicationState } from "./../../../types/graphql-global-types";
+import { PublicationState, ENUM_LANGUAGES_LEVEL } from "./../../../types/graphql-global-types";
 
 // ====================================================
 // GraphQL query operation: coachs
@@ -64,9 +64,17 @@ export interface coachs_profiles_talent_favorits {
   profile: coachs_profiles_talent_favorits_profile | null;
 }
 
+export interface coachs_profiles_languages_language {
+  __typename: "Items";
+  id: string;
+  label: string | null;
+}
+
 export interface coachs_profiles_languages {
   __typename: "Languages";
   id: string;
+  level: ENUM_LANGUAGES_LEVEL | null;
+  language: coachs_profiles_languages_language | null;
 }
 
 export interface coachs_profiles_profile_type_id {

@@ -7,6 +7,12 @@
 // START Enums and Input Objects
 //==============================================================
 
+export enum ENUM_LANGUAGES_LEVEL {
+  BASIC = "BASIC",
+  FLUENT = "FLUENT",
+  INTERMEDIATE = "INTERMEDIATE",
+}
+
 export enum Level {
   BASIC = "BASIC",
   FLUENT = "FLUENT",
