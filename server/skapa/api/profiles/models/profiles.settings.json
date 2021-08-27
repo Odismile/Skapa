@@ -61,12 +61,18 @@
       "via": "profile_id"
     },
     "books": {
-      "via": "talend_id",
-      "collection": "books"
+      "collection": "books",
+      "via": "talend_id"
     },
     "profile_project_types": {
-      "via": "profile",
-      "collection": "profile-project-types"
+      "collection": "profile-project-types",
+      "via": "profile"
+    },
+    "wallet": {
+      "type": "float"
+    },
+    "currentBalance": {
+      "type": "float"
     }
   }
 }
