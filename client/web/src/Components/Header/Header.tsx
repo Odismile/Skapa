@@ -38,7 +38,6 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   if (!isAuthenticated()) {
     history.push(LOGIN);
   }
-  console.log('history.location.pathname ', history.location.pathname);
   const [open, setOpen] = React.useState(false);
   const handleDrawer = () => {
     setOpen((prev) => !prev);

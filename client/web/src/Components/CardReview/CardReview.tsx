@@ -25,8 +25,7 @@ import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
 import useStyles from './style';
-
-export const maxContribution = 1000;
+import { maxContribution } from '../../Utils/constants';
 
 const PrettoSlider = withStyles({
   root: {
@@ -146,6 +145,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
           valueLabelDisplay="auto"
           aria-label="pretto slider"
           defaultValue={totalContribution}
+          contentEditable={false}
           max={maxContribution}
         />
         <Box className="info">

@@ -7,6 +7,7 @@ import Skeleton from 'react-loading-skeleton';
 import { useLocation } from 'react-router-dom';
 import photoUser from '../../Assets/images/photo-card.png';
 import CardReview from '../../Components/CardReview/CardReview';
+import LoadingButton from '../../Components/LoadingButton/LoadingButton';
 import SearchFilter from '../../Components/SearchFilter/SearchFilter';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
@@ -15,6 +16,7 @@ import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectA
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { projectSkills, projectSortedBy } from '../../ReactiveVariable/Project/projectSkills';
 import { WISHLIST } from '../../Routes';
+import { maxContribution } from '../../Utils/constants';
 import useStyles from './styles';
 
 const ProjectContent = () => {
@@ -29,21 +31,19 @@ const ProjectContent = () => {
   const [search, setSearch] = useState<string>('');
   const [project, setProject] = useState<projects_all_projects | null>(null);
   const [priceToContribute, setPriceToContribute] = useState<number | null>(null);
-  const { doCreateContribution } = useCreateContribution();
+  const { doCreateContribution, loading: contributeLoading } = useCreateContribution();
 
   const isInWishList = [WISHLIST].includes(pathname);
 
   const projectCategory = useReactiveVar(projectSkills);
   const projectSortedByLocal = useReactiveVar(projectSortedBy);
 
-  const onChangeValuePrice = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setPriceToContribute(+event.target.value);
-  };
-
-  const handleDrawer = () => {
-    setOpen((prev) => !prev);
-  };
-
+  const restContribution = useMemo(() => {
+    return Math.max(
+      maxContribution - (project?.contributes || []).reduce((acc, item) => acc + (item?.value || 0), 0),
+      0,
+    );
+  }, [project]);
   const projects = useMemo(() => {
     let newProjects: (projects_all_projects | null)[] | null | undefined = data?.projects;
     if (projectCategory.length !== 0) {
@@ -79,6 +79,22 @@ const ProjectContent = () => {
     }
     return newProjects;
   }, [data?.projects, projectCategory, projectSortedByLocal, isInWishList, profil?.project_favorits, search]);
+
+  const onChangeValuePrice = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (+event.target.value <= restContribution) {
+      console.log(+event.target.value, ' <= ', restContribution);
+      setPriceToContribute(+event.target.value);
+    }
+  };
+  const handleCloseDrawer = ()=> {
+    setProject(null);
+    setPriceToContribute(0);
+    handleDrawer();
+  }
+  const handleDrawer = () => {
+    setOpen((prev) => !prev);
+  };
+
   const onClicklContribute = (project: projects_all_projects | null) => {
     setProject(project);
   };
@@ -97,14 +113,12 @@ const ProjectContent = () => {
         },
       }).then((result) => {
         if (result.data?.createContribute?.contribute?.id) {
-          setPriceToContribute(0);
-          handleDrawer();
+          handleCloseDrawer();
         }
       });
     } else {
     }
   };
-
   return (
     <Box className={classes.projectPage}>
       <SearchFilter onChangeFitlerText={onChangeFilter} placeholder="Look for one of your favorite" />
@@ -140,7 +154,7 @@ const ProjectContent = () => {
         className={classes.drawerContribute}
         anchor="bottom"
         open={open}
-        onClose={handleDrawer}
+        onClose={handleCloseDrawer}
         //onOpen={handleDrawer}
         classes={{
           paper: classes.drawerPaperContribute,
@@ -165,7 +179,7 @@ const ProjectContent = () => {
               href=""
               disabled={isReader}
               className="btn_done"
-              onClick={handleDrawer}
+              onClick={handleCloseDrawer}
             >
               Done
             </Button>
@@ -192,12 +206,12 @@ const ProjectContent = () => {
                   type="number"
                   value={priceToContribute}
                   placeholder={'0000 $'}
+                  InputProps={{ inputProps: { min: 0, max: restContribution } }}
                   onChange={(e) => onChangeValuePrice(e)}
                 />
               </Box>
               <Typography className="text_status">
-                You have <span className="amount_value">{priceToContribute ? priceToContribute : 0} $</span>in your
-                wallet
+                You have <span className="amount_value">{profil?.currentBalance ?? 0} $</span>in your wallet
               </Typography>
 
               <List className="list_relativeuser">
@@ -212,16 +226,17 @@ const ProjectContent = () => {
                   </Box>
                 </ListItem>
               </List>
-              <Button
+              <LoadingButton
                 color="primary"
                 variant="contained"
                 href=""
+                isLoading={contributeLoading}
                 className="btn_contribute"
                 disabled={isReader && priceToContribute === null && priceToContribute === 0}
                 onClick={onClickContribute}
               >
                 Contribute
-              </Button>
+              </LoadingButton>
             </form>
           </Box>
         </Box>
