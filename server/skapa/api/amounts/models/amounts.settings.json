@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "amounts",
+  "info": {
+    "name": "Amounts"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "value": {
+      "type": "float"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "CONTRIBUTION_MAX"
+      ]
+    }
+  }
+}
