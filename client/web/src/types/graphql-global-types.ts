@@ -213,6 +213,7 @@ export interface profileCustomizeMeInput {
   projects?: string[] | null;
   profile_skills?: string[] | null;
   user_id?: string | null;
+  wallet?: number | null;
 }
 
 export interface updateProjectFavoritInput {
