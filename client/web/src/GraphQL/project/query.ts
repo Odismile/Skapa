@@ -19,7 +19,7 @@ export const PROJECTS_ALL = gql`
   ${PROJECT_INFO_FRAGMENT}
 `;
 export const PROJECTS_ALL_MEDIA = gql`
-  query projects_all {
+  query projects_all_media {
     projects {
       ...ProjectInfoMedia
     }
