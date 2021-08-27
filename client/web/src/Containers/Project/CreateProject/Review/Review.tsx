@@ -18,7 +18,13 @@ const Review = () => {
 
   return (
     <Box className={classes.review_bloc}>
-      <CardReview imgCardUrl={data?.projects?.[0]?.Picture ?? ''} name={data?.projects?.[0]?.Name ?? ''} />
+      <CardReview
+        imgCardUrl={data?.projects?.[0]?.Picture ?? ''}
+        name={data?.projects?.[0]?.Name ?? ''}
+        user={data?.projects?.[0]?.profile?.users_id}
+        type={data?.projects?.[0]?.Type ?? ''}
+        projectInfo={data?.projects?.[0]}
+      />
       <Pitch url={data?.projects?.[0]?.Video ?? ''} />
       <Typography variant="h6" className="titre">
         {t(`createProject.Presentation`)}

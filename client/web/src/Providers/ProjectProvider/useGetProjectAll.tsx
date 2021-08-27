@@ -21,7 +21,7 @@ export const useGetProjectAll = () => {
       }
       return;
     },
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'cache-first',
   });
   return { data, loading };
 };

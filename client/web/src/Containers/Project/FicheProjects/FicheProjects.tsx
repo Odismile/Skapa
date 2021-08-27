@@ -30,6 +30,9 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
               profilId={profilId}
               imgCardUrl={data?.projects?.[0]?.Picture ?? ''}
               name={data?.projects?.[0]?.Name ?? ''}
+              user={data?.projects?.[0]?.profile?.users_id}
+              type={data?.projects?.[0]?.Type ?? ''}
+              projectInfo={data?.projects?.[0]}
             />
           )}
         </Box>

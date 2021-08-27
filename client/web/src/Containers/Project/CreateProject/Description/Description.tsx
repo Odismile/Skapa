@@ -1,22 +1,17 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, {  useState } from 'react';
 
 import {
   Box,
-  Button,
-  Icon,
   IconButton,
   InputLabel,
   MenuItem,
   Select,
   TextareaAutosize,
-  TextField,
   Tooltip,
   Typography,
 } from '@material-ui/core';
-import { Overrides } from '@material-ui/core/styles/overrides';
-import EditIcon from '@material-ui/icons/Edit';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import MomentUtils from "@date-io/moment";
+import MomentUtils from '@date-io/moment';
 import moment from 'moment';
 
 import Skeleton from 'react-loading-skeleton';
@@ -45,28 +40,24 @@ import {
   testCreateObject,
   typeProjectVariable,
 } from '../../../../ReactiveVariable/Project/createProject';
-import { useUploadFile } from '../../../../Utils/uploadFile';
 //import Calendar from '../../../../Components/Calendar';
 // import Calendar, { CalendarProps } from 'react-calendar';
 // import { DateCallback } from 'react-calendar';
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import "moment/locale/en-in";
-
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import 'moment/locale/en-in';
 
 import useStyles from './styles';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
-moment.locale("en");
+moment.locale('en');
 // const localeMap = {
 //   en: "en",
 // };
-
 
 const Description = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const { uploadFile } = useUploadFile();
   const { data, loading } = useItemsGetSkills();
   const { data: dataProjectType } = useItemsProjectTypes();
 
@@ -74,11 +65,10 @@ const Description = () => {
   const [fileUpload, setFileUpload] = useState('');
   const [typeProject, setTypeProject] = useState('Change');
   const [city, setCity] = useState('');
-  const [dateStart, setdateStart] = useState<Date | null>();
-  const [dateEnd, setDateEnd] = useState<Date | null>();
-  
-  const [locale, setLocale] = useState("en");
+  const [dateStart, setdateStart] = useState<Date | null>(new Date());
+  const [dateEnd, setDateEnd] = useState<Date | null>(new Date());
 
+  const [locale] = useState('en');
 
   const [projectDescription, setProjectDescription] = useState('');
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
@@ -164,10 +154,7 @@ const Description = () => {
     Lorem ipsum
     `;
 
-
-
   return (
-    
     <Box className={classes.description}>
       {/* upload picture */}
       <Box className="upload_bloc" key={'1'}>
@@ -220,7 +207,7 @@ const Description = () => {
               <Box className="field_item typeProject_item selectBox_item">
                 <InputLabel shrink>Type project</InputLabel>
                 <Select
-                  defaultValue={dataProjectType?.items?.[0]?.label ?? "Change"}
+                  defaultValue={dataProjectType?.items?.[0]?.label ?? 'Change'}
                   fullWidth
                   className="selectBox"
                   onChange={onChangeProjectType}
@@ -262,52 +249,52 @@ const Description = () => {
               </Box>
               <Box className="grid_field">
                 <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={locale}>
-                <Box className="field_item field_date">
-                  <KeyboardDatePicker
-                    disableToolbar
-                    className="calendar-field"
-                    variant="inline"
-                    inputVariant="standard"
-                    format="DD/MM/yyyy"
-                    id="date-picker-start"
-                    label={t(`createProject.starts`)}
-                    value={dateStart}
-                    autoOk={true}
-                    onChange={onChangeDateStart}
-                    maxDate={dateEnd}
-                    KeyboardButtonProps={{
-                      'aria-label': 'change date',
-                      className: "calendarButtonIcon"
-                    }}
-                    keyboardIcon={<Calendar />}
-                    PopoverProps= {{
-                      className:"datePickerPop datePicker-start"
-                    }}
-                  />
-                </Box>
-                <Box className="field_item field_date">
-                  <KeyboardDatePicker
-                    disableToolbar
-                    className="calendar-field"
-                    variant="inline"
-                    inputVariant="standard"
-                    format="DD/MM/yyyy"
-                    id="date-picker-start"
-                    label={t(`createProject.end`)}
-                    value={dateEnd}
-                    minDate={dateStart}
-                    autoOk={true}
-                    onChange={onChangeDateEnd}
-                    KeyboardButtonProps={{
-                      'aria-label': 'change date',
-                      className: "calendarButtonIcon"
-                    }}
-                    keyboardIcon={<Calendar />}
-                    PopoverProps= {{
-                      className:"datePickerPop datePicker-start"
-                    }}
-                  />
-                </Box>
+                  <Box className="field_item field_date">
+                    <KeyboardDatePicker
+                      disableToolbar
+                      className="calendar-field"
+                      variant="inline"
+                      inputVariant="standard"
+                      format="DD/MM/yyyy"
+                      id="date-picker-start"
+                      label={t(`createProject.starts`)}
+                      value={dateStart}
+                      autoOk={true}
+                      onChange={onChangeDateStart}
+                      maxDate={dateEnd}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                        className: 'calendarButtonIcon',
+                      }}
+                      keyboardIcon={<Calendar />}
+                      PopoverProps={{
+                        className: 'datePickerPop datePicker-start',
+                      }}
+                    />
+                  </Box>
+                  <Box className="field_item field_date">
+                    <KeyboardDatePicker
+                      disableToolbar
+                      className="calendar-field"
+                      variant="inline"
+                      inputVariant="standard"
+                      format="DD/MM/yyyy"
+                      id="date-picker-start"
+                      label={t(`createProject.end`)}
+                      value={dateEnd}
+                      minDate={dateStart}
+                      autoOk={true}
+                      onChange={onChangeDateEnd}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                        className: 'calendarButtonIcon',
+                      }}
+                      keyboardIcon={<Calendar />}
+                      PopoverProps={{
+                        className: 'datePickerPop datePicker-start',
+                      }}
+                    />
+                  </Box>
                 </MuiPickersUtilsProvider>
               </Box>
             </Box>
@@ -426,7 +413,6 @@ const Description = () => {
         </form>
       </Box>
     </Box>
-    
   );
 };
 

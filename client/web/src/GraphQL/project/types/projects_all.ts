@@ -48,6 +48,18 @@ export interface projects_all_projects_profile {
   users_id: projects_all_projects_profile_users_id | null;
 }
 
+export interface projects_all_projects_contributes_profile_id {
+  __typename: "Profiles";
+  id: string;
+}
+
+export interface projects_all_projects_contributes {
+  __typename: "Contributes";
+  id: string;
+  value: number | null;
+  profile_id: projects_all_projects_contributes_profile_id | null;
+}
+
 export interface projects_all_projects {
   __typename: "Projects";
   id: string;
@@ -62,6 +74,7 @@ export interface projects_all_projects {
   project_skills: (projects_all_projects_project_skills | null)[] | null;
   project_favorits: (projects_all_projects_project_favorits | null)[] | null;
   profile: projects_all_projects_profile | null;
+  contributes: (projects_all_projects_contributes | null)[] | null;
 }
 
 export interface projects_all {

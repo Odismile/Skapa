@@ -58,7 +58,7 @@ export const createClient = (token: string) => {
     queryDeduplication: false,
     defaultOptions: {
       watchQuery: {
-        fetchPolicy: 'cache-and-network',
+        fetchPolicy: 'cache-first',
       },
     },
   });

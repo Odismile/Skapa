@@ -23,7 +23,7 @@ const ProjectContent = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const { data, loading } = useGetProjectAll();
-  const { isReader, profilId, profil } = useCurrentUser();
+  const { isReader, profilId, profil, averageContrubution } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState<string>('');
@@ -44,9 +44,6 @@ const ProjectContent = () => {
     setOpen((prev) => !prev);
   };
 
-  const handleClick = (event: any) => {
-    event.stopPropagation();
-  };
   const projects = useMemo(() => {
     let newProjects: (projects_all_projects | null)[] | null | undefined = data?.projects;
     if (projectCategory.length !== 0) {
@@ -95,12 +92,13 @@ const ProjectContent = () => {
       doCreateContribution({
         variables: {
           input: {
-            data: { profile_id: project?.profile?.id ?? '', project_id: project?.id ?? '', value: priceToContribute },
+            data: { profile_id: profilId ?? '', project_id: project?.id ?? '', value: priceToContribute },
           },
         },
       }).then((result) => {
         if (result.data?.createContribute?.contribute?.id) {
-          //setPriceToContribute(null);
+          setPriceToContribute(0);
+          handleDrawer();
         }
       });
     } else {
@@ -115,6 +113,7 @@ const ProjectContent = () => {
       {!loading &&
         projects?.length !== 0 &&
         projects?.map((project, index) => {
+          const isAlreadyContributor = project?.contributes?.some((c) => profilId && c?.profile_id?.id === profilId);
           return (
             <Box className={classes.content} key={index}>
               <CardReview
@@ -124,9 +123,10 @@ const ProjectContent = () => {
                 imgCardUrl={project?.Picture ?? ''}
                 user={project?.profile?.users_id}
                 type={project?.Type ?? ''}
+                projectInfo={project}
               />
               <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
-                <Button onClick={handleDrawer} disabled={isReader}>
+                <Button onClick={handleDrawer} disabled={isReader || isAlreadyContributor}>
                   Contribute
                 </Button>
               </Box>
@@ -203,12 +203,11 @@ const ProjectContent = () => {
               <List className="list_relativeuser">
                 <ListItem disableGutters={true}>
                   <figure className="user_avatar">
-                    <img src={photoUser} alt="user_photo" />
+                    <img src={profil?.picture || photoUser} alt="user_photo" />
                   </figure>
                   <Box className="user_infos">
                     <Typography>
-                      Your average contribution is :{' '}
-                      <span className="price">{priceToContribute ? priceToContribute : 0} $</span>
+                      Your average contribution is : <span className="price">{averageContrubution} $</span>
                     </Typography>
                   </Box>
                 </ListItem>

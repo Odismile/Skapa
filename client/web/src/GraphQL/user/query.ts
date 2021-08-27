@@ -13,6 +13,10 @@ export const ME_INFO = gql`
         email
         isFirstConnection
       }
+      contributes {
+        id
+        value
+      }
       talent_favorits {
         id
         talent_id
