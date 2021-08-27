@@ -35,6 +35,7 @@ module.exports = {
       projects: [ID!]
       profile_skills: [ID!]
       user_id: String
+      wallet: Float
     }
   `,
   query: `
