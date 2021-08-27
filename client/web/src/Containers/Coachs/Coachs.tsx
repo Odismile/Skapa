@@ -13,7 +13,7 @@ import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 import { useReactiveVar } from '@apollo/client';
 import { filterTalentVar, juniorValues, seniorValues } from '../../ReactiveVariable/Coach/coach';
 import MeetingModal from './MeetingModal';
-import { useGetCoach } from '../../Providers/TalentProvider/useGetCoach';
+import { useGetProfiles } from '../../Providers/TalentProvider/useGetProfiles';
 import { coachs_profiles } from '../../GraphQL/profiles/types/coachs';
 
 const Coachs = () => {
@@ -22,7 +22,7 @@ const Coachs = () => {
   const [openCalendar, setOpenCalendar] = useState(false);
 
   const filterTalent = useReactiveVar(filterTalentVar);
-  const { data, loading } = useGetCoach();
+  const { data, loading } = useGetProfiles('Coach');
   const [coach, setCoach] = useState<coachs_profiles['users_id']>(null);
 
   const listCoachs = useMemo(() => {
