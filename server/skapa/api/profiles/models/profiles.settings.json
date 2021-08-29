@@ -73,6 +73,14 @@
     },
     "currentBalance": {
       "type": "float"
+    },
+    "appointments": {
+      "via": "coach",
+      "collection": "appointments"
+    },
+    "appointmentTalents": {
+      "via": "talent",
+      "collection": "appointments"
     }
   }
 }
