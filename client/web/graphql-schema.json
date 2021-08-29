@@ -1016,8 +1016,26 @@
         "possibleTypes": null
       },
       {
+        "kind": "ENUM",
+        "name": "ENUM_AMOUNTS_TYPE",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "CONTRIBUTION_MAX",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "OBJECT",
-        "name": "Books",
+        "name": "Amounts",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1070,84 +1088,24 @@
             "deprecationReason": null
           },
           {
-            "name": "coach_id",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Profiles",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "talend_id",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Profiles",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "date_start",
+            "name": "value",
             "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "DateTime",
+              "name": "Float",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "date_end",
+            "name": "type",
             "description": null,
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "start_time",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Time",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "end_time",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Time",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "status",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Status",
+              "kind": "ENUM",
+              "name": "ENUM_AMOUNTS_TYPE",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1173,7 +1131,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BooksConnection",
+        "name": "AmountsConnection",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1186,7 +1144,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Books",
+                "name": "Amounts",
                 "ofType": null
               }
             },
@@ -1199,7 +1157,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksGroupBy",
+              "name": "AmountsGroupBy",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1211,7 +1169,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksAggregator",
+              "name": "AmountsAggregator",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1225,7 +1183,994 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BooksAggregator",
+        "name": "AmountsAggregator",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "count",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "totalCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "sum",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsAggregatorSum",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "avg",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsAggregatorAvg",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "min",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsAggregatorMin",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "max",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsAggregatorMax",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Int",
+        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsAggregatorSum",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "value",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsAggregatorAvg",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "value",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsAggregatorMin",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "value",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsAggregatorMax",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "value",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsGroupBy",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AmountsConnectionId",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "created_at",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AmountsConnectionCreated_at",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updated_at",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AmountsConnectionUpdated_at",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "value",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AmountsConnectionValue",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AmountsConnectionType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "published_at",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AmountsConnectionPublished_at",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsConnectionId",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "connection",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsConnectionCreated_at",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "connection",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsConnectionUpdated_at",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "connection",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsConnectionValue",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "connection",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsConnectionType",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "connection",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AmountsConnectionPublished_at",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "connection",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AmountsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "AmountInput",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "value",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "ENUM_AMOUNTS_TYPE",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "published_at",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "created_by",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updated_by",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "editAmountInput",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "value",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "type",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "ENUM_AMOUNTS_TYPE",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "published_at",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "created_by",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updated_by",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "createAmountInput",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "data",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "AmountInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "createAmountPayload",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Amounts",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "updateAmountInput",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "InputID",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "data",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "editAmountInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "updateAmountPayload",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Amounts",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "deleteAmountInput",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "where",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "InputID",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "deleteAmountPayload",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "amount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Amounts",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Appointments",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "created_at",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updated_at",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "coach",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Profiles",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "start",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "time",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "talent",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Profiles",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "published_at",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "DateTime",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AppointmentsConnection",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "values",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Appointments",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "groupBy",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AppointmentsGroupBy",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "aggregate",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AppointmentsAggregator",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AppointmentsAggregator",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1260,19 +2205,8 @@
         "possibleTypes": null
       },
       {
-        "kind": "SCALAR",
-        "name": "Int",
-        "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
-        "specifiedByUrl": null,
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "OBJECT",
-        "name": "BooksGroupBy",
+        "name": "AppointmentsGroupBy",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1285,7 +2219,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "BooksConnectionId",
+                "name": "AppointmentsConnectionId",
                 "ofType": null
               }
             },
@@ -1301,7 +2235,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "BooksConnectionCreated_at",
+                "name": "AppointmentsConnectionCreated_at",
                 "ofType": null
               }
             },
@@ -1317,7 +2251,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "BooksConnectionUpdated_at",
+                "name": "AppointmentsConnectionUpdated_at",
                 "ofType": null
               }
             },
@@ -1325,7 +2259,7 @@
             "deprecationReason": null
           },
           {
-            "name": "coach_id",
+            "name": "coach",
             "description": null,
             "args": [],
             "type": {
@@ -1333,7 +2267,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "BooksConnectionCoach_id",
+                "name": "AppointmentsConnectionCoach",
                 "ofType": null
               }
             },
@@ -1341,7 +2275,7 @@
             "deprecationReason": null
           },
           {
-            "name": "talend_id",
+            "name": "start",
             "description": null,
             "args": [],
             "type": {
@@ -1349,7 +2283,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "BooksConnectionTalend_id",
+                "name": "AppointmentsConnectionStart",
                 "ofType": null
               }
             },
@@ -1357,7 +2291,7 @@
             "deprecationReason": null
           },
           {
-            "name": "date_start",
+            "name": "time",
             "description": null,
             "args": [],
             "type": {
@@ -1365,7 +2299,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "BooksConnectionDate_start",
+                "name": "AppointmentsConnectionTime",
                 "ofType": null
               }
             },
@@ -1373,7 +2307,7 @@
             "deprecationReason": null
           },
           {
-            "name": "date_end",
+            "name": "talent",
             "description": null,
             "args": [],
             "type": {
@@ -1381,55 +2315,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "BooksConnectionDate_end",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "start_time",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "BooksConnectionStart_time",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "end_time",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "BooksConnectionEnd_time",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "status",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "BooksConnectionStatus",
+                "name": "AppointmentsConnectionTalent",
                 "ofType": null
               }
             },
@@ -1445,7 +2331,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "BooksConnectionPublished_at",
+                "name": "AppointmentsConnectionPublished_at",
                 "ofType": null
               }
             },
@@ -1460,7 +2346,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BooksConnectionId",
+        "name": "AppointmentsConnectionId",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1482,7 +2368,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksConnection",
+              "name": "AppointmentsConnection",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1496,7 +2382,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BooksConnectionCreated_at",
+        "name": "AppointmentsConnectionCreated_at",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1518,7 +2404,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksConnection",
+              "name": "AppointmentsConnection",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1532,7 +2418,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BooksConnectionUpdated_at",
+        "name": "AppointmentsConnectionUpdated_at",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1554,7 +2440,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksConnection",
+              "name": "AppointmentsConnection",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1568,7 +2454,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BooksConnectionCoach_id",
+        "name": "AppointmentsConnectionCoach",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1590,7 +2476,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksConnection",
+              "name": "AppointmentsConnection",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1604,43 +2490,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BooksConnectionTalend_id",
-        "description": null,
-        "specifiedByUrl": null,
-        "fields": [
-          {
-            "name": "key",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "connection",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BooksConnection",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "BooksConnectionDate_start",
+        "name": "AppointmentsConnectionStart",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1662,7 +2512,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksConnection",
+              "name": "AppointmentsConnection",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1676,7 +2526,79 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BooksConnectionDate_end",
+        "name": "AppointmentsConnectionTime",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "connection",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AppointmentsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AppointmentsConnectionTalent",
+        "description": null,
+        "specifiedByUrl": null,
+        "fields": [
+          {
+            "name": "key",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "ID",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "connection",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AppointmentsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "AppointmentsConnectionPublished_at",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
@@ -1698,151 +2620,7 @@
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksConnection",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "BooksConnectionStart_time",
-        "description": null,
-        "specifiedByUrl": null,
-        "fields": [
-          {
-            "name": "key",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "connection",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BooksConnection",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "BooksConnectionEnd_time",
-        "description": null,
-        "specifiedByUrl": null,
-        "fields": [
-          {
-            "name": "key",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "connection",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BooksConnection",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "BooksConnectionStatus",
-        "description": null,
-        "specifiedByUrl": null,
-        "fields": [
-          {
-            "name": "key",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "connection",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BooksConnection",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "BooksConnectionPublished_at",
-        "description": null,
-        "specifiedByUrl": null,
-        "fields": [
-          {
-            "name": "key",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "DateTime",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "connection",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BooksConnection",
+              "name": "AppointmentsConnection",
               "ofType": null
             },
             "isDeprecated": false,
@@ -1856,13 +2634,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "BookInput",
+        "name": "AppointmentInput",
         "description": null,
         "specifiedByUrl": null,
         "fields": null,
         "inputFields": [
           {
-            "name": "coach_id",
+            "name": "coach",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1874,19 +2652,7 @@
             "deprecationReason": null
           },
           {
-            "name": "talend_id",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "date_start",
+            "name": "start",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1898,11 +2664,11 @@
             "deprecationReason": null
           },
           {
-            "name": "date_end",
+            "name": "time",
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "DateTime",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null,
@@ -1910,31 +2676,7 @@
             "deprecationReason": null
           },
           {
-            "name": "start_time",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Time",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "end_time",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Time",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "status",
+            "name": "talent",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1988,13 +2730,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "editBookInput",
+        "name": "editAppointmentInput",
         "description": null,
         "specifiedByUrl": null,
         "fields": null,
         "inputFields": [
           {
-            "name": "coach_id",
+            "name": "coach",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2006,19 +2748,7 @@
             "deprecationReason": null
           },
           {
-            "name": "talend_id",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "ID",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "date_start",
+            "name": "start",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2030,11 +2760,11 @@
             "deprecationReason": null
           },
           {
-            "name": "date_end",
+            "name": "time",
             "description": null,
             "type": {
               "kind": "SCALAR",
-              "name": "DateTime",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null,
@@ -2042,31 +2772,7 @@
             "deprecationReason": null
           },
           {
-            "name": "start_time",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Time",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "end_time",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Time",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "status",
+            "name": "talent",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2120,7 +2826,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "createBookInput",
+        "name": "createAppointmentInput",
         "description": null,
         "specifiedByUrl": null,
         "fields": null,
@@ -2130,7 +2836,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "BookInput",
+              "name": "AppointmentInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -2144,17 +2850,17 @@
       },
       {
         "kind": "OBJECT",
-        "name": "createBookPayload",
+        "name": "createAppointmentPayload",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
           {
-            "name": "book",
+            "name": "appointment",
             "description": null,
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Books",
+              "name": "Appointments",
               "ofType": null
             },
             "isDeprecated": false,
@@ -2168,7 +2874,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "updateBookInput",
+        "name": "updateAppointmentInput",
         "description": null,
         "specifiedByUrl": null,
         "fields": null,
@@ -2190,7 +2896,7 @@
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "editBookInput",
+              "name": "editAppointmentInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -2204,17 +2910,17 @@
       },
       {
         "kind": "OBJECT",
-        "name": "updateBookPayload",
+        "name": "updateAppointmentPayload",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
           {
-            "name": "book",
+            "name": "appointment",
             "description": null,
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Books",
+              "name": "Appointments",
               "ofType": null
             },
             "isDeprecated": false,
@@ -2228,7 +2934,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "deleteBookInput",
+        "name": "deleteAppointmentInput",
         "description": null,
         "specifiedByUrl": null,
         "fields": null,
@@ -2252,17 +2958,17 @@
       },
       {
         "kind": "OBJECT",
-        "name": "deleteBookPayload",
+        "name": "deleteAppointmentPayload",
         "description": null,
         "specifiedByUrl": null,
         "fields": [
           {
-            "name": "book",
+            "name": "appointment",
             "description": null,
             "args": [],
             "type": {
               "kind": "OBJECT",
-              "name": "Books",
+              "name": "Appointments",
               "ofType": null
             },
             "isDeprecated": false,
@@ -8044,71 +8750,6 @@
             "deprecationReason": null
           },
           {
-            "name": "books",
-            "description": null,
-            "args": [
-              {
-                "name": "sort",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "limit",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "start",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "where",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "JSON",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Books",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "profile_project_types",
             "description": null,
             "args": [
@@ -8167,6 +8808,136 @@
               "ofType": {
                 "kind": "OBJECT",
                 "name": "ProfileProjectTypes",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointments",
+            "description": null,
+            "args": [
+              {
+                "name": "sort",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "limit",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "start",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Appointments",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointmentTalents",
+            "description": null,
+            "args": [
+              {
+                "name": "sort",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "limit",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "start",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Appointments",
                 "ofType": null
               }
             },
@@ -9335,22 +10106,6 @@
             "deprecationReason": null
           },
           {
-            "name": "books",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "profile_project_types",
             "description": null,
             "type": {
@@ -9385,6 +10140,38 @@
               "kind": "SCALAR",
               "name": "Float",
               "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointments",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointmentTalents",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
             },
             "defaultValue": null,
             "isDeprecated": false,
@@ -9619,22 +10406,6 @@
             "deprecationReason": null
           },
           {
-            "name": "books",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "profile_project_types",
             "description": null,
             "type": {
@@ -9669,6 +10440,38 @@
               "kind": "SCALAR",
               "name": "Float",
               "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointments",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointmentTalents",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
             },
             "defaultValue": null,
             "isDeprecated": false,
@@ -13897,71 +14700,6 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
-          },
-          {
-            "name": "books",
-            "description": null,
-            "args": [
-              {
-                "name": "sort",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "limit",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "start",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "where",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "JSON",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              }
-            ],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Books",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -14365,22 +15103,6 @@
             "deprecationReason": null
           },
           {
-            "name": "books",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "published_at",
             "description": null,
             "type": {
@@ -14442,22 +15164,6 @@
           },
           {
             "name": "projects",
-            "description": null,
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ID",
-                "ofType": null
-              }
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "books",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -20989,92 +21695,162 @@
           },
           {
             "kind": "OBJECT",
-            "name": "Books",
+            "name": "Amounts",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnection",
+            "name": "AmountsConnection",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksAggregator",
+            "name": "AmountsAggregator",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksGroupBy",
+            "name": "AmountsAggregatorSum",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionId",
+            "name": "AmountsAggregatorAvg",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionCreated_at",
+            "name": "AmountsAggregatorMin",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionUpdated_at",
+            "name": "AmountsAggregatorMax",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionCoach_id",
+            "name": "AmountsGroupBy",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionTalend_id",
+            "name": "AmountsConnectionId",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionDate_start",
+            "name": "AmountsConnectionCreated_at",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionDate_end",
+            "name": "AmountsConnectionUpdated_at",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionStart_time",
+            "name": "AmountsConnectionValue",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionEnd_time",
+            "name": "AmountsConnectionType",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionStatus",
+            "name": "AmountsConnectionPublished_at",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "BooksConnectionPublished_at",
+            "name": "createAmountPayload",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "createBookPayload",
+            "name": "updateAmountPayload",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "updateBookPayload",
+            "name": "deleteAmountPayload",
             "ofType": null
           },
           {
             "kind": "OBJECT",
-            "name": "deleteBookPayload",
+            "name": "Appointments",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnection",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsAggregator",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsGroupBy",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnectionId",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnectionCreated_at",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnectionUpdated_at",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnectionCoach",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnectionStart",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnectionTime",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnectionTalent",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "AppointmentsConnectionPublished_at",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "createAppointmentPayload",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "updateAppointmentPayload",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "deleteAppointmentPayload",
             "ofType": null
           },
           {
@@ -22425,7 +23201,7 @@
         "specifiedByUrl": null,
         "fields": [
           {
-            "name": "book",
+            "name": "amount",
             "description": null,
             "args": [
               {
@@ -22459,14 +23235,14 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "Books",
+              "name": "Amounts",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "books",
+            "name": "amounts",
             "description": null,
             "args": [
               {
@@ -22535,7 +23311,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Books",
+                "name": "Amounts",
                 "ofType": null
               }
             },
@@ -22543,7 +23319,7 @@
             "deprecationReason": null
           },
           {
-            "name": "booksConnection",
+            "name": "amountsConnection",
             "description": null,
             "args": [
               {
@@ -22597,7 +23373,186 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "BooksConnection",
+              "name": "AmountsConnection",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointment",
+            "description": null,
+            "args": [
+              {
+                "name": "id",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "publicationState",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "PublicationState",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Appointments",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointments",
+            "description": null,
+            "args": [
+              {
+                "name": "sort",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "limit",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "start",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "publicationState",
+                "description": null,
+                "type": {
+                  "kind": "ENUM",
+                  "name": "PublicationState",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Appointments",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "appointmentsConnection",
+            "description": null,
+            "args": [
+              {
+                "name": "sort",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "limit",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "start",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
+                "name": "where",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "AppointmentsConnection",
               "ofType": null
             },
             "isDeprecated": false,
@@ -25297,7 +26252,7 @@
         "specifiedByUrl": null,
         "fields": [
           {
-            "name": "createBook",
+            "name": "createAmount",
             "description": null,
             "args": [
               {
@@ -25305,7 +26260,7 @@
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "createBookInput",
+                  "name": "createAmountInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -25315,14 +26270,14 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "createBookPayload",
+              "name": "createAmountPayload",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "updateBook",
+            "name": "updateAmount",
             "description": null,
             "args": [
               {
@@ -25330,7 +26285,7 @@
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "updateBookInput",
+                  "name": "updateAmountInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -25340,14 +26295,14 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "updateBookPayload",
+              "name": "updateAmountPayload",
               "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "deleteBook",
+            "name": "deleteAmount",
             "description": null,
             "args": [
               {
@@ -25355,7 +26310,7 @@
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "deleteBookInput",
+                  "name": "deleteAmountInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -25365,7 +26320,82 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "deleteBookPayload",
+              "name": "deleteAmountPayload",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createAppointment",
+            "description": null,
+            "args": [
+              {
+                "name": "input",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "createAppointmentInput",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "createAppointmentPayload",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateAppointment",
+            "description": null,
+            "args": [
+              {
+                "name": "input",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "updateAppointmentInput",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "updateAppointmentPayload",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "deleteAppointment",
+            "description": null,
+            "args": [
+              {
+                "name": "input",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "deleteAppointmentInput",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "deleteAppointmentPayload",
               "ofType": null
             },
             "isDeprecated": false,
