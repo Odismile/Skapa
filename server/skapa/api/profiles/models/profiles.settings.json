@@ -60,10 +60,6 @@
       "collection": "contributes",
       "via": "profile_id"
     },
-    "books": {
-      "collection": "books",
-      "via": "talend_id"
-    },
     "profile_project_types": {
       "collection": "profile-project-types",
       "via": "profile"

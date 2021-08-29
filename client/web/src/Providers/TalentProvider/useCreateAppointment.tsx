@@ -1,15 +1,15 @@
 import { useApolloClient, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import { CREATE_BOOK } from '../../GraphQL/profiles/mutation';
-import { CreateBook, CreateBookVariables } from '../../GraphQL/profiles/types/CreateBook';
+import { CREATE_APPOINTMENT } from '../../GraphQL/appointments/mutation';
+import { createAppointment, createAppointmentVariables } from '../../GraphQL/appointments/types/createAppointment';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 
-export const useCreateBook = () => {
+export const useCreateAppointment = () => {
   const { t } = useTranslation();
-
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
-  const result = useMutation<CreateBook, CreateBookVariables>(CREATE_BOOK, {
+
+  const result = useMutation<createAppointment, createAppointmentVariables>(CREATE_APPOINTMENT, {
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
 
