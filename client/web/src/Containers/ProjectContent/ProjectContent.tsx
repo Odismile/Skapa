@@ -13,10 +13,10 @@ import TextFieldComponent from '../../Components/TextField/TextField';
 import { projects_all_projects } from '../../GraphQL/project/types/projects_all';
 import { useCreateContribution } from '../../Providers/ContributionProvider/Hooks/useCreateContribution';
 import { useGetProjectAll } from '../../Providers/ProjectProvider/useGetProjectAll';
+import { useProjectContributionMax } from '../../Providers/ProjectProvider/useProjectContributionMax ';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { projectSkills, projectSortedBy } from '../../ReactiveVariable/Project/projectSkills';
 import { WISHLIST } from '../../Routes';
-import { maxContribution } from '../../Utils/constants';
 import useStyles from './styles';
 
 const ProjectContent = () => {
@@ -26,6 +26,7 @@ const ProjectContent = () => {
   const { pathname } = useLocation();
   const { data, loading } = useGetProjectAll();
   const { isReader, profilId, profil, averageContrubution } = useCurrentUser();
+  const { amountMax } = useProjectContributionMax();
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState<string>('');
@@ -40,10 +41,10 @@ const ProjectContent = () => {
 
   const restContribution = useMemo(() => {
     return Math.max(
-      maxContribution - (project?.contributes || []).reduce((acc, item) => acc + (item?.value || 0), 0),
+      (amountMax || 0) - (project?.contributes || []).reduce((acc, item) => acc + (item?.value || 0), 0),
       0,
     );
-  }, [project]);
+  }, [project, amountMax]);
   const projects = useMemo(() => {
     let newProjects: (projects_all_projects | null)[] | null | undefined = data?.projects;
     if (projectCategory.length !== 0) {
@@ -85,11 +86,11 @@ const ProjectContent = () => {
       setPriceToContribute(+event.target.value);
     }
   };
-  const handleCloseDrawer = ()=> {
+  const handleCloseDrawer = () => {
     setProject(null);
     setPriceToContribute(0);
     handleDrawer();
-  }
+  };
   const handleDrawer = () => {
     setOpen((prev) => !prev);
   };
