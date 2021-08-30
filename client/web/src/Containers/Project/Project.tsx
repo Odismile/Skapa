@@ -1,11 +1,13 @@
 import { Box, makeStyles, Tab, Tabs, Typography } from '@material-ui/core';
-import React from 'react';
+import { useEffect, useState } from 'react';
 import PrimaryHeader from '../../Components/Header';
 import Places from '../Places/Places';
 import ProjectContent from '../ProjectContent/ProjectContent';
 import Talents from '../Talents/Talents';
 import useStyles from './styles';
 import classNames from 'classnames';
+import { useHistory } from 'react-router-dom';
+import { TALENT } from '../../Routes';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -52,7 +54,13 @@ function TabPanel(props: TabPanelProps) {
 
 const Project = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const {
+    location: { pathname },
+  } = useHistory();
+  const [value, setValue] = useState(pathname === TALENT ? 1 : 0);
+  useEffect(() => {
+    setValue(pathname === TALENT ? 1 : 0);
+  }, [pathname]);
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
   };

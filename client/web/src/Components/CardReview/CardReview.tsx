@@ -29,7 +29,7 @@ import { useProjectContributionMax } from '../../Providers/ProjectProvider/usePr
 
 const PrettoSlider = withStyles({
   root: {
-    color: '#9067ff',
+    color: '#9067ff!important',
     height: 5,
     padding: 0,
   },
@@ -146,7 +146,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
           valueLabelDisplay="auto"
           aria-label="pretto slider"
           defaultValue={totalContribution}
-          contentEditable={false}
+          disabled={true}
           max={amountMax}
         />
         <Box className="info">
