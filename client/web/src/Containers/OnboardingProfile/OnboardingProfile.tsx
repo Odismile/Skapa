@@ -84,13 +84,13 @@ const OnboardingProfile = () => {
               })}
           </RadioGroup>
         </FormControl>
-        <TextFieldComponent
+        {/* <TextFieldComponent
           label={t(`onBordingProfile.nameOfOrganisation`)}
           id="organisation"
           placeholder="GRT Gaz"
           type="text"
           onChange={onChangeNameOfOrganisation}
-        />
+        /> */}
         <FormControl component="fieldset" className={classes.languages}>
           <FormLabel component="legend">{t(`onBordingProfile.laguageslevel`)}</FormLabel>
           {loading ? (

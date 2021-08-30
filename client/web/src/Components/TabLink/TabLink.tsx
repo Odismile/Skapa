@@ -45,8 +45,11 @@ const TabLink = () => {
   const { t } = useTranslation();
 
   const getSteps = () => {
-    return ['Description', 'Team', 'Places', 'Review'];
+    return ['Description', 'Review'];
   };
+  // const getSteps = () => {
+  //   return ['Description', 'Team', 'Places', 'Review'];
+  // };
 
   const steps = getSteps();
 
@@ -54,11 +57,11 @@ const TabLink = () => {
     switch (step) {
       case 0:
         return <Description />;
+      // case 1:
+      //   return <Team />;
+      // case 2:
+      //   return <Places />;
       case 1:
-        return <Team />;
-      case 2:
-        return <Places />;
-      case 3:
         return <Review />;
       default:
         return <Description />;
