@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "appointments",
+  "info": {
+    "name": "Appointments",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "coach": {
+      "model": "profiles",
+      "via": "appointments"
+    },
+    "start": {
+      "type": "datetime"
+    },
+    "time": {
+      "type": "string"
+    },
+    "talent": {
+      "model": "profiles",
+      "via": "appointmentTalents"
+    }
+  }
+}

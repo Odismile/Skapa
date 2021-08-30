@@ -25,11 +25,11 @@ import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
 import Trending from '../Icons/Trending';
 import useStyles from './style';
-import { maxContribution } from '../../Utils/constants';
+import { useProjectContributionMax } from '../../Providers/ProjectProvider/useProjectContributionMax ';
 
 const PrettoSlider = withStyles({
   root: {
-    color: '#9067ff',
+    color: '#9067ff!important',
     height: 5,
     padding: 0,
   },
@@ -74,6 +74,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
   const classes = useStyles();
   const history = useHistory();
   const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
+  const { amountMax } = useProjectContributionMax();
 
   const [check, setCheck] = useState(
     profil?.project_favorits?.some((favoris) => projectId && favoris?.project?.id === projectId),
@@ -145,8 +146,8 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
           valueLabelDisplay="auto"
           aria-label="pretto slider"
           defaultValue={totalContribution}
-          contentEditable={false}
-          max={maxContribution}
+          disabled={true}
+          max={amountMax}
         />
         <Box className="info">
           <Box>

@@ -1,15 +1,15 @@
-import { useApolloClient, useMutation } from '@apollo/client';
+import { useApolloClient, useQuery } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
-import { CREATE_BOOK } from '../../GraphQL/profiles/mutation';
-import { CreateBook, CreateBookVariables } from '../../GraphQL/profiles/types/CreateBook';
+import { PROJECT_AMOUNT_MAX } from '../../GraphQL/project/query';
+import { ProjectAmountMax, ProjectAmountMaxVariables } from '../../GraphQL/project/types/ProjectAmountMax';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 
-export const useCreateBook = () => {
+export const useProjectContributionMax = () => {
   const { t } = useTranslation();
 
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
-  const result = useMutation<CreateBook, CreateBookVariables>(CREATE_BOOK, {
+  const result = useQuery<ProjectAmountMax, ProjectAmountMaxVariables>(PROJECT_AMOUNT_MAX, {
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
 
@@ -20,6 +20,14 @@ export const useCreateBook = () => {
       }
       return;
     },
+    variables: {
+      where: {
+        type: 'CONTRIBUTION_MAX',
+      },
+    },
   });
-  return result;
+  return {
+    ...result,
+    amountMax: result?.data?.amounts?.length ? result?.data?.amounts[0]?.value || 0 : 0,
+  };
 };

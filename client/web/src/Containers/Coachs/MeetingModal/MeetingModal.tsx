@@ -21,9 +21,9 @@ import Booking from '../../../Assets/images/booking.svg';
 import Calendar from '../../../Components/Calendar';
 import { DateCallback } from 'react-calendar';
 import { format } from 'date-fns';
-import { useCreateBook } from '../../../Providers/TalentProvider/useCreateBook';
 import { TimeType } from '../../../types/types';
 import { useCurrentUser } from '../../../Providers/UserProvider/hooks/useCurrentUser';
+import { useCreateAppointment } from '../../../Providers/TalentProvider/useCreateAppointment';
 
 interface MeetingModalProps {
   coachId: string;
@@ -38,7 +38,7 @@ const MeetingModal = (props: MeetingModalProps) => {
   const { user, profilId } = useCurrentUser();
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [step, setStep] = useState(0);
-  const [createBookMutation] = useCreateBook();
+  const [createAppointmentMutation] = useCreateAppointment();
   const [time, setTime] = useState<TimeType>({
     h: '00',
     mn: '00',
@@ -65,21 +65,18 @@ const MeetingModal = (props: MeetingModalProps) => {
   };
   const handleCreateBook = () => {
     if (!date || !time) return;
-    createBookMutation({
+    createAppointmentMutation({
       variables: {
         input: {
           data: {
-            created_by: profilId,
-            coach_id: coachId,
-            date_start: date,
-            date_end: date,
-            end_time: `${time?.h || '00'}:${time?.mn || '00'}:${time?.s || '00'}:${time?.ms || '00'}`,
-            start_time: `${time?.h || '00'}:${time?.mn || '00'}:${time?.s || '00'}:${time?.ms || '00'}`,
-            //  talend_id:
+            coach: coachId,
+            talent: profilId,
+            start: date,
+            time: `${time?.h || '00'}:${time?.mn || '00'}:${time?.s || '00'}:${time?.ms || '00'}`,
           },
         },
       },
-    }).then((res) => res.data?.createBook && setStep(1));
+    }).then((res) => res.data?.createAppointment && setStep(1));
   };
   const content = (
     <Fade in={open}>
