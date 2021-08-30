@@ -74,7 +74,8 @@ export default makeStyles((theme) => ({
         color: '#5BD3A0',
         textTransform: 'uppercase',
         fontSize: 10,
-        display: 'flex',
+        //display: 'flex',
+        display: 'none',
         marginBottom: 0,
         '& svg': {
           width: 14,
