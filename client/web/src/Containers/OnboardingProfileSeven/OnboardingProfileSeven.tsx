@@ -8,6 +8,8 @@ import image_organisation from '../../Assets/images/organisation.png';
 import { useHistory } from 'react-router-dom';
 import { HOMEPAGE, LOGIN, ONBOARDING } from '../../Routes';
 import { login } from '../../ReactiveVariable/User/user';
+import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
+import { getUserFullName } from '../../Utils/utils';
 
 // progressbar style
 const BorderLinearProgress = withStyles((theme) => ({
@@ -29,6 +31,7 @@ const BorderLinearProgress = withStyles((theme) => ({
 const OnboardingProfileSeven = () => {
   const classes = useStyles();
   const [progress, setProgress] = React.useState(0);
+  const { profil } = useCurrentUser();
   const history = useHistory();
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -57,10 +60,10 @@ const OnboardingProfileSeven = () => {
               <img src={image_organisation} alt="user-organisation" />
             </figure>
             <figure className="user-profile">
-              <img src={image_profile} alt="profile" />
+              <img src={profil?.picture || ''} alt="profile" />
             </figure>
-            <Box className="user-name">Nathan Dupont</Box>
-            <Box className="user-organisation">UX Designer</Box>
+            <Box className="user-name">{getUserFullName(profil?.users_id as any)}</Box>
+            <Box className="user-organisation">{profil?.position || ''}</Box>
           </Box>
           <Box className="welcome-loader">
             <p>Customizing your homepage</p>

@@ -4,6 +4,7 @@ export const ME_INFO = gql`
   query MeInfo($userId: Int) {
     getProfile(userId: $userId) {
       id
+      position
       picture
       wallet
       currentBalance
