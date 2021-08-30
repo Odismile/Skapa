@@ -26,3 +26,12 @@ export const PROJECTS_ALL_MEDIA = gql`
   }
   ${PROJECT_INFO_MEDIA_FRAGMENT}
 `;
+
+export const PROJECT_AMOUNT_MAX = gql`
+  query ProjectAmountMax($where: JSON) {
+    amounts(where: $where) {
+      id
+      value
+    }
+  }
+`;
