@@ -6,7 +6,7 @@ import useStyles from './style';
 // image
 import mainLogoWhite from '../../Assets/images/logo-white.svg';
 import photoUser from '../../Assets/images/photo-card.png';
-import organisationImg from '../../Assets/images/organisation.png';
+import Givaudan from '../../Assets/images/givaudan_logo-2.png';
 
 // icons
 import Burger from '../../Components/Icons/Burger/Burger';
@@ -106,7 +106,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
                 <Link href="" className="user_link" title="user_infos">
                   <img src={photo || photoUser} alt="user_photo" />
                   <Box component="span" className="labeled-img">
-                    <img src={organisationImg} className="iconOrganisation" alt="organisation" />
+                    <img src={Givaudan} className="iconOrganisation" alt="Givaudan Logo" />
                   </Box>
                 </Link>
               </figure>

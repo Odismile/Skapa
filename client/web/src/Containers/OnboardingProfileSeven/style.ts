@@ -38,7 +38,8 @@ export default makeStyles(  theme => ({
         margin: "0 auto",
         borderRadius: "50%",
         overflow: "hidden",
-        display: "flex",
+        //display: "flex",
+        display: 'none',
         alignItems: "center",
         justifyContent: "center",
         "& img": {
