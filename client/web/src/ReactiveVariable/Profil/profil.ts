@@ -8,7 +8,7 @@ export interface Language extends Items_get_language_items {
 
 // Create Reactive variable
 export const yourPosition = makeVar<string | null>(null);
-export const nameOfOrganisation = makeVar<string | null>(null);
+export const nameOfOrganisation = makeVar<string | null>("GRT");
 export const ageProfil = makeVar<string | null>(null);
 export const levelLanguages = makeVar<Language[] | null>(null);
 

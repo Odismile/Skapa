@@ -174,6 +174,7 @@ export default makeStyles (
         },
         "& .labeled-img": {
           borderRadius: 30,
+          display: 'none',
           left: -8, top: -8,
           height: 30,
           position: "absolute",

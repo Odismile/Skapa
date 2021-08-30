@@ -44,6 +44,7 @@ export interface MeInfo_getProfile_project_favorits {
 export interface MeInfo_getProfile {
   __typename: "Profiles";
   id: string;
+  position: string | null;
   picture: string | null;
   wallet: number | null;
   currentBalance: number | null;

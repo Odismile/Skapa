@@ -4,6 +4,7 @@ import moment from 'moment';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useHistory } from 'react-router-dom';
+import { compareAsc } from 'date-fns';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
 import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
@@ -44,8 +45,11 @@ const TabLink = () => {
   const { t } = useTranslation();
 
   const getSteps = () => {
-    return ['Description', 'Team', 'Places', 'Review'];
+    return ['Description', 'Review'];
   };
+  // const getSteps = () => {
+  //   return ['Description', 'Team', 'Places', 'Review'];
+  // };
 
   const steps = getSteps();
 
@@ -53,11 +57,11 @@ const TabLink = () => {
     switch (step) {
       case 0:
         return <Description />;
+      // case 1:
+      //   return <Team />;
+      // case 2:
+      //   return <Places />;
       case 1:
-        return <Team />;
-      case 2:
-        return <Places />;
-      case 3:
         return <Review />;
       default:
         return <Description />;
@@ -81,6 +85,7 @@ const TabLink = () => {
   };
 
   const handleNext = () => {
+    const now = new Date();
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
@@ -113,7 +118,7 @@ const TabLink = () => {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.end`);
         displaySnackbar(client, snackbar);
-      } else if (moment(dateStartVariable()).format('DD-MM-YYYY') > moment(dateEndVariable()).format('DD-MM-YYYY')) {
+      } else if (compareAsc(dateEndVariable() || now, dateStartVariable() || now) < 0) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.invalidDate`);
         displaySnackbar(client, snackbar);
