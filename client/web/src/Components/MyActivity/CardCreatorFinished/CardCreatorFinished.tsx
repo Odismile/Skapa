@@ -6,7 +6,7 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 
 const PrettoSlider = withStyles({
   root: {
-    color: '#9067ff',
+    color: '#9067ff!important',
     height: 5,
     padding: 0,
     marginTop: 10,
@@ -61,7 +61,7 @@ const CardCreatorFinished = () => {
           </AvatarGroup>
         </Box>
       </Box>
-      <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={100} />
+      <PrettoSlider valueLabelDisplay="auto" disabled={true} aria-label="pretto slider" defaultValue={100} />
       <Box className="info">
         <Box>
           <Typography component="p" className="active bold">
@@ -81,7 +81,7 @@ const CardCreatorFinished = () => {
           <Typography component="p">days left</Typography>
         </Box>
       </Box>
-      <Box className='foot'>
+      <Box className="foot">
         <Button>Relaunch</Button>
       </Box>
     </Card>
