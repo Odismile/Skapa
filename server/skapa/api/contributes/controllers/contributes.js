@@ -7,13 +7,16 @@
 
 module.exports = {
   async create(ctx) {
+    console.log("ato");
     let entity = await strapi.services.contributes.create(ctx.request.body);
     const profile = await strapi
       .query("profiles")
       .findOne({ users_id: ctx.state.user.id });
 
     profile.currentBalance = profile.currentBalance - entity.value;
-    await strapi.services.profiles.update(profile.id, profile);
+    await strapi
+      .query("profiles")
+      .update({ id: profile.id }, { currentBalance: profile.currentBalance });
     return entity;
   },
 };
