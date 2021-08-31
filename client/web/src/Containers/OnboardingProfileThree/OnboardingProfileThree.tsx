@@ -2,18 +2,36 @@ import { Box, Button, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import Search from '../../Components/Icons/Search/Search';
+import {
+  ageProfil,
+  projectsTypeSelectedVariable,
+  yourPosition,
+  bio,
+  skillsSelectedVariable,
+  pictureFile,
+  videoFile,
+  levelLanguages,
+} from '../../ReactiveVariable/Profil/profil';
+import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
-import { skillsSelectedVariable } from '../../ReactiveVariable/Profil/profil';
-import { ONBOARDING_PROFILE4 } from '../../Routes';
+import { ONBOARDING_PROFILE4, ONBOARDING_PROFILE7 } from '../../Routes';
 import useStyles from './style';
+import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
+import { useUploadFile } from '../../Utils/uploadFile';
 
 const OnboardingProfileThree = () => {
   const classes = useStyles();
   const { data, loading } = useItemsGetSkills();
   const history = useHistory();
+
+  const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
+  const { uploadFile, loading: loadingUpload } = useUploadFile();
+
+  const [loadingUploadFile, setLoadingUploadFile] = useState(false);
+
   const [searchSkills, setSearchSkills] = useState<(Items_get_language_items | null)[] | null | undefined>();
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
   const [disabledButton, setDisabledButton] = useState(true);
@@ -44,7 +62,40 @@ const OnboardingProfileThree = () => {
   };
 
   const handleClick = () => {
-    history.push(ONBOARDING_PROFILE4);
+    // history.push(ONBOARDING_PROFILE4);
+
+    //TEST
+    setLoadingUploadFile(true);
+    doCreateProfile({
+      variables: {
+        input: {
+          position: yourPosition(),
+          bio: bio(),
+          job_seniority: ageProfil(),
+          picture: pictureFile()
+            ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${pictureFile()?.[0].name}`
+            : '',
+          video: videoFile()
+            ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${videoFile()?.[0].name}`
+            : '',
+          languages: (levelLanguages() || [])?.map((e) => ({
+            id: e.id,
+            level: e.level as any,
+          })),
+          profile_skills: transformSkillsIds(skillsSelectedVariable()),
+          user_id: localStorage.getItem('idMe'),
+          projects: transformSkillsIds(projectsTypeSelectedVariable()),
+        },
+      },
+    }).then(async (result) => {
+      //if (result.data?.profileCustomizeMeInput?.profile?.id) {
+      await uploadFile(pictureFile());
+      await uploadFile(videoFile());
+      !loadingProfile && history.replace(ONBOARDING_PROFILE7);
+      setLoadingUploadFile(false);
+      //  }
+    });
+
   };
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
@@ -115,7 +166,8 @@ const OnboardingProfileThree = () => {
         </Box>
         <Box component="footer" className={classes.footerPage}>
           <Typography className="link-footer">
-            <Link to={ONBOARDING_PROFILE4}>Skip this step</Link>
+            <Link to={ONBOARDING_PROFILE7}>Skip this step</Link>
+            {/* <Link to={ONBOARDING_PROFILE4}>Skip this step</Link> */}
           </Typography>
         </Box>
       </WrapOnBoarding>
