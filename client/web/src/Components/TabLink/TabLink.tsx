@@ -252,10 +252,10 @@ const TabLink = () => {
               className={classes.button}
               disabled={loadingUpload || loading || loadingUpdate}
             >
-              {activeStep !== 3 ? t(`createProject.next`) : t(`createProject.ValidateAndPostProject`)}
+              {activeStep !== 1 ? t(`createProject.next`) : t(`createProject.ValidateAndPostProject`)}
             </Button>
             <Link to="/project/create-project" className="link" onClick={handleNextLink}>
-              {activeStep !== 3 ? t(`createProject.skipThisStep`) : t(`createProject.SavAsDraft`)}
+              {activeStep !== 1 ? t(`createProject.skipThisStep`) : t(`createProject.SavAsDraft`)}
             </Link>
           </Box>
         </Box>
