@@ -45,6 +45,7 @@ export default makeStyles((theme) => ({
           }
         },
         '& .iconOrganisation':{
+          display: 'none',
           position: 'absolute',
           top: -5,
           left: -8,
