@@ -21,6 +21,7 @@ import { ONBOARDING_PROFILE4, ONBOARDING_PROFILE7 } from '../../Routes';
 import useStyles from './style';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { useUploadFile } from '../../Utils/uploadFile';
+import Loader from '../../Components/Loader/Loader';
 
 const OnboardingProfileThree = () => {
   const classes = useStyles();
@@ -119,6 +120,7 @@ const OnboardingProfileThree = () => {
 
   return (
     <>
+      {loadingUploadFile && <Loader />}
       <WrapOnBoarding>
         <Box className={classes.search}>
           <TextFieldComponent

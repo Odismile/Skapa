@@ -35,9 +35,9 @@ const OnboardingProfile = () => {
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
 
   const disabledButton = useMemo(() => {
-    if (position?.length && organisation?.length && age?.length && languages?.length === 3) return false;
+    if (position?.length && age?.length ) return false;
     return true;
-  }, [position, organisation, age, languages]);
+  }, [position, age]);
   const handleChangeAge = (event: React.ChangeEvent<HTMLInputElement>) => {
     ageProfil((event.target as HTMLInputElement).value);
     setRadioButtonValue((event.target as HTMLInputElement).value);
