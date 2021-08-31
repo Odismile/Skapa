@@ -106,15 +106,18 @@ const TabLink = () => {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.typeProject`);
         displaySnackbar(client, snackbar);
-      } else if (cityVariable().trim().length === 0) {
-        snackbar.type = 'ERROR';
-        snackbar.message = t(`createProjectError.city`);
-        displaySnackbar(client, snackbar);
-      } else if (dateStartVariable() === null) {
+      } 
+      // else if (cityVariable().trim().length === 0) {
+      //   snackbar.type = 'ERROR';
+      //   snackbar.message = t(`createProjectError.city`);
+      //   displaySnackbar(client, snackbar);
+      // }
+       else if (dateStartVariable() === null) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.start`);
         displaySnackbar(client, snackbar);
-      } else if (dateEndVariable() === null) {
+      }
+       else if (dateEndVariable() === null) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.end`);
         displaySnackbar(client, snackbar);
@@ -122,15 +125,18 @@ const TabLink = () => {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.invalidDate`);
         displaySnackbar(client, snackbar);
-      } else if (projectDescriptionVariable().trim().length === 0) {
-        snackbar.type = 'ERROR';
-        snackbar.message = t(`createProjectError.description`);
-        displaySnackbar(client, snackbar);
-      } else if (skillsSelectedVariable() === null) {
-        snackbar.type = 'ERROR';
-        snackbar.message = t(`createProjectError.skills`);
-        displaySnackbar(client, snackbar);
-      } else if (filesVideoVariable() === null) {
+      }
+      //  else if (projectDescriptionVariable().trim().length === 0) {
+      //   snackbar.type = 'ERROR';
+      //   snackbar.message = t(`createProjectError.description`);
+      //   displaySnackbar(client, snackbar);
+      // } 
+      // else if (skillsSelectedVariable() === null) {
+      //   snackbar.type = 'ERROR';
+      //   snackbar.message = t(`createProjectError.skills`);
+      //   displaySnackbar(client, snackbar);
+      // }
+       else if (filesVideoVariable() === null) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.video`);
         displaySnackbar(client, snackbar);
