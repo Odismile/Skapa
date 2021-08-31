@@ -68,7 +68,7 @@ export const ROUTES: RouteInterface[] = [
     route: APPEXTERNE,
     roles: [],
     private: true,
-    component: Coachs,
+    component: AppExterne,
   },
   {
     key: 'COACHS',
