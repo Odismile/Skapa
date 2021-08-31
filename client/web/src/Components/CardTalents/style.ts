@@ -59,6 +59,7 @@ export default makeStyles((theme) => ({
           overflow: "Hidden"
         },
         '& .iconOrganisation': {
+          display: 'none',
           position: 'absolute',
           top: -8,
           left: -8,
