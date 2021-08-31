@@ -4,10 +4,10 @@ import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_la
 // Create Reactive variable
 export const nameProjectVariable = makeVar<string>('');
 export const filesPictureVariable = makeVar<File[] | null>(null);
-export const typeProjectVariable = makeVar<string>('');
+export const typeProjectVariable = makeVar<string>('Change');
 export const cityVariable = makeVar<string>('');
-export const dateStartVariable = makeVar<Date | null>(null);
-export const dateEndVariable = makeVar<Date | null>(null);
+export const dateStartVariable = makeVar<Date | null>(new Date());
+export const dateEndVariable = makeVar<Date | null>(new Date());
 export const projectDescriptionVariable = makeVar<string>('');
 export const skillsSelectedVariable = makeVar<(Items_get_language_items | null)[] | null | undefined>(null);
 export const filesVideoVariable = makeVar<File[] | null>(null);
