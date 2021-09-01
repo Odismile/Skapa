@@ -97,7 +97,7 @@ const ContributeDrawer = (props: ContributeDrawerProps) => {
             <Card className="contribute_media" elevation={0}>
               <CardMedia className="contribute_picture" image={project?.Picture ?? ''} title="image" />
               <Box className="category" component="span">
-                LAB
+                {project?.Type}
               </Box>
             </Card>
             <Typography className="subtitle_text" variant="h3">

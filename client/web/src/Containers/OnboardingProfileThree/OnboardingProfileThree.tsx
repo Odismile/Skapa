@@ -162,7 +162,7 @@ const OnboardingProfileThree = () => {
           </Box>
         </Box>
         <Box className={classes.btnNext}>
-          <Button variant="contained" onClick={handleClick} disabled={disabledButton}>
+          <Button variant="contained" onClick={handleClick}>
             Next
           </Button>
         </Box>

@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useHistory } from 'react-router-dom';
 import { compareAsc } from 'date-fns';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
+import LoadingButton from '../LoadingButton/LoadingButton';
 import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
 import Team from '../../Containers/Project/CreateProject/Team/Team';
@@ -136,11 +137,12 @@ const TabLink = () => {
       //   snackbar.message = t(`createProjectError.skills`);
       //   displaySnackbar(client, snackbar);
       // }
-       else if (filesVideoVariable() === null) {
-        snackbar.type = 'ERROR';
-        snackbar.message = t(`createProjectError.video`);
-        displaySnackbar(client, snackbar);
-      } else {
+      //  else if (filesVideoVariable() === null) {
+      //   snackbar.type = 'ERROR';
+      //   snackbar.message = t(`createProjectError.video`);
+      //   displaySnackbar(client, snackbar);
+      // } 
+      else {
         if (nameProjectVariable().length) {
           doCreateProject({
             variables: {
@@ -176,7 +178,7 @@ const TabLink = () => {
           });
         }
       }
-    } else if (activeStep === 3) {
+    } else if (activeStep === 1) {
       doUpdateProject({
         variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '2' } } },
       }).then((result) => {
@@ -196,7 +198,7 @@ const TabLink = () => {
   };
 
   const handleNextLink = () => {
-    if (activeStep !== 3) {
+    if (activeStep !== 1) {
       const newActiveStep =
         isLastStep() && !allStepsCompleted()
           ? // It's the last step, but not all steps have been completed,
@@ -251,15 +253,16 @@ const TabLink = () => {
         <Box>
           <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
           <Box className={classes.Btn}>
-            <Button
+            <LoadingButton
               variant="contained"
               color="primary"
               onClick={handleNext}
               className={classes.button}
+              isLoading={loadingUpload || loading || loadingUpdate}
               disabled={loadingUpload || loading || loadingUpdate}
             >
               {activeStep !== 1 ? t(`createProject.next`) : t(`createProject.ValidateAndPostProject`)}
-            </Button>
+            </LoadingButton>
             <Link to="/project/create-project" className="link" onClick={handleNextLink}>
               {activeStep !== 1 ? t(`createProject.skipThisStep`) : t(`createProject.SavAsDraft`)}
             </Link>
