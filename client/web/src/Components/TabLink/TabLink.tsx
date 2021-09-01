@@ -176,7 +176,7 @@ const TabLink = () => {
           });
         }
       }
-    } else if (activeStep === 3) {
+    } else if (activeStep === 1) {
       doUpdateProject({
         variables: { input: { where: { id: dataProject?.createProject?.project?.id ?? '' }, data: { status: '2' } } },
       }).then((result) => {
@@ -196,7 +196,7 @@ const TabLink = () => {
   };
 
   const handleNextLink = () => {
-    if (activeStep !== 3) {
+    if (activeStep !== 1) {
       const newActiveStep =
         isLastStep() && !allStepsCompleted()
           ? // It's the last step, but not all steps have been completed,
