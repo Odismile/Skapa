@@ -137,11 +137,12 @@ const TabLink = () => {
       //   snackbar.message = t(`createProjectError.skills`);
       //   displaySnackbar(client, snackbar);
       // }
-       else if (filesVideoVariable() === null) {
-        snackbar.type = 'ERROR';
-        snackbar.message = t(`createProjectError.video`);
-        displaySnackbar(client, snackbar);
-      } else {
+      //  else if (filesVideoVariable() === null) {
+      //   snackbar.type = 'ERROR';
+      //   snackbar.message = t(`createProjectError.video`);
+      //   displaySnackbar(client, snackbar);
+      // } 
+      else {
         if (nameProjectVariable().length) {
           doCreateProject({
             variables: {
