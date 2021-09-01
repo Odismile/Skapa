@@ -27,15 +27,18 @@ const Review = () => {
       />
       <Pitch url={data?.projects?.[0]?.Video ?? ''} />
       <Typography variant="h6" className="titre">
-        {t(`createProject.Presentation`)}
+        {/* {t(`createProject.Presentation`)} */}
+        Presentation
       </Typography>
       <Presentation description={data?.projects?.[0]?.description ?? ''} />
       <Typography variant="h6" className="titre">
-        {t(`createProject.Tags`)}
+        {/* {t(`createProject.Tags`)} */}
+        Tags
       </Typography>
       <Tags project_skills={data?.projects?.[0]?.project_skills} />
       <Typography variant="h6" className="titre">
-        {t(`createProject.Place`)}
+        Place
+        {/* {t(`createProject.Place`)} */}
       </Typography>
       <Place data={data} />
     </Box>
