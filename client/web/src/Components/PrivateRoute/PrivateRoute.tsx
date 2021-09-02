@@ -1,5 +1,6 @@
 import React, { FC, useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 
 import { LOGIN } from '../../Routes';
 import { isAuthenticated } from '../../Services/LocalStorage';
@@ -16,7 +17,8 @@ interface PrivateRouteProps {
  * @returns
  */
 const PrivateRoute: FC<PrivateRouteProps> = ({ component: Component, ...props }) => {
-  if (!isAuthenticated()) {
+  const { profil , loading} = useCurrentUser()
+  if (!isAuthenticated() || (!loading && isAuthenticated() && !profil)) {
     <Redirect to={LOGIN} />;
   }
   return <Route {...props} render={(routeProps: any) => <Component {...routeProps} />} />;
