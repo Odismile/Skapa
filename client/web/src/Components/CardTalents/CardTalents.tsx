@@ -102,7 +102,8 @@ const CardTalents: FC<CardTalentsProps> = ({
                <Award /> TOP RATED
               </Typography> */}
             <Typography component="p" className="name-adress">
-              <span>{coachName}</span> - {coachAddress}
+              <span>{coachName}</span>
+              <span>{coachAddress ? ` - ${coachAddress}` : ``}</span>
             </Typography>
             <Typography component="p" className="name-adress">
               <span>Level : </span>
