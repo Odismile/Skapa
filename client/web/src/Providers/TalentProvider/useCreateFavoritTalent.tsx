@@ -36,7 +36,7 @@ export const useCreateFavoritTalent = () => {
       refetchQueries: [{
         query: ME_INFO,
         variables: {
-          userId: getUserId
+          userId: +getUserId
         }
       }]
     },

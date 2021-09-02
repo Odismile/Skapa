@@ -36,7 +36,7 @@ export const useDeleteProjectFavori = () => {
       refetchQueries: [{
         query: ME_INFO,
         variables: {
-          userId: getUserId
+          userId: +getUserId
         }
       }]
     },

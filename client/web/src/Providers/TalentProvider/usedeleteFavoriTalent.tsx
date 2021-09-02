@@ -36,7 +36,7 @@ export const useDeleteFavoriTalent = () => {
       refetchQueries: [{
         query: ME_INFO,
         variables: {
-          userId: getUserId
+          userId: +getUserId
         }
       }]
     },

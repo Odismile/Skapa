@@ -29,7 +29,7 @@ export const useUpdateFavoritProject = () => {
       refetchQueries: [{
         query: ME_INFO,
         variables: {
-          userId: getUserId
+          userId: +getUserId
         }
       }]
     },
