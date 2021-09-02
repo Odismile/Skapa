@@ -6,8 +6,8 @@
  */
 
 module.exports = {
-    async delete(ctx) {
-        const { id } = ctx.params;
+    async delete(params) {
+        const { id } = params;
         const entityToDelete =
           (await strapi.services.talent) - favorit.findOne({ id });
     
