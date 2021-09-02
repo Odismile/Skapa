@@ -2,7 +2,9 @@ import { useApolloClient, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import { UPDATE_PROJECT_FAVORI } from '../../GraphQL/project/mutation';
 import { updateProjectFavorit, updateProjectFavoritVariables } from '../../GraphQL/project/types/updateProjectFavorit';
+import { ME_INFO } from '../../GraphQL/user/query';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
+import { getUserId } from '../../Utils/utils';
 
 export const useUpdateFavoritProject = () => {
   const { t } = useTranslation();
@@ -24,6 +26,12 @@ export const useUpdateFavoritProject = () => {
         }
         return;
       },
+      refetchQueries: [{
+        query: ME_INFO,
+        variables: {
+          userId: +getUserId
+        }
+      }]
     },
   );
   return { doUpdateFavoritProject, data, loading };

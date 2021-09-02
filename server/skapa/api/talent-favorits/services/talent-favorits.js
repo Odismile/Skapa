@@ -6,12 +6,10 @@
  */
 
 module.exports = {
-    async delete(ctx) {
-        const { id } = ctx.params;
-        const entityToDelete =
-          (await strapi.services.talent) - favorit.findOne({ id });
-    
-        const entity = await strapi.services.restaurant.delete({ id });
+    async delete(params) {
+        const { id } = params;
+        console.log( strapi.services);
+        const entity = await strapi.services.talent-favorits.delete({ id });
         return sanitizeEntity(entity, { model: strapi.models.restaurant });
       },
 };

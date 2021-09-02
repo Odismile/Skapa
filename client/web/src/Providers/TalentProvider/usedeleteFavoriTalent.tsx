@@ -2,7 +2,9 @@ import { useApolloClient, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import { DELETE_FAVORIT_TALENT } from '../../GraphQL/Talent/mutation';
 import { deleteTalentFavorit, deleteTalentFavoritVariables } from '../../GraphQL/Talent/types/deleteTalentFavorit';
+import { ME_INFO } from '../../GraphQL/user/query';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
+import { getUserId } from '../../Utils/utils';
 
 export const useDeleteFavoriTalent = () => {
   const { t } = useTranslation();
@@ -25,12 +27,18 @@ export const useDeleteFavoriTalent = () => {
         return;
       },
       onCompleted: (data) => {
-        if (data.deleteTalentFavorit?.talentFavorit?.id) {
+        if (data.deleteTalentFavorits) {
           snackbar.type = 'SUCCESS';
           snackbar.message = t(`deleteFovorit.success`);
           displaySnackbar(client, snackbar);
         }
       },
+      refetchQueries: [{
+        query: ME_INFO,
+        variables: {
+          userId: +getUserId
+        }
+      }]
     },
   );
   return { doDeleteTalentFavorit, data, loading };

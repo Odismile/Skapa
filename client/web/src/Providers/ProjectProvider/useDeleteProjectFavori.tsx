@@ -2,7 +2,9 @@ import { useApolloClient, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import { DELETE_PROJECT_FAVORI } from '../../GraphQL/project/mutation';
 import { deleteProjectFavorit, deleteProjectFavoritVariables } from '../../GraphQL/project/types/deleteProjectFavorit';
+import { ME_INFO } from '../../GraphQL/user/query';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
+import { getUserId } from '../../Utils/utils';
 
 export const useDeleteProjectFavori = () => {
   const { t } = useTranslation();
@@ -31,6 +33,12 @@ export const useDeleteProjectFavori = () => {
           displaySnackbar(client, snackbar);
         }
       },
+      refetchQueries: [{
+        query: ME_INFO,
+        variables: {
+          userId: +getUserId
+        }
+      }]
     },
   );
   return { doDeleteProjectFavorit, data, loading };

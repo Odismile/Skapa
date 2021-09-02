@@ -2,7 +2,9 @@ import { useApolloClient, useMutation } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
 import { CRETATE_FAVORIT_TALENT } from '../../GraphQL/Talent/mutation';
 import { createTalentFavorit, createTalentFavoritVariables } from '../../GraphQL/Talent/types/createTalentFavorit';
+import { ME_INFO } from '../../GraphQL/user/query';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
+import { getUserId } from '../../Utils/utils';
 
 export const useCreateFavoritTalent = () => {
   const { t } = useTranslation();
@@ -31,6 +33,12 @@ export const useCreateFavoritTalent = () => {
           displaySnackbar(client, snackbar);
         }
       },
+      refetchQueries: [{
+        query: ME_INFO,
+        variables: {
+          userId: +getUserId
+        }
+      }]
     },
   );
   return { doCreateFavoriteTalent, data, loading };

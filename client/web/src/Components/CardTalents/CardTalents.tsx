@@ -2,9 +2,7 @@ import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typo
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
-import {
-  coachs_profiles_profile_skills,
-} from '../../GraphQL/profiles/types/coachs';
+import { coachs_profiles_profile_skills } from '../../GraphQL/profiles/types/coachs';
 import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreateFavoritTalent';
 import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
@@ -44,7 +42,9 @@ const CardTalents: FC<CardTalentsProps> = ({
   const [open, setOpen] = React.useState(false);
 
   const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
-  const [check, setCheck] = React.useState(profil?.talent_favorits?.some((profile) => profile?.talent_id && talentId && +profile.talent_id === +talentId));
+  const [check, setCheck] = React.useState(
+    profil?.talent_favorits?.some((profile) => profile?.talent_id && talentId && +profile.talent_id === +talentId),
+  );
 
   const { doCreateFavoriteTalent } = useCreateFavoritTalent();
   const { doDeleteTalentFavorit } = useDeleteFavoriTalent();
@@ -71,7 +71,13 @@ const CardTalents: FC<CardTalentsProps> = ({
         variables: { input: { data: { talent_id: talentId ?? '', profile: profilIdLocal } } },
       });
     } else {
-      doDeleteTalentFavorit({ variables: { input: { where: { id: profilIdLocal ?? '' } } } });
+      if (profilIdLocal && talentId)
+        doDeleteTalentFavorit({
+          variables: {
+            profileId: +profilIdLocal,
+            talentId: +talentId,
+          },
+        });
     }
   };
 
@@ -80,7 +86,7 @@ const CardTalents: FC<CardTalentsProps> = ({
       <CardContent className="content">
         <Box className="head">
           <figure className="userPhoto">
-            <img src={coachPhoto} alt="photo_user"/>
+            <img src={coachPhoto} alt="photo_user" />
             <img src={organisationImg} className="iconOrganisation" alt="organisation" />
           </figure>
           <Box>
@@ -96,7 +102,8 @@ const CardTalents: FC<CardTalentsProps> = ({
                <Award /> TOP RATED
               </Typography> */}
             <Typography component="p" className="name-adress">
-              <span>{coachName}</span> - {coachAddress}
+              <span>{coachName}</span>
+              <span>{coachAddress ? ` - ${coachAddress}` : ``}</span>
             </Typography>
             <Typography component="p" className="name-adress">
               <span>Level : </span>
@@ -107,8 +114,6 @@ const CardTalents: FC<CardTalentsProps> = ({
           <IconButton className="btn btn-favori" onClick={handleClick}>
             {!check ? <HeartLine className="iconHeartOutlined" /> : <Heart className="iconHeart" />}
           </IconButton>
-
-          
         </Box>
         <Box className="foot">
           <Box className="tags">

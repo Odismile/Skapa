@@ -12,6 +12,7 @@ import { useGetProfiles } from '../../Providers/TalentProvider/useGetProfiles';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { filterTalentVar } from '../../ReactiveVariable/Coach/coach';
 import { WISHLIST } from '../../Routes';
+import { getUserFullName } from '../../Utils/utils';
 import useStyles from './styles';
 
 const Talents = () => {
@@ -103,7 +104,7 @@ const Talents = () => {
                 coachPhoto={profil?.picture || coachPhoto}
                 iconJob={DesignThinkerPicto}
                 jobTitle={profil?.position || ''}
-                coachName={profil?.users_id?.lastname || ''}
+                coachName={getUserFullName(profil?.users_id as any)}
                 coachAddress={''}
                 skills={profil?.profile_skills}
                 coachLevel={profil?.job_seniority_id?.label || ''}
