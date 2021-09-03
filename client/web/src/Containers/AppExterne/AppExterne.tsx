@@ -5,9 +5,6 @@ import PrimaryHeader from '../../Components/Header/Header';
 import useStyles from './styles';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
 
-import UserActivityList from '../../Components/MyActivity/UserActivityList/UserActivityList';
-import UserContributorList from '../../Components/MyActivity/UserContributorList/UserContributorList';
-import UserCreatorList from '../../Components/MyActivity/UserCreatorList/UserCreatorList';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -117,11 +114,19 @@ const AppExterne = () => {
             {...a11yProps(2)}
           />
         </Tabs>
+
         <TabPanel value={value} index={0}>
           <Typography>Tab 01</Typography>
+          {/* component requests */}
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Typography>Tab 02</Typography>
+          {/* component Ongoing */}
+        </TabPanel>
+
+        <TabPanel value={value} index={1}>
+          <Typography>Tab 03</Typography>
+          {/* component Previous */}
         </TabPanel>
       </Box>
     </Box>
