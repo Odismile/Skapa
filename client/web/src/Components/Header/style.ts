@@ -116,6 +116,34 @@ export default makeStyles (
           }
         },
       },
+      "& .user_profil": {
+        position: 'relative',
+        "& img": {
+          borderRadius: "inherit",
+          display: "block",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center top",
+          width: "100%",
+        },
+        "& .user_avatar": {
+          borderRadius: 60,
+          height: 60,
+          margin: 0,
+          width: 60,
+        },
+        "& .iconOrganisation": {
+          background: "#fff",
+          borderRadius: 30,
+          height: 30,
+          position: "absolute",
+          right: -16, 
+          top: -4,
+          width: 30,
+          zIndex: 1,
+        },
+      },
+      
     },
     header_content: {
       "& .titlePage": {
@@ -140,6 +168,12 @@ export default makeStyles (
           fontSize: ".875rem",
           marginRight: 10,
         },
+      },
+      "& .userName_connected": {
+        color: "#fff",  
+        fontSize: "1rem",
+        margin: 0,
+        textAlign: "center",
       },
     },
     user_infos_content: {
@@ -316,7 +350,6 @@ export default makeStyles (
         background: "green",
       },
     },
-    
   }),
   { name: "Header" }
 );

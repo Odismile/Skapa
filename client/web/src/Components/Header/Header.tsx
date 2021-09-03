@@ -7,6 +7,8 @@ import useStyles from './style';
 import mainLogoWhite from '../../Assets/images/logo-white.svg';
 import photoUser from '../../Assets/images/photo-card.png';
 import Givaudan from '../../Assets/images/givaudan_logo-2.png';
+import UserAvatar from '../../Assets/images/user_avatar.jpg';
+import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 
 // icons
 import Burger from '../../Components/Icons/Burger/Burger';
@@ -23,6 +25,11 @@ import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { FC } from 'react';
 import { LocationInterface } from '../../types/types';
+
+import UserTalentList from '../MyActivity/UserTalentList/UserTalentList';
+
+
+
 
 interface HeaderProps {
   noBack?: boolean;
@@ -73,6 +80,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
         <figure className="logo" onClick={handleClickRoute(PROJECT)}>
           <img src={mainLogoWhite} alt="logo" />
         </figure>
+
         {/* list of notification */}
 
         <Box className="notif_list">
@@ -84,14 +92,24 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
             <HeartLine />
           </IconButton>
         </Box>
+        <Box className="user_profil">
+          <figure className="user_avatar">
+            <img src={UserAvatar} alt="user_pic" />
+          </figure>
+            <img src={DesignThinkerPicto} className="iconOrganisation" alt="organisation" />
+        </Box>
       </Box>
 
       {/* content header */}
       <Box className={classes.header_content}>
         {/* show bloc for create-project page */}
         {/* titre projet */}
-        <Typography style={{ display: 'block' }} className="titlePage">
+        <Typography style={{ display: 'none' }} className="titlePage">
           {isInWishList ? 'Wishlist' : !isShowProfilInfo ? 'Create your own project' : ''}
+        </Typography>
+
+        <Typography style={{ display: 'block' }} className="userName_connected">
+          <span>Hello, Julie_Skapa</span>
         </Typography>
 
         {/* show bloc for project and talents page */}
@@ -140,6 +158,10 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
           </Link>
         </Typography>
       )}
+
+      {/* list card show when app-externe page  */}
+      <UserTalentList />
+
       <Drawer
         className={classes.drawerMenu}
         anchor="left"
