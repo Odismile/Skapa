@@ -44,8 +44,7 @@ export const useUploadFile = () => {
           setLoading(false);
         }
       }
-    } catch (error) {
-      
+    } catch (error) {     
       snackbar.type = 'ERROR';
       snackbar.message = (error as any )?.message || '';
       displaySnackbar(client, snackbar);
