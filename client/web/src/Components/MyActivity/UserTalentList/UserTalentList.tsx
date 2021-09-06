@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Box, Typography } from '@material-ui/core';
 import useStyles from './style';
 
 import Times from '../../Icons/Times/Times';
 import Idea from '../../Icons/Idea/Idea';
 
+
+
+
 const UserTalentList = () => {
   const classes = useStyles();
+
   return (
     <Box className={classes.rootCardList}>
       <Box className="card">

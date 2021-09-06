@@ -3,7 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   rootCardList: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    margin: '0 auto',
+    maxWidth: 335,
+    paddingTop: 20,
     '& .card': {
       //background: '#634ecb',
       background: 'rgba(99, 78, 203, 0.32)',
@@ -15,6 +18,7 @@ const useStyles = makeStyles(() => ({
       justifyContent: 'space-between',
       height: 114,
       overflow: 'hidden',
+      margin: '0 5px',
       padding: '12px 6px',
       position: 'relative',
       textAlign: 'center',
@@ -60,6 +64,8 @@ const useStyles = makeStyles(() => ({
       },
     },
   },
-}));
+}),
+{ name: 'userTalentList' }
+);
 
 export default useStyles;
