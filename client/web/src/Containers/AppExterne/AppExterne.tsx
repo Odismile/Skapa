@@ -1,9 +1,12 @@
 import React, { FC } from 'react';
 import { Box, makeStyles, Tab, Tabs, Typography } from '@material-ui/core';
-import PrimaryHeader from '../../Components/Header/Header';
-
+import classNames from 'classnames';
 import useStyles from './styles';
+
+import PrimaryHeader from '../../Components/Header/Header';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
+import Team from '../../Components/Team/Team';
+import RequestItem from './RequestItem';
 
 
 interface TabPanelProps {
@@ -21,7 +24,7 @@ function a11yProps(index: any) {
 function TabPanel(props: TabPanelProps) {
   const styleS = makeStyles({
     content: {
-      '& >div': {
+      '& > div': {
         padding: '16px 0',
       },
     },
@@ -116,15 +119,17 @@ const AppExterne = () => {
         </Tabs>
 
         <TabPanel value={value} index={0}>
-          <Typography>Tab 01</Typography>
-          {/* component requests */}
+          {/* component requests list*/}
+          <Box className={classNames(classes.requestList, 'list_item')}>
+            <RequestItem />
+          </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Typography>Tab 02</Typography>
           {/* component Ongoing */}
         </TabPanel>
 
-        <TabPanel value={value} index={1}>
+        <TabPanel value={value} index={2}>
           <Typography>Tab 03</Typography>
           {/* component Previous */}
         </TabPanel>
