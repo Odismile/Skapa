@@ -104,7 +104,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
       <Box className={classes.header_content}>
         {/* show bloc for create-project page */}
         {/* titre projet */}
-        <Typography style={{ display: 'none' }} className="titlePage">
+        <Typography style={{ display: 'none' }} className="titlePage" >
           {isInWishList ? 'Wishlist' : !isShowProfilInfo ? 'Create your own project' : ''}
         </Typography>
 
@@ -115,7 +115,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
         {/* show bloc for project and talents page */}
         {/* info User */}
         {isShowProfilInfo && (
-          <Box className={classes.user_infos_content}>
+          <Box className={classes.user_infos_content} style={{ display: 'none' }}>
             <Card className={classes.user_infos} elevation={0}>
               <figure className="user_avatar">
                 <Link href="" className="user_link" title="user_infos">
@@ -144,7 +144,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
         {/* Btn go to creat project */}
         {isShowProfilInfo && !isReader && (
-          <Button className="btn_createProject" color="primary" variant="outlined" type="button" href={CREATE_PROJECT}>
+          <Button className="btn_createProject" color="primary" variant="outlined" type="button" href={CREATE_PROJECT} style={{ display: 'none' }}>
             <Plus /> Create new project
           </Button>
         )}
