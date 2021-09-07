@@ -35,9 +35,6 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   const history = useHistory();
   const isInWishList = [WISHLIST].includes(history.location.pathname);
 
-  if (!isAuthenticated()) {
-    history.push(LOGIN);
-  }
   const [open, setOpen] = React.useState(false);
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -48,9 +45,6 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
     window.location.reload();
   };
 
-  const goToWishlist = () => {
-    history.push(WISHLIST);
-  };
   const params = useLocation();
   const activeWishList = params.pathname === WISHLIST ? 'btn btn_link active' : 'btn btn_link';
   const isShowProfilInfo = isConnected && [PROJECT].includes(history.location.pathname);
@@ -59,8 +53,11 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
   const handleClickRoute = (path: string) => () => {
     history.push(path);
-    handleDrawer();
+    if (open) handleDrawer();
   };
+  if (!isAuthenticated()) {
+    history.push(LOGIN);
+  }
   return (
     <Box className={classes.header_block}>
       <Box className={classes.header_top}>
@@ -73,17 +70,17 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
         {/* logo mobile */}
 
-        <figure className="logo">
+        <figure className="logo" onClick={handleClickRoute(PROJECT)}>
           <img src={mainLogoWhite} alt="logo" />
         </figure>
         {/* list of notification */}
 
         <Box className="notif_list">
-          <IconButton className="btn btn_award" aria-label="Award">
+          <IconButton className="btn btn_award" aria-label="Award" onClick={handleClickRoute(COACHS)}>
             <Award />
           </IconButton>
           {/* Add class active when route is /whislist */}
-          <IconButton className={activeWishList} aria-label="Like" onClick={goToWishlist}>
+          <IconButton className={activeWishList} aria-label="Like" onClick={handleClickRoute(WISHLIST)}>
             <HeartLine />
           </IconButton>
         </Box>
