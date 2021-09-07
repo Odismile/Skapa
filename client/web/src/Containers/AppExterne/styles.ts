@@ -47,10 +47,13 @@ export default makeStyles(
       //   borderRight: '1px solid #8870FF',
       // }
     },
-
     requestList: {
-      backgroundColor: "cyan",
       display: 'block',
+      padding: '0 20px',
+    },
+    onGoingList: {
+      display: 'block',
+      padding: '0 20px',
     },
   }),
   { name: 'AppExterne' },

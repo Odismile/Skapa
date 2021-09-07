@@ -7,6 +7,7 @@ import PrimaryHeader from '../../Components/Header/Header';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
 import Team from '../../Components/Team/Team';
 import RequestItem from './RequestItem';
+import OngoingItem from './OngoingItem';
 
 
 interface TabPanelProps {
@@ -122,11 +123,18 @@ const AppExterne = () => {
           {/* component requests list*/}
           <Box className={classNames(classes.requestList, 'list_item')}>
             <RequestItem />
+            <RequestItem />
+            <RequestItem />
           </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Typography>Tab 02</Typography>
           {/* component Ongoing */}
+          <Box className={classNames(classes.onGoingList, 'onGoingList_item')}>
+            {/* Ongoing item */}
+            <OngoingItem />
+            <OngoingItem />
+            <OngoingItem />
+          </Box>
         </TabPanel>
 
         <TabPanel value={value} index={2}>
