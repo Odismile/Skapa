@@ -13,7 +13,7 @@ const UserContributorList = () => {
       </Box>
       <Box className="card">
           <Typography className='head'>You invested an amount of</Typography>
-          <Typography className='number'>34K$</Typography>
+          <Typography className='number'>34KTT</Typography>
           <Typography className='foot'>in projects</Typography>
       </Box>
       <Box className="card">

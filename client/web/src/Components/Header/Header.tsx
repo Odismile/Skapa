@@ -113,7 +113,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
                 </Typography>
                 <Typography className="user_balance" component="span">
                   {profil?.currentBalance || 0}
-                  <span className="unity">$</span>
+                  <span className="unity">TT</span>
                 </Typography>
               </Box>
               <Typography className="flexFX" component="span"></Typography>

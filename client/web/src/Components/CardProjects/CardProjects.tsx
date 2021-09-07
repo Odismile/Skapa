@@ -37,7 +37,7 @@ const CardProject = () => {
         </Box>
       </Card>
       <Typography component="p" className={classes.foot}>
-        You will have to contribute <span>12 000 $</span>to contribute with Emma
+        You will have to contribute <span>12 000 TT</span>to contribute with Emma
       </Typography>
     </Box>
   );
