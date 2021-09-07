@@ -113,13 +113,13 @@ const ContributeDrawer = (props: ContributeDrawerProps) => {
                 id="amountValue"
                 type="number"
                 value={priceToContribute}
-                placeholder={'0000 $'}
+                placeholder={'0000 TT'}
                 InputProps={{ inputProps: { min: 0, max: restContribution } }}
                 onChange={(e) => onChangeValuePrice(e)}
               />
             </Box>
             <Typography className="text_status">
-              You have <span className="amount_value">{profil?.currentBalance ?? 0} $</span>in your wallet
+              You have <span className="amount_value">{profil?.currentBalance ?? 0} TT</span>in your wallet
             </Typography>
 
             <List className="list_relativeuser">
@@ -129,7 +129,7 @@ const ContributeDrawer = (props: ContributeDrawerProps) => {
                 </figure>
                 <Box className="user_infos">
                   <Typography>
-                    Your average contribution is : <span className="price">{averageContrubution} $</span>
+                    Your average contribution is : <span className="price">{averageContrubution.toFixed(2)} TT</span>
                   </Typography>
                 </Box>
               </ListItem>

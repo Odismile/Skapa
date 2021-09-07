@@ -21,7 +21,7 @@ const ProjectContent = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const { data, loading } = useGetProjectAll();
-  const { isReader, profilId, profil } = useCurrentUser();
+  const { isReader, profil } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState<string>('');
@@ -88,7 +88,6 @@ const ProjectContent = () => {
       {!loading &&
         projects?.length !== 0 &&
         projects?.map((project, index) => {
-          const isAlreadyContributor = project?.contributes?.some((c) => profilId && c?.profile_id?.id === profilId);
           return (
             <Box className={classes.content} key={index}>
               <CardReview
@@ -101,7 +100,7 @@ const ProjectContent = () => {
                 projectInfo={project}
               />
               <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
-                <Button onClick={handleDrawer} disabled={isReader || isAlreadyContributor}>
+                <Button onClick={handleDrawer} disabled={isReader}>
                   Contribute
                 </Button>
               </Box>

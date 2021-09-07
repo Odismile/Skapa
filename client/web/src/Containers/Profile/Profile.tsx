@@ -210,7 +210,7 @@ const Profile = () => {
                 Daily Rate
               </Typography>
               <Typography className="money">880£</Typography>
-              <Typography className="text">The average rate for yout type of profile is 750 $</Typography>
+              <Typography className="text">The average rate for yout type of profile is 750 TT</Typography>
               <Slider
                 orientation="horizontal"
                 value={800}
