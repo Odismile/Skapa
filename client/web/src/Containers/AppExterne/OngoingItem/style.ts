@@ -53,22 +53,8 @@ export default makeStyles(
         "& svg": {
           fontSize: '.875rem',
           marginRight: 5,
-          verticalAlign: -2,
+          verticalAlign: '-3px',
         },
-      },
-      "& .infos_content ": {
-        marginBottom: 4,
-        "& p": {
-          margin: 0,
-          fontSize: 10,
-        },
-        "& label": {
-          fontWeight: 600,
-          margin: 0,
-        },
-      },
-      "& .body_item": {
-        
       },
       "& .infos_content": {
         display: 'flex',
@@ -76,10 +62,18 @@ export default makeStyles(
         justifyContent: 'space-between',
         marginBottom: 10,
         width: '100%',
+        "& p": {
+          fontSize: 10,
+          marginBottom: 0,
+        },
+        "& label": {
+          fontWeight: 600,
+          margin: 0,
+        },
       },
       "& .skills_recquired": {
         display: 'flex',
-        marginBottom: 5,
+        marginBottom: 15,
         "& label": {
           fontSize: 10,
           fontWeight: 700,
@@ -126,6 +120,14 @@ export default makeStyles(
           },
         },
       },
+      "& .slider_daysLeft": {
+        "& .text_dayLeft": {
+          color: "#8870ff",
+          fontSize: 10,
+          fontWeight: 700,
+          margin: "8px 0 0",
+        },
+      }
     },
     cardContentroot: {
       padding: 10, 

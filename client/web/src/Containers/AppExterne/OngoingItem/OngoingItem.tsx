@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import { Avatar, Card, CardActionArea, CardActions, CardContent, CardMedia, Box, Button, IconButton, Typography } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Box, Typography, Slider } from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import classNames from 'classnames';
+import { withStyles } from "@material-ui/core/styles";
+
 import useStyles from './style';
 
 import Calendar from '../../../Components/Icons/Calendar';
@@ -11,6 +13,40 @@ import Team from '../../../Components/Team/Team';
 import UserAvatar from '../../Assets/images/user_avatar.jpg';
 import requestPhoto from '../../../Assets/images/photo_request.png';
 
+const PrettoSlider = withStyles({
+  root: {
+    color: '#8870ff',
+    display: 'block',
+    height: 5,
+    padding: 0,
+    pointerEvents: "none",
+  },
+  thumb: {
+    display: 'none',
+    height: 12,
+    width: 12,
+    backgroundColor: '#ece8ff',
+    marginTop: -6,
+    marginLeft: -12,
+    opacity: 0,
+    '&:focus, &:hover, &$active': {
+      opacity: 0,
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)',
+  },
+  track: {
+    borderRadius: 5,
+    height: 5,
+  },
+  rail: {
+    background:'#ece8ff',
+    borderRadius: 5,
+    height: 5,
+  },
+})(Slider);
 
 const OngoingItem = () => {
   const classes = useStyles();
@@ -43,11 +79,15 @@ const OngoingItem = () => {
               <Typography className="skill_item" component="span">Protopie</Typography>
             </Box>
           </Box>
-          <Typography className="level_infos"><label>Level acquired : </label><span><Award />TOP RATED</span></Typography>
+          <Box className="slider_daysLeft">
+            <PrettoSlider valueLabelDisplay="off" aria-label="pretto slider" defaultValue={80} />
+            <Typography className="text_dayLeft">19 days left</Typography>
+          </Box>
+          {/* <Typography className="level_infos"><label>Level acquired : </label><span><Award />TOP RATED</span></Typography> */}
         </Box>
       </CardContent>
     </Card>
   );
 };
 
-export default OngoingItem;
+export default (OngoingItem);
