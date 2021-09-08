@@ -55,6 +55,10 @@ export default makeStyles(
       display: 'block',
       padding: '0 20px',
     },
+    previous_list: {
+      display: 'block',
+      padding: '0 20px',
+    },
   }),
   { name: 'AppExterne' },
 );

@@ -8,6 +8,7 @@ import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilt
 import Team from '../../Components/Team/Team';
 import RequestItem from './RequestItem';
 import OngoingItem from './OngoingItem';
+import AppExterneItem from './AppExterneItem';
 
 
 interface TabPanelProps {
@@ -138,8 +139,12 @@ const AppExterne = () => {
         </TabPanel>
 
         <TabPanel value={value} index={2}>
-          <Typography>Tab 03</Typography>
           {/* component Previous */}
+          <Box className={classNames(classes.previous_list, 'previous_list')}>
+            <AppExterneItem />
+            <AppExterneItem />
+            <AppExterneItem />
+          </Box>
         </TabPanel>
       </Box>
     </Box>
