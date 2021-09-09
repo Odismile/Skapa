@@ -83,7 +83,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
         {/* list of notification */}
 
-        <Box className="notif_list" style={{ display: 'none' }}>
+        <Box className="notif_list" >
           <IconButton className="btn btn_award" aria-label="Award" onClick={handleClickRoute(COACHS)}>
             <Award />
           </IconButton>
@@ -92,7 +92,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
             <HeartLine />
           </IconButton>
         </Box>
-        <Box className="user_profil">
+        <Box className="user_profil" style={{ display: 'none' }}>
           <figure className="user_avatar">
             <img src={UserAvatar} alt="user_pic" />
           </figure>
@@ -104,18 +104,18 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
       <Box className={classes.header_content}>
         {/* show bloc for create-project page */}
         {/* titre projet */}
-        <Typography style={{ display: 'none' }} className="titlePage" >
+        <Typography style={{ display: 'block' }} className="titlePage" >
           {isInWishList ? 'Wishlist' : !isShowProfilInfo ? 'Create your own project' : ''}
         </Typography>
 
-        <Typography style={{ display: 'block' }} className="userName_connected">
+        <Typography style={{ display: 'none' }} className="userName_connected">
           <span>Hello, Julie_Skapa</span>
         </Typography>
 
         {/* show bloc for project and talents page */}
         {/* info User */}
         {isShowProfilInfo && (
-          <Box className={classes.user_infos_content} style={{ display: 'none' }}>
+          <Box className={classes.user_infos_content} >
             <Card className={classes.user_infos} elevation={0}>
               <figure className="user_avatar">
                 <Link href="" className="user_link" title="user_infos">
@@ -160,7 +160,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
       )}
 
       {/* list card show when app-externe page  */}
-      <UserTalentList />
+      {/* <UserTalentList /> */}
 
       <Drawer
         className={classes.drawerMenu}
