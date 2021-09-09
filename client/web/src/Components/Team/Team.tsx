@@ -1,7 +1,6 @@
 import React from 'react';
 import { Avatar, Box, Typography} from '@material-ui/core';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
-import classNames from 'classnames';
 import useStyles from './style';
 
 import UserAvatar from '../../Assets/images/user_avatar.jpg';
