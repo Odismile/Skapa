@@ -83,7 +83,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
         {/* list of notification */}
 
-        <Box className="notif_list">
+        <Box className="notif_list" style={{ display: 'none' }}>
           <IconButton className="btn btn_award" aria-label="Award" onClick={handleClickRoute(COACHS)}>
             <Award />
           </IconButton>
