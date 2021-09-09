@@ -5,10 +5,10 @@ import useStyles from './styles';
 
 import PrimaryHeader from '../../Components/Header/Header';
 import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
-import Team from '../../Components/Team/Team';
+
 import RequestItem from './RequestItem';
 import OngoingItem from './OngoingItem';
-import AppExterneItem from './AppExterneItem';
+import PreviousItem from './PreviousItem';
 
 
 interface TabPanelProps {
@@ -131,7 +131,6 @@ const AppExterne = () => {
         <TabPanel value={value} index={1}>
           {/* component Ongoing */}
           <Box className={classNames(classes.onGoingList, 'onGoingList_item')}>
-            {/* Ongoing item */}
             <OngoingItem />
             <OngoingItem />
             <OngoingItem />
@@ -141,9 +140,9 @@ const AppExterne = () => {
         <TabPanel value={value} index={2}>
           {/* component Previous */}
           <Box className={classNames(classes.previous_list, 'previous_list')}>
-            <AppExterneItem />
-            <AppExterneItem />
-            <AppExterneItem />
+            <PreviousItem />
+            <PreviousItem />
+            <PreviousItem />
           </Box>
         </TabPanel>
       </Box>
