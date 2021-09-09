@@ -1,7 +1,7 @@
 import { useReactiveVar } from '@apollo/client/react/hooks/useReactiveVar';
 import { Box, Button, Typography } from '@material-ui/core';
 import { orderBy } from 'lodash';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
 import { useLocation } from 'react-router-dom';
@@ -32,6 +32,10 @@ const ProjectContent = () => {
   const projectCategory = useReactiveVar(projectSkills);
   const projectSortedByLocal = useReactiveVar(projectSortedBy);
 
+  useEffect(() => {
+    projectSortedBy('Latest');
+  }, []);
+  
   const projects = useMemo(() => {
     let newProjects: (projects_all_projects | null)[] | null | undefined = data?.projects;
     if (projectCategory.length !== 0) {

@@ -1,6 +1,5 @@
 import { useReactiveVar } from '@apollo/client';
 import { Box, Checkbox, FormControl, FormControlLabel, Radio } from '@material-ui/core';
-import React, { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useItemsProjectTypes } from '../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
 import { projectSortedBy, projectSkills } from '../../ReactiveVariable/Project/projectSkills';
@@ -15,11 +14,6 @@ const SearchProject = () => {
   const projectCategory = useReactiveVar(projectSkills);
   const projectSortedByLocal = useReactiveVar(projectSortedBy);
 
-  useEffect(() => {
-    projectSortedBy('');
-    projectSkills([]);
-  }, []);
-
   const onClickProject = (label: string) => {
     const newProjectCategory = projectCategory.find((category) => category === label);
     if (newProjectCategory) {
@@ -31,7 +25,7 @@ const SearchProject = () => {
   };
 
   const onClickFilterBy = (label: string) => {
-    projectSortedBy(label);
+    projectSortedBy(projectSortedByLocal===label? "" : label);
   };
 
   return (
@@ -77,6 +71,7 @@ const SearchProject = () => {
                       className="form-checkbox"
                       onClick={() => onClickProject(item?.label ?? '')}
                       icon= {<CheckboxLine fontSize='small' />}
+                      checked={projectCategory.findIndex(i => item?.label &&  i===item.label)>=0}
                       checkedIcon={<CheckboxChecked fontSize='small'/>}
                     />
                   }
