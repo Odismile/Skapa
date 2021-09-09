@@ -1,13 +1,11 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Box, Typography, Slider } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
-import classNames from 'classnames';
 
 import useStyles from './style';
 
 const MissionRate = () => {
   const [value, setValue] = React.useState<number | null>(2);
-
   const classes = useStyles();
   
   return (

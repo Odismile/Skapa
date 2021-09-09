@@ -6,7 +6,8 @@ export default makeStyles(
       border: 'none',
       display: 'flex',
       alignItems: 'center',
-      margin: 0,
+      justifyContent: 'flex-end',
+      margin: '0 0 6px',
       padding: 0,
       "& label": {
         fontSize: 10,
@@ -18,7 +19,14 @@ export default makeStyles(
         "& svg": {
           fontSize: '1.25rem',
         },
-      }
+      },
+     "& span": {
+      "& span": {
+        "& span": {
+          color: "#ece8ff",
+        },
+      },
+     },
     },
   }),
   { name: "rateList" }
