@@ -9,8 +9,10 @@ import Check from '../../../Components/Icons/Check';
 import Cross from '../../../Components/Icons/Cross';
 
 import Team from '../../../Components/Team/Team';
-import UserAvatar from '../../Assets/images/user_avatar.jpg';
 import requestPhoto from '../../../Assets/images/photo_request.png';
+
+import ImgAppExterne from '../ImgAppExterne';
+import SkillsRecquired from '../SkillsRecquired';
 
 
 const RequestItem = () => {
@@ -18,16 +20,8 @@ const RequestItem = () => {
   
   return (
     <Card className={classNames(classes.requestItem_bloc, "requestItem_bloc")}>
-      
       <CardContent className={classes.cardContentroot} >
-        <Box className="cardMedia_content">
-          <CardMedia
-            className="media"
-            image={requestPhoto}
-            title="request show"
-          />
-          <Typography component="span" className="labeled">Innovation</Typography>
-        </Box>
+        <ImgAppExterne />
         <Box className="header_item" component="header">
           <Typography variant="h2">Lorem Ipsum Sit Amet</Typography>
           <Typography className="date_range"><Calendar /><span>20/03/21 - 20/06/21</span></Typography>
@@ -37,14 +31,7 @@ const RequestItem = () => {
             <Typography className=""><label>Founder :</label><span><strong>Johanna Lorin</strong> - Lorem - Paris</span></Typography>
             <Team />
           </Box>
-          <Box className="skills_recquired">
-            <label>Skills recquired :</label>
-            <Box className="skills_list">
-              <Typography className="skill_item" component="span">HTML/CSS</Typography>
-              <Typography className="skill_item" component="span">Angular</Typography>
-              <Typography className="skill_item" component="span">Protopie</Typography>
-            </Box>
-          </Box>
+          <SkillsRecquired />
         </Box>
       </CardContent>
       
