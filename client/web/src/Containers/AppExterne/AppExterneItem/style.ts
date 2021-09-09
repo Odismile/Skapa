@@ -3,37 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles(
   theme => ({
     appExterneItem_bloc: {
+      background: 'none',
       borderRadius: 12,
-      border: 'solid 1px #f4f4f4',
-      background: '#fff',
-      boxShadow: '0px 2px 4px rgba(0,0,0,0.11)',
+      boxShadow: 'none',
       marginBottom: 10,
-      "& .cardMedia_content": {
-        borderRadius: 10,
-        position: 'relative',
-        marginBottom: 10,
-      },
-      "& .media": {
-        borderRadius: 10,
-        height: 77,
-        width: '100%',
-      },
-      "& .labeled": {
-        borderRadius: 13,
-        background: "#ece8ff",
-        color: "#634ecb",
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 10,
-        fontWeight: 400,
-        height: 20,
-        minWidth: 66,
-        position: 'absolute',
-        top: 8,
-        left: 8,
-        zIndex: 1,
-      },
+      "& .cardMedia_content": {},
       "& .header_item": {
         display: 'flex',
         justifyContent: 'space-between',
@@ -71,35 +45,6 @@ export default makeStyles(
           margin: 0,
         },
       },
-      "& .skills_recquired": {
-        display: 'flex',
-        marginBottom: 15,
-        "& label": {
-          fontSize: 10,
-          fontWeight: 700,
-          marginRight: 5,
-          padding: '3px 0',
-          whiteSpace: 'nowrap',
-        },
-        "& .skills_list": {
-          display: 'flex',
-          flexWrap: 'wrap',
-          "& .skill_item": {
-            borderRadius: 13,
-            background: "#ece8ff",
-            color: "#634ecb",
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 10,
-            fontWeight: 400,
-            height: 20,
-            minWidth: 67,
-            margin: "0 3px 5px 0",
-          },
-        }
-        ,
-      },
       "& .level_infos": {
         fontSize: 10,
         marginBottom: 0,
@@ -130,6 +75,10 @@ export default makeStyles(
       }
     },
     cardContentroot: {
+      border: 'solid 1px #f4f4f4',
+      background: '#fff',
+      boxShadow: '0px 2px 4px rgba(0,0,0,0.11)',
+      borderRadius: 12,
       padding: 10, 
       "&:last-child": {
         paddingBottom: 10,
