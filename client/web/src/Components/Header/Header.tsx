@@ -18,7 +18,7 @@ import Cross from '../../Components/Icons/Cross/Cross';
 import Plus from '../../Components/Icons/Plus/Plus';
 import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
 import { clearLocalStorage, isAuthenticated } from '../../Services';
-import { COACHS, CREATE_PROJECT, DETAILS_TALENTS, LOGIN, PROJECT, TALENT, WISHLIST } from '../../Routes';
+import { COACHS, CREATE_PROJECT, DETAILS_TALENTS, LOGIN, PROJECT, TALENT, WISHLIST, PLACE } from '../../Routes';
 import { useLocation, useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
@@ -197,7 +197,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
               </Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link">Places</Link>
+              <Link className="nav_link" onClick={handleClickRoute(PLACE)}>Places</Link>
             </ListItem>
             <ListItem disableGutters={true}>
               <Link className="nav_link" onClick={handleClickRoute(WISHLIST)}>

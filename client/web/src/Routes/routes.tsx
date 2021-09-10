@@ -39,6 +39,7 @@ export const ONBOARDING_PROFILE2 = '/onboarding-profile2';
 export const ONBOARDING_PROFILE6 = '/onboarding-profile6';
 export const PROJECT = '/project';
 export const TALENT = '/talent';
+export const PLACE = '/place';
 export const PROJECT_PLACES = '/project/places';
 export const PROJECT_FICHES_PLACES = '/project/FichePlaces';
 export const CREATE_PROJECT = '/project/create-project';
@@ -121,7 +122,7 @@ export const ROUTES: RouteInterface[] = [
   },
   {
     key: 'PROJECT',
-    route: [PROJECT, TALENT],
+    route: [PROJECT, TALENT, PLACE],
     roles: [],
     private: true,
     component: Project,
