@@ -7,7 +7,7 @@ import Talents from '../Talents/Talents';
 import useStyles from './styles';
 import classNames from 'classnames';
 import { useHistory } from 'react-router-dom';
-import { TALENT } from '../../Routes';
+import { PROJECT, TALENT, PLACE } from '../../Routes';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -54,15 +54,23 @@ function TabPanel(props: TabPanelProps) {
 
 const Project = () => {
   const classes = useStyles();
+  const history = useHistory();
   const {
-    location: { pathname },
-  } = useHistory();
+    location: { pathname }
+  } = history;
   const [value, setValue] = useState(pathname === TALENT ? 1 : 0);
+
+  const getTabValue = (path: string)=> {
+    return path === TALENT ? 1 : path === PROJECT ? 0 : 2;
+  }
+  const getPathValue = (index: number)=> {
+    return index === 1 ? TALENT : index === 0 ? PROJECT : PLACE;
+  }
   useEffect(() => {
-    setValue(pathname === TALENT ? 1 : 0);
+    setValue(getTabValue(pathname));
   }, [pathname]);
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setValue(newValue);
+    history.replace(getPathValue(newValue));
   };
 
   return (
