@@ -25,7 +25,7 @@ const Review = () => {
         type={data?.projects?.[0]?.Type ?? ''}
         projectInfo={data?.projects?.[0]}
       />
-      <Pitch url={data?.projects?.[0]?.Video ?? ''} />
+      {data?.projects?.[0]?.Video && <Pitch url={data?.projects?.[0]?.Video} />}
       <Typography variant="h6" className="titre">
         {/* {t(`createProject.Presentation`)} */}
         Presentation

@@ -1,9 +1,10 @@
 import  { useEffect, useState }  from 'react';
-import { Box, Link, LinearProgress } from "@material-ui/core";
+import { Box, Link, LinearProgress, withStyles } from "@material-ui/core";
 import useStyles from "./styles";
 import PrimaryHeader from '../../../../Components/Header';
 import { useHistory } from 'react-router-dom';
 import { HOMEPAGE } from '../../../../Routes';
+
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
     height: 11,
@@ -19,6 +20,7 @@ const BorderLinearProgress = withStyles((theme) => ({
     backgroundColor: '#5BD3A0',
   },
 }))(LinearProgress);
+
 const Congrats = () => {
   const classes = useStyles();
   const [progress, setProgress] = useState(0);
