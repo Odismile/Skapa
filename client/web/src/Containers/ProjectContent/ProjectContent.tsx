@@ -1,7 +1,7 @@
 import { useReactiveVar } from '@apollo/client/react/hooks/useReactiveVar';
 import { Box, Button, Typography } from '@material-ui/core';
 import { orderBy } from 'lodash';
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Skeleton from 'react-loading-skeleton';
 import { useLocation } from 'react-router-dom';
@@ -21,7 +21,7 @@ const ProjectContent = () => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const { data, loading } = useGetProjectAll();
-  const { isReader, profilId, profil } = useCurrentUser();
+  const { isReader, profil } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState<string>('');
@@ -32,6 +32,10 @@ const ProjectContent = () => {
   const projectCategory = useReactiveVar(projectSkills);
   const projectSortedByLocal = useReactiveVar(projectSortedBy);
 
+  useEffect(() => {
+    projectSortedBy('Latest');
+  }, []);
+  
   const projects = useMemo(() => {
     let newProjects: (projects_all_projects | null)[] | null | undefined = data?.projects;
     if (projectCategory.length !== 0) {
@@ -88,7 +92,6 @@ const ProjectContent = () => {
       {!loading &&
         projects?.length !== 0 &&
         projects?.map((project, index) => {
-          const isAlreadyContributor = project?.contributes?.some((c) => profilId && c?.profile_id?.id === profilId);
           return (
             <Box className={classes.content} key={index}>
               <CardReview
@@ -101,7 +104,7 @@ const ProjectContent = () => {
                 projectInfo={project}
               />
               <Box className="btnContribute" onClick={() => !isReader && onClicklContribute(project)}>
-                <Button onClick={handleDrawer} disabled={isReader || isAlreadyContributor}>
+                <Button onClick={handleDrawer} disabled={isReader}>
                   Contribute
                 </Button>
               </Box>

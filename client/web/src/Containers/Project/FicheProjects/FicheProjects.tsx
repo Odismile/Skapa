@@ -26,7 +26,7 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
   const [project, setProject] = useState<projects_all_projects | null>(null);
 
   useEffect(() => {
-    if (data?.projects?.length) setProject(data?.projects?.[0]);
+    if (data?.projects?.length) setProject(data?.projects[0]);
   }, [data?.projects]);
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -40,33 +40,37 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
             <CardReview
               projectId={projectId}
               profilId={profilId}
-              imgCardUrl={data?.projects?.[0]?.Picture ?? ''}
-              name={data?.projects?.[0]?.Name ?? ''}
-              user={data?.projects?.[0]?.profile?.users_id}
-              type={data?.projects?.[0]?.Type ?? ''}
-              projectInfo={data?.projects?.[0]}
+              imgCardUrl={project?.Picture ?? ''}
+              name={project?.Name ?? ''}
+              user={project?.profile?.users_id}
+              type={project?.Type ?? ''}
+              projectInfo={project}
             />
           )}
         </Box>
-        <Box className="pitch">
-          <Pitch url={data?.projects?.[0]?.Video ?? ''} />
-        </Box>
+        {project?.Video?.length && (
+          <Box className="pitch">
+            <Pitch url={project?.Video} />
+          </Box>
+        )}
         <Box className="presentation">
           <Typography variant="h6" className="title">
             {t(`ficheProject.Presentation`)}
           </Typography>
-          <Presentation description={data?.projects?.[0]?.description ?? ''} />
+          <Presentation description={project?.description ?? ''} />
         </Box>
-        <Box className="tags">
-          <Typography variant="h6" className="title">
-            {t(`ficheProject.Tags`)}
-          </Typography>
-          <Tags project_skills={data?.projects?.[0]?.project_skills} />
-          <Box className="btn">
-            <Button className="btn-contibute" onClick={handleDrawer}>
-              Contribute
-            </Button>
+        {(project?.project_skills?.length || 0) > 0 && (
+          <Box className="tags">
+            <Typography variant="h6" className="title">
+              {t(`ficheProject.Tags`)}
+            </Typography>
+            <Tags project_skills={project?.project_skills} />
           </Box>
+        )}
+        <Box className="btn">
+          <Button className="btn-contibute" onClick={handleDrawer}>
+            Contribute
+          </Button>
         </Box>
         <Divider className="divider" />
         <Box className="similarProjects">

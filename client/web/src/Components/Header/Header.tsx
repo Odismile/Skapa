@@ -7,6 +7,8 @@ import useStyles from './style';
 import mainLogoWhite from '../../Assets/images/logo-white.svg';
 import photoUser from '../../Assets/images/photo-card.png';
 import Givaudan from '../../Assets/images/givaudan_logo-2.png';
+import UserAvatar from '../../Assets/images/user_avatar.jpg';
+import DesignThinkerPicto from '../../Assets/images/thinker_picto.png';
 
 // icons
 import Burger from '../../Components/Icons/Burger/Burger';
@@ -16,13 +18,18 @@ import Cross from '../../Components/Icons/Cross/Cross';
 import Plus from '../../Components/Icons/Plus/Plus';
 import ChevronRight from '../../Components/Icons/ChevronRight/ChevronRight';
 import { clearLocalStorage, isAuthenticated } from '../../Services';
-import { COACHS, CREATE_PROJECT, DETAILS_TALENTS, LOGIN, PROJECT, TALENT, WISHLIST } from '../../Routes';
+import { COACHS, CREATE_PROJECT, DETAILS_TALENTS, LOGIN, PROJECT, TALENT, WISHLIST, PLACE } from '../../Routes';
 import { useLocation, useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { isConnected } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { FC } from 'react';
 import { LocationInterface } from '../../types/types';
+
+import UserTalentList from '../MyActivity/UserTalentList/UserTalentList';
+
+
+
 
 interface HeaderProps {
   noBack?: boolean;
@@ -35,9 +42,6 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
   const history = useHistory();
   const isInWishList = [WISHLIST].includes(history.location.pathname);
 
-  if (!isAuthenticated()) {
-    history.push(LOGIN);
-  }
   const [open, setOpen] = React.useState(false);
   const handleDrawer = () => {
     setOpen((prev) => !prev);
@@ -48,9 +52,6 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
     window.location.reload();
   };
 
-  const goToWishlist = () => {
-    history.push(WISHLIST);
-  };
   const params = useLocation();
   const activeWishList = params.pathname === WISHLIST ? 'btn btn_link active' : 'btn btn_link';
   const isShowProfilInfo = isConnected && [PROJECT].includes(history.location.pathname);
@@ -59,8 +60,11 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
   const handleClickRoute = (path: string) => () => {
     history.push(path);
-    handleDrawer();
+    if (open) handleDrawer();
   };
+  if (!isAuthenticated()) {
+    history.push(LOGIN);
+  }
   return (
     <Box className={classes.header_block}>
       <Box className={classes.header_top}>
@@ -73,19 +77,26 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
         {/* logo mobile */}
 
-        <figure className="logo">
+        <figure className="logo" onClick={handleClickRoute(PROJECT)}>
           <img src={mainLogoWhite} alt="logo" />
         </figure>
+
         {/* list of notification */}
 
-        <Box className="notif_list">
-          <IconButton className="btn btn_award" aria-label="Award">
+        <Box className="notif_list" >
+          <IconButton className="btn btn_award" aria-label="Award" onClick={handleClickRoute(COACHS)}>
             <Award />
           </IconButton>
           {/* Add class active when route is /whislist */}
-          <IconButton className={activeWishList} aria-label="Like" onClick={goToWishlist}>
+          <IconButton className={activeWishList} aria-label="Like" onClick={handleClickRoute(WISHLIST)}>
             <HeartLine />
           </IconButton>
+        </Box>
+        <Box className="user_profil" style={{ display: 'none' }}>
+          <figure className="user_avatar">
+            <img src={UserAvatar} alt="user_pic" />
+          </figure>
+            <img src={DesignThinkerPicto} className="iconOrganisation" alt="organisation" />
         </Box>
       </Box>
 
@@ -93,14 +104,18 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
       <Box className={classes.header_content}>
         {/* show bloc for create-project page */}
         {/* titre projet */}
-        <Typography style={{ display: 'block' }} className="titlePage">
+        <Typography style={{ display: 'block' }} className="titlePage" >
           {isInWishList ? 'Wishlist' : !isShowProfilInfo ? 'Create your own project' : ''}
+        </Typography>
+
+        <Typography style={{ display: 'none' }} className="userName_connected">
+          <span>Hello, Julie_Skapa</span>
         </Typography>
 
         {/* show bloc for project and talents page */}
         {/* info User */}
         {isShowProfilInfo && (
-          <Box className={classes.user_infos_content}>
+          <Box className={classes.user_infos_content} >
             <Card className={classes.user_infos} elevation={0}>
               <figure className="user_avatar">
                 <Link href="" className="user_link" title="user_infos">
@@ -116,7 +131,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
                 </Typography>
                 <Typography className="user_balance" component="span">
                   {profil?.currentBalance || 0}
-                  <span className="unity">$</span>
+                  <span className="unity">TT</span>
                 </Typography>
               </Box>
               <Typography className="flexFX" component="span"></Typography>
@@ -129,7 +144,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
         {/* Btn go to creat project */}
         {isShowProfilInfo && !isReader && (
-          <Button className="btn_createProject" color="primary" variant="outlined" type="button" href={CREATE_PROJECT}>
+          <Button className="btn_createProject" color="primary" variant="outlined" type="button" href={CREATE_PROJECT} style={{ display: 'none' }}>
             <Plus /> Create new project
           </Button>
         )}
@@ -143,6 +158,10 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
           </Link>
         </Typography>
       )}
+
+      {/* list card show when app-externe page  */}
+      {/* <UserTalentList /> */}
+
       <Drawer
         className={classes.drawerMenu}
         anchor="left"
@@ -178,7 +197,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
               </Link>
             </ListItem>
             <ListItem disableGutters={true}>
-              <Link className="nav_link">Places</Link>
+              <Link className="nav_link" onClick={handleClickRoute(PLACE)}>Places</Link>
             </ListItem>
             <ListItem disableGutters={true}>
               <Link className="nav_link" onClick={handleClickRoute(WISHLIST)}>

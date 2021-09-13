@@ -27,6 +27,7 @@ import MyActivity from '../Containers/MyActivity/MyActivity';
 import ContributeSpace from '../Containers/MyActivity/ContributeSpace/ContributeSpace';
 import TalentSpace from '../Containers/MyActivity/TalentSpace/TalentSpace';
 import CreatorSpace from '../Containers/MyActivity/CreatorSpace/CreatorSpace';
+import AppExterne from '../Containers/AppExterne/AppExterne';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -38,6 +39,7 @@ export const ONBOARDING_PROFILE2 = '/onboarding-profile2';
 export const ONBOARDING_PROFILE6 = '/onboarding-profile6';
 export const PROJECT = '/project';
 export const TALENT = '/talent';
+export const PLACE = '/place';
 export const PROJECT_PLACES = '/project/places';
 export const PROJECT_FICHES_PLACES = '/project/FichePlaces';
 export const CREATE_PROJECT = '/project/create-project';
@@ -55,12 +57,20 @@ export const MYACTIVITY = '/myactivity';
 export const MYACTIVITY_CONTRIBUTE_SPACE = '/myactivity/contribute';
 export const MYACTIVITY_TALENT_SPACE = '/myactivity/talent';
 export const MYACTIVITY_CREATOR_SPACE = '/myactivity/creator';
-export const UNAUTHORIZED = '/unauthorized';
 export const PROFILE = '/profile';
+export const APPEXTERNE = '/app-externe';
+export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
 
 export const ROUTES: RouteInterface[] = [
+  {
+    key: 'APPEXTERNE',
+    route: APPEXTERNE,
+    roles: [],
+    private: true,
+    component: AppExterne,
+  },
   {
     key: 'COACHS',
     route: COACHS,
@@ -112,7 +122,7 @@ export const ROUTES: RouteInterface[] = [
   },
   {
     key: 'PROJECT',
-    route: [PROJECT, TALENT],
+    route: [PROJECT, TALENT, PLACE],
     roles: [],
     private: true,
     component: Project,

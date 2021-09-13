@@ -153,7 +153,7 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
           <Box>
             <Typography component="p" className="active bold">
               {/* 11 734 $ */}
-              {`${totalContribution} $`}
+              {`${totalContribution} TT`}
             </Typography>
             {/* if on create-project/Reviews, add this */}
             {/* <Typography component="p" className="active">

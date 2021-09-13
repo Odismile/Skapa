@@ -53,6 +53,7 @@ const FicheTalents: FC<FicheTalentsProps> = ({ talentId }) => {
         </Typography>
         <FormerProject />
       </Box>
+      {}
       <Box className="pitch">
         <Pitch url={data?.profile?.video ?? ''} />
       </Box>
