@@ -6,7 +6,7 @@ import { CreateTeam, CreateTeamVariables } from "../../GraphQL/project/types/Cre
 import { displaySnackbar, InitSnackbarData } from "../../Utils";
 
 
-export const useCreateContribution = () => {
+export const useCreateTeamProject = () => {
   const { t } = useTranslation();
 
   const snackbar = InitSnackbarData;

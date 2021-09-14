@@ -4,15 +4,15 @@ import { PROJECTS, PROJECTS_ALL_MEDIA } from '../../GraphQL/project/query';
 import { projects, projectsVariables } from '../../GraphQL/project/types/projects';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
 
-export const useGetProject = (baseOptions? : QueryHookOptions<projects, projectsVariables>) => {
+export const useGetProject = (baseOptions?: QueryHookOptions<projects, projectsVariables>) => {
   const { t } = useTranslation();
 
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
   useQuery(PROJECTS_ALL_MEDIA, {
-    fetchPolicy: 'cache-first'
+    fetchPolicy: 'cache-first',
   });
-  const { data, loading } = useQuery<projects, projectsVariables>(PROJECTS, {
+  const resp = useQuery<projects, projectsVariables>(PROJECTS, {
     ...baseOptions,
     onError: (error) => {
       const errorMessage = error?.graphQLErrors?.[0]?.extensions?.exception?.data?.message?.[0]?.messages?.[0]?.message;
@@ -24,7 +24,7 @@ export const useGetProject = (baseOptions? : QueryHookOptions<projects, projects
       }
       return;
     },
-    fetchPolicy: 'network-only',
+    fetchPolicy: baseOptions?.fetchPolicy ? baseOptions.fetchPolicy : 'network-only',
   });
-  return { data, loading };
+  return resp;
 };

@@ -1,6 +1,8 @@
 import { Box, Button, SwipeableDrawer, Typography } from '@material-ui/core';
 import { FC, useState, useEffect } from 'react';
+import { useGetProject } from '../../Providers/ProjectProvider/useGetProject';
 import { CallbackFunction } from '../../types/types';
+import { getUserId } from '../../Utils/utils';
 import CardProject from '../CardProjects/CardProjects';
 import useStyles from './style';
 
@@ -16,6 +18,12 @@ const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClo
   const classes = useStyles();
 
   // const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
+  const { data: myProjectData } = useGetProject({
+    variables: {
+      where: { profile: { users_id: +getUserId } },
+    },
+    fetchPolicy: 'cache-first',
+  });
 
   const onClose = () => {
     if (handleClose) handleClose();
@@ -47,12 +55,14 @@ const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClo
           <Typography variant="h6" className="selectText">
             Select from your projects
           </Typography>
-          <Box>
-            <CardProject />
-          </Box>
-          <Box>
-            <CardProject />
-          </Box>
+          {myProjectData?.projects?.map(
+            (project) =>
+              project && (
+                <Box>
+                  <CardProject project={project} talentName={talentName} />
+                </Box>
+              ),
+          )}
         </Box>
       </Box>
     </SwipeableDrawer>

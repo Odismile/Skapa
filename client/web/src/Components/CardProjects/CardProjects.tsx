@@ -4,16 +4,23 @@ import useStyles from './style';
 import imgPlace from '../../Assets/images/lab.svg';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Calendar from '../Icons/Calendar';
+import { projects_projects } from '../../GraphQL/project/types/projects';
 
-const CardProject = () => {
+interface CardProjectProps {
+  project: projects_projects;
+  talentName: string;
+}
+
+const CardProject = (props: CardProjectProps) => {
   const classes = useStyles();
+  const { project, talentName } = props;
   return (
     <Box>
       <Card className={classes.root}>
-        <CardMedia className="media" image={imgPlace} title="image"></CardMedia>
+        <CardMedia className="media" image={project?.Picture ?? imgPlace} title="image"></CardMedia>
         <CardContent className="contenus">
           <Typography component="p" className="text">
-            Lorem Ipsum Sit<br></br> Amet
+            {project.Name}
           </Typography>
           <Box>
             <Typography component="p" className="textMini">
@@ -31,13 +38,13 @@ const CardProject = () => {
             </Box>
           </Box>
         </CardContent>
-        <Box className={classes.badge}>Innovation</Box>
+        <Box className={classes.badge}>{project.Type}</Box>
         <Box className={classes.check}>
           <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="checkbox" />
         </Box>
       </Card>
       <Typography component="p" className={classes.foot}>
-        You will have to contribute <span>12 000 TT</span>to contribute with Emma
+        You will have to contribute <span>12 000 TT</span>to contribute with {talentName}
       </Typography>
     </Box>
   );
