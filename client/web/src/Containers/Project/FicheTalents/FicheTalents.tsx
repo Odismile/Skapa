@@ -46,15 +46,15 @@ const FicheTalents: FC<FicheTalentsProps> = ({ talentId }) => {
         <Typography variant="h6" className="title">
           Skills
         </Typography>
-        {data?.profile?.profile_skills?.map((skill, index) => {
-          return (
-            <Box className={classes.content}>
+        <Box className={classes.content}>
+          {data?.profile?.profile_skills?.map((skill, index) => {
+            return (
               <Box className={classes.tags}>
                 <Chip key={index} label={skill?.skill_id?.label ?? ''} />
               </Box>
-            </Box>
-          );
-        })}
+            );
+          })}
+        </Box>
       </Box>
       <Box className="former-project">
         <Typography variant="h6" className="title">
