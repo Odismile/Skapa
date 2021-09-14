@@ -1,5 +1,5 @@
 import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typography } from '@material-ui/core';
-import React, { FC } from 'react';
+import React, { FC, useState, MouseEventHandler } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
 import { coachs_profiles_profile_skills } from '../../GraphQL/profiles/types/coachs';
@@ -40,10 +40,10 @@ const CardTalents: FC<CardTalentsProps> = ({
 }) => {
   const history = useHistory();
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
-  const [check, setCheck] = React.useState(
+  const [check, setCheck] = useState(
     profil?.talent_favorits?.some((profile) => profile?.talent_id && talentId && +profile.talent_id === +talentId),
   );
 
@@ -54,13 +54,13 @@ const CardTalents: FC<CardTalentsProps> = ({
     setOpen((prev) => !prev);
   };
 
-  const goToDetailsTalents: React.MouseEventHandler = (event) => {
+  const goToDetailsTalents: MouseEventHandler = (event) => {
     event.stopPropagation();
     if (isReader) return;
     history.push(`/details-talents/${talentId}`);
   };
 
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
     if (isReader) return;
     const newChecked = !check;
@@ -143,7 +143,15 @@ const CardTalents: FC<CardTalentsProps> = ({
             </Box> */}
         </Box>
       </CardContent>
-      <DrawerAddToProject isOpen={open} handleOpen={handleDrawer} handleClose={handleDrawer} />
+      {talentId && (
+        <DrawerAddToProject
+          talentId={talentId}
+          talentName={coachName ?? ''}
+          isOpen={open}
+          handleOpen={handleDrawer}
+          handleClose={handleDrawer}
+        />
+      )}
     </Card>
   );
 };

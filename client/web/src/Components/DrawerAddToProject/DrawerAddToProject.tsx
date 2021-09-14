@@ -7,10 +7,12 @@ import useStyles from './style';
 interface DrawerAddToProjectProps {
   handleClose: CallbackFunction;
   handleOpen: CallbackFunction;
+  talentId: string;
+  talentName: string;
   isOpen: boolean;
 }
 
-const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClose, isOpen }) => {
+const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClose, isOpen, talentName }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -43,7 +45,7 @@ const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClo
       <Box className={classes.addProject_drawerContent}>
         <Box className="header">
           <Button variant="contained" className="btn_handleDrawer" onClick={onClose}></Button>
-          <Typography variant="h6">You want to hire Emma ?</Typography>
+          <Typography variant="h6">You want to hire {talentName} ?</Typography>
           <Button className="btn_done" onClick={onClose}>
             Done
           </Button>
