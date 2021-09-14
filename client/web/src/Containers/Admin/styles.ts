@@ -155,23 +155,88 @@ export default makeStyles(
       width: "100%",
       "& .MuiDataGrid-root": {
         border: "none",
+        marginBottom: 0,
+        
       },
       "& .MuiDataGrid-main": {
-        backgroundColor: "darkcyan",
+        //backgroundColor: "darkcyan",
       },
       "& .MuiDataGrid-columnsContainer": {
         border: "none",
+        
       },
       "& .MuiDataGrid-columnHeaderWrapper": {
+        padding: '0 20px',
+        minWidth: '100% !important',
+        width: 'calc(100% - 40px)',
+        "& .MuiDataGrid-columnHeaderCheckbox": {
 
+        },
       },
       "& .MuiDataGrid-columnSeparator": {
         display: 'none',
       },
+      "& .MuiDataGrid-columnHeaderTitleContainer": {
+        // padding: "0 1rem",
+      },
+      "& .MuiDataGrid-columnHeaderTitle": {
+        color: '#000',
+        fontSize: 14,
+        fontWeight: 600,
+        "&:focus": {
+          outline: 'none',
+        },
+      },
+      "& .MuiDataGrid-columnHeader:focus-within, & .MuiDataGrid-cell:focus-within": {
+        outline: 'none',
+      },
+      "& .MuiDataGrid-checkboxInput": {
+        color: '#8870ff',
+      },
+      "& .MuiDataGrid-window": {
+        overflowX: 'hidden',
+        overflowY: 'auto !important',
+        "@media (min-width: 1024px)": {
+        },
+      },
+
+      "& .MuiDataGrid-dataContainer": {
+        background: '#fff',
+        borderRadius: 12,
+        border:  '1px solid #f4f4f4',
+        boxShadow: '0px 2px 4px rgba(0,0,0,0.11)',
+        padding: '0 20px',
+        "& .MuiDataGrid-row": {
+          maxWidth: "calc(100% - 40px)",
+          overflow: 'hidden',
+          "&:hover": {
+            background: "rgb(242,241,253)",
+          },
+        },
+      },
+      "& .MuiDataGrid-viewport": {
+        minWidth: '100% !important',
+        maxWidth: '100% !important',
+      },
       "& .MuiDataGrid-cell": {
         borderColor: "#e8e8e8",
+        color: '#383838',
+        fontSize: 12,
+        fontWeight: 400,
+        "&:focus": {
+          outline: 'none',
+        },
       },
-    }
+      "& .MuiDataGrid-footerContainer": {
+        //display: 'none',
+        "& p": {
+          margin: 0,
+        },
+        "& button": {
+          padding: 0,
+        },
+      },
+    },
   }),
   { name: 'Admin' },
 );
