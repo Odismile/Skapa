@@ -1,6 +1,7 @@
 import { Box, Button, SwipeableDrawer, Typography } from '@material-ui/core';
 import { FC, useState, useEffect } from 'react';
 import { useCreateTeamProject } from '../../Providers/ProjectProvider/useCreateTeamProject';
+import { useDeleteTeamProject } from '../../Providers/ProjectProvider/useDeleteTeamProject';
 import { useGetProject } from '../../Providers/ProjectProvider/useGetProject';
 import { CallbackVoidFunction } from '../../types/types';
 import { getUserId } from '../../Utils/utils';
@@ -15,7 +16,7 @@ interface DrawerAddToProjectProps {
   isOpen: boolean;
 }
 
-const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClose, isOpen, talentName }) => {
+const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ talentId, handleOpen, handleClose, isOpen, talentName }) => {
   const classes = useStyles();
 
   // const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
@@ -26,6 +27,7 @@ const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClo
     fetchPolicy: 'cache-first',
   });
   const [addTalentToProject] = useCreateTeamProject();
+  const [removeTalentToProject] = useDeleteTeamProject();
   const onClose = () => {
     if (handleClose) handleClose();
   };
@@ -38,21 +40,22 @@ const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClo
         input: {
           data: {
             project: projectId,
+            profile: talentId,
           },
         },
       },
     });
   };
-  const handleRemoveTalentToProject = (projectId: string) => {
-    // addTalentToProject({
-    //   variables : {
-    //     input: {
-    //       data : {
-    //         project: projectId,
-    //       }
-    //     }
-    //   }
-    // })
+  const handleRemoveTalentToProject = (teamId: string) => {
+    removeTalentToProject({
+      variables: {
+        input: {
+          where: {
+            id: teamId,
+          },
+        },
+      },
+    });
   };
   return (
     <SwipeableDrawer
