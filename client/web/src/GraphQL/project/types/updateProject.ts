@@ -47,6 +47,7 @@ export interface updateProject_updateProject_project_profile_users_id {
 export interface updateProject_updateProject_project_profile {
   __typename: "Profiles";
   id: string;
+  picture: string | null;
   users_id: updateProject_updateProject_project_profile_users_id | null;
 }
 

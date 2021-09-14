@@ -45,6 +45,7 @@ export interface ProjectInfo_profile_users_id {
 export interface ProjectInfo_profile {
   __typename: "Profiles";
   id: string;
+  picture: string | null;
   users_id: ProjectInfo_profile_users_id | null;
 }
 

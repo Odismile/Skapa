@@ -28,6 +28,7 @@ export const PROJECT_INFO_FRAGMENT = gql`
     }
     profile {
       id
+      picture @client
       users_id {
         id
         lastname
@@ -47,7 +48,7 @@ export const PROJECT_INFO_FRAGMENT = gql`
     	id
       profile { 
       	id
-        picture
+        picture @client
         users_id { 
           id
           lastname
