@@ -12,5 +12,6 @@ export interface LocationInterface {
 }
 
 
-export type CallbackFunction<T = undefined> = (value?: T) => void;
+export type CallbackFunction<T = undefined> = (value: T) => void;
+export type CallbackVoidFunction = () => void;
 

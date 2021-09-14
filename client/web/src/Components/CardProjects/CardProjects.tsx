@@ -5,15 +5,18 @@ import imgPlace from '../../Assets/images/lab.svg';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Calendar from '../Icons/Calendar';
 import { projects_projects } from '../../GraphQL/project/types/projects';
+import { CallbackFunction } from '../../types/types';
 
 interface CardProjectProps {
   project: projects_projects;
   talentName: string;
+  handleAddTalentToProject: CallbackFunction<string>;
+  handleRemoveTalentToProject: CallbackFunction<string>;
 }
 
 const CardProject = (props: CardProjectProps) => {
   const classes = useStyles();
-  const { project, talentName } = props;
+  const { project, talentName, handleAddTalentToProject, handleRemoveTalentToProject } = props;
   return (
     <Box>
       <Card className={classes.root}>

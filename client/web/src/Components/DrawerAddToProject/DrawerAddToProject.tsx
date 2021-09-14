@@ -1,14 +1,15 @@
 import { Box, Button, SwipeableDrawer, Typography } from '@material-ui/core';
 import { FC, useState, useEffect } from 'react';
+import { useCreateTeamProject } from '../../Providers/ProjectProvider/useCreateTeamProject';
 import { useGetProject } from '../../Providers/ProjectProvider/useGetProject';
-import { CallbackFunction } from '../../types/types';
+import { CallbackVoidFunction } from '../../types/types';
 import { getUserId } from '../../Utils/utils';
 import CardProject from '../CardProjects/CardProjects';
 import useStyles from './style';
 
 interface DrawerAddToProjectProps {
-  handleClose: CallbackFunction;
-  handleOpen: CallbackFunction;
+  handleClose: CallbackVoidFunction;
+  handleOpen: CallbackVoidFunction;
   talentId: string;
   talentName: string;
   isOpen: boolean;
@@ -24,12 +25,34 @@ const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClo
     },
     fetchPolicy: 'cache-first',
   });
-
+  const [addTalentToProject] = useCreateTeamProject();
   const onClose = () => {
     if (handleClose) handleClose();
   };
   const onOpen = () => {
     if (handleOpen) handleOpen();
+  };
+  const handleAddTalentToProject = (projectId: string) => {
+    addTalentToProject({
+      variables: {
+        input: {
+          data: {
+            project: projectId,
+          },
+        },
+      },
+    });
+  };
+  const handleRemoveTalentToProject = (projectId: string) => {
+    // addTalentToProject({
+    //   variables : {
+    //     input: {
+    //       data : {
+    //         project: projectId,
+    //       }
+    //     }
+    //   }
+    // })
   };
   return (
     <SwipeableDrawer
@@ -59,7 +82,12 @@ const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClo
             (project) =>
               project && (
                 <Box>
-                  <CardProject project={project} talentName={talentName} />
+                  <CardProject
+                    project={project}
+                    talentName={talentName}
+                    handleAddTalentToProject={handleAddTalentToProject}
+                    handleRemoveTalentToProject={handleRemoveTalentToProject}
+                  />
                 </Box>
               ),
           )}
