@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo } from 'react';
 import { Avatar, Box, Card, CardContent, CardMedia, Checkbox, Typography } from '@material-ui/core';
 import useStyles from './style';
 import imgPlace from '../../Assets/images/lab.svg';
@@ -6,6 +6,7 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Calendar from '../Icons/Calendar';
 import { projects_projects } from '../../GraphQL/project/types/projects';
 import { CallbackFunction } from '../../types/types';
+import { getUserFullName } from '../../Utils/utils';
 
 interface CardProjectProps {
   project: projects_projects;
@@ -17,6 +18,9 @@ interface CardProjectProps {
 const CardProject = (props: CardProjectProps) => {
   const classes = useStyles();
   const { project, talentName, handleAddTalentToProject, handleRemoveTalentToProject } = props;
+  const teamMembers = useMemo(() => {
+    return (project.teams || []).slice(0, 4);
+  }, [project.teams]);
   return (
     <Box>
       <Card className={classes.root}>
@@ -34,9 +38,15 @@ const CardProject = (props: CardProjectProps) => {
                 Team
               </Typography>
               <AvatarGroup className="avatar" max={4}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                {teamMembers.map((talent) => (
+                  <Avatar
+                    alt={getUserFullName(talent?.profile?.users_id as any)}
+                    src={talent?.profile?.picture || '/static/images/avatar/1.jpg'}
+                  />
+                ))}
+                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                 <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                <Avatar alt="Navis Howard" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Navis Howard" src="/static/images/avatar/2.jpg" /> */}
               </AvatarGroup>
             </Box>
           </Box>
