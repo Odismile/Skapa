@@ -18,19 +18,19 @@ const Coachs = () => {
     <Box className={classes.MenuAdminList}>
       <List className="list">
         <ListItem disableGutters={true}>
-          <Link className="nav_link"><Home />Dashboard</Link>
+          <Link className="nav_link"><span className="icon"><Home /></span>Dashboard</Link>
         </ListItem>
         <ListItem disableGutters={true}>
-          <Link className="nav_link"><Award />Coaches</Link>
+          <Link className="nav_link"><span className="icon"><Award /></span>Coaches</Link>
         </ListItem>
         <ListItem disableGutters={true}>
-          <Link className="nav_link"><Users />Users</Link>
+          <Link className="nav_link"><span className="icon"><Users /></span>Users</Link>
         </ListItem>
         <ListItem disableGutters={true}>
-          <Link className="nav_link"><Map />Places</Link>
+          <Link className="nav_link"><span className="icon"><Map /></span>Places</Link>
         </ListItem>
         <ListItem disableGutters={true}>
-          <Link className="nav_link"><Film />Projects</Link>
+          <Link className="nav_link"><span className="icon"><Film /></span>Projects</Link>
         </ListItem>
       </List>
     </Box>
