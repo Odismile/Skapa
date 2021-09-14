@@ -118,6 +118,12 @@
     "createFavorit": {
       "success": "Added successfully to the wishlist"
     },
+    "userAdd": {
+      "success": "Talent add successfully to the project"
+    },
+    "userRemove": {
+      "success": "Talent removed successfully to the project"
+    },
     "deleteFovorit": {
       "success": "Deleted successfully to the wishlist"
     }

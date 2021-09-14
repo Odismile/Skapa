@@ -163,7 +163,7 @@ export interface createTeamInput {
   data?: TeamInput | null;
 }
 
-export interface deleteItemInput {
+export interface deleteTeamInput {
   where?: InputID | null;
 }
 

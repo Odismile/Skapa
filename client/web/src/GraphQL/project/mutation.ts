@@ -56,9 +56,9 @@ export const ADD_TALENT_TO_PROJECT = gql`
   }
 `;
 export const REMOVE_TALENT_TO_PROJECT = gql`
-  mutation DeleteItem($input: deleteItemInput) {
-    deleteItem(input: $input) {
-      item {
+  mutation DeleteTeam($input: deleteTeamInput) {
+    deleteTeam(input: $input) {
+      team {
         id
       }
     }

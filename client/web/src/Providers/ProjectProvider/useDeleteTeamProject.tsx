@@ -1,19 +1,19 @@
 import { useApolloClient, useMutation } from "@apollo/client";
 import { useTranslation } from "react-i18next";
-import { ADD_TALENT_TO_PROJECT } from "../../GraphQL/project/mutation";
+import { REMOVE_TALENT_TO_PROJECT } from "../../GraphQL/project/mutation";
 import { PROJECTS } from "../../GraphQL/project/query";
-import { CreateTeam, CreateTeamVariables } from "../../GraphQL/project/types/CreateTeam";
+import { DeleteTeam, DeleteTeamVariables } from "../../GraphQL/project/types/DeleteTeam";
 import { displaySnackbar, InitSnackbarData } from "../../Utils";
 
 
-export const useCreateTeamProject = () => {
+export const useDeleteTeamProject = () => {
   const { t } = useTranslation();
 
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
 
-  const resp = useMutation<CreateTeam, CreateTeamVariables>(
-    ADD_TALENT_TO_PROJECT,
+  const resp = useMutation<DeleteTeam, DeleteTeamVariables>(
+    REMOVE_TALENT_TO_PROJECT,
     {
       onError: (error) => {
         const errorMessage =
@@ -27,9 +27,9 @@ export const useCreateTeamProject = () => {
         return;
       },
       onCompleted: (data) => {
-        if (data.createTeam?.team?.id) {
+        if (data.deleteTeam?.team?.id) {
           snackbar.type = 'SUCCESS';
-          snackbar.message = t(`userAdd.success`);
+          snackbar.message = t(`userRemove.success`);
           displaySnackbar(client, snackbar);
         }
       },
