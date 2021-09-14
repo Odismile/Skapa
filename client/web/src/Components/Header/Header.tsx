@@ -144,7 +144,7 @@ const PrimaryHeader: FC<HeaderProps> = ({ noBack }) => {
 
         {/* Btn go to creat project */}
         {isShowProfilInfo && !isReader && (
-          <Button className="btn_createProject" color="primary" variant="outlined" type="button" href={CREATE_PROJECT} style={{ display: 'none' }}>
+          <Button className="btn_createProject" color="primary" variant="outlined" type="button" href={CREATE_PROJECT} >
             <Plus /> Create new project
           </Button>
         )}
