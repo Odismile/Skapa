@@ -43,6 +43,18 @@ export const PROJECT_INFO_FRAGMENT = gql`
         currentBalance
       }
     }
+    teams { 
+    	id
+      profile { 
+      	id
+        picture
+        users_id { 
+          id
+          lastname
+          surname
+        }
+      }
+    }
   }
 `;
 export const PROJECT_INFO_MEDIA_FRAGMENT = gql`

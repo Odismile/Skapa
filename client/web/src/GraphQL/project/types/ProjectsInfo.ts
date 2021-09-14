@@ -62,6 +62,26 @@ export interface ProjectsInfo_project_contributes {
   profile_id: ProjectsInfo_project_contributes_profile_id | null;
 }
 
+export interface ProjectsInfo_project_teams_profile_users_id {
+  __typename: "UsersPermissionsUser";
+  id: string;
+  lastname: string | null;
+  surname: string | null;
+}
+
+export interface ProjectsInfo_project_teams_profile {
+  __typename: "Profiles";
+  id: string;
+  picture: string | null;
+  users_id: ProjectsInfo_project_teams_profile_users_id | null;
+}
+
+export interface ProjectsInfo_project_teams {
+  __typename: "Teams";
+  id: string;
+  profile: ProjectsInfo_project_teams_profile | null;
+}
+
 export interface ProjectsInfo_project {
   __typename: "Projects";
   id: string;
@@ -77,6 +97,7 @@ export interface ProjectsInfo_project {
   project_favorits: (ProjectsInfo_project_project_favorits | null)[] | null;
   profile: ProjectsInfo_project_profile | null;
   contributes: (ProjectsInfo_project_contributes | null)[] | null;
+  teams: (ProjectsInfo_project_teams | null)[] | null;
 }
 
 export interface ProjectsInfo {
