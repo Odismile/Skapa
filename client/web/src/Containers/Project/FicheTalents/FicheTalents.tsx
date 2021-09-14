@@ -7,6 +7,7 @@ import Presentation from '../../../Components/Presentation/Presentation';
 import SimpleCardTalents from '../../../Components/SimpleCardTalents/SimpleCardTalents';
 import { PROFILE } from '../../../GraphQL/Profile/query';
 import { profile, profileVariables } from '../../../GraphQL/Profile/types/profile';
+import { getUserFullName } from '../../../Utils/utils';
 import useStyles from './styles';
 
 interface FicheTalentsProps {
@@ -23,7 +24,7 @@ const FicheTalents: FC<FicheTalentsProps> = ({ talentId }) => {
         <SimpleCardTalents
           imgCard={data?.profile?.picture ?? ''}
           position={data?.profile?.position ?? ''}
-          name={data?.profile?.users_id?.lastname ?? ''}
+          name={getUserFullName(data?.profile?.users_id as any)}
           jobSeniority={data?.profile?.job_seniority_id?.label ?? ''}
         />
       </Box>
