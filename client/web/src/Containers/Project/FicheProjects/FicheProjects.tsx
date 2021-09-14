@@ -19,7 +19,9 @@ interface FicheProjectProps {
 
 const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
   const { t } = useTranslation();
-  const { data, loading } = useGetProject(projectId);
+  const { data, loading } = useGetProject({
+    variables: { where: { id: projectId } },
+  });
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);

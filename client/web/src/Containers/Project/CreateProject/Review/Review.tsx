@@ -14,7 +14,9 @@ const Review = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const { data, loading } = useGetProject(projectIdVariable());
+  const { data } = useGetProject({
+    variables: { where: { id: projectIdVariable() } },
+  });
 
   return (
     <Box className={classes.review_bloc}>
