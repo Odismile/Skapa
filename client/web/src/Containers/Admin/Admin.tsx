@@ -41,26 +41,36 @@ import UserAvatar from '../../Assets/images/user_avatar.jpg';
 const columns = [
   {
     field: 'Name',
-    headerName: 'Name',
-    width: 140,
+    flex: 1,
     editable: false,
+    sortable: false,
+    headerName: 'Name',
+    minWidth: 120,
+    disableColumnMenu: true,
   },
   {
     field: 'Type',
     headerName: 'Type',
     width: 120,
-    editable: true,
+    
+    editable: false,
+    sortable: false,
+    disableColumnMenu: true,
+    disableExtendRowFullWidth: true,
   },
   {
     field: 'Creator',
+    flex: 0.25,
     headerName: 'Creator',
-    //width: 175,
-    editable: true,
+    minWidth: 100,
+    editable: false,
+    sortable: false,
+    disableColumnMenu: true,
   },
 ];
 
 const rows = [
-  { id: 1, Name: 'Lorem Ipsum Sit Amet', Type: 'Innovation', Creator: 'E. Dupont' },
+  { id: 1, Name: '1 Lorem Ipsum Sit Amet', Type: 'Innovation 1', Creator: 'E. Dupont' },
   { id: 2, Name: '2 Lorem Ipsum Sit Amet', Type: 'Innovation 2', Creator: 'E. Dupont' },
   { id: 3, Name: '3 Lorem Ipsum Sit Amet', Type: 'Innovation 3', Creator: 'E. Dupont' },
   { id: 4, Name: '4 Lorem Ipsum Sit Amet', Type: 'Innovation 4', Creator: 'E. Dupont' },
@@ -69,7 +79,6 @@ const rows = [
   { id: 7, Name: '7 Lorem Ipsum Sit Amet', Type: 'Innovation 7', Creator: 'E. Dupont' },
   { id: 8, Name: '8 Lorem Ipsum Sit Amet', Type: 'Innovation 8', Creator: 'E. Dupont' },
   { id: 9, Name: '9 Lorem Ipsum Sit Amet', Type: 'Innovation 9', Creator: 'E. Dupont' },
-  
 ];
 
 
@@ -128,7 +137,6 @@ const Admin = () => {
           </Drawer>
         </Hidden>
       </nav>
-
       <main className={classes.content}>
         <div className="wrap_content">
           <IconButton
@@ -175,11 +183,17 @@ const Admin = () => {
               </Box>
               <Box className={classes.dataTable_wrapper}>
                 <DataGrid
+                  autoHeight
                   rows={rows}
                   columns={columns}
-                  pageSize={5}
+                  //pageSize={5}
+                  headerHeight={42}
+                  autoPageSize={true}
                   checkboxSelection
                   disableSelectionOnClick
+                  disableColumnFilter
+                  hideFooterRowCount= {true}
+                  rowHeight={42}
                 />
               </Box>
             </Box>
