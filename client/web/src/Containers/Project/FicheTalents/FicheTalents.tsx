@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { Box, Button, Chip, Divider, Typography } from '@material-ui/core';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import DrawerAddToProject from '../../../Components/DrawerAddToProject/DrawerAddToProject';
 import FormerProject from '../../../Components/FormerProjects/FormerProjects';
 import Pitch from '../../../Components/Pitch/Pitch';
 import Presentation from '../../../Components/Presentation/Presentation';
@@ -17,6 +18,13 @@ interface FicheTalentsProps {
 const FicheTalents: FC<FicheTalentsProps> = ({ talentId }) => {
   const { data } = useQuery<profile, profileVariables>(PROFILE, { variables: { id: talentId } });
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const classes = useStyles();
   return (
     <Box className={classes.root}>
@@ -59,13 +67,24 @@ const FicheTalents: FC<FicheTalentsProps> = ({ talentId }) => {
         <Pitch url={data?.profile?.video ?? ''} />
       </Box>
       <Box className="boxBtn">
-        <Button className="btnAdd">Add to Project</Button>
+        <Button className="btnAdd" onClick={handleOpen}>
+          Add to Project
+        </Button>
       </Box>
       <Divider />
       <Typography className="textSuggest">
         You like Emma ? <br></br>You will like :
       </Typography>
       <SimpleCardTalents />
+      {talentId && (
+        <DrawerAddToProject
+          talentId={talentId}
+          talentName={getUserFullName(data?.profile?.users_id as any) ?? ''}
+          isOpen={open}
+          handleClose={handleClose}
+          handleOpen={handleOpen}
+        />
+      )}
     </Box>
   );
 };

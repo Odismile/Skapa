@@ -14,27 +14,20 @@ interface DrawerAddToProjectProps {
 
 const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ handleOpen, handleClose, isOpen, talentName }) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
 
   // const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
 
-  useEffect(() => {
-    setOpen(isOpen);
-  }, [isOpen]);
-
   const onClose = () => {
-    handleClose();
-    setOpen(false);
+    if (handleClose) handleClose();
   };
   const onOpen = () => {
-    handleOpen();
-    setOpen(true);
+    if (handleOpen) handleOpen();
   };
   return (
     <SwipeableDrawer
       className={classes.drawerContribute}
       anchor="bottom"
-      open={open}
+      open={isOpen}
       onClose={onClose}
       onOpen={onOpen}
       classes={{
