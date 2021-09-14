@@ -8,18 +8,22 @@ import { projects_projects } from '../../GraphQL/project/types/projects';
 import { CallbackFunction } from '../../types/types';
 import { getUserFullName } from '../../Utils/utils';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
+import { format } from 'date-fns';
 
 interface CardProjectProps {
   project: projects_projects;
   talentName: string;
   talentId: string;
+  startedAt?: any;
+  endAt?: any;
   handleAddTalentToProject: CallbackFunction<string>;
   handleRemoveTalentToProject: CallbackFunction<string>;
 }
 
 const CardProject = (props: CardProjectProps) => {
   const classes = useStyles();
-  const { project, talentName, talentId, handleAddTalentToProject, handleRemoveTalentToProject } = props;
+  const { project, talentName, talentId, handleAddTalentToProject, handleRemoveTalentToProject, startedAt, endAt } =
+    props;
   const { profil } = useCurrentUser();
   const teamMembers = useMemo(() => {
     return (project.teams || []).slice(0, 3);
@@ -38,7 +42,8 @@ const CardProject = (props: CardProjectProps) => {
           </Typography>
           <Box>
             <Typography component="p" className="textMini">
-              <Calendar className="iconCalendar" /> 20/03/21 - 20/06/21
+              <Calendar className="iconCalendar" />{' '}
+              {`${format(new Date(startedAt), 'dd/MM/yy')} - ${format(new Date(endAt), 'dd/MM/yy')}`}
             </Typography>
             <Box className="BoxTeam">
               <Typography component="p" className="textMini">

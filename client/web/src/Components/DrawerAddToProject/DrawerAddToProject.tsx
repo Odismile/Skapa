@@ -88,6 +88,8 @@ const DrawerAddToProject: FC<DrawerAddToProjectProps> = ({ talentId, handleOpen,
                   <CardProject
                     project={project}
                     talentId={talentId}
+                    startedAt={project?.Date_start}
+                    endAt={project?.Date_end}
                     talentName={talentName}
                     handleAddTalentToProject={handleAddTalentToProject}
                     handleRemoveTalentToProject={handleRemoveTalentToProject}
