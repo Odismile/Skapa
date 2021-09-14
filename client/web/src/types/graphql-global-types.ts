@@ -66,6 +66,7 @@ export interface ProfileInput {
   currentBalance?: number | null;
   appointments?: (string | null)[] | null;
   appointmentTalents?: (string | null)[] | null;
+  teams?: (string | null)[] | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -111,6 +112,15 @@ export interface TalentFavoritInput {
   updated_by?: string | null;
 }
 
+export interface TeamInput {
+  name?: string | null;
+  project?: string | null;
+  profile?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface UsersPermissionsLoginInput {
   identifier: string;
   password: string;
@@ -147,6 +157,14 @@ export interface createProjectInput {
 
 export interface createTalentFavoritInput {
   data?: TalentFavoritInput | null;
+}
+
+export interface createTeamInput {
+  data?: TeamInput | null;
+}
+
+export interface deleteTeamInput {
+  where?: InputID | null;
 }
 
 export interface editProjectFavoritInput {

@@ -46,3 +46,21 @@ export const UPDATE_PROJECT_FAVORI = gql`
     }
   }
 `;
+export const ADD_TALENT_TO_PROJECT = gql`
+  mutation CreateTeam($input: createTeamInput) {
+    createTeam(input: $input) {
+      team {
+        id
+      }
+    }
+  }
+`;
+export const REMOVE_TALENT_TO_PROJECT = gql`
+  mutation DeleteTeam($input: deleteTeamInput) {
+    deleteTeam(input: $input) {
+      team {
+        id
+      }
+    }
+  }
+`;

@@ -28,6 +28,7 @@ export const PROJECT_INFO_FRAGMENT = gql`
     }
     profile {
       id
+      picture @client
       users_id {
         id
         lastname
@@ -41,6 +42,18 @@ export const PROJECT_INFO_FRAGMENT = gql`
         id
         wallet
         currentBalance
+      }
+    }
+    teams { 
+    	id
+      profile { 
+      	id
+        picture @client
+        users_id { 
+          id
+          lastname
+          surname
+        }
       }
     }
   }

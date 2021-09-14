@@ -120,6 +120,12 @@
     },
     "delete": {
       "success": "Suppresssion effectué avec succès"
+    },
+    "userAdd": {
+      "success": "Talent ajouté au projet"
+    },
+    "userRemove": {
+      "success": "Talent retiré du projet"
     }
   }
 }

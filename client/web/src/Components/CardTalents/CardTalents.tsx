@@ -1,5 +1,5 @@
 import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typography } from '@material-ui/core';
-import React, { FC } from 'react';
+import React, { FC, useState, MouseEventHandler } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
 import { coachs_profiles_profile_skills } from '../../GraphQL/profiles/types/coachs';
@@ -7,6 +7,7 @@ import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreate
 import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import CardProject from '../CardProjects/CardProjects';
+import DrawerAddToProject from '../DrawerAddToProject/DrawerAddToProject';
 import Award from '../Icons/Award';
 import Heart from '../Icons/Heart';
 import HeartLine from '../Icons/HeartLine';
@@ -39,30 +40,29 @@ const CardTalents: FC<CardTalentsProps> = ({
 }) => {
   const history = useHistory();
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const { isReader, profilId: profilIdLocal, profil } = useCurrentUser();
-  const [check, setCheck] = React.useState(
+  const [check, setCheck] = useState(
     profil?.talent_favorits?.some((profile) => profile?.talent_id && talentId && +profile.talent_id === +talentId),
   );
 
   const { doCreateFavoriteTalent } = useCreateFavoritTalent();
   const { doDeleteTalentFavorit } = useDeleteFavoriTalent();
 
-  const handleDrawer = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleDrawer = () => {
     setOpen((prev) => !prev);
-    // event.stopPropagation();
   };
 
-  const goToDetailsTalents = (event: any) => {
+  const goToDetailsTalents: MouseEventHandler = (event) => {
+    event.stopPropagation();
     if (isReader) return;
     history.push(`/details-talents/${talentId}`);
-    event.stopPropagation();
   };
 
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-    if (isReader) return;
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
+    if (isReader) return;
     const newChecked = !check;
     setCheck(newChecked);
 
@@ -82,8 +82,8 @@ const CardTalents: FC<CardTalentsProps> = ({
   };
 
   return (
-    <Card className={classes.root} onClick={goToDetailsTalents}>
-      <CardContent className="content">
+    <Card className={classes.root}>
+      <CardContent className="content" onClick={goToDetailsTalents}>
         <Box className="head">
           <figure className="userPhoto">
             <img src={coachPhoto} alt="photo_user" />
@@ -126,48 +126,32 @@ const CardTalents: FC<CardTalentsProps> = ({
             {skills && skills?.length > 2 && <span className="number">+{skills?.length - 2}</span>}
           </Box>
           {/* si bouton */}
-          <Button className="btnAdd" disabled={isReader} onClick={(e) => handleDrawer(e)}>
+          <Button
+            className="btnAdd"
+            disabled={isReader}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDrawer();
+            }}
+          >
             Add to a project
           </Button>
 
-          <SwipeableDrawer
-            className={classes.drawerContribute}
-            anchor="bottom"
-            open={open}
-            onClose={handleDrawer}
-            onOpen={handleDrawer}
-            classes={{
-              paper: classes.drawerPaperContribute,
-            }}
-            SwipeAreaProps={{ className: 'backDrop_contribute' }}
-          >
-            <Box className={classes.addProject_drawerContent}>
-              <Box className="header">
-                <Button variant="contained" className="btn_handleDrawer" onClick={handleDrawer}></Button>
-                <Typography variant="h6">You want to hire Emma ?</Typography>
-                <Button className="btn_done" onClick={handleDrawer}>
-                  Done
-                </Button>
-              </Box>
-              <Box className="content">
-                <Typography variant="h6" className="selectText">
-                  Select from your projects
-                </Typography>
-                <Box>
-                  <CardProject />
-                </Box>
-                <Box>
-                  <CardProject />
-                </Box>
-              </Box>
-            </Box>
-          </SwipeableDrawer>
           {/* Si checkbox */}
           {/* <Box className={classes.check}>
               <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} className="checkbox"/>
             </Box> */}
         </Box>
       </CardContent>
+      {talentId && (
+        <DrawerAddToProject
+          talentId={talentId}
+          talentName={coachName ?? ''}
+          isOpen={open}
+          handleOpen={handleDrawer}
+          handleClose={handleDrawer}
+        />
+      )}
     </Card>
   );
 };

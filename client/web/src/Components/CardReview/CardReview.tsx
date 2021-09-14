@@ -87,6 +87,10 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
     return (projectInfo?.contributes || []).reduce((acc, item) => acc + (item?.value || 0), 0);
   }, [projectInfo?.contributes]);
 
+  const teamMembers = useMemo(() => {
+    return (projectInfo?.teams || []).slice(0, 4);
+  }, [projectInfo?.teams]);
+
   const goToDetailsProjects = (event: any, projectId?: string) => {
     if (projectId) {
       history.push(`/project/${projectId}/profil/${profilId}`);
@@ -133,12 +137,17 @@ const CardReview: FC<CardReviewProps> = ({ imgCardUrl, name, projectId, profilId
             <Typography component="p" className="name-adress">
               <span>Team</span>
             </Typography>
-            <AvatarGroup max={3} className="avatarGroup">
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-              <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-              <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-              <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
-              <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
+            <AvatarGroup className="avatar" max={4}>
+              {teamMembers.map((talent) => (
+                <Avatar
+                  alt={getUserFullName(talent?.profile?.users_id as any)}
+                  src={talent?.profile?.picture || '/static/images/avatar/1.jpg'}
+                />
+              ))}
+              <Avatar
+                alt={getUserFullName(projectInfo?.profile?.users_id as any)}
+                src={projectInfo?.profile?.picture || '/static/images/avatar/1.jpg'}
+              />
             </AvatarGroup>
           </Box>
         </Box>

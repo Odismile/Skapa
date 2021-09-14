@@ -45,6 +45,7 @@ export interface projects_projects_profile_users_id {
 export interface projects_projects_profile {
   __typename: "Profiles";
   id: string;
+  picture: string | null;
   users_id: projects_projects_profile_users_id | null;
 }
 
@@ -62,6 +63,26 @@ export interface projects_projects_contributes {
   profile_id: projects_projects_contributes_profile_id | null;
 }
 
+export interface projects_projects_teams_profile_users_id {
+  __typename: "UsersPermissionsUser";
+  id: string;
+  lastname: string | null;
+  surname: string | null;
+}
+
+export interface projects_projects_teams_profile {
+  __typename: "Profiles";
+  id: string;
+  picture: string | null;
+  users_id: projects_projects_teams_profile_users_id | null;
+}
+
+export interface projects_projects_teams {
+  __typename: "Teams";
+  id: string;
+  profile: projects_projects_teams_profile | null;
+}
+
 export interface projects_projects {
   __typename: "Projects";
   id: string;
@@ -77,6 +98,7 @@ export interface projects_projects {
   project_favorits: (projects_projects_project_favorits | null)[] | null;
   profile: projects_projects_profile | null;
   contributes: (projects_projects_contributes | null)[] | null;
+  teams: (projects_projects_teams | null)[] | null;
 }
 
 export interface projects {
