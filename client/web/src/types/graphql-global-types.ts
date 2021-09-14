@@ -111,6 +111,14 @@ export interface TalentFavoritInput {
   updated_by?: string | null;
 }
 
+export interface TeamInput {
+  name?: string | null;
+  project?: string | null;
+  published_at?: any | null;
+  created_by?: string | null;
+  updated_by?: string | null;
+}
+
 export interface UsersPermissionsLoginInput {
   identifier: string;
   password: string;
@@ -147,6 +155,14 @@ export interface createProjectInput {
 
 export interface createTalentFavoritInput {
   data?: TalentFavoritInput | null;
+}
+
+export interface createTeamInput {
+  data?: TeamInput | null;
+}
+
+export interface deleteItemInput {
+  where?: InputID | null;
 }
 
 export interface editProjectFavoritInput {
