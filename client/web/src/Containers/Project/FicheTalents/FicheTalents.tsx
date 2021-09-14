@@ -56,16 +56,17 @@ const FicheTalents: FC<FicheTalentsProps> = ({ talentId }) => {
           })}
         </Box>
       </Box>
-      <Box className="former-project">
+      {/* <Box className="former-project">
         <Typography variant="h6" className="title">
           Former projects
         </Typography>
         <FormerProject />
-      </Box>
-      {}
-      <Box className="pitch">
-        <Pitch url={data?.profile?.video ?? ''} />
-      </Box>
+      </Box> */}
+      {data?.profile?.video && (
+        <Box className="pitch">
+          <Pitch url={data?.profile?.video ?? ''} />
+        </Box>
+      )}
       <Box className="boxBtn">
         <Button className="btnAdd" onClick={handleOpen}>
           Add to Project
