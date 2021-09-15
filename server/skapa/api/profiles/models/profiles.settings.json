@@ -77,6 +77,10 @@
     "appointmentTalents": {
       "via": "talent",
       "collection": "appointments"
+    },
+    "teams": {
+      "via": "profile",
+      "collection": "teams"
     }
   }
 }

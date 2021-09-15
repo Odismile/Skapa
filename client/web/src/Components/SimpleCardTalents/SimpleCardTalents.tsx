@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { Box, Card, CardContent, Typography } from '@material-ui/core';
 import React, { FC } from 'react';
 import organisationImg from '../../Assets/images/organisation.png';
@@ -27,7 +28,8 @@ const SimpleCardTalents: FC<SimpleCardTalentsProps> = ({ position, name, jobSeni
                 <Award /> TOP RATED
               </Typography>
               <Typography component="p" className="name-adress">
-                <span>{name}</span> - Interne - Paris
+                <span>{name}</span>
+                {/* <span>{name}</span> - Interne - Paris */}
               </Typography>
               <Box className="level-rate">
                 <Typography component="p" className="name-adress">

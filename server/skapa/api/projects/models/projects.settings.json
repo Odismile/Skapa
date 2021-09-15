@@ -15,8 +15,8 @@
       "type": "string"
     },
     "teams": {
-      "collection": "teams",
-      "via": "project"
+      "via": "project",
+      "collection": "teams"
     },
     "description": {
       "type": "text",

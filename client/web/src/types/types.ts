@@ -10,3 +10,8 @@ export interface LocationInterface {
   profilId?: string;
   talentId?: string;
 }
+
+
+export type CallbackFunction<T = undefined> = (value: T) => void;
+export type CallbackVoidFunction = () => void;
+

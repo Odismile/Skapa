@@ -1,12 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
-  content: {},
+  content: {
+    display: 'flex'
+  },
   tags: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-    flexWrap: 'wrap',
-    gap: 6,
+    width: 'fit-content',
+    marginLeft: 1,
+    marginRight: 1,
     '&>div': {
       backgroundColor: '#ECE8FF',
       color: '#8870FF',
