@@ -4,7 +4,6 @@ export default makeStyles(
   (theme) => ({
     AdminPage: {
       display: 'flex',
-      
       "& .menuButton": {
         marginRight: theme.spacing(2),
         [theme.breakpoints.up('sm')]: {
@@ -53,7 +52,7 @@ export default makeStyles(
     },
     content: {
       flexGrow: 1,
-      padding: '1.25rem 3rem 2rem',
+      padding: '1.25rem 2rem 2rem 3rem',
       "& .header_admin": {
         display: 'flex',
         alignItems: 'center',
@@ -119,6 +118,9 @@ export default makeStyles(
         },
       },
       "& .allProjects_list": {
+        flexBasis: '55%',
+        width: '55%',
+        paddingRight: '2rem',
         "& .tri_btns": {
           display: 'flex',
           alignItems: 'center',
@@ -149,21 +151,61 @@ export default makeStyles(
           },
         },
       },
+      "& .title_block": {
+        color: '#8870ff',
+        fontSize: 14,
+        fontWeight: 700,
+        marginBottom: 20,
+        "& .nbr": {
+          background: '#ece8ff',
+          fontSize: 10,
+          fontWeight: 700,
+          marginLeft: 10,
+          padding: 0,
+          "& span": {
+            position: 'static',
+            transform: 'none',
+            padding: 0,
+          },
+        },
+      },
+      "& .content_bloc": {
+        display: 'flex',
+        height: 'calc(100vh - 200px)',
+        overflow: 'hidden',
+      },
+      "& .pendingProjects_content": {
+        flexBasis: '45%',
+        padding: '0 0 0 30px',
+        width: '45%',
+      },
+      "& .pendingProjects_list": {
+        height: 'calc(100% - 40px)',
+        overflow: 'hidden auto',
+      },
+      
     },
     dataTable_wrapper: {
-      height: "calc(100vh - 16rem)",
+      height: "calc(100vh - 245px)",
       width: "100%",
       "& .MuiDataGrid-root": {
         border: "none",
         marginBottom: 0,
-        
+      },
+      '& .MuiDataGrid-renderingZone': {
+        maxHeight: 'calc(100vh - 380px)',
+        maxWidth: 'calc(100% - 20px)',
+        overflow: 'hidden auto',
+        //maxHeight: 'none !important',
+      },
+      '& .MuiDataGrid-row': {
+          //maxHeight: 'none !important',
       },
       "& .MuiDataGrid-main": {
         //backgroundColor: "darkcyan",
       },
       "& .MuiDataGrid-columnsContainer": {
         border: "none",
-        
       },
       "& .MuiDataGrid-columnHeaderWrapper": {
         padding: '0 20px',
@@ -194,18 +236,19 @@ export default makeStyles(
         color: '#8870ff',
       },
       "& .MuiDataGrid-window": {
+        background: '#fff',
+        borderRadius: 12,
+        border:  '1px solid #f4f4f4',
+        boxShadow: '0px 2px 4px rgba(0,0,0,0.11)',
+        padding: '20px',
         overflowX: 'hidden',
-        overflowY: 'auto !important',
+        overflowY: 'hidden !important',
         "@media (min-width: 1024px)": {
         },
       },
 
       "& .MuiDataGrid-dataContainer": {
-        background: '#fff',
-        borderRadius: 12,
-        border:  '1px solid #f4f4f4',
-        boxShadow: '0px 2px 4px rgba(0,0,0,0.11)',
-        padding: '0 20px',
+        
         "& .MuiDataGrid-row": {
           maxWidth: "calc(100% - 40px)",
           overflow: 'hidden',
@@ -223,6 +266,9 @@ export default makeStyles(
         color: '#383838',
         fontSize: 12,
         fontWeight: 400,
+        //lineHeight: 'unset !important',
+        //maxHeight: 'none !important',
+        whiteSpace: 'normal',
         "&:focus": {
           outline: 'none',
         },
@@ -238,5 +284,5 @@ export default makeStyles(
       },
     },
   }),
-  { name: 'Admin' },
+  //{ name: 'Admin' },
 );
