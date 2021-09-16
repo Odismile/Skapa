@@ -15,8 +15,8 @@
       "type": "string"
     },
     "teams": {
-      "via": "project",
-      "collection": "teams"
+      "collection": "teams",
+      "via": "project"
     },
     "description": {
       "type": "text",
@@ -47,8 +47,8 @@
       "via": "projects"
     },
     "profile": {
-      "via": "projects",
-      "model": "profiles"
+      "model": "profiles",
+      "via": "projects"
     },
     "project_favorits": {
       "collection": "project-favorits",
@@ -64,8 +64,15 @@
       "type": "datetime"
     },
     "contributes": {
-      "via": "project_id",
-      "collection": "contributes"
+      "collection": "contributes",
+      "via": "project_id"
+    },
+    "isExternalVideo": {
+      "type": "boolean",
+      "default": false,
+      "unique": false,
+      "required": false,
+      "private": false
     }
   }
 }
