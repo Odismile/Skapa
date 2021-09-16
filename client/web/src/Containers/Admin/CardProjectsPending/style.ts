@@ -113,6 +113,7 @@ export default makeStyles((theme) => ({
         fontWeight: 700,
         lineHeight: 1.25,
         marginRight: 5,
+        marginBottom: 0,
       },
     },
     "& .btns-group": {
@@ -146,5 +147,211 @@ export default makeStyles((theme) => ({
   },
   card_root: {
     padding: 10,
+  },
+  modal_detail_project: {
+    "& [role='dialog']": {
+      borderRadius: 20,
+      margin: '1rem',
+      padding: 10,
+    },
+    "& .dialog-content": {
+      padding: 0,
+    },
+    "& .media_content": {
+      margin: '0 0 20px',
+      position: 'relative',
+      "& .media": {
+        borderRadius: 16,
+        margin: 0,
+        "& img": {
+          display: 'block',
+          borderRadius: 'inherit',
+          height: 164,
+          maxWidth: '100%',
+        }
+      },
+      "& .labeled": {
+        borderRadius: 13,
+        background: "#ece8ff",
+        color: "#634ecb",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 10,
+        fontWeight: 400,
+        height: 20,
+        lineHeight: 1.2,
+        margin: 0,
+        minWidth: 66,
+        position: 'absolute',
+        top: 8,
+        left: 8,
+        zIndex: 1,
+      },
+    },
+    "& .header_item": {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 10,
+      padding: '0 20px',
+      width: '100%',
+      '& h2': {
+        fontSize: 30,
+        fontWeight: 700,
+        marginRight: 20,
+      },
+      "& .date_range": {
+        fontSize: 14,
+        fontWeight: 600,
+        margin: 0,
+        whiteSpace: 'nowrap',
+        "& svg": {
+          fontSize: '1.25rem',
+          marginRight: 10,
+          verticalAlign: -5,
+        },
+      },
+    },
+    '& .body_item': {
+      display: 'flex',
+      padding: '0 20px',
+      "& .left_content, & .right_content":  {
+        flex: '1 0 50%',
+        width: '50%',
+      },
+    },
+    "& .infos_text": {
+      marginBottom: 10,
+      "& p": {
+        lineHeight: 1.2,
+        fontSize: 14,
+        margin: 0,
+      },
+      "& label": {
+        fontWeight: 600,
+        margin: 0,
+      },
+    },
+    "& .team_bloc": {
+      display: 'flex',
+      alignItems: 'center',
+      marginBottom: 20,
+      "& .team_title": {
+        fontSize: 14,
+        display: 'inline-flex',
+        fontWeight: 700,
+        lineHeight: 1.25,
+        marginBottom: 0,
+        marginRight: 10,
+      },
+    },
+    "& .sliderRange_bloc": {
+      marginBottom: 20,
+      "& .sliderText": {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingTop: 10,
+        "& .sliderText_item": {
+          color: '#000',
+          fontSize: 15,
+          lineHeight: 1.25,
+          marginBottom: 0,
+          "&.active": {
+            color: '#8870ff',
+          },
+          "& .value": {
+            
+            fontWeight: 700,
+          },
+          "& .text": {
+            fontWeight: 300,
+          },
+        },
+      },
+    },
+    "& .presentation_bloc": {
+      "& .title": {
+        color: '#000',
+        fontSize: 14,
+        fontWeight: 700,
+      },
+      "& .presentation_desc": {
+        "& .inner_desc": {
+          border: 'dashed 1px #f4f4f4',
+          borderRadius: 12,
+          boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
+          height: 84,
+          padding: 10,
+          marginBottom: 10,
+          maxWidth: 298,
+          width: '100%',
+          "& .text": {
+            color: '#383838',
+            fontSize: 12,
+            fontWeight: 400,
+            lineHeight: 1.4,
+            marginBottom: 0,
+          },
+        },
+        "& .wrap_link": {
+          marginBottom: 0,
+          lineHeight: 1.4,
+          textAlign: 'right',
+          "& .more_link": {
+            borderBottom: '1px solid #8870ff',
+            color: '#8870ff',
+            cursor: 'pointer',
+            display: 'inline-block',
+            fontSize: 15,
+            fontWeight: 700,
+            textDecoration: 'none',
+          },
+        },
+      },
+    },
+    "& .pitch_bloc": {
+      marginBottom: 20,
+      "& .title": {
+        fontSize: 14,
+        fontWeight: 700,
+        lineHeight: 1.25,
+        margin: '0 0 10px',
+      },
+      "& .pitch_content": {
+        background: 'rgb(101 101 101 / 60%)',
+        borderRadius: 6,
+        height: 168,
+        maxWidth: 300,
+        width: '100%',
+      },
+    },
+    "& .tags_bloc": {
+      "& .title": {
+        fontSize: 14,
+        fontWeight: 700,
+        lineHeight: 1.25,
+        margin: '0 0 10px',
+      },
+      "& .tag_list": {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
+      "& .tag_item": {
+        borderRadius: 13,
+        background: "#ece8ff",
+        color: "#634ecb",
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 12,
+        fontWeight: 400,
+        height: 25,
+        margin: "0 10px 5px 0",
+        minWidth: 88,
+        padding: '0 12px',
+      },
+    },
   },
 }));

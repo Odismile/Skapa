@@ -158,6 +158,7 @@ export default makeStyles(
         marginBottom: 20,
         "& .nbr": {
           background: '#ece8ff',
+          borderRadius: 20,
           fontSize: 10,
           fontWeight: 700,
           marginLeft: 10,
@@ -171,6 +172,7 @@ export default makeStyles(
       },
       "& .content_bloc": {
         display: 'flex',
+        justifyContent: 'space-between',
         height: 'calc(100vh - 200px)',
         overflow: 'hidden',
       },
@@ -182,8 +184,8 @@ export default makeStyles(
       "& .pendingProjects_list": {
         height: 'calc(100% - 40px)',
         overflow: 'hidden auto',
+        paddingRight: '1rem',
       },
-      
     },
     dataTable_wrapper: {
       height: "calc(100vh - 245px)",
@@ -193,10 +195,20 @@ export default makeStyles(
         marginBottom: 0,
       },
       '& .MuiDataGrid-renderingZone': {
-        maxHeight: 'calc(100vh - 380px)',
+        maxHeight: 'calc(100vh - 380px) !important',
         maxWidth: 'calc(100% - 20px)',
         overflow: 'hidden auto',
         //maxHeight: 'none !important',
+        "&::-webkit-scrollbar": {
+          width: 5,
+          borderRadius: 5,
+        },
+        "&::-webkit-scrollbar-track": {
+          //boxShadow: `inset 0 0 6px rgba(0, 0, 0, 0.3)`,
+        },
+        "&::-webkit-scrollbar-thumb": {
+          backgroundColor: "#dfdfdf",
+        },
       },
       '& .MuiDataGrid-row': {
           //maxHeight: 'none !important',
@@ -282,6 +294,10 @@ export default makeStyles(
           padding: 0,
         },
       },
+    },
+
+    modal_detail_project: {
+
     },
   }),
   //{ name: 'Admin' },
