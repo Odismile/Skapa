@@ -1,7 +1,9 @@
-import React, {  useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
   Box,
+  Switch,
+  FormControlLabel,
   IconButton,
   InputLabel,
   MenuItem,
@@ -28,9 +30,7 @@ import { Items_get_language_items } from '../../../../GraphQL/items/types/Items_
 import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/useItemsGetSkills';
 import { useItemsProjectTypes } from '../../../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
 
-import {
-  createProjectInputVar, testCreateObject
-} from '../../../../ReactiveVariable/Project/createProject';
+import { createProjectInputVar, testCreateObject } from '../../../../ReactiveVariable/Project/createProject';
 //import Calendar from '../../../../Components/Calendar';
 // import Calendar, { CalendarProps } from 'react-calendar';
 // import { DateCallback } from 'react-calendar';
@@ -56,6 +56,8 @@ const Description = () => {
   const [nameOfProject, setNameOfProject] = useState('');
   const [fileUpload, setFileUpload] = useState('');
   const [typeProject, setTypeProject] = useState('Change');
+  const [isUrlVideo, setIsUrlVideo] = useState(false);
+  const [externalVideo, setExternalVideo] = useState('');
   const [city, setCity] = useState('');
   const [dateStart, setdateStart] = useState<Date | null>(new Date());
   const [dateEnd, setDateEnd] = useState<Date | null>(new Date());
@@ -72,7 +74,19 @@ const Description = () => {
     createProjectInputVar({
       ...createProjectInput,
       nameProject: e.target.value,
-    })
+    });
+    console.log({
+      ...createProjectInput,
+      nameProject: e.target.value,
+    });
+  };
+
+  const onChangeVideoUrl = (e: boolean) => {
+    setIsUrlVideo(e);
+    createProjectInputVar({
+      ...createProjectInput,
+      isExternalVideo: e,
+    });
   };
 
   const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -81,7 +95,7 @@ const Description = () => {
     createProjectInputVar({
       ...createProjectInput,
       pictureProject: filesConcat,
-    })
+    });
     setFileUpload(url);
     testCreateObject();
   };
@@ -96,7 +110,7 @@ const Description = () => {
     createProjectInputVar({
       ...createProjectInput,
       typeProject: e.target.value as any,
-    })
+    });
     testCreateObject();
   };
 
@@ -105,7 +119,7 @@ const Description = () => {
     createProjectInputVar({
       ...createProjectInput,
       cityProject: e.target.value,
-    })
+    });
     testCreateObject();
   };
 
@@ -114,7 +128,7 @@ const Description = () => {
     createProjectInputVar({
       ...createProjectInput,
       dateStartProject: moment(date).toDate(),
-    })
+    });
     testCreateObject();
   };
 
@@ -123,7 +137,7 @@ const Description = () => {
     createProjectInputVar({
       ...createProjectInput,
       dateEndProject: moment(date).toDate(),
-    })
+    });
     testCreateObject();
   };
 
@@ -132,12 +146,12 @@ const Description = () => {
     createProjectInputVar({
       ...createProjectInput,
       descriptionProject: e.target.value,
-    })
+    });
     testCreateObject();
   };
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
-    let newSkill : any[] = [];
+    let newSkill: any[] = [];
     if (skillsSelected?.length === 0) {
       newSkill = [skill];
       setSkillsSelected([skill]);
@@ -147,14 +161,14 @@ const Description = () => {
         newSkill = skillsSelected?.filter((skillItem) => skillItem?.label !== skill?.label) as any;
         setSkillsSelected(newSkill as any);
       } else {
-        newSkill = skillsSelected && [...skillsSelected, skill] as any;
+        newSkill = skillsSelected && ([...skillsSelected, skill] as any);
         setSkillsSelected(newSkill as any);
       }
     }
     createProjectInputVar({
       ...createProjectInput,
       skillsSelectedVariable: newSkill,
-    })
+    });
     testCreateObject();
   };
 
@@ -164,7 +178,7 @@ const Description = () => {
     createProjectInputVar({
       ...createProjectInput,
       videoProject: filesConcat,
-    })
+    });
     setVideoUpload(url);
     testCreateObject();
   };
@@ -172,7 +186,9 @@ const Description = () => {
   const infoText = `
     Lorem ipsum
     `;
-
+  useEffect(() => {
+    console.log('createProjectInput.isExternalVideo ', createProjectInput);
+  }, [createProjectInput]);
   return (
     <Box className={classes.description}>
       {/* upload picture */}
@@ -396,37 +412,67 @@ const Description = () => {
                   <Info />
                 </IconButton>
               </Tooltip>
+              <FormControlLabel
+                value="start"
+                control={
+                  <Switch
+                    defaultChecked={isUrlVideo}
+                    onChange={(_, checked) => onChangeVideoUrl(checked)}
+                    size="small"
+                  />
+                }
+                label="url"
+                labelPlacement="start"
+              />
             </Box>
             <Box className="content_bloc videoPitch_bloc" component="section">
-              <Box className="upload_bloc">
-                <input
-                  accept="video/*"
-                  className="upload_picture"
-                  id="contained-button-file-video"
-                  type="file"
-                  onChange={onUploadVideoFile}
+              {isUrlVideo ? (
+                <TextFieldComponent
+                  label={''}
+                  // error={true}
+                  // helperText='diso'
+                  placeholder={'Url of video'}
+                  type="text"
+                  value={externalVideo}
+                  onChange={(e) => {
+                    setExternalVideo(e.target.value);
+                    createProjectInputVar({
+                      ...createProjectInput,
+                      videoUrl: e.target.value,
+                    });
+                  }}
                 />
-                <label htmlFor="contained-button-file-video" className="upload_content">
-                  {videoUpload.length !== 0 ? (
-                    <ReactPlayer
-                      url={videoUpload}
-                      className={classNames(classes.videoUpload, 'videoUpload')}
-                      width={'150px'}
-                      height={'100px'}
-                      playing={true}
-                      controls={true}
-                    />
-                  ) : (
-                    <>
-                      <IconPhoto />
-                      <span>
-                        {t(`createProject.uploadAVideo`)} <br />
-                        (youtube, mp4.)
-                      </span>
-                    </>
-                  )}
-                </label>
-              </Box>
+              ) : (
+                <Box className="upload_bloc">
+                  <input
+                    accept="video/*"
+                    className="upload_picture"
+                    id="contained-button-file-video"
+                    type="file"
+                    onChange={onUploadVideoFile}
+                  />
+                  <label htmlFor="contained-button-file-video" className="upload_content">
+                    {videoUpload.length !== 0 ? (
+                      <ReactPlayer
+                        url={videoUpload}
+                        className={classNames(classes.videoUpload, 'videoUpload')}
+                        width={'150px'}
+                        height={'100px'}
+                        playing={true}
+                        controls={true}
+                      />
+                    ) : (
+                      <>
+                        <IconPhoto />
+                        <span>
+                          {t(`createProject.uploadAVideo`)} <br />
+                          (youtube, mp4.)
+                        </span>
+                      </>
+                    )}
+                  </label>
+                </Box>
+              )}
             </Box>
           </Box>
         </form>

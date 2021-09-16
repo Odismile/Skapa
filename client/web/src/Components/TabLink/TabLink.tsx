@@ -90,6 +90,8 @@ const TabLink = () => {
       videoProject,
       skillsSelectedVariable,
       descriptionProject,
+      isExternalVideo,
+      videoUrl,
     } = createProjectInput;
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
@@ -163,11 +165,14 @@ const TabLink = () => {
                   Date_end: moment(dateEndProject).utcOffset(0, false).toISOString(),
                   description: descriptionProject,
                   project_skills: transformSkills(skillsSelectedVariable),
-                  Video: videoProject?.[0].name
-                    ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-                        videoProject?.[0].name
-                      }`
-                    : null,
+                  Video:
+                    isExternalVideo && videoUrl.length
+                      ? videoUrl
+                      : videoProject?.[0].name
+                      ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                          videoProject?.[0].name
+                        }`
+                      : null,
                   status: '1',
                   // teams: [],
                   // item: '',

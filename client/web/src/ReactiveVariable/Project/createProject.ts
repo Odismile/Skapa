@@ -5,9 +5,11 @@ interface CreateProjectInputInterface {
   pictureProject: File[] | null;
   videoProject: File[] | null;
   nameProject: string;
+  videoUrl: string;
   typeProject: string;
   cityProject: string;
   descriptionProject: string;
+  isExternalVideo: boolean;
   dateStartProject: Date | null;
   dateEndProject: Date | null;
   skillsSelectedVariable: (Items_get_language_items | null)[] | null | undefined;
@@ -20,6 +22,8 @@ export const createProjectInputVar= makeVar<CreateProjectInputInterface>({
   pictureProject: null,
   videoProject: null,
   nameProject: '',
+  videoUrl: '',
+  isExternalVideo : false,
   skillsSelectedVariable: [],
   descriptionProject: '',
   typeProject: 'Change',
@@ -35,6 +39,8 @@ export const initCreateProjectVariable = () => {
     pictureProject: null,
     videoProject: null,
     nameProject: '',
+    videoUrl: '',
+    isExternalVideo: false,
     skillsSelectedVariable: [],
     descriptionProject: '',
     typeProject: 'Change',
