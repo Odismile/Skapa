@@ -29,16 +29,7 @@ import { useItemsGetSkills } from '../../../../Providers/ItemsProvider/hooks/use
 import { useItemsProjectTypes } from '../../../../Providers/ItemsProvider/hooks/useItemsProjectTypes';
 
 import {
-  cityVariable,
-  dateEndVariable,
-  dateStartVariable,
-  filesPictureVariable,
-  filesVideoVariable,
-  nameProjectVariable,
-  projectDescriptionVariable,
-  skillsSelectedVariable,
-  testCreateObject,
-  typeProjectVariable,
+  createProjectInputVar, testCreateObject
 } from '../../../../ReactiveVariable/Project/createProject';
 //import Calendar from '../../../../Components/Calendar';
 // import Calendar, { CalendarProps } from 'react-calendar';
@@ -59,6 +50,7 @@ const Description = () => {
   const { t } = useTranslation();
 
   const { data, loading } = useItemsGetSkills();
+  const createProjectInput = createProjectInputVar();
   const { data: dataProjectType } = useItemsProjectTypes();
 
   const [nameOfProject, setNameOfProject] = useState('');
@@ -77,13 +69,19 @@ const Description = () => {
 
   const onChageNameOfProject = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNameOfProject(e.target.value);
-    nameProjectVariable(e.target.value);
+    createProjectInputVar({
+      ...createProjectInput,
+      nameProject: e.target.value,
+    })
   };
 
   const onUploadFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
     const filesConcat = Array.from(event.target.files || []);
-    filesPictureVariable(filesConcat);
+    createProjectInputVar({
+      ...createProjectInput,
+      pictureProject: filesConcat,
+    })
     setFileUpload(url);
     testCreateObject();
   };
@@ -95,57 +93,78 @@ const Description = () => {
     }>,
   ) => {
     setTypeProject('' + e.target.value);
-    typeProjectVariable('' + e.target.value);
+    createProjectInputVar({
+      ...createProjectInput,
+      typeProject: e.target.value as any,
+    })
     testCreateObject();
   };
 
   const onChangeCity = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setCity(e.target.value);
-    cityVariable(e.target.value);
+    createProjectInputVar({
+      ...createProjectInput,
+      cityProject: e.target.value,
+    })
     testCreateObject();
   };
 
   const onChangeDateStart = (date: MaterialUiPickersDate) => {
     setdateStart(moment(date).toDate());
-    dateStartVariable(moment(date).toDate());
+    createProjectInputVar({
+      ...createProjectInput,
+      dateStartProject: moment(date).toDate(),
+    })
     testCreateObject();
   };
 
   const onChangeDateEnd = (date: MaterialUiPickersDate) => {
     setDateEnd(moment(date).toDate());
-    dateEndVariable(moment(date).toDate());
+    createProjectInputVar({
+      ...createProjectInput,
+      dateEndProject: moment(date).toDate(),
+    })
     testCreateObject();
   };
 
   const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setProjectDescription(e.target.value);
-    projectDescriptionVariable(e.target.value);
+    createProjectInputVar({
+      ...createProjectInput,
+      descriptionProject: e.target.value,
+    })
     testCreateObject();
   };
 
   const onClickSkill = (skill: Items_get_language_items | null) => {
+    let newSkill : any[] = [];
     if (skillsSelected?.length === 0) {
+      newSkill = [skill];
       setSkillsSelected([skill]);
-      skillsSelectedVariable([skill]);
     } else {
       const findSkill = skillsSelected?.find((skillItem) => skillItem?.label === skill?.label);
       if (findSkill) {
-        const newSkills = skillsSelected?.filter((skillItem) => skillItem?.label !== skill?.label);
-        setSkillsSelected(newSkills);
-        skillsSelectedVariable(newSkills);
+        newSkill = skillsSelected?.filter((skillItem) => skillItem?.label !== skill?.label) as any;
+        setSkillsSelected(newSkill as any);
       } else {
-        const newSkills = skillsSelected && [...skillsSelected, skill];
-        skillsSelectedVariable(newSkills);
-        setSkillsSelected(newSkills);
+        newSkill = skillsSelected && [...skillsSelected, skill] as any;
+        setSkillsSelected(newSkill as any);
       }
     }
+    createProjectInputVar({
+      ...createProjectInput,
+      skillsSelectedVariable: newSkill,
+    })
     testCreateObject();
   };
 
   const onUploadVideoFile = (event: React.ChangeEvent<HTMLInputElement>) => {
     const url = event?.target?.files?.[0] ? URL.createObjectURL(event?.target?.files?.[0]) : '';
     const filesConcat = Array.from(event.target.files || []);
-    filesVideoVariable(filesConcat);
+    createProjectInputVar({
+      ...createProjectInput,
+      videoProject: filesConcat,
+    })
     setVideoUpload(url);
     testCreateObject();
   };
