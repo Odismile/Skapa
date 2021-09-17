@@ -44,6 +44,7 @@
     "subscriptions-transport-ws": "^0.9.19",
     "swiper": "^6.8.1",
     "typescript": "^4.0.3",
+    "video-react": "^0.14.1",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.3",
     "workbox-broadcast-update": "^5.1.3",
