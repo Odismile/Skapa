@@ -76,7 +76,7 @@ export default makeStyles(
             padding: 0,
             '& svg': {
               fill: theme.palette.primary.main,
-              fontSize: '1rem',
+              fontSize: '1.25rem',
             },
           },
           '& .subTitle': {
@@ -103,6 +103,21 @@ export default makeStyles(
                 "& input": {
                   fontSize: 12,
                 },
+              },
+            },
+          },
+          "& .toggle_url": {
+            "& span": {
+              margin: 0,
+              "&:nth-child(2)": {
+                fontSize: 14,
+                fontWeight: 700,
+                paddingRight: 8,
+              },
+            },
+            "& .switch_url": {
+              "& .Mui-checked": {
+
               },
             },
           },
