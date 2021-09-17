@@ -75,10 +75,6 @@ const Description = () => {
       ...createProjectInput,
       nameProject: e.target.value,
     });
-    console.log({
-      ...createProjectInput,
-      nameProject: e.target.value,
-    });
   };
 
   const onChangeVideoUrl = (e: boolean) => {
@@ -95,7 +91,7 @@ const Description = () => {
       });
       setExternalVideo('');
     }
-    
+
     setIsUrlVideo(e);
     createProjectInputVar({
       ...createProjectInput,
@@ -200,9 +196,7 @@ const Description = () => {
   const infoText = `
     Lorem ipsum
     `;
-  useEffect(() => {
-    console.log('createProjectInput.isExternalVideo ', createProjectInput);
-  }, [createProjectInput]);
+
   return (
     <Box className={classes.description}>
       {/* upload picture */}
