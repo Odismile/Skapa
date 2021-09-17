@@ -186,7 +186,14 @@ export default makeStyles(
             fontSize: 12,
             fontWeight: 400,
             textAlign: "center",
-          }
+            "&[type=number]": {
+              '-moz-appearance': 'textfield',
+            },
+            "&::-webkit-inner-spin-button,  &::-webkit-outer-spin-button": { 
+              '-webkit-appearance': 'none',
+              margin: 0,
+            },
+          },
         },
         "& .list_relativeuser": {
           padding: "16px 32px 20px",

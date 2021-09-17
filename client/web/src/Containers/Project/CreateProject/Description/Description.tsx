@@ -421,15 +421,17 @@ const Description = () => {
                 </IconButton>
               </Tooltip>
               <FormControlLabel
+                className="toggle_url"
                 value="start"
                 control={
                   <Switch
                     defaultChecked={isUrlVideo}
                     onChange={(_, checked) => onChangeVideoUrl(checked)}
                     size="small"
+                    className="switch_url"
                   />
                 }
-                label="url"
+                label="URL Youtube"
                 labelPlacement="start"
               />
             </Box>
@@ -437,9 +439,7 @@ const Description = () => {
               {isUrlVideo ? (
                 <TextFieldComponent
                   label={''}
-                  // error={true}
-                  // helperText='diso'
-                  placeholder={'Url of video'}
+                  placeholder={'Paste here your video url !'}
                   type="text"
                   value={externalVideo}
                   onChange={(e) => {
