@@ -1,4 +1,4 @@
-import { Box, makeStyles, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, makeStyles, Tab, Tabs } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import PrimaryHeader from '../../Components/Header';
 import Places from '../Places/Places';

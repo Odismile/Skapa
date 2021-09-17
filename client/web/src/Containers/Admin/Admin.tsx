@@ -8,7 +8,6 @@ import {
   Typography,
   Badge,
   Divider,
-  
 } from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
 
@@ -28,8 +27,6 @@ import useStyles from './styles';
 import mainLogoWhite from '../../Assets/images/logo-white.svg';
 import topInnovator from '../../Assets/images/top_innovator.png';
 import UserAvatar from '../../Assets/images/user_avatar.jpg';
-
-
 
 const columns = [
   {
@@ -61,7 +58,6 @@ const columns = [
     disableColumnMenu: true,
   },
 ];
-
 const rows = [
   { id: 1, Name: '1 Lorem Ipsum Sit Amet', Type: 'Innovation 1', Creator: 'E. Dupont' },
   { id: 2, Name: '2 Lorem Ipsum Sit Amet', Type: 'Innovation 2', Creator: 'E. Dupont' },
@@ -72,7 +68,6 @@ const rows = [
   { id: 7, Name: '7 Lorem Ipsum Sit Amet', Type: 'Innovation 7', Creator: 'E. Dupont' },
   { id: 8, Name: '8 Lorem Ipsum Sit Amet', Type: 'Innovation 8', Creator: 'E. Dupont' },
   { id: 9, Name: '9 Lorem Ipsum Sit Amet', Type: 'Innovation 9', Creator: 'E. Dupont' },
-
   { id: 10, Name: '10 Lorem Ipsum Sit Amet', Type: 'Innovation 10', Creator: 'E. Dupont' },
   { id: 11, Name: '11 Lorem Ipsum Sit Amet', Type: 'Innovation 11', Creator: 'E. Dupont' },
   { id: 12, Name: '12 Lorem Ipsum Sit Amet', Type: 'Innovation 12', Creator: 'E. Dupont' },
@@ -81,7 +76,6 @@ const rows = [
   { id: 15, Name: '15 Lorem Ipsum Sit Amet', Type: 'Innovation 15', Creator: 'E. Dupont' },
   { id: 16, Name: '16 Lorem Ipsum Sit Amet', Type: 'Innovation 16', Creator: 'E. Dupont' },
   { id: 17, Name: '17 Lorem Ipsum Sit Amet', Type: 'Innovation 17', Creator: 'E. Dupont' },
-  { id: 18, Name: '18 Lorem Ipsum Sit Amet', Type: 'Innovation 18', Creator: 'RAKOTOARISON ANDRIAMANANKASINA Tovo Johnny' },
 ];
 
 
