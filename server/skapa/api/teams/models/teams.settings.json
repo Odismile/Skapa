@@ -15,8 +15,8 @@
       "type": "string"
     },
     "project": {
-      "model": "projects",
-      "via": "teams"
+      "via": "teams",
+      "model": "projects"
     },
     "profile": {
       "model": "profiles",

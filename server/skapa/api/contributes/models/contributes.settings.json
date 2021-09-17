@@ -14,8 +14,8 @@
       "type": "float"
     },
     "project_id": {
-      "model": "projects",
-      "via": "contributes"
+      "via": "contributes",
+      "model": "projects"
     },
     "profile_id": {
       "via": "contributes",
