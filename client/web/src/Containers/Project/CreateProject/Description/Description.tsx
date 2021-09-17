@@ -82,6 +82,20 @@ const Description = () => {
   };
 
   const onChangeVideoUrl = (e: boolean) => {
+    if (e) {
+      createProjectInputVar({
+        ...createProjectInput,
+        videoProject: null,
+      });
+      setVideoUpload('');
+    } else {
+      createProjectInputVar({
+        ...createProjectInput,
+        videoUrl: '',
+      });
+      setExternalVideo('');
+    }
+    
     setIsUrlVideo(e);
     createProjectInputVar({
       ...createProjectInput,

@@ -28,7 +28,7 @@ const TabLink = () => {
   const classes = useStyles();
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
-  const createProjectInput = createProjectInputVar();
+
   const { doCreateProject, loading, data: dataProject } = useCreateProject();
   const { uploadFile, loading: loadingUpload } = useUploadFile();
   const { doUpdateProject, loading: loadingUpdate } = useUpdateProject();
@@ -92,7 +92,8 @@ const TabLink = () => {
       descriptionProject,
       isExternalVideo,
       videoUrl,
-    } = createProjectInput;
+    }  = createProjectInputVar();
+    
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
@@ -174,6 +175,7 @@ const TabLink = () => {
                         }`
                       : null,
                   status: '1',
+                  isExternalVideo: isExternalVideo && videoUrl.length ? isExternalVideo : false,
                   // teams: [],
                   // item: '',
                 },

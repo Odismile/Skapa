@@ -98,6 +98,7 @@ export interface ProjectInput {
   Date_start?: any | null;
   Date_end?: any | null;
   contributes?: (string | null)[] | null;
+  isExternalVideo?: boolean | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
@@ -193,6 +194,7 @@ export interface editProjectInput {
   Date_start?: any | null;
   Date_end?: any | null;
   contributes?: (string | null)[] | null;
+  isExternalVideo?: boolean | null;
   published_at?: any | null;
   created_by?: string | null;
   updated_by?: string | null;
