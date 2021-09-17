@@ -55,12 +55,16 @@ const FicheProject: FC<FicheProjectProps> = ({ projectId, profilId }) => {
             <Pitch url={project?.Video} />
           </Box>
         )}
-        <Box className="presentation">
-          <Typography variant="h6" className="title">
-            {t(`ficheProject.Presentation`)}
-          </Typography>
-          <Presentation description={project?.description ?? ''} />
-        </Box>
+        {project?.description && (
+          <Box className="presentation">
+            <Typography variant="h6" className="title">
+              {t(`ficheProject.Presentation`)}
+            </Typography>
+
+            <Presentation description={project?.description ?? ''} />
+          </Box>
+        )}
+
         {(project?.project_skills?.length || 0) > 0 && (
           <Box className="tags">
             <Typography variant="h6" className="title">
