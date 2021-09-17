@@ -1,3 +1,4 @@
+import { Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Autoplay } from 'swiper';
 
@@ -153,6 +154,7 @@ export default makeStyles((theme) => ({
       borderRadius: 20,
       margin: '1rem',
       padding: 10,
+      width: '100%',
     },
     "& .dialog-content": {
       padding: 0,
@@ -162,12 +164,16 @@ export default makeStyles((theme) => ({
       position: 'relative',
       "& .media": {
         borderRadius: 16,
+        height: 164,
         margin: 0,
         "& img": {
           display: 'block',
           borderRadius: 'inherit',
-          height: 164,
           maxWidth: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center top',
+          width: '100%',
         }
       },
       "& .labeled": {
@@ -219,6 +225,12 @@ export default makeStyles((theme) => ({
       "& .left_content, & .right_content":  {
         flex: '1 0 50%',
         width: '50%',
+      },
+      "& .left_content":{
+        paddingRight: 45,
+      },
+      "& .right_content":{
+        paddingLeft: 45,
       },
     },
     "& .infos_text": {
@@ -283,9 +295,10 @@ export default makeStyles((theme) => ({
           borderRadius: 12,
           boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
           height: 84,
-          padding: 10,
+          padding: '10px 15px 10px 10px',
           marginBottom: 10,
-          maxWidth: 298,
+          //maxWidth: 298,
+          overflow: 'hidden auto',
           width: '100%',
           "& .text": {
             color: '#383838',
@@ -323,7 +336,7 @@ export default makeStyles((theme) => ({
         background: 'rgb(101 101 101 / 60%)',
         borderRadius: 6,
         height: 168,
-        maxWidth: 300,
+        //maxWidth: 300,
         width: '100%',
       },
     },
@@ -353,5 +366,36 @@ export default makeStyles((theme) => ({
         padding: '0 12px',
       },
     },
+    "& .btns-group": {
+      display: 'flex',
+      alignItems: 'center',
+      "& .btn": {
+        border: 'none',
+        borderRadius: 35,
+        height: 35,
+        padding: 0,
+        marginLeft: 10,
+        width: 35,
+        "& svg": {
+          fill: '#fff',
+        },
+      },
+      "& .btn_validate": {
+        background: '#13ba75',
+        "& svg": {
+          fontSize: 15,
+        },
+      }
+      ,
+      "& .btn_close": {
+        background: '#e30057',
+        "& svg": {
+          fontSize: 11,
+        },
+      },
+    },
+  },
+  dialog_footer: {
+    padding: 0,
   },
 }));

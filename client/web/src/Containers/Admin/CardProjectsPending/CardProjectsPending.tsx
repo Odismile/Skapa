@@ -19,11 +19,15 @@ import {
   Slider,
   withStyles,
 } from '@material-ui/core';
+
+import Player from 'video-react';
+
+
 import useStyles from './style';
 // components
-import ImgAppExterne from '../../AppExterne/ImgAppExterne';
-import Team from '../../../Components/Team/Team';
-import SkillsRecquired from '../../AppExterne/SkillsRecquired';
+// import ImgAppExterne from '../../AppExterne/ImgAppExterne';
+// import Team from '../../../Components/Team/Team';
+// import SkillsRecquired from '../../AppExterne/SkillsRecquired';
 
 // icons
 import Calendar from '../../../Components/Icons/Calendar';
@@ -132,6 +136,7 @@ const CardProject = () => {
         scroll='paper'
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
+        maxWidth='md'
       >
         <DialogContent className="dialog-content">
           <Box className="media_content">
@@ -200,6 +205,9 @@ const CardProject = () => {
               <Box className="pitch_bloc">
                 <Typography className="title">Presentation pitch</Typography>
                 <Box className="pitch_content">
+                  {/* <Player>
+                    <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+                  </Player> */}
                 </Box>
               </Box>
               <Box className="tags_bloc">
@@ -213,12 +221,12 @@ const CardProject = () => {
             </Box>
           </Box>
         </DialogContent>
-        <DialogActions>
+        <DialogActions className={classes.dialog_footer}>
           <Box className="btns-group">
-            <IconButton onClick={handleClose}>
+            <IconButton className="btn btn_validate" onClick={handleClose}>
               <Check />
             </IconButton>
-            <IconButton onClick={handleClose}>
+            <IconButton className="btn btn_close" onClick={handleClose}>
               <Cross />
             </IconButton>
           </Box>
