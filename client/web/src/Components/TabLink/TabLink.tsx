@@ -13,17 +13,9 @@ import Team from '../../Containers/Project/CreateProject/Team/Team';
 import { useCreateProject } from '../../Providers/ProjectProvider/useCreateProject';
 import { useUpdateProject } from '../../Providers/ProjectProvider/useUpdateProject';
 import {
-  cityVariable,
-  dateEndVariable,
-  dateStartVariable,
-  filesPictureVariable,
-  filesVideoVariable,
   initCreateProjectVariable,
-  nameProjectVariable,
-  projectDescriptionVariable,
   projectIdVariable,
-  skillsSelectedVariable,
-  typeProjectVariable,
+  createProjectInputVar,
 } from '../../ReactiveVariable/Project/createProject';
 import { CREATE_PROJECT_CONGRATS } from '../../Routes';
 import { displaySnackbar, InitSnackbarData } from '../../Utils';
@@ -36,6 +28,7 @@ const TabLink = () => {
   const classes = useStyles();
   const snackbar = InitSnackbarData;
   const client = useApolloClient();
+
   const { doCreateProject, loading, data: dataProject } = useCreateProject();
   const { uploadFile, loading: loadingUpload } = useUploadFile();
   const { doUpdateProject, loading: loadingUpdate } = useUpdateProject();
@@ -87,6 +80,20 @@ const TabLink = () => {
 
   const handleNext = () => {
     const now = new Date();
+    const {
+      cityProject,
+      dateEndProject,
+      dateStartProject,
+      pictureProject,
+      nameProject,
+      typeProject,
+      videoProject,
+      skillsSelectedVariable,
+      descriptionProject,
+      isExternalVideo,
+      videoUrl,
+    }  = createProjectInputVar();
+    
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
@@ -95,73 +102,80 @@ const TabLink = () => {
         : activeStep + 1;
 
     if (activeStep === 0) {
-      if (nameProjectVariable().trim().length === 0) {
+      if (nameProject.trim().length === 0) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.nameOfProject`);
         displaySnackbar(client, snackbar);
-      } else if (filesPictureVariable() === null) {
+      } else if (pictureProject === null) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.picture`);
         displaySnackbar(client, snackbar);
-      } else if (typeProjectVariable().trim().length === 0) {
+      } else if (typeProject.trim().length === 0) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.typeProject`);
         displaySnackbar(client, snackbar);
-      } 
-      // else if (cityVariable().trim().length === 0) {
+      }
+      // else if (cityProject().trim().length === 0) {
       //   snackbar.type = 'ERROR';
       //   snackbar.message = t(`createProjectError.city`);
       //   displaySnackbar(client, snackbar);
       // }
-       else if (dateStartVariable() === null) {
+      else if (dateStartProject === null) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.start`);
         displaySnackbar(client, snackbar);
-      }
-       else if (dateEndVariable() === null) {
+      } else if (dateEndProject === null) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.end`);
         displaySnackbar(client, snackbar);
-      } else if (compareAsc(dateEndVariable() || now, dateStartVariable() || now) < 0) {
+      } else if (compareAsc(dateEndProject || now, dateStartProject || now) < 0) {
         snackbar.type = 'ERROR';
         snackbar.message = t(`createProjectError.invalidDate`);
         displaySnackbar(client, snackbar);
       }
-      //  else if (projectDescriptionVariable().trim().length === 0) {
+      //  else if (descriptionProject().trim().length === 0) {
       //   snackbar.type = 'ERROR';
       //   snackbar.message = t(`createProjectError.description`);
       //   displaySnackbar(client, snackbar);
-      // } 
+      // }
       // else if (skillsSelectedVariable() === null) {
       //   snackbar.type = 'ERROR';
       //   snackbar.message = t(`createProjectError.skills`);
       //   displaySnackbar(client, snackbar);
       // }
-      //  else if (filesVideoVariable() === null) {
+      //  else if (videoProject() === null) {
       //   snackbar.type = 'ERROR';
       //   snackbar.message = t(`createProjectError.video`);
       //   displaySnackbar(client, snackbar);
-      // } 
+      // }
       else {
-        if (nameProjectVariable().length) {
+        if (nameProject.length) {
           doCreateProject({
             variables: {
               input: {
                 data: {
-                  Picture: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-                    filesPictureVariable()?.[0].name
-                  }`,
-                  Name: nameProjectVariable(),
-                  Type: typeProjectVariable(),
-                  Ville: cityVariable(),
-                  Date_start: moment(dateStartVariable()).utcOffset(0, false).toISOString(),
-                  Date_end: moment(dateEndVariable()).utcOffset(0, false).toISOString(),
-                  description: projectDescriptionVariable(),
-                  project_skills: transformSkills(skillsSelectedVariable()),
-                  Video: `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
-                    filesVideoVariable()?.[0].name
-                  }`,
+                  Picture: pictureProject?.[0].name
+                    ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                        pictureProject?.[0].name
+                      }`
+                    : null,
+                  Name: nameProject,
+                  Type: typeProject,
+                  Ville: cityProject,
+                  Date_start: moment(dateStartProject).utcOffset(0, false).toISOString(),
+                  Date_end: moment(dateEndProject).utcOffset(0, false).toISOString(),
+                  description: descriptionProject,
+                  project_skills: transformSkills(skillsSelectedVariable),
+                  Video:
+                    isExternalVideo && videoUrl.length
+                      ? videoUrl
+                      : videoProject?.[0].name
+                      ? `${process.env.REACT_APP_FIREBASE_BUCKET_PLACE}${localStorage.getItem('idMe')}/${
+                          videoProject?.[0].name
+                        }`
+                      : null,
                   status: '1',
+                  isExternalVideo: isExternalVideo && videoUrl.length ? isExternalVideo : false,
                   // teams: [],
                   // item: '',
                 },
@@ -170,8 +184,8 @@ const TabLink = () => {
           }).then(async (result) => {
             if (result.data?.createProject?.project?.id) {
               projectIdVariable(result.data?.createProject?.project?.id);
-              await uploadFile(filesPictureVariable());
-              await uploadFile(filesVideoVariable());
+              await uploadFile(pictureProject);
+              await uploadFile(videoProject);
               initCreateProjectVariable();
               setActiveStep(newActiveStep);
             }
