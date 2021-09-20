@@ -29,6 +29,7 @@ import TalentSpace from '../Containers/MyActivity/TalentSpace/TalentSpace';
 import CreatorSpace from '../Containers/MyActivity/CreatorSpace/CreatorSpace';
 import AppExterne from '../Containers/AppExterne/AppExterne';
 import Admin from '../Containers/Admin';
+import ProjectsAdmin from '../Containers/Admin/ProjectsAdmin';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -61,6 +62,7 @@ export const MYACTIVITY_CREATOR_SPACE = '/myactivity/creator';
 export const PROFILE = '/profile';
 export const APPEXTERNE = '/app-externe';
 export const ADMIN = '/admin';
+//export const ADMIN = '/admin';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
@@ -71,7 +73,7 @@ export const ROUTES: RouteInterface[] = [
     route: ADMIN,
     roles: [],
     private: true,
-    component: Admin,
+    component: ProjectsAdmin,
   },
   {
     key: 'APPEXTERNE',
