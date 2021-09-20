@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC }from "react";
 import { 
   Avatar, 
   Box, 
@@ -7,14 +7,11 @@ import {
   CardMedia, 
   CardActions, 
   CardActionArea, 
-  Button,
   IconButton, 
   Link,
   Typography,
   Dialog,
-  DialogTitle,
   DialogContent,
-  DialogContentText,
   DialogActions,
   Slider,
   withStyles,
@@ -38,6 +35,14 @@ import Cross from '../../../Components/Icons/Cross';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import requestPhoto from '../../../Assets/images/photo_request.png';
 import UserAvatar from '../../../Assets/images/user_avatar.jpg';
+
+// interface IProjectPending {
+//   PhotoCard: string;
+//   LabelCard?: string;
+//   ProjectName : string;
+//   DateRange: string;
+//   FounderName: string;
+// }
 
 const PrettoSlider = withStyles({
   root: {
@@ -72,6 +77,13 @@ const PrettoSlider = withStyles({
 
 const CardProject = () => {
   const classes = useStyles();
+
+  // const { 
+  //   PhotoCard, 
+  //   LabelCard="innovation", 
+  //   ProjectName,
+  //   FounderName,
+  // } = propsCardProject;
 
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
