@@ -11,7 +11,7 @@ import Users from '../../../Components/Icons/Users'
 import Map from '../../../Components/Icons/Map'
 import Film from '../../../Components/Icons/Film'
 
-const Coachs = () => {
+const MenuAdmin = () => {
   const classes = useStyles();
   
   return (
@@ -30,11 +30,11 @@ const Coachs = () => {
           <Link className="nav_link"><span className="icon"><Map /></span>Places</Link>
         </ListItem>
         <ListItem disableGutters={true}>
-          <Link className="nav_link"><span className="icon"><Film /></span>Projects</Link>
+          <Link className="nav_link" href="/admin"><span className="icon"><Film /></span>Projects</Link>
         </ListItem>
       </List>
     </Box>
   );
 };
 
-export default Coachs;
+export default MenuAdmin;
