@@ -4,6 +4,9 @@ export default makeStyles(
   (theme) => ({
     AdminPage: {
       display: 'flex',
+      "& .asideLeftWrapper": {
+
+      },
       "& .menuButton": {
         marginRight: theme.spacing(2),
         [theme.breakpoints.up('sm')]: {
@@ -52,12 +55,18 @@ export default makeStyles(
     },
     content: {
       flexGrow: 1,
-      padding: '1.25rem 2rem 2rem 3rem',
+      padding: '1.25rem 1rem',
+      "@media (min-width: 960px)": {
+        padding: '1.25rem 2rem 2rem 3rem',
+      },
       "& .header_admin": {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        margin: '0 0 20px',
+        
+        "& .top_header": {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          margin: '0 0 20px',
+        },
         "& .title_page": {
           color: '#000',
           fontSize: 28,
@@ -66,32 +75,6 @@ export default makeStyles(
           lineHeight: 1.25,
           margin: 0,
         },
-        "& .user_profile": {
-          display: 'flex',
-          alignItems: 'center',
-          "& .user_avatar": {
-            height: 45,
-            width: 45,
-          },
-          "& .user_infos": {
-            marginLeft: 10,
-          },
-          "& p": {
-            color: '#383838',
-            lineHeight: 1.4,
-            margin: 0,
-          },
-          "& .user_name": {
-            fontSize: 14,
-            fontWeight: 400,
-          },
-          "& .user_job": {
-            fontSize: 12,
-            fontWeight: 300,
-          }
-        },
-      },
-      "& .mainContent_admin": {
         "& .filter_list": {
           display: 'flex',
           alignItems: 'center',
@@ -99,9 +82,8 @@ export default makeStyles(
           marginBottom: 30,
           "& .input-search": {
             width: 305,
-            
           },
-          "& .warning_btn": {
+          "& .btn": {
             border: '1px solid #8870ff',
             display: 'flex',
             alignItems: 'center',
@@ -117,10 +99,15 @@ export default makeStyles(
           },
         },
       },
+      "& .mainContent_admin": {
+        
+      },
       "& .allProjects_list": {
-        flexBasis: '55%',
-        width: '55%',
-        paddingRight: '2rem',
+        "@media (min-width: 960px)": {
+          flexBasis: '55%',
+          width: '55%',
+          paddingRight: '2rem',
+        },
         "& .tri_btns": {
           display: 'flex',
           alignItems: 'center',
@@ -129,7 +116,8 @@ export default makeStyles(
           "& h3": {
             color: "#383838",
             fontSize: 14,
-            fontWight: 400,
+            fontWeight: 400,
+            marginBottom: 0,
           },
 
           "& .btn": {
@@ -171,20 +159,29 @@ export default makeStyles(
         },
       },
       "& .content_bloc": {
-        display: 'flex',
-        justifyContent: 'space-between',
-        height: 'calc(100vh - 200px)',
+        
         overflow: 'hidden',
+        "@media (min-width: 960px)": {
+          display: 'flex',
+          justifyContent: 'space-between',
+          height: 'calc(100vh - 200px)',
+        },
       },
       "& .pendingProjects_content": {
-        flexBasis: '45%',
-        padding: '0 0 0 30px',
-        width: '45%',
+        
+        
+        "@media (min-width: 960px)": {
+          flexBasis: '45%',
+          padding: '0 0 0 30px',
+          width: '45%',
+        },
       },
       "& .pendingProjects_list": {
-        height: 'calc(100% - 40px)',
-        overflow: 'hidden auto',
-        paddingRight: '1rem',
+        "@media (min-width: 960px)": {
+          height: 'calc(100% - 40px)',
+          overflow: 'hidden auto',
+          paddingRight: '1rem',
+        },
       },
     },
     dataTable_wrapper: {
