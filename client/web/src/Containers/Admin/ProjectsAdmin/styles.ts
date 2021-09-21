@@ -60,7 +60,6 @@ export default makeStyles(
         padding: '1.25rem 2rem 2rem 3rem',
       },
       "& .header_admin": {
-        
         "& .top_header": {
           display: 'flex',
           alignItems: 'center',
@@ -108,36 +107,7 @@ export default makeStyles(
           width: '55%',
           paddingRight: '2rem',
         },
-        "& .tri_btns": {
-          display: 'flex',
-          alignItems: 'center',
-          marginBottom: 20,
-          width: "100%",
-          "& h3": {
-            color: "#383838",
-            fontSize: 14,
-            fontWeight: 400,
-            marginBottom: 0,
-          },
-
-          "& .btn": {
-            borderRadius: 16,
-            border: '1px solid #8870ff',
-            color: "#8870ff",
-            fontSize: 12,
-            fontWeight: 400,
-            textAlign: 'center',
-            padding: '0 10px',
-            height: 32,
-            margin: '0 5px 0 0',
-            "&:hover": {
-              backgroundColor: '#ece8ff',
-            },
-            "&:last-child": {
-              marginRight: 0,
-            },
-          },
-        },
+       
       },
       "& .title_block": {
         color: '#8870ff',
@@ -159,7 +129,35 @@ export default makeStyles(
         },
       },
       "& .content_bloc": {
-        
+        "& .tri_btns": {
+          display: 'flex',
+          alignItems: 'center',
+          marginBottom: 20,
+          width: "100%",
+          "& h3": {
+            color: "#383838",
+            fontSize: 14,
+            fontWeight: 400,
+            marginBottom: 0,
+          },
+          "& .btn": {
+            borderRadius: 16,
+            border: '1px solid #8870ff',
+            color: "#8870ff",
+            fontSize: 12,
+            fontWeight: 400,
+            textAlign: 'center',
+            padding: '0 10px',
+            height: 32,
+            margin: '0 5px 0 0',
+            "&:hover": {
+              backgroundColor: '#ece8ff',
+            },
+            "&:last-child": {
+              marginRight: 0,
+            },
+          },
+        },
         overflow: 'hidden',
         "@media (min-width: 960px)": {
           display: 'flex',
@@ -168,8 +166,6 @@ export default makeStyles(
         },
       },
       "& .pendingProjects_content": {
-        
-        
         "@media (min-width: 960px)": {
           flexBasis: '45%',
           padding: '0 0 0 30px',
@@ -258,7 +254,6 @@ export default makeStyles(
       },
 
       "& .MuiDataGrid-dataContainer": {
-        
         "& .MuiDataGrid-row": {
           maxWidth: "calc(100% - 40px)",
           overflow: 'hidden',

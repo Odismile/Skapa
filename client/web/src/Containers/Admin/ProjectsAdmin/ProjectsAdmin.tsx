@@ -9,8 +9,6 @@ import {
 } from '@material-ui/core';
 import { DataGrid } from '@material-ui/data-grid';
 
-import Avatar from '@material-ui/core/Avatar';
-import MenuAdmin from '../MenuAdmin';
 import SearchFilter from '../../../Components/SearchFilter/SearchFilter';
 import CardProjectsPending from '../CardProjectsPending';
 
@@ -94,80 +92,78 @@ const ProjectsAdmin = () => {
 
       <main className={classes.content}>
         <Box className="wrap_content">
-          <Box className="wrap_content">
-            <IconButton
-              color= "inherit"
-              aria-label= "open drawer"
-              edge= "start"
-              onClick={handleDrawerToggle}
-              className="menuButton"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Box className="header_admin" component="header">
-              <Box className="top_header">
-                {/* page title */}
-                <Typography className="title_page" variant="h2">Projets</Typography>
-                
-                {/* user profile connected */}
-                <UserProfilAdmin photoAvatar={UserAvatar} userName="Pierre-Marie" userJob="Administrateur" />
-              </Box>
-              {/* filter bloc */}
-              <Box className="filter_list">
-                <SearchFilter placeholder="Look for a project" />
-                <IconButton className="btn warning_btn" aria-label="warning">
-                  <Prohibition />
-                </IconButton>
-                <IconButton className="btn add_btn" aria-label="add">
-                  <Plus />
-                </IconButton>
-                <IconButton className="btn remove_btn" aria-label="remove">
-                  <Trash />
-                </IconButton>
-
-              </Box>
+          <IconButton
+            color= "inherit"
+            aria-label= "open drawer"
+            edge= "start"
+            onClick={handleDrawerToggle}
+            className="menuButton"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Box className="header_admin" component="header">
+            <Box className="top_header">
+              {/* page title */}
+              <Typography className="title_page" variant="h2">Projets</Typography>
+              
+              {/* user profile connected */}
+              <UserProfilAdmin photoAvatar={UserAvatar} userName="Pierre-Marie" userJob="Administrateur" />
             </Box>
-            <Box className="mainContent_admin" component="article">
-              {/* list of projects */}
-              <Box className="content_bloc">
-                <Box className="allProjects_list">
-                  <Box className="tri_btns">
-                    <Typography className="title_block" variant="h3">All projects</Typography>
-                    <span className={classes.flexFx}></span>
-                    <Button color="secondary" variant="outlined" className="btn btn_ongoing active">
-                      Ongoing
-                    </Button>
-                    <Button color="secondary" variant="outlined" className="btn btn_finished">
-                      Finished
-                    </Button>
-                  </Box>
-                  <Box className={classes.dataTable_wrapper}>
-                    <DataGrid
-                      //autoHeight
-                      rows={rows}
-                      columns={columns}
-                      //pageSize={5}
-                      headerHeight={40}
-                      //autoPageSize={true}
-                      checkboxSelection
-                      disableSelectionOnClick
-                      disableColumnFilter
-                      hideFooterRowCount= {true}
-                      rowHeight={40}
-                    />
-                  </Box>
+            {/* filter bloc */}
+            <Box className="filter_list">
+              <SearchFilter placeholder="Look for a project" />
+              <IconButton className="btn warning_btn" aria-label="warning">
+                <Prohibition />
+              </IconButton>
+              <IconButton className="btn add_btn" aria-label="add">
+                <Plus />
+              </IconButton>
+              <IconButton className="btn remove_btn" aria-label="remove">
+                <Trash />
+              </IconButton>
+
+            </Box>
+          </Box>
+          <Box className="mainContent_admin" component="article">
+            {/* list of projects */}
+            <Box className="content_bloc">
+              <Box className="allProjects_list">
+                <Box className="tri_btns">
+                  <Typography className="title_block" variant="h3">All projects</Typography>
+                  <span className={classes.flexFx}></span>
+                  <Button color="secondary" variant="outlined" className="btn btn_ongoing active">
+                    Ongoing
+                  </Button>
+                  <Button color="secondary" variant="outlined" className="btn btn_finished">
+                    Finished
+                  </Button>
                 </Box>
-                <Divider orientation="vertical" flexItem />
-                <Box className="pendingProjects_content">
-                  <Typography className="title_block" variant="h3">Projects pending validation <Badge className="nbr" color="secondary" badgeContent={9}></Badge></Typography>
-                  <Box className="pendingProjects_list">
-                    
-                    {/* list of pending Projects */}
-                    <CardProjectsPending />
-                    <CardProjectsPending />
-                    <CardProjectsPending />
+                <Box className={classes.dataTable_wrapper}>
+                  <DataGrid
+                    //autoHeight
+                    rows={rows}
+                    columns={columns}
+                    //pageSize={5}
+                    headerHeight={40}
+                    //autoPageSize={true}
+                    checkboxSelection
+                    disableSelectionOnClick
+                    disableColumnFilter
+                    hideFooterRowCount= {true}
+                    rowHeight={40}
+                  />
+                </Box>
+              </Box>
+              <Divider orientation="vertical" flexItem />
+              <Box className="pendingProjects_content">
+                <Typography className="title_block" variant="h3">Projects pending validation <Badge className="nbr" color="secondary" badgeContent={9}></Badge></Typography>
+                <Box className="pendingProjects_list">
                   
-                  </Box>
+                  {/* list of pending Projects */}
+                  <CardProjectsPending />
+                  <CardProjectsPending />
+                  <CardProjectsPending />
+                
                 </Box>
               </Box>
             </Box>
