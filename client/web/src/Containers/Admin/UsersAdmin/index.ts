@@ -1,1 +1,1 @@
-export {default} from './MenuAdmin'
+export {default} from './UsersAdmin'
