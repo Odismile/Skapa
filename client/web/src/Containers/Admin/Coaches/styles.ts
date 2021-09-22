@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(
   (theme) => ({
-    ProjectAdminPage: {
+    CoachesAdminPage: {
       display: 'flex',
       "& .asideLeftWrapper": {
 
@@ -165,20 +165,7 @@ export default makeStyles(
           height: 'calc(100vh - 200px)',
         },
       },
-      "& .pendingProjects_content": {
-        "@media (min-width: 960px)": {
-          flexBasis: '45%',
-          padding: '0 0 0 30px',
-          width: '45%',
-        },
-      },
-      "& .pendingProjects_list": {
-        "@media (min-width: 960px)": {
-          height: 'calc(100% - 40px)',
-          overflow: 'hidden auto',
-          paddingRight: '1rem',
-        },
-      },
+      "& .coaches_group": {},
     },
     dataTable_wrapper: {
       height: "calc(100vh - 245px)",

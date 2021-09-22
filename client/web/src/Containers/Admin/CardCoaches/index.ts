@@ -1,1 +1,1 @@
-export {default} from './CardProjectsPending'
+export {default} from './CardCoaches'
