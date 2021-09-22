@@ -21,7 +21,7 @@ const MenuAdmin = () => {
           <Link className="nav_link"><span className="icon"><Home /></span>Dashboard</Link>
         </ListItem>
         <ListItem disableGutters={true}>
-          <Link className="nav_link"><span className="icon"><Award /></span>Coaches</Link>
+          <Link className="nav_link" href="/CardCoaches"><span className="icon"><Award /></span>Coaches</Link>
         </ListItem>
         <ListItem disableGutters={true}>
           <Link className="nav_link"><span className="icon"><Users /></span>Users</Link>
