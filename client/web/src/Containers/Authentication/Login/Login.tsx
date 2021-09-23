@@ -1,4 +1,4 @@
-import { useApolloClient } from '@apollo/client';
+//import { useApolloClient } from '@apollo/client';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
@@ -11,7 +11,7 @@ import TextFieldComponent from '../../../Components/TextField/TextField';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { SIGNUP } from '../../../Routes';
 import { clearLocalStorage, removeAccessToken } from '../../../Services';
-import { InitSnackbarData } from '../../../Utils';
+//import { InitSnackbarData } from '../../../Utils';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import useStyles from './styles';
 
@@ -34,8 +34,8 @@ export const InitErrorFields: ErrorFieldsState = {
 
 const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const { history } = props;
-  const snackbar = InitSnackbarData;
-  const client = useApolloClient();
+  //const snackbar = InitSnackbarData;
+  //const client = useApolloClient();
   const { t } = useTranslation();
   const classes = useStyles();
   const [login, setLogin] = useState<LoginState>({ username: '', password: '' });
