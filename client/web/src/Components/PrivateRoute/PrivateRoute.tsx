@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 

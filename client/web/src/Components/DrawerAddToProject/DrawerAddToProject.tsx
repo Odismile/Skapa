@@ -1,5 +1,5 @@
+import { FC} from 'react';
 import { Box, Button, SwipeableDrawer, Typography } from '@material-ui/core';
-import { FC, useState, useEffect } from 'react';
 import { useCreateTeamProject } from '../../Providers/ProjectProvider/useCreateTeamProject';
 import { useDeleteTeamProject } from '../../Providers/ProjectProvider/useDeleteTeamProject';
 import { useGetProject } from '../../Providers/ProjectProvider/useGetProject';

@@ -8,11 +8,11 @@ import Tags from '../../../../Components/Tags/Tags';
 import { useGetProject } from '../../../../Providers/ProjectProvider/useGetProject';
 import { projectIdVariable } from '../../../../ReactiveVariable/Project/createProject';
 import useStyles from './styles';
-import { useTranslation } from 'react-i18next';
+//import { useTranslation } from 'react-i18next';
 
 const Review = () => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  //const { t } = useTranslation();
 
   const { data } = useGetProject({
     variables: { where: { id: projectIdVariable() } },

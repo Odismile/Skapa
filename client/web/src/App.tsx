@@ -12,7 +12,7 @@ import Theme from './Theme/index';
 import { initializeFirebase } from './Utils/firebase';
 
 const App: FC<RouteComponentProps> = (props) => {
-  const { history } = props;
+  //const { history } = props;
 
 
   return (

@@ -11,7 +11,7 @@ import TextFieldComponent from '../../../Components/TextField/TextField';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { SIGNUP } from '../../../Routes';
 import { clearLocalStorage, removeAccessToken } from '../../../Services';
-import { displaySnackbar, InitSnackbarData } from '../../../Utils';
+import { InitSnackbarData } from '../../../Utils';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import useStyles from './styles';
 
@@ -107,7 +107,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
     <Box className={classes.mainPage}>
       <Box className="wrapPage">
         <Box className={classes.imgContainer}>
-          <img src={TalentLogo} className={classes.img} />
+          <img src={TalentLogo} className={classes.img} alt="TalentLogo"/>
         </Box>
         <form className={classes.loginForm}>
           <TextFieldComponent

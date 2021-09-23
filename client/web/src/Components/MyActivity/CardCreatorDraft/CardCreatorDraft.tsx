@@ -1,8 +1,8 @@
 import React from 'react';
-import { Avatar, Box, Button, Card, CardMedia, Slider, Typography, withStyles } from '@material-ui/core';
+import { Avatar, Box, Button, Card, CardMedia, Typography, } from '@material-ui/core';
 import useStyles from './style';
-import imgHead from '../../../Assets/images/head.png';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
+//import imgHead from '../../../Assets/images/head.png';
 
 const CardCreatorDraft = () => {
   const classes = useStyles();

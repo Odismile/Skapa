@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, Chip, IconButton, Typography } from '@material-ui/core';
 import React, { FC, useState, MouseEventHandler } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';

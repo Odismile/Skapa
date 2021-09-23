@@ -16,7 +16,7 @@ import iconDownload from '../../Assets/images/IconDownload.svg';
 import { useHistory, Link } from 'react-router-dom';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 
-import { useUploadFile } from '../../Utils/uploadFile';
+//import { useUploadFile } from '../../Utils/uploadFile';
 import { pictureFile, videoFile, bio } from '../../ReactiveVariable/Profil/profil';
 import Info from '../../Components/Icons/Info';
 import { ONBOARDING_PROFILE3 } from '../../Routes';
@@ -25,7 +25,7 @@ import { ONBOARDING_PROFILE3 } from '../../Routes';
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');
   const [videoUpload, setVideoUpload] = useState('');
-  const { uploadFile } = useUploadFile();
+  //const { uploadFile } = useUploadFile();
   const [disabledButton, setDisabledButton] = useState(false);
   const [bios, setBios] = useState('');
 

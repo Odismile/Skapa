@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import useStyles from './styles';
 
 import PrimaryHeader from '../../Components/Header/Header';
-import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
+//import SearchFilterTalents from '../../Components/SearchFilterTalents/SearchFilterTalents';
 
 import RequestItem from './RequestItem';
 import OngoingItem from './OngoingItem';

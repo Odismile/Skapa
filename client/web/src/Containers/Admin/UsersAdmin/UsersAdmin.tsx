@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   Box, 
-  Button, 
   IconButton, 
   Typography,
 } from '@material-ui/core';

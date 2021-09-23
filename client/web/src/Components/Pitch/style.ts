@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import imgCard from '../../Assets/images/lab.svg';
-import noir from '../../Assets/images/noir.svg';
+//import noir from '../../Assets/images/noir.svg';
 
 export default makeStyles((theme) => ({
     content: {

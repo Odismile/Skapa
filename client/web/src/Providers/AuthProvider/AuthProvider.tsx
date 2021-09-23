@@ -1,4 +1,4 @@
-import React, { FC, createContext, useState, useEffect } from 'react';
+import React, { FC, createContext } from 'react';
 
 interface AuthContextType {}
 
