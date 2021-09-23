@@ -1,4 +1,4 @@
-import React, { FC }from "react";
+import React from "react";
 import { 
   Avatar, 
   Box, 
@@ -16,9 +16,6 @@ import {
   Slider,
   withStyles,
 } from '@material-ui/core';
-
-import Player from 'video-react';
-
 
 import useStyles from './style';
 // components

@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { Box, Button, Typography } from '@material-ui/core';
+import React from 'react';
+import { Box, Button } from '@material-ui/core';
 import useStyles from './styles';
 import CardReview from '../../../../Components/CardReview/CardReview';
 

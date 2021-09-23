@@ -1,6 +1,4 @@
-import { Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Autoplay } from 'swiper';
 import defaultImg from '../../Assets/images/default_img.png';
 
 export default makeStyles((theme) => ({

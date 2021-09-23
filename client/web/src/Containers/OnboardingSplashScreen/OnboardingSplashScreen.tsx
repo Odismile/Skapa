@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Container, Typography } from "@material-ui/core";
+import { Box, Button, Typography } from "@material-ui/core";
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from "./style";
 import img from "../../Assets/images/splash-screen.svg";

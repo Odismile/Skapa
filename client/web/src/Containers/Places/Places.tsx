@@ -8,7 +8,6 @@ import {
   InputBase,
   Modal,
   Paper,
-  Popper,
   Switch,
   TextField,
   Typography,

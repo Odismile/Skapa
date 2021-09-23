@@ -7,7 +7,7 @@ import useStyles from './style';
 import Calendar from '../../../Components/Icons/Calendar';
 
 import Team from '../../../Components/Team/Team';
-import requestPhoto from '../../../Assets/images/photo_request.png';
+//import requestPhoto from '../../../Assets/images/photo_request.png';
 
 import SliderDaysLeft from '../SliderDaysLeft';
 import SkillsRecquired from '../SkillsRecquired';

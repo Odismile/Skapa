@@ -4,7 +4,7 @@ import useStyles from './styles';
 import PrimaryHeader from '../../../Components/Header';
 import TabOngoingContribute from './TabOngoingContribute/TabOngoingContribute';
 import TabFinishedContribute from './TabFinishedContribute/TabFinishedContribute';
-import SearchBar from '../../../Components/MyActivity/SearchBar/SearchBar';
+//import SearchBar from '../../../Components/MyActivity/SearchBar/SearchBar';
 
 interface TabPanelProps {
   children?: React.ReactNode;

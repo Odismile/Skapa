@@ -6,7 +6,7 @@ import { coachs_profiles_profile_skills } from '../../GraphQL/profiles/types/coa
 import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreateFavoritTalent';
 import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
-import CardProject from '../CardProjects/CardProjects';
+//import CardProject from '../CardProjects/CardProjects';
 import DrawerAddToProject from '../DrawerAddToProject/DrawerAddToProject';
 import Award from '../Icons/Award';
 import Heart from '../Icons/Heart';

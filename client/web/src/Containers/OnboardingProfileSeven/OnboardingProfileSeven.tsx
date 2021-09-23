@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
-import { Box, Button, Container, Typography, LinearProgress, withStyles } from '@material-ui/core';
+import React from 'react';
+import { Box, LinearProgress, withStyles } from '@material-ui/core';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from './style';
 
-import image_profile from '../../Assets/images/image_profile.png';
+//import image_profile from '../../Assets/images/image_profile.png';
 import image_organisation from '../../Assets/images/organisation.png';
 import { useHistory } from 'react-router-dom';
-import { HOMEPAGE, LOGIN, ONBOARDING } from '../../Routes';
-import { login } from '../../ReactiveVariable/User/user';
+import { HOMEPAGE } from '../../Routes';
+//import { login } from '../../ReactiveVariable/User/user';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { getUserFullName } from '../../Utils/utils';
 

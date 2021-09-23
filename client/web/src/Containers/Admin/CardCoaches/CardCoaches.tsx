@@ -1,21 +1,12 @@
-import React, { FC }from "react";
+import React from "react";
 import { 
-  Avatar, 
   Box, 
   Card, 
   CardContent, 
   CardMedia, 
   CardActions, 
-  CardActionArea,
   Checkbox,
-  IconButton, 
-  Link,
   Typography,
-  Dialog,
-  DialogContent,
-  DialogActions,
-  Slider,
-  withStyles,
   Button,
 } from '@material-ui/core';
 
@@ -23,14 +14,10 @@ import useStyles from './style';
 
 
 // icons
-import Calendar from '../../../Components/Icons/Calendar';
-import Check from '../../../Components/Icons/Check';
-import Cross from '../../../Components/Icons/Cross';
 import CheckboxChecked from '../../../Components/Icons/CheckboxChecked';
 import CheckboxLine from '../../../Components/Icons/CheckboxLine';
 
 // images
-import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import requestPhoto from '../../../Assets/images/photo_request.png';
 import givaudan from '../../../Assets/images/givaudan_logo.png';
 import Award from "../../../Components/Icons/Award";

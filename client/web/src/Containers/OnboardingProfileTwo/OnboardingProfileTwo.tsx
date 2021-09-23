@@ -20,7 +20,7 @@ import { useUploadFile } from '../../Utils/uploadFile';
 import { pictureFile, videoFile, bio } from '../../ReactiveVariable/Profil/profil';
 import Info from '../../Components/Icons/Info';
 import { ONBOARDING_PROFILE3 } from '../../Routes';
-import { createBrotliCompress } from 'zlib';
+//import { createBrotliCompress } from 'zlib';
 
 const OnboardingProfileTwo = () => {
   const [imageUpload, setImageUpload] = useState('');

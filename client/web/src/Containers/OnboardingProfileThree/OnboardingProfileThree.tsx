@@ -17,7 +17,7 @@ import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
-import { ONBOARDING_PROFILE4, ONBOARDING_PROFILE7 } from '../../Routes';
+import { ONBOARDING_PROFILE7 } from '../../Routes';
 import useStyles from './style';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { useUploadFile } from '../../Utils/uploadFile';

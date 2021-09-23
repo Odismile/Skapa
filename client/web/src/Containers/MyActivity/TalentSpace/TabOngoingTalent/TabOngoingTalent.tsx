@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
-import { Box, Typography } from '@material-ui/core';
-import useStyles from './styles';
+import React from 'react';
+import { Box } from '@material-ui/core';
+//import useStyles from './styles';
 import CardTalentOngoing from '../../../../Components/MyActivity/CardTalentOngoing/CardTalentOngoing';
 
 const TabOngoingTalent = () => {
-  const classes = useStyles();
+  //const classes = useStyles();
 
   return (
     <Box>

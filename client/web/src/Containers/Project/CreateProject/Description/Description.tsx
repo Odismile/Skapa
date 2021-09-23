@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import {
   Box,
@@ -211,7 +211,7 @@ const Description = () => {
         />
         <label htmlFor="contained-button-file-picture" className="upload_content">
           {fileUpload.length !== 0 ? (
-            <img src={fileUpload} className={classes.imageUpload} />
+            <img src={fileUpload} className={classes.imageUpload} alt="" />
           ) : (
             <>
               <IconPhoto />
