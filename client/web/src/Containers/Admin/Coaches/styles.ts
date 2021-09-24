@@ -101,19 +101,11 @@ export default makeStyles(
       "& .mainContent_admin": {
         
       },
-      "& .allProjects_list": {
-        "@media (min-width: 960px)": {
-          flexBasis: '55%',
-          width: '55%',
-          paddingRight: '2rem',
-        },
-       
-      },
       "& .title_block": {
-        color: '#8870ff',
+        color: '#000',
         fontSize: 14,
         fontWeight: 700,
-        marginBottom: 20,
+        marginBottom: 10,
         "& .nbr": {
           background: '#ece8ff',
           borderRadius: 20,
@@ -129,6 +121,13 @@ export default makeStyles(
         },
       },
       "& .content_bloc": {
+        overflow: 'hidden',
+        width: '100%',
+        "@media (min-width: 960px)": {
+          display: 'flex',
+          justifyContent: 'space-between',
+          height: 'calc(100vh - 200px)',
+        },
         "& .tri_btns": {
           display: 'flex',
           alignItems: 'center',
@@ -158,123 +157,107 @@ export default makeStyles(
             },
           },
         },
-        overflow: 'hidden',
-        "@media (min-width: 960px)": {
-          display: 'flex',
-          justifyContent: 'space-between',
-          height: 'calc(100vh - 200px)',
-        },
       },
-      "& .coaches_group": {},
-    },
-    dataTable_wrapper: {
-      height: "calc(100vh - 245px)",
-      width: "100%",
-      "& .MuiDataGrid-root": {
-        border: "none",
-        marginBottom: 0,
-      },
-      '& .MuiDataGrid-renderingZone': {
-        maxHeight: 'calc(100vh - 380px) !important',
-        maxWidth: 'calc(100% - 20px)',
+      "& .coaches_list": {
+        height: '100%',
         overflow: 'hidden auto',
-        transform: 'none !important',
-        //maxHeight: 'none !important',
-        "&::-webkit-scrollbar": {
-          width: 5,
-          borderRadius: 5,
+        paddingRight: 15,
+        width: '100%',
+        "@media (min-width: 960px)": {
+          flex: '1 0 50%',
+          paddingRight: 30,
         },
-        "&::-webkit-scrollbar-track": {
-          //boxShadow: `inset 0 0 6px rgba(0, 0, 0, 0.3)`,
-        },
-        "&::-webkit-scrollbar-thumb": {
-          backgroundColor: "#dfdfdf",
-        },
-      },
-      '& .MuiDataGrid-row': {
-          //maxHeight: 'none !important',
-      },
-      "& .MuiDataGrid-main": {
-        //backgroundColor: "darkcyan",
-      },
-      "& .MuiDataGrid-columnsContainer": {
-        border: "none",
-      },
-      "& .MuiDataGrid-columnHeaderWrapper": {
-        padding: '0 20px',
-        minWidth: '100% !important',
-        width: 'calc(100% - 40px)',
-        "& .MuiDataGrid-columnHeaderCheckbox": {
-
-        },
-      },
-      "& .MuiDataGrid-columnSeparator": {
-        display: 'none',
-      },
-      "& .MuiDataGrid-columnHeaderTitleContainer": {
-        // padding: "0 1rem",
-      },
-      "& .MuiDataGrid-columnHeaderTitle": {
-        color: '#000',
-        fontSize: 14,
-        fontWeight: 600,
-        "&:focus": {
-          outline: 'none',
-        },
-      },
-      "& .MuiDataGrid-columnHeader:focus-within, & .MuiDataGrid-cell:focus-within": {
-        outline: 'none',
-      },
-      "& .MuiDataGrid-checkboxInput": {
-        color: '#8870ff',
-      },
-      "& .MuiDataGrid-window": {
-        background: '#fff',
-        borderRadius: 12,
-        border:  '1px solid #f4f4f4',
-        boxShadow: '0px 2px 4px rgba(0,0,0,0.11)',
-        padding: '20px',
-        overflowX: 'hidden',
-        overflowY: 'hidden !important',
-        "@media (min-width: 1024px)": {
-        },
-      },
-
-      "& .MuiDataGrid-dataContainer": {
-        "& .MuiDataGrid-row": {
-          maxWidth: "calc(100% - 40px)",
-          overflow: 'hidden',
-          "&:hover": {
-            background: "rgb(242,241,253)",
+        "& .coaches_group": {
+          "& .title_group": {
+            fontSize: 14,
+            fontWeight: 700,
+            margin: 10
           },
         },
       },
-      "& .MuiDataGrid-viewport": {
-        minWidth: '100% !important',
-        maxWidth: '100% !important',
-      },
-      "& .MuiDataGrid-cell": {
-        borderColor: "#e8e8e8",
-        color: '#383838',
-        fontSize: 12,
-        fontWeight: 400,
-        //lineHeight: 'unset !important',
-        //maxHeight: 'none !important',
-        whiteSpace: 'normal',
-        "&:focus": {
-          outline: 'none',
+      "& .editCoaches_content": {
+        "@media (min-width: 960px)": {
+          flex: '1 0 50%',
+          paddingLeft: 30,
         },
-      },
-      "& .MuiDataGrid-footerContainer": {
-        //display: 'none',
-        "& p": {
+        "& .coaches_forms": {
+          height: '100%',
+          overflow: 'hidden auto',
+          paddingRight: 15,
+        },
+        "& .title_block": {
+          color: '#000',
+          fontSize: 19,
+          fontWeight: 700,
           margin: 0,
         },
-        "& button": {
-          padding: 0,
+        "& .item_bloc": {
+          "& .title_itemBlock": {
+            color: '#000',
+            fontSize: 12,
+            fontWeight: 700,
+            lineHeight: 1.4,
+          },
+          "& .textField_content": {
+            marginBottom: 10,
+            "& > div": {
+              marginBottom: 0,
+              marginTop: 16,
+            },
+            "& > label": {
+              color: '#000',
+              fontSize: 10,
+              fontStyle: 'normal',
+              fontWeight: 700,
+              margin: 0,
+            },
+            "& input": {
+              fontSize: 10,
+              height: 34,
+            },
+          },
+          "& .upload_bloc": {
+            background: '#eee',
+            borderRadius: 10,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: 80,
+            width: 80,
+            "& .upload_picture": {
+              display: 'none',
+            },
+            "& .upload_content": {
+              textAlign: 'center',
+              "& svg": {
+                fill: '#8870ff',
+                fontSize: '1.25rem',
+              },
+              '& span': {
+                display: 'block',
+                fontSize: 10,
+                fontStyle: 'italic',
+                fontWeight: 300,
+              },
+            },
+            "& .upload_image": {
+            },
+          },
+        },
+        "& .grid_field": {
+          display : 'flex',
+          flexDirection: 'row',
+        },
+        "& .level_field": {
+          width: 90,
+        },
+        "& .company_field": {
+          marginLeft: 10,
+          width: 175,
         },
       },
     },
+   
   }),
   { name: 'Admin' },
 );

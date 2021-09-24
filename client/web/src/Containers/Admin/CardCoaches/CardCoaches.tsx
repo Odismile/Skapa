@@ -19,8 +19,8 @@ import CheckboxChecked from '../../../Components/Icons/CheckboxChecked';
 import CheckboxLine from '../../../Components/Icons/CheckboxLine';
 
 // images
-import requestPhoto from '../../../Assets/images/photo_request.png';
-import givaudan from '../../../Assets/images/givaudan_logo.png';
+//import requestPhoto from '../../../Assets/images/photo_request.png';
+//import givaudan from '../../../Assets/images/givaudan_logo.png';
 import Award from "../../../Components/Icons/Award";
 
 interface ICoaches {
