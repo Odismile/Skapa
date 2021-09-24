@@ -2,6 +2,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(
   (theme) => ({
+    carcCoachContainer: {
+      "&.selected": {
+        
+        "& .CoachesItem": {
+          borderColor: '#8870ff',
+          borderWidth: 2,
+          borderStyle: 'solid',  
+        }
+      },
+    },
     CoachesItem: {
       background: '#fff',
       border: '1px solid #f4f4f4',
@@ -13,6 +23,7 @@ export default makeStyles(
       overflow: 'initial',
       position: 'relative',
       width: '100%',
+      
       "& .card_content": {
         display: 'flex',
         flexDirection: 'row',
@@ -90,6 +101,7 @@ export default makeStyles(
         },
       },
       "& .check_content": {
+        minWidth: 76,
         position: 'relative',
         "& .top_rated": {
           color: '#e30057',
@@ -135,5 +147,5 @@ export default makeStyles(
         },
       },
     },
-  }),
+  }), {name: 'CardCoaches'},
 );

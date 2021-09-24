@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { 
   Box, 
   Card, 
@@ -9,6 +9,7 @@ import {
   Typography,
   Button,
 } from '@material-ui/core';
+import classNames from "classnames";
 
 import useStyles from './style';
 
@@ -24,22 +25,31 @@ import Award from "../../../Components/Icons/Award";
 
 interface ICoaches {
   PhotoCoach: string;
+  Organism: string;
   JobCoach: string;
   NameCoach: string;
   AddressCoach: string;
-
+  LevelCoach: string;
+  RateCoach: number;
+  selectedCard?: '' | 'selected';
+  TopRated?: any;
 }
 
 
-const CardProject = () => {
+const CardProject: FC<ICoaches> = (props) => {
   const classes = useStyles();
+  const {
+    selectedCard = '',
+    PhotoCoach,
+    Organism,
+    JobCoach,
+    NameCoach,
+    AddressCoach,
+    LevelCoach,
+    RateCoach,
+    TopRated = "<Typography className='top_rated'><Award />Top Rated</Typography>"
 
-  // const { 
-  //   PhotoCard, 
-  //   LabelCard="innovation", 
-  //   ProjectName,
-  //   FounderName,
-  // } = propsCardProject;
+  } = props;
 
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
@@ -52,28 +62,29 @@ const CardProject = () => {
   };
 
   return (
-    <Box className="cardContainer">
-      <Card className={classes.CoachesItem}>
+    <Box className={classNames(classes.carcCoachContainer, {selectedCard})}>
+      <Card className={classNames(classes.CoachesItem, "CoachesItem")}>
         <CardContent className="card_content">
           <Box className="cardMedia_content" >
-            <CardMedia className="media" image={requestPhoto} title="image"></CardMedia>
-            <Typography className="labeled" component="span" ><img src={givaudan} alt="" /></Typography>
+            <CardMedia className="media" image={PhotoCoach} title="image"></CardMedia>
+            <Typography className="labeled" component="span" ><img src={Organism} alt="" /></Typography>
           </Box>
           <Box className="desc_content">
-            <Typography className="coach_title" variant="h2">UX Designer</Typography>
+            <Typography className="coach_title" variant="h2">{JobCoach}</Typography>
             <Typography className="coach_infos">
-              <strong>Emma Vatier</strong><span>- Interne - Paris</span>
+              <strong>{NameCoach}</strong>- <span>{AddressCoach}</span>
             </Typography>
             <Typography className="coach_infos_2">
               <span className="level">
-                <strong>Level :</strong><span>Senior</span>
+                <strong>Level :</strong><span>{LevelCoach}</span>
               </span>
               <span className="rate">
-                <strong>Rate :</strong><span>432 $ / day</span>
+                <strong>Rate :</strong><span>{RateCoach} $ / day</span>
               </span>
             </Typography>
           </Box>
           <Box className="check_content">
+            {/* {TopRated} */}
             <Typography className="top_rated"><Award />Top Rated</Typography>
             <Checkbox 
               inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} 
