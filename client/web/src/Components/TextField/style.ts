@@ -28,11 +28,11 @@ const useStyles = makeStyles(() => ({
       },
       '& input': {
         boxSizing: "border-box",
+        boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
+        border: 'solid 1px #dfdfdf',
         color: '#000000',
         fontSize: 14,
         height: 40,
-        border: 'solid 1px #dfdfdf',
-        boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
         borderRadius: 25,
         padding: "10px 16px",
         '&:focus':{

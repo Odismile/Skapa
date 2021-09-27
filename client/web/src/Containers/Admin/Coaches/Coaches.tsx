@@ -6,6 +6,9 @@ import {
   Typography,
   Divider,
   TextareaAutosize,
+  InputAdornment,
+  List,
+  ListItem,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
@@ -31,6 +34,7 @@ import UserAvatar from '../../../Assets/images/user_avatar.jpg';
 import CardCoaches from '../CardCoaches';
 import requestPhoto from '../../../Assets/images/photo_request.png';
 import givaudan from '../../../Assets/images/givaudan_logo.png';
+import Cross from '../../../Components/Icons/Cross';
 
 
 const ProjectsAdmin = () => {
@@ -214,6 +218,9 @@ const ProjectsAdmin = () => {
                           id="RateCoach"
                           placeholder="Rate"
                           type="text"
+                          InputProps = {{
+                            endAdornment: <InputAdornment position="end">kg</InputAdornment>
+                          }}
                         />
                       </Box>
                     </Box>
@@ -221,8 +228,40 @@ const ProjectsAdmin = () => {
                       <Typography className="title_itemBlock" variant="h3">Availability</Typography>
                       <Typography className="text_infos">This coach is available </Typography>
                       <Typography className="link_add"><Link to="/">Add Availabilities</Link></Typography>
+                      <List className="list_availability">
+                        <ListItem className="list_item" disableGutters={true}>
+                          <Typography className="text">Monday</Typography>
+                          <IconButton color= "primary" className="btn_availability" >
+                            <Cross />
+                          </IconButton>
+                        </ListItem>
+                        <ListItem className="list_item" disableGutters={true}>
+                          <Typography className="text">Tuesday</Typography>
+                          <IconButton color= "primary" className="btn_availability" >
+                            <Cross />
+                          </IconButton>
+                        </ListItem>
+                        <ListItem className="list_item" disableGutters={true}>
+                          <Typography className="text">Thursday</Typography>
+                          <IconButton color= "primary" className="btn_availability" >
+                            <Cross />
+                          </IconButton>
+                        </ListItem>
+                        <ListItem className="list_item" disableGutters={true}>
+                          <Typography className="text">Wednesday</Typography>
+                          <IconButton color= "primary" className="btn_availability" >
+                            <Cross />
+                          </IconButton>
+                        </ListItem>
+                        <ListItem className="list_item" disableGutters={true}>
+                          <Typography className="text">Friday</Typography>
+                          <IconButton color= "primary" className="btn_availability" >
+                            <Cross />
+                          </IconButton>
+                        </ListItem>
+                      </List>
                     </Box>
-                    <Box className="item_bloc">
+                    <Box className="item_bloc presentation_field">
                       <Typography className="title_itemBlock" variant="h3">Description</Typography>
                       <Typography className="labeled" variant="h4">Coach Presentation</Typography>
                       <Box className="field_item textarea_item">
@@ -238,7 +277,7 @@ const ProjectsAdmin = () => {
                       </Box>
                     </Box>
                     <Box className="btn_groups">
-                      <Button className="btn_save" variant="contained" color="primary">
+                      <Button className="btn btn_save" variant="contained" color="primary">
                         <span>Save</span>
                       </Button>
                     </Box>

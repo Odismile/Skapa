@@ -184,14 +184,16 @@ export default makeStyles(
           height: '100%',
           overflow: 'hidden auto',
           paddingRight: 15,
+          position: 'relative',
         },
         "& .title_block": {
           color: '#000',
           fontSize: 19,
           fontWeight: 700,
-          margin: 0,
+          margin: '0 0 10px',
         },
         "& .item_bloc": {
+          maxWidth: '70%',
           "& .title_itemBlock": {
             color: '#000',
             fontSize: 12,
@@ -223,6 +225,9 @@ export default makeStyles(
             alignItems: 'center',
             justifyContent: 'center',
             height: 80,
+            position: 'absolute',
+            top: 0,
+            right: 0,
             width: 80,
             "& .upload_picture": {
               display: 'none',
@@ -255,6 +260,113 @@ export default makeStyles(
           marginLeft: 10,
           width: 175,
         },
+        "& .availability_field": {
+          marginBottom: 20,
+          maxWidth: '100%',
+          paddingTop: 10,
+          "& .title_itemBlock": {},
+          "& .text_infos": {
+            color: '#000',
+            fontSize: 10,
+            marginBottom: 10,
+          },
+          "& .link_add": {
+            color: '#8870FF',
+            fontSize: 12,
+            fontWeight: 600,
+            margin: 0,
+            "& a": {
+              borderBottom: '1px solid #8870FF',
+              color: '#8870FF',
+              textDecoration: 'none',
+            },
+          },
+          "& .list_availability": {
+            display: 'flex',
+            flexWrap: 'wrap',
+            "& .list_item": {
+              background: '#ece8ff',
+              borderRadius: 4,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: 20,
+              marginRight: 7,
+              marginBottom: 5,
+              padding: '0 8px',
+              minWidth: 70,
+              width: 'auto',
+              "& .text": {
+                fontSize: 10,
+                marginBottom: 0,
+                
+              },
+              "& .btn_availability": {
+                marginLeft: 10,
+                padding: 0,
+                "& svg": {
+                  fill: '#8870ff;',
+                  fontSize: '.5rem',
+                },
+              },
+            },
+          },
+        },
+        "& .presentation_field": {
+          marginBottom: 10,
+          maxWidth: '100%',
+          width: '100%',
+          "& .title_itemBlock": {
+            marginBottom: 3,
+          },
+          "& .labeled": {
+            color: '#000',
+            fontSize: 10, 
+            fontWeight: 700,
+            marginBottom: 6,
+          },
+          "& .textarea_input": {
+            boxSizing: "border-box",
+            boxShadow: 'inset 0px 1px 3px rgba(0,0,0,0.5)',
+            border: 'solid 1px #dfdfdf',
+            borderRadius: 12,
+            color: '#000000',
+            display: 'block',
+            fontFamily: 'Nunito',
+            fontSize: 12,
+            fontWeight: 400,
+            height: '105px !important',
+            padding: "10px 16px",
+            resize: 'none',
+            width: '100%',
+            "&:focus-visible": {
+              outline: 'none',
+            },
+            '&:focus':{
+              border: '1px solid #8870FF',
+              background: "rgb(242,241,253)",
+              boxShadow: "inset 0px 1px 3px rgb(136 112 255 / 50%)",
+            },
+            "&::-webkit-input-placeholder": {
+              color: '#979797',
+              fontStyle: 'italic',
+            },
+            "&::-moz-input-placeholder": {
+              color: '#979797',
+              fontStyle: 'italic',
+            },
+          },
+        },
+        "& .btn_groups": {
+          textAlign: 'right',
+          "& .btn_save": {
+            borderRadius: 25,
+            color: '#fff',
+            fontSize: 12,
+            fontWeight: 600,
+            height: 35,
+          }
+        }
       },
     },
    
