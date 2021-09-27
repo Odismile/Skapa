@@ -32,6 +32,7 @@ import AppExterne from '../Containers/AppExterne/AppExterne';
 import ProjectsAdmin from '../Containers/Admin/ProjectsAdmin';
 import UsersAdmin from '../Containers/Admin/UsersAdmin';
 import CoachesAdmin from '../Containers/Admin/Coaches';
+import PlacesAdmin from '../Containers/Admin/PlacesAdmin';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -66,12 +67,20 @@ export const APPEXTERNE = '/app-externe';
 export const ADMIN = '/admin';
 export const USERSADMIN = '/usersadmin';
 export const COACHESADMIN = '/coachesadmin';
+export const PLACESADMIN = '/PlacesAdmin';
 //export const ADMIN = '/admin';
 export const UNAUTHORIZED = '/unauthorized';
 
 const WrappedHomePage = Wrapper(HomePage);
 
 export const ROUTES: RouteInterface[] = [
+  {
+    key: 'PLACESADMIN',
+    route: PLACESADMIN,
+    roles: [],
+    private: true,
+    component: PlacesAdmin,
+  },
   {
     key: 'COACHESADMIN',
     route: COACHESADMIN,
