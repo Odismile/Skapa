@@ -57,6 +57,7 @@ export default makeStyles(
 
 
     content: {
+      //background: 'cyan',
       flexGrow: 1,
       padding: '1.25rem 1rem',
       "@media (min-width: 960px)": {
@@ -161,7 +162,7 @@ export default makeStyles(
           },
         },
       },
-      "& .coaches_list": {
+      "& .places_list": {
         height: '100%',
         overflow: 'hidden auto',
         paddingRight: 15,
@@ -178,7 +179,7 @@ export default makeStyles(
           },
         },
       },
-      "& .editCoaches_content": {
+      "& .editPlaces_content": {
         "@media (min-width: 960px)": {
           flex: '1 0 50%',
           paddingLeft: 30,

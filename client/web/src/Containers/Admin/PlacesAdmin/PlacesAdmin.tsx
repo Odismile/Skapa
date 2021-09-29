@@ -35,10 +35,10 @@ import useStyles from './styles';
 
 // image
 import UserAvatar from '../../../Assets/images/user_avatar.jpg'; 
-import CardCoaches from '../CardCoaches';
 import requestPhoto from '../../../Assets/images/photo_request.png';
 import givaudan from '../../../Assets/images/givaudan_logo.png';
 import Cross from '../../../Components/Icons/Cross';
+import PlacesItem from './PlacesItem';
 
 
 const ProjectsAdmin = () => {
@@ -100,6 +100,14 @@ const ProjectsAdmin = () => {
             <Box className="content_bloc">
               <Box className="places_list">
                 {/* card place item */}
+                <PlacesItem 
+                  PhotoPlace = {requestPhoto}
+                  LabeledPlace = {givaudan}
+                  NamePlace = "WeWork - Lafayette"
+                  PricePlace = {870}
+                  AdressPlace = "238 rue Lafayette, 75009 Bâtiment WeWork - 3e étage - salle Rousseau"
+                  CapacityPlace = {40}
+                />
               </Box>
 
               <Divider orientation="vertical" flexItem />
