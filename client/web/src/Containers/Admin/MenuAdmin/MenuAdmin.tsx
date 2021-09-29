@@ -27,7 +27,7 @@ const MenuAdmin = () => {
           <Link className="nav_link" href="/usersadmin"><span className="icon"><Users /></span>Users</Link>
         </ListItem>
         <ListItem disableGutters={true}>
-          <Link className="nav_link"><span className="icon"><Map /></span>Places</Link>
+          <Link className="nav_link" href="/PlacesAdmin"><span className="icon"><Map /></span>Places</Link>
         </ListItem>
         <ListItem disableGutters={true}>
           <Link className="nav_link" href="/admin"><span className="icon"><Film /></span>Projects</Link>
