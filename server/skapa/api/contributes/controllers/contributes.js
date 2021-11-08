@@ -7,7 +7,6 @@
 
 module.exports = {
   async create(ctx) {
-    console.log("ato");
     let entity = await strapi.services.contributes.create(ctx.request.body);
     const profile = await strapi
       .query("profiles")

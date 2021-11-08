@@ -72,4 +72,15 @@ module.exports = {
 
     return entry;
   },
+
+  async checkEmailProfile(ctx) {
+    const { email } = ctx.request.body;
+    const user = await strapi
+      .query("user", "users-permissions")
+      .findOne({ email });
+    let entry = null;
+    if (user)
+      entry = await strapi.query("profiles").findOne({ users_id: user.id });
+    return entry;
+  },
 };
