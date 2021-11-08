@@ -40,13 +40,16 @@ module.exports = {
 
     return entry;
   },
+
   async find(params, populate) {
     const results = await strapi.query("projects").find(params, populate);
     const newResults = await Promise.all(
       results.map(async (project) => {
         if (!project.isExternalVideo) {
           if (project.Picture) {
-            const signedUrlPicture = await generateReadSignedUrl(project.Picture);
+            const signedUrlPicture = await generateReadSignedUrl(
+              project.Picture
+            );
             project.Picture = signedUrlPicture.url;
           }
           if (project.Video) {

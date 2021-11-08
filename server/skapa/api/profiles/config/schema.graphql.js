@@ -43,6 +43,7 @@ module.exports = {
    `,
   mutation: `
   profileCustomizeMeInput(input:profileCustomizeMeInput!): profileCustomizePayload!
+  checkEmailProfile(email:String): Profiles
 `,
   type: {},
   resolver: {
@@ -59,6 +60,11 @@ module.exports = {
         description: "Create profile ",
         resolverOf: "application::profiles.profiles.create",
         resolver: "application::profiles.profiles.profileCustomizeMeInput",
+      },
+      checkEmailProfile: {
+        description: "Check email user ",
+        resolverOf: "application::profiles.profiles.create",
+        resolver: "application::profiles.profiles.checkEmailProfile",
       },
     },
   },
