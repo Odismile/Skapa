@@ -55,7 +55,6 @@ module.exports = {
       },
     },
     Mutation: {
-      // deleteProjectFavorits: {},
       profileCustomizeMeInput: {
         description: "Create profile ",
         resolverOf: "application::profiles.profiles.create",
