@@ -1,4 +1,3 @@
-import { useApolloClient } from '@apollo/client';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
@@ -11,11 +10,13 @@ import TextFieldComponent from '../../../Components/TextField/TextField';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
 import { SIGNUP } from '../../../Routes';
 import { clearLocalStorage, removeAccessToken } from '../../../Services';
-import { displaySnackbar, InitSnackbarData } from '../../../Utils';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import Google from '../../../Components/Icons/Google';
 import useStyles from './styles';
 import { useGoogleLogin } from 'react-google-login';
+import useCheckEmail from '../../../Providers/AuthProvider/hooks/useCheckEmail';
+import { useRegister } from '../../../Providers/AuthProvider/hooks/useRegister';
+import { useCreateProfile } from '../../../Providers/ProfilProvider/useCreateProfile';
 
 interface LoginInterface {}
 
@@ -36,19 +37,49 @@ export const InitErrorFields: ErrorFieldsState = {
 
 const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const { history } = props;
-  const snackbar = InitSnackbarData;
-  const client = useApolloClient();
   const { t } = useTranslation();
   const classes = useStyles();
   const [login, setLogin] = useState<LoginState>({ username: '', password: '' });
   const [errorfields, setErrorFields] = useState<ErrorFieldsState>(InitErrorFields);
   const { doLogin, loadingLogin, loginError, setLoginError } = useLogin();
+  const { doCreateProfile } = useCreateProfile();
+
+  const { doRegister } = useRegister();
+  const { doCheckEmail } = useCheckEmail();
 
   const clientId = '872532243967-2kbho1hl07knb9au6ntkle6vt2b90jc4.apps.googleusercontent.com';
   const onSuccess = (res: any)=>{
-    if(res.profileObj.email==='ralisonmendrikasarah@gmail.com'){
-      
-    }
+    doCheckEmail({ variables: { email: res.profileObj.email} }).then(({data})=>{
+      if(!data?.checkEmailProfile){
+        doRegister({
+          variables: {
+            input: {
+              email: res.profileObj.email,
+              username: res.profileObj.email,
+              password: 'vide',
+              lastname: res.profileObj.familyName,
+              surname: res.profileObj.name
+
+            },
+          },
+        }).then((register)=>{
+          doCreateProfile({
+            variables: {
+              input: {
+                user_id: register.data?.registerCustom.user.id,
+              },
+            },
+          }).then(()=>{
+            doLogin({ variables: { input: { identifier: register.data?.registerCustom.user.username||'', password: 'vide', provider: 'local' } } })
+            .then((res) => {
+              console.log(res);
+              
+            });
+          })
+        })
+      }
+    });
+
   }
   const onFailure = (res: any)=>{
     console.log('[Login Failed] res', res);
@@ -127,7 +158,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
     <Box className={classes.mainPage}>
       <Box className="wrapPage">
         <Box className={classes.imgContainer}>
-          <img src={TalentLogo} className={classes.img} />
+          <img src={TalentLogo} className={classes.img} alt='Talent Team'/>
         </Box>
         <form className={classes.loginForm}>
           <TextFieldComponent
