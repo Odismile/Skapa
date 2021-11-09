@@ -17,7 +17,7 @@ import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { useItemsGetSkills } from '../../Providers/ItemsProvider/hooks/useItemsGetSkills';
-import { ONBOARDING_PROFILE4, ONBOARDING_PROFILE7 } from '../../Routes';
+import { ONBOARDING_PROFILE7 } from '../../Routes';
 import useStyles from './style';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { useUploadFile } from '../../Utils/uploadFile';
@@ -29,13 +29,13 @@ const OnboardingProfileThree = () => {
   const history = useHistory();
 
   const { doCreateProfile, loading: loadingProfile } = useCreateProfile();
-  const { uploadFile, loading: loadingUpload } = useUploadFile();
+  const { uploadFile } = useUploadFile();
 
   const [loadingUploadFile, setLoadingUploadFile] = useState(false);
 
   const [searchSkills, setSearchSkills] = useState<(Items_get_language_items | null)[] | null | undefined>();
   const [skillsSelected, setSkillsSelected] = useState<(Items_get_language_items | null)[] | null | undefined>([]);
-  const [disabledButton, setDisabledButton] = useState(true);
+  const [, setDisabledButton] = useState(true);
 
   const testButtonToEnabled = () => {
     if (skillsSelectedVariable()?.length !== 0) {

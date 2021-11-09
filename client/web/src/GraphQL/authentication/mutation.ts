@@ -36,3 +36,11 @@ export const EMAIL_CONFIRMATION = gql`
   }
   ${USER_PERMISSION_CUSTOM_ME_FRAGMENT}
 `;
+
+export const CHECK_EMAIL = gql`
+mutation checkmail($email: String!) {
+  checkEmailProfile(email: $email) {
+    id
+  }
+}
+`;
