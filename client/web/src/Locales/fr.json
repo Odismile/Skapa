@@ -7,6 +7,7 @@
       "password": "Mot de passe",
       "login_button": "Connexion",
       "create_account": "Créer un compte",
+      "login_auth": "Se connecter à Google",
       "login_message": "Vous êtes connecté"
     },
     "signup": {

@@ -13,7 +13,9 @@ import { SIGNUP } from '../../../Routes';
 import { clearLocalStorage, removeAccessToken } from '../../../Services';
 import { displaySnackbar, InitSnackbarData } from '../../../Utils';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
+import Google from '../../../Components/Icons/Google';
 import useStyles from './styles';
+import { useGoogleLogin } from 'react-google-login';
 
 interface LoginInterface {}
 
@@ -41,6 +43,24 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const [login, setLogin] = useState<LoginState>({ username: '', password: '' });
   const [errorfields, setErrorFields] = useState<ErrorFieldsState>(InitErrorFields);
   const { doLogin, loadingLogin, loginError, setLoginError } = useLogin();
+
+  const clientId = '872532243967-2kbho1hl07knb9au6ntkle6vt2b90jc4.apps.googleusercontent.com';
+  const onSuccess = (res: any)=>{
+    if(res.profileObj.email==='ralisonmendrikasarah@gmail.com'){
+      
+    }
+  }
+  const onFailure = (res: any)=>{
+    console.log('[Login Failed] res', res);
+  }
+  const {signIn} = useGoogleLogin({
+    onSuccess,
+    onFailure,
+    clientId,
+    isSignedIn: true,
+    accessType: 'offline',
+    
+  });
 
   useEffect(() => {
     if (login.password.trim()) {
@@ -140,6 +160,11 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
           <Box className={classes.btnFullWidth}>
             <Button variant="contained" className={classes.button} onClick={handleSubmit} disabled={loadingLogin}>
               {t('login.login')}
+            </Button>
+          </Box>
+          <Box className={classes.btnFullWidth}>
+            <Button variant="contained" style={{backgroundColor: "red", color: "white"}} onClick={signIn} >
+            <Google />{ t('login.login_auth')}
             </Button>
           </Box>
         </form>

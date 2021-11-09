@@ -6,6 +6,7 @@
       "login": "Login",
       "password": "Password",
       "login_button": "Login",
+      "login_auth": "Login with Google",
       "create_account": "Create an account",
       "login_message": "You are connected"
     },
