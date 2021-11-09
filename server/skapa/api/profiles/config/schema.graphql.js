@@ -57,7 +57,7 @@ module.exports = {
     Mutation: {
       profileCustomizeMeInput: {
         description: "Create profile ",
-        resolverOf: "application::profiles.profiles.create",
+        resolverOf: "plugins::users-permissions.auth.register",
         resolver: "application::profiles.profiles.profileCustomizeMeInput",
       },
       checkEmailProfile: {
