@@ -20,6 +20,7 @@ module.exports = {
     }
     return entity;
   },
+
   async profileCustomizeMeInput(ctx) {
     const talent = await strapi.query("items").findOne({ label: "Talent" });
     const data = JSON.parse(JSON.stringify(ctx.request.body.input));

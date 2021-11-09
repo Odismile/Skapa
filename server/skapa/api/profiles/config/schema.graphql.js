@@ -43,7 +43,7 @@ module.exports = {
    `,
   mutation: `
   profileCustomizeMeInput(input:profileCustomizeMeInput!): profileCustomizePayload!
-  checkEmailProfile(email:String): Profiles
+  checkEmailProfile(email:String!): Profiles
 `,
   type: {},
   resolver: {
@@ -62,7 +62,7 @@ module.exports = {
       },
       checkEmailProfile: {
         description: "Check email user ",
-        resolverOf: "application::profiles.profiles.create",
+        resolverOf: "plugins::users-permissions.auth.register",
         resolver: "application::profiles.profiles.checkEmailProfile",
       },
     },
