@@ -19,6 +19,7 @@ import { useRegister } from '../../../Providers/AuthProvider/hooks/useRegister';
 import { useCreateProfile } from '../../../Providers/ProfilProvider/useCreateProfile';
 import { displaySnackbar, InitSnackbarData } from '../../../Utils';
 import { useApolloClient } from '@apollo/client';
+import { idMe } from '../../../ReactiveVariable/User/user';
 interface LoginInterface {}
 
 interface LoginState {
@@ -66,6 +67,10 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
             },
           },
         }).then((register)=>{
+          console.log(res);
+          
+          // setAccessToken(data?.loginCustom?.jwt);
+          idMe(register.data?.registerCustom.user.id);
           if(window.confirm(t('createProfile.isCreate'))) {
             doCreateProfile({
               variables: {
@@ -90,6 +95,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
     // console.log('[Login Failed] res', res);
     snackbar.type = 'ERROR';
     snackbar.message = t('errorMessage.undefined');
+    displaySnackbar(client, snackbar);
   }
   const {signIn} = useGoogleLogin({
     onSuccess,
