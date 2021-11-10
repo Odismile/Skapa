@@ -13,10 +13,6 @@ import { clearLocalStorage, removeAccessToken } from '../../../Services';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import Google from '../../../Components/Icons/Google';
 import useStyles from './styles';
-import { useGoogleLogin } from 'react-google-login';
-import useCheckEmail from '../../../Providers/AuthProvider/hooks/useCheckEmail';
-import { useRegister } from '../../../Providers/AuthProvider/hooks/useRegister';
-import { useCreateProfile } from '../../../Providers/ProfilProvider/useCreateProfile';
 
 interface LoginInterface {}
 
@@ -42,59 +38,6 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const [login, setLogin] = useState<LoginState>({ username: '', password: '' });
   const [errorfields, setErrorFields] = useState<ErrorFieldsState>(InitErrorFields);
   const { doLogin, loadingLogin, loginError, setLoginError } = useLogin();
-  const { doCreateProfile } = useCreateProfile();
-
-  const { doRegister } = useRegister();
-  const { doCheckEmail } = useCheckEmail();
-
-  const clientId = '872532243967-2kbho1hl07knb9au6ntkle6vt2b90jc4.apps.googleusercontent.com';
-  const onSuccess = (res: any) => {
-    doCheckEmail({ variables: { email: res.profileObj.email } }).then(({ data }) => {
-      if (!data?.checkEmailProfile) {
-        doRegister({
-          variables: {
-            input: {
-              email: res.profileObj.email,
-              username: res.profileObj.email,
-              password: 'vide',
-              lastname: res.profileObj.familyName,
-              surname: res.profileObj.name,
-            },
-          },
-        }).then((register) => {
-          doCreateProfile({
-            variables: {
-              input: {
-                user_id: register.data?.registerCustom.user.id,
-              },
-            },
-          }).then(() => {
-            doLogin({
-              variables: {
-                input: {
-                  identifier: register.data?.registerCustom.user.username || '',
-                  password: 'vide',
-                  provider: 'local',
-                },
-              },
-            }).then((res) => {
-              console.log(res);
-            });
-          });
-        });
-      }
-    });
-  };
-  const onFailure = (res: any) => {
-    console.log('[Login Failed] res', res);
-  };
-  const { signIn } = useGoogleLogin({
-    onSuccess,
-    onFailure,
-    clientId,
-    isSignedIn: true,
-    accessType: 'offline',
-  });
 
   useEffect(() => {
     if (login.password.trim()) {
@@ -200,7 +143,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
             <Button
               variant="contained"
               style={{ backgroundColor: 'red', color: 'white' }}
-              onClick={() => (window.location.href = 'http://localhost:1337/connect/google')}
+              onClick={() => (window.location.href = process.env.REACT_APP_AUTH_GOOGLE as string)}
             >
               <Google />
               {t('login.login_auth')}
