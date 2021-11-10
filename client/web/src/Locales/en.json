@@ -114,6 +114,7 @@
       "similarProject":"Similar projects"
     },
     "createProfile": {
+      "isCreate": "Do you want to create a profil",
       "success": "Profile created successfully"
     },
     "createFavorit": {

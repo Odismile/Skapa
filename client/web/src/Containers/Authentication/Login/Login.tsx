@@ -17,7 +17,8 @@ import { useGoogleLogin } from 'react-google-login';
 import useCheckEmail from '../../../Providers/AuthProvider/hooks/useCheckEmail';
 import { useRegister } from '../../../Providers/AuthProvider/hooks/useRegister';
 import { useCreateProfile } from '../../../Providers/ProfilProvider/useCreateProfile';
-
+import { displaySnackbar, InitSnackbarData } from '../../../Utils';
+import { useApolloClient } from '@apollo/client';
 interface LoginInterface {}
 
 interface LoginState {
@@ -36,8 +37,11 @@ export const InitErrorFields: ErrorFieldsState = {
 };
 
 const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
+  const clientId = process.env.REACT_APP_CLIENT_ID as string;
   const { history } = props;
   const { t } = useTranslation();
+  const client = useApolloClient();
+  const snackbar = InitSnackbarData;
   const classes = useStyles();
   const [login, setLogin] = useState<LoginState>({ username: '', password: '' });
   const [errorfields, setErrorFields] = useState<ErrorFieldsState>(InitErrorFields);
@@ -46,8 +50,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
 
   const { doRegister } = useRegister();
   const { doCheckEmail } = useCheckEmail();
-
-  const clientId = '872532243967-2kbho1hl07knb9au6ntkle6vt2b90jc4.apps.googleusercontent.com';
+  
   const onSuccess = (res: any)=>{
     doCheckEmail({ variables: { email: res.profileObj.email} }).then(({data})=>{
       if(!data?.checkEmailProfile){
@@ -63,26 +66,30 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
             },
           },
         }).then((register)=>{
-          doCreateProfile({
-            variables: {
-              input: {
-                user_id: register.data?.registerCustom.user.id,
+          if(window.confirm(t('createProfile.isCreate'))) {
+            doCreateProfile({
+              variables: {
+                input: {
+                  user_id: register.data?.registerCustom.user.id,
+                },
               },
-            },
-          }).then(()=>{
-            doLogin({ variables: { input: { identifier: register.data?.registerCustom.user.username||'', password: 'vide', provider: 'local' } } })
-            .then((res) => {
-              console.log(res);
-              
             });
-          })
+          }
+          //AUthentification with token google
+          
         })
+      }else{
+        snackbar.type = 'ERROR';
+        snackbar.message = t('errorMessage.Email is already taken.');
+        displaySnackbar(client, snackbar);
       }
     });
 
   }
   const onFailure = (res: any)=>{
-    console.log('[Login Failed] res', res);
+    // console.log('[Login Failed] res', res);
+    snackbar.type = 'ERROR';
+    snackbar.message = t('errorMessage.undefined');
   }
   const {signIn} = useGoogleLogin({
     onSuccess,
