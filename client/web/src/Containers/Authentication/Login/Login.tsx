@@ -48,9 +48,9 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
   const { doCheckEmail } = useCheckEmail();
 
   const clientId = '872532243967-2kbho1hl07knb9au6ntkle6vt2b90jc4.apps.googleusercontent.com';
-  const onSuccess = (res: any)=>{
-    doCheckEmail({ variables: { email: res.profileObj.email} }).then(({data})=>{
-      if(!data?.checkEmailProfile){
+  const onSuccess = (res: any) => {
+    doCheckEmail({ variables: { email: res.profileObj.email } }).then(({ data }) => {
+      if (!data?.checkEmailProfile) {
         doRegister({
           variables: {
             input: {
@@ -58,39 +58,42 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
               username: res.profileObj.email,
               password: 'vide',
               lastname: res.profileObj.familyName,
-              surname: res.profileObj.name
-
+              surname: res.profileObj.name,
             },
           },
-        }).then((register)=>{
+        }).then((register) => {
           doCreateProfile({
             variables: {
               input: {
                 user_id: register.data?.registerCustom.user.id,
               },
             },
-          }).then(()=>{
-            doLogin({ variables: { input: { identifier: register.data?.registerCustom.user.username||'', password: 'vide', provider: 'local' } } })
-            .then((res) => {
+          }).then(() => {
+            doLogin({
+              variables: {
+                input: {
+                  identifier: register.data?.registerCustom.user.username || '',
+                  password: 'vide',
+                  provider: 'local',
+                },
+              },
+            }).then((res) => {
               console.log(res);
-              
             });
-          })
-        })
+          });
+        });
       }
     });
-
-  }
-  const onFailure = (res: any)=>{
+  };
+  const onFailure = (res: any) => {
     console.log('[Login Failed] res', res);
-  }
-  const {signIn} = useGoogleLogin({
+  };
+  const { signIn } = useGoogleLogin({
     onSuccess,
     onFailure,
     clientId,
     isSignedIn: true,
     accessType: 'offline',
-    
   });
 
   useEffect(() => {
@@ -158,7 +161,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
     <Box className={classes.mainPage}>
       <Box className="wrapPage">
         <Box className={classes.imgContainer}>
-          <img src={TalentLogo} className={classes.img} alt='Talent Team'/>
+          <img src={TalentLogo} className={classes.img} alt="Talent Team" />
         </Box>
         <form className={classes.loginForm}>
           <TextFieldComponent
@@ -194,8 +197,13 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
             </Button>
           </Box>
           <Box className={classes.btnFullWidth}>
-            <Button variant="contained" style={{backgroundColor: "red", color: "white"}} onClick={signIn} >
-            <Google />{ t('login.login_auth')}
+            <Button
+              variant="contained"
+              style={{ backgroundColor: 'red', color: 'white' }}
+              onClick={() => (window.location.href = 'http://localhost:1337/connect/google')}
+            >
+              <Google />
+              {t('login.login_auth')}
             </Button>
           </Box>
         </form>
