@@ -10,6 +10,9 @@ import { HOMEPAGE, LOGIN, ONBOARDING } from '../../Routes';
 import { login } from '../../ReactiveVariable/User/user';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { getUserFullName } from '../../Utils/utils';
+import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
+import { useTranslation } from 'react-i18next';
+import { Level } from '../../types/graphql-global-types';
 
 // progressbar style
 const BorderLinearProgress = withStyles((theme) => ({
@@ -29,14 +32,40 @@ const BorderLinearProgress = withStyles((theme) => ({
 }))(LinearProgress);
 
 const OnboardingProfileSeven = () => {
+  const jobSeniorityDefault = '6';
+  const bioDefault = 'Telldddddd';
+  const languagesDefault = [{id: '1', level: Level.FLUENT}];
+  const walletDefault = 100000;
+  const profilIdDefault = ['30'];
   const classes = useStyles();
   const [progress, setProgress] = React.useState(0);
   const { profil } = useCurrentUser();
+  const { doCreateProfile } = useCreateProfile();
+  const { t } = useTranslation();
   const history = useHistory();
+  let i=0;
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
+          //condition auth google ==>
+          if(window.confirm(t('createProfile.isCreate'))) {
+            console.log(i++);
+            
+            doCreateProfile({
+              variables: {
+                input: {
+                  job_seniority:  jobSeniorityDefault,
+                  bio: bioDefault,
+                  languages: languagesDefault,
+                  wallet: walletDefault,
+                  profile_skills: profilIdDefault,
+                },
+              },
+            }).then((data)=>{
+              console.log('dd', data);
+            })
+          }
           history.replace(HOMEPAGE);
           return 0;
         }
@@ -49,7 +78,6 @@ const OnboardingProfileSeven = () => {
       clearInterval(timer);
     };
   }, []);
-
   return (
     <>
       <WrapOnBoarding width={210} marginTop={40}>

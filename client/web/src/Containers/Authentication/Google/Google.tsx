@@ -16,11 +16,7 @@ const Google = () => {
   const { t } = useTranslation();
   const history = useHistory();
   const { doCreateProfile } = useCreateProfile();
-  const jobSeniorityDefault = '6';
-  const bioDefault = 'Tell you about me';
-  const languagesDefault = [{id: '1', level: Level.FLUENT}];
-  const walletDefault = 100000;
-  const profilIdDefault = ['30'];
+
   useEffect(() => {
     if (!location) {
       return;
@@ -37,23 +33,9 @@ const Google = () => {
         setAccessToken(res.data.jwt);
         idMe(res.data.user.id);
         localStorage.setItem('idMe', res.data.user.id);
-        if(window.confirm(t('createProfile.isCreate'))) {
-          doCreateProfile({
-            variables: {
-              input: {
-                job_seniority: jobSeniorityDefault,//>8yrs
-                languages: languagesDefault,
-                bio: bioDefault,
-                user_id: res.data.user.id,
-                wallet: walletDefault,
-                profile_skills: profilIdDefault
-              },
-            },
-          });
-        }
         history.replace(ONBOARDING_PROFILE7);
         window.location.reload();
-      } else {
+    } else {
         history.push(HOMEPAGE);
       }
     });
