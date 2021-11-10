@@ -28,6 +28,7 @@ import ContributeSpace from '../Containers/MyActivity/ContributeSpace/Contribute
 import TalentSpace from '../Containers/MyActivity/TalentSpace/TalentSpace';
 import CreatorSpace from '../Containers/MyActivity/CreatorSpace/CreatorSpace';
 import AppExterne from '../Containers/AppExterne/AppExterne';
+import Google from '../Containers/Authentication/Google/Google';
 
 export const HOMEPAGE = '/';
 export const LOGIN = '/login';
@@ -60,6 +61,7 @@ export const MYACTIVITY_CREATOR_SPACE = '/myactivity/creator';
 export const PROFILE = '/profile';
 export const APPEXTERNE = '/app-externe';
 export const UNAUTHORIZED = '/unauthorized';
+export const CALLBACK_GOOGLE = '/auth/google/callback';
 
 const WrappedHomePage = Wrapper(HomePage);
 
@@ -254,10 +256,10 @@ export const ROUTES: RouteInterface[] = [
     component: TalentSpace,
   },
   {
-    key: 'MYACTIVITY_CREATOR_SPACE',
-    route: MYACTIVITY_CREATOR_SPACE,
+    key: 'CALLBACK_GOOGLE',
+    route: CALLBACK_GOOGLE,
     roles: [],
     private: false,
-    component: CreatorSpace,
+    component: Google,
   },
 ];
