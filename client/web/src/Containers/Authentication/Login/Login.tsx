@@ -13,6 +13,7 @@ import { clearLocalStorage, removeAccessToken } from '../../../Services';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import Google from '../../../Components/Icons/Google';
 import useStyles from './styles';
+import { AUTH_GOOGLE } from '../../../Constants/Config';
 
 interface LoginInterface {}
 
@@ -143,7 +144,7 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
             <Button
               variant="contained"
               style={{ backgroundColor: 'red', color: 'white' }}
-              onClick={() => (window.location.href = process.env.REACT_APP_AUTH_GOOGLE as string)}
+              onClick={() => (window.location.href = AUTH_GOOGLE)}
             >
               <Google />
               {t('login.login_auth')}
