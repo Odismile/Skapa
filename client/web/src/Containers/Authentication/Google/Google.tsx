@@ -19,6 +19,8 @@ const Google = () => {
   const jobSeniorityDefault = '6';
   const bioDefault = 'Tell you about me';
   const languagesDefault = [{id: '1', level: Level.FLUENT}];
+  const walletDefault = 100000;
+  const profilIdDefault = ['30'];
   useEffect(() => {
     if (!location) {
       return;
@@ -43,6 +45,8 @@ const Google = () => {
                 languages: languagesDefault,
                 bio: bioDefault,
                 user_id: res.data.user.id,
+                wallet: walletDefault,
+                profile_skills: profilIdDefault
               },
             },
           });
