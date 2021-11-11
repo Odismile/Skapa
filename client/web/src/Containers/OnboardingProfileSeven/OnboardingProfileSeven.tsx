@@ -70,7 +70,8 @@ const OnboardingProfileSeven = () => {
               }
             }
           });
-          history.replace(HOMEPAGE);
+          //history.replace(HOMEPAGE);
+          window.location.href = 'https://lappsys-staging.hairun-technology.com/';
           return 0;
         }
         const diff = Math.random() * 10;
