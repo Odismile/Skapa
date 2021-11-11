@@ -7,9 +7,13 @@ import image_profile from '../../Assets/images/image_profile.png';
 import image_organisation from '../../Assets/images/organisation.png';
 import { useHistory } from 'react-router-dom';
 import { HOMEPAGE, LOGIN, ONBOARDING } from '../../Routes';
-import { login } from '../../ReactiveVariable/User/user';
+import { email, login } from '../../ReactiveVariable/User/user';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
-import { getUserFullName } from '../../Utils/utils';
+import { getUserFullName, getUserId } from '../../Utils/utils';
+import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
+import { useTranslation } from 'react-i18next';
+import { Level } from '../../types/graphql-global-types';
+import useCheckEmail from '../../Providers/AuthProvider/hooks/useCheckEmail';
 
 // progressbar style
 const BorderLinearProgress = withStyles((theme) => ({
@@ -29,14 +33,43 @@ const BorderLinearProgress = withStyles((theme) => ({
 }))(LinearProgress);
 
 const OnboardingProfileSeven = () => {
+  const jobSeniorityDefault = '6';
+  const bioDefault = 'User by Google';
+  const languagesDefault = [{ id: '1', level: Level.FLUENT }];
+  const walletDefault = 100000;
+  const profilIdDefault = ['30'];
   const classes = useStyles();
   const [progress, setProgress] = React.useState(0);
+  const { doCheckEmail } = useCheckEmail();
+
   const { profil } = useCurrentUser();
+  const { doCreateProfile } = useCreateProfile();
+  const { t } = useTranslation();
   const history = useHistory();
+  let isCreateProfil = true;
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
         if (oldProgress === 100) {
+          doCheckEmail({ variables: { email: localStorage.getItem('email') as string } }).then(({ data }) => {
+            if (!data?.checkEmailProfile && localStorage.getItem('provider') === 'google') {
+              if (isCreateProfil) {
+                isCreateProfil = false;
+                doCreateProfile({
+                  variables: {
+                    input: {
+                      job_seniority: jobSeniorityDefault,
+                      bio: bioDefault,
+                      languages: languagesDefault,
+                      wallet: walletDefault,
+                      profile_skills: profilIdDefault,
+                      user_id: getUserId,
+                    },
+                  },
+                });
+              }
+            }
+          });
           history.replace(HOMEPAGE);
           return 0;
         }
@@ -49,7 +82,6 @@ const OnboardingProfileSeven = () => {
       clearInterval(timer);
     };
   }, []);
-
   return (
     <>
       <WrapOnBoarding width={210} marginTop={40}>

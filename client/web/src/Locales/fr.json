@@ -114,6 +114,7 @@
       "similarProject":"Projets similaires"
     },
     "createProfile": {
+      "isCreate": "Voulez-vous creer un profil par defaut",
       "success": "Profil enregistré"
     },
     "create": {

@@ -8,7 +8,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import TalentLogo from '../../../Assets/images/logo.svg';
 import TextFieldComponent from '../../../Components/TextField/TextField';
 import useLogin from '../../../Providers/AuthProvider/hooks/useLogin';
-import { SIGNUP } from '../../../Routes';
+import { ONBOARDING_PROFILE7, SIGNUP } from '../../../Routes';
 import { clearLocalStorage, removeAccessToken } from '../../../Services';
 import { isEmailValid, isPassHasMinMaxLength } from '../../../Utils/validator';
 import Google from '../../../Components/Icons/Google';
