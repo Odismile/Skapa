@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { idMe } from '../../../ReactiveVariable/User/user';
+import { email, idMe, provider } from '../../../ReactiveVariable/User/user';
 import { setAccessToken } from '../../../Services';
 
 import { useHistory } from 'react-router';
@@ -23,8 +23,6 @@ const Google = () => {
     }
     const { search } = location;
     const urlGoogle = CALLBACK_GOOGLE.concat(search);
-    console.log('us ', urlGoogle);
-
     axios({
       method: 'GET',
       url: `${urlGoogle}`,
@@ -33,9 +31,11 @@ const Google = () => {
         setAccessToken(res.data.jwt);
         idMe(res.data.user.id);
         localStorage.setItem('idMe', res.data.user.id);
+        localStorage.setItem('email', res.data.user.email);
+        localStorage.setItem('provider', res.data.user.provider);
         history.replace(ONBOARDING_PROFILE7);
         window.location.reload();
-    } else {
+      } else {
         history.push(HOMEPAGE);
       }
     });

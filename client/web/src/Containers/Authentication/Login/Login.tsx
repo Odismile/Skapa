@@ -150,10 +150,6 @@ const Login: FC<LoginInterface & RouteComponentProps> = (props) => {
               {t('login.login_auth')}
             </Button>
           </Box>
-          <Button onClick={()=>{
-            history.replace(ONBOARDING_PROFILE7);
-            window.location.reload();
-          }}>test</Button>
         </form>
         <Box className={classes.linkContainer}>
           <Link className={classes.link} onClick={handleGoToCreateAccount}>
