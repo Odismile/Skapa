@@ -1,21 +1,16 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { email, idMe, provider } from '../../../ReactiveVariable/User/user';
+import { idMe } from '../../../ReactiveVariable/User/user';
 import { setAccessToken } from '../../../Services';
 
 import { useHistory } from 'react-router';
 import { HOMEPAGE, ONBOARDING_PROFILE7 } from '../../../Routes';
 import { CALLBACK_GOOGLE } from '../../../Constants/Config';
-import { useCreateProfile } from '../../../Providers/ProfilProvider/useCreateProfile';
-import { useTranslation } from 'react-i18next';
-import { Level } from '../../../types/graphql-global-types';
 
 const Google = () => {
   const location = useLocation();
-  const { t } = useTranslation();
   const history = useHistory();
-  const { doCreateProfile } = useCreateProfile();
 
   useEffect(() => {
     if (!location) {

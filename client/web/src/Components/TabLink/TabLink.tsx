@@ -1,5 +1,5 @@
 import { useApolloClient } from '@apollo/client';
-import { Box, Button, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core';
+import { Box, Step, StepButton, StepLabel, Stepper, Typography } from '@material-ui/core';
 import moment from 'moment';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -7,9 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { compareAsc } from 'date-fns';
 import Description from '../../Containers/Project/CreateProject/Description/Description';
 import LoadingButton from '../LoadingButton/LoadingButton';
-import Places from '../../Containers/Project/CreateProject/Places/Places';
 import Review from '../../Containers/Project/CreateProject/Review/Review';
-import Team from '../../Containers/Project/CreateProject/Team/Team';
 import { useCreateProject } from '../../Providers/ProjectProvider/useCreateProject';
 import { useUpdateProject } from '../../Providers/ProjectProvider/useUpdateProject';
 import {
@@ -35,7 +33,7 @@ const TabLink = () => {
   const history = useHistory();
 
   const [activeStep, setActiveStep] = React.useState(0);
-  const [completed, setCompleted] = React.useState<{ [k: number]: boolean }>({});
+  const [completed] = React.useState<{ [k: number]: boolean }>({});
   const { t } = useTranslation();
 
   const getSteps = () => {

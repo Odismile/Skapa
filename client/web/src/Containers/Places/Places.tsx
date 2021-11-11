@@ -8,7 +8,6 @@ import {
   InputBase,
   Modal,
   Paper,
-  Popper,
   Switch,
   TextField,
   Typography,
@@ -24,10 +23,8 @@ import Cross from '../../Components/Icons/Cross';
 import { useLocation } from 'react-router-dom';
 import CheckboxLine from '../../Components/Icons/CheckboxLine';
 import CheckboxChecked from '../../Components/Icons/CheckboxChecked';
-import { useTranslation } from 'react-i18next';
 
 const Places = () => {
-  const t = useTranslation();
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -43,7 +40,7 @@ const Places = () => {
   const params = useLocation();
   return (
     <>
-      {params.pathname != '/wishlist' && (
+      {params.pathname !== '/wishlist' && (
         <Box className={classes.content}>
           <RadioExtInt />
         </Box>

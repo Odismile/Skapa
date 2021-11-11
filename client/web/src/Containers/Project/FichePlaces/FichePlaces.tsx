@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Button, Divider, Link, TextField, Typography } from '@material-ui/core';
 import FormerProject from '../../../Components/FormerProjects/FormerProjects';
 import Place from '../../../Components/Place/Place';
@@ -11,8 +11,6 @@ import Clipboard from '../../../Components/Icons/Clipboard';
 import Coffee from '../../../Components/Icons/Coffee';
 import Cast from '../../../Components/Icons/Cast';
 import Computer from '../../../Components/Icons/Computer';
-import PrimaryHeader from '../../../Components/Header';
-import TabLink from '../../../Components/TabLink';
 import { useTranslation } from 'react-i18next';
 
 

@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Chip, IconButton, SwipeableDrawer, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, Chip, IconButton, Typography } from '@material-ui/core';
 import React, { FC, useState, MouseEventHandler } from 'react';
 import { useHistory } from 'react-router-dom';
 import organisationImg from '../../Assets/images/organisation.png';
@@ -6,7 +6,6 @@ import { coachs_profiles_profile_skills } from '../../GraphQL/profiles/types/coa
 import { useCreateFavoritTalent } from '../../Providers/TalentProvider/useCreateFavoritTalent';
 import { useDeleteFavoriTalent } from '../../Providers/TalentProvider/usedeleteFavoriTalent';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
-import CardProject from '../CardProjects/CardProjects';
 import DrawerAddToProject from '../DrawerAddToProject/DrawerAddToProject';
 import Award from '../Icons/Award';
 import Heart from '../Icons/Heart';
@@ -117,7 +116,7 @@ const CardTalents: FC<CardTalentsProps> = ({
         </Box>
         <Box className="foot">
           <Box className="tags">
-            {skills?.map((skill, index) => {
+            {skills?.forEach((skill, index) => {
               if (index < 2) {
                 return <Chip key={index} label={skill?.skill_id?.label} />;
               }

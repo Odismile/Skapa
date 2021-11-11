@@ -1,10 +1,7 @@
-import React, { FC } from 'react';
-import { Box, Typography } from '@material-ui/core';
-import useStyles from './styles';
+import { Box } from '@material-ui/core';
 import CardContributor from '../../../../Components/MyActivity/CardContributor/CardContributor';
 
 const TabFinishedContribute = () => {
-  const classes = useStyles();
 
   return (
     <Box>

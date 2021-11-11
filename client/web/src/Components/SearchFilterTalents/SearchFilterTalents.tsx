@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC } from 'react';
-import { Box, IconButton, InputBase, Modal, Paper, Popper, Typography } from '@material-ui/core';
+import { Box, IconButton, InputBase, Modal, Paper, Typography } from '@material-ui/core';
 import useStyles from './style';
 import Filter from '../../Components/Icons/Filter/Filter';
 import Search from '../../Components/Icons/Search/Search';

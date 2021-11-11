@@ -1,6 +1,6 @@
 import React, { FC, createContext, useState, useEffect } from 'react';
 
-import { getAccessToken, setAccessToken } from '../../Services/LocalStorage';
+import { getAccessToken } from '../../Services/LocalStorage';
 
 interface UserContextType {
   onUserInfo: {

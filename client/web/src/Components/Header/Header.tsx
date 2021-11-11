@@ -26,11 +26,6 @@ import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUse
 import { FC } from 'react';
 import { LocationInterface } from '../../types/types';
 
-import UserTalentList from '../MyActivity/UserTalentList/UserTalentList';
-
-
-
-
 interface HeaderProps {
   noBack?: boolean;
 }

@@ -1,22 +1,19 @@
-import React, { useRef, useState } from 'react';
-import { Box, Button, Container, Typography, LinearProgress, withStyles } from '@material-ui/core';
+import React from 'react';
+import { Box, LinearProgress, withStyles } from '@material-ui/core';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import useStyles from './style';
 
-import image_profile from '../../Assets/images/image_profile.png';
 import image_organisation from '../../Assets/images/organisation.png';
 import { useHistory } from 'react-router-dom';
-import { HOMEPAGE, LOGIN, ONBOARDING } from '../../Routes';
-import { email, login } from '../../ReactiveVariable/User/user';
+import { HOMEPAGE } from '../../Routes';
 import { useCurrentUser } from '../../Providers/UserProvider/hooks/useCurrentUser';
 import { getUserFullName, getUserId } from '../../Utils/utils';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
-import { useTranslation } from 'react-i18next';
 import { Level } from '../../types/graphql-global-types';
 import useCheckEmail from '../../Providers/AuthProvider/hooks/useCheckEmail';
 
 // progressbar style
-const BorderLinearProgress = withStyles((theme) => ({
+const BorderLinearProgress = withStyles(() => ({
   root: {
     height: 11,
     borderRadius: 10.5,
@@ -44,7 +41,6 @@ const OnboardingProfileSeven = () => {
 
   const { profil } = useCurrentUser();
   const { doCreateProfile } = useCreateProfile();
-  const { t } = useTranslation();
   const history = useHistory();
   let isCreateProfil = true;
   React.useEffect(() => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardContent, Box, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 
@@ -7,7 +6,6 @@ import useStyles from './style';
 import Calendar from '../../../Components/Icons/Calendar';
 
 import Team from '../../../Components/Team/Team';
-import requestPhoto from '../../../Assets/images/photo_request.png';
 
 import SliderDaysLeft from '../SliderDaysLeft';
 import SkillsRecquired from '../SkillsRecquired';

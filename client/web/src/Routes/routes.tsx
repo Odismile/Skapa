@@ -26,7 +26,6 @@ import Profile from '../Containers/Profile/Profile';
 import MyActivity from '../Containers/MyActivity/MyActivity';
 import ContributeSpace from '../Containers/MyActivity/ContributeSpace/ContributeSpace';
 import TalentSpace from '../Containers/MyActivity/TalentSpace/TalentSpace';
-import CreatorSpace from '../Containers/MyActivity/CreatorSpace/CreatorSpace';
 import AppExterne from '../Containers/AppExterne/AppExterne';
 import Google from '../Containers/Authentication/Google/Google';
 

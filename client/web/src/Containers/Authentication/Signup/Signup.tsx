@@ -5,14 +5,13 @@ import { RouteComponentProps } from 'react-router-dom';
 import TextFieldComponent from '../../../Components/TextField/TextField';
 import WrapOnBoarding from '../../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useRegister } from '../../../Providers/AuthProvider/hooks/useRegister';
-import { ONBOARDING } from '../../../Routes';
 import { ISignup } from '../../../types/signup';
-import { isEmailValid, isPassValid,isPassHasNumber,isPassHasUpper,isPassHasLower } from '../../../Utils/validator';
+import { isEmailValid, isPassValid,isPassHasUpper,isPassHasLower } from '../../../Utils/validator';
 import useStyles from './styles';
 import { clearLocalStorage, isAuthenticated } from '../../../Services';
 
 const Signup: FC<RouteComponentProps> = (props) => {
-  const { history } = props;
+  // const { history } = props;
   const classes = useStyles();
   const { loading, doRegister } = useRegister();
   const { t } = useTranslation();

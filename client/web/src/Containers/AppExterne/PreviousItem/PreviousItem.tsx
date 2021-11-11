@@ -10,7 +10,6 @@ import Team from '../../../Components/Team/Team';
 import MissionRate from '../MissionRate';
 import ImgAppExterne from '../ImgAppExterne';
 import SkillsRecquired from '../SkillsRecquired';
-import SliderDaysLeft from '../SliderDaysLeft';
 
 const PreviousItem = () => {
   const classes = useStyles();

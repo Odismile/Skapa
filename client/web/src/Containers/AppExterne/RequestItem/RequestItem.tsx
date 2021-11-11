@@ -1,6 +1,5 @@
-import React, { FC } from 'react';
-import { Avatar, Card, CardActionArea, CardActions, CardContent, CardMedia, Box, Button, IconButton, Typography } from '@material-ui/core';
-import AvatarGroup from '@material-ui/lab/AvatarGroup';
+import React from 'react';
+import { Card, CardActions, CardContent, Box, IconButton, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 import useStyles from './style';
 
@@ -9,7 +8,6 @@ import Check from '../../../Components/Icons/Check';
 import Cross from '../../../Components/Icons/Cross';
 
 import Team from '../../../Components/Team/Team';
-import requestPhoto from '../../../Assets/images/photo_request.png';
 
 import ImgAppExterne from '../ImgAppExterne';
 import SkillsRecquired from '../SkillsRecquired';

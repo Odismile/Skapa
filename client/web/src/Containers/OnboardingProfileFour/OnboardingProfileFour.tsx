@@ -17,7 +17,6 @@ import {
 } from '../../ReactiveVariable/Profil/profil';
 import { Items_get_language_items } from '../../GraphQL/items/types/Items_get_language';
 import { ONBOARDING_PROFILE7 } from '../../Routes';
-import { transformSkills } from '../../Utils/transformSkills';
 import { useCreateProfile } from '../../Providers/ProfilProvider/useCreateProfile';
 import { transformSkillsIds } from '../../Utils/TransformSkillsId';
 import { useUploadFile } from '../../Utils/uploadFile';
@@ -31,7 +30,7 @@ const OnboardingProfileFour = () => {
   const [projectTypeSelected, setProjectTypeSelected] = useState<
     (Items_get_language_items | null)[] | null | undefined
   >([]);
-  const { uploadFile, loading: loadingUpload } = useUploadFile();
+  const { uploadFile } = useUploadFile();
 
   const [loadingUploadFile, setLoadingUploadFile] = useState(false);
 

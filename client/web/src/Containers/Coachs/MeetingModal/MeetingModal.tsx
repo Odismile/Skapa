@@ -35,7 +35,7 @@ interface MeetingModalProps {
 const MeetingModal = (props: MeetingModalProps) => {
   const classes = useStyles();
   const { open, handleClose: handleCloseProp, handleOpen, coachId, coachName } = props;
-  const { user, profilId } = useCurrentUser();
+  const { profilId } = useCurrentUser();
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [step, setStep] = useState(0);
   const [createAppointmentMutation] = useCreateAppointment();

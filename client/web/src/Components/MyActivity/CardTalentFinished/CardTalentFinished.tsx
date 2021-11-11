@@ -1,10 +1,9 @@
 import React from 'react';
-import { Avatar, Box, Card, CardMedia, Slider, Typography } from '@material-ui/core';
+import { Avatar, Box, Card, CardMedia, Typography } from '@material-ui/core';
 import useStyles from './style';
 import imgHead from '../../../Assets/images/head1.png';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import Calendar from '../../Icons/Calendar';
-import Star from '../../Icons/Star';
 import Rating from '@material-ui/lab/Rating';
 
 const CardTalentFinished = () => {

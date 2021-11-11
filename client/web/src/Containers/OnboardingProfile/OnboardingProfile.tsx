@@ -18,7 +18,7 @@ import TextFieldComponent from '../../Components/TextField/TextField';
 import WrapOnBoarding from '../../Components/WrapOnBoarding/WrapOnBoarding';
 import { useItemsGetlaguage } from '../../Providers/ItemsProvider/hooks/useItemsGetLanguage';
 import { useItemsGetYear } from '../../Providers/ItemsProvider/hooks/useItemsGetYear';
-import { ageProfil, nameOfOrganisation, yourPosition, levelLanguages } from '../../ReactiveVariable/Profil/profil';
+import { ageProfil, yourPosition } from '../../ReactiveVariable/Profil/profil';
 import { ONBOARDING_PROFILE2 } from '../../Routes';
 import useStyles from './styles';
 const OnboardingProfile = () => {
@@ -27,9 +27,9 @@ const OnboardingProfile = () => {
   const { t } = useTranslation();
   const [radioButtonValue, setRadioButtonValue] = useState<string>('');
   const position = useReactiveVar(yourPosition);
-  const organisation = useReactiveVar(nameOfOrganisation);
+  // const organisation = useReactiveVar(nameOfOrganisation);
   const age = useReactiveVar(ageProfil);
-  const languages = useReactiveVar(levelLanguages);
+  // const languages = useReactiveVar(levelLanguages);
 
   const { data, loading } = useItemsGetlaguage();
   const { data: dataYears, loading: loadingYears } = useItemsGetYear();
@@ -47,9 +47,9 @@ const OnboardingProfile = () => {
     yourPosition(e.target.value);
   };
 
-  const onChangeNameOfOrganisation = (e: React.ChangeEvent<HTMLInputElement>) => {
-    nameOfOrganisation(e.target.value);
-  };
+  // const onChangeNameOfOrganisation = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   nameOfOrganisation(e.target.value);
+  // };
 
   const handleClick = () => {
     history.push(ONBOARDING_PROFILE2);

@@ -2,7 +2,6 @@ import { useQuery } from '@apollo/client';
 import { Box, Button, Chip, Divider, Typography } from '@material-ui/core';
 import React, { FC, useState } from 'react';
 import DrawerAddToProject from '../../../Components/DrawerAddToProject/DrawerAddToProject';
-import FormerProject from '../../../Components/FormerProjects/FormerProjects';
 import Pitch from '../../../Components/Pitch/Pitch';
 import Presentation from '../../../Components/Presentation/Presentation';
 import SimpleCardTalents from '../../../Components/SimpleCardTalents/SimpleCardTalents';

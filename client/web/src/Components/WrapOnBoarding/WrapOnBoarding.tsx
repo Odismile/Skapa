@@ -1,8 +1,6 @@
-import React from 'react';
-import { Box, Link, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import classNames from 'classnames';
 import { FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import mainLogo from '../../Assets/images/logo.svg';
 import useStyles from './style';
 interface WrapBoProps {
@@ -15,7 +13,7 @@ const WrapOnBoarding: FC<WrapBoProps> = (props) => {
   const mT = props.marginTop || 0;
   const classes = useStyles();
 
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <>

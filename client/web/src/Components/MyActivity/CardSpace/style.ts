@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Autoplay } from 'swiper';
 
 export default makeStyles((theme) => ({
   card: {

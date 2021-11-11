@@ -12,7 +12,7 @@ const CardSpace:FC<CardSpaceProps> = (props) => {
   return (
     <Card className={classes.card}>
       <CardContent className='contentCard'>
-        <img src={imgActivity} alt='photo'/>
+        <img src={imgActivity} alt='Talent team'/>
         <Box className='details'>
           <Typography className='title'>{props.title}</Typography>
           <Typography className='subtitle'>{props.subltitle}</Typography>

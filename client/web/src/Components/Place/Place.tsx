@@ -19,9 +19,9 @@ interface PlaceProps {
   data?: projects | undefined;
 }
 
-const handleClick = (event: any) => {
-  event.stopPropagation();
-};
+// const handleClick = (event: any) => {
+//   event.stopPropagation();
+// };
 
 const Place: FC<PlaceProps> = ({ data }) => {
   const classes = useStyles();

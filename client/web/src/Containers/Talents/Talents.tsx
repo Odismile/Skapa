@@ -28,15 +28,20 @@ const Talents = () => {
   const listTalents = useMemo(() => {
     let newList = data?.profiles || [];
     if (filterTalent.search.length) {
-      newList = newList.filter((item) => {
-        if (
-          item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-          item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
-          item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
-        ) {
-          return true;
-        }
-      });
+      // newList = newList.filter((item) => {
+      //   if (
+      //     item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+      //     item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+      //     item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
+      //   ) {
+      //     return true;
+      //   }
+      // });
+      
+      newList = newList.filter((item)=>(item?.users_id?.surname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())||
+        item?.users_id?.lastname?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase()) ||
+        item?.position?.trim().toLowerCase().includes(filterTalent.search.trim().toLowerCase())
+      ));
     }
     if (isInWishList)
       newList = newList.filter(

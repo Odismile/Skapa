@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, makeStyles, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, makeStyles, Tab, Tabs } from '@material-ui/core';
 import useStyles from './styles';
 import PrimaryHeader from '../../Components/Header/Header';
 import ProjectContent from '../ProjectContent/ProjectContent';

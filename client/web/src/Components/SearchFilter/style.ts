@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { findLastIndex } from 'lodash';
 
 export default makeStyles(
   theme => ({
