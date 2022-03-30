@@ -1,0 +1,48 @@
+version: "3.6"
+services:
+  backoffice:
+    stdin_open: true
+    tty: true
+    build: 
+      context: ./client/web
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./client/web/.env
+    volumes:
+      - "./client/web:/client/web"
+    ports:
+      - 3000:3000
+
+  strapi:
+    image: strapi/strapi:latest
+#    build:
+#      context: ./server/skapa
+#      dockerfile: Dockerfile.dev
+    ports:
+      - 1337:1337
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    volumes:
+      - "./server/skapa:/srv/app"
+
+  postgres:
+    image: postgres:12
+    restart: always
+    labels:
+      traefik.enable: false
+    env_file:
+      - .env-db
+    volumes:
+      - ./data/postgres/:/var/lib/postgresql
+    ports:
+      - '5432:5432'
+
+
+  pgadmin:
+    image: dpage/pgadmin4:4
+    env_file:
+      - .env-db
+    ports:
+      - "3005:80"
