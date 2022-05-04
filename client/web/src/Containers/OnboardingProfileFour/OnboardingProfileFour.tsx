@@ -61,10 +61,12 @@ const OnboardingProfileFour = () => {
         },
       },
     }).then(async (result) => {
+      console.log(("est"));
+      
       //if (result.data?.profileCustomizeMeInput?.profile?.id) {
       await uploadFile(pictureFile());
       await uploadFile(videoFile());
-      !loadingProfile && history.replace(ONBOARDING_PROFILE7);
+      // !loadingProfile;// && history.replace(ONBOARDING_PROFILE7);
       setLoadingUploadFile(false);
       //  }
     });

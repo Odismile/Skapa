@@ -9,6 +9,7 @@ var { sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async getProfile(ctx) {
     const { _userId } = ctx.params;
+    console.log("getProfile ", ctx.params);
     const entity = await strapi.query("profiles").findOne({
       users_id: _userId,
     });
